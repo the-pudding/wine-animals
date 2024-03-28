@@ -1,11 +1,13 @@
 import fs from "fs";
 import * as d3 from "d3";
 const raw = fs.readFileSync("./src/data/wine-animals.csv", "utf8");
+const OUT_PATH = "./src/data/";
 const data = d3.csvParse(raw);
 const dataByWinery = d3.groups(data, d => d.winery);
 let limitedData = [];
 
 function limitWines(winery, i) {
+    console.log(i)
     const numWines = winery[1].length;
     if (numWines > 1) {
         const wineryByType = d3.groups(winery[1], d => d.type)
@@ -32,8 +34,14 @@ function limitType(wineType, i) {
 }
 
 function init() {
-    dataByWinery.slice(0,2).map(limitWines);
-    console.log(limitedData);
+    dataByWinery.map(limitWines);
+    
+    const concatData = [].concat(...limitedData).map(d => ({
+		...d
+	}));
+
+    const csv = d3.csvFormat(concatData);
+	fs.writeFileSync(`${OUT_PATH}/wine-animals_LIMITED.csv`, csv)
 }
 
 init();
