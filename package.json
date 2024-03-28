@@ -2,6 +2,7 @@
 	"name": "svelte-starter",
 	"version": "5.15.1",
 	"scripts": {
+		"limitWine": "node tasks/limit-wine.js",
 		"identifyWine": "node tasks/identify-wine.js",
 		"gdoc": "node tasks/fetch-google.js",
 		"style": "node tasks/style-dictionary.js",

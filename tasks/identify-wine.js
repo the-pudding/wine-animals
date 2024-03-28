@@ -23,7 +23,7 @@ async function main() {
             {
               role: "assistant",
               content: [
-                { type: "text", text: "What animal is on this wine label? If there is no animal return `unidentified.` Return all answers in csv format." },
+                { type: "text", text: "What animal is on this wine label? If there is no animal, return `unidentified.` Return all answers in csv format." },
                 {
                     type: "image_url",
                     image_url: {
