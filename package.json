@@ -2,6 +2,7 @@
 	"name": "svelte-starter",
 	"version": "5.15.1",
 	"scripts": {
+		"imgDownload": "node tasks/imgDownload.js",
 		"limitWine": "node tasks/limit-wine.js",
 		"identifyWine": "node tasks/identify-wine.js",
 		"gdoc": "node tasks/fetch-google.js",
@@ -43,6 +44,8 @@
 	"dependencies": {
 		"axios": "^1.6.7",
 		"fs": "^0.0.1-security",
+		"image-download": "^2.1.0",
+		"image-downloader": "^4.3.0",
 		"openai": "^4.28.4"
 	}
 }
