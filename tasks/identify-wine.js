@@ -1,10 +1,14 @@
 import fs from "fs";
 import OpenAI from "openai";
 const apiKey = "";
-const INPATH = "static/assets/labels/";
+const INPATH = "static/assets/images/";
 const files = fs.readdirSync(INPATH);
-const file = "fJMLVLD7S9O_wMcFjyG60Q_pb_x960.png";
-const data = [];
+const filteredFiles = files.filter(file => { 
+   return file.includes(".png");
+})
+let spent = 0;
+
+const start = 0;
 
 const openai = new OpenAI({
     organization: "",
@@ -15,7 +19,9 @@ function encodeImageToBase64(file) {
     return fs.readFileSync(`${INPATH}${file}`, 'base64');
 }
 
-async function main() {
+const content = "This image is a wine label. Do you see any animals on it? How sure are you?";
+
+async function sendPrompt(file, i) {
     const response = await openai.chat.completions.create({
         model:  "gpt-4-vision-preview",
         max_tokens: 300,
@@ -23,7 +29,7 @@ async function main() {
             {
               role: "assistant",
               content: [
-                { type: "text", text: "What animal is on this wine label? If there is no animal, return `unidentified.` Return all answers in csv format." },
+                { type: "text", text: content },
                 {
                     type: "image_url",
                     image_url: {
@@ -34,39 +40,39 @@ async function main() {
             },
         ],
     });
-    data.push({ animal: response.choices[0].message.content,
-        imageFile: file })
-    console.log(data)
+    const a = (response.usage.completion_tokens / 1000) * 0.06;
+    const b = (response.usage.prompt_tokens / 1000) * 0.03;
+    const c = a + b;
+    spent += c;
+
+    console.log(`${i}: ${c.toFixed(2)} - ${spent.toFixed(2)} `)
+
+    if (response?.choices.length && response.choices[0].finish_reason === "stop") {
+        const outFile = file.replace(".png", ".txt");
+        const content = response.choices[0].message.content;
+        fs.writeFileSync(`./tasks/output/guesses/${outFile}`, content);
+    } else {
+        throw new Error("response didn't finish");
+    }
 }
 
-main();
+function pause(delay) {
+    return new Promise(resolve => {
+        setTimeout(resolve, delay)
+    })
+}
 
-// async function identifyAnimalInLabel(file) {
-//     const imageBase64 = encodeImageToBase64(file);
-
-
-//     try {
-//         const response = await axios.post(apiUrl, {
-//             model: "gpt-4-vision-preview",
-//             prompt: `Analyze the animal on the wine label in this image: ${imageBase64}.`,
-//             max_tokens: 50  // Adjust as needed
-//         }, {
-//             headers: {
-//                 'Authorization': `Bearer ${apiKey}`,
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-//         console.log(response.data.choices[0].text.trim());x
-//         return response.data;
-//     } catch (error) {
-//         console.error('Error:', error.response);
-//     }
-//     return;
-// }
-
-// // Iterate over images and get responses
-// files.slice(0,1).forEach(file => {
-//     identifyAnimalInLabel(file).then(result => {
-//         console.log(`Response for ${file}:`, result);
-//     });
-// });
+(async () => {
+    // const files = filteredFiles.slice(start, start + 3);
+    const files = filteredFiles;
+    let i = start;
+    for (const file of files) {
+        try {
+            await sendPrompt(file, i);
+        } catch (err) {
+            console.log(err);
+        }
+        await pause(1000);
+        i++;
+    }
+})();
