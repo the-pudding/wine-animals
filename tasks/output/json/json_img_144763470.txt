@@ -1,0 +1,1 @@
+{"animal": "bird, possibly a crane or stork", "certainty": "medium"}

@@ -8,7 +8,7 @@ const filteredFiles = files.filter(file => {
 })
 let spent = 0;
 
-const start = 0;
+const start = 380;
 
 const openai = new OpenAI({
     organization: "",
@@ -63,8 +63,8 @@ function pause(delay) {
 }
 
 (async () => {
-    // const files = filteredFiles.slice(start, start + 3);
-    const files = filteredFiles;
+    const files = filteredFiles.slice(start, filteredFiles.length - 1);
+    // const files = filteredFiles;
     let i = start;
     for (const file of files) {
         try {
@@ -72,7 +72,7 @@ function pause(delay) {
         } catch (err) {
             console.log(err);
         }
-        await pause(1000);
+        await pause(2000);
         i++;
     }
 })();

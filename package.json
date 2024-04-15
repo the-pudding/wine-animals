@@ -5,6 +5,7 @@
 		"imgDownload": "node tasks/imgDownload.js",
 		"limitWine": "node tasks/limit-wine.js",
 		"identifyWine": "node tasks/identify-wine.js",
+		"assessWineTxt": "node tasks/assess-wine-txt.js",
 		"gdoc": "node tasks/fetch-google.js",
 		"style": "node tasks/style-dictionary.js",
 		"dev": "vite dev",
