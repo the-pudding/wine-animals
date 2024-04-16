@@ -1,1 +1,1 @@
-Apologies for the confusion but your request doesn't include any specific description of a wine label to answer your questions. Please provide a description of a wine label.
+{"animal": "none", "certainty": "high"}

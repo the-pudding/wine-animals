@@ -1,1 +1,1 @@
-Apologies for the confusion, but your prompt appears to be missing the text describing the wine label. Can you please provide it?
+{"animal": "none", "certainty": "high"}

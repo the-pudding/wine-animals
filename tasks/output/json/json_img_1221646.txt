@@ -1,1 +1,4 @@
-Apologies for the confusion, but in order to proceed with your request, I need the text or description of a wine label to make an analysis. Can you please provide that?
+{
+  "animal": "error",
+  "certainty": "error"
+}

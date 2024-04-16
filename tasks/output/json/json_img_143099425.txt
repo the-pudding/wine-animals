@@ -1,1 +1,1 @@
-Apologies for the confusion, but as a text-based AI model, I'm unable to directly analyze images. Please provide the text description of the wine label for me to help with your query.
+{"animal": "none", "certainty": "high"}

@@ -1,1 +1,1 @@
-Apologies for the confusion, but as an AI model working on text-based data, I cannot analyze images directly. If you could describe the wine label in words I'd be happy to help based on that data.
+{"animal": "none", "certainty": "high"}

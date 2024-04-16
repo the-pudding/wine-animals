@@ -1,0 +1,1 @@
+{"animal": "unidentified mythological creatures or stylized animals", "certainty": "low"}

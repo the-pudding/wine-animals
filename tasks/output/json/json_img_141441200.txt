@@ -1,1 +1,1 @@
-Apologies for the confusion, but as an AI language model, I don't have the ability to see or analyze images. However, if you provide a text description of the wine label, I'll be more than happy to assist you with your questions.
+{"animal": "none", "certainty": "high"}

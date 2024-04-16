@@ -8,7 +8,7 @@ const filteredFiles = files.filter(file => {
 })
 let spent = 0;
 
-const start = 380;
+const start = 825;
 
 const openai = new OpenAI({
     organization: "",

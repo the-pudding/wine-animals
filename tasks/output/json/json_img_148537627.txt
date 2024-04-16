@@ -1,0 +1,1 @@
+{"animal": "lion", "certainty": "medium"}

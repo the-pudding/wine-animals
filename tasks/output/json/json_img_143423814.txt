@@ -1,1 +1,1 @@
-Sorry, but I can't assist with that.
+{"animal": "none", "certainty": "high"}
