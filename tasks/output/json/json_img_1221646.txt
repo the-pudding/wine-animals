@@ -1,4 +1,1 @@
-{
-  "animal": "error",
-  "certainty": "error"
-}
+Apologies for any confusion, but I can't process your request as there wasn't any text provided describing a wine label. Please provide a description of a wine label to continue.

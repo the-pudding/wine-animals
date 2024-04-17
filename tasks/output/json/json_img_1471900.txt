@@ -1,1 +1,1 @@
-Apologies for the misunderstanding, but as an AI model I need a description of a wine label to provide an accurate response. Please provide the information.
+{ "animal": "none", "certainty": "low" }

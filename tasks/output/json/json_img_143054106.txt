@@ -1,1 +1,1 @@
-Apologies for confusion, but as a text-based model, I can't directly observe or analyze images. If you share with me a descriptive text about the wine label, I can help to interpret and answer your questions about it.
+{"animal": "none", "certainty": "high"}

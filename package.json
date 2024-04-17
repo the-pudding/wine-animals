@@ -6,6 +6,7 @@
 		"limitWine": "node tasks/limit-wine.js",
 		"identifyWine": "node tasks/identify-wine.js",
 		"assessWineTxt": "node tasks/assess-wine-txt.js",
+		"combineCSV": "node tasks/combine-gpt-csv.js",
 		"gdoc": "node tasks/fetch-google.js",
 		"style": "node tasks/style-dictionary.js",
 		"dev": "vite dev",

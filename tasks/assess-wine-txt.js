@@ -20,7 +20,7 @@ function readText(file) {
     return txt.toString();
 }
 
-const content = "Using the text provided that describes a wine label, answer two questions: 1. What animal is on this wine label? If there are no animals return 'none', otherwise return the name of the animal. 2. How certain are you of this assessment? Return either 'low', 'medium', or 'high'. Return both 'animal' and 'certainty' as keys in a json object.";
+const content = "Using the text provided that describes a wine label, answer two questions: 1. What animal is on this wine label? If there are no animals, is there a human? If there are neither return 'none', otherwise return the name of the animal or human. 2. How certain are you of this assessment? Return either 'low', 'medium', or 'high'. Return both 'animal' and 'certainty' as keys in a json object.";
 
 async function sendPrompt(txt, file, i) {
     const response = await openai.chat.completions.create({

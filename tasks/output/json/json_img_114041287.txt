@@ -1,1 +1,1 @@
-Apologies for any misunderstanding, but I can't analyze the wine label without the descriptive text. If you provide me with the specific text descriptions, I would be able to answer your questions.
+{"animal": "none", "certainty": "high"}

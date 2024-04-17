@@ -1,1 +1,1 @@
-The assistant is unable to assist as there is no text provided for analysis.
+{"animal": "none", "certainty": "low"}

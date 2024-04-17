@@ -1,1 +1,1 @@
-Apologies, I can't assist without the necessary information on the wine label.
+{"animal": "unknown", "certainty": "low"}

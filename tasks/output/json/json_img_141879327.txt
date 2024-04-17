@@ -1,1 +1,1 @@
-{"animal": "none", "certainty": "low"}
+{"animal": "unknown", "certainty": "unknown"}

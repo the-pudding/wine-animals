@@ -1,1 +1,1 @@
-Apologies for any confusion, but as a language model AI developed by Open AI, I can only analyze and interpret textual information. I can't perform visual image analysis to identify graphical elements.
+{"animal": "none", "certainty": "high"}

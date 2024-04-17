@@ -1,1 +1,1 @@
-{"animal": "insect or stylized bird", "certainty": "low"}
+{"animal": "insect or bird", "certainty": "low"}

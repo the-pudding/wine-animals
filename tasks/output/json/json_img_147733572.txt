@@ -1,1 +1,1 @@
-Apologies for the confusion, but as a language model AI developed by OpenAI, I can't visually interpret things, such as a wine label image. You could describe the wine label to me in text and then I would be able to answer your questions.
+{"animal": "none", "certainty": "high"}
