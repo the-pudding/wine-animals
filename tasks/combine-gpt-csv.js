@@ -4,32 +4,43 @@ import * as d3 from "d3";
 const raw = fs.readFileSync("./src/data/wine-animals_LIMITED.csv", "utf8");
 const csvData = d3.csvParse(raw);
 let gptData = [];
-
-function findDescriptionMatch(id) {
-    let file = fs.existsSync(`./tasks/output/guesses/img_${id}.txt`)
-    if (file) {
-        let fileTxt = fs.readFileSync(`./tasks/output/guesses/img_${id}.txt`, "utf8") ;
-        return fileTxt;
-    } else {
-        return ""
-    }
-}
+let existsList = [];
+let completeList = [];
+let rerunList = [];
 
 function findDataMatch(id, prop) {
-    let file = fs.existsSync(`./tasks/output/json/json_img_${id}.txt`)
+    let file = fs.existsSync(`./tasks/output/response_${id}.json`)
     if (file) {
-        let fileTxt = fs.readFileSync(`./tasks/output/json/json_img_${id}.txt`, "utf8") ;
-        if (fileTxt.includes("{") && !fileTxt.includes("Apologies")) {
-            let jsonData = JSON.parse(fs.readFileSync(`./tasks/output/json/json_img_${id}.txt`, "utf8"))
-            let jsonAnimal = jsonData.animal;
-            let jsonCertainty = jsonData.certainty;
-            if (prop == "animal") {
+        if (existsList.indexOf(id) === -1) { existsList.push(id) };
+        let fileTxt = fs.readFileSync(`./tasks/output/response_${id}.json`, "utf8") ;
+        fileTxt = fileTxt.replace(`"responseB":"{`, `"responseB":{`)
+            .replace(`}"}`, `}}`)
+        let fileTxtSplitA = fileTxt.split(`"responseA":"`)[1];
+        let fileTxtSplitB = fileTxtSplitA.split(`","responseB":`)[0];
+        let fileTxtReplaceQuotes = fileTxtSplitB.replaceAll(`"`, `'`);
+        let replacedTxt = fileTxt.split(`"responseA":"`)[0]
+            .concat(`"responseA":"`, fileTxtReplaceQuotes)
+            .concat(`","responseB":`, fileTxtSplitA.split(`","responseB":`)[1])
+        if (fileTxt.includes("{") && fileTxt.includes(`"responseB":{`)) {
+            if (completeList.indexOf(id) === -1) { completeList.push(id) };
+            let jsonData = JSON.parse(replacedTxt)
+            let jsonDesc = jsonData.responseA;
+            let jsonAnimal = jsonData.responseB.animal;
+            let jsonCertainty = jsonData.responseB.certainty;
+            if (prop == "desc") {
+                return jsonDesc
+            } else if (prop == "animal") {
                 return jsonAnimal
             } else {
                 return jsonCertainty
             }
         } else {
-            return ""
+            if (fileTxt.includes("apologies") || fileTxt.includes("sorry")) {
+                if (rerunList.indexOf(id) === -1) { rerunList.push(id) };
+                return ""
+            } else {
+                return ""
+            }
         }
     } else {
         return ""
@@ -39,7 +50,7 @@ function findDataMatch(id, prop) {
 function addGPTData(data) {
     gptData = data.map((d, i) => ({
         ...d,
-        gptDescription: findDescriptionMatch(d.id),
+        gptDescription: findDataMatch(d.id, "desc"),
         gptAnimal: findDataMatch(d.id, "animal"),
         gptCertainty: findDataMatch(d.id, "certainty")
     }))
@@ -48,6 +59,7 @@ function addGPTData(data) {
 function init() {
     addGPTData(csvData)
     const csv = d3.csvFormat(gptData)
+    console.log(csvData.length, existsList.length, completeList.length, rerunList.length)
     fs.writeFileSync(`./tasks/output/withGPTData.csv`, csv)
 }
 

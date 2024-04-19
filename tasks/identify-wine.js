@@ -9,7 +9,7 @@ const filteredFiles = files.filter(file => {
 const testingSet = ["img_144763470.png", "img_1325750.png", "img_142560452.png", "img_1469509.png", "img_11837889.png", "img_143994263.png", "img_150274610.png", "img_149644611.png", "img_12448424.png", "img_148480667.png"]
 let spent = 0;
 
-const start = 350;
+const start = 745;
 
 const openai = new OpenAI({
     organization: "",
