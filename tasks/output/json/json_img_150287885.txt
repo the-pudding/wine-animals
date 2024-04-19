@@ -1,1 +1,0 @@
-{"animal": "stag", "certainty": "high"}

@@ -1,1 +1,0 @@
-{"animal": "fish", "certainty": "high"}

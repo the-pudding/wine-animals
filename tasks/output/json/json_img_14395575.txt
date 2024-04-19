@@ -1,1 +1,0 @@
-{"animal": "mythical or heraldic creature", "certainty": "low"}

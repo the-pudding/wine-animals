@@ -1,1 +1,0 @@
-{"animal": "unknown", "certainty": "unknown"}

@@ -1,1 +1,0 @@
-Apologies for the confusion, but without any text provided, I cannot return any assessment. At present, based on the given instruction, a response might look like this: `{ "animal": "none", "certainty": "high"}`. However, this is without any text reference. Please provide details about the wine label to obtain an accurate assessment.

@@ -6,9 +6,10 @@ const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".png");
 })
+const testingSet = ["img_144763470.png", "img_1325750.png", "img_142560452.png", "img_1469509.png", "img_11837889.png", "img_143994263.png", "img_150274610.png", "img_149644611.png", "img_12448424.png", "img_148480667.png"]
 let spent = 0;
 
-const start = 1300;
+const start = 350;
 
 const openai = new OpenAI({
     organization: "",
@@ -19,9 +20,15 @@ function encodeImageToBase64(file) {
     return fs.readFileSync(`${INPATH}${file}`, 'base64');
 }
 
-const content = "This image is a wine label. Do you see any animals on it? How sure are you?";
+const contentA = "This image is a wine label. Do you see any animals or humans on it? On a scale of 0-1, with 0 being 'not certain at all' and 1 being 'very certain', how sure are you?";
+const contentB = "Using the text provided that describes a wine label, return the following in json format with two keys 'animal' and 'certainty': 'animal' = if there is an animal(s) or human(s) on the label, return its name, otherwise return 'none'; 'certainty' = your certainty assessment as a number between 0 - 1";
 
-async function sendPrompt(file, i) {
+let responseA;
+let responseB;
+let costA;
+let costB;
+
+async function sendPromptA(file, i) {
     const response = await openai.chat.completions.create({
         model:  "gpt-4-vision-preview",
         max_tokens: 300,
@@ -29,7 +36,7 @@ async function sendPrompt(file, i) {
             {
               role: "assistant",
               content: [
-                { type: "text", text: content },
+                { type: "text", text: contentA },
                 {
                     type: "image_url",
                     image_url: {
@@ -42,18 +49,50 @@ async function sendPrompt(file, i) {
     });
     const a = (response.usage.completion_tokens / 1000) * 0.06;
     const b = (response.usage.prompt_tokens / 1000) * 0.03;
-    const c = a + b;
-    spent += c;
-
-    console.log(`${i}: ${c.toFixed(2)} - ${spent.toFixed(2)} `)
+    costA = a + b;
 
     if (response?.choices.length && response.choices[0].finish_reason === "stop") {
-        const outFile = file.replace(".png", ".txt");
-        const content = response.choices[0].message.content;
-        fs.writeFileSync(`./tasks/output/guesses/${outFile}`, content);
+        responseA = response.choices[0].message.content;
     } else {
         throw new Error("response didn't finish");
     }
+}
+
+async function sendPromptB(txt, file, i) {
+    const response = await openai.chat.completions.create({
+        model:  "gpt-4",
+        max_tokens: 300,
+        messages: [
+            {
+              role: "system",
+              content: [
+                { type: "text", text: contentB }
+              ], 
+            },
+            {
+                role: "user",
+                content: [
+                  { type: "text", text: txt }
+                ], 
+              }
+        ],
+    });
+    const a = (response.usage.completion_tokens / 1000) * 0.06;
+    const b = (response.usage.prompt_tokens / 1000) * 0.03;
+    costB = a + b;
+
+    if (response?.choices.length && response.choices[0].finish_reason === "stop") {
+        responseB = response.choices[0].message.content;
+    } else {
+        throw new Error("response didn't finish");
+    }
+}
+
+async function combineData(id, responseA, responseB) {
+    const stringified = JSON.stringify({id, responseA, responseB})
+    const output = stringified.replace(/\\n/g, '').replaceAll('\\', '');
+    console.log(output)
+    fs.writeFileSync(`./tasks/output/response_${id}.json`, output);
 }
 
 function pause(delay) {
@@ -64,11 +103,20 @@ function pause(delay) {
 
 (async () => {
     const files = filteredFiles.slice(start, filteredFiles.length - 1);
-    // const files = filteredFiles;
+    // const files = testingSet;
     let i = start;
     for (const file of files) {
+        const id = file.substring(
+            file.indexOf("_") + 1,
+            file.lastIndexOf(".")
+        )
         try {
-            await sendPrompt(file, i);
+            await sendPromptA(file, i);
+            await sendPromptB(responseA, file, i);
+            await combineData(id, responseA, responseB);
+            let totalCost = costA + costB;
+            spent += totalCost;
+            console.log(`${i}: ${totalCost.toFixed(2)} - ${spent.toFixed(2)} `)
         } catch (err) {
             console.log(err);
         }

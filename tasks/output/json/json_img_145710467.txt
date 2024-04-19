@@ -1,4 +1,0 @@
-{
-"animal": "none",
-"certainty": "high"
-}

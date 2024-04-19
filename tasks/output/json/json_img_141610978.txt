@@ -1,1 +1,0 @@
-This prompt requires a text describing a wine label, but no such text is provided. Please provide the text in order to process it correctly.
