@@ -1,1 +1,1 @@
-{"id":"157909190","responseA":"There are no animals or humans on the wine label. I am very certain about this observation; my certainty level is 1. The label features text and a star as part of its design.","responseB":"{  "animal": "none",  "certainty": 1}"}
+{"id":"157909190","responseA":"There are no animals or humans visible on this wine label. I am very certain of this observation, so on the scale of 0-1, where 0 is 'not certain at all' and 1 is 'very certain,' my answer would be 1.","responseB":"{"animal": "none","certainty": 1}"}
