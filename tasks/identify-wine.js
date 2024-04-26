@@ -6,10 +6,10 @@ const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".png");
 })
-const testingSet = ["img_144763470.png", "img_1325750.png", "img_142560452.png", "img_1469509.png", "img_11837889.png", "img_143994263.png", "img_150274610.png", "img_149644611.png", "img_12448424.png", "img_148480667.png"]
-let spent = 0;
+const testingSet = ["img_160849984.png"]
 
 const start = 3410;
+let spent = 0;
 
 const openai = new OpenAI({
     organization: "",
@@ -102,8 +102,8 @@ function pause(delay) {
 }
 
 (async () => {
-    const files = filteredFiles.slice(start, filteredFiles.length - 1);
-    // const files = testingSet;
+    // const files = filteredFiles.slice(start, filteredFiles.length - 1);
+    const files = testingSet;
     let i = start;
     for (const file of files) {
         const id = file.substring(
