@@ -8,7 +8,7 @@ const filteredFiles = files.filter(file => {
 })
 const testingSet = ["img_160849984.png"]
 
-const start = 3410;
+const start = 3900;
 let spent = 0;
 
 const openai = new OpenAI({
@@ -102,8 +102,8 @@ function pause(delay) {
 }
 
 (async () => {
-    // const files = filteredFiles.slice(start, filteredFiles.length - 1);
-    const files = testingSet;
+    const files = filteredFiles.slice(start, filteredFiles.length - 1);
+    // const files = testingSet;
     let i = start;
     for (const file of files) {
         const id = file.substring(

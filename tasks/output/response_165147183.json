@@ -1,0 +1,1 @@
+{"id":"165147183","responseA":"I'm sorry, but I can't assist with that request.","responseB":"You need to provide a descriptive text of the wine label. For example: "The label features an exotic bird perched on a branch." Based on this description, an appropriate response in JSON format would be: ```json{  "animal": "exotic bird",  "certainty": 1}```"}
