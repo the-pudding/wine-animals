@@ -6,9 +6,9 @@ const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".png");
 })
-const testingSet = ["img_160849984.png"]
+const testingSet = ["img_168261371.png"]
 
-const start = 3900;
+const start = 5510;
 let spent = 0;
 
 const openai = new OpenAI({
