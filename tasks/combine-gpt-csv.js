@@ -5,7 +5,7 @@ const raw = fs.readFileSync("./src/data/wine-animals_LIMITED.csv", "utf8");
 const csvData = d3.csvParse(raw);
 let gptData = [];
 let existsList = [];
-let completeList = [];
+let completeList = []
 let rerunList = [];
 
 function findDataMatch(id, prop) {
@@ -59,6 +59,7 @@ function addGPTData(data) {
 function init() {
     addGPTData(csvData)
     const csv = d3.csvFormat(gptData)
+    
     console.log(csvData.length, existsList.length, completeList.length, rerunList.length)
     fs.writeFileSync(`./tasks/output/withGPTData.csv`, csv)
 }

@@ -2,8 +2,10 @@
     import { onMount } from "svelte";
 	import data from "$data/withGPTData.csv";
     import { csvFormat } from "d3";
+    const animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
     const noAnimals = data.filter(d => d.gptAnimal == "none");
-    let falseWines = [];
+    $: falseWines = [];
+    $: falseCount = falseWines.length
     let highlight = false;
     let csvElement;
 
@@ -50,6 +52,11 @@
 
 <div class="wrapper">
     <button on:click={saveWines}>Save wines</button>
+    <div class="stats">
+        <p><strong>Completed by GPT:</strong> {animals.length + noAnimals.length}</p>
+        <p><strong>Animals:</strong> {animals.length}</p>
+        <p><strong>Non-animals:</strong> {noAnimals.length}</p>
+    </div>
 </div>
 <section>
     {#each noAnimals as wine,i}
@@ -71,6 +78,14 @@
         background: rgba(255,255,255,0.9);
         border: none;
         padding: 1rem;
+    }
+    .stats {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+    }
+    .stats p {
+        margin: 0 1rem;
     }
     section {
         display: flex;
