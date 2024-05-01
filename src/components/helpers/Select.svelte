@@ -1,10 +1,15 @@
 <script>
+	import {wineSet, falseWinesList} from "$stores/misc.js";
 	export let options = [];
 	export let label = "";
 	export let disabled = false;
 	export let value = options.length ? options[0].value : "";
-
 	const id = `select-${Math.floor(Math.random() * 1000000)}`;
+
+	function valChange(value) { falseWinesList.set([]) }
+
+	$: wineSet.set(value)
+	$: valChange(value);
 </script>
 
 <div class="select">
@@ -13,7 +18,7 @@
 	{/if}
 	<select {id} bind:value {disabled}>
 		{#each options as option}
-			<option>{option.label || option.value}</option>
+			<option>{option}</option>
 		{/each}
 	</select>
 </div>
@@ -32,7 +37,7 @@
 	}
 
 	select {
-		width: 100%;
+		width: 180px;
 		height: 50px;
 		font-family: inherit;
 		font-size: 1em;

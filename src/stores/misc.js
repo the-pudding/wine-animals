@@ -1,3 +1,4 @@
 import { writable } from "svelte/store";
 
-export const falseWines = writable([]);
+export const falseWinesList = writable([]);
+export const wineSet = writable("animals/humans");

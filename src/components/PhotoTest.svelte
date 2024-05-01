@@ -1,13 +1,19 @@
 <script>
+    import {
+        falseWinesList,
+		wineSet
+	} from "$stores/misc.js";
     import { onMount } from "svelte";
+    import Select from "$components/helpers/Select.svelte";
 	import data from "$data/withGPTData.csv";
     import { csvFormat } from "d3";
     const animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
     const noAnimals = data.filter(d => d.gptAnimal == "none");
+    let options = ["animals/humans", "no animals"];
     $: falseWines = [];
-    $: falseCount = falseWines.length
     let highlight = false;
     let csvElement;
+    $: disabled = $falseWinesList.length > 0 ? false : true;
 
     onMount(() => {
         csvElement = document.createElement("a")
@@ -16,62 +22,84 @@
     function logWine() {
         let id = this.id.split("-")[1]
         this.classList.toggle('highlight');
+
         if (this.classList.contains("highlight")) {
-            if (!falseWines.includes(id)) {
-                falseWines.push(id)  
-            }
+            falseWinesList.set([...$falseWinesList, { id }]);
         } else {
-            if (falseWines.includes(id)) {
-                const match = falseWines.indexOf(id);
-                if (match > -1) {
-                    falseWines.splice(match, 1)
-                }
-            }
+            const indexOfObject = $falseWinesList.findIndex(object => { return object.id == id })
+            $falseWinesList.splice(indexOfObject, 1);
+            falseWinesList.set($falseWinesList);
         }
     }
 
     function saveWines() {
-        const concatData = [].concat(...falseWines).map(d => ({
-            id: d,
-        }));
-        const csv = csvFormat(concatData)
-        const csvBlob = new Blob([csv]);
-        const blobUrl = URL.createObjectURL(csvBlob);
-        csvElement.href = blobUrl;
-        csvElement.download = "false-wines.csv";
+        const data = $falseWinesList;
+        if (data.length > 0) {
+            const concatData = [].concat(...data).map(d => ({
+                id: d.id,
+            }));
+            const csv = csvFormat(concatData)
+            const csvBlob = new Blob([csv]);
+            const blobUrl = URL.createObjectURL(csvBlob);
+            let setType = $wineSet == "animals/humans" ? "animals-humans" : "no-animals";
+            csvElement.href = blobUrl;
+            csvElement.download = `${setType}_false-wines.csv`;
 
-        csvElement.dispatchEvent(
-            new MouseEvent("click", {
-                bubbles: true,
-                cancelable: true,
-                view: window
-            })
-        );
+            csvElement.dispatchEvent(
+                new MouseEvent("click", {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                })
+            );
+        } 
     }
+    $: console.log($falseWinesList);
 </script>
 
 <div class="wrapper">
-    <button on:click={saveWines}>Save wines</button>
+    <div class="controls">
+        <Select options={options}/>
+        <button disabled='{disabled}' on:click={saveWines}>Save wines</button>
+    </div>
     <div class="stats">
-        <p><strong>Completed by GPT:</strong> {animals.length + noAnimals.length}</p>
-        <p><strong>Animals:</strong> {animals.length}</p>
-        <p><strong>Non-animals:</strong> {noAnimals.length}</p>
+        {#if $wineSet == "animals/humans"}
+            <p><strong>Animals/humans:</strong> {animals.length}</p>
+            <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
+            <p><strong>Flagged %:</strong> {($falseWinesList.length/animals.length*100).toFixed(2)}%</p>
+        {:else}
+            <p><strong>Non-animals:</strong> {noAnimals.length}</p>
+            <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
+            <p><strong>Flagged %:</strong> {$falseWinesList.length}</p>
+        {/if}
     </div>
 </div>
 <section>
-    {#each noAnimals as wine,i}
-    <div on:click={logWine} id="wine-{wine.id}"> 
-        <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
-        <p>{wine.id}</p>
-    </div>
-    {/each}
+    {#if $wineSet == "animals/humans" || $wineSet == undefined }
+        {#each animals as wine,i}
+            <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper"> 
+                <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
+                <p>{wine.id}</p>
+                <p>{wine.gptAnimal}</p>
+            </div>
+        {/each}
+    {:else}
+        {#each noAnimals as wine,i}
+            <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper"> 
+                <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
+                <p>{wine.id}</p>
+            </div>
+        {/each}
+    {/if}
 </section>
 
 <style>
     .wrapper {
         display: flex;
+        flex-direction: column;
         width: 100%;
         justify-content: center;
+        align-items: center;
         margin: 0 0 3rem 0;
         position: sticky;
         top: 0;
@@ -79,20 +107,34 @@
         border: none;
         padding: 1rem;
     }
+    .controls {
+        display: flex;
+        width: 100%;
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 1rem 0;
+    }
     .stats {
         display: flex;
         width: 100%;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
     .stats p {
         margin: 0 1rem;
+    }
+    button {
+        height: 50px;
+        margin: 0 0 0 1rem;
     }
     section {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
     }
-    div {
+    .wine-wrapper {
         width: 200px;
         height: auto;
         margin: 0.5rem;
@@ -101,6 +143,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+    }
+    .wine-wrapper:hover{
+        border: 2px solid var(--color-gray-200);
     }
     .wine-img {
         width: 200px;
