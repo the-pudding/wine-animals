@@ -8,7 +8,7 @@ const filteredFiles = files.filter(file => {
 })
 const testingSet = ["img_168261371.png"]
 
-const start = 6000;
+const start = 6500;
 let spent = 0;
 
 const openai = new OpenAI({
