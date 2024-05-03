@@ -1,0 +1,1 @@
+{"id":"171147219","responseA":"On the wine label, I see a small graphical representation of an animal on the bottom left part. It appears to be a stylized image of a kangaroo. The certainty of this observation would be around 0.9, as it's clear but the stylization could possibly lead to some ambiguity.","responseB":"{  "animal": "kangaroo",  "certainty": 0.9}"}

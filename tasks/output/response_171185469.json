@@ -1,0 +1,1 @@
+{"id":"171185469","responseA":"I'm sorry, I can't assist with this request.","responseB":"Apologies for the confusion. Here's a small example to illustrate the required format.Let’s consider the label description as follows: "The wine label showcases a beautifully painted black horse galloping in a field."The JSON format would be:```{  "animal": "horse",  "certainty": 1}```"}
