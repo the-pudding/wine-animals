@@ -1,0 +1,1 @@
+{"id":"175190478","responseA":"I'm sorry, I can't assist with that request.","responseB":"Here's a sample input for the model:Let's say the wine label description is: "The label displays a fantastical scene of a unicorn galloping through lush, moonlit vineyards."Then the output in JSON format would be:{  "animal": "unicorn",  "certainty": 1}"}
