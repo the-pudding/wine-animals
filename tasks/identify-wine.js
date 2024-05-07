@@ -1,4 +1,5 @@
 import fs from "fs";
+import * as d3 from "d3";
 import OpenAI from "openai";
 const apiKey = "";
 const INPATH = "static/assets/images/";
@@ -6,9 +7,11 @@ const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".png");
 })
-const testingSet = ["img_2082804.png"]
+const testingSet = ["img_2082804.png"];
+const rawRerun = fs.readFileSync("./src/data/rerun.csv", "utf8");
+const csvRerun = d3.csvParse(rawRerun);
 
-const start = 0;
+const start = 20;
 let spent = 0;
 
 const openai = new OpenAI({
@@ -102,17 +105,36 @@ function pause(delay) {
 }
 
 (async () => {
+    // RUN SPECIFIC FILES
+    // const files = testingSet;
+
+    // RUN FROM ALL IMAGES
     // const files = filteredFiles.slice(start, filteredFiles.length - 1);
-    const files = testingSet;
+
+    // RUN RERUNS
+    const files = csvRerun.slice(start, csvRerun.length - 1);
     let i = start;
     for (const file of files) {
-        const id = file.substring(
-            file.indexOf("_") + 1,
-            file.lastIndexOf(".")
-        )
+        // RUN SPECIFIC FILES OR FROM ALL IMAGES
+        // const id = file.substring(
+        //     file.indexOf("_") + 1,
+        //     file.lastIndexOf(".")
+        // );
+
+        // RUN RERUNS
+        const id = file.id;
+        const img = `img_${id}.png`;
+
         try {
-            await sendPromptA(file, i);
-            await sendPromptB(responseA, file, i);
+            // RUN SPECIFIC FILES OR FROM ALL IMAGES
+            // await sendPromptA(file, i);
+            // await sendPromptB(responseA, file, i);
+
+            // RUN RERUNS
+            await sendPromptA(img, i);
+            await sendPromptB(responseA, img, i);
+
+            // RUN FOR ALL
             await combineData(id, responseA, responseB);
             let totalCost = costA + costB;
             spent += totalCost;

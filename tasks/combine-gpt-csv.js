@@ -59,9 +59,15 @@ function addGPTData(data) {
 function init() {
     addGPTData(csvData)
     const csv = d3.csvFormat(gptData)
+
+    const concatRerunData = [].concat(...rerunList).map(d => ({
+        id: d,
+    }));
+    const rerunCSV = d3.csvFormat(concatRerunData)
     
     console.log(csvData.length, existsList.length, completeList.length, rerunList.length)
-    fs.writeFileSync(`./tasks/output/withGPTData.csv`, csv)
+    fs.writeFileSync(`./src/data/withGPTData.csv`, csv)
+    fs.writeFileSync(`./src/data/rerun.csv`,rerunCSV)
 }
 
 init();
