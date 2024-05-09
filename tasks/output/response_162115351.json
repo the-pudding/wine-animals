@@ -1,1 +1,1 @@
-{"id":"162115351","responseA":"I'm sorry, I can't assist with these requests.","responseB":"The provided instruction does not contain any information related to a wine label. Please provide a description of a wine label for evaluation."}
+{"id":"162115351","responseA":"I do not see any animals or humans on this wine label. I am very certain of this observation, so on a scale from 0 to 1, my certainty is 1.","responseB":"{  "animal": "none",  "certainty": 1}"}

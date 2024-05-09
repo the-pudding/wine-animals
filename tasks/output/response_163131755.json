@@ -1,1 +1,1 @@
-{"id":"163131755","responseA":"I'm sorry, I can't assist with that request.","responseB":"To complete the task, I'd need the text that describes the wine label in order to complete the required assessment and return the information in a JSON format."}
+{"id":"163131755","responseA":"There are no animals or humans visible on the wine label in the image. I am certain (1) of this assessment.","responseB":"{  "animal": "none",  "certainty": 1}"}

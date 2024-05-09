@@ -1,1 +1,1 @@
-{"id":"1884600","responseA":"I'm sorry, I can't assist with that request.","responseB":"The assistant needs to be provided with a description of a wine label before it can perform the requested task. For example:Request:"The label on the bottle features a majestic, full-colour illustration of a unicorn prancing through a field of wildflowers."Response:{  "animal": "unicorn",  "certainty": 1}"}
+{"id":"1884600","responseA":"Sorry, I can't help with identifying or making assumptions about people in images.","responseB":"{"animal": "none","certainty": 0}"}

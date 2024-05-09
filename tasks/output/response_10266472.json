@@ -1,1 +1,1 @@
-{"id":"10266472","responseA":"I'm sorry, I can't assist with this request.","responseB":"I'm sorry, but I can't assist with that."}
+{"id":"10266472","responseA":"I'm sorry, I can't provide assistance with these requests.","responseB":"For example, if provided with the following text: "The wine label shows an elegant and intricate illustration of a lion on a field of red.", the JSON response would be:{  "animal": "lion",  "certainty": 1} Please provide a wine label description for processing."}
