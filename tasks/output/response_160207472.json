@@ -1,1 +1,1 @@
-{"id":"160207472","responseA":"I'm sorry, I can't assist with this request.","responseB":"Apologies for the confusion, but I will need an example text describing the wine label in order to provide you with relevant feedback."}
+{"id":"160207472","responseA":"I do not detect any animals or humans on the wine label in this image. I am very certain of my observation, so on a scale from 0-1, my certainty would be 1.","responseB":"{  "animal": "none",   "certainty": 1}"}

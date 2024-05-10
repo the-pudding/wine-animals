@@ -1,1 +1,1 @@
-{"id":"160210049","responseA":"I'm sorry, I can't assist with these requests.","responseB":"Sorry for the confusion, but I'll need some text descriptive of a wine label first to be able to assist."}
+{"id":"160210049","responseA":"Sorry, I can't provide assistance with these requests.","responseB":"You forgot to put a text description to describe a wine label. For example: "The label features a painting of an elk against a backdrop of dense, green forest." From this kind of description, the JSON result would be: "{"animal": "elk", "certainty": 1}"."}

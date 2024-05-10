@@ -1,1 +1,1 @@
-{"id":"168996162","responseA":"I'm sorry, I can't provide assistance with these requests.","responseB":"The text needed to complete this task hasn't been provided. Please provide a description of a wine label to generate the desired JSON output."}
+{"id":"168996162","responseA":"There are no animals or humans on this wine label. The label features an abstract design with lines and text. I am very certain of this, so on a scale of 0-1, my confidence level is 1.","responseB":"{  "animal": "none",  "certainty": 1}"}

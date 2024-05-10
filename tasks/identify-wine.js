@@ -7,11 +7,11 @@ const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".png");
 })
-const testingSet = ["img_2082804.png"];
+const testingSet = ["img_3202582.png"];
 const rawRerun = fs.readFileSync("./src/data/rerun.csv", "utf8");
 const csvRerun = d3.csvParse(rawRerun);
 
-const start = 1800;
+const start = 0;
 let spent = 0;
 
 const openai = new OpenAI({
