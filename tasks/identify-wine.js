@@ -11,7 +11,7 @@ const testingSet = ["img_2082804.png"];
 const rawRerun = fs.readFileSync("./src/data/rerun.csv", "utf8");
 const csvRerun = d3.csvParse(rawRerun);
 
-const start = 983;
+const start = 1800;
 let spent = 0;
 
 const openai = new OpenAI({

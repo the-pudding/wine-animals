@@ -1,1 +1,1 @@
-{"id":"159492246","responseA":"I'm sorry, I can't provide assistance with that request.","responseB":"You need to provide the described text of the wine label first in order to get the requested information in JSON format."}
+{"id":"159492246","responseA":"I do not see any animals or humans on this wine label. My certainty level is 1, meaning I am very certain of my observation.","responseB":"{"animal": "none","certainty": 1}"}

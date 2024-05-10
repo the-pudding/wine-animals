@@ -1,1 +1,1 @@
-{"id":"43688087","responseA":"I'm sorry, I can't provide assistance with these requests.","responseB":"Apologies for the confusion, but you haven't provided any text describing a wine label. Once you do, I'll be happy to help with its conversion into json format."}
+{"id":"43688087","responseA":"This label does not depict any animals or humans; it features text and a decorative geometric pattern. I am very certain about this observation, so on a scale of 0-1, my certainty is 1.","responseB":"{  "animal": "none",  "certainty": 1}"}
