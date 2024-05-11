@@ -1,1 +1,1 @@
-{"id":"170880421","responseA":"I'm sorry, I can't provide assistance with that request.","responseB":"The assistant has been confused; the text to analyze is missing. Please, provide it."}
+{"id":"170880421","responseA":"I'm sorry, I can't assist with that request.","responseB":"You need to provide a text that describes a wine label for me to convert it into the required JSON format. For example, if you describe a label that mentions a "lion" and you are sure about its presence on the label, then this would result in the following JSON: {"animal": "lion", "certainty": 1}."}
