@@ -6,11 +6,10 @@
     import { onMount } from "svelte";
     import Select from "$components/helpers/Select.svelte";
 	import data from "$data/withGPTData.csv";
-    import { csvFormat } from "d3";
+    import { select, csvFormat } from "d3";
     const animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
     const noAnimals = data.filter(d => d.gptAnimal == "none");
     let options = ["animals/humans", "no animals"];
-    $: falseWines = [];
     let highlight = false;
     let csvElement;
     $: disabled = $falseWinesList.length > 0 ? false : true;
@@ -20,16 +19,18 @@
     })
 
     function logWine() {
-        let id = this.id.split("-")[1]
-        this.classList.toggle('highlight');
+        let id = this.parentElement.id.split("-")[1];
+        let animalName = this.children[0].value;
+        this.parentElement.classList.toggle('highlight');
 
-        if (this.classList.contains("highlight")) {
-            falseWinesList.set([...$falseWinesList, { id }]);
+        if (this.parentElement.classList.contains("highlight")) {
+            falseWinesList.set([...$falseWinesList, { id, animalName }]);
         } else {
             const indexOfObject = $falseWinesList.findIndex(object => { return object.id == id })
             $falseWinesList.splice(indexOfObject, 1);
             falseWinesList.set($falseWinesList);
         }
+        console.log($falseWinesList)
     }
 
     function saveWines() {
@@ -37,6 +38,7 @@
         if (data.length > 0) {
             const concatData = [].concat(...data).map(d => ({
                 id: d.id,
+                animalName: d.animalName
             }));
             const csv = csvFormat(concatData)
             const csvBlob = new Blob([csv]);
@@ -77,17 +79,21 @@
 <section>
     {#if $wineSet == "animals/humans" || $wineSet == undefined }
         {#each animals as wine,i}
-            <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper"> 
+            <div id="wine-{wine.id}" class="wine-wrapper"> 
                 <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
                 <p>{wine.id}</p>
-                <p>{wine.gptAnimal}</p>
+                <form on:submit|preventDefault={logWine}>
+                    <input value="{wine.gptAnimal}" />
+                </form>
             </div>
         {/each}
     {:else}
         {#each noAnimals as wine,i}
-            <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper"> 
+            <div id="wine-{wine.id}" class="wine-wrapper"> 
                 <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
-                <p>{wine.id}</p>
+                <p>{wine.id}</p><form on:submit|preventDefault={logWine}>
+                    <input value="{wine.gptAnimal}" />
+                </form>
             </div>
         {/each}
     {/if}
@@ -144,6 +150,7 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        padding: 0.5rem;
     }
     .wine-wrapper:hover{
         border: 2px solid var(--color-gray-200);
