@@ -6,9 +6,14 @@
     import { onMount } from "svelte";
     import Select from "$components/helpers/Select.svelte";
 	import data from "$data/withGPTData.csv";
+    import falseWines from "$data/false-wines.csv";
     import { select, csvFormat } from "d3";
-    const animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
-    const noAnimals = data.filter(d => d.gptAnimal == "none");
+    const falseWineList = falseWines.map(item => item.id);
+    let animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
+    animals = animals.filter(obj => falseWineList.includes(obj.id));
+    console.log(animals.length)
+    let noAnimals = data.filter(d => d.gptAnimal == "none");
+    noAnimals = noAnimals.filter(obj => falseWineList.includes(obj.id));
     let options = ["animals/humans", "no animals"];
     let highlight = false;
     let csvElement;
