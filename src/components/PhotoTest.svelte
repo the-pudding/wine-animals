@@ -5,11 +5,12 @@
 	} from "$stores/misc.js";
     import { onMount } from "svelte";
     import Select from "$components/helpers/Select.svelte";
-	import data from "$data/withGPTData.csv";
+	import data from "$data/1FINAL-wines-withGPTData.csv";
     import falseWines from "$data/false-wines.csv";
     import { select, csvFormat } from "d3";
     const falseWineList = falseWines.map(item => item.id);
     let animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
+    let lions = data.filter(d => d.finalAnimal.match(/lion/) || d.finalAnimal.match(/griffin/));
     animals = animals.filter(obj => falseWineList.includes(obj.id));
     console.log(animals.length)
     let noAnimals = data.filter(d => d.gptAnimal == "none");
@@ -65,34 +66,34 @@
 </script>
 
 <div class="wrapper">
-    <div class="controls">
+    <!-- <div class="controls">
         <Select options={options}/>
         <button disabled='{disabled}' on:click={saveWines}>Save wines</button>
-    </div>
+    </div> -->
     <div class="stats">
-        {#if $wineSet == "animals/humans"}
-            <p><strong>Animals/humans:</strong> {animals.length}</p>
+        <!-- {#if $wineSet == "animals/humans"} -->
+            <p><strong>Lions:</strong> {lions.length}</p>
             <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
-            <p><strong>Flagged %:</strong> {($falseWinesList.length/animals.length*100).toFixed(2)}%</p>
-        {:else}
+            <p><strong>Flagged %:</strong> {($falseWinesList.length/lions.length*100).toFixed(2)}%</p>
+        <!-- {:else}
             <p><strong>Non-animals:</strong> {noAnimals.length}</p>
             <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
             <p><strong>Flagged %:</strong> {$falseWinesList.length}</p>
-        {/if}
+        {/if} -->
     </div>
 </div>
 <section>
-    {#if $wineSet == "animals/humans" || $wineSet == undefined }
-        {#each animals as wine,i}
+    <!-- {#if $wineSet == "animals/humans" || $wineSet == undefined } -->
+        {#each lions as wine,i}
             <div id="wine-{wine.id}" class="wine-wrapper"> 
                 <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
                 <p>{wine.id}</p>
                 <form on:submit|preventDefault={logWine}>
-                    <input value="{wine.gptAnimal}" />
+                    <input value="{wine.finalAnimal}" />
                 </form>
             </div>
         {/each}
-    {:else}
+    <!-- {:else}
         {#each noAnimals as wine,i}
             <div id="wine-{wine.id}" class="wine-wrapper"> 
                 <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
@@ -101,7 +102,7 @@
                 </form>
             </div>
         {/each}
-    {/if}
+    {/if} -->
 </section>
 
 <style>
