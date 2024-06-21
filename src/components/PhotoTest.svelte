@@ -11,9 +11,9 @@
     const falseWineList = falseWines.map(item => item.id);
     let animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
     let lions = data.filter(d => d.finalAnimal.match(/lion/) || d.finalAnimal.match(/griffin/));
-    let birdList = ["Bird", "bird", "crane", "crow", "duck", "eagle", "European Bee-eater", "falcon", "flamingo", "geese", "goose",
+    let birdList = ["Bird", "bird", "chick", "cock", "crane", "crow", "duck", "eagle", "European Bee-eater", "falcon", "flamingo", "geese", "goose",
         "hawk", "heron", "kiwi", "loon", "ostrich", "owl", "parrot", "partridge", "peacock", "pelican", "penguin", "pheasant", "quail", 
-        "raven", "sandpiper", "stork", "swallow", "swan", "turkey"];
+        "raven", "rooster", "sandpiper", "stork", "swallow", "swan", "turkey"];
     let birds = data.filter(d => 
         birdList.some(bird => d.finalAnimal.includes(bird))
     );
