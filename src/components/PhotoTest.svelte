@@ -72,10 +72,10 @@
 </script>
 
 <div class="wrapper">
-    <!-- <div class="controls">
-        <Select options={options}/>
+    <div class="controls">
+        <!-- <Select options={options}/> -->
         <button disabled='{disabled}' on:click={saveWines}>Save wines</button>
-    </div> -->
+    </div>
     <div class="stats">
         <!-- {#if $wineSet == "animals/humans"} -->
             <p><strong>Birds:</strong> {birds.length}</p>
