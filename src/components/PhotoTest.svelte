@@ -11,6 +11,12 @@
     const falseWineList = falseWines.map(item => item.id);
     let animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
     let lions = data.filter(d => d.finalAnimal.match(/lion/) || d.finalAnimal.match(/griffin/));
+    let birdList = ["Bird", "bird", "crane", "crow", "duck", "eagle", "European Bee-eater", "falcon", "flamingo", "geese", "goose",
+        "hawk", "heron", "kiwi", "loon", "ostrich", "owl", "parrot", "partridge", "peacock", "pelican", "penguin", "pheasant", "quail", 
+        "raven", "sandpiper", "stork", "swallow", "swan", "turkey"];
+    let birds = data.filter(d => 
+        birdList.some(bird => d.finalAnimal.includes(bird))
+    );
     animals = animals.filter(obj => falseWineList.includes(obj.id));
     console.log(animals.length)
     let noAnimals = data.filter(d => d.gptAnimal == "none");
@@ -72,9 +78,9 @@
     </div> -->
     <div class="stats">
         <!-- {#if $wineSet == "animals/humans"} -->
-            <p><strong>Lions:</strong> {lions.length}</p>
+            <p><strong>Birds:</strong> {birds.length}</p>
             <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
-            <p><strong>Flagged %:</strong> {($falseWinesList.length/lions.length*100).toFixed(2)}%</p>
+            <p><strong>Flagged %:</strong> {($falseWinesList.length/birds.length*100).toFixed(2)}%</p>
         <!-- {:else}
             <p><strong>Non-animals:</strong> {noAnimals.length}</p>
             <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
@@ -84,7 +90,7 @@
 </div>
 <section>
     <!-- {#if $wineSet == "animals/humans" || $wineSet == undefined } -->
-        {#each lions as wine,i}
+        {#each birds as wine,i}
             <div id="wine-{wine.id}" class="wine-wrapper"> 
                 <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
                 <p>{wine.id}</p>
