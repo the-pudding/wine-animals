@@ -57,6 +57,28 @@
             <p class="desc">Greater than 5% difference</p>
         </div>
     </div>
+    <div class="key">
+        <div>
+            <p class="topline">Value</p>
+            <p class="desc">$9.99 and under</p>
+        </div>
+        <div>
+            <p class="topline">Popular</p>
+            <p class="desc">$10 to $19.99</p>
+        </div>
+        <div>
+            <p class="topline">Premium</p>
+            <p class="desc">$20 to 49.99</p>
+        </div>
+        <div>
+            <p class="topline">Luxury</p>
+            <p class="desc">$50 to $99.99</p>
+        </div>
+        <div>
+            <p class="topline">Icon</p>
+            <p class="desc">$100+</p>
+        </div>
+    </div>
     <div class="tooltip" class:hidden={$hideTooltip}></div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
