@@ -40,7 +40,7 @@
             <p class="desc">Less than than -5% difference</p>
         </div>
         <div style="background: #f0ebd7">
-            <p class="topline">About the same number</p>
+            <p class="topline">About the same percentage</p>
             <p class="desc">Greater -5% to 5% difference</p>
         </div>
         <div style="background: #c35e34">
