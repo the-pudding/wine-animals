@@ -6,20 +6,26 @@
 	let top;
 	let left;
 
-	console.log(evt)
+	let parentID;
+	let topgroup;
 
 	$: if (evt.detail) {
+		parentID = (evt.detail.e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id).split("_")[1];
+		topgroup = evt.detail.props.topgroup
+		console.log({parentID, topgroup})
 		top = `${evt.detail.e.layerY + offset}px`;
 		left = `${evt.detail.e.layerX}px`;
 	}
 </script>
 
-{#if evt.detail}
-	<div style:top style:left>
-		<small>
-			<slot detail={evt.detail} />
-		</small>
-	</div>
+{#if evt.detail && parentID !== undefined && topgroup !== undefined}
+	{#if parentID == topgroup}
+		<div style:top style:left>
+			<small>
+				<slot detail={evt.detail} />
+			</small>
+		</div>
+	{/if}
 {/if}
 
 <style>

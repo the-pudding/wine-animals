@@ -11,23 +11,34 @@
 
     data.forEach(d => {
         d[yKey] = +d[yKey];
+        d[yKey] = +d[yKey];
     });
 
     const groupedData = d3.groups(data, d => d.topgroup);
 
     function findMatch(animal, data) {
-		return data.find(item => item[0] === animal)[1];;
+        return data.find(item => item[0] == animal)[1]
 	}
 
-    const allWineData = findMatch("all", groupedData);
+    function findAllMatch(animal, data) {
+        let match = data.find(item => item.priceBucket == animal);
+        if (match) {
+            return match.count
+        } else {
+            return "8419"
+        }
+	}
 
-    const endObj = {topgroup: "all", priceBucket: "end", count: 0}
+    const allWineData = findMatch("all", groupedData, "allWine");
+
+    const endObj = {topgroup: "end", priceBucket: "end", percent: 0, count: 0}
 
     allWineData.pop();
     allWineData.push(endObj);
 
     const xKey = 'priceBucket';
-    const yKey = 'count';
+    const yKey = 'percent';
+    const countKey = 'count';
 
     let evt;
     let hideTooltip = false;
@@ -50,10 +61,12 @@
     </div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
+    {@const totalAnimalWines = findAllMatch("all", animal[1])}
         <div class="chart-wrapper">
             <h3>{animal[0]}</h3>
+            <p class="tot-count">{totalAnimalWines} wines</p>
             <div class="chart-layers">
-                <div class="chart-container" id="bars">
+                <div class="chart-container bars" id="bars_{animal[0]}">
                     <LayerCake
                     padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
                     x={xKey}
@@ -77,7 +90,7 @@
                                     {@const tooltipData = { ...detail.props }}
                                     <div class="tooltip">
                                         <p class="animal bolded">{tooltipData.topgroup}</p>
-                                        <p><span class="bolded">{Math.round(tooltipData.count)}%</span> the wines in this animal group are <span class="bolded">{tooltipData.priceBucket}</span> wines</p>
+                                        <p><span class="bolded">{Math.round(tooltipData.percent)}%</span> of the wines with this animal are <span class="bolded">{tooltipData.priceBucket}</span> wines</p>
                                     </div>
                                 </Tooltip>
                             {/if}
@@ -166,6 +179,15 @@
         font-size: var(--14px);
         font-weight: 700;
         text-align: center;
+        margin: 0;
+    }
+
+    .tot-count {
+        font-family: var(--sans);
+        font-size: var(--14px);
+        text-align: center;
+        margin: 0 0 2rem 0;
+        font-size: 0.8rem;
     }
 
     .chart-layers {
@@ -180,7 +202,7 @@
         height: 100%;
     }
 
-    #bars {
+    .bars {
         width: calc(100% * 0.835)
     }
 </style>
