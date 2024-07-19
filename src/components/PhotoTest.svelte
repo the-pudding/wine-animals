@@ -17,6 +17,7 @@
     let birds = data.filter(d => 
         birdList.some(bird => d.finalAnimal.includes(bird))
     );
+    console.log(birds.length)
     animals = animals.filter(obj => falseWineList.includes(obj.id));
     console.log(animals.length)
     let noAnimals = data.filter(d => d.gptAnimal == "none");

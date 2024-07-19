@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from "svelte";
 
-	const { padding, xRange, yScale } = getContext("LayerCake");
+	const { data, padding, xRange, yScale } = getContext("LayerCake");
 
 	export let gridlines = true;
 	export let tickMarks = false;
@@ -29,17 +29,17 @@
 		>
 			{#if gridlines !== false}
 				<line class="gridline" x2="100%" y1={yTick} y2={yTick} />
+					<text
+					x={xTick}
+					y={yTick}
+					dx={dxTick}
+					dy={dyTick}
+					style="text-anchor:{textAnchor};">{formatTick(tick)}</text
+				>
 			{/if}
 			{#if tickMarks === true}
 				<line class="tick-mark" x1="0" x2={6} y1={yTick} y2={yTick} />
 			{/if}
-			<text
-				x={xTick}
-				y={yTick}
-				dx={dxTick}
-				dy={dyTick}
-				style="text-anchor:{textAnchor};">{formatTick(tick)}</text
-			>
 		</g>
 	{/each}
 </g>

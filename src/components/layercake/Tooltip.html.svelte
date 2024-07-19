@@ -6,6 +6,8 @@
 	let top;
 	let left;
 
+	console.log(evt)
+
 	$: if (evt.detail) {
 		top = `${evt.detail.e.layerY + offset}px`;
 		left = `${evt.detail.e.layerX}px`;

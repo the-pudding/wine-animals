@@ -1,0 +1,181 @@
+topgroup,priceBucket,count
+amphibian/reptile,value,0
+amphibian/reptile,popular,30
+amphibian/reptile,premium,45
+amphibian/reptile,luxury,20
+amphibian/reptile,icon,5
+amphibian/reptile,all,100
+bat,value,0
+bat,popular,0
+bat,premium,100
+bat,luxury,0
+bat,icon,0
+bat,all,100
+bear,value,0
+bear,popular,33.33333333
+bear,premium,53.33333333
+bear,luxury,6.666666667
+bear,icon,6.666666667
+bear,all,100
+big cat,value,3.076923077
+big cat,popular,13.84615385
+big cat,premium,41.53846154
+big cat,luxury,23.84615385
+big cat,icon,17.69230769
+big cat,all,100
+bird,value,1.277955272
+bird,popular,30.03194888
+bird,premium,49.20127796
+bird,luxury,12.4600639
+bird,icon,7.028753994
+bird,all,100
+camelus,value,0
+camelus,popular,33.33333333
+camelus,premium,66.66666667
+camelus,luxury,0
+camelus,icon,0
+camelus,all,100
+cattle,value,4.166666667
+cattle,popular,29.16666667
+cattle,premium,37.5
+cattle,luxury,20.83333333
+cattle,icon,8.333333333
+cattle,all,100
+crustacean,value,0
+crustacean,popular,66.66666667
+crustacean,premium,33.33333333
+crustacean,luxury,0
+crustacean,icon,0
+crustacean,all,100
+deer-like,value,0
+deer-like,popular,37.03703704
+deer-like,premium,40.74074074
+deer-like,luxury,11.11111111
+deer-like,icon,11.11111111
+deer-like,all,100
+domestic cat,value,12.5
+domestic cat,popular,12.5
+domestic cat,premium,62.5
+domestic cat,luxury,0
+domestic cat,icon,12.5
+domestic cat,all,100
+domestic dog,value,2.941176471
+domestic dog,popular,26.47058824
+domestic dog,premium,32.35294118
+domestic dog,luxury,26.47058824
+domestic dog,icon,11.76470588
+domestic dog,all,100
+elephant,value,0
+elephant,popular,20
+elephant,premium,50
+elephant,luxury,10
+elephant,icon,20
+elephant,all,100
+fish,value,0
+fish,popular,35.29411765
+fish,premium,58.82352941
+fish,luxury,5.882352941
+fish,icon,0
+fish,all,100
+hippopotamus,value,0
+hippopotamus,popular,100
+hippopotamus,premium,0
+hippopotamus,luxury,0
+hippopotamus,icon,0
+hippopotamus,all,100
+horse,value,2.898550725
+horse,popular,40.57971014
+horse,premium,36.23188406
+horse,luxury,15.94202899
+horse,icon,4.347826087
+horse,all,100
+insect,value,1.639344262
+insect,popular,29.50819672
+insect,premium,49.18032787
+insect,luxury,16.39344262
+insect,icon,3.278688525
+insect,all,100
+marsupial,value,75
+marsupial,popular,0
+marsupial,premium,25
+marsupial,luxury,0
+marsupial,icon,0
+marsupial,all,100
+monkey,value,0
+monkey,popular,40
+monkey,premium,40
+monkey,luxury,20
+monkey,icon,0
+monkey,all,100
+mustelid-like,value,0
+mustelid-like,popular,25
+mustelid-like,premium,50
+mustelid-like,luxury,0
+mustelid-like,icon,25
+mustelid-like,all,100
+mythical,value,0
+mythical,popular,19.71830986
+mythical,premium,45.07042254
+mythical,luxury,18.30985915
+mythical,icon,16.90140845
+mythical,all,100
+none,value,1.47968792
+none,popular,23.60774818
+none,premium,47.22894808
+none,luxury,18.11945117
+none,icon,9.564164649
+none,all,100
+rabbit,value,0
+rabbit,popular,28.57142857
+rabbit,premium,50
+rabbit,luxury,7.142857143
+rabbit,icon,14.28571429
+rabbit,all,100
+ram,value,2.325581395
+ram,popular,46.51162791
+ram,premium,37.20930233
+ram,luxury,6.976744186
+ram,icon,6.976744186
+rhino,all,100
+rhino,value,0
+rhino,popular,0
+rhino,premium,75
+rhino,luxury,0
+rhino,icon,25
+rhino,all,100
+rodent-like,value,0
+rodent-like,popular,25
+rodent-like,premium,75
+rodent-like,luxury,0
+rodent-like,icon,0
+rodent-like,all,100
+shell,value,7.692307692
+shell,popular,15.38461538
+shell,premium,69.23076923
+shell,luxury,0
+shell,icon,7.692307692
+shell,all,100
+suid,value,0
+suid,popular,40.90909091
+suid,premium,50
+suid,luxury,4.545454545
+suid,icon,4.545454545
+suid,all,100
+whale/shark/dolphin,value,0
+whale/shark/dolphin,popular,63.63636364
+whale/shark/dolphin,premium,36.36363636
+whale/shark/dolphin,luxury,0
+whale/shark/dolphin,icon,0
+whale/shark/dolphin,all,100
+wild dog,value,0
+wild dog,popular,26.66666667
+wild dog,premium,56.66666667
+wild dog,luxury,16.66666667
+wild dog,icon,0
+wild dog,all,100
+all,value,1.532248486
+all,popular,24.21902839
+all,premium,47.1314883
+all,luxury,17.66243022
+all,icon,9.454804609
+all,all,100
