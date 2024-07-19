@@ -1,5 +1,7 @@
 <script>
 	import { getContext, createEventDispatcher } from "svelte";
+	import { hideTooltip } from "$stores/misc.js";
+	import * as d3 from "d3";
 
 	const { data, xGet, yGet, yRange, xScale } = getContext("LayerCake");
       
@@ -19,6 +21,8 @@
 	export let strokeWidth = 0;
 	export let allWineData;
 
+	let isHovered = false;
+
 	function findMatch(object, data) {
 		return data.find(item => item.priceBucket === object.priceBucket);
 	}
@@ -29,9 +33,29 @@
 		let color = diff < -5 ? "#448b81" : diff > 5 ? "#c35e34" : "#f0ebd7"
 		return color;
 	}
+
+	function handleMouseover(e, d) {
+		isHovered = true;
+		hideTooltip.set(false)
+		let tooltip = d3.select(".tooltip");
+		if (tooltip) {
+			tooltip.html(
+				`<p class="animal"><span class="bolded">${d.topgroup}</span></p>
+				<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.priceBucket}</span> wines</p>`
+			);
+			tooltip.style("top", `${e.pageY+10}px`).style("left", `${e.pageX+10}px`);
+			d3.selectAll("rect").classed("notHover", true)
+			e.target.classList.add("hover");
+		}
+	}
+
+	function handleMouseleave() {
+		hideTooltip.set(true)
+		d3.selectAll("rect").classed("notHover", false).classed("hover", false)
+	}
 </script>
 
-<g on:mouseout={(e) => dispatch("mouseout")}>
+<g>
 	{#each $data as d, i}
 		{#if d.priceBucket !== "all"}
 			{@const x = $xScale.bandwidth ? $xGet(d) : $xGet(d)[0]}
@@ -48,8 +72,19 @@
 				fill={colorByCompare(d, i)}
 				{stroke}
 				stroke-width={strokeWidth}
-				on:mouseover={(e) => dispatch("mousemove", { e, props: d })}
+				on:mouseover|preventDefault={(e) => handleMouseover(e,d)}
+				on:mouseleave={handleMouseleave}
 			/>
 		{/if}
 	{/each}
 </g>
+
+<style>
+	rect.notHover {
+		opacity: 0.6;
+	}
+
+	rect.hover {
+		opacity: 1;
+	}
+</style>

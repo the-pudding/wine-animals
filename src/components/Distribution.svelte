@@ -6,6 +6,7 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import Tooltip from "$components/layercake/Tooltip.html.svelte";
     import * as d3 from "d3";
+    import { hideTooltip } from "$stores/misc.js";
 
     import data from "$data/percentDistribution.csv";
 
@@ -39,9 +40,6 @@
     const xKey = 'priceBucket';
     const yKey = 'percent';
     const countKey = 'count';
-
-    let evt;
-    let hideTooltip = false;
 </script>
 
 <section id="distribution">
@@ -59,6 +57,7 @@
             <p class="desc">Greater than 5% difference</p>
         </div>
     </div>
+    <div class="tooltip" class:hidden={$hideTooltip}></div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
     {@const totalAnimalWines = findAllMatch("all", animal[1])}
@@ -79,12 +78,9 @@
                         <Svg>
                             <AxisX gridlines={false} />
                             <AxisY snapBaselineLabel gridlines={false}/>
-                            <Column {allWineData} 
-                                on:mousemove={event => evt = hideTooltip = event}
-                                on:mouseout={() => (hideTooltip = true)}
-                            />
+                            <Column {allWineData} />
                         </Svg>
-                        <Html pointerEvents={false}>
+                        <!-- <Html pointerEvents={false}>
                             {#if hideTooltip !== true}
                                 <Tooltip {evt} let:detail >
                                     {@const tooltipData = { ...detail.props }}
@@ -94,7 +90,7 @@
                                     </div>
                                 </Tooltip>
                             {/if}
-                        </Html>
+                        </Html> -->
                     </LayerCake>
                 </div>
                 <div class="chart-container" id="line" style="pointer-events:none">
@@ -142,18 +138,36 @@
         margin: 0;
     }
 
-    .tooltip p {
-        margin: 0;
-        font-family: var(--sans);
+    .tooltip.hidden {
+        opacity: 0;
+        transition: opacity 0.25s linear;
     }
 
-    .tooltip .animal {
+    .tooltip {
+        max-width: 140px;
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-300);
+        padding: 0.25rem;
+        position: absolute;
+        font-family: var(--sans);
+        font-size: 0.8rem;
+        z-index: 1000;
+        opacity: 1;
+        transition: opacity 0.25s linear;
+        pointer-events: none;
+    }
+
+    :global(.tooltip p) {
+        margin: 0;
+    }
+
+    :global(.tooltip .animal) {
         padding: 0 0 0.25rem 0;
         margin: 0 0 0.25rem 0;
         border-bottom: 1px solid var(--color-gray-300);
     }
 
-    .bolded {
+    :global(.bolded) {
         font-weight: 700;
     }
 
