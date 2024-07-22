@@ -24,7 +24,8 @@
 	let isHovered = false;
 
 	function findMatch(object, data) {
-		return data.find(item => item.priceBucket === object.priceBucket);
+		let match = data.find(item => item.bucket === object.bucket)
+		return match
 	}
 
 	function colorByCompare(d, i) {
@@ -41,7 +42,7 @@
 		if (tooltip) {
 			tooltip.html(
 				`<p class="animal"><span class="bolded">${d.topgroup}</span></p>
-				<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.priceBucket}</span> wines</p>`
+				<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.bucket}</span> wines</p>`
 			);
 			tooltip.style("top", `${e.pageY+10}px`).style("left", `${e.pageX+10}px`);
 			d3.selectAll("rect").classed("notHover", true)
@@ -57,13 +58,13 @@
 
 <g>
 	{#each $data as d, i}
-		{#if d.priceBucket !== "all"}
+		{#if d.bucket !== "all"}
 			{@const x = $xScale.bandwidth ? $xGet(d) : $xGet(d)[0]}
 			{@const y = $yGet(d)}
 			{@const width = $xScale.bandwidth ? $xScale.bandwidth() : columnWidth(d)}
 			{@const height = columnHeight(d)}
 			<rect
-				class={d.priceBucket}
+				class={d.bucket}
 				data-id={i}
 				{x}
 				{y}

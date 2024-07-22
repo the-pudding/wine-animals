@@ -8,6 +8,8 @@
 
 	export let curve = curveStepAfter;
 
+	// console.log($data)
+
 	$: path = line().x($xGet).y($yGet).curve(curve);
 	$: pathD = path($data);
 </script>

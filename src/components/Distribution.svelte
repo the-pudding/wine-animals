@@ -8,11 +8,15 @@
     import * as d3 from "d3";
     import { hideTooltip } from "$stores/misc.js";
 
-    import data from "$data/percentDistribution.csv";
+    export let data;
+    export let metric;
+
+    console.log(data, metric)
 
     data.forEach(d => {
         d[yKey] = +d[yKey];
         d[yKey] = +d[yKey];
+        d[countKey] = +d[countKey];
     });
 
     const groupedData = d3.groups(data, d => d.topgroup);
@@ -22,7 +26,7 @@
 	}
 
     function findAllMatch(animal, data) {
-        let match = data.find(item => item.priceBucket == animal);
+        let match = data.find(item => item.bucket == animal);
         if (match) {
             return match.count
         } else {
@@ -30,16 +34,22 @@
         }
 	}
 
-    const allWineData = findMatch("all", groupedData, "allWine");
+    const allWineData = findMatch("all", groupedData);
 
-    const endObj = {topgroup: "end", priceBucket: "end", percent: 0, count: 0}
+    const endObj = {topgroup: "end", bucket: "end", percent: 0, count: 0};
 
     allWineData.pop();
     allWineData.push(endObj);
 
-    const xKey = 'priceBucket';
+    const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
+    const xDomainColumn = metric == "price"
+        ? ['value', 'popular', 'premium', 'luxury', 'icon']
+        : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above'];
+    const xDomainLine = metric == "price"
+        ? ['value', 'popular', 'premium', 'luxury', 'icon', 'end']
+        : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above', 'end'];
 </script>
 
 <section id="distribution">
@@ -57,28 +67,30 @@
             <p class="desc">Greater than 5% difference</p>
         </div>
     </div>
-    <div class="key">
-        <div>
-            <p class="topline">Value</p>
-            <p class="desc">$9.99 and under</p>
+    {#if metric == "price"}
+        <div class="key">
+            <div>
+                <p class="topline">Value</p>
+                <p class="desc">$9.99 and under</p>
+            </div>
+            <div>
+                <p class="topline">Popular</p>
+                <p class="desc">$10 to $19.99</p>
+            </div>
+            <div>
+                <p class="topline">Premium</p>
+                <p class="desc">$20 to 49.99</p>
+            </div>
+            <div>
+                <p class="topline">Luxury</p>
+                <p class="desc">$50 to $99.99</p>
+            </div>
+            <div>
+                <p class="topline">Icon</p>
+                <p class="desc">$100+</p>
+            </div>
         </div>
-        <div>
-            <p class="topline">Popular</p>
-            <p class="desc">$10 to $19.99</p>
-        </div>
-        <div>
-            <p class="topline">Premium</p>
-            <p class="desc">$20 to 49.99</p>
-        </div>
-        <div>
-            <p class="topline">Luxury</p>
-            <p class="desc">$50 to $99.99</p>
-        </div>
-        <div>
-            <p class="topline">Icon</p>
-            <p class="desc">$100+</p>
-        </div>
-    </div>
+    {/if}
     <div class="tooltip" class:hidden={$hideTooltip}></div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
@@ -93,7 +105,7 @@
                     x={xKey}
                     y={yKey}
                     xScale={d3.scaleBand().paddingInner(0.02).round(true)}
-                    xDomain={['value', 'popular', 'premium', 'luxury', 'icon']}
+                    xDomain={xDomainColumn}
                     yDomain={[0, 100]}
                     data={animalData}
                     >
@@ -121,7 +133,7 @@
                         x={xKey}
                         y={yKey}
                         xScale={d3.scaleBand().paddingInner(0.02).round(true)}
-                        xDomain={['value', 'popular', 'premium', 'luxury', 'icon', 'end']}
+                        xDomain={xDomainLine}
                         yDomain={[0, 100]}
                         data={allWineData}
                         >

@@ -1,5 +1,5 @@
 <script>
-	import {wineSet, falseWinesList} from "$stores/misc.js";
+	import {catSet, falseWinesList} from "$stores/misc.js";
 	export let options = [];
 	export let label = "";
 	export let disabled = false;
@@ -8,7 +8,7 @@
 
 	function valChange(value) { falseWinesList.set([]) }
 
-	$: wineSet.set(value)
+	$: catSet.set(value)
 	$: valChange(value);
 </script>
 
@@ -26,6 +26,8 @@
 <style>
 	.select {
 		position: relative;
+		width: 180px;
+		margin: 0 auto 2rem auto;
 	}
 
 	label {

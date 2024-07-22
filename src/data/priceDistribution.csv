@@ -1,4 +1,10 @@
-topgroup,priceBucket,percent,count
+topgroup,bucket,percent,count
+all,value,1.532248486,129
+all,popular,24.21902839,2039
+all,premium,47.1314883,3968
+all,luxury,17.66243022,1487
+all,icon,9.454804609,796
+all,all,100,8419
 amphibian/reptile,value,0,0
 amphibian/reptile,popular,30,6
 amphibian/reptile,premium,45,9
@@ -173,9 +179,3 @@ wild dog,premium,56.66666667,17
 wild dog,luxury,16.66666667,5
 wild dog,icon,0,0
 wild dog,all,100,30
-all,value,1.532248486,129
-all,popular,24.21902839,2039
-all,premium,47.1314883,3968
-all,luxury,17.66243022,1487
-all,icon,9.454804609,796
-all,all,100,8419
