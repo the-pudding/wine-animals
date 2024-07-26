@@ -2,5 +2,6 @@ import { writable } from "svelte/store";
 
 export const falseWinesList = writable([]);
 export const wineSet = writable("animals/humans");
-export const catSet = writable("price");
+export const metricSelect = writable("price");
+export const animalSelect = writable("all");
 export const hideTooltip = writable(true);

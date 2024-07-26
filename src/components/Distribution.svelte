@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte";
     import { LayerCake, Svg, Html } from 'layercake';
     import Column from "$components/layercake/Column.svelte";
     import Line from "$components/layercake/Line.svelte";
@@ -7,11 +8,11 @@
     import Tooltip from "$components/layercake/Tooltip.html.svelte";
     import * as d3 from "d3";
     import { hideTooltip } from "$stores/misc.js";
+    import { animalSelect, metricSelect } from "$stores/misc.js";
 
     export let data;
-    export let metric;
 
-    console.log(data, metric)
+    $: console.log({data})
 
     data.forEach(d => {
         d[yKey] = +d[yKey];
@@ -19,37 +20,40 @@
         d[countKey] = +d[countKey];
     });
 
-    const groupedData = d3.groups(data, d => d.topgroup);
+    const groupedData = d3.groups(data, d => d.animalGroup);
 
     function findMatch(animal, data) {
-        return data.find(item => item[0] == animal)[1]
-	}
+        let match = data.find(item => item[0] == animal);
+        return match;
+    }
 
-    function findAllMatch(animal, data) {
-        let match = data.find(item => item.bucket == animal);
-        if (match) {
-            return match.count
-        } else {
-            return "8419"
-        }
-	}
+    function sumTotalWines(data) {
+        const totalCount = data.reduce((sum, item) => sum += item.count, 0);
+        return totalCount
+    }
 
-    const allWineData = findMatch("all", groupedData);
+    const allWineData = $animalSelect == "cats"
+        ? findMatch("allCats", groupedData)
+        : $animalSelect == "birds"
+        ? findMatch("allBirds", groupedData)
+        : findMatch("all", groupedData)
+    const lineData = allWineData;
 
-    const endObj = {topgroup: "end", bucket: "end", percent: 0, count: 0};
+    const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};
 
-    allWineData.pop();
-    allWineData.push(endObj);
+    lineData[1].push(endObj);
 
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
-    const xDomainColumn = metric == "price"
+    $: xDomainColumn = $metricSelect == "price"
         ? ['value', 'popular', 'premium', 'luxury', 'icon']
         : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above'];
-    const xDomainLine = metric == "price"
+    $:  xDomainLine = $metricSelect == "price"
         ? ['value', 'popular', 'premium', 'luxury', 'icon', 'end']
         : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above', 'end'];
+    
+    $: console.log({xDomainColumn, xDomainLine})
 </script>
 
 <section id="distribution">
@@ -67,7 +71,7 @@
             <p class="desc">Greater than 5% difference</p>
         </div>
     </div>
-    {#if metric == "price"}
+    {#if $metricSelect == "price"}
         <div class="key">
             <div>
                 <p class="topline">Value</p>
@@ -94,18 +98,19 @@
     <div class="tooltip" class:hidden={$hideTooltip}></div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
-    {@const totalAnimalWines = findAllMatch("all", animal[1])}
+    {@const totalAnimalWines = sumTotalWines(animal[1])}
         <div class="chart-wrapper">
             <h3>{animal[0]}</h3>
             <p class="tot-count">{totalAnimalWines} wines</p>
             <div class="chart-layers">
                 <div class="chart-container bars" id="bars_{animal[0]}">
+                {#key xDomainColumn}
                     <LayerCake
                     padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
                     x={xKey}
                     y={yKey}
                     xScale={d3.scaleBand().paddingInner(0.02).round(true)}
-                    xDomain={xDomainColumn}
+                    xDomain={[xDomainColumn]}
                     yDomain={[0, 100]}
                     data={animalData}
                     >
@@ -114,18 +119,8 @@
                             <AxisY snapBaselineLabel gridlines={false}/>
                             <Column {allWineData} />
                         </Svg>
-                        <!-- <Html pointerEvents={false}>
-                            {#if hideTooltip !== true}
-                                <Tooltip {evt} let:detail >
-                                    {@const tooltipData = { ...detail.props }}
-                                    <div class="tooltip">
-                                        <p class="animal bolded">{tooltipData.topgroup}</p>
-                                        <p><span class="bolded">{Math.round(tooltipData.percent)}%</span> of the wines with this animal are <span class="bolded">{tooltipData.priceBucket}</span> wines</p>
-                                    </div>
-                                </Tooltip>
-                            {/if}
-                        </Html> -->
                     </LayerCake>
+                {/key}
                 </div>
                 <div class="chart-container" id="line" style="pointer-events:none">
                     <LayerCake
@@ -135,7 +130,7 @@
                         xScale={d3.scaleBand().paddingInner(0.02).round(true)}
                         xDomain={xDomainLine}
                         yDomain={[0, 100]}
-                        data={allWineData}
+                        data={allWineData[1]}
                         >
                             <Svg>
                                 <Line />

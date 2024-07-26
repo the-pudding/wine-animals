@@ -3,8 +3,8 @@
 	import { hideTooltip } from "$stores/misc.js";
 	import * as d3 from "d3";
 
-	const { data, xGet, yGet, yRange, xScale } = getContext("LayerCake");
-      
+	const { data, xGet, yGet, yRange, xScale, xDomain } = getContext("LayerCake");
+
     const dispatch = createEventDispatcher();
 
 	$: columnWidth = (d) => {
@@ -24,12 +24,14 @@
 	let isHovered = false;
 
 	function findMatch(object, data) {
-		let match = data.find(item => item.bucket === object.bucket)
+		let match = data.find((item) => {
+			return item.bucket === object.bucket
+		})
 		return match
 	}
 
 	function colorByCompare(d, i) {
-		let match = findMatch(d, allWineData)
+		let match = findMatch(d, allWineData[1])
 		let diff = d.percent - match.percent;
 		let color = diff < -5 ? "#448b81" : diff > 5 ? "#c35e34" : "#f0ebd7"
 		return color;
@@ -41,7 +43,7 @@
 		let tooltip = d3.select(".tooltip");
 		if (tooltip) {
 			tooltip.html(
-				`<p class="animal"><span class="bolded">${d.topgroup}</span></p>
+				`<p class="animal"><span class="bolded">${d.animalGroup}</span></p>
 				<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.bucket}</span> wines</p>`
 			);
 			tooltip.style("top", `${e.pageY+10}px`).style("left", `${e.pageX+10}px`);

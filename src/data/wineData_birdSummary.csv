@@ -1,4 +1,14 @@
 animalGroup,category,bucket,percent,count
+allBirds,price,value,1.092896175,4
+allBirds,price,popular,30.32786885,111
+allBirds,price,premium,49.72677596,182
+allBirds,price,luxury,12.84153005,47
+allBirds,price,icon,6.010928962,22
+allBirds,rating,wines3below,0,0
+allBirds,rating,wines3_35,5.737704918,21
+allBirds,rating,wines35_4,57.10382514,209
+allBirds,rating,wines4_45,36.06557377,132
+allBirds,rating,wines45above,1.092896175,4
 bird of prey,price,value,0,0
 bird of prey,price,popular,24.242424242424242,16
 bird of prey,price,premium,46.96969696969697,31

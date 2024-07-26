@@ -143,6 +143,7 @@ function init() {
         function(animalGroup, i) { return summarizeWines(animalGroup,"all", data, i) }
     );
 
+    // CREATE FLAT DATA
     formatCSV(summary, "all");
 
     const concatSummaryData = [].concat(...flatSummary).map(d => ({ ...d }));

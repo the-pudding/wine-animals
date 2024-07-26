@@ -1,14 +1,19 @@
 <script>
-	import {catSet, falseWinesList} from "$stores/misc.js";
+	import {animalSelect, metricSelect, falseWinesList} from "$stores/misc.js";
 	export let options = [];
 	export let label = "";
 	export let disabled = false;
 	export let value = options.length ? options[0].value : "";
-	const id = `select-${Math.floor(Math.random() * 1000000)}`;
+	export let id;
 
-	function valChange(value) { falseWinesList.set([]) }
-
-	$: catSet.set(value)
+	function valChange() { 
+		if (id == "id-metricSelect" && value !== undefined) {
+			metricSelect.set(value)
+		} else if (id == "id-animalSelect" && value !== undefined) {
+			animalSelect.set(value)
+		}
+	}
+	// $: metricSelect.set(value)
 	$: valChange(value);
 </script>
 
@@ -16,7 +21,7 @@
 	{#if label}
 		<label for={id}>{label}</label>
 	{/if}
-	<select {id} bind:value {disabled}>
+	<select {id} bind:value {disabled} on:change={valChange}>
 		{#each options as option}
 			<option>{option}</option>
 		{/each}
@@ -26,8 +31,7 @@
 <style>
 	.select {
 		position: relative;
-		width: 180px;
-		margin: 0 auto 2rem auto;
+		margin: 0 0.5rem;
 	}
 
 	label {
