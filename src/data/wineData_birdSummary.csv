@@ -1,0 +1,121 @@
+animalGroup,category,bucket,percent,count
+bird of prey,price,value,0,0
+bird of prey,price,popular,24.242424242424242,16
+bird of prey,price,premium,46.96969696969697,31
+bird of prey,price,luxury,21.21212121212121,14
+bird of prey,price,icon,7.575757575757576,5
+bird of prey,rating,wines3below,0,0
+bird of prey,rating,wines3_35,4.545454545454546,3
+bird of prey,rating,wines35_4,51.515151515151516,34
+bird of prey,rating,wines4_45,43.93939393939394,29
+bird of prey,rating,wines45above,0,0
+chicken,price,value,0,0
+chicken,price,popular,0,0
+chicken,price,premium,100,3
+chicken,price,luxury,0,0
+chicken,price,icon,0,0
+chicken,rating,wines3below,0,0
+chicken,rating,wines3_35,0,0
+chicken,rating,wines35_4,66.66666666666666,2
+chicken,rating,wines4_45,33.33333333333333,1
+chicken,rating,wines45above,0,0
+duck,price,value,2.380952380952381,1
+duck,price,popular,11.904761904761903,5
+duck,price,premium,59.523809523809526,25
+duck,price,luxury,21.428571428571427,9
+duck,price,icon,4.761904761904762,2
+duck,rating,wines3below,0,0
+duck,rating,wines3_35,7.142857142857142,3
+duck,rating,wines35_4,52.38095238095239,22
+duck,rating,wines4_45,38.095238095238095,16
+duck,rating,wines45above,2.380952380952381,1
+flightless bird,price,value,40,2
+flightless bird,price,popular,40,2
+flightless bird,price,premium,20,1
+flightless bird,price,luxury,0,0
+flightless bird,price,icon,0,0
+flightless bird,rating,wines3below,0,0
+flightless bird,rating,wines3_35,40,2
+flightless bird,rating,wines35_4,60,3
+flightless bird,rating,wines4_45,0,0
+flightless bird,rating,wines45above,0,0
+game bird,price,value,0,0
+game bird,price,popular,19.047619047619047,4
+game bird,price,premium,61.904761904761905,13
+game bird,price,luxury,14.285714285714285,3
+game bird,price,icon,4.761904761904762,1
+game bird,rating,wines3below,0,0
+game bird,rating,wines3_35,0,0
+game bird,rating,wines35_4,61.904761904761905,13
+game bird,rating,wines4_45,38.095238095238095,8
+game bird,rating,wines45above,0,0
+junglefowl,price,value,0,0
+junglefowl,price,popular,40,12
+junglefowl,price,premium,43.333333333333336,13
+junglefowl,price,luxury,3.3333333333333335,1
+junglefowl,price,icon,13.333333333333334,4
+junglefowl,rating,wines3below,0,0
+junglefowl,rating,wines3_35,6.666666666666667,2
+junglefowl,rating,wines35_4,53.333333333333336,16
+junglefowl,rating,wines4_45,33.33333333333333,10
+junglefowl,rating,wines45above,6.666666666666667,2
+owl,price,value,0,0
+owl,price,popular,44,22
+owl,price,premium,46,23
+owl,price,luxury,2,1
+owl,price,icon,8,4
+owl,rating,wines3below,0,0
+owl,rating,wines3_35,4,2
+owl,rating,wines35_4,64,32
+owl,rating,wines4_45,28.000000000000004,14
+owl,rating,wines45above,4,2
+peacock,price,value,7.6923076923076925,1
+peacock,price,popular,30.76923076923077,4
+peacock,price,premium,38.46153846153847,5
+peacock,price,luxury,15.384615384615385,2
+peacock,price,icon,7.6923076923076925,1
+peacock,rating,wines3below,0,0
+peacock,rating,wines3_35,7.6923076923076925,1
+peacock,rating,wines35_4,46.15384615384615,6
+peacock,rating,wines4_45,46.15384615384615,6
+peacock,rating,wines45above,0,0
+penguin,price,value,0,0
+penguin,price,popular,100,3
+penguin,price,premium,0,0
+penguin,price,luxury,0,0
+penguin,price,icon,0,0
+penguin,rating,wines3below,0,0
+penguin,rating,wines3_35,66.66666666666666,2
+penguin,rating,wines35_4,33.33333333333333,1
+penguin,rating,wines4_45,0,0
+penguin,rating,wines45above,0,0
+shorebird,price,value,0,0
+shorebird,price,popular,50,2
+shorebird,price,premium,50,2
+shorebird,price,luxury,0,0
+shorebird,price,icon,0,0
+shorebird,rating,wines3below,0,0
+shorebird,rating,wines3_35,25,1
+shorebird,rating,wines35_4,50,2
+shorebird,rating,wines4_45,25,1
+shorebird,rating,wines45above,0,0
+songbird,price,value,0,0
+songbird,price,popular,33.56643356643357,48
+songbird,price,premium,49.65034965034965,71
+songbird,price,luxury,11.888111888111888,17
+songbird,price,icon,4.895104895104895,7
+songbird,rating,wines3below,0,0
+songbird,rating,wines3_35,4.195804195804196,6
+songbird,rating,wines35_4,59.44055944055944,85
+songbird,rating,wines4_45,35.66433566433567,51
+songbird,rating,wines45above,0.6993006993006993,1
+wading bird,price,value,0,0
+wading bird,price,popular,45.45454545454545,10
+wading bird,price,premium,40.909090909090914,9
+wading bird,price,luxury,9.090909090909092,2
+wading bird,price,icon,4.545454545454546,1
+wading bird,rating,wines3below,0,0
+wading bird,rating,wines3_35,9.090909090909092,2
+wading bird,rating,wines35_4,54.54545454545454,12
+wading bird,rating,wines4_45,36.36363636363637,8
+wading bird,rating,wines45above,0,0

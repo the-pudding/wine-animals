@@ -2,6 +2,7 @@
 	"name": "svelte-starter",
 	"version": "5.15.1",
 	"scripts": {
+		"analysis": "node tasks/wine-analysis.js",
 		"imgDownload": "node tasks/imgDownload.js",
 		"limitWine": "node tasks/limit-wine.js",
 		"identifyWine": "node tasks/identify-wine.js",
