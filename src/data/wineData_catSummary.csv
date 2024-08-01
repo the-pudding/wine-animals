@@ -1,81 +1,81 @@
 animalGroup,category,bucket,percent,count
-allCats,price,value,3.333333333,5
-allCats,price,popular,14,21
-allCats,price,premium,41.33333333,62
-allCats,price,luxury,25.33333333,38
-allCats,price,icon,16,24
-allCats,rating,wines3below,0,0
-allCats,rating,wines3_35,6.666666667,10
-allCats,rating,wines35_4,32,48
-allCats,rating,wines4_45,60,90
-allCats,rating,wines45above,1.333333333,2
-cat,price,value,9.090909090909092,1
-cat,price,popular,9.090909090909092,1
-cat,price,premium,54.54545454545454,6
-cat,price,luxury,18.181818181818183,2
-cat,price,icon,9.090909090909092,1
-cat,rating,wines3below,0,0
-cat,rating,wines3_35,18.181818181818183,2
-cat,rating,wines35_4,36.36363636363637,4
-cat,rating,wines4_45,45.45454545454545,5
-cat,rating,wines45above,0,0
+domestic cat,price,value,9.090909090909092,1
+domestic cat,price,popular,9.090909090909092,1
+domestic cat,price,premium,54.54545454545454,6
+domestic cat,price,luxury,18.181818181818183,2
+domestic cat,price,icon,9.090909090909092,1
+domestic cat,rating,3 & below,0,0
+domestic cat,rating,3.1–3.5,18.181818181818183,2
+domestic cat,rating,3.6–4,36.36363636363637,4
+domestic cat,rating,4.1–4.5,45.45454545454545,5
+domestic cat,rating,4.6 & up,0,0
 cheetah,price,value,0,0
 cheetah,price,popular,50,1
 cheetah,price,premium,50,1
 cheetah,price,luxury,0,0
 cheetah,price,icon,0,0
-cheetah,rating,wines3below,0,0
-cheetah,rating,wines3_35,0,0
-cheetah,rating,wines35_4,50,1
-cheetah,rating,wines4_45,50,1
-cheetah,rating,wines45above,0,0
+cheetah,rating,3 & below,0,0
+cheetah,rating,3.1–3.5,0,0
+cheetah,rating,3.6–4,50,1
+cheetah,rating,4.1–4.5,50,1
+cheetah,rating,4.6 & up,0,0
 cougar,price,value,0,0
 cougar,price,popular,0,0
 cougar,price,premium,100,2
 cougar,price,luxury,0,0
 cougar,price,icon,0,0
-cougar,rating,wines3below,0,0
-cougar,rating,wines3_35,50,1
-cougar,rating,wines35_4,0,0
-cougar,rating,wines4_45,50,1
-cougar,rating,wines45above,0,0
+cougar,rating,3 & below,0,0
+cougar,rating,3.1–3.5,50,1
+cougar,rating,3.6–4,0,0
+cougar,rating,4.1–4.5,50,1
+cougar,rating,4.6 & up,0,0
 jaguar/leopard/panther,price,value,20,1
 jaguar/leopard/panther,price,popular,40,2
 jaguar/leopard/panther,price,premium,40,2
 jaguar/leopard/panther,price,luxury,0,0
 jaguar/leopard/panther,price,icon,0,0
-jaguar/leopard/panther,rating,wines3below,0,0
-jaguar/leopard/panther,rating,wines3_35,60,3
-jaguar/leopard/panther,rating,wines35_4,0,0
-jaguar/leopard/panther,rating,wines4_45,40,2
-jaguar/leopard/panther,rating,wines45above,0,0
+jaguar/leopard/panther,rating,3 & below,0,0
+jaguar/leopard/panther,rating,3.1–3.5,60,3
+jaguar/leopard/panther,rating,3.6–4,0,0
+jaguar/leopard/panther,rating,4.1–4.5,40,2
+jaguar/leopard/panther,rating,4.6 & up,0,0
 lion,price,value,2.4,3
 lion,price,popular,12.8,16
 lion,price,premium,40,50
 lion,price,luxury,28.000000000000004,35
 lion,price,icon,16.8,21
-lion,rating,wines3below,0,0
-lion,rating,wines3_35,2.4,3
-lion,rating,wines35_4,32.800000000000004,41
-lion,rating,wines4_45,63.2,79
-lion,rating,wines45above,1.6,2
+lion,rating,3 & below,0,0
+lion,rating,3.1–3.5,2.4,3
+lion,rating,3.6–4,32.800000000000004,41
+lion,rating,4.1–4.5,63.2,79
+lion,rating,4.6 & up,1.6,2
 lynx,price,value,0,0
 lynx,price,popular,33.33333333333333,1
 lynx,price,premium,33.33333333333333,1
 lynx,price,luxury,0,0
 lynx,price,icon,33.33333333333333,1
-lynx,rating,wines3below,0,0
-lynx,rating,wines3_35,33.33333333333333,1
-lynx,rating,wines35_4,33.33333333333333,1
-lynx,rating,wines4_45,33.33333333333333,1
-lynx,rating,wines45above,0,0
+lynx,rating,3 & below,0,0
+lynx,rating,3.1–3.5,33.33333333333333,1
+lynx,rating,3.6–4,33.33333333333333,1
+lynx,rating,4.1–4.5,33.33333333333333,1
+lynx,rating,4.6 & up,0,0
 tiger,price,value,0,0
 tiger,price,popular,0,0
 tiger,price,premium,0,0
 tiger,price,luxury,50,1
 tiger,price,icon,50,1
-tiger,rating,wines3below,0,0
-tiger,rating,wines3_35,0,0
-tiger,rating,wines35_4,0,0
-tiger,rating,wines4_45,100,2
-tiger,rating,wines45above,0,0
+tiger,rating,3 & below,0,0
+tiger,rating,3.1–3.5,0,0
+tiger,rating,3.6–4,0,0
+tiger,rating,4.1–4.5,100,2
+tiger,rating,4.6 & up,0,0
+allCats,price,value,3.3333333333333335,5
+allCats,price,popular,14.000000000000002,21
+allCats,price,premium,41.333333333333336,62
+allCats,price,luxury,25.333333333333336,38
+allCats,price,icon,16,24
+allCats,rating,3 & below,0,0
+allCats,rating,3.1–3.5,6.666666666666667,10
+allCats,rating,3.6–4,31.333333333333336,47
+allCats,rating,4.1–4.5,60.66666666666667,91
+allCats,rating,4.6 & up,1.3333333333333335,2

@@ -46,14 +46,12 @@
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
-    $: xDomainColumn = $metricSelect == "price"
-        ? ['value', 'popular', 'premium', 'luxury', 'icon']
-        : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above'];
-    $:  xDomainLine = $metricSelect == "price"
-        ? ['value', 'popular', 'premium', 'luxury', 'icon', 'end']
-        : ['3 & less', '3.1–3.5', '3.6–4', '4.1–4.5', '4.6 & above', 'end'];
-    
-    $: console.log({xDomainColumn, xDomainLine})
+    const xDomainColumn = [...new Set(data.map(item => item.bucket))];
+    // console.log(xBucketsPrice)
+    // $: xDomainColumn = $metricSelect == "price"
+    //     ? ['value', 'popular', 'premium', 'luxury', 'icon']
+    //     : ['wines3below', 'wines3_35', 'wines35_4', 'wines4_45', 'wines45above'];
+    const xDomainLine = [...xDomainColumn, 'end']
 </script>
 
 <section id="distribution">
@@ -110,7 +108,7 @@
                     x={xKey}
                     y={yKey}
                     xScale={d3.scaleBand().paddingInner(0.02).round(true)}
-                    xDomain={[xDomainColumn]}
+                    xDomain={xDomainColumn}
                     yDomain={[0, 100]}
                     data={animalData}
                     >

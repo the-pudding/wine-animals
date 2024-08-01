@@ -14,7 +14,7 @@ const catData = data.filter(d => d.topgroup.includes("cat") && !d.topgroup.inclu
 const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lynx", "tiger"];
 
 const birdData = data.filter(d => d.topgroup.includes("bird"));
-const birds = ["bird of prey", "chicken", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]; 
+const birds = ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]; 
 
 const priceBuckets = ["1. Value", "2. Popular", "3. Premium", "4. Luxury", "5. Icon"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
@@ -137,11 +137,60 @@ function formatCSV(data, metric) {
     })
 }
 
+function addTotalCounts(data, metric) {
+    let totalCount = d3.rollup(data, v => d3.sum(v, d => d.count));
+    let totalValue = d3.rollup(data, v => d3.sum(v, d => d.valueCount));
+    let totalPopular = d3.rollup(data, v => d3.sum(v, d => d.popularCount));
+    let totalPremium = d3.rollup(data, v => d3.sum(v, d => d.premiumCount));
+    let totalLuxury = d3.rollup(data, v => d3.sum(v, d => d.luxuryCount));
+    let totalIcon = d3.rollup(data, v => d3.sum(v, d => d.iconCount));
+    let total3below = d3.rollup(data, v => d3.sum(v, d => d.wines3belowCount));
+    let total3_35 = d3.rollup(data, v => d3.sum(v, d => d.wines3_35Count));
+    let total35_4 = d3.rollup(data, v => d3.sum(v, d => d.wines35_4Count));
+    let total4_45 = d3.rollup(data, v => d3.sum(v, d => d.wines4_45Count));
+    let total45above = d3.rollup(data, v => d3.sum(v, d => d.wines45aboveCount));
+    let animalGroup = metric == "all" 
+        ? "all"
+        : metric == "cats"
+        ? "allCats"
+        : "allBirds";
+
+    let allObject = {
+        animalGroup: animalGroup,
+        count: totalCount,
+        valueCount: totalValue,
+        popularCount: totalPopular,
+        premiumCount: totalPremium,
+        luxuryCount: totalLuxury,
+        iconCount: totalIcon,
+        valuePercent: totalValue/totalCount*100,
+        popularPercent: totalPopular/totalCount*100,
+        premiumPercent: totalPremium/totalCount*100,
+        luxuryPercent: totalLuxury/totalCount*100,
+        iconPercent: totalIcon/totalCount*100,
+        wines3belowCount: total3below,
+        wines3_35Count: total3_35,
+        wines35_4Count: total35_4,
+        wines4_45Count: total4_45,
+        wines45aboveCount: total45above,
+        wines3belowPercent: total3below/totalCount*100,
+        wines3_35Percent: total3_35/totalCount*100,
+        wines35_4Percent: total35_4/totalCount*100,
+        wines4_45Percent: total4_45/totalCount*100,
+        wines45abovePercent: total45above/totalCount*100
+    }
+
+    if (metric == "all") { summary.push(allObject); }
+    else if (metric == "cats") { catSummary.push(allObject); }
+    else if (metric == "birds") { birdSummary.push(allObject); }
+}
+
 function init() {
     // SUMMARY
     topgroups.map(
         function(animalGroup, i) { return summarizeWines(animalGroup,"all", data, i) }
     );
+    addTotalCounts(summary, "all");
 
     // CREATE FLAT DATA
     formatCSV(summary, "all");
@@ -154,6 +203,7 @@ function init() {
     cats.map(
         function(animalGroup, i) { return summarizeWines(animalGroup,"cat", catData, i) }
     );
+    addTotalCounts(catSummary, "cats");
 
     formatCSV(catSummary, "cats");
 
@@ -165,6 +215,7 @@ function init() {
     birds.map(
         function(animalGroup, i) { return summarizeWines(animalGroup,"bird", birdData, i) }
     );
+    addTotalCounts(birdSummary, "birds");
 
     formatCSV(birdSummary, "birds");
 
