@@ -50,9 +50,9 @@
 			{#if tickMarks === true}
 				<line class="tick-mark" y1={0} y2={6} x1={0} x2={0} />
 			{/if}
-			<text x={0} y={yTick} dx="" dy="" text-anchor={textAnchor(i)}
+			<!-- <text x={0} y={yTick} dx="" dy="" text-anchor={textAnchor(i)}
 				>{formatTick(tick)}</text
-			>
+			> -->
 		</g>
 	{/each}
 	{#if baseline === true}

@@ -47,11 +47,8 @@
     const yKey = 'percent';
     const countKey = 'count';
     const xDomainColumn = [...new Set(data.map(item => item.bucket))];
-    // console.log(xBucketsPrice)
-    // $: xDomainColumn = $metricSelect == "price"
-    //     ? ['value', 'popular', 'premium', 'luxury', 'icon']
-    //     : ['wines3below', 'wines3_35', 'wines35_4', 'wines4_45', 'wines45above'];
-    const xDomainLine = [...xDomainColumn, 'end']
+    const xDomainLine = [...xDomainColumn, 'end'];
+    $: barWidth = $metricSelect == "price" ? "91.6%" : "83.3%";
 </script>
 
 <section id="distribution">
@@ -69,30 +66,6 @@
             <p class="desc">Greater than 5% difference</p>
         </div>
     </div>
-    {#if $metricSelect == "price"}
-        <div class="key">
-            <div>
-                <p class="topline">Value</p>
-                <p class="desc">$9.99 and under</p>
-            </div>
-            <div>
-                <p class="topline">Popular</p>
-                <p class="desc">$10 to $19.99</p>
-            </div>
-            <div>
-                <p class="topline">Premium</p>
-                <p class="desc">$20 to 49.99</p>
-            </div>
-            <div>
-                <p class="topline">Luxury</p>
-                <p class="desc">$50 to $99.99</p>
-            </div>
-            <div>
-                <p class="topline">Icon</p>
-                <p class="desc">$100+</p>
-            </div>
-        </div>
-    {/if}
     <div class="tooltip" class:hidden={$hideTooltip}></div>
     {#each groupedData as animal, i}
     {@const animalData = animal[1]}
@@ -101,7 +74,7 @@
             <h3>{animal[0]}</h3>
             <p class="tot-count">{totalAnimalWines} wines</p>
             <div class="chart-layers">
-                <div class="chart-container bars" id="bars_{animal[0]}">
+                <div class="chart-container bars" id="bars_{animal[0]}" style="width:{barWidth}">
                 {#key xDomainColumn}
                     <LayerCake
                     padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -113,7 +86,7 @@
                     data={animalData}
                     >
                         <Svg>
-                            <AxisX gridlines={false} />
+                            <!-- <AxisX gridlines={false}/> -->
                             <AxisY snapBaselineLabel gridlines={false}/>
                             <Column {allWineData} />
                         </Svg>
@@ -135,6 +108,10 @@
                             </Svg>
                     </LayerCake>
                 </div>
+            </div>
+            <div class="axis-labels">
+                <p>Lower {$metricSelect}</p>
+                <p>Higher {$metricSelect}</p>
             </div>
         </div>
     {/each}
@@ -163,6 +140,28 @@
 
     .key p {
         margin: 0;
+    }
+
+    .axis-labels {
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-family: var(--sans);
+        font-size: var(--12px);
+        color: var(--color-gray-600);
+        margin: 0;
+        padding: 0;
+    }
+
+    .axis-labels p {
+        margin: 0;
+        padding: 0.25rem 0 0 0;
+    }
+
+    .axis-labels p:last-of-type {
+        text-align: right;
+        padding-right: 1.5rem;
     }
 
     .tooltip.hidden {
@@ -208,7 +207,7 @@
 
     .chart-wrapper {
         width: 100%;
-        max-width: 300px;
+        max-width: 250px;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -244,6 +243,6 @@
     }
 
     .bars {
-        width: calc(100% * 0.835)
+        width: calc(100% * 0.916)
     }
 </style>
