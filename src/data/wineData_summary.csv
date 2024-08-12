@@ -1,14 +1,14 @@
 animalGroup,category,bucket,percent,count
 amphibian/reptile,price,$10 below,0,0
-amphibian/reptile,price,$10–15,12.121212121212121,4
-amphibian/reptile,price,$15–20,18.181818181818183,6
-amphibian/reptile,price,$20–25,9.090909090909092,3
-amphibian/reptile,price,$25–30,6.0606060606060606,2
-amphibian/reptile,price,$30–35,3.0303030303030303,1
-amphibian/reptile,price,$35–40,12.121212121212121,4
-amphibian/reptile,price,$40–60,12.121212121212121,4
-amphibian/reptile,price,$60–80,18.181818181818183,6
-amphibian/reptile,price,$80–100,3.0303030303030303,1
+amphibian/reptile,price,$10–19,0,0
+amphibian/reptile,price,$20–29,15.151515151515152,5
+amphibian/reptile,price,$30–39,15.151515151515152,5
+amphibian/reptile,price,$40–49,9.090909090909092,3
+amphibian/reptile,price,$50–59,3.0303030303030303,1
+amphibian/reptile,price,$60–69,15.151515151515152,5
+amphibian/reptile,price,$70–79,3.0303030303030303,1
+amphibian/reptile,price,$80–89,3.0303030303030303,1
+amphibian/reptile,price,$90–99,0,0
 amphibian/reptile,price,$100+,6.0606060606060606,2
 amphibian/reptile,rating,rating3below,0,0
 amphibian/reptile,rating,rating3_35,3.0303030303030303,1
@@ -16,15 +16,15 @@ amphibian/reptile,rating,rating35_4,57.57575757575758,19
 amphibian/reptile,rating,rating4_45,39.39393939393939,13
 amphibian/reptile,rating,rating45above,0,0
 bat,price,$10 below,0,0
-bat,price,$10–15,0,0
-bat,price,$15–20,0,0
-bat,price,$20–25,33.33333333333333,2
-bat,price,$25–30,50,3
-bat,price,$30–35,16.666666666666664,1
-bat,price,$35–40,0,0
-bat,price,$40–60,0,0
-bat,price,$60–80,0,0
-bat,price,$80–100,0,0
+bat,price,$10–19,0,0
+bat,price,$20–29,83.33333333333334,5
+bat,price,$30–39,16.666666666666664,1
+bat,price,$40–49,0,0
+bat,price,$50–59,0,0
+bat,price,$60–69,0,0
+bat,price,$70–79,0,0
+bat,price,$80–89,0,0
+bat,price,$90–99,0,0
 bat,price,$100+,0,0
 bat,rating,rating3below,0,0
 bat,rating,rating3_35,16.666666666666664,1
@@ -32,15 +32,15 @@ bat,rating,rating35_4,83.33333333333334,5
 bat,rating,rating4_45,0,0
 bat,rating,rating45above,0,0
 bear,price,$10 below,0,0
-bear,price,$10–15,0,0
-bear,price,$15–20,28.57142857142857,6
-bear,price,$20–25,4.761904761904762,1
-bear,price,$25–30,4.761904761904762,1
-bear,price,$30–35,14.285714285714285,3
-bear,price,$35–40,9.523809523809524,2
-bear,price,$40–60,23.809523809523807,5
-bear,price,$60–80,4.761904761904762,1
-bear,price,$80–100,0,0
+bear,price,$10–19,0,0
+bear,price,$20–29,9.523809523809524,2
+bear,price,$30–39,23.809523809523807,5
+bear,price,$40–49,19.047619047619047,4
+bear,price,$50–59,4.761904761904762,1
+bear,price,$60–69,4.761904761904762,1
+bear,price,$70–79,0,0
+bear,price,$80–89,0,0
+bear,price,$90–99,0,0
 bear,price,$100+,9.523809523809524,2
 bear,rating,rating3below,0,0
 bear,rating,rating3_35,4.761904761904762,1
@@ -48,31 +48,31 @@ bear,rating,rating35_4,47.61904761904761,10
 bear,rating,rating4_45,42.857142857142854,9
 bear,rating,rating45above,4.761904761904762,1
 bird,price,$10 below,1.08991825613079,4
-bird,price,$10–15,11.1716621253406,41
-bird,price,$15–20,19.618528610354225,72
-bird,price,$20–25,17.166212534059948,63
-bird,price,$25–30,13.623978201634879,50
-bird,price,$30–35,5.722070844686648,21
-bird,price,$35–40,7.084468664850137,26
-bird,price,$40–60,9.809264305177113,36
-bird,price,$60–80,5.994550408719346,22
-bird,price,$80–100,2.997275204359673,11
-bird,price,$100+,5.722070844686648,21
+bird,price,$10–19,0,0
+bird,price,$20–29,30.79019073569482,113
+bird,price,$30–39,12.534059945504087,46
+bird,price,$40–49,6.267029972752043,23
+bird,price,$50–59,3.8147138964577656,14
+bird,price,$60–69,3.8147138964577656,14
+bird,price,$70–79,2.452316076294278,9
+bird,price,$80–89,0.2724795640326975,1
+bird,price,$90–99,2.452316076294278,9
+bird,price,$100+,5.994550408719346,22
 bird,rating,rating3below,0,0
 bird,rating,rating3_35,5.722070844686648,21
 bird,rating,rating35_4,57.22070844686649,210
 bird,rating,rating4_45,35.967302452316076,132
 bird,rating,rating45above,1.08991825613079,4
 camelus,price,$10 below,0,0
-camelus,price,$10–15,12.5,1
-camelus,price,$15–20,25,2
-camelus,price,$20–25,25,2
-camelus,price,$25–30,12.5,1
-camelus,price,$30–35,12.5,1
-camelus,price,$35–40,0,0
-camelus,price,$40–60,12.5,1
-camelus,price,$60–80,0,0
-camelus,price,$80–100,0,0
+camelus,price,$10–19,0,0
+camelus,price,$20–29,37.5,3
+camelus,price,$30–39,12.5,1
+camelus,price,$40–49,12.5,1
+camelus,price,$50–59,0,0
+camelus,price,$60–69,0,0
+camelus,price,$70–79,0,0
+camelus,price,$80–89,0,0
+camelus,price,$90–99,0,0
 camelus,price,$100+,0,0
 camelus,rating,rating3below,0,0
 camelus,rating,rating3_35,0,0
@@ -80,15 +80,15 @@ camelus,rating,rating35_4,87.5,7
 camelus,rating,rating4_45,12.5,1
 camelus,rating,rating45above,0,0
 cat,price,$10 below,3.3333333333333335,6
-cat,price,$10–15,6.666666666666667,12
-cat,price,$15–20,9.444444444444445,17
-cat,price,$20–25,16.666666666666664,30
-cat,price,$25–30,6.111111111111111,11
-cat,price,$30–35,7.777777777777778,14
-cat,price,$35–40,5.555555555555555,10
-cat,price,$40–60,11.11111111111111,20
-cat,price,$60–80,11.11111111111111,20
-cat,price,$80–100,7.222222222222221,13
+cat,price,$10–19,0,0
+cat,price,$20–29,22.77777777777778,41
+cat,price,$30–39,12.777777777777777,23
+cat,price,$40–49,6.111111111111111,11
+cat,price,$50–59,5.555555555555555,10
+cat,price,$60–69,6.111111111111111,11
+cat,price,$70–79,4.444444444444445,8
+cat,price,$80–89,4.444444444444445,8
+cat,price,$90–99,3.3333333333333335,6
 cat,price,$100+,15,27
 cat,rating,rating3below,0,0
 cat,rating,rating3_35,6.666666666666667,12
@@ -96,15 +96,15 @@ cat,rating,rating35_4,35.55555555555556,64
 cat,rating,rating4_45,55.55555555555556,100
 cat,rating,rating45above,2.2222222222222223,4
 cattle,price,$10 below,3.3333333333333335,1
-cattle,price,$10–15,16.666666666666664,5
-cattle,price,$15–20,10,3
-cattle,price,$20–25,23.333333333333332,7
-cattle,price,$25–30,6.666666666666667,2
-cattle,price,$30–35,3.3333333333333335,1
-cattle,price,$35–40,6.666666666666667,2
-cattle,price,$40–60,6.666666666666667,2
-cattle,price,$60–80,6.666666666666667,2
-cattle,price,$80–100,6.666666666666667,2
+cattle,price,$10–19,0,0
+cattle,price,$20–29,30,9
+cattle,price,$30–39,6.666666666666667,2
+cattle,price,$40–49,6.666666666666667,2
+cattle,price,$50–59,3.3333333333333335,1
+cattle,price,$60–69,3.3333333333333335,1
+cattle,price,$70–79,3.3333333333333335,1
+cattle,price,$80–89,0,0
+cattle,price,$90–99,6.666666666666667,2
 cattle,price,$100+,10,3
 cattle,rating,rating3below,0,0
 cattle,rating,rating3_35,6.666666666666667,2
@@ -112,15 +112,15 @@ cattle,rating,rating35_4,53.333333333333336,16
 cattle,rating,rating4_45,33.33333333333333,10
 cattle,rating,rating45above,6.666666666666667,2
 deer-like,price,$10 below,0,0
-deer-like,price,$10–15,8.108108108108109,3
-deer-like,price,$15–20,27.027027027027028,10
-deer-like,price,$20–25,13.513513513513514,5
-deer-like,price,$25–30,2.7027027027027026,1
-deer-like,price,$30–35,10.81081081081081,4
-deer-like,price,$35–40,8.108108108108109,3
-deer-like,price,$40–60,5.405405405405405,2
-deer-like,price,$60–80,10.81081081081081,4
-deer-like,price,$80–100,2.7027027027027026,1
+deer-like,price,$10–19,0,0
+deer-like,price,$20–29,16.216216216216218,6
+deer-like,price,$30–39,18.91891891891892,7
+deer-like,price,$40–49,5.405405405405405,2
+deer-like,price,$50–59,0,0
+deer-like,price,$60–69,2.7027027027027026,1
+deer-like,price,$70–79,8.108108108108109,3
+deer-like,price,$80–89,2.7027027027027026,1
+deer-like,price,$90–99,0,0
 deer-like,price,$100+,10.81081081081081,4
 deer-like,rating,rating3below,0,0
 deer-like,rating,rating3_35,5.405405405405405,2
@@ -128,15 +128,15 @@ deer-like,rating,rating35_4,54.054054054054056,20
 deer-like,rating,rating4_45,40.54054054054054,15
 deer-like,rating,rating45above,0,0
 dog,price,$10 below,1.282051282051282,1
-dog,price,$10–15,11.538461538461538,9
-dog,price,$15–20,20.51282051282051,16
-dog,price,$20–25,11.538461538461538,9
-dog,price,$25–30,15.384615384615385,12
-dog,price,$30–35,7.6923076923076925,6
-dog,price,$35–40,2.564102564102564,2
-dog,price,$40–60,7.6923076923076925,6
-dog,price,$60–80,8.974358974358974,7
-dog,price,$80–100,7.6923076923076925,6
+dog,price,$10–19,0,0
+dog,price,$20–29,28.205128205128204,22
+dog,price,$30–39,10.256410256410255,8
+dog,price,$40–49,2.564102564102564,2
+dog,price,$50–59,5.128205128205128,4
+dog,price,$60–69,7.6923076923076925,6
+dog,price,$70–79,1.282051282051282,1
+dog,price,$80–89,1.282051282051282,1
+dog,price,$90–99,6.41025641025641,5
 dog,price,$100+,5.128205128205128,4
 dog,rating,rating3below,0,0
 dog,rating,rating3_35,5.128205128205128,4
@@ -144,15 +144,15 @@ dog,rating,rating35_4,60.256410256410255,47
 dog,rating,rating4_45,33.33333333333333,26
 dog,rating,rating45above,1.282051282051282,1
 elephant,price,$10 below,0,0
-elephant,price,$10–15,7.6923076923076925,1
-elephant,price,$15–20,23.076923076923077,3
-elephant,price,$20–25,30.76923076923077,4
-elephant,price,$25–30,0,0
-elephant,price,$30–35,7.6923076923076925,1
-elephant,price,$35–40,0,0
-elephant,price,$40–60,7.6923076923076925,1
-elephant,price,$60–80,7.6923076923076925,1
-elephant,price,$80–100,0,0
+elephant,price,$10–19,0,0
+elephant,price,$20–29,30.76923076923077,4
+elephant,price,$30–39,7.6923076923076925,1
+elephant,price,$40–49,7.6923076923076925,1
+elephant,price,$50–59,0,0
+elephant,price,$60–69,7.6923076923076925,1
+elephant,price,$70–79,0,0
+elephant,price,$80–89,0,0
+elephant,price,$90–99,0,0
 elephant,price,$100+,15.384615384615385,2
 elephant,rating,rating3below,0,0
 elephant,rating,rating3_35,15.384615384615385,2
@@ -160,15 +160,15 @@ elephant,rating,rating35_4,53.84615384615385,7
 elephant,rating,rating4_45,23.076923076923077,3
 elephant,rating,rating45above,7.6923076923076925,1
 fish,price,$10 below,0,0
-fish,price,$10–15,13.953488372093023,6
-fish,price,$15–20,18.6046511627907,8
-fish,price,$20–25,18.6046511627907,8
-fish,price,$25–30,30.23255813953488,13
-fish,price,$30–35,9.30232558139535,4
-fish,price,$35–40,0,0
-fish,price,$40–60,9.30232558139535,4
-fish,price,$60–80,0,0
-fish,price,$80–100,0,0
+fish,price,$10–19,0,0
+fish,price,$20–29,46.51162790697674,20
+fish,price,$30–39,11.627906976744185,5
+fish,price,$40–49,4.651162790697675,2
+fish,price,$50–59,4.651162790697675,2
+fish,price,$60–69,0,0
+fish,price,$70–79,0,0
+fish,price,$80–89,0,0
+fish,price,$90–99,0,0
 fish,price,$100+,0,0
 fish,rating,rating3below,0,0
 fish,rating,rating3_35,2.3255813953488373,1
@@ -176,15 +176,15 @@ fish,rating,rating35_4,79.06976744186046,34
 fish,rating,rating4_45,18.6046511627907,8
 fish,rating,rating45above,0,0
 hippopotamus,price,$10 below,0,0
-hippopotamus,price,$10–15,33.33333333333333,1
-hippopotamus,price,$15–20,66.66666666666666,2
-hippopotamus,price,$20–25,0,0
-hippopotamus,price,$25–30,0,0
-hippopotamus,price,$30–35,0,0
-hippopotamus,price,$35–40,0,0
-hippopotamus,price,$40–60,0,0
-hippopotamus,price,$60–80,0,0
-hippopotamus,price,$80–100,0,0
+hippopotamus,price,$10–19,0,0
+hippopotamus,price,$20–29,0,0
+hippopotamus,price,$30–39,0,0
+hippopotamus,price,$40–49,0,0
+hippopotamus,price,$50–59,0,0
+hippopotamus,price,$60–69,0,0
+hippopotamus,price,$70–79,0,0
+hippopotamus,price,$80–89,0,0
+hippopotamus,price,$90–99,0,0
 hippopotamus,price,$100+,0,0
 hippopotamus,rating,rating3below,0,0
 hippopotamus,rating,rating3_35,33.33333333333333,1
@@ -192,15 +192,15 @@ hippopotamus,rating,rating35_4,66.66666666666666,2
 hippopotamus,rating,rating4_45,0,0
 hippopotamus,rating,rating45above,0,0
 horse,price,$10 below,3.125,4
-horse,price,$10–15,18.75,24
-horse,price,$15–20,21.09375,27
-horse,price,$20–25,10.15625,13
-horse,price,$25–30,3.90625,5
-horse,price,$30–35,2.34375,3
-horse,price,$35–40,7.03125,9
-horse,price,$40–60,19.53125,25
-horse,price,$60–80,5.46875,7
-horse,price,$80–100,4.6875,6
+horse,price,$10–19,0,0
+horse,price,$20–29,14.84375,19
+horse,price,$30–39,9.375,12
+horse,price,$40–49,11.71875,15
+horse,price,$50–59,6.25,8
+horse,price,$60–69,4.6875,6
+horse,price,$70–79,2.34375,3
+horse,price,$80–89,2.34375,3
+horse,price,$90–99,2.34375,3
 horse,price,$100+,3.90625,5
 horse,rating,rating3below,0.78125,1
 horse,rating,rating3_35,9.375,12
@@ -208,31 +208,31 @@ horse,rating,rating35_4,50,64
 horse,rating,rating4_45,39.0625,50
 horse,rating,rating45above,0.78125,1
 human,price,$10 below,1.6706443914081146,14
-human,price,$10–15,8.711217183770884,73
-human,price,$15–20,19.809069212410503,166
-human,price,$20–25,15.035799522673033,126
-human,price,$25–30,11.575178997613365,97
-human,price,$30–35,7.637231503579953,64
-human,price,$35–40,5.608591885441527,47
-human,price,$40–60,13.484486873508352,113
-human,price,$60–80,5.011933174224343,42
-human,price,$80–100,4.534606205250596,38
-human,price,$100+,6.921241050119331,58
+human,price,$10–19,0,0
+human,price,$20–29,26.849642004773273,225
+human,price,$30–39,13.60381861575179,114
+human,price,$40–49,7.875894988066825,66
+human,price,$50–59,5.608591885441527,47
+human,price,$60–69,3.221957040572793,27
+human,price,$70–79,1.7899761336515514,15
+human,price,$80–89,2.5059665871121717,21
+human,price,$90–99,1.6706443914081146,14
+human,price,$100+,7.398568019093078,62
 human,rating,rating3below,0.23866348448687352,2
 human,rating,rating3_35,5.608591885441527,47
 human,rating,rating35_4,55.489260143198095,465
 human,rating,rating4_45,37.58949880668258,315
 human,rating,rating45above,1.0739856801909307,9
 insect,price,$10 below,1.2048192771084338,1
-insect,price,$10–15,16.867469879518072,14
-insect,price,$15–20,21.686746987951807,18
-insect,price,$20–25,22.89156626506024,19
-insect,price,$25–30,7.228915662650602,6
-insect,price,$30–35,4.819277108433735,4
-insect,price,$35–40,4.819277108433735,4
-insect,price,$40–60,9.63855421686747,8
-insect,price,$60–80,4.819277108433735,4
-insect,price,$80–100,2.4096385542168677,2
+insect,price,$10–19,0,0
+insect,price,$20–29,30.120481927710845,25
+insect,price,$30–39,9.63855421686747,8
+insect,price,$40–49,4.819277108433735,4
+insect,price,$50–59,4.819277108433735,4
+insect,price,$60–69,2.4096385542168677,2
+insect,price,$70–79,2.4096385542168677,2
+insect,price,$80–89,1.2048192771084338,1
+insect,price,$90–99,1.2048192771084338,1
 insect,price,$100+,3.614457831325301,3
 insect,rating,rating3below,0,0
 insect,rating,rating3_35,13.253012048192772,11
@@ -240,15 +240,15 @@ insect,rating,rating35_4,55.42168674698795,46
 insect,rating,rating4_45,30.120481927710845,25
 insect,rating,rating45above,1.2048192771084338,1
 marine invertebrate,price,$10 below,3.7037037037037033,1
-marine invertebrate,price,$10–15,29.629629629629626,8
-marine invertebrate,price,$15–20,7.4074074074074066,2
-marine invertebrate,price,$20–25,22.22222222222222,6
-marine invertebrate,price,$25–30,3.7037037037037033,1
-marine invertebrate,price,$30–35,3.7037037037037033,1
-marine invertebrate,price,$35–40,14.814814814814813,4
-marine invertebrate,price,$40–60,7.4074074074074066,2
-marine invertebrate,price,$60–80,0,0
-marine invertebrate,price,$80–100,3.7037037037037033,1
+marine invertebrate,price,$10–19,0,0
+marine invertebrate,price,$20–29,25.925925925925924,7
+marine invertebrate,price,$30–39,18.51851851851852,5
+marine invertebrate,price,$40–49,7.4074074074074066,2
+marine invertebrate,price,$50–59,0,0
+marine invertebrate,price,$60–69,0,0
+marine invertebrate,price,$70–79,0,0
+marine invertebrate,price,$80–89,0,0
+marine invertebrate,price,$90–99,3.7037037037037033,1
 marine invertebrate,price,$100+,3.7037037037037033,1
 marine invertebrate,rating,rating3below,0,0
 marine invertebrate,rating,rating3_35,3.7037037037037033,1
@@ -256,15 +256,15 @@ marine invertebrate,rating,rating35_4,81.48148148148148,22
 marine invertebrate,rating,rating4_45,14.814814814814813,4
 marine invertebrate,rating,rating45above,0,0
 marsupial,price,$10 below,75,3
-marsupial,price,$10–15,0,0
-marsupial,price,$15–20,0,0
-marsupial,price,$20–25,0,0
-marsupial,price,$25–30,0,0
-marsupial,price,$30–35,0,0
-marsupial,price,$35–40,25,1
-marsupial,price,$40–60,0,0
-marsupial,price,$60–80,0,0
-marsupial,price,$80–100,0,0
+marsupial,price,$10–19,0,0
+marsupial,price,$20–29,0,0
+marsupial,price,$30–39,25,1
+marsupial,price,$40–49,0,0
+marsupial,price,$50–59,0,0
+marsupial,price,$60–69,0,0
+marsupial,price,$70–79,0,0
+marsupial,price,$80–89,0,0
+marsupial,price,$90–99,0,0
 marsupial,price,$100+,0,0
 marsupial,rating,rating3below,0,0
 marsupial,rating,rating3_35,50,2
@@ -272,15 +272,15 @@ marsupial,rating,rating35_4,0,0
 marsupial,rating,rating4_45,50,2
 marsupial,rating,rating45above,0,0
 monkey,price,$10 below,0,0
-monkey,price,$10–15,0,0
-monkey,price,$15–20,33.33333333333333,2
-monkey,price,$20–25,16.666666666666664,1
-monkey,price,$25–30,33.33333333333333,2
-monkey,price,$30–35,0,0
-monkey,price,$35–40,0,0
-monkey,price,$40–60,0,0
-monkey,price,$60–80,0,0
-monkey,price,$80–100,16.666666666666664,1
+monkey,price,$10–19,0,0
+monkey,price,$20–29,50,3
+monkey,price,$30–39,0,0
+monkey,price,$40–49,0,0
+monkey,price,$50–59,0,0
+monkey,price,$60–69,0,0
+monkey,price,$70–79,0,0
+monkey,price,$80–89,16.666666666666664,1
+monkey,price,$90–99,0,0
 monkey,price,$100+,0,0
 monkey,rating,rating3below,0,0
 monkey,rating,rating3_35,0,0
@@ -288,15 +288,15 @@ monkey,rating,rating35_4,83.33333333333334,5
 monkey,rating,rating4_45,16.666666666666664,1
 monkey,rating,rating45above,0,0
 mustelid-like,price,$10 below,0,0
-mustelid-like,price,$10–15,9.523809523809524,2
-mustelid-like,price,$15–20,23.809523809523807,5
-mustelid-like,price,$20–25,23.809523809523807,5
-mustelid-like,price,$25–30,19.047619047619047,4
-mustelid-like,price,$30–35,0,0
-mustelid-like,price,$35–40,9.523809523809524,2
-mustelid-like,price,$40–60,9.523809523809524,2
-mustelid-like,price,$60–80,0,0
-mustelid-like,price,$80–100,0,0
+mustelid-like,price,$10–19,0,0
+mustelid-like,price,$20–29,42.857142857142854,9
+mustelid-like,price,$30–39,9.523809523809524,2
+mustelid-like,price,$40–49,4.761904761904762,1
+mustelid-like,price,$50–59,4.761904761904762,1
+mustelid-like,price,$60–69,0,0
+mustelid-like,price,$70–79,0,0
+mustelid-like,price,$80–89,0,0
+mustelid-like,price,$90–99,0,0
 mustelid-like,price,$100+,4.761904761904762,1
 mustelid-like,rating,rating3below,0,0
 mustelid-like,rating,rating3_35,4.761904761904762,1
@@ -304,47 +304,47 @@ mustelid-like,rating,rating35_4,76.19047619047619,16
 mustelid-like,rating,rating4_45,19.047619047619047,4
 mustelid-like,rating,rating45above,0,0
 mythical,price,$10 below,0,0
-mythical,price,$10–15,6.521739130434782,6
-mythical,price,$15–20,13.043478260869565,12
-mythical,price,$20–25,18.478260869565215,17
-mythical,price,$25–30,8.695652173913043,8
-mythical,price,$30–35,7.608695652173914,7
-mythical,price,$35–40,6.521739130434782,6
-mythical,price,$40–60,11.956521739130435,11
-mythical,price,$60–80,6.521739130434782,6
-mythical,price,$80–100,5.434782608695652,5
+mythical,price,$10–19,0,0
+mythical,price,$20–29,27.173913043478258,25
+mythical,price,$30–39,13.043478260869565,12
+mythical,price,$40–49,7.608695652173914,7
+mythical,price,$50–59,5.434782608695652,5
+mythical,price,$60–69,2.1739130434782608,2
+mythical,price,$70–79,4.3478260869565215,4
+mythical,price,$80–89,4.3478260869565215,4
+mythical,price,$90–99,1.0869565217391304,1
 mythical,price,$100+,15.217391304347828,14
 mythical,rating,rating3below,0,0
 mythical,rating,rating3_35,6.521739130434782,6
 mythical,rating,rating35_4,42.391304347826086,39
 mythical,rating,rating4_45,46.73913043478261,43
 mythical,rating,rating45above,4.3478260869565215,4
-none,price,$10 below,1.533494753833737,114
-none,price,$10–15,8.084476728544525,601
-none,price,$15–20,15.926822706483723,1184
-none,price,$20–25,13.478611783696529,1002
-none,price,$25–30,11.407048695184288,848
-none,price,$30–35,6.981436642453591,519
-none,price,$35–40,6.658595641646489,495
-none,price,$40–60,14.82378262039279,1102
-none,price,$60–80,7.532956685499058,560
-none,price,$80–100,4.196933010492333,312
-none,price,$100+,9.375840731772934,697
+none,price,$10 below,1.4796879203658864,110
+none,price,$10–19,0,0
+none,price,$20–29,24.858757062146893,1848
+none,price,$30–39,13.962873284907182,1038
+none,price,$40–49,8.407317729351629,625
+none,price,$50–59,6.456820016142049,480
+none,price,$60–69,4.398708635996772,327
+none,price,$70–79,3.14769975786925,234
+none,price,$80–89,2.246435297282755,167
+none,price,$90–99,1.869787463007802,139
+none,price,$100+,9.564164648910412,711
 none,rating,rating3below,0.09416195856873823,7
 none,rating,rating3_35,4.681194511702986,348
 none,rating,rating35_4,50.02690341673392,3719
 none,rating,rating4_45,43.65079365079365,3245
 none,rating,rating45above,1.5469464622006994,115
 rabbit,price,$10 below,0,0
-rabbit,price,$10–15,9.523809523809524,2
-rabbit,price,$15–20,19.047619047619047,4
-rabbit,price,$20–25,9.523809523809524,2
-rabbit,price,$25–30,19.047619047619047,4
-rabbit,price,$30–35,19.047619047619047,4
-rabbit,price,$35–40,0,0
-rabbit,price,$40–60,4.761904761904762,1
-rabbit,price,$60–80,4.761904761904762,1
-rabbit,price,$80–100,4.761904761904762,1
+rabbit,price,$10–19,0,0
+rabbit,price,$20–29,33.33333333333333,7
+rabbit,price,$30–39,19.047619047619047,4
+rabbit,price,$40–49,4.761904761904762,1
+rabbit,price,$50–59,0,0
+rabbit,price,$60–69,4.761904761904762,1
+rabbit,price,$70–79,0,0
+rabbit,price,$80–89,0,0
+rabbit,price,$90–99,4.761904761904762,1
 rabbit,price,$100+,9.523809523809524,2
 rabbit,rating,rating3below,0,0
 rabbit,rating,rating3_35,0,0
@@ -352,15 +352,15 @@ rabbit,rating,rating35_4,52.38095238095239,11
 rabbit,rating,rating4_45,47.61904761904761,10
 rabbit,rating,rating45above,0,0
 ram-like,price,$10 below,1.8181818181818181,1
-ram-like,price,$10–15,18.181818181818183,10
-ram-like,price,$15–20,25.454545454545453,14
-ram-like,price,$20–25,23.636363636363637,13
-ram-like,price,$25–30,3.6363636363636362,2
-ram-like,price,$30–35,9.090909090909092,5
-ram-like,price,$35–40,3.6363636363636362,2
-ram-like,price,$40–60,3.6363636363636362,2
-ram-like,price,$60–80,3.6363636363636362,2
-ram-like,price,$80–100,0,0
+ram-like,price,$10–19,0,0
+ram-like,price,$20–29,27.27272727272727,15
+ram-like,price,$30–39,12.727272727272727,7
+ram-like,price,$40–49,0,0
+ram-like,price,$50–59,3.6363636363636362,2
+ram-like,price,$60–69,3.6363636363636362,2
+ram-like,price,$70–79,0,0
+ram-like,price,$80–89,0,0
+ram-like,price,$90–99,0,0
 ram-like,price,$100+,7.2727272727272725,4
 ram-like,rating,rating3below,0,0
 ram-like,rating,rating3_35,5.454545454545454,3
@@ -368,15 +368,15 @@ ram-like,rating,rating35_4,65.45454545454545,36
 ram-like,rating,rating4_45,27.27272727272727,15
 ram-like,rating,rating45above,1.8181818181818181,1
 rhino,price,$10 below,0,0
-rhino,price,$10–15,0,0
-rhino,price,$15–20,0,0
-rhino,price,$20–25,20,1
-rhino,price,$25–30,60,3
-rhino,price,$30–35,0,0
-rhino,price,$35–40,0,0
-rhino,price,$40–60,0,0
-rhino,price,$60–80,0,0
-rhino,price,$80–100,0,0
+rhino,price,$10–19,0,0
+rhino,price,$20–29,80,4
+rhino,price,$30–39,0,0
+rhino,price,$40–49,0,0
+rhino,price,$50–59,0,0
+rhino,price,$60–69,0,0
+rhino,price,$70–79,0,0
+rhino,price,$80–89,0,0
+rhino,price,$90–99,0,0
 rhino,price,$100+,20,1
 rhino,rating,rating3below,0,0
 rhino,rating,rating3_35,0,0
@@ -384,15 +384,15 @@ rhino,rating,rating35_4,80,4
 rhino,rating,rating4_45,20,1
 rhino,rating,rating45above,0,0
 rodent-like,price,$10 below,0,0
-rodent-like,price,$10–15,0,0
-rodent-like,price,$15–20,16.666666666666664,1
-rodent-like,price,$20–25,16.666666666666664,1
-rodent-like,price,$25–30,0,0
-rodent-like,price,$30–35,50,3
-rodent-like,price,$35–40,0,0
-rodent-like,price,$40–60,16.666666666666664,1
-rodent-like,price,$60–80,0,0
-rodent-like,price,$80–100,0,0
+rodent-like,price,$10–19,0,0
+rodent-like,price,$20–29,16.666666666666664,1
+rodent-like,price,$30–39,50,3
+rodent-like,price,$40–49,16.666666666666664,1
+rodent-like,price,$50–59,0,0
+rodent-like,price,$60–69,0,0
+rodent-like,price,$70–79,0,0
+rodent-like,price,$80–89,0,0
+rodent-like,price,$90–99,0,0
 rodent-like,price,$100+,0,0
 rodent-like,rating,rating3below,0,0
 rodent-like,rating,rating3_35,0,0
@@ -400,15 +400,15 @@ rodent-like,rating,rating35_4,66.66666666666666,4
 rodent-like,rating,rating4_45,33.33333333333333,2
 rodent-like,rating,rating45above,0,0
 suid,price,$10 below,0,0
-suid,price,$10–15,17.857142857142858,5
-suid,price,$15–20,17.857142857142858,5
-suid,price,$20–25,21.428571428571427,6
-suid,price,$25–30,7.142857142857142,2
-suid,price,$30–35,7.142857142857142,2
-suid,price,$35–40,14.285714285714285,4
-suid,price,$40–60,3.571428571428571,1
-suid,price,$60–80,3.571428571428571,1
-suid,price,$80–100,0,0
+suid,price,$10–19,0,0
+suid,price,$20–29,32.142857142857146,9
+suid,price,$30–39,21.428571428571427,6
+suid,price,$40–49,3.571428571428571,1
+suid,price,$50–59,0,0
+suid,price,$60–69,0,0
+suid,price,$70–79,3.571428571428571,1
+suid,price,$80–89,0,0
+suid,price,$90–99,0,0
 suid,price,$100+,7.142857142857142,2
 suid,rating,rating3below,3.571428571428571,1
 suid,rating,rating3_35,3.571428571428571,1
@@ -416,32 +416,32 @@ suid,rating,rating35_4,60.71428571428571,17
 suid,rating,rating4_45,32.142857142857146,9
 suid,rating,rating45above,0,0
 whale/shark/dolphin,price,$10 below,0,0
-whale/shark/dolphin,price,$10–15,25,3
-whale/shark/dolphin,price,$15–20,33.33333333333333,4
-whale/shark/dolphin,price,$20–25,8.333333333333332,1
-whale/shark/dolphin,price,$25–30,25,3
-whale/shark/dolphin,price,$30–35,8.333333333333332,1
-whale/shark/dolphin,price,$35–40,0,0
-whale/shark/dolphin,price,$40–60,0,0
-whale/shark/dolphin,price,$60–80,0,0
-whale/shark/dolphin,price,$80–100,0,0
+whale/shark/dolphin,price,$10–19,0,0
+whale/shark/dolphin,price,$20–29,33.33333333333333,4
+whale/shark/dolphin,price,$30–39,8.333333333333332,1
+whale/shark/dolphin,price,$40–49,0,0
+whale/shark/dolphin,price,$50–59,0,0
+whale/shark/dolphin,price,$60–69,0,0
+whale/shark/dolphin,price,$70–79,0,0
+whale/shark/dolphin,price,$80–89,0,0
+whale/shark/dolphin,price,$90–99,0,0
 whale/shark/dolphin,price,$100+,0,0
 whale/shark/dolphin,rating,rating3below,0,0
 whale/shark/dolphin,rating,rating3_35,0,0
 whale/shark/dolphin,rating,rating35_4,75,9
 whale/shark/dolphin,rating,rating4_45,25,3
 whale/shark/dolphin,rating,rating45above,0,0
-all,price,$10 below,1.5659254619480114,150
-all,price,$10–15,8.675227059191982,831
-all,price,$15–20,16.588370393569267,1589
-all,price,$20–25,14.06201064829314,1347
-all,price,$25–30,11.285102829105334,1081
-all,price,$30–35,6.994467063367783,670
-all,price,$35–40,6.503810418624073,623
-all,price,$40–60,14.08288965445245,1349
-all,price,$60–80,7.161499112642238,686
-all,price,$80–100,4.175801231861363,400
-all,price,$100+,8.904896126944358,853
+all,price,$10 below,1.5241674496293978,146
+all,price,$10–19,0,0
+all,price,$20–29,25.378431986637434,2431
+all,price,$30–39,13.748825555903538,1317
+all,price,$40–49,8.080175383651738,774
+all,price,$50–59,6.054911786198977,580
+all,price,$60–69,4.248877753418937,407
+all,price,$70–79,2.943939868462261,282
+all,price,$80–89,2.1818561436475625,209
+all,price,$90–99,1.8999895604969201,182
+all,price,$100+,9.103246685457773,872
 all,rating,rating3below,0.1148345338761875,11
 all,rating,rating3_35,5.010961478233636,480
 all,rating,rating35_4,51.1326860841424,4898
