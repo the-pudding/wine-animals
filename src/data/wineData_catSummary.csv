@@ -63,22 +63,38 @@ jaguar/leopard/panther,rating,rating3_35,60,3
 jaguar/leopard/panther,rating,rating35_4,0,0
 jaguar/leopard/panther,rating,rating4_45,40,2
 jaguar/leopard/panther,rating,rating45above,0,0
-lion,price,$10 below,2.4193548387096775,3
+lion,price,$10 below,2.586206896551724,3
 lion,price,$10–19,0,0
-lion,price,$20–29,19.35483870967742,24
-lion,price,$30–39,13.709677419354838,17
-lion,price,$40–49,6.451612903225806,8
-lion,price,$50–59,7.258064516129033,9
-lion,price,$60–69,7.258064516129033,9
-lion,price,$70–79,5.64516129032258,7
-lion,price,$80–89,5.64516129032258,7
-lion,price,$90–99,2.4193548387096775,3
-lion,price,$100+,16.93548387096774,21
+lion,price,$20–29,18.96551724137931,22
+lion,price,$30–39,13.793103448275861,16
+lion,price,$40–49,6.0344827586206895,7
+lion,price,$50–59,7.758620689655173,9
+lion,price,$60–69,7.758620689655173,9
+lion,price,$70–79,6.0344827586206895,7
+lion,price,$80–89,5.172413793103448,6
+lion,price,$90–99,2.586206896551724,3
+lion,price,$100+,17.24137931034483,20
 lion,rating,rating3below,0,0
-lion,rating,rating3_35,2.4193548387096775,3
-lion,rating,rating35_4,33.064516129032256,41
-lion,rating,rating4_45,62.903225806451616,78
-lion,rating,rating45above,1.6129032258064515,2
+lion,rating,rating3_35,2.586206896551724,3
+lion,rating,rating35_4,34.48275862068966,40
+lion,rating,rating4_45,61.206896551724135,71
+lion,rating,rating45above,1.7241379310344827,2
+lion crest,price,$10 below,3.061224489795918,3
+lion crest,price,$10–19,0,0
+lion crest,price,$20–29,17.346938775510203,17
+lion crest,price,$30–39,15.306122448979592,15
+lion crest,price,$40–49,6.122448979591836,6
+lion crest,price,$50–59,9.183673469387756,9
+lion crest,price,$60–69,7.142857142857142,7
+lion crest,price,$70–79,6.122448979591836,6
+lion crest,price,$80–89,5.1020408163265305,5
+lion crest,price,$90–99,3.061224489795918,3
+lion crest,price,$100+,17.346938775510203,17
+lion crest,rating,rating3below,0,0
+lion crest,rating,rating3_35,3.061224489795918,3
+lion crest,rating,rating35_4,32.6530612244898,32
+lion crest,rating,rating4_45,63.26530612244898,62
+lion crest,rating,rating45above,1.0204081632653061,1
 lynx,price,$10 below,0,0
 lynx,price,$10–19,0,0
 lynx,price,$20–29,33.33333333333333,1
@@ -111,19 +127,19 @@ tiger,rating,rating3_35,0,0
 tiger,rating,rating35_4,0,0
 tiger,rating,rating4_45,100,2
 tiger,rating,rating45above,0,0
-allCats,price,$10 below,3.3557046979865772,5
+allCats,price,$10 below,3.3472803347280333,8
 allCats,price,$10–19,0,0
-allCats,price,$20–29,20.80536912751678,31
-allCats,price,$30–39,14.093959731543624,21
-allCats,price,$40–49,6.0402684563758395,9
-allCats,price,$50–59,6.0402684563758395,9
-allCats,price,$60–69,6.7114093959731544,10
-allCats,price,$70–79,4.697986577181208,7
-allCats,price,$80–89,5.369127516778524,8
-allCats,price,$90–99,2.684563758389262,4
-allCats,price,$100+,16.10738255033557,24
+allCats,price,$20–29,19.246861924686193,46
+allCats,price,$30–39,14.644351464435147,35
+allCats,price,$40–49,5.857740585774058,14
+allCats,price,$50–59,7.531380753138076,18
+allCats,price,$60–69,7.112970711297072,17
+allCats,price,$70–79,5.439330543933055,13
+allCats,price,$80–89,5.02092050209205,12
+allCats,price,$90–99,2.928870292887029,7
+allCats,price,$100+,16.736401673640167,40
 allCats,rating,rating3below,0,0
-allCats,rating,rating3_35,6.7114093959731544,10
-allCats,rating,rating35_4,31.543624161073826,47
-allCats,rating,rating4_45,60.40268456375839,90
-allCats,rating,rating45above,1.342281879194631,2
+allCats,rating,rating3_35,5.439330543933055,13
+allCats,rating,rating35_4,32.63598326359833,78
+allCats,rating,rating4_45,60.66945606694561,145
+allCats,rating,rating45above,1.2552301255230125,3

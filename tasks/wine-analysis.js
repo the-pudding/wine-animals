@@ -11,7 +11,7 @@ const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat",
 ];
 
 const catData = data.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));
-const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lynx", "tiger"];
+const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"];
 
 const birdData = data.filter(d => d.topgroup.includes("bird"));
 const birds = ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]; 

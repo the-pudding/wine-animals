@@ -81,20 +81,20 @@ junglefowl,rating,rating4_45,35.294117647058826,12
 junglefowl,rating,rating45above,5.88235294117647,2
 owl,price,$10 below,0,0
 owl,price,$10–19,0,0
-owl,price,$20–29,29.629629629629626,16
-owl,price,$30–39,9.25925925925926,5
-owl,price,$40–49,9.25925925925926,5
+owl,price,$20–29,29.09090909090909,16
+owl,price,$30–39,9.090909090909092,5
+owl,price,$40–49,9.090909090909092,5
 owl,price,$50–59,0,0
-owl,price,$60–69,0,0
-owl,price,$70–79,1.8518518518518516,1
+owl,price,$60–69,1.8181818181818181,1
+owl,price,$70–79,1.8181818181818181,1
 owl,price,$80–89,0,0
 owl,price,$90–99,0,0
-owl,price,$100+,9.25925925925926,5
+owl,price,$100+,9.090909090909092,5
 owl,rating,rating3below,0,0
-owl,rating,rating3_35,3.7037037037037033,2
-owl,rating,rating35_4,62.96296296296296,34
-owl,rating,rating4_45,29.629629629629626,16
-owl,rating,rating45above,3.7037037037037033,2
+owl,rating,rating3_35,3.6363636363636362,2
+owl,rating,rating35_4,61.81818181818181,34
+owl,rating,rating4_45,30.909090909090907,17
+owl,rating,rating45above,3.6363636363636362,2
 peacock,price,$10 below,7.6923076923076925,1
 peacock,price,$10–19,0,0
 peacock,price,$20–29,23.076923076923077,3
@@ -175,19 +175,19 @@ wading bird,rating,rating3_35,9.090909090909092,2
 wading bird,rating,rating35_4,54.54545454545454,12
 wading bird,rating,rating4_45,36.36363636363637,8
 wading bird,rating,rating45above,0,0
-allBirds,price,$10 below,0.975609756097561,4
+allBirds,price,$10 below,0.9732360097323601,4
 allBirds,price,$10–19,0,0
-allBirds,price,$20–29,30.73170731707317,126
-allBirds,price,$30–39,11.219512195121952,46
-allBirds,price,$40–49,6.829268292682928,28
-allBirds,price,$50–59,3.414634146341464,14
-allBirds,price,$60–69,3.6585365853658534,15
-allBirds,price,$70–79,2.4390243902439024,10
-allBirds,price,$80–89,0.24390243902439024,1
-allBirds,price,$90–99,2.4390243902439024,10
-allBirds,price,$100+,6.585365853658537,27
+allBirds,price,$20–29,30.656934306569344,126
+allBirds,price,$30–39,11.19221411192214,46
+allBirds,price,$40–49,6.81265206812652,28
+allBirds,price,$50–59,3.40632603406326,14
+allBirds,price,$60–69,3.8929440389294405,16
+allBirds,price,$70–79,2.4330900243309004,10
+allBirds,price,$80–89,0.24330900243309003,1
+allBirds,price,$90–99,2.4330900243309004,10
+allBirds,price,$100+,6.569343065693431,27
 allBirds,rating,rating3below,0,0
-allBirds,rating,rating3_35,5.853658536585367,24
-allBirds,rating,rating35_4,56.34146341463414,231
-allBirds,rating,rating4_45,36.34146341463415,149
-allBirds,rating,rating45above,1.4634146341463417,6
+allBirds,rating,rating3_35,5.839416058394161,24
+allBirds,rating,rating35_4,56.20437956204379,231
+allBirds,rating,rating4_45,36.496350364963504,150
+allBirds,rating,rating45above,1.4598540145985401,6
