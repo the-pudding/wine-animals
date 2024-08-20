@@ -1,6 +1,6 @@
 animalGroup,category,bucket,percent,count
 cat,price,$10 below,9.090909090909092,1
-cat,price,$10–19,0,0
+cat,price,$10–19,9.090909090909092,1
 cat,price,$20–29,27.27272727272727,3
 cat,price,$30–39,18.181818181818183,2
 cat,price,$40–49,9.090909090909092,1
@@ -16,7 +16,7 @@ cat,rating,rating35_4,36.36363636363637,4
 cat,rating,rating4_45,45.45454545454545,5
 cat,rating,rating45above,0,0
 cheetah,price,$10 below,0,0
-cheetah,price,$10–19,0,0
+cheetah,price,$10–19,50,1
 cheetah,price,$20–29,0,0
 cheetah,price,$30–39,50,1
 cheetah,price,$40–49,0,0
@@ -48,7 +48,7 @@ cougar,rating,rating35_4,0,0
 cougar,rating,rating4_45,50,1
 cougar,rating,rating45above,0,0
 jaguar/leopard/panther,price,$10 below,20,1
-jaguar/leopard/panther,price,$10–19,0,0
+jaguar/leopard/panther,price,$10–19,40,2
 jaguar/leopard/panther,price,$20–29,40,2
 jaguar/leopard/panther,price,$30–39,0,0
 jaguar/leopard/panther,price,$40–49,0,0
@@ -64,7 +64,7 @@ jaguar/leopard/panther,rating,rating35_4,0,0
 jaguar/leopard/panther,rating,rating4_45,40,2
 jaguar/leopard/panther,rating,rating45above,0,0
 lion plain,price,$10 below,0,0
-lion plain,price,$10–19,0,0
+lion plain,price,$10–19,22.22222222222222,4
 lion plain,price,$20–29,27.77777777777778,5
 lion plain,price,$30–39,5.555555555555555,1
 lion plain,price,$40–49,5.555555555555555,1
@@ -80,7 +80,7 @@ lion plain,rating,rating35_4,44.44444444444444,8
 lion plain,rating,rating4_45,50,9
 lion plain,rating,rating45above,5.555555555555555,1
 lion crest,price,$10 below,3.061224489795918,3
-lion crest,price,$10–19,0,0
+lion crest,price,$10–19,10.204081632653061,10
 lion crest,price,$20–29,17.346938775510203,17
 lion crest,price,$30–39,15.306122448979592,15
 lion crest,price,$40–49,6.122448979591836,6
@@ -96,7 +96,7 @@ lion crest,rating,rating35_4,32.6530612244898,32
 lion crest,rating,rating4_45,63.26530612244898,62
 lion crest,rating,rating45above,1.0204081632653061,1
 lynx,price,$10 below,0,0
-lynx,price,$10–19,0,0
+lynx,price,$10–19,33.33333333333333,1
 lynx,price,$20–29,33.33333333333333,1
 lynx,price,$30–39,0,0
 lynx,price,$40–49,0,0
@@ -128,7 +128,7 @@ tiger,rating,rating35_4,0,0
 tiger,rating,rating4_45,100,2
 tiger,rating,rating45above,0,0
 allCats,price,$10 below,3.546099290780142,5
-allCats,price,$10–19,0,0
+allCats,price,$10–19,13.47517730496454,19
 allCats,price,$20–29,20.56737588652482,29
 allCats,price,$30–39,14.184397163120568,20
 allCats,price,$40–49,5.673758865248227,8

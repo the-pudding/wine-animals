@@ -1,6 +1,6 @@
 animalGroup,category,bucket,percent,count
 amphibian/reptile,price,$10 below,0,0
-amphibian/reptile,price,$10–19,0,0
+amphibian/reptile,price,$10–19,30.303030303030305,10
 amphibian/reptile,price,$20–29,15.151515151515152,5
 amphibian/reptile,price,$30–39,15.151515151515152,5
 amphibian/reptile,price,$40–49,9.090909090909092,3
@@ -32,7 +32,7 @@ bat,rating,rating35_4,83.33333333333334,5
 bat,rating,rating4_45,0,0
 bat,rating,rating45above,0,0
 bear,price,$10 below,0,0
-bear,price,$10–19,0,0
+bear,price,$10–19,29.166666666666668,7
 bear,price,$20–29,16.666666666666664,4
 bear,price,$30–39,20.833333333333336,5
 bear,price,$40–49,16.666666666666664,4
@@ -48,7 +48,7 @@ bear,rating,rating35_4,41.66666666666667,10
 bear,rating,rating4_45,50,12
 bear,rating,rating45above,4.166666666666666,1
 bird,price,$10 below,1.0869565217391304,4
-bird,price,$10–19,0,0
+bird,price,$10–19,30.434782608695656,112
 bird,price,$20–29,30.706521739130434,113
 bird,price,$30–39,12.5,46
 bird,price,$40–49,6.25,23
@@ -64,7 +64,7 @@ bird,rating,rating35_4,57.065217391304344,210
 bird,rating,rating4_45,36.141304347826086,133
 bird,rating,rating45above,1.0869565217391304,4
 camelus,price,$10 below,0,0
-camelus,price,$10–19,0,0
+camelus,price,$10–19,37.5,3
 camelus,price,$20–29,37.5,3
 camelus,price,$30–39,12.5,1
 camelus,price,$40–49,12.5,1
@@ -80,7 +80,7 @@ camelus,rating,rating35_4,87.5,7
 camelus,rating,rating4_45,12.5,1
 camelus,rating,rating45above,0,0
 cat,price,$10 below,3.508771929824561,6
-cat,price,$10–19,0,0
+cat,price,$10–19,15.789473684210526,27
 cat,price,$20–29,22.22222222222222,38
 cat,price,$30–39,12.865497076023392,22
 cat,price,$40–49,5.847953216374268,10
@@ -96,7 +96,7 @@ cat,rating,rating35_4,36.25730994152047,62
 cat,rating,rating4_45,54.385964912280706,93
 cat,rating,rating45above,2.3391812865497075,4
 cattle,price,$10 below,3.3333333333333335,1
-cattle,price,$10–19,0,0
+cattle,price,$10–19,26.666666666666668,8
 cattle,price,$20–29,30,9
 cattle,price,$30–39,6.666666666666667,2
 cattle,price,$40–49,6.666666666666667,2
@@ -112,7 +112,7 @@ cattle,rating,rating35_4,53.333333333333336,16
 cattle,rating,rating4_45,33.33333333333333,10
 cattle,rating,rating45above,6.666666666666667,2
 deer-like,price,$10 below,0,0
-deer-like,price,$10–19,0,0
+deer-like,price,$10–19,35.13513513513514,13
 deer-like,price,$20–29,16.216216216216218,6
 deer-like,price,$30–39,18.91891891891892,7
 deer-like,price,$40–49,5.405405405405405,2
@@ -128,7 +128,7 @@ deer-like,rating,rating35_4,54.054054054054056,20
 deer-like,rating,rating4_45,40.54054054054054,15
 deer-like,rating,rating45above,0,0
 dog,price,$10 below,1.2345679012345678,1
-dog,price,$10–19,0,0
+dog,price,$10–19,29.629629629629626,24
 dog,price,$20–29,27.160493827160494,22
 dog,price,$30–39,12.345679012345679,10
 dog,price,$40–49,3.7037037037037033,3
@@ -144,7 +144,7 @@ dog,rating,rating35_4,59.25925925925925,48
 dog,rating,rating4_45,34.5679012345679,28
 dog,rating,rating45above,1.2345679012345678,1
 elephant,price,$10 below,0,0
-elephant,price,$10–19,0,0
+elephant,price,$10–19,30.76923076923077,4
 elephant,price,$20–29,30.76923076923077,4
 elephant,price,$30–39,7.6923076923076925,1
 elephant,price,$40–49,7.6923076923076925,1
@@ -160,7 +160,7 @@ elephant,rating,rating35_4,53.84615384615385,7
 elephant,rating,rating4_45,23.076923076923077,3
 elephant,rating,rating45above,7.6923076923076925,1
 fish,price,$10 below,0,0
-fish,price,$10–19,0,0
+fish,price,$10–19,32.55813953488372,14
 fish,price,$20–29,46.51162790697674,20
 fish,price,$30–39,11.627906976744185,5
 fish,price,$40–49,4.651162790697675,2
@@ -175,24 +175,24 @@ fish,rating,rating3_35,2.3255813953488373,1
 fish,rating,rating35_4,79.06976744186046,34
 fish,rating,rating4_45,18.6046511627907,8
 fish,rating,rating45above,0,0
-hippopotamus,price,$10 below,0,0
-hippopotamus,price,$10–19,0,0
-hippopotamus,price,$20–29,0,0
-hippopotamus,price,$30–39,0,0
-hippopotamus,price,$40–49,0,0
-hippopotamus,price,$50–59,0,0
-hippopotamus,price,$60–69,0,0
-hippopotamus,price,$70–79,0,0
-hippopotamus,price,$80–89,0,0
-hippopotamus,price,$90–99,0,0
-hippopotamus,price,$100+,0,0
-hippopotamus,rating,rating3below,0,0
-hippopotamus,rating,rating3_35,33.33333333333333,1
-hippopotamus,rating,rating35_4,66.66666666666666,2
-hippopotamus,rating,rating4_45,0,0
-hippopotamus,rating,rating45above,0,0
+hippo,price,$10 below,0,0
+hippo,price,$10–19,100,3
+hippo,price,$20–29,0,0
+hippo,price,$30–39,0,0
+hippo,price,$40–49,0,0
+hippo,price,$50–59,0,0
+hippo,price,$60–69,0,0
+hippo,price,$70–79,0,0
+hippo,price,$80–89,0,0
+hippo,price,$90–99,0,0
+hippo,price,$100+,0,0
+hippo,rating,rating3below,0,0
+hippo,rating,rating3_35,33.33333333333333,1
+hippo,rating,rating35_4,66.66666666666666,2
+hippo,rating,rating4_45,0,0
+hippo,rating,rating45above,0,0
 horse,price,$10 below,3.10077519379845,4
-horse,price,$10–19,0,0
+horse,price,$10–19,39.53488372093023,51
 horse,price,$20–29,14.728682170542637,19
 horse,price,$30–39,9.30232558139535,12
 horse,price,$40–49,11.627906976744185,15
@@ -208,7 +208,7 @@ horse,rating,rating35_4,50.3875968992248,65
 horse,rating,rating4_45,38.759689922480625,50
 horse,rating,rating45above,0.7751937984496124,1
 human,price,$10 below,1.6666666666666667,14
-human,price,$10–19,0,0
+human,price,$10–19,27.857142857142858,234
 human,price,$20–29,26.904761904761905,226
 human,price,$30–39,13.571428571428571,114
 human,price,$40–49,7.857142857142857,66
@@ -224,7 +224,7 @@ human,rating,rating35_4,55.595238095238095,467
 human,rating,rating4_45,37.5,315
 human,rating,rating45above,1.0714285714285714,9
 insect,price,$10 below,1.2048192771084338,1
-insect,price,$10–19,0,0
+insect,price,$10–19,38.55421686746988,32
 insect,price,$20–29,30.120481927710845,25
 insect,price,$30–39,9.63855421686747,8
 insect,price,$40–49,4.819277108433735,4
@@ -240,7 +240,7 @@ insect,rating,rating35_4,55.42168674698795,46
 insect,rating,rating4_45,30.120481927710845,25
 insect,rating,rating45above,1.2048192771084338,1
 marine invertebrate,price,$10 below,3.7037037037037033,1
-marine invertebrate,price,$10–19,0,0
+marine invertebrate,price,$10–19,37.03703703703704,10
 marine invertebrate,price,$20–29,25.925925925925924,7
 marine invertebrate,price,$30–39,18.51851851851852,5
 marine invertebrate,price,$40–49,7.4074074074074066,2
@@ -272,7 +272,7 @@ marsupial,rating,rating35_4,0,0
 marsupial,rating,rating4_45,50,2
 marsupial,rating,rating45above,0,0
 monkey,price,$10 below,0,0
-monkey,price,$10–19,0,0
+monkey,price,$10–19,33.33333333333333,2
 monkey,price,$20–29,50,3
 monkey,price,$30–39,0,0
 monkey,price,$40–49,0,0
@@ -288,7 +288,7 @@ monkey,rating,rating35_4,83.33333333333334,5
 monkey,rating,rating4_45,16.666666666666664,1
 monkey,rating,rating45above,0,0
 mustelid-like,price,$10 below,0,0
-mustelid-like,price,$10–19,0,0
+mustelid-like,price,$10–19,33.33333333333333,7
 mustelid-like,price,$20–29,42.857142857142854,9
 mustelid-like,price,$30–39,9.523809523809524,2
 mustelid-like,price,$40–49,4.761904761904762,1
@@ -304,7 +304,7 @@ mustelid-like,rating,rating35_4,76.19047619047619,16
 mustelid-like,rating,rating4_45,19.047619047619047,4
 mustelid-like,rating,rating45above,0,0
 mythical,price,$10 below,0,0
-mythical,price,$10–19,0,0
+mythical,price,$10–19,19.791666666666664,19
 mythical,price,$20–29,27.083333333333332,26
 mythical,price,$30–39,12.5,12
 mythical,price,$40–49,7.291666666666667,7
@@ -320,7 +320,7 @@ mythical,rating,rating35_4,42.70833333333333,41
 mythical,rating,rating4_45,46.875,45
 mythical,rating,rating45above,4.166666666666666,4
 none,price,$10 below,1.4792899408284024,110
-none,price,$10–19,0,0
+none,price,$10–19,23.6013986013986,1755
 none,price,$20–29,24.85207100591716,1848
 none,price,$30–39,13.97256589564282,1039
 none,price,$40–49,8.405056481979559,625
@@ -336,7 +336,7 @@ none,rating,rating35_4,50.01344809037117,3719
 none,rating,rating4_45,43.66594943518021,3247
 none,rating,rating45above,1.5465303926842389,115
 rabbit,price,$10 below,0,0
-rabbit,price,$10–19,0,0
+rabbit,price,$10–19,23.809523809523807,5
 rabbit,price,$20–29,33.33333333333333,7
 rabbit,price,$30–39,19.047619047619047,4
 rabbit,price,$40–49,4.761904761904762,1
@@ -352,7 +352,7 @@ rabbit,rating,rating35_4,52.38095238095239,11
 rabbit,rating,rating4_45,47.61904761904761,10
 rabbit,rating,rating45above,0,0
 ram-like,price,$10 below,1.8181818181818181,1
-ram-like,price,$10–19,0,0
+ram-like,price,$10–19,43.63636363636363,24
 ram-like,price,$20–29,27.27272727272727,15
 ram-like,price,$30–39,12.727272727272727,7
 ram-like,price,$40–49,0,0
@@ -384,7 +384,7 @@ rhino,rating,rating35_4,80,4
 rhino,rating,rating4_45,20,1
 rhino,rating,rating45above,0,0
 rodent-like,price,$10 below,0,0
-rodent-like,price,$10–19,0,0
+rodent-like,price,$10–19,16.666666666666664,1
 rodent-like,price,$20–29,16.666666666666664,1
 rodent-like,price,$30–39,50,3
 rodent-like,price,$40–49,16.666666666666664,1
@@ -400,7 +400,7 @@ rodent-like,rating,rating35_4,66.66666666666666,4
 rodent-like,rating,rating4_45,33.33333333333333,2
 rodent-like,rating,rating45above,0,0
 suid,price,$10 below,0,0
-suid,price,$10–19,0,0
+suid,price,$10–19,32.142857142857146,9
 suid,price,$20–29,32.142857142857146,9
 suid,price,$30–39,21.428571428571427,6
 suid,price,$40–49,3.571428571428571,1
@@ -416,7 +416,7 @@ suid,rating,rating35_4,60.71428571428571,17
 suid,rating,rating4_45,32.142857142857146,9
 suid,rating,rating45above,0,0
 whale/shark/dolphin,price,$10 below,0,0
-whale/shark/dolphin,price,$10–19,0,0
+whale/shark/dolphin,price,$10–19,58.333333333333336,7
 whale/shark/dolphin,price,$20–29,33.33333333333333,4
 whale/shark/dolphin,price,$30–39,8.333333333333332,1
 whale/shark/dolphin,price,$40–49,0,0
@@ -432,7 +432,7 @@ whale/shark/dolphin,rating,rating35_4,75,9
 whale/shark/dolphin,rating,rating4_45,25,3
 whale/shark/dolphin,rating,rating45above,0,0
 all,price,$10 below,1.5230544544126852,146
-all,price,$10–19,0,0
+all,price,$10–19,24.83830586271646,2381
 all,price,$20–29,25.37033173377843,2432
 all,price,$30–39,13.759649488837889,1319
 all,price,$40–49,8.07427498435218,774

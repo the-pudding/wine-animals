@@ -5,7 +5,7 @@ const data = d3.csvParse(raw);
 const OUT_PATH = "./src/data/";
 
 const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle",
-   "deer-like", "dog", "elephant", "fish", "hippopotamus", "horse", "human", "insect",
+   "deer-like", "dog", "elephant", "fish", "hippo", "horse", "human", "insect",
    "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical", "none",
    "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"  
 ];
@@ -71,6 +71,10 @@ function summarizeWines(animalGroup, metric, data, i) {
     const rating35_4Percent = rating35_4.length/filteredWines.length*100;
     const rating4_45Percent = rating4_45.length/filteredWines.length*100;
     const rating45abovePercent = rating45above.length/filteredWines.length*100;
+
+    if (animalGroup.includes("hippo")) {
+        console.log(filteredWines)
+    }
 
     const toPush = {animalGroup, 
         count: filteredWines.length, 
