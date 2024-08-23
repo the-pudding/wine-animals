@@ -68,6 +68,8 @@
             <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper" class:highlight> 
                 <img class="wine-img" src="https://{wine.imageUrl}" />
                 <p>{wine.id}</p>
+                <p>${wine.price}</p>
+                <p>{wine.rating} stars</p>
             </div>
         {/each}
     {/key}
