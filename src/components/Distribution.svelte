@@ -32,11 +32,7 @@
         return totalCount
     }
 
-    const allWineData = $animalSelect == "cats"
-        ? findMatch("allCats", groupedData)
-        : $animalSelect == "birds"
-        ? findMatch("allBirds", groupedData)
-        : findMatch("all", groupedData)
+    const allWineData = findMatch("all", groupedData)
     const lineData = allWineData;
 
     const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};
