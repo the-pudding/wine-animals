@@ -431,6 +431,22 @@ whale/shark/dolphin,rating,rating3_35,0,0
 whale/shark/dolphin,rating,rating35_4,75,9
 whale/shark/dolphin,rating,rating4_45,25,3
 whale/shark/dolphin,rating,rating45above,0,0
+animal wine,price,$10 below,1.7571884984025559,33
+animal wine,price,$10–19,28.700745473908412,539
+animal wine,price,$20–29,26.89030883919063,505
+animal wine,price,$30–39,12.99254526091587,244
+animal wine,price,$40–49,7.0287539936102235,132
+animal wine,price,$50–59,4.739084132055378,89
+animal wine,price,$60–69,3.780617678381257,71
+animal wine,price,$70–79,2.183173588924388,41
+animal wine,price,$80–89,2.023429179978701,38
+animal wine,price,$90–99,1.9169329073482428,36
+animal wine,price,$100+,7.987220447284344,150
+animal wine,rating,rating3below,0.21299254526091588,4
+animal wine,rating,rating3_35,6.123535676251332,115
+animal wine,rating,rating35_4,54.47284345047924,1023
+animal wine,rating,rating4_45,37.96592119275825,713
+animal wine,rating,rating45above,1.2247071352502663,23
 all,price,$10 below,1.535323169422375,143
 all,price,$10–19,24.629589864719776,2294
 all,price,$20–29,25.26304487867726,2353

@@ -192,6 +192,24 @@ function addTotalCounts(fullData, metric) {
         let total4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5").length;
         let total45above = fullData.filter(d => d.ratingBucket == "4.6 & above").length;
 
+        let animalOnlyCount = fullData.filter(d => d.topgroup !== "none").length;
+        let animalOnlyprice10below = fullData.filter(d => d.priceBucketOurs == "<10" && d.topgroup !== "none").length;
+        let animalOnlyprice10_19 = fullData.filter(d => d.priceBucketOurs == "10–19.99" && d.topgroup !== "none").length;
+        let animalOnlyprice20_29 = fullData.filter(d => d.priceBucketOurs == "20–29.99" && d.topgroup !== "none").length;
+        let animalOnlyprice30_39 = fullData.filter(d => d.priceBucketOurs == "30–39.99" && d.topgroup !== "none").length;
+        let animalOnlyprice40_49 = fullData.filter(d => d.priceBucketOurs == "40–49.99" && d.topgroup !== "none").length;
+        let animalOnlyprice50_59 = fullData.filter(d => d.priceBucketOurs == "50–59.99" && d.topgroup !== "none").length;
+        let animalOnlyprice60_69 = fullData.filter(d => d.priceBucketOurs == "60–69.99" && d.topgroup !== "none").length;
+        let animalOnlyprice70_79 = fullData.filter(d => d.priceBucketOurs == "70–79.99" && d.topgroup !== "none").length;
+        let animalOnlyprice80_89 = fullData.filter(d => d.priceBucketOurs == "80–89.99" && d.topgroup !== "none").length;
+        let animalOnlyprice90_99 = fullData.filter(d => d.priceBucketOurs == "90–99.99" && d.topgroup !== "none").length;
+        let animalOnlyprice100above = fullData.filter(d => d.priceBucketOurs == "100+" && d.topgroup !== "none").length;
+        let animalOnly3below = fullData.filter(d => d.ratingBucket == "3 & less" && d.topgroup !== "none").length;
+        let animalOnly3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5" && d.topgroup !== "none").length;
+        let animalOnly35_4 = fullData.filter(d => d.ratingBucket == "3.6–4" && d.topgroup !== "none").length;
+        let animalOnly4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5" && d.topgroup !== "none").length;
+        let animalOnly45above = fullData.filter(d => d.ratingBucket == "4.6 & above" && d.topgroup !== "none").length;
+
         let allObject = {
             animalGroup: "all",
             count: totalCount,
@@ -231,9 +249,55 @@ function addTotalCounts(fullData, metric) {
             rating45abovePercent: total45above/totalCount*100
         }
 
-        if (metric == "cats") { catSummary.push(allObject); }
-        else if (metric == "birds") { birdSummary.push(allObject); }
-        else { summary.push(allObject);}
+        let animalOnlyObject = {
+            animalGroup: "animal wine",
+            count: animalOnlyCount,
+            price10belowCount: animalOnlyprice10below,
+            price10_19Count: animalOnlyprice10_19,
+            price20_29Count: animalOnlyprice20_29,
+            price30_39Count: animalOnlyprice30_39,
+            price40_49Count: animalOnlyprice40_49,
+            price50_59Count: animalOnlyprice50_59,
+            price60_69Count: animalOnlyprice60_69,
+            price70_79Count: animalOnlyprice70_79,
+            price80_89Count: animalOnlyprice80_89,
+            price90_99Count: animalOnlyprice90_99,
+            price100aboveCount: animalOnlyprice100above,
+
+            price10belowPercent: animalOnlyprice10below/animalOnlyCount*100,
+            price10_19Percent: animalOnlyprice10_19/animalOnlyCount*100,
+            price20_29Percent: animalOnlyprice20_29/animalOnlyCount*100,
+            price30_39Percent: animalOnlyprice30_39/animalOnlyCount*100,
+            price40_49Percent: animalOnlyprice40_49/animalOnlyCount*100,
+            price50_59Percent: animalOnlyprice50_59/animalOnlyCount*100,
+            price60_69Percent: animalOnlyprice60_69/animalOnlyCount*100,
+            price70_79Percent: animalOnlyprice70_79/animalOnlyCount*100,
+            price80_89Percent: animalOnlyprice80_89/animalOnlyCount*100,
+            price90_99Percent: animalOnlyprice90_99/animalOnlyCount*100,
+            price100abovePercent: animalOnlyprice100above/animalOnlyCount*100,
+        
+            rating3belowCount: animalOnly3below,
+            rating3_35Count: animalOnly3_35,
+            rating35_4Count: animalOnly35_4,
+            rating4_45Count: animalOnly4_45,
+            rating45aboveCount: animalOnly45above,
+            rating3belowPercent: animalOnly3below/animalOnlyCount*100,
+            rating3_35Percent: animalOnly3_35/animalOnlyCount*100,
+            rating35_4Percent: animalOnly35_4/animalOnlyCount*100,
+            rating4_45Percent: animalOnly4_45/animalOnlyCount*100,
+            rating45abovePercent: animalOnly45above/animalOnlyCount*100
+        }
+
+        if (metric == "cats") { 
+            catSummary.push(animalOnlyObject);
+            catSummary.push(allObject);
+        } else if (metric == "birds") { 
+            birdSummary.push(animalOnlyObject); 
+            birdSummary.push(allObject); 
+        }   else { 
+            summary.push(animalOnlyObject);
+            summary.push(allObject);
+        }
 }
 
 function init() {

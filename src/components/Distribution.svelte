@@ -33,6 +33,8 @@
     }
 
     const allWineData = findMatch("all", groupedData)
+    const onlyAnimalWineData = findMatch("animal wine", groupedData)
+    console.log(onlyAnimalWineData)
     const lineData = allWineData;
 
     const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};
@@ -104,6 +106,21 @@
                             </Svg>
                     </LayerCake>
                 </div>
+                <!-- <div class="chart-container" id="line" style="pointer-events:none">
+                    <LayerCake
+                        padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                        x={xKey}
+                        y={yKey}
+                        xScale={d3.scaleBand().paddingInner(0.02).round(true)}
+                        xDomain={xDomainLine}
+                        yDomain={[0, 100]}
+                        data={onlyAnimalWineData[1]}
+                        >
+                            <Svg>
+                                <Line />
+                            </Svg>
+                    </LayerCake>
+                </div> -->
             </div>
             <div class="axis-labels">
                 <p>Lower {$metricSelect}</p>
