@@ -5,7 +5,7 @@
 	import data from "$data/wineData.csv";
     import { select, csvFormat } from "d3";
     const animals = ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle", "deer-like",
-                        "dog", "elephant", "fish", "hippopotamus", "horse", "human", "insect", 
+                        "dog", "elephant", "fish", "hippo", "horse", "human", "insect", 
                         "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical",
                         "none", "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"
                     ]
