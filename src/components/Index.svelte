@@ -1,11 +1,10 @@
 <script>
 	import { getContext } from "svelte";
 	import { animalSelect, metricSelect } from "$stores/misc.js";
+	import PhotoTest from "$components/PhotoTest.svelte";
 	import Distribution from "$components/Distribution.svelte";
 	import Select from "$components/helpers/Select.svelte";
 
-	import priceDistributionData from "$data/priceDistribution.csv";
-	import ratingDistributionData from "$data/ratingDistribution.csv";
 	import wineData_summary from "$data/wineData_summary.csv";
 	import wineData_catSummary from "$data/wineData_catSummary.csv";
 	import wineData_birdSummary from "$data/wineData_birdSummary.csv";
@@ -51,7 +50,6 @@
 	$: console.log(dataSet)
 </script>
 
-<!-- <Distribution data={priceDistributionData} metric={"price"} /> -->
 <div class="selects">
 	<Select options={optionsAnimal} id={"id-animalSelect"}/>
 	<Select options={optionsMetric} id={"id-metricSelect"}/>
@@ -61,6 +59,8 @@
 		<Distribution data={dataSet} />
 	{/key}
 {/if}
+
+<PhotoTest />
 <!-- <WIP />
 <Demo /> -->
 <!-- <Footer /> -->

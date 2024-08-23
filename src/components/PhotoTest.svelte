@@ -1,64 +1,51 @@
 <script>
-    import {
-        falseWinesList,
-		wineSet
-	} from "$stores/misc.js";
+    import { photoSelect, favWinesList } from "$stores/misc.js";
     import { onMount } from "svelte";
     import Select from "$components/helpers/Select.svelte";
-	import data from "$data/1FINAL-wines-withGPTData.csv";
-    import falseWines from "$data/false-wines.csv";
+	import data from "$data/wineData.csv";
     import { select, csvFormat } from "d3";
-    const falseWineList = falseWines.map(item => item.id);
-    let animals = data.filter(d => d.gptAnimal !== "none" && d.gptAnimal !== "");
-    let lions = data.filter(d => d.finalAnimal.match(/lion/) || d.finalAnimal.match(/griffin/));
-    let birdList = ["Bird", "bird", "chick", "cock", "crane", "crow", "duck", "eagle", "European Bee-eater", "falcon", "flamingo", "geese", "goose",
-        "hawk", "heron", "kiwi", "loon", "ostrich", "owl", "parrot", "partridge", "peacock", "pelican", "penguin", "pheasant", "quail", 
-        "raven", "rooster", "sandpiper", "stork", "swallow", "swan", "turkey"];
-    let birds = data.filter(d => 
-        birdList.some(bird => d.finalAnimal.includes(bird))
-    );
-    console.log(birds.length)
-    animals = animals.filter(obj => falseWineList.includes(obj.id));
-    console.log(animals.length)
-    let noAnimals = data.filter(d => d.gptAnimal == "none");
-    noAnimals = noAnimals.filter(obj => falseWineList.includes(obj.id));
-    let options = ["animals/humans", "no animals"];
+    const animals = ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle", "deer-like",
+                        "dog", "elephant", "fish", "hippopotamus", "horse", "human", "insect", 
+                        "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical",
+                        "none", "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"
+                    ]
+    $: filteredData = $photoSelect !== "cat"
+        ? data.filter(d => d.topgroup.includes($photoSelect))
+        : data.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));
+
     let highlight = false;
     let csvElement;
-    $: disabled = $falseWinesList.length > 0 ? false : true;
+    $: disabled = $favWinesList.length > 0 ? false : true;
 
     onMount(() => {
         csvElement = document.createElement("a")
     })
 
     function logWine() {
-        let id = this.parentElement.id.split("-")[1];
-        let animalName = this.children[0].value;
-        this.parentElement.classList.toggle('highlight');
+        let id = this.id.split("-")[1];
+        this.classList.toggle('highlight');
 
-        if (this.parentElement.classList.contains("highlight")) {
-            falseWinesList.set([...$falseWinesList, { id, animalName }]);
+        if (this.classList.contains("highlight")) {
+            favWinesList.set([...$favWinesList, { id }]);
         } else {
-            const indexOfObject = $falseWinesList.findIndex(object => { return object.id == id })
-            $falseWinesList.splice(indexOfObject, 1);
-            falseWinesList.set($falseWinesList);
+            const indexOfObject = $favWinesList.findIndex(object => { return object.id == id })
+            $favWinesList.splice(indexOfObject, 1);
+            favWinesList.set($favWinesList);
         }
-        console.log($falseWinesList)
     }
 
     function saveWines() {
-        const data = $falseWinesList;
+        console.log("save");
+        const data = $favWinesList;
         if (data.length > 0) {
             const concatData = [].concat(...data).map(d => ({
-                id: d.id,
-                animalName: d.animalName
+                id: d.id
             }));
             const csv = csvFormat(concatData)
             const csvBlob = new Blob([csv]);
             const blobUrl = URL.createObjectURL(csvBlob);
-            let setType = $wineSet == "animals/humans" ? "animals-humans" : "no-animals";
             csvElement.href = blobUrl;
-            csvElement.download = `${setType}_false-wines.csv`;
+            csvElement.download = `fav-wines.csv`;
 
             csvElement.dispatchEvent(
                 new MouseEvent("click", {
@@ -69,53 +56,31 @@
             );
         } 
     }
-    $: console.log($falseWinesList);
 </script>
 
-<div class="wrapper">
-    <div class="controls">
-        <!-- <Select options={options}/> -->
+<section>
+    <div class="wrapper">
+        <Select options={animals} id={"id-photoSelect"}/>
         <button disabled='{disabled}' on:click={saveWines}>Save wines</button>
     </div>
-    <div class="stats">
-        <!-- {#if $wineSet == "animals/humans"} -->
-            <p><strong>Birds:</strong> {birds.length}</p>
-            <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
-            <p><strong>Flagged %:</strong> {($falseWinesList.length/birds.length*100).toFixed(2)}%</p>
-        <!-- {:else}
-            <p><strong>Non-animals:</strong> {noAnimals.length}</p>
-            <p><strong>Flagged:</strong> {$falseWinesList.length}</p>
-            <p><strong>Flagged %:</strong> {$falseWinesList.length}</p>
-        {/if} -->
-    </div>
-</div>
-<section>
-    <!-- {#if $wineSet == "animals/humans" || $wineSet == undefined } -->
-        {#each birds as wine,i}
-            <div id="wine-{wine.id}" class="wine-wrapper"> 
-                <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
+    {#key filteredData}
+        {#each filteredData as wine,i}
+            <div on:click={logWine} id="wine-{wine.id}" class="wine-wrapper" class:highlight> 
+                <img class="wine-img" src="https://{wine.imageUrl}" />
                 <p>{wine.id}</p>
-                <form on:submit|preventDefault={logWine}>
-                    <input value="{wine.finalAnimal}" />
-                </form>
             </div>
         {/each}
-    <!-- {:else}
-        {#each noAnimals as wine,i}
-            <div id="wine-{wine.id}" class="wine-wrapper"> 
-                <img class:highlight class="wine-img" src="assets/images/img_{wine.id}.png" />
-                <p>{wine.id}</p><form on:submit|preventDefault={logWine}>
-                    <input value="{wine.gptAnimal}" />
-                </form>
-            </div>
-        {/each}
-    {/if} -->
+    {/key}
 </section>
 
 <style>
+    section {
+        border-top: 1px solid black;
+        margin: 4rem 0 0 0;
+    }
     .wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         justify-content: center;
         align-items: center;

@@ -1,5 +1,5 @@
 <script>
-	import {animalSelect, metricSelect, falseWinesList} from "$stores/misc.js";
+	import {animalSelect, metricSelect, photoSelect} from "$stores/misc.js";
 	export let options = [];
 	export let label = "";
 	export let disabled = false;
@@ -11,6 +11,8 @@
 			metricSelect.set(value)
 		} else if (id == "id-animalSelect" && value !== undefined) {
 			animalSelect.set(value)
+		} else if (id === "id-photoSelect" && value !== undefined) {
+			photoSelect.set(value)
 		}
 	}
 	// $: metricSelect.set(value)
