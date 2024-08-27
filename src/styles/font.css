@@ -35,3 +35,12 @@
 	font-stretch: normal;
 	font-display: swap;
 }
+
+@font-face {
+	font-family: "Manuka";
+	src: url("https://pudding.cool/assets/fonts/manuka/Manuka-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+}

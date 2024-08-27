@@ -1,5 +1,5 @@
 <script>
-	import wordmark from "$svg/wordmark.svg";
+	import wordmark from "$svg/wordmark-blackletter.svg";
 </script>
 
 <header>
@@ -27,7 +27,11 @@
 		background-color: transparent;
 	}
 
+	:global(.wordmark svg) {
+		width: 100%;
+	}
+
 	:global(.wordmark svg path) {
-		fill: currentColor;
+		fill: var(--wine-tan);
 	}
 </style>
