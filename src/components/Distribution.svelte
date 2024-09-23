@@ -12,8 +12,6 @@
 
     export let data;
 
-    $: console.log({data})
-
     data.forEach(d => {
         d[yKey] = +d[yKey];
         d[yKey] = +d[yKey];
@@ -34,7 +32,6 @@
 
     const allWineData = findMatch("all", groupedData)
     const onlyAnimalWineData = findMatch("animal wine", groupedData)
-    console.log(onlyAnimalWineData)
     const lineData = allWineData;
 
     const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};

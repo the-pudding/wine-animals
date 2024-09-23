@@ -54,10 +54,11 @@
 		stroke: var(--color-gray-300);
 	}
 	.tick .gridline {
-		stroke-dasharray: 4px 4px;
+		stroke-dasharray: 2px 2px;
 	}
 
 	.tick text {
 		fill: var(--color-gray-600);
+		font-family: var(--sans);
 	}
 </style>
