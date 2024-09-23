@@ -11,8 +11,6 @@
 
 	const priceAVG = d3.mean($data[0], d => d.price);
 	const ratingAVG = d3.mean($data[0], d => d.rating);
-
-	console.log({priceAVG})
 </script>
 
 <g>

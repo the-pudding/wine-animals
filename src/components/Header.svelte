@@ -32,6 +32,7 @@
 	}
 
 	:global(.wordmark svg path) {
-		fill: var(--wine-tan);
+		fill: black;
+		/* fill: var(--wine-tan); */
 	}
 </style>

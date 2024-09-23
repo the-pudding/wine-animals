@@ -42,7 +42,18 @@
 		}
 	}
 
-	$: dataSet = setData($animalSelect, $metricSelect)
+	function setScatterData($animalSelect) {
+		if ($animalSelect == "birds") {
+			return allWineData.filter(d => d.topgroup.includes("bird"))
+		} else if ($animalSelect == "cats") {
+			return allWineData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));
+		} else {
+			return allWineData
+		}
+	}
+
+	$: dataSet = setData($animalSelect, $metricSelect);
+	$: scatterDataSet = setScatterData($animalSelect);
 
 	// $: dataSet = $animalSelect == "all"
 	// 	? wineData_summary 
@@ -50,16 +61,15 @@
 	// 	? wineData_catSummary
 	// 	: wineData_birdSummary;
 </script>
-
-{#if dataSet.length > 0}
-	{#key dataSet}
-		<Scatter data={allWineData} />
-	{/key}
-{/if}
 <div class="selects">
 	<Select options={optionsAnimal} id={"id-animalSelect"}/>
 	<Select options={optionsMetric} id={"id-metricSelect"}/>
 </div>
+{#if dataSet.length > 0}
+	{#key dataSet}
+		<Scatter data={scatterDataSet} />
+	{/key}
+{/if}
 {#if dataSet.length > 0}
 	{#key dataSet}
 		<Distribution data={dataSet} />
@@ -67,7 +77,7 @@
 {/if}
 
 <PhotoTest />
-<WIP />
+<!-- <WIP /> -->
 <!-- <Demo /> -->
 <!-- <Footer /> -->
 <!-- <Intro /> -->
@@ -78,5 +88,11 @@
 		flex-direction: row;
 		justify-content: center;
 		margin: 0 0 2rem 0;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		padding: 1rem;
+		background-color: white;
+		z-index: 1000;
 	}
 </style>

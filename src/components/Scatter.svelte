@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { LayerCake, Svg, Html } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
+    import { animalSelect } from "$stores/misc.js";
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
@@ -12,17 +13,26 @@
 
     export let data;
 
-    const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle",
-        "deer-like", "dog", "elephant", "fish", "hippo", "horse", "human", "insect",
-        "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical", "none",
-        "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"  
-    ];
+    let topgroups = $animalSelect == "birds" 
+        ? ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]
+        : $animalSelect == "cats"
+        ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion plain", "lion crest", "lynx", "tiger"]
+        :   ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle",
+            "deer-like", "dog", "elephant", "fish", "hippo", "horse", "human", "insect",
+            "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical", "none",
+            "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"  
+            ];
 
     function filterData(animal) {
-        let filteredData = animal !== "cat"
-            ? data.filter(d => d.topgroup.includes(animal))
-            : data.filter(d => d.topgroup.includes(animal) && !d.topgroup.includes("cattle"));
 
+        let filteredData;
+        if ($animalSelect == "birds") {
+           filteredData = data.filter(d => d.subgroup.includes(animal))
+        } else if ($animalSelect == "cats") {
+            filteredData = data.filter(d => d.finalAnimal.includes(animal))
+        } else {
+            filteredData = data.filter(d => d.topgroup.includes(animal))
+        }
         return filteredData;
     }
 
@@ -112,6 +122,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
         margin-bottom: 5rem;
     }
 
