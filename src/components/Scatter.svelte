@@ -27,11 +27,11 @@
 
         let filteredData;
         if ($animalSelect == "birds") {
-           filteredData = data.filter(d => d.subgroup.includes(animal))
+           filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 150)
         } else if ($animalSelect == "cats") {
-            filteredData = data.filter(d => d.finalAnimal.includes(animal))
+            filteredData = data.filter(d => d.finalAnimal.includes(animal) && d.price <= 150)
         } else {
-            filteredData = data.filter(d => d.topgroup.includes(animal))
+            filteredData = data.filter(d => d.topgroup.includes(animal) && d.price <= 150)
         }
         return filteredData;
     }
@@ -59,13 +59,18 @@
     const xDomain = tweened(undefined, tweenOptions);
 	const yDomain = tweened(undefined, tweenOptions);
 
-    yDomain.set([0,500]);
+    yDomain.set([0,150]);
     xDomain.set([2,5]);
 
     // Regression Line
-    const regression = d3Regression.regressionLinear()
-        .x(d => xKeyReg(d)) // Define the x accessor
-        .y(d => yKeyReg(d)); // Define the y accessor
+
+    // const regression = d3Regression.regressionExp()
+    //     .x(d => xKeyReg(d)) // Define the x accessor
+    //     .y(d => yKeyReg(d)); // Define the y accessor
+
+    const regression = d3Regression.regressionExp()
+        .x(d => d.x)  // Accessor for x value
+        .y(d => d.y); // Accessor for y value
 
     function calcSlope(data) {
         let deltaX = data[1].x - data[0].x;
@@ -79,7 +84,11 @@
 <section id="scatter">
         {#each topgroups as animal, i}
             {@const animalData = filterData(animal)}
-            {@const trendLine = regression(animalData)}
+            {@const points = animalData.map(d => ({
+                x: +d.rating,  // Convert price to a number
+                y: +d.price  // Convert rating to a number
+            }))}
+            {@const trendLine = regression(points)}
             {@const trendLineData = [
                 { x: trendLine[0][0], y: trendLine[0][1] },
                 { x: trendLine[1][0], y: trendLine[1][1] }
@@ -96,7 +105,7 @@
                             y={yKey}
                             xPadding={[padding, padding]}
                             yPadding={[padding, padding]}
-                            data={[animalData, trendLineData]}
+                            data={[animalData, trendLine]}
                             xDomain={$xDomain}
                             yDomain={$yDomain}
                         >
