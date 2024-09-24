@@ -63,21 +63,19 @@
     xDomain.set([2,5]);
 
     // Regression Line
-
-    // const regression = d3Regression.regressionExp()
-    //     .x(d => xKeyReg(d)) // Define the x accessor
-    //     .y(d => yKeyReg(d)); // Define the y accessor
-
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
 
-    function calcSlope(data) {
-        let deltaX = data[1].x - data[0].x;
-        let deltaY = data[1].y - data[0].y;
-        let slope = deltaY / deltaX;
-
-        return slope
+    function calcSteepness(data, animal) {
+        let sumSlopes = 0;
+        data.forEach(point => {
+            const [x, y] = point;
+            const slope = data.a * data.b * Math.exp(data.b * x);
+            sumSlopes += slope;
+        });
+        const averageSteepness = sumSlopes / data.length;
+        return averageSteepness;
     }
 </script>
 
@@ -89,15 +87,11 @@
                 y: +d.price  // Convert rating to a number
             }))}
             {@const trendLine = regression(points)}
-            {@const trendLineData = [
-                { x: trendLine[0][0], y: trendLine[0][1] },
-                { x: trendLine[1][0], y: trendLine[1][1] }
-              ]}
-            {@const slope = calcSlope(trendLineData)}
+            {@const steepness = calcSteepness(trendLine, animal)}
             <div class="chart-wrapper">
                 <h3>{animal}</h3>
                 <p class="tot-count">{animalData.length} wines</p>
-                <p class="tot-count">{Math.round(slope)} slope</p>
+                <p class="tot-count">{Math.round(steepness)} avg. steepness</p>
                 <div class="chart-container" id="scatterplot" style="pointer-events:none">
                         <LayerCake
                             padding={{ top: 10, right: 5, bottom: 20, left: 5 }}

@@ -21,11 +21,6 @@
 			.y(d => $yScale(d[1]))
 			(regressionLine);
 	});
-	
-
-	console.log($xScale.domain(), $yScale.domain())
-	console.log($xScale.range(), $yScale.range())
-	// console.log($xScale(regressionLine[0][0]), $yScale(regressionLine[0][1]));
 </script>
 
 <g>
