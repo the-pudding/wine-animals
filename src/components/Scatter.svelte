@@ -17,11 +17,11 @@
         ? ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]
         : $animalSelect == "cats"
         ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion plain", "lion crest", "lynx", "tiger"]
-        :   ["amphibian/reptile", "bat", "bear", "bird", "camelus", "cat", "cattle",
-            "deer-like", "dog", "elephant", "fish", "hippo", "horse", "human", "insect",
-            "marine invertebrate", "marsupial", "monkey", "mustelid-like", "mythical", "none",
-            "rabbit", "ram-like", "rhino", "rodent-like", "suid", "whale/shark/dolphin"  
-            ];
+        : ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
+                "deer-like", "dog", "fish-like", "horse", "human", "insect",
+                "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+                "rabbit", "ram-like", "suid"
+                ];
 
     function filterData(animal) {
 
@@ -88,10 +88,14 @@
             }))}
             {@const trendLine = regression(points)}
             {@const steepness = calcSteepness(trendLine, animal)}
+            {@const avgPrice = d3.mean(animalData, d => d.price)}
+            {@const avgRating = d3.mean(animalData, d => d.rating)}
+            {@const lowPriceGoodRating = animalData.filter(d => d.price < avgPrice && d.rating > avgRating).length}
             <div class="chart-wrapper">
                 <h3>{animal}</h3>
                 <p class="tot-count">{animalData.length} wines</p>
                 <p class="tot-count">{Math.round(steepness)} avg. steepness</p>
+                <p class="tot-count">{Math.round(lowPriceGoodRating/animalData.length*100)}% ({lowPriceGoodRating}/{animalData.length})</p>
                 <div class="chart-container" id="scatterplot" style="pointer-events:none">
                         <LayerCake
                             padding={{ top: 10, right: 5, bottom: 20, left: 5 }}

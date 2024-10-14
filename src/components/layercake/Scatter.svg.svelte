@@ -13,6 +13,7 @@
 
 	const priceAVG = d3.mean($data[0], d => d.price);
 	const ratingAVG = d3.mean($data[0], d => d.rating);
+
 	let path;
 
 	onMount(async () => {
@@ -21,8 +22,21 @@
 			.y(d => $yScale(d[1]))
 			(regressionLine);
 	});
+
+	console.log($data[0])
 </script>
 
+<g class="rect">
+	<rect
+		class="highlight-quadrant"
+		x={$xScale(d3.mean($data[0], d => d.rating))}
+		y={$yScale(d3.mean($data[0], d => d.price))}
+		width={250 - $xScale(d3.mean($data[0], d => d.rating))}
+		height={220 - $yScale(d3.mean($data[0], d => d.price))}
+		fill="#dfdfdf"
+		opacity="0.7"
+	/>
+</g>
 <g>
 	{#each $data[0] as d}
 		{@const cx = $xGet(d)}

@@ -64,21 +64,21 @@ jaguar/leopard/panther,rating,rating35_4,0,0
 jaguar/leopard/panther,rating,rating4_45,40,2
 jaguar/leopard/panther,rating,rating45above,0,0
 lion plain,price,$10 below,0,0
-lion plain,price,$10–19,22.22222222222222,4
-lion plain,price,$20–29,27.77777777777778,5
-lion plain,price,$30–39,5.555555555555555,1
-lion plain,price,$40–49,5.555555555555555,1
+lion plain,price,$10–19,17.647058823529413,3
+lion plain,price,$20–29,29.411764705882355,5
+lion plain,price,$30–39,5.88235294117647,1
+lion plain,price,$40–49,5.88235294117647,1
 lion plain,price,$50–59,0,0
-lion plain,price,$60–69,11.11111111111111,2
-lion plain,price,$70–79,5.555555555555555,1
-lion plain,price,$80–89,5.555555555555555,1
+lion plain,price,$60–69,11.76470588235294,2
+lion plain,price,$70–79,5.88235294117647,1
+lion plain,price,$80–89,5.88235294117647,1
 lion plain,price,$90–99,0,0
-lion plain,price,$100+,16.666666666666664,3
+lion plain,price,$100+,17.647058823529413,3
 lion plain,rating,rating3below,0,0
 lion plain,rating,rating3_35,0,0
-lion plain,rating,rating35_4,44.44444444444444,8
-lion plain,rating,rating4_45,50,9
-lion plain,rating,rating45above,5.555555555555555,1
+lion plain,rating,rating35_4,41.17647058823529,7
+lion plain,rating,rating4_45,52.94117647058824,9
+lion plain,rating,rating45above,5.88235294117647,1
 lion crest,price,$10 below,3.061224489795918,3
 lion crest,price,$10–19,10.204081632653061,10
 lion crest,price,$20–29,17.346938775510203,17
