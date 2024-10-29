@@ -22,8 +22,6 @@
 			.y(d => $yScale(d[1]))
 			(regressionLine);
 	});
-
-	console.log($data[0])
 </script>
 
 <g class="rect">
@@ -47,7 +45,6 @@
 <g class="lines">
 	<line class="priceAVG" x1={0} y1={$yScale(d3.mean($data[0], d => d.price))} x2={250} y2={$yScale(d3.mean($data[0], d => d.price))} />
 	<line class="ratingAVG" x1={$xScale(d3.mean($data[0], d => d.rating))} y1={0} x2={$xScale(d3.mean($data[0], d => d.rating))} y2={220} />
-	<line class="regression" x1={$xScale($data[1][0].x)} y1={$yScale($data[1][0].y)} x2={$xScale($data[1][1].x)} y2={$yScale($data[1][1].y)} />
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}

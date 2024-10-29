@@ -1,5 +1,5 @@
 <script>
-	import {animalSelect, metricSelect, photoSelect} from "$stores/misc.js";
+	import {animalSelect, metricSelect, photoSelect, topgroupSelect } from "$stores/misc.js";
 	export let options = [];
 	export let label = "";
 	export let disabled = false;
@@ -13,6 +13,8 @@
 			animalSelect.set(value)
 		} else if (id === "id-photoSelect" && value !== undefined) {
 			photoSelect.set(value)
+		} else if (id === "id-topgroupSelect" && value !== undefined) {
+			topgroupSelect.set(value)
 		}
 	}
 	// $: metricSelect.set(value)

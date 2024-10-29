@@ -1,10 +1,11 @@
 <script>
 	import { getContext } from "svelte";
-	import { animalSelect, metricSelect } from "$stores/misc.js";
+	import { animalSelect, metricSelect, topgroupSelect } from "$stores/misc.js";
 	import Intro from "$components/Intro.svelte";
 	import PhotoTest from "$components/PhotoTest.svelte";
 	import Distribution from "$components/Distribution.svelte";
 	import Scatter from "$components/Scatter.svelte";
+	import ScatterTop from "$components/ScatterTop.svelte";
 	import Select from "$components/helpers/Select.svelte";
 
 	import allWineData from "$data/wineData.csv"
@@ -19,6 +20,11 @@
 
 	let optionsMetric = ["price", "rating"];
 	let optionsAnimal = ["all", "cats", "birds"];
+	const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
+		"deer-like", "dog", "fish-like", "horse", "insect",
+		"marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "pachyderm",
+		"rabbit", "ram-like", "suid"
+	];
 
 	function setData($animalSelect, $metricSelect) {
 		if ($animalSelect == "birds") {
@@ -52,15 +58,35 @@
 		}
 	}
 
+	function setTopData($topgroupSelect) {
+		return allWineData.filter(d => d.topgroup.includes($topgroupSelect) && d.price <= 150)
+	}
+
+	function setTopCompareData(topData) {
+		const num = topData.length;
+		const filtered = allWineData.filter(d => 
+			!d.topgroup.includes($topgroupSelect) && 
+			d.topgroup !== "none" && 
+			d.topgroup !== "human" && 
+			d.price <= 150
+		);
+		const shuffled = [...filtered].sort(() => 0.5 - Math.random());
+		return shuffled.slice(0,num);
+	}
+
+	$: topData = setTopData($topgroupSelect);
+	$: topCompareData = setTopCompareData(topData);
 	$: dataSet = setData($animalSelect, $metricSelect);
 	$: scatterDataSet = setScatterData($animalSelect);
-
-	// $: dataSet = $animalSelect == "all"
-	// 	? wineData_summary 
-	// 	: $animalSelect == "cats"
-	// 	? wineData_catSummary
-	// 	: wineData_birdSummary;
 </script>
+<div class="scatter-test">
+	<div class="selects">
+		<Select options={topgroups} id={"id-topgroupSelect"}/>
+	</div>
+	{#key topData}
+		<ScatterTop data={topData} />
+	{/key}
+</div>
 <div class="selects">
 	<Select options={optionsAnimal} id={"id-animalSelect"}/>
 	<Select options={optionsMetric} id={"id-metricSelect"}/>
