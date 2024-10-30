@@ -84,16 +84,16 @@
         return randomData
     }
 
-    let steepnessValues = [];
-    let lowPriceGoodRatingValues = [];
+    let randomAvgSlope;
+	let randomCount;
 </script>
 
 <section id="scatter">
-    <div class="chart-wrapper">
+    <div class="chart-wrapper chart-top">
         <h3>{$topgroupSelect}</h3>
         <p class="tot-count">{data.length} wines</p>
         <p class="tot-count">{Math.round(steepness)} avg. steepness</p>
-        <p class="tot-count">{Math.round(lowPriceGoodRating/data.length*100)}% ({lowPriceGoodRating}/{data.length})</p>
+        <p class="tot-count" id="random-steepness-text"> avg. randomg steepness</p>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
                 <LayerCake
                     padding={{ top: 10, right: 5, bottom: 20, left: 5 }}
@@ -102,61 +102,22 @@
                     xPadding={[padding, padding]}
                     yPadding={[padding, padding]}
                     data={[data, trendLine]}
-                    xDomain={$xDomain}
-                    yDomain={$yDomain}
+                    xDomain={[2,5]}
+                    yDomain={[0,150]}
                 >
                     <Svg>
                         <AxisX 
                             gridlines={true} 
+                            ticks={5}
                         />
                         <AxisY 
                             gridlines={true} 
-                            ticks={5} />
-                        <ScatterSvg {r} fill={color} />
+                            ticks={4} />
+                        <ScatterSvg {r} fill={color} addRandom={true} />
                     </Svg>
                 </LayerCake>
         </div>
     </div>
-    {#each generations as generation, i}
-        {@const randomWines = generateRandomComparison(allWineData)}
-        {@const points = randomWines.map(d => ({
-            x: +d.rating,  // Convert price to a number
-            y: +d.price  // Convert rating to a number
-        }))}
-        {@const trendLine = regression(points)}
-        {@const steepness = calcSteepness(trendLine)}
-        {@const avgPrice = d3.mean(randomWines, d => d.price)}
-        {@const avgRating = d3.mean(randomWines, d => d.rating)}
-        {@const lowPriceGoodRating = randomWines.filter(d => d.price < avgPrice && d.rating > avgRating).length}
-    <div class="chart-wrapper">
-        <h3>random generation {i+1}</h3>
-        <p class="tot-count">{randomWines.length} wines</p>
-        <p class="tot-count" style="opacity:0">{Math.round(steepness)} avg. steepness</p>
-        <p class="tot-count" style="opacity:0">{Math.round(lowPriceGoodRating/randomWines.length*100)}% ({lowPriceGoodRating}/{randomWines.length})</p>
-        <div class="chart-container" id="scatterplot" style="pointer-events:none">
-                <LayerCake
-                    padding={{ top: 10, right: 5, bottom: 20, left: 5 }}
-                    x={xKey}
-                    y={yKey}
-                    xPadding={[padding, padding]}
-                    yPadding={[padding, padding]}
-                    data={[randomWines, trendLine]}
-                    xDomain={$xDomain}
-                    yDomain={$yDomain}
-                >
-                    <Svg>
-                        <AxisX 
-                            gridlines={true} 
-                        />
-                        <AxisY 
-                            gridlines={true} 
-                            ticks={5} />
-                        <ScatterSvg {r} fill={color} />
-                    </Svg>
-                </LayerCake>
-        </div>
-    </div>
-    {/each}
 </section>
 
 <style>
@@ -183,6 +144,9 @@
         position: relative;
         margin: 2rem;
     }
+    .chart-top {
+        max-width: 500px;
+    }
     h3 {
         font-family: var(--sans);
         font-size: var(--14px);
@@ -203,5 +167,9 @@
         width: 100%;
         height: 250px;
         overflow: hidden;
+    }
+
+    .chart-top .chart-container {
+        height: 480px;
     }
 </style>

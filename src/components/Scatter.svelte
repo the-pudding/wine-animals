@@ -3,6 +3,7 @@
     import { LayerCake, Svg, Html } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
     import { animalSelect } from "$stores/misc.js";
+    import allWineData from "$data/wineData.csv"
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
@@ -88,8 +89,8 @@
             }))}
             {@const trendLine = regression(points)}
             {@const steepness = calcSteepness(trendLine, animal)}
-            {@const avgPrice = d3.mean(animalData, d => d.price)}
-            {@const avgRating = d3.mean(animalData, d => d.rating)}
+            {@const avgPrice = d3.mean(allWineData, d => d.price)}
+            {@const avgRating = d3.mean(allWineData, d => d.rating)}
             {@const lowPriceGoodRating = animalData.filter(d => d.price < avgPrice && d.rating > avgRating).length}
             <div class="chart-wrapper">
                 <h3>{animal}</h3>
@@ -104,12 +105,13 @@
                             xPadding={[padding, padding]}
                             yPadding={[padding, padding]}
                             data={[animalData, trendLine]}
-                            xDomain={$xDomain}
-                            yDomain={$yDomain}
+                            xDomain={[2,5]}
+                            yDomain={[0,150]}
                         >
                             <Svg>
                                 <AxisX 
                                     gridlines={true} 
+                                    ticks={5}
                                 />
                                 <AxisY 
                                     gridlines={true} 
