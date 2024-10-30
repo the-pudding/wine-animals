@@ -102,7 +102,7 @@
                     xPadding={[padding, padding]}
                     yPadding={[padding, padding]}
                     data={[data, trendLine]}
-                    xDomain={[2,5]}
+                    xDomain={[2,6]}
                     yDomain={[0,150]}
                 >
                     <Svg>

@@ -5,7 +5,7 @@
 	import { topgroupSelect } from "$stores/misc.js";
 	import allWineData from "$data/wineData.csv"
 
-	const { data, xGet, yGet, xScale, yScale, width, height, padding } = getContext("LayerCake");
+	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
 	export let r = 4;
 	export let fill = "#ccc";
@@ -17,6 +17,8 @@
 
 	const priceAVG = d3.mean($data[0], d => d.price);
 	const ratingAVG = d3.mean($data[0], d => d.rating);
+
+	$: console.log($width, $height)
 
 	let path;
 	let mounted = false;
@@ -84,6 +86,10 @@
 			randomSteepnessNode.text(`${Math.round(randomAvgSlope)} avg. random steepness`);
         }
     }
+
+	function logData(d) {
+		console.log(d)
+	}
 </script>
 
 <g class="rect">
@@ -92,17 +98,25 @@
 		x={$xScale(d3.mean(allWineData, d => d.rating))}
 		y={$yScale(d3.mean(allWineData, d => d.price))}
 		width={250 - $xScale(d3.mean(allWineData, d => d.rating))}
-		height={220 - $yScale(d3.mean(allWineData, d => d.price))}
+		height={210 - $yScale(d3.mean(allWineData, d => d.price))}
 		fill="#dfdfdf"
 		opacity="0.7"
 	/>
 </g>
 <g>
-	{#each $data[0] as d}
-		{@const cx = $xGet(d)}
-		{@const cy = $yGet(d)}
-		<circle {cx} {cy} {r} {fill} {stroke} stroke-width={strokeWidth} />
-	{/each}
+	{#each $data[0] as d, i}
+        {@const cx = $xGet(d)}
+        {@const cy = $yGet(d)}
+        <circle 
+            on:mouseover={() => logData(d)} 
+            cx={cx} 
+            cy={cy} 
+            r={r} 
+            fill={fill} 
+            stroke={stroke} 
+            stroke-width={strokeWidth} 
+        />
+    {/each}
 </g>
 {#if addRandom == true}
 	{#each generations as generation, i}
@@ -137,6 +151,7 @@
 		opacity: 0.75;
 		stroke-width: 1;
 		stroke: white;
+		pointer-events: auto;
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
