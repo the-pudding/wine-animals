@@ -18,8 +18,6 @@
 	const priceAVG = d3.mean($data[0], d => d.price);
 	const ratingAVG = d3.mean($data[0], d => d.rating);
 
-	$: console.log($width, $height)
-
 	let path;
 	let mounted = false;
 	let randomCountNode;
@@ -32,8 +30,6 @@
 			(regressionLine);
 
 		mounted = true;
-
-		console.log($xScale.domain(), $xScale.range())
 	});
 
 	const maxLength = 99;
@@ -88,10 +84,6 @@
 			randomSteepnessNode.text(`${Math.round(randomAvgSlope)} avg. random steepness`);
         }
     }
-
-	function logData(d) {
-		console.log(d)
-	}
 </script>
 
 <g class="rect">
@@ -110,7 +102,6 @@
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
         <circle 
-            on:mouseover={() => logData(d)} 
             cx={cx} 
             cy={cy} 
             r={r} 
