@@ -42,10 +42,10 @@
 	{#each tickVals as tick, i}
 		<g
 			class="tick tick-{i}"
-			transform="translate({tickCheck(tick, i, $width)},{$yRange[0]})"
+			transform="translate({$xScale(tick)},{$yRange[0]})"
 		>
 			{#if gridlines !== false}
-				<line class="gridline" y1="{$height * -1}" y2="0" x1="0" x2="0" />
+				<line class="gridline" y1={$height * -1} y2="0" x1="0" x2="0" />
 			{/if}
 			{#if tickMarks === true}
 				<line class="tick-mark" y1={0} y2={6} x1={0} x2={0} />

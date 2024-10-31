@@ -93,12 +93,10 @@
                 <p class="tot-count">{Math.round(lowPriceGoodRating/animalData.length*100)}% ({lowPriceGoodRating}/{animalData.length})</p>
                 <div class="chart-container" id="scatterplot" style="pointer-events:none">
                         <LayerCake
-                            padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
+                            padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
                             x={xKey}
                             y={yKey}
                             data={[animalData, trendLine]}
-                            xPadding={[padding, padding]}
-                            yPadding={[padding, padding]}
                             xDomain={[2, 5]}
                             yDomain={[0, 150]}
                         >
@@ -158,5 +156,6 @@
         width: 100%;
         height: 250px;
         overflow: hidden;
+        padding-right: 3px;
     }
 </style>

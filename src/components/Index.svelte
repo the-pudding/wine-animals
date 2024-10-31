@@ -79,14 +79,14 @@
 	$: dataSet = setData($animalSelect, $metricSelect);
 	$: scatterDataSet = setScatterData($animalSelect);
 </script>
-<!-- <div class="scatter-test">
+<div class="scatter-test">
 	<div class="selects">
 		<Select options={topgroups} id={"id-topgroupSelect"}/>
 	</div>
 	{#key topData}
 		<ScatterTop data={topData} />
 	{/key}
-</div> -->
+</div>
 <div class="selects">
 	<Select options={optionsAnimal} id={"id-animalSelect"}/>
 	<Select options={optionsMetric} id={"id-metricSelect"}/>

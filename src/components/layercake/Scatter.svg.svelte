@@ -32,6 +32,8 @@
 			(regressionLine);
 
 		mounted = true;
+
+		console.log($xScale.domain(), $xScale.range())
 	});
 
 	const maxLength = 99;
@@ -97,7 +99,7 @@
 		class="highlight-quadrant"
 		x={$xScale(d3.mean(allWineData, d => d.rating))}
 		y={$yScale(d3.mean(allWineData, d => d.price))}
-		width={250 - $xScale(d3.mean(allWineData, d => d.rating))}
+		width={250 - 23 - $xScale(d3.mean(allWineData, d => d.rating))}
 		height={210 - $yScale(d3.mean(allWineData, d => d.price))}
 		fill="#dfdfdf"
 		opacity="0.7"

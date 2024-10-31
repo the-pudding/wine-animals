@@ -37,12 +37,6 @@
 		easing: eases.cubicInOut
 	};
 
-    const xDomain = tweened(undefined, tweenOptions);
-	const yDomain = tweened(undefined, tweenOptions);
-
-    yDomain.set([0,150]);
-    xDomain.set([2,5]);
-
     // Regression Line
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
@@ -96,13 +90,11 @@
         <p class="tot-count" id="random-steepness-text"> avg. randomg steepness</p>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
                 <LayerCake
-                    padding={{ top: 10, right: 5, bottom: 20, left: 5 }}
+                    padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
                     x={xKey}
                     y={yKey}
-                    xPadding={[padding, padding]}
-                    yPadding={[padding, padding]}
                     data={[data, trendLine]}
-                    xDomain={[2,6]}
+                    xDomain={[2,5]}
                     yDomain={[0,150]}
                 >
                     <Svg>
@@ -171,5 +163,6 @@
 
     .chart-top .chart-container {
         height: 480px;
+        padding-right: 3px;
     }
 </style>
