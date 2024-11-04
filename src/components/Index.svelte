@@ -29,19 +29,19 @@
 	function setData($animalSelect, $metricSelect) {
 		if ($animalSelect == "birds") {
 			if ($metricSelect == "price") { 
-				return wineData_birdSummary.filter((d) => d.category == "price");
+				return wineData_birdSummary.filter((d) => d.category == "price" && d.bucket !== "$100+");
 			} else if ($metricSelect == "rating") {
 				return wineData_birdSummary.filter((d) => d.category == "rating");
 			}
 		} else if ($animalSelect == "cats") {
 			if ($metricSelect == "price") { 
-				return wineData_catSummary.filter((d) => d.category == "price");
+				return wineData_catSummary.filter((d) => d.category == "price" && d.bucket !== "$100+");
 			} else if ($metricSelect == "rating") {
 				return wineData_catSummary.filter((d) => d.category == "rating");
 			}
 		} else {
 			if ($metricSelect == "price") { 
-				return wineData_summary.filter((d) => d.category == "price");
+				return wineData_summary.filter((d) => d.category == "price" && d.bucket !== "$100+");
 			} else if ($metricSelect == "rating") {
 				return wineData_summary.filter((d) => d.category == "rating");
 			}

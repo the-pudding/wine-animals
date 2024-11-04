@@ -70,7 +70,7 @@
 			!d.topgroup.includes($topgroupSelect) && 
 			d.topgroup !== "none" && 
 			d.topgroup !== "human" && 
-			d.price <= 150
+			d.price <= 100
 		);
         let shuffled = [...filteredData].sort(() => 0.5 - Math.random());
         let randomData = shuffled.slice(0,data.length);
@@ -95,7 +95,7 @@
                     y={yKey}
                     data={[data, trendLine]}
                     xDomain={[2,5]}
-                    yDomain={[0,150]}
+                    yDomain={[0,100]}
                 >
                     <Svg>
                         <AxisX 

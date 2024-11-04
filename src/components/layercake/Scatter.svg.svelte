@@ -3,7 +3,7 @@
 	import * as d3 from "d3";
 	import * as d3Regression from 'd3-regression';
 	import { topgroupSelect } from "$stores/misc.js";
-	import allWineData from "$data/wineData.csv"
+	import rawData from "$data/wineData.csv"
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
@@ -12,6 +12,8 @@
 	export let stroke = "#000";
 	export let strokeWidth = 0;
 	export let addRandom = false;
+
+	const allWineData = rawData.filter(d => d.price <= 100);
 
 	const regressionLine = $data[1];
 

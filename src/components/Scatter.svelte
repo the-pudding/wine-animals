@@ -28,11 +28,11 @@
 
         let filteredData;
         if ($animalSelect == "birds") {
-           filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 150)
+           filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 100)
         } else if ($animalSelect == "cats") {
-            filteredData = data.filter(d => d.finalAnimal.includes(animal) && d.price <= 150)
+            filteredData = data.filter(d => d.finalAnimal.includes(animal) && d.price <= 100)
         } else {
-            filteredData = data.filter(d => d.topgroup.includes(animal) && d.price <= 150)
+            filteredData = data.filter(d => d.topgroup.includes(animal) && d.price <= 100)
         }
         return filteredData;
     }
@@ -98,7 +98,7 @@
                             y={yKey}
                             data={[animalData, trendLine]}
                             xDomain={[2, 5]}
-                            yDomain={[0, 150]}
+                            yDomain={[0, 100]}
                         >
                             <Svg>
                                 <AxisX 
