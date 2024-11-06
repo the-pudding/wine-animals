@@ -79,7 +79,7 @@
 	$: dataSet = setData($animalSelect, $metricSelect);
 	$: scatterDataSet = setScatterData($animalSelect);
 </script>
-<div class="scatter-test">
+<!-- <div class="scatter-test">
 	<div class="selects">
 		<Select options={topgroups} id={"id-topgroupSelect"}/>
 	</div>
@@ -100,13 +100,13 @@
 	{#key dataSet}
 		<Distribution data={dataSet} />
 	{/key}
-{/if}
+{/if} -->
 
-<PhotoTest />
+<!-- <PhotoTest /> -->
 <!-- <WIP /> -->
 <!-- <Demo /> -->
 <!-- <Footer /> -->
-<!-- <Intro /> -->
+<Intro />
 
 <style>
 	.selects {

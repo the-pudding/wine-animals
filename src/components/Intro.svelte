@@ -3,6 +3,7 @@
     import { fit, parent_style } from "@leveluptuts/svelte-fit";
     import { fly } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
+    import SpinningBottle from "$components/SpinningBottle.svelte";
 
     const copy = getContext("copy");
     let textFade = false;
@@ -16,7 +17,8 @@
 </script>
 
 <section id='intro'>
-    <div class="bg-text-container">
+    <SpinningBottle />
+    <!-- <div class="bg-text-container">
         <div class="bg-text" style={parent_style}>
             <h1 use:fit={{min_size: 12, max_size:400 }}>Wine Animals</h1>
         </div>
@@ -32,7 +34,7 @@
                 >{text.value}</p>
             {/if}
         {/each}
-    </div>
+    </div> -->
 </section>
 
 <style>
