@@ -81,6 +81,7 @@
         width: 100%;
         position: absolute;
         z-index: 999;
+        pointer-events: none;
     }
 
     .text-container p {
@@ -88,6 +89,7 @@
         max-width: 300px;
         position: absolute;
         color: var(--wine-tan);
+        pointer-events: auto;
     }
 
     .text-container p:first-of-type {
