@@ -22,7 +22,8 @@ html {
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: var(--wine-black);
+  color: var(--wine-tan);
 }
 
 /**

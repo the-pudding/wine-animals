@@ -17,15 +17,13 @@
 </script>
 
 <section id='intro'>
-    <SpinningBottle />
-    <!-- <div class="bg-text-container">
+    
+    <div class="bg-text-container">
         <div class="bg-text" style={parent_style}>
             <h1 use:fit={{min_size: 12, max_size:400 }}>Wine Animals</h1>
         </div>
     </div>
-    <div class="wine-bottle-container">
-        <img src="./assets/images/bottles/wine-opener-1.png" />
-    </div>
+    <SpinningBottle />
     <div class="text-container">
         {#each copy.intro as text, i}
             {#if textFade}
@@ -34,7 +32,7 @@
                 >{text.value}</p>
             {/if}
         {/each}
-    </div> -->
+    </div>
 </section>
 
 <style>
@@ -89,6 +87,7 @@
         font-size: var(--20px);
         max-width: 300px;
         position: absolute;
+        color: var(--wine-tan);
     }
 
     .text-container p:first-of-type {
