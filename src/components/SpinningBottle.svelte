@@ -1,10 +1,16 @@
 <script>
+    import Range from "$components/helpers/Range.svelte";
     let leftPos = "-50%";
     let shouldSpin = true;
     let wineWidth;
 
+    export let bottlePos;
+    export let scrollIndex;
+
     setTimeout(() => {
-        leftPos = "50%"
+        leftPos = bottlePos == "center" ? "50%" :
+                bottlePos == "left" ? "25%" :
+                "75%"
     },200)
 
     function handleTransitionEnd() {
@@ -15,8 +21,6 @@
         let container = e.currentTarget;
         let mouseX = e.offsetX;
         wineWidth = container.offsetWidth;
-
-        console.log(mouseX)
 
         if (mouseX < wineWidth / 5) {
             container.style.backgroundPosition = "200% 0"; // First section
@@ -39,7 +43,13 @@
 
 <div class="banner">
     <div class="product" style="left: {leftPos}" on:transitionend={handleTransitionEnd}>
-        <div class="wine" class:spin={shouldSpin} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
+        {#if scrollIndex >= 2}
+            <div class="range-wrapper">
+                <Range />
+            </div>
+        {/if}
+        <!-- <div class="wine" class:spin={shouldSpin} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div> -->
+        <div class="wine" class:spin={shouldSpin}></div>
     </div>
 </div>
 
@@ -47,9 +57,20 @@
 <style>
     .banner {
         width: 100%;
-        height: 90vh;
+        height: 80svh;
         overflow: hidden;
         position: absolute;
+        top: 0;
+    }
+    .range-wrapper {
+        position: absolute;
+        left: -1rem;
+        top: 2rem;
+        height: 92%;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: end;
     }
     .banner .product {
         height: 100%;
@@ -68,10 +89,6 @@
         height: 100%;
         aspect-ratio: 1/3.5;
         cursor: pointer;
-    }
-
-    .banner .product .wine:hover {
-        background-position: -14% 0;
     }
 
     /* Define spin class for animation */
