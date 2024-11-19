@@ -7,6 +7,7 @@
 	import Scatter from "$components/Scatter.svelte";
 	import ScatterTop from "$components/ScatterTop.svelte";
 	import Select from "$components/helpers/Select.svelte";
+	import Explore from "$components/Explore.svelte";
 
 	import allWineData from "$data/wineData.csv"
 	import wineData_summary from "$data/wineData_summary.csv";
@@ -106,7 +107,8 @@
 <!-- <WIP /> -->
 <!-- <Demo /> -->
 <!-- <Footer /> -->
-<Intro />
+<!-- <Intro /> -->
+<Explore />
 
 <style>
 	.selects {

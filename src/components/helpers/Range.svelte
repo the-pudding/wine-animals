@@ -17,11 +17,11 @@
 </script>
 
 <div class="range">
-	<!-- <div class="ticks">
+	<div class="ticks">
 		{#each ticks as tick}
 			<span class="tick">{format(`.${decimals}f`)(tick)}</span>
 		{/each}
-	</div> -->
+	</div>
 	<input type="range" aria-label={label} {min} {max} {step} bind:value />
 </div>
 
@@ -30,16 +30,12 @@
 		--thumb-width: 24px;
 		--tick-font-size: 12px;
 		position: relative;
-		height: 100%;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+		margin-bottom: calc(var(--thumb-width) * 2);
 	}
 
 	input[type="range"] {
 		display: block;
-		height: 100%;
-		width: 8px;
+		width: 100%;
 		appearance: none;
 		cursor: pointer;
 		padding: 0;
@@ -47,9 +43,6 @@
 		background: transparent;
 		position: relative;
 		outline: none;
-		writing-mode: vertical-lr;
-		direction: rtl;
-    	vertical-align: bottom;
 	}
 
 	input[type="range"]:focus {
@@ -75,7 +68,7 @@
 		border-radius: 50%;
 		background: var(--color-gray-900);
 		appearance: none;
-		margin-left: calc(var(--thumb-width) / -3);
+		margin-top: calc(var(--thumb-width) / -3);
 	}
 
 	input[type="range"]:focus::-webkit-slider-runnable-track {
@@ -127,29 +120,28 @@
 	}
 
 	.ticks {
-		height: 100%;
+		width: 100%;
 		display: flex;
-		flex-direction: column;
 		justify-content: space-between;
-		padding: calc(var(--thumb-width) / 2) 0;
+		padding: 0 calc(var(--thumb-width) / 2);
 		margin: 0;
 		user-select: none;
 		position: absolute;
-		top: 0;
-		right: calc(var(--thumb-width) * -1);
-		transform: translateX(100%);
+		left: 0;
+		bottom: 0;
+		transform: translate(0, 100%);
 	}
 
 	.tick {
 		display: flex;
-		align-items: center;
+		justify-content: center;
 		font-size: var(--tick-font-size);
 		line-height: 1;
 		text-align: center;
-		height: 1px;
+		width: 1px;
 		background: transparent;
 		color: var(--color-gray);
-		padding-left: calc(var(--thumb-width) / 2);
+		padding-top: calc(var(--thumb-width) / 2);
 		position: relative;
 	}
 
@@ -157,10 +149,10 @@
 		display: block;
 		content: "";
 		position: absolute;
-		left: 0;
 		top: 0;
-		width: calc(var(--thumb-width) / 3);
-		height: 100%;
+		left: 0;
+		width: 100%;
+		height: calc(var(--thumb-width) / 3);
 		background: var(--color-gray-300);
 	}
 

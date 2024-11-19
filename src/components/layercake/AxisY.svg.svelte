@@ -51,14 +51,15 @@
 	}
 
 	.tick line {
-		stroke: var(--color-gray-300);
+		stroke: var(--wine-med-gray);
 	}
 	.tick .gridline {
 		stroke-dasharray: 2px 2px;
 	}
 
 	.tick text {
-		fill: var(--color-gray-600);
+		fill: var(--wine-tan);
 		font-family: var(--sans);
+		font-size: 14px;
 	}
 </style>

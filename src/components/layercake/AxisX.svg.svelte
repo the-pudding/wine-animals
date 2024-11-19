@@ -74,13 +74,14 @@
 
 	line,
 	.tick line {
-		stroke: var(--color-gray-300);
+		stroke: var(--wine-med-gray);
 		stroke-dasharray: 2px 2px;
 	}
 
 	.tick text {
-		fill: var(--color-gray-600);
+		fill: var(--wine-tan);
 		font-family: var(--sans);
+		font-size: 14px;
 	}
 
 	.tick .tick-mark,
@@ -88,11 +89,11 @@
 		stroke-dasharray: 0;
 	}
 
-	/* This looks slightly better */
-	.axis.snapTicks .tick:last-child text {
-		transform: translateX(3px);
+	.x-axis .tick.tick-0 text {
+		transform: translateX(4px);
 	}
-	.axis.snapTicks .tick.tick-0 text {
-		transform: translateX(-3px);
+
+	.x-axis .tick:last-child text {
+		transform: translateX(-4px);
 	}
 </style>

@@ -51,6 +51,8 @@
 		"fs": "^0.0.1-security",
 		"image-download": "^2.1.0",
 		"image-downloader": "^4.3.0",
-		"openai": "^4.28.4"
+		"openai": "^4.28.4",
+		"svelte-multiselect": "^11.0.0-rc.1",
+		"yootils": "^0.3.1"
 	}
 }
