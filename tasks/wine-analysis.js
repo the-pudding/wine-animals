@@ -4,8 +4,8 @@ const raw = fs.readFileSync("./src/data/wineData.csv", "utf8");
 const data = d3.csvParse(raw);
 const OUT_PATH = "./src/data/";
 
-const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
-   "deer-like", "dog", "fish-like", "horse", "human", "insect",
+const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+   "deer-like", "fish-like", "horse", "human", "insect",
    "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
    "rabbit", "ram-like", "suid"
 ];

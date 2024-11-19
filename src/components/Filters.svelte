@@ -8,11 +8,11 @@
 
     const filteredRawData = rawData.filter(d => d.price <= 100);
 
-    const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
-		"deer-like", "dog", "fish-like", "horse", "insect",
-		"marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "pachyderm",
-		"rabbit", "ram-like", "suid"
-	];
+    const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+        "deer-like", "fish-like", "horse", "human", "insect",
+        "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+        "rabbit", "ram-like", "suid"
+    ];
     const wineType = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
     const wineCountry = ["Argentina", "Australia", "Austria", "Brazil", "Chile", "China", "France", "Georgia", "Germany",
         "Hungary", "Italy", "Moldova", "New Zealand", "North Macedonia", "Peru", "Portugal", "Romania", "South Africa",
