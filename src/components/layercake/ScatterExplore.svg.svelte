@@ -4,12 +4,12 @@
 	import * as d3Regression from 'd3-regression';
 	import { topgroupSelect } from "$stores/misc.js";
 	import rawData from "$data/wineData.csv";
-    import { bigScatterData } from "$stores/misc.js";
+	import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-    const filteredRawData = rawData.filter(d => d.price <= 100);
+	const filteredRawData = rawData.filter(d => d.price <= 100);
 
 	export let r = 4;
 	export let fill = "#ccc";
@@ -44,6 +44,15 @@
 	function generateRandomDataForGenerations(data, targetLength, generations) {
 		return generations.map(() => generateRandomSubset(data, targetLength));
 	}
+
+	$: baseFilters = $selectedPriceRangeSTORE[0] == 3
+		&& $selectedPriceRangeSTORE[1] == 100
+		&& $selectedRatingRangeSTORE[0] == 2.5
+		&& $selectedRatingRangeSTORE[1] == 5
+		&& $selectedYearRangeSTORE[0] == 1850
+		&& $selectedYearRangeSTORE[1] == 2023;
+
+	$: console.log(addRandom, baseFilters, )
 </script>
 
 <g class="rect">
@@ -75,7 +84,7 @@
         />
     {/each}
 </g>
-{#if addRandom == true && $bigScatterData.length < 8472}
+{#if addRandom && baseFilters && $bigScatterData.length < 8472 && $bigScatterData.length >= 10}
 	{#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert rating to a number
@@ -86,18 +95,20 @@
 			.x(d => $xScale(d[0]))
 			.y(d => $yScale(d[1]))
 			(trendLine)}
-		<g class="lines">
+		<g class="random-lines">
 			{#if pathLocal}
 				<path class="expRegression fade" d={pathLocal} />
 			{/if}
 		</g>
 	{/each}
 {/if}
-<g class="lines">
-	{#if path}
-		<path class="expRegression" d={path} />
-	{/if}
-</g>
+{#if baseFilters && $bigScatterData.length < 8472 && $bigScatterData.length >= 10}
+	<g class="lines">
+		{#if path}
+			<path class="expRegression" d={path} />
+		{/if}
+	</g>
+{/if}
 
 <style>
 	circle {
