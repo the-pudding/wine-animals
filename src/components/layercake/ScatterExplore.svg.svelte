@@ -32,7 +32,9 @@
         .y(d => d.y); // Accessor for y value
 
 	// Generate random subsets from rawData with length matching $bigScatterData
-	$: randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $bigScatterData.length, generations);
+	$: randomDataForGenerations = filteredRawData !== 0 
+		? generateRandomDataForGenerations(filteredRawData, $bigScatterData.length, generations)
+		: undefined;
 
 	function generateRandomSubset(data, targetLength) {
 		// Shuffle rawData and select a subset with the same length as $bigScatterData
@@ -51,8 +53,6 @@
 		&& $selectedRatingRangeSTORE[1] == 5
 		&& $selectedYearRangeSTORE[0] == 1850
 		&& $selectedYearRangeSTORE[1] == 2023;
-
-	$: console.log(addRandom, baseFilters, )
 </script>
 
 <g class="rect">
@@ -102,7 +102,7 @@
 		</g>
 	{/each}
 {/if}
-{#if baseFilters && $bigScatterData.length < 8472 && $bigScatterData.length >= 10}
+{#if baseFilters && $bigScatterData.length >= 10}
 	<g class="lines">
 		{#if path}
 			<path class="expRegression" d={path} />
