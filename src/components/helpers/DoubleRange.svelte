@@ -11,10 +11,32 @@
 	let rightHandle;
 	let body;
 	let slider;
+	let animationFrame;
 
 	// Calculate normalized values for rendering
 	$: normalizedStart = (start - min) / (max - min);
 	$: normalizedEnd = (end - min) / (max - min);
+
+
+	// Throttle changes
+	function debounce(callback, delay) {
+		let timeout;
+		return (...args) => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => callback(...args), delay);
+		};
+	}
+
+	function throttle(callback, limit) {
+		let waiting = false;
+		return (...args) => {
+			if (!waiting) {
+				callback(...args);
+				waiting = true;
+				setTimeout(() => (waiting = false), limit);
+			}
+		};
+	}
 
 	// Function to denormalize the values back to actual range
 	function denormalize(value) {
@@ -40,6 +62,7 @@
         `${roundToNearestHalf(end)}` :
         `${Math.round(end)}` );
 
+	// Make range draggable
 	function draggable(node) {
 		let x, y;
 
@@ -104,20 +127,18 @@
 			const parentWidth = right - left;
 			const p = Math.min(Math.max((evt.detail.x - left) / parentWidth, 0), 1);
 
-			if (which === 'start') {
-				start = denormalize(p);
-				end = Math.max(end, start);
-			} else {
-				start = Math.min(start, denormalize(p));
-				end = denormalize(p);
-			}
-			if (valType == "price") {
-				selectedPriceRangeSTORE.set([start,end])
-			} else if (valType == "rating") {
-				selectedRatingRangeSTORE.set([start,end])
-			} else {
-				selectedYearRangeSTORE.set([start,end])
-			}
+			cancelAnimationFrame(animationFrame);
+			animationFrame = requestAnimationFrame(() => {
+				if (which === 'start') {
+					start = denormalize(p);
+					end = Math.max(end, start);
+				} else {
+					start = Math.min(start, denormalize(p));
+					end = denormalize(p);
+				}
+			});
+
+			updateStores(start, end, valType);
 		};
 	}
 
@@ -132,7 +153,19 @@
 		const pEnd = pxEnd / parentWidth;
 		start = denormalize(pStart);
 		end = denormalize(pEnd);
+
+		updateStores(start, end, valType);
 	}
+
+	const updateStores = debounce((start, end, valType) => {
+		if (valType == "price") {
+			selectedPriceRangeSTORE.set([start, end]);
+		} else if (valType == "rating") {
+			selectedRatingRangeSTORE.set([start, end]);
+		} else {
+			selectedYearRangeSTORE.set([start, end]);
+		}
+	}, 50);
 </script>
 
 <div class="double-range-container">
@@ -142,26 +175,24 @@
 			bind:this={body}
 			use:draggable
 			on:dragmove|preventDefault|stopPropagation="{setHandlesFromBody}"
-			style="left: {100 * normalizedStart}%; right: {100 * (1 - normalizedEnd)};"
+			style="left: {100 * normalizedStart}%; right: {100 * (1 - normalizedEnd)}%;"
 		></div>
-
 		<div
 			class="handle"
 			bind:this={leftHandle}
 			data-which="start"
 			data-content="0"
 			use:draggable
-			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('start')}"
+			on:dragmove|preventDefault|stopPropagation="{throttle(setHandlePosition('start'))}"
 			style="left: {100 * normalizedStart}%;"
 		></div>
-
 		<div
 			class="handle"
 			bind:this={rightHandle}
 			data-which="end"
 			data-content="100"
 			use:draggable
-			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('end')}"
+			on:dragmove|preventDefault|stopPropagation="{throttle(setHandlePosition('end'))}"
 			style="left: {100 * normalizedEnd}%;"
 		></div>
 	</div>
@@ -196,6 +227,7 @@
 		background-color: #fdfdfd;
 		border: 1px solid #7b7b7b;
         border-radius: 50%;
+		transition: left 0.1s linear;
 	}
     .handle[data-which="start"] {
         left: -16px;

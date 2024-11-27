@@ -1,21 +1,20 @@
 <script>
     import MultiSelect from 'svelte-multiselect';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import filterScatterData from "$utils/filterScatterData.js";
     import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
     import rawData from "$data/wineData.csv"
     import * as d3 from 'd3';
 
-    const filteredRawData = rawData.filter(d => d.price <= 100);
+    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
 
     const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
         "deer-like", "fish-like", "horse", "human", "insect",
-        "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+        "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "pachyderm",
         "rabbit", "ram-like", "suid"
     ];
     const wineType = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
-    const wineCountry = ["Argentina", "Australia", "Austria", "Brazil", "Chile", "China", "France", "Georgia", "Germany",
-        "Hungary", "Italy", "Moldova", "New Zealand", "North Macedonia", "Peru", "Portugal", "Romania", "South Africa",
+    const wineCountry = ["Argentina", "Australia", "Austria", "Chile", "France", "Georgia", "Germany",
+        "Hungary", "Italy", "New Zealand", "North Macedonia", "Portugal", "Romania", "South Africa",
         "Spain", "Switzerland", "United States", "Uruguay"
     ];
 
@@ -33,40 +32,47 @@
         }
     }
 
-    function updateScatterData(selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE) {
-        let filteredData = filteredRawData; // Start with the entire dataset
+    function updateScatterData(
+        selectedAnimalSTORE,
+        selectedTypeSTORE,
+        selectedCountrySTORE,
+        selectedPriceRangeSTORE,
+        selectedRatingRangeSTORE,
+        selectedYearRangeSTORE
+    ) {
+        const hasAnimalFilter = selectedAnimalSTORE.length > 0;
+        const hasTypeFilter = selectedTypeSTORE.length > 0;
+        const hasCountryFilter = selectedCountrySTORE.length > 0;
+        const hasPriceRangeFilter = selectedPriceRangeSTORE.length === 2;
+        const hasRatingRangeFilter = selectedRatingRangeSTORE.length === 2;
+        const hasYearRangeFilter = selectedYearRangeSTORE.length === 2;
 
-        // Filter by animal if selectedAnimalSTORE is not empty
-        if (selectedAnimalSTORE.length > 0) {
-            filteredData = filteredData.filter(d => selectedAnimalSTORE.includes(d.topgroup));
-        }
-
-        // Filter by type if selectedTypeSTORE is not empty
-        if (selectedTypeSTORE.length > 0) {
-            filteredData = filteredData.filter(d => selectedTypeSTORE.includes(d.type));
-        }
-
-        // Filter by country if selectedCountrySTORE is not empty
-        if (selectedCountrySTORE.length > 0) {
-            filteredData = filteredData.filter(d => selectedCountrySTORE.includes(d.country));
-        }
-
-        // Filter by price if selectedPriceRangeSTORE
-        if (selectedPriceRangeSTORE.length == 2) {
-            filteredData = filteredData.filter(d => d.price >= selectedPriceRangeSTORE[0] && d.price <= selectedPriceRangeSTORE[1]);
-        }
-
-        // Filter by price if selectedRatingRangeSTORE is not empty
-        if (selectedRatingRangeSTORE.length == 2) {
-            filteredData = filteredData.filter(d => d.rating >= selectedRatingRangeSTORE[0] && d.rating <= selectedRatingRangeSTORE[1]);
-        }
-        // Filter by price if selectedYearRangeSTORE is not empty
-        if (selectedYearRangeSTORE.length == 2) {
-            filteredData = filteredData.filter(d => d.year == "" || d.year >= selectedYearRangeSTORE[0] && d.year <= selectedYearRangeSTORE[1]);
-        }
+        const filteredData = filteredRawData.filter(d => {
+            if (hasAnimalFilter) {
+                const topGroups = d.topgroup.split(",").map(group => group.trim());
+                if (!topGroups.some(group => selectedAnimalSTORE.includes(group))) {
+                    return false;
+                }
+            }
+            if (hasTypeFilter && !selectedTypeSTORE.includes(d.type)) {
+                return false;
+            }
+            if (hasCountryFilter && !selectedCountrySTORE.includes(d.country)) {
+                return false;
+            }
+            if (hasPriceRangeFilter && (d.price < selectedPriceRangeSTORE[0] || d.price > selectedPriceRangeSTORE[1])) {
+                return false;
+            }
+            if (hasRatingRangeFilter && (d.rating < selectedRatingRangeSTORE[0] || d.rating > selectedRatingRangeSTORE[1])) {
+                return false;
+            }
+            if (hasYearRangeFilter && d.year !== "" && (d.year < selectedYearRangeSTORE[0] || d.year > selectedYearRangeSTORE[1])) {
+                return false;
+            }
+            return true;
+        });
 
         bigScatterData.set(filteredData);
-
     }
 
     $: storeUpdates(selectedAnimal, "animal")

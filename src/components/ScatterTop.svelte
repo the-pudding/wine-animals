@@ -37,6 +37,8 @@
 		easing: eases.cubicInOut
 	};
 
+    $: console.log({data})
+
     // Regression Line
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value

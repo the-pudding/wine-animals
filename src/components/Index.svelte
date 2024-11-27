@@ -87,8 +87,8 @@
 	{#key topData}
 		<ScatterTop data={topData} />
 	{/key}
-</div>
-<div class="selects">
+</div> -->
+<!-- <div class="selects">
 	<Select options={optionsAnimal} id={"id-animalSelect"}/>
 	<Select options={optionsMetric} id={"id-metricSelect"}/>
 </div>

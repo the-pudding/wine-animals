@@ -9,12 +9,12 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-	const filteredRawData = rawData.filter(d => d.price <= 100);
+	const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
 
 	export let r = 4;
 	export let fill = "#ccc";
-	export let stroke = "#000";
-	export let strokeWidth = 0;
+	export let stroke = "#ffffff";
+	export let strokeWidth = 1;
     export let addRandom = false;
     let path;
 
@@ -71,20 +71,45 @@
 	<line class="ratingAVG" x1={$xScale(d3.mean(filteredRawData, d => d.rating))} y1={0} x2={$xScale(d3.mean(filteredRawData, d => d.rating))} y2={$height} />
 </g>
 <g>
-	{#each $data[0] as d, i}
-        {@const cx = $xGet(d)}
-        {@const cy = $yGet(d)}
-        <circle 
-            cx={cx} 
-            cy={cy} 
-            r={r} 
-            fill={fill} 
-            stroke={stroke} 
-            stroke-width={strokeWidth} 
-        />
+    <!-- Render circles that are not in $bigScatterData first -->
+    {#each $data[0] as d, i (d.id)}
+        {#if !$bigScatterData.includes(d)}
+            {@const cx = $xGet(d)}
+            {@const cy = $yGet(d)}
+            <circle 
+				id={`circle-${d.id}`}
+				class="circle-explore"
+                cx={cx} 
+                cy={cy} 
+                r={r} 
+                fill="#363B45"
+                stroke="#363B45" 
+                stroke-width={strokeWidth} 
+                opacity={0.1}
+            />
+        {/if}
+    {/each}
+
+    <!-- Render circles in $bigScatterData on top -->
+    {#each $data[0] as d, i (d.id)}
+        {#if $bigScatterData.includes(d)}
+            {@const cx = $xGet(d)}
+            {@const cy = $yGet(d)}
+            <circle 
+				id={`circle-${d.id}`}
+				class="circle-explore"
+                cx={cx} 
+                cy={cy} 
+                r={r} 
+                fill={fill} 
+                stroke={stroke} 
+                stroke-width={strokeWidth} 
+                opacity={0.8}
+            />
+        {/if}
     {/each}
 </g>
-{#if addRandom && baseFilters && $bigScatterData.length < 8472 && $bigScatterData.length >= 10}
+{#if addRandom && baseFilters && $bigScatterData.length < 1704 && $bigScatterData.length >= 10}
 	{#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert rating to a number
@@ -112,9 +137,6 @@
 
 <style>
 	circle {
-		opacity: 0.5;
-		stroke-width: 1;
-		stroke: white;
 		pointer-events: auto;
 	}
 	.regression, .expRegression {

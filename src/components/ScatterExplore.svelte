@@ -1,7 +1,9 @@
 <script>
     import { onMount } from "svelte";
-    import { LayerCake, Svg, Html } from 'layercake';
+    import { LayerCake, Svg, Canvas } from "layercake";
     import ScatterSvgExplore from "$components/layercake/ScatterExplore.svg.svelte";
+    import ScatterCanvas from "$components/layercake/Scatter.canvas.svelte";
+    import Voronoi from "$components/layercake/Voronoi.svelte";
     import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
 
@@ -13,7 +15,7 @@
 	import * as eases from 'svelte/easing';
 
 
-    const filteredRawData = rawData.filter(d => d.price <= 100);
+    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
     const curve = d3.curveLinear;
     const yKey = 'price';
     const xKey = 'rating';
@@ -34,6 +36,8 @@
 		easing: eases.cubicInOut
 	};
 
+    $: console.log({$bigScatterData})
+
     // Regression Line
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
@@ -43,31 +47,33 @@
         x: +d.rating,  // Convert price to a number
         y: +d.price  // Convert rating to a number
     }))
-    $: trendLine = regression(points)
-
+    $: trendLine = regression(points);
 </script>
 
 <section id="scatter-explore">
     <div class="chart-wrapper">
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
-                {#key [$bigScatterData, trendLine]}
+                {#key [filteredRawData, trendLine]}
                 <LayerCake
                     padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
                     x={xKey}
                     y={yKey}
-                    data={[$bigScatterData, trendLine]}
+                    data={[filteredRawData, trendLine]}
                     xDomain={[2,5]}
                     yDomain={[0,100]}
                 >
                     <Svg>
-                        <AxisX 
-                            gridlines={true} 
-                            ticks={5}
-                        />
-                        <AxisY 
-                            gridlines={true} 
-                            ticks={4} />
+                        <AxisX gridlines={true} ticks={5}/>
+                        <AxisY gridlines={true} ticks={4} />
+                    </Svg>
+
+                    <Canvas>
+                        <ScatterCanvas r={r * 1.5} fill="#0cf" />
+                    </Canvas>
+
+                    <Svg>
                         <ScatterSvgExplore {r} fill={color} addRandom={true} />
+                        <Voronoi stroke="#333"/>
                     </Svg>
                 </LayerCake>
                 {/key}
