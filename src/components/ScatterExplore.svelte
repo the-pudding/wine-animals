@@ -4,7 +4,7 @@
     import ScatterSvgExplore from "$components/layercake/ScatterExplore.svg.svelte";
     import ScatterCanvas from "$components/layercake/Scatter.canvas.svelte";
     import Voronoi from "$components/layercake/Voronoi.svelte";
-    import { bigScatterData } from "$stores/misc.js";
+    import { bigScatterData, highlightWine } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
@@ -15,7 +15,7 @@
 	import * as eases from 'svelte/easing';
 
 
-    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
+    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
     const curve = d3.curveLinear;
     const yKey = 'price';
     const xKey = 'rating';
@@ -48,6 +48,7 @@
         y: +d.price  // Convert rating to a number
     }))
     $: trendLine = regression(points);
+    $: console.log($highlightWine)
 </script>
 
 <section id="scatter-explore">
@@ -79,16 +80,26 @@
                 {/key}
         </div>
     </div>
+    <div class="tooltip-details">
+        {#if $highlightWine !== undefined}
+            <p>{$highlightWine.year}</p>
+            <p>{$highlightWine.name}</p>
+            <p>Winery: {$highlightWine.winery}</p>
+            <p>Type: {$highlightWine.type}</p>
+            <p>Country:{$highlightWine.country}</p>
+            <p>Animal: {$highlightWine.topgroup}</p>
+            <img src="https://{$highlightWine.imageUrl}" />
+        {/if}
+    </div>
 </section>
 
 <style>
     #scatter-explore {
         width: 100%;
-        max-width: 800px;
+        max-width: 1200px;
         height: auto;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
         justify-content: center;
         margin: 0 auto 5rem auto;
     }
@@ -97,9 +108,15 @@
         width: 100%;
         padding: 1rem;
     }
-
+    .tooltip-details {
+        width: 300px;
+        height: 100%;
+        padding: 32px 0;
+        color: var(--color-white);
+        font-family: var(--sans);
+    }
     .chart-wrapper {
-        width: 100%;
+        width: calc(100% - 300px);
         aspect-ratio: 1;
         display: flex;
         flex-direction: column;

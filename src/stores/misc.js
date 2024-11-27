@@ -9,7 +9,7 @@ export const topgroupSelect = writable("all");
 export const photoSelect = writable("all");
 export const hideTooltip = writable(true);
 
-const filteredData = allWineData.filter(d => d.price <= 100);
+const filteredData = allWineData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
 
 export const bigScatterData = writable(filteredData);
 export const selectedAnimalSTORE = writable([]);
@@ -18,3 +18,4 @@ export const selectedCountrySTORE = writable([]);
 export const selectedPriceRangeSTORE = writable([3, 100]);
 export const selectedRatingRangeSTORE = writable([2.5, 5]);
 export const selectedYearRangeSTORE = writable([1850, 2023]);
+export const highlightWine = writable(undefined);

@@ -5,7 +5,7 @@
     import rawData from "$data/wineData.csv"
     import * as d3 from 'd3';
 
-    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
+    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
 
     const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
         "deer-like", "fish-like", "horse", "human", "insect",

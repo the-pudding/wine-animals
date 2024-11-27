@@ -13,7 +13,7 @@
 	export let strokeWidth = 0;
 	export let addRandom = false;
 
-	const allWineData = rawData.filter(d => d.price <= 100);
+	const allWineData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
 
 	const regressionLine = $data[1];
 

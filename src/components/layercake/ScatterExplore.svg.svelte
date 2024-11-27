@@ -9,7 +9,7 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-	const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none");
+	const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
 
 	export let r = 4;
 	export let fill = "#ccc";
@@ -78,7 +78,7 @@
             {@const cy = $yGet(d)}
             <circle 
 				id={`circle-${d.id}`}
-				class="circle-explore"
+				class="circle-explore inactive"
                 cx={cx} 
                 cy={cy} 
                 r={r} 
@@ -97,7 +97,7 @@
             {@const cy = $yGet(d)}
             <circle 
 				id={`circle-${d.id}`}
-				class="circle-explore"
+				class="circle-explore active"
                 cx={cx} 
                 cy={cy} 
                 r={r} 
@@ -109,7 +109,7 @@
         {/if}
     {/each}
 </g>
-{#if addRandom && baseFilters && $bigScatterData.length < 1704 && $bigScatterData.length >= 10}
+{#if addRandom && baseFilters && $bigScatterData.length < 1059 && $bigScatterData.length >= 10}
 	{#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert rating to a number
