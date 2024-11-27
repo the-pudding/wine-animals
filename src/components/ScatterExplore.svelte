@@ -88,6 +88,8 @@
             <p>Type: {$highlightWine.type}</p>
             <p>Country:{$highlightWine.country}</p>
             <p>Animal: {$highlightWine.topgroup}</p>
+            <p>Price: ${$highlightWine.price}</p>
+            <p>Rating: {$highlightWine.rating}</p>
             <img src="https://{$highlightWine.imageUrl}" />
         {/if}
     </div>
