@@ -9,7 +9,7 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-	const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
+	const filteredRawData = rawData.filter(d => d.price <= 100);
 
 	export let r = 4;
 	export let fill = "#ccc";

@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { LayerCake, Svg, Html } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
-    import { animalSelect } from "$stores/misc.js";
+    import { animalSelect, bigScatterData } from "$stores/misc.js";
     import allWineData from "$data/wineData.csv"
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
@@ -15,24 +15,53 @@
     export let data;
 
     let topgroups = $animalSelect == "birds" 
-        ? ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]
+        ? ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]
         : $animalSelect == "cats"
-        ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion plain", "lion crest", "lynx", "tiger"]
-        : ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
-                "deer-like", "dog", "fish-like", "horse", "human", "insect",
+        ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"]
+        : ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+                "deer-like", "fish-like", "horse", "human", "insect",
                 "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
                 "rabbit", "ram-like", "suid"
                 ];
+
+    function findMissingItem(array1, array2) {
+        // Serialize objects to strings for comparison
+        const stringify = obj => JSON.stringify(obj);
+
+        // Create a frequency map based on serialized objects
+        const combined = [...array1, ...array2];
+        const frequencyMap = {};
+
+        combined.forEach(item => {
+            const key = stringify(item);
+            frequencyMap[key] = (frequencyMap[key] || 0) + 1;
+        });
+
+        // Find the item with an odd frequency and parse it back into an object
+        for (const key in frequencyMap) {
+            if (frequencyMap[key] % 2 !== 0) {
+                return JSON.parse(key); // Return the original object
+            }
+        }
+
+        return null; // No missing item found
+    }
 
     function filterData(animal) {
 
         let filteredData;
         if ($animalSelect == "birds") {
-           filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 100)
+           filteredData = animal == "owl" 
+           ? filteredData = data.filter(d => d.subgroup.includes(animal) && !d.subgroup.includes("junglefowl") && d.price <= 100)
+           : filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 100)
+           let birdArray = data.filter(d => d.topgroup.includes("bird"));
+           console.log(findMissingItem(birdArray, $bigScatterData));
         } else if ($animalSelect == "cats") {
-            filteredData = data.filter(d => d.finalAnimal.includes(animal) && d.price <= 100)
+            filteredData = data.filter(d => d.finalAnimal.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 100)
         } else {
-            filteredData = data.filter(d => d.topgroup.includes(animal) && d.price <= 100)
+            filteredData = animal == "cat" 
+            ? data.filter(d => d.topgroup.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 100)
+            : data.filter(d => d.topgroup.includes(animal) && d.price <= 100)
         }
         return filteredData;
     }
@@ -125,6 +154,7 @@
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 5rem;
+        background: var(--color-bg);
     }
 
     .chart-wrapper {

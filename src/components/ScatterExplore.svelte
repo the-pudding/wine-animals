@@ -15,7 +15,7 @@
 	import * as eases from 'svelte/easing';
 
 
-    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
+    const filteredRawData = rawData.filter(d => d.price <= 100);
     const curve = d3.curveLinear;
     const yKey = 'price';
     const xKey = 'rating';

@@ -51,11 +51,11 @@
 
 	function setScatterData($animalSelect) {
 		if ($animalSelect == "birds") {
-			return allWineData.filter(d => d.topgroup.includes("bird"))
+			return allWineData.filter(d => d.topgroup.includes("bird") && d.price <= 100)
 		} else if ($animalSelect == "cats") {
-			return allWineData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));
+			return allWineData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle") && d.price <= 100);
 		} else {
-			return allWineData
+			return allWineData.filter(d => d.price <= 100)
 		}
 	}
 
@@ -88,20 +88,6 @@
 		<ScatterTop data={topData} />
 	{/key}
 </div> -->
-<!-- <div class="selects">
-	<Select options={optionsAnimal} id={"id-animalSelect"}/>
-	<Select options={optionsMetric} id={"id-metricSelect"}/>
-</div>
-{#if dataSet.length > 0}
-	{#key dataSet}
-		<Scatter data={scatterDataSet} />
-	{/key}
-{/if}
-{#if dataSet.length > 0}
-	{#key dataSet}
-		<Distribution data={dataSet} />
-	{/key}
-{/if} -->
 
 <!-- <PhotoTest /> -->
 <!-- <WIP /> -->
@@ -110,7 +96,28 @@
 <!-- <Intro /> -->
 <Explore />
 
+<div class="white">
+	<div class="selects">
+		<Select options={optionsAnimal} id={"id-animalSelect"}/>
+		<Select options={optionsMetric} id={"id-metricSelect"}/>
+	</div>
+	{#if dataSet.length > 0}
+		{#key dataSet}
+			<Scatter data={scatterDataSet} />
+		{/key}
+	{/if}
+	{#if dataSet.length > 0}
+		{#key dataSet}
+			<Distribution data={dataSet} />
+		{/key}
+	{/if}
+</div>
+
 <style>
+	.white {
+		background: var(--color-bg);
+		width: 100%;
+	}
 	.selects {
 		display: flex;
 		flex-direction: row;
