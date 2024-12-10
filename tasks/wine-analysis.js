@@ -11,10 +11,10 @@ const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", 
 ];
 
 const catData = data.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));
-const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion plain", "lion crest", "lynx", "tiger"];
+const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"];
 
 const birdData = data.filter(d => d.topgroup.includes("bird"));
-const birds = ["bird of prey", "duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "shorebird", "songbird", "wading bird"]; 
+const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]; 
 
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
