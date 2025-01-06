@@ -13,12 +13,14 @@
 	export let strokeWidth = 0;
 	export let addRandom = false;
 
-	const allWineData = rawData.filter(d => d.price <= 100);
+	const meanData = rawData.filter(d => d.price <= 100);
 
 	const regressionLine = $data[1];
 
-	const priceAVG = d3.mean($data[0], d => d.price);
-	const ratingAVG = d3.mean($data[0], d => d.rating);
+	const priceAVG = d3.mean(meanData, d => d.price);
+	const ratingAVG = d3.mean(meanData, d => d.rating);
+
+	console.log(priceAVG, ratingAVG)
 
 	let path;
 	let mounted = false;
@@ -91,10 +93,10 @@
 <g class="rect">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.mean(allWineData, d => d.rating))}
-		y={$yScale(d3.mean(allWineData, d => d.price))}
-		width={250 - 23 - $xScale(d3.mean(allWineData, d => d.rating))}
-		height={210 - $yScale(d3.mean(allWineData, d => d.price))}
+		x={$xScale(d3.mean(meanData, d => d.rating))}
+		y={$yScale(d3.mean(meanData, d => d.price))}
+		width={250 - 23 - $xScale(d3.mean(meanData, d => d.rating))}
+		height={210 - $yScale(d3.mean(meanData, d => d.price))}
 		fill="#dfdfdf"
 		opacity="0.7"
 	/>
@@ -115,7 +117,7 @@
 </g>
 {#if addRandom == true}
 	{#each generations as generation, i}
-		{@const randomData = generateRandomComparison(allWineData)}
+		{@const randomData = generateRandomComparison(meanData)}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert price to a number
 			y: +d.price  // Convert rating to a number
@@ -134,8 +136,8 @@
 	{/each}
 {/if}
 <g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(allWineData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(allWineData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.mean(allWineData, d => d.rating))} y1={0} x2={$xScale(d3.mean(allWineData, d => d.rating))} y2={$height} />
+	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(meanData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(meanData, d => d.price))} />
+	<line class="ratingAVG" x1={$xScale(d3.mean(meanData, d => d.rating))} y1={0} x2={$xScale(d3.mean(meanData, d => d.rating))} y2={$height} />
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}

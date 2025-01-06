@@ -5,11 +5,13 @@
     import rawData from "$data/wineData.csv"
     import * as d3 from 'd3';
 
-    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human");
+    const meanData = rawData.filter(d => d.price <= 100);
 
-    const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human" && d.topgroup !== "bat" && d.topgroup !== "marsupial" && d.topgroup !== "monkey" && d.topgroup !== "mustelid-like/rodent-like");
+
+    const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
         "deer-like", "fish-like", "horse", "human", "insect",
-        "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "pachyderm",
+        "marine invertebrate", "mythical", "pachyderm",
         "rabbit", "ram-like", "suid"
     ];
     const wineType = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
@@ -81,8 +83,8 @@
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
 
     function findSteals(data) {
-        let avgPrice = d3.mean(rawData, d => d.price);
-        let avgRating = d3.mean(rawData, d => d.rating);
+        let avgPrice = d3.mean(meanData, d => d.price);
+        let avgRating = d3.mean(meanData, d => d.rating);
         let steals = data.filter(d => d.price < avgPrice && d.rating > avgRating).length;
 
         return steals

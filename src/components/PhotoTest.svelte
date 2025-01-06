@@ -4,9 +4,9 @@
     import Select from "$components/helpers/Select.svelte";
 	import data from "$data/wineData.csv";
     import { select, csvFormat } from "d3";
-    const animals = ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
+    const animals = ["amphibian/reptile", "bear", "bird", "cat", "cattle/camelus",
 		"deer-like", "dog", "fish-like", "horse", "human", "insect",
-		"marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+		"marine invertebrate", "mythical", "none", "pachyderm",
 		"rabbit", "ram-like", "suid"
 	];
 

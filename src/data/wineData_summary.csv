@@ -15,22 +15,6 @@ amphibian/reptile,rating,rating3_35,0,0
 amphibian/reptile,rating,rating35_4,0,0
 amphibian/reptile,rating,rating4_45,0,0
 amphibian/reptile,rating,rating45above,0,0
-bat,price,$10 below,0,0
-bat,price,$10–19,0,0
-bat,price,$20–29,83.33333333333334,5
-bat,price,$30–39,16.666666666666664,1
-bat,price,$40–49,0,0
-bat,price,$50–59,0,0
-bat,price,$60–69,0,0
-bat,price,$70–79,0,0
-bat,price,$80–89,0,0
-bat,price,$90–99,0,0
-bat,price,$100+,0,0
-bat,rating,rating3below,0,0
-bat,rating,rating3_35,0,0
-bat,rating,rating35_4,0,0
-bat,rating,rating4_45,0,0
-bat,rating,rating45above,0,0
 bear,price,$10 below,0,0
 bear,price,$10–19,30.434782608695656,7
 bear,price,$20–29,17.391304347826086,4
@@ -207,54 +191,6 @@ marine invertebrate,rating,rating3_35,0,0
 marine invertebrate,rating,rating35_4,0,0
 marine invertebrate,rating,rating4_45,0,0
 marine invertebrate,rating,rating45above,0,0
-marsupial,price,$10 below,75,3
-marsupial,price,$10–19,0,0
-marsupial,price,$20–29,0,0
-marsupial,price,$30–39,25,1
-marsupial,price,$40–49,0,0
-marsupial,price,$50–59,0,0
-marsupial,price,$60–69,0,0
-marsupial,price,$70–79,0,0
-marsupial,price,$80–89,0,0
-marsupial,price,$90–99,0,0
-marsupial,price,$100+,0,0
-marsupial,rating,rating3below,0,0
-marsupial,rating,rating3_35,0,0
-marsupial,rating,rating35_4,0,0
-marsupial,rating,rating4_45,0,0
-marsupial,rating,rating45above,0,0
-monkey,price,$10 below,0,0
-monkey,price,$10–19,50,4
-monkey,price,$20–29,37.5,3
-monkey,price,$30–39,0,0
-monkey,price,$40–49,0,0
-monkey,price,$50–59,0,0
-monkey,price,$60–69,0,0
-monkey,price,$70–79,0,0
-monkey,price,$80–89,12.5,1
-monkey,price,$90–99,0,0
-monkey,price,$100+,0,0
-monkey,rating,rating3below,0,0
-monkey,rating,rating3_35,0,0
-monkey,rating,rating35_4,0,0
-monkey,rating,rating4_45,0,0
-monkey,rating,rating45above,0,0
-mustelid-like/rodent-like,price,$10 below,0,0
-mustelid-like/rodent-like,price,$10–19,38.46153846153847,5
-mustelid-like/rodent-like,price,$20–29,23.076923076923077,3
-mustelid-like/rodent-like,price,$30–39,15.384615384615385,2
-mustelid-like/rodent-like,price,$40–49,7.6923076923076925,1
-mustelid-like/rodent-like,price,$50–59,7.6923076923076925,1
-mustelid-like/rodent-like,price,$60–69,0,0
-mustelid-like/rodent-like,price,$70–79,0,0
-mustelid-like/rodent-like,price,$80–89,0,0
-mustelid-like/rodent-like,price,$90–99,0,0
-mustelid-like/rodent-like,price,$100+,7.6923076923076925,1
-mustelid-like/rodent-like,rating,rating3below,0,0
-mustelid-like/rodent-like,rating,rating3_35,0,0
-mustelid-like/rodent-like,rating,rating35_4,0,0
-mustelid-like/rodent-like,rating,rating4_45,0,0
-mustelid-like/rodent-like,rating,rating45above,0,0
 mythical,price,$10 below,0,0
 mythical,price,$10–19,18.69918699186992,23
 mythical,price,$20–29,25.203252032520325,31

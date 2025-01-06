@@ -21,9 +21,9 @@
 
 	let optionsMetric = ["price", "rating"];
 	let optionsAnimal = ["all", "cats", "birds"];
-	const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "cat", "cattle/camelus",
+	const topgroups = ["amphibian/reptile", "bear", "bird", "cat", "cattle/camelus",
 		"deer-like", "dog", "fish-like", "horse", "insect",
-		"marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "pachyderm",
+		"marine invertebrate", "mythical", "pachyderm",
 		"rabbit", "ram-like", "suid"
 	];
 

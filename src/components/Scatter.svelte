@@ -14,13 +14,15 @@
 
     export let data;
 
+    const meanData = allWineData.filter(d => d.price <= 100);
+
     let topgroups = $animalSelect == "birds" 
         ? ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]
         : $animalSelect == "cats"
         ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"]
-        : ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+        : ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
                 "deer-like", "fish-like", "horse", "human", "insect",
-                "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+                "marine invertebrate", "mythical", "none", "pachyderm",
                 "rabbit", "ram-like", "suid"
                 ];
 
@@ -112,8 +114,8 @@
             }))}
             {@const trendLine = regression(points)}
             {@const steepness = calcSteepness(trendLine, animal)}
-            {@const avgPrice = d3.mean(allWineData, d => d.price)}
-            {@const avgRating = d3.mean(allWineData, d => d.rating)}
+            {@const avgPrice = d3.mean(meanData, d => d.price)}
+            {@const avgRating = d3.mean(meanData, d => d.rating)}
             {@const lowPriceGoodRating = animalData.filter(d => d.price < avgPrice && d.rating > avgRating).length}
             <div class="chart-wrapper">
                 <h3>{animal}</h3>
