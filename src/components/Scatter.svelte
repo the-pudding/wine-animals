@@ -122,6 +122,7 @@
                 <p class="tot-count">{animalData.length} wines</p>
                 <p class="tot-count">{Math.round(steepness)} avg. steepness</p>
                 <p class="tot-count">{Math.round(lowPriceGoodRating/animalData.length*100)}% ({lowPriceGoodRating}/{animalData.length})</p>
+                <p>{avgPrice}, {avgRating}</p>
                 <div class="chart-container" id="scatterplot" style="pointer-events:none">
                         <LayerCake
                             padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
