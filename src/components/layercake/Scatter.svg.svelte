@@ -20,8 +20,6 @@
 	const priceAVG = d3.mean(meanData, d => d.price);
 	const ratingAVG = d3.mean(meanData, d => d.rating);
 
-	console.log(priceAVG, ratingAVG)
-
 	let path;
 	let mounted = false;
 	let randomCountNode;
