@@ -81,9 +81,9 @@
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
 
     function findSteals(data) {
-        let avgPrice = d3.mean(filteredRawData, d => d.price);
-        let avgRating = d3.mean(filteredRawData, d => d.rating);
-        let steals = data.filter(d => d.price <= avgPrice && d.rating >= avgRating).length;
+        let avgPrice = d3.mean(rawData, d => d.price);
+        let avgRating = d3.mean(rawData, d => d.rating);
+        let steals = data.filter(d => d.price < avgPrice && d.rating > avgRating).length;
 
         return steals
     }
