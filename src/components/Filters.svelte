@@ -20,9 +20,15 @@
         "Spain", "Switzerland", "United States", "Uruguay"
     ];
 
+    const amphibianSubgroups = ["frog", "lizard", "snake", "toad", "turtle"];
+    const birdSubgroups = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"];
+    const canineSubgroups = ["domestic dog", "fox", "wolf"];
+
     let selectedAnimal = [];
     let selectedType = [];
     let selectedCountry = [];
+    let selectedSubGroup = [];
+    let subgroups = [];
 
     function storeUpdates(selectedGroup, valType) {
         if (valType == "animal") {
@@ -32,6 +38,11 @@
         } else {
             selectedCountrySTORE.set(selectedGroup)
         }
+    }
+
+    function setSubgroups(data) {
+        console.log({selectedAnimal})
+        subgroups = canineSubgroups
     }
 
     function updateScatterData(
@@ -75,6 +86,9 @@
         });
 
         bigScatterData.set(filteredData);
+
+        console.log($bigScatterData)
+        setSubgroups($bigScatterData)
     }
 
     $: storeUpdates(selectedAnimal, "animal")
@@ -82,6 +96,7 @@
     $: storeUpdates(selectedCountry, "country")
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
 
+    $: console.log(selectedAnimal.length)
     function findSteals(data) {
         let avgPrice = d3.mean(meanData, d => d.price);
         let avgRating = d3.mean(meanData, d => d.rating);
@@ -103,6 +118,16 @@
                 valType = "animal"
                 placeholder="All animals"
                 removeAllTitle="Remove all animals"
+            /> 
+        </div>
+        <div class="filter">
+            <MultiSelect 
+                bind:selected={selectedSubGroup}
+                options={subgroups} 
+                disabled={selectedAnimal.length == 0 ? true : false}
+                valType = "type"
+                placeholder="All sub groups"
+                removeAllTitle="Remove all sub groups"
             /> 
         </div>
         <div class="filter">

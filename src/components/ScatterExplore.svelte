@@ -36,8 +36,6 @@
 		easing: eases.cubicInOut
 	};
 
-    $: console.log({$bigScatterData})
-
     // Regression Line
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
@@ -48,7 +46,6 @@
         y: +d.price  // Convert rating to a number
     }))
     $: trendLine = regression(points);
-    $: console.log($highlightWine)
 </script>
 
 <section id="scatter-explore">

@@ -57,7 +57,6 @@
            ? filteredData = data.filter(d => d.subgroup.includes(animal) && !d.subgroup.includes("junglefowl") && d.price <= 100)
            : filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 100)
            let birdArray = data.filter(d => d.topgroup.includes("bird"));
-           console.log(findMissingItem(birdArray, $bigScatterData));
         } else if ($animalSelect == "cats") {
             filteredData = data.filter(d => d.finalAnimal.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 100)
         } else {
