@@ -4,9 +4,9 @@ const raw = fs.readFileSync("./src/data/wineData.csv", "utf8");
 const data = d3.csvParse(raw);
 const OUT_PATH = "./src/data/";
 
-const topgroups = ["amphibian/reptile", "bat", "bear", "bird", "canine", "cat", "cattle/camelus",
+const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
    "deer-like", "fish-like", "horse", "human", "insect",
-   "marine invertebrate", "marsupial", "monkey", "mustelid-like/rodent-like", "mythical", "none", "pachyderm",
+   "marine invertebrate", "mythical", "none", "pachyderm",
    "rabbit", "ram-like", "suid"
 ];
 
@@ -135,7 +135,7 @@ function formatCSV(data, metric) {
             { category: "price", bucket: "$110–119", percent: d.price110_119Percent, count: d.price110_119Count },
             { category: "price", bucket: "$120–129", percent: d.price120_129Percent, count: d.price120_129Count },
             { category: "price", bucket: "$130–139", percent: d.price130_139Percent, count: d.price130_139Count },
-            { category: "price", bucket: "$140–149", percent: d.price140_149Percent, count: d.price140_149Count },
+            { category: "price", bucket: "$140–150", percent: d.price140_149Percent, count: d.price140_149Count },
             { category: "price", bucket: "$150+", percent: d.price150abovePercent, count: d.price150aboveCount},
             { category: "rating", bucket: "rating3below", percent: d.rating3belowPercent, count: d.rating3belowCount },
             { category: "rating", bucket: "rating3_35", percent: d.rating3_35Percent, count: d.rating3_35Count },
@@ -194,7 +194,7 @@ function addTotalCounts(fullData, metric) {
         let totalprice110_119 = fullData.filter(d => d.priceBucket == "110–119.99").length;
         let totalprice120_129 = fullData.filter(d => d.priceBucket == "120–129.99").length;
         let totalprice130_139 = fullData.filter(d => d.priceBucket == "130–139.99").length;
-        let totalprice140_149 = fullData.filter(d => d.priceBucket == "140–149.99").length;
+        let totalprice140_149 = fullData.filter(d => d.priceBucket == "140–150").length;
         let totalprice150above = fullData.filter(d => d.priceBucket == "150+").length;
         let total3below = fullData.filter(d => d.ratingBucket == "3 & less").length;
         let total3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5").length;
@@ -202,7 +202,7 @@ function addTotalCounts(fullData, metric) {
         let total4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5").length;
         let total45above = fullData.filter(d => d.ratingBucket == "4.6 & above").length;
 
-        let animalOnlyCount = fullData.filter(d => d.topgroup !== "none").length;
+        let animalOnlyCount = fullData.filter(d => d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice10below = fullData.filter(d => d.priceBucket == "<10" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice10_19 = fullData.filter(d => d.priceBucket == "10–19.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice20_29 = fullData.filter(d => d.priceBucket == "20–29.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
@@ -217,7 +217,7 @@ function addTotalCounts(fullData, metric) {
         let animalOnlyprice110_119 = fullData.filter(d => d.priceBucket == "110–119.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice120_129 = fullData.filter(d => d.priceBucket == "120–129.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice130_139 = fullData.filter(d => d.priceBucket == "130–139.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
-        let animalOnlyprice140_149 = fullData.filter(d => d.priceBucket == "140–149.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyprice140_149 = fullData.filter(d => d.priceBucket == "140–150" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice150above = fullData.filter(d => d.priceBucket == "150+" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnly3below = fullData.filter(d => d.ratingBucket == "3 & less" && d.topgroup !== "none").length;
         let animalOnly3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5" && d.topgroup !== "none").length;
@@ -225,7 +225,7 @@ function addTotalCounts(fullData, metric) {
         let animalOnly4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5" && d.topgroup !== "none").length;
         let animalOnly45above = fullData.filter(d => d.ratingBucket == "4.6 & above" && d.topgroup !== "none").length;
 
-        console.log(fullData)
+        console.log(totalCount, animalOnlyCount)
         let allObject = {
             animalGroup: "all",
             count: totalCount,

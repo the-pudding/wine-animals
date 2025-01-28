@@ -13,7 +13,7 @@ duck,price,$100–109,,
 duck,price,$110–119,,
 duck,price,$120–129,,
 duck,price,$130–139,,
-duck,price,$140–149,,
+duck,price,$140–150,,
 duck,price,$150+,,
 duck,rating,rating3below,0,0
 duck,rating,rating3_35,4.545454545454546,2
@@ -34,7 +34,7 @@ flightless bird,price,$100–109,,
 flightless bird,price,$110–119,,
 flightless bird,price,$120–129,,
 flightless bird,price,$130–139,,
-flightless bird,price,$140–149,,
+flightless bird,price,$140–150,,
 flightless bird,price,$150+,,
 flightless bird,rating,rating3below,0,0
 flightless bird,rating,rating3_35,28.57142857142857,2
@@ -55,7 +55,7 @@ game bird,price,$100–109,,
 game bird,price,$110–119,,
 game bird,price,$120–129,,
 game bird,price,$130–139,,
-game bird,price,$140–149,,
+game bird,price,$140–150,,
 game bird,price,$150+,,
 game bird,rating,rating3below,0,0
 game bird,rating,rating3_35,8.695652173913043,2
@@ -76,7 +76,7 @@ junglefowl,price,$100–109,,
 junglefowl,price,$110–119,,
 junglefowl,price,$120–129,,
 junglefowl,price,$130–139,,
-junglefowl,price,$140–149,,
+junglefowl,price,$140–150,,
 junglefowl,price,$150+,,
 junglefowl,rating,rating3below,0,0
 junglefowl,rating,rating3_35,4.3478260869565215,2
@@ -97,7 +97,7 @@ owl,price,$100–109,,
 owl,price,$110–119,,
 owl,price,$120–129,,
 owl,price,$130–139,,
-owl,price,$140–149,,
+owl,price,$140–150,,
 owl,price,$150+,,
 owl,rating,rating3below,0,0
 owl,rating,rating3_35,2.898550724637681,2
@@ -118,7 +118,7 @@ peacock,price,$100–109,,
 peacock,price,$110–119,,
 peacock,price,$120–129,,
 peacock,price,$130–139,,
-peacock,price,$140–149,,
+peacock,price,$140–150,,
 peacock,price,$150+,,
 peacock,rating,rating3below,0,0
 peacock,rating,rating3_35,7.6923076923076925,1
@@ -139,7 +139,7 @@ penguin,price,$100–109,,
 penguin,price,$110–119,,
 penguin,price,$120–129,,
 penguin,price,$130–139,,
-penguin,price,$140–149,,
+penguin,price,$140–150,,
 penguin,price,$150+,,
 penguin,rating,rating3below,0,0
 penguin,rating,rating3_35,50,1
@@ -160,7 +160,7 @@ raptor,price,$100–109,,
 raptor,price,$110–119,,
 raptor,price,$120–129,,
 raptor,price,$130–139,,
-raptor,price,$140–149,,
+raptor,price,$140–150,,
 raptor,price,$150+,,
 raptor,rating,rating3below,0,0
 raptor,rating,rating3_35,6.9306930693069315,7
@@ -181,7 +181,7 @@ shorebird,price,$100–109,,
 shorebird,price,$110–119,,
 shorebird,price,$120–129,,
 shorebird,price,$130–139,,
-shorebird,price,$140–149,,
+shorebird,price,$140–150,,
 shorebird,price,$150+,,
 shorebird,rating,rating3below,0,0
 shorebird,rating,rating3_35,9.090909090909092,1
@@ -202,7 +202,7 @@ songbird,price,$100–109,,
 songbird,price,$110–119,,
 songbird,price,$120–129,,
 songbird,price,$130–139,,
-songbird,price,$140–149,,
+songbird,price,$140–150,,
 songbird,price,$150+,,
 songbird,rating,rating3below,0,0
 songbird,rating,rating3_35,3.8461538461538463,7
@@ -223,34 +223,34 @@ wading bird,price,$100–109,,
 wading bird,price,$110–119,,
 wading bird,price,$120–129,,
 wading bird,price,$130–139,,
-wading bird,price,$140–149,,
+wading bird,price,$140–150,,
 wading bird,price,$150+,,
 wading bird,rating,rating3below,0,0
 wading bird,rating,rating3_35,8,2
 wading bird,rating,rating35_4,56.00000000000001,14
 wading bird,rating,rating4_45,36,9
 wading bird,rating,rating45above,0,0
-animal wine,price,$10 below,0.9965337954939341,23
-animal wine,price,$10–19,18.760831889081455,433
-animal wine,price,$20–29,16.724436741767764,386
-animal wine,price,$30–39,8.05892547660312,186
-animal wine,price,$40–49,4.549393414211438,105
-animal wine,price,$50–59,2.902946273830156,67
-animal wine,price,$60–69,2.5996533795493932,60
-animal wine,price,$70–79,1.6464471403812824,38
-animal wine,price,$80–89,1.2564991334488735,29
-animal wine,price,$90–99,1.2564991334488735,29
-animal wine,price,$100–109,0,0
-animal wine,price,$110–119,0,0
-animal wine,price,$120–129,0,0
-animal wine,price,$130–139,0,0
-animal wine,price,$140–149,0,0
-animal wine,price,$150+,3.466204506065858,80
-animal wine,rating,rating3below,0.17331022530329288,4
-animal wine,rating,rating3_35,5.849220103986135,135
-animal wine,rating,rating35_4,53.98613518197573,1246
-animal wine,rating,rating4_45,38.77816291161179,895
-animal wine,rating,rating45above,1.2131715771230502,28
+animal wine,price,$10 below,1.544660846205507,23
+animal wine,price,$10–19,29.079919408999327,433
+animal wine,price,$20–29,25.92343854936199,386
+animal wine,price,$30–39,12.49160510409671,186
+animal wine,price,$40–49,7.0517125587642715,105
+animal wine,price,$50–59,4.499664204163868,67
+animal wine,price,$60–69,4.029550033579583,60
+animal wine,price,$70–79,2.552048354600403,38
+animal wine,price,$80–89,1.9476158495634655,29
+animal wine,price,$90–99,1.9476158495634655,29
+animal wine,price,$100–109,0.8730691739422431,13
+animal wine,price,$110–119,0.9402283411685695,14
+animal wine,price,$120–129,0.5372733378106112,8
+animal wine,price,$130–139,0.6715916722632639,10
+animal wine,price,$140–150,0.5372733378106112,8
+animal wine,price,$150+,5.372733378106111,80
+animal wine,rating,rating3below,0.2686366689053056,4
+animal wine,rating,rating3_35,9.066487575554063,135
+animal wine,rating,rating35_4,83.68032236400269,1246
+animal wine,rating,rating4_45,60.10745466756212,895
+animal wine,rating,rating45above,1.880456682337139,28
 all,price,$10 below,1.535323169422375,143
 all,price,$10–19,24.629589864719776,2294
 all,price,$20–29,25.26304487867726,2353
@@ -261,11 +261,11 @@ all,price,$60–69,4.273137212797939,398
 all,price,$70–79,2.9525445565814903,275
 all,price,$80–89,2.2117242860210435,206
 all,price,$90–99,1.8788919905518575,175
-all,price,$100–109,0,0
-all,price,$110–119,0,0
-all,price,$120–129,0,0
-all,price,$130–139,0,0
-all,price,$140–149,0,0
+all,price,$100–109,1.1917543482928923,111
+all,price,$110–119,0.8374490015031136,78
+all,price,$120–129,0.9770238350869659,91
+all,price,$130–139,0.6119819626368906,57
+all,price,$140–150,0.6334550139574834,59
 all,price,$150+,4.992484432037793,465
 all,rating,rating3below,0.11810178226325961,11
 all,rating,rating3_35,4.9710113807172,463
