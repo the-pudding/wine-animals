@@ -36,7 +36,6 @@
     }
 
     function saveWines() {
-        console.log("save");
         const data = $favWinesList;
         if (data.length > 0) {
             const concatData = [].concat(...data).map(d => ({

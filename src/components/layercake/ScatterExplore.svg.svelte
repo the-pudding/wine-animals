@@ -1,7 +1,7 @@
 <script>
 	import { getContext, onMount } from "svelte";
 	import * as d3 from "d3";
-	import * as d3Regression from 'd3-regression';
+	import flippedExponential from "$utils/flippedExponential";
 	import { topgroupSelect } from "$stores/misc.js";
 	import rawData from "$data/wineData.csv";
 	import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
@@ -9,7 +9,8 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-	const filteredRawData = rawData.filter(d => d.price <= 100);
+	const filteredRawData = rawData.filter(d => d.price <= 150);
+	console.log({regressionLine})
 
 	export let r = 4;
 	export let fill = "#ccc";
@@ -27,9 +28,9 @@
     const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
 
     // Regression Line
-    const regression = d3Regression.regressionExp()
+    const regression = flippedExponential()
         .x(d => d.x)  // Accessor for x value
-        .y(d => d.y); // Accessor for y value
+        .y(d => d.y); // Accessor for y value;
 
 	// Generate random subsets from rawData with length matching $bigScatterData
 	$: randomDataForGenerations = filteredRawData !== 0 
@@ -48,7 +49,7 @@
 	}
 
 	$: baseFilters = $selectedPriceRangeSTORE[0] == 3
-		&& $selectedPriceRangeSTORE[1] == 100
+		&& $selectedPriceRangeSTORE[1] == 150
 		&& $selectedRatingRangeSTORE[0] == 2.5
 		&& $selectedRatingRangeSTORE[1] == 5
 		&& $selectedYearRangeSTORE[0] == 1850
@@ -58,17 +59,17 @@
 <g class="rect">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.mean(filteredRawData, d => d.rating))}
-		y={$yScale(d3.mean(filteredRawData, d => d.price))}
-		width={$xScale(d3.mean(filteredRawData, d => d.rating))}
-		height={$height - $yScale(d3.mean(filteredRawData, d => d.price))}
+		x={0}
+		y={0}
+		width={$xScale(d3.mean(filteredRawData, d => d.price))}
+		height={$yScale(d3.mean(filteredRawData, d => d.rating))}
 		fill="#363B45"
 		opacity="0.3"
 	/>
 </g>
 <g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(filteredRawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(filteredRawData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.mean(filteredRawData, d => d.rating))} y1={0} x2={$xScale(d3.mean(filteredRawData, d => d.rating))} y2={$height} />
+	<line class="ratingAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(filteredRawData, d => d.rating))} x2={$width} y2={$yScale(d3.mean(filteredRawData, d => d.rating))} />
+	<line class="priceAVG" x1={$xScale(d3.mean(filteredRawData, d => d.price))} y1={0} x2={$xScale(d3.mean(filteredRawData, d => d.price))} y2={$height} />
 </g>
 <g>
     <!-- Render circles that are not in $bigScatterData first -->
@@ -112,8 +113,8 @@
 {#if addRandom && baseFilters && $bigScatterData.length < 1059 && $bigScatterData.length >= 10}
 	{#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
-			x: +d.rating,  // Convert rating to a number
-			y: +d.price    // Convert price to a number
+			x: +d.price,  // Convert rating to a number
+			y: +d.rating    // Convert price to a number
 		}))}
 		{@const trendLine = regression(points)}
 		{@const pathLocal = d3.line()

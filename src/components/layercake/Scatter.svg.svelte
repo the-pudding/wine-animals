@@ -13,7 +13,7 @@
 	export let strokeWidth = 0;
 	export let addRandom = false;
 
-	const meanData = rawData.filter(d => d.price <= 100);
+	const meanData = rawData.filter(d => d.price <= 150);
 
 	const regressionLine = $data[1];
 

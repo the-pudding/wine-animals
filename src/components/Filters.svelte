@@ -5,9 +5,9 @@
     import rawData from "$data/wineData.csv"
     import * as d3 from 'd3';
 
-    const meanData = rawData.filter(d => d.price <= 100);
+    const meanData = rawData.filter(d => d.price <= 150);
 
-    const filteredRawData = rawData.filter(d => d.price <= 100 && d.topgroup !== "none" && d.topgroup !== "human" && d.topgroup !== "bat" && d.topgroup !== "marsupial" && d.topgroup !== "monkey" && d.topgroup !== "mustelid-like/rodent-like");
+    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human" && d.topgroup !== "bat" && d.topgroup !== "marsupial" && d.topgroup !== "monkey" && d.topgroup !== "mustelid-like/rodent-like");
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
         "deer-like", "fish-like", "horse", "human", "insect",
@@ -152,7 +152,7 @@
     <div class="range-wrapper">
         <div class="filter">
             <label>Price</label>
-            <DoubleRange start={3} end={100} min={3} max={100} valType={"price"}/>
+            <DoubleRange start={3} end={150} min={3} max={150} valType={"price"}/>
         </div>
         <div class="filter">
             <label>Rating</label>

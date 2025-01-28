@@ -77,7 +77,7 @@
                     y={yKey}
                     xScale={d3.scaleBand().paddingInner(0.02).round(true)}
                     xDomain={xDomainColumn}
-                    yDomain={[0, 100]}
+                    yDomain={[0, 150]}
                     data={animalData}
                     >
                         <Svg>
@@ -95,7 +95,7 @@
                         y={yKey}
                         xScale={d3.scaleBand().paddingInner(0.02).round(true)}
                         xDomain={xDomainLine}
-                        yDomain={[0, 100]}
+                        yDomain={[0, 150]}
                         data={allWineData[1]}
                         >
                             <Svg>
@@ -110,7 +110,7 @@
                         y={yKey}
                         xScale={d3.scaleBand().paddingInner(0.02).round(true)}
                         xDomain={xDomainLine}
-                        yDomain={[0, 100]}
+                        yDomain={[0, 150]}
                         data={onlyAnimalWineData[1]}
                         >
                             <Svg>

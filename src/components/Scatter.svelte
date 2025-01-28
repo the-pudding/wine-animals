@@ -14,7 +14,7 @@
 
     export let data;
 
-    const meanData = allWineData.filter(d => d.price <= 100);
+    const meanData = allWineData.filter(d => d.price <= 150);
 
     let topgroups = $animalSelect == "birds" 
         ? ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]
@@ -54,15 +54,15 @@
         let filteredData;
         if ($animalSelect == "birds") {
            filteredData = animal == "owl" 
-           ? filteredData = data.filter(d => d.subgroup.includes(animal) && !d.subgroup.includes("junglefowl") && d.price <= 100)
-           : filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 100)
+           ? filteredData = data.filter(d => d.subgroup.includes(animal) && !d.subgroup.includes("junglefowl") && d.price<= 150)
+           : filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 150)
            let birdArray = data.filter(d => d.topgroup.includes("bird"));
         } else if ($animalSelect == "cats") {
-            filteredData = data.filter(d => d.finalAnimal.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 100)
+            filteredData = data.filter(d => d.finalAnimal.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 150)
         } else {
             filteredData = animal == "cat" 
-            ? data.filter(d => d.topgroup.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 100)
-            : data.filter(d => d.topgroup.includes(animal) && d.price <= 100)
+            ? data.filter(d => d.topgroup.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 150)
+            : data.filter(d => d.topgroup.includes(animal) && d.price <= 150)
         }
         return filteredData;
     }
@@ -128,7 +128,7 @@
                             y={yKey}
                             data={[animalData, trendLine]}
                             xDomain={[2, 5]}
-                            yDomain={[0, 100]}
+                            yDomain={[0, 150]}
                         >
                             <Svg>
                                 <AxisX 

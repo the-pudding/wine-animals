@@ -51,11 +51,11 @@
 
 	function setScatterData($animalSelect) {
 		if ($animalSelect == "birds") {
-			return allWineData.filter(d => d.topgroup.includes("bird") && d.price <= 100)
+			return allWineData.filter(d => d.topgroup.includes("bird") && d.price <= 150)
 		} else if ($animalSelect == "cats") {
-			return allWineData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle") && d.price <= 100);
+			return allWineData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle") && d.price <= 150);
 		} else {
-			return allWineData.filter(d => d.price <= 100)
+			return allWineData.filter(d => d.price <= 150)
 		}
 	}
 

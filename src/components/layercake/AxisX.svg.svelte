@@ -8,7 +8,7 @@
 	export let snapTicks = false;
 	export let yTick = 16;
 	export let formatTick = (d) => d;
-	export let ticks = undefined;
+	export let ticks = [0,25,50,75,100,125,150];
 	/** If this is a number, it passes that along to the [d3Scale.ticks](https://github.com/d3/d3-scale) function. If this is an array, hardcodes the ticks to those values. If it's a function, passes along the default tick values and expects an array of tick values in return. If nothing, it uses the default ticks supplied by the D3 function. */
 
 	$: isBandwidth = typeof $xScale.bandwidth === 'function';
@@ -51,7 +51,7 @@
 				<line class="tick-mark" y1={0} y2={6} x1={0} x2={0} />
 			{/if}
 			<text x={0} y={yTick} dx="" dy="" text-anchor={textAnchor(i)}
-				>{formatTick(tick)}</text
+				>${formatTick(tick)}</text
 			>
 		</g>
 	{/each}
@@ -90,10 +90,10 @@
 	}
 
 	.x-axis .tick.tick-0 text {
-		transform: translateX(4px);
+		transform: translateX(8px);
 	}
 
-	.x-axis .tick:last-child text {
-		transform: translateX(-4px);
-	}
+	/* .x-axis .tick:last-child text {
+		transform: translateX(-18px);
+	} */
 </style>
