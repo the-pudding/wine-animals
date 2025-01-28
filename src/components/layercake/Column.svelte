@@ -7,6 +7,8 @@
 
     const dispatch = createEventDispatcher();
 
+	console.log({$data})
+
 	$: columnWidth = (d) => {
 		const vals = $xGet(d);
 		return Math.max(0, vals[1] - vals[0]);

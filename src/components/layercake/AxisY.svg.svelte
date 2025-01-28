@@ -34,7 +34,7 @@
 					y={yTick}
 					dx={dxTick}
 					dy={dyTick}
-					style="text-anchor:{textAnchor};">{formatTick(tick)}</text
+					style="text-anchor:{textAnchor};">${formatTick(tick)}</text
 				>
 			{/if}
 			{#if tickMarks === true}

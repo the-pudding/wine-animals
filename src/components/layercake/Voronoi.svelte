@@ -12,15 +12,26 @@
   
 	function mouseoverCircle(point) {
 
-	  d3.selectAll(".circle-explore.active").style("opacity", 0.1).style("fill", "#363B45").style("stroke", "#363B45");
+	  d3.selectAll(".circle-explore.active").style("opacity", 0.1).style("fill", "#38425D");
 
-	  d3.selectAll(`#circle-${point.data.id}`).style("opacity", 0.8).style("fill", "#d0c8a8").style("stroke", "#ffffff");
+	  d3.selectAll(`#circle-${point.data.id}`)
+	  	.style("opacity", 0.8)
+		.style("fill", "#ffffff")
+		.transition(500)
+		.attr("r", 10)
+		.each(function () {
+			this.parentNode.appendChild(this); // Append to the end of the parent
+		});
 
 	  highlightWine.set(point.data)
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".circle-explore.active").style("opacity", 0.8).style("fill", "#d0c8a8").style("stroke", "#ffffff");
+		d3.selectAll(".circle-explore.active")
+		.style("opacity", 0.1)
+		.style("fill", "#38425D")
+		.transition(500)
+		.attr("r", 6);
 
 		highlightWine.set(undefined)
 	}

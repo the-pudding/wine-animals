@@ -51,7 +51,7 @@
 				<line class="tick-mark" y1={0} y2={6} x1={0} x2={0} />
 			{/if}
 			<text x={0} y={yTick} dx="" dy="" text-anchor={textAnchor(i)}
-				>${formatTick(tick)}</text
+				>{formatTick(tick)}</text
 			>
 		</g>
 	{/each}
@@ -90,10 +90,10 @@
 	}
 
 	.x-axis .tick.tick-0 text {
-		transform: translateX(8px);
+		transform: translateX(4px);
 	}
 
-	/* .x-axis .tick:last-child text {
-		transform: translateX(-18px);
-	} */
+	.x-axis .tick:last-child text {
+		transform: translateX(-4px);
+	}
 </style>

@@ -10,17 +10,17 @@
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
-    import flippedExponential from "$utils/flippedExponential";
+    import * as d3Regression from 'd3-regression';
     import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
 
 
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
     const curve = d3.curveLinear;
-    const yKey = 'rating';
-    const xKey = 'price';
-    const xKeyReg = d => +d.price;
-    const yKeyReg = d => +d.rating;
+    const yKey = 'price';
+    const xKey = 'rating';
+    const xKeyReg = d => +d.rating;
+    const yKeyReg = d => +d.price;
 
     $bigScatterData.forEach(d => {
         d[xKey] = +d[xKey];
@@ -36,20 +36,19 @@
 		easing: eases.cubicInOut
 	};
 
+    $: console.log({$bigScatterData})
+
     // Regression Line
-    const regression = flippedExponential()
+    const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
-        .y(d => d.y) // Accessor for y value
-        .domain([0,150]);
+        .y(d => d.y); // Accessor for y value
 
     $: points = $bigScatterData.map(d => ({
-        x: +d.price,  // Convert price to a number
-        y: +d.rating  // Convert rating to a number
+        x: +d.rating,  // Convert price to a number
+        y: +d.price  // Convert rating to a number
     }))
-
     $: trendLine = regression(points);
-
-    $: console.log({$bigScatterData})
+    $: console.log($highlightWine)
 </script>
 
 <section id="scatter-explore">
@@ -57,24 +56,24 @@
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
                 {#key [filteredRawData, trendLine]}
                 <LayerCake
-                    padding={{ top: 20, right: 20, bottom: 20, left: 0 }}
+                    padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
                     x={xKey}
                     y={yKey}
                     data={[filteredRawData, trendLine]}
-                    yDomain={[2,5]}
-                    xDomain={[0,150]}
+                    xDomain={[2,5]}
+                    yDomain={[0,150]}
                 >
                     <Svg>
-                        <AxisX gridlines={true} />
+                        <AxisX gridlines={true} ticks={5}/>
                         <AxisY gridlines={true} ticks={4} />
                     </Svg>
 
                     <Canvas>
-                        <ScatterCanvas r={r * 1.5} fill="#0cf" />
+                        <ScatterCanvas r={10} fill="#38425D" />
                     </Canvas>
 
                     <Svg>
-                        <ScatterSvgExplore {r} fill={color} addRandom={true} />
+                        <ScatterSvgExplore r={6} fill={"#38425D"} addRandom={true} />
                         <Voronoi stroke="#333"/>
                     </Svg>
                 </LayerCake>

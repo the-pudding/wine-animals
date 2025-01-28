@@ -43,7 +43,7 @@
     const countKey = 'count';
     const xDomainColumn = [...new Set(data.map(item => item.bucket))];
     const xDomainLine = [...xDomainColumn, 'end'];
-    $: barWidth = $metricSelect == "price" ? "91.6%" : "83.3%";
+    $: barWidth = $metricSelect == "price" ? "93.6%" : "83.3%";
 </script>
 
 <section id="distribution">
@@ -255,6 +255,6 @@
     }
 
     .bars {
-        width: calc(100% * 0.916)
+        width: calc(100% * 0.95)
     }
 </style>
