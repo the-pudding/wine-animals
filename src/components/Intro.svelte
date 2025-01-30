@@ -5,6 +5,7 @@
     import { quintOut } from 'svelte/easing';
     import SpinningBottle from "$components/SpinningBottle.svelte";
     import Scrolly from "$components/helpers/Scrolly.svelte";
+    import Range from "$components/helpers/Range.svelte";
     import Icon from "$components/helpers/Icon.svelte";
     import * as d3 from 'd3';
 
@@ -28,9 +29,12 @@
 
 <section id='intro'>
     <div class="sticky">
+        <div class="slider-container">
+            <Range max=700 min=0 showTicks=true />
+        </div>
         <div class="bg-text-container">
             <div class="bg-text" style={parent_style}>
-                <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin of species</h1>
+                <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
             </div>
         </div>
         {#if scrollIndex >= 1}
@@ -43,34 +47,38 @@
             <SpinningBottle bottlePos="right" {scrollIndex}/>
         {/if}
         <div class="text-container">
-            {#each copy.intro.slice(0,4) as text, i}
+            {#each copy.intro.slice(0,2) as text, i}
                 {#if textFade && scrollIndex == undefined}
                     <p  
                         id="intro-text-{i}"
-                        in:fly={{ delay: 500*i, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                        in:fly={{ delay: 1000*i, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
                         out:fade
                     >{text.value}
-                    {#if i == 3}
+                    {#if i == 1}
                         <span><Icon name="arrow-down" /></span>
                     {/if}
                 </p>
                 {/if}
             {/each}
             {#if textFade && scrollIndex == 0}
-                <p  
-                        id="intro-text-4"
-                        in:fly={{ delay: 500, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                        out:fade
-                    >{copy.intro[4].value}
-                </p>
+                {#each copy.intro.slice(2,4) as text, i}
+                        <p  
+                            id="intro-text-{i}"
+                            in:fly={{ delay: 500*i, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                            out:fade
+                        >{text.value}
+                    </p>
+                {/each}
             {/if}
             {#if textFade && scrollIndex == 1}
-                <p  
-                        id="intro-text-5"
-                        in:fly={{ delay: 500, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                {#each copy.intro.slice(4,6) as text, i}
+                    <p  
+                        id="intro-text-{i}"
+                        in:fly={{ delay: 500*i, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
                         out:fade
-                    >{copy.intro[5].value}
-                </p>
+                        >{text.value}
+                    </p>
+                {/each}
             {/if}
             {#if textFade && scrollIndex >= 2}
                 <p  
@@ -94,6 +102,14 @@
     #intro {
         width: 100%;
         position: relative;
+    }
+    .slider-container {
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        transform: translate(0, -50%);
+        height: 100svh;
+        z-index: 1000;
     }
     .sticky {
         width: 100%;
@@ -122,6 +138,7 @@
     .bg-text-container {
 		height: 80svh;
 		width: 100%;
+        padding: 6rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -159,7 +176,7 @@
     }
 
     .text-container p {
-        font-size: var(--20px);
+        font-size: var(--24px);
         max-width: 300px;
         position: absolute;
         color: var(--wine-tan);
