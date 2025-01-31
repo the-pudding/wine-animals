@@ -7,6 +7,9 @@
 	export let showTicks = false;
 	export let value = min;
 	export let label = "";
+	export let rangeIndex;
+	export let currAnimalIndex;
+	export let animal;
 
 	let rangeInput;
 	let labelElement;
@@ -25,8 +28,6 @@
 			const percent = (value - min) / (max - min);
 			const thumbPosition = percent * rangeInput.offsetHeight;
 
-			console.log(percent)
-
 			thumbOffset = -thumbPosition;
 		}
 	}
@@ -35,28 +36,47 @@
 		updateThumbOffset(value);
 	});
 
+	$: console.log(rangeIndex, currAnimalIndex)
+
 	$: updateThumbOffset(value);
 </script>
 
-<div class="range">
+<div class="range" class:disabled={rangeIndex !== currAnimalIndex} class:hidden={rangeIndex > currAnimalIndex}>
 	<div class="ticks">
 		{#each ticks as tick}
 			<span class="tick">${format(`.${decimals}f`)(tick)}</span>
 		{/each}
 	</div>
-	<input type="range" aria-label={label} {min} {max} {step} bind:value bind:this={rangeInput} />
-	<div class="thumb-label" bind:this={labelElement} style="transform: translateY({thumbOffset}px)">
-		<p>${value}</p>
-		<p>Bionic Frog</p>
-	</div>
+	<input type="range" 
+		aria-label={label} 
+		{min} {max} {step} 
+		bind:value
+		bind:this={rangeInput}
+		disabled={rangeIndex !== currAnimalIndex} 
+		/>
+	{#if rangeIndex == currAnimalIndex}
+		<div class="thumb-label" bind:this={labelElement} style="transform: translateY({thumbOffset}px)">
+			<p>${value}</p>
+			<p>{animal}</p>
+		</div>
+	{/if}
 </div>
 
 <style>
 	.range {
 		--thumb-width: 24px;
 		--tick-font-size: 12px;
-		position: relative;
+		position: absolute;
+		top: 0;
+		left: 0;
 		margin-bottom: calc(var(--thumb-width) * 2);
+	}
+	.range.disabled {
+		pointer-events: none;
+	}
+
+	.range.hidden input, .range.hidden .ticks {
+		display: none;
 	}
 
 	.thumb-label {

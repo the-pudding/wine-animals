@@ -14,10 +14,9 @@
     let scrollIndex;
     let steps = [0,1,2,3];
 
-    let introText0;
-    let introText1;
-    let introText2;
-    let introText3;
+    let animals = ["frog", "bird", "lion"];
+    $: currAnimalIndex = 0;
+    $: currAnimal = animals[currAnimalIndex];
 
     onMount(async () => {
         setTimeout(() => {
@@ -25,30 +24,47 @@
         }, 1000);
 	});
 
+    function lockClick() {
+        if (currAnimalIndex < animals.length - 1) {
+            currAnimalIndex += 1;
+        }
+    }
+
+    $: console.log(currAnimal)
+
 </script>
 
 <section id='intro'>
     <div class="sticky">
         <div class="slider-container">
-            <Range max=700 min=0 showTicks=true />
+            <div class="range-wrapper">
+                {#each animals as animal, i}
+                    <Range max=700 min=0 showTicks={true} animal={animal} rangeIndex={i} currAnimalIndex={currAnimalIndex} />
+                {/each}
+            </div>
+            <button 
+                id="price-lock"
+                on:click={lockClick}
+            >
+            Lock Price</button>
         </div>
         <div class="bg-text-container">
             <div class="bg-text" style={parent_style}>
                 <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
             </div>
         </div>
-        {#if scrollIndex >= 1}
+        {#if currAnimalIndex >= 2}
             <SpinningBottle bottlePos="left" {scrollIndex}/>
         {/if}
-        {#if scrollIndex  == undefined || scrollIndex >= 0}
+        {#if currAnimalIndex  == undefined || currAnimalIndex >= 0}
             <SpinningBottle bottlePos="center" {scrollIndex}/>
         {/if}
-        {#if scrollIndex >= 0}
+        {#if currAnimalIndex >= 1}
             <SpinningBottle bottlePos="right" {scrollIndex}/>
         {/if}
         <div class="text-container">
             {#each copy.intro.slice(0,2) as text, i}
-                {#if textFade && scrollIndex == undefined}
+                {#if textFade && currAnimalIndex == 0}
                     <p  
                         id="intro-text-{i}"
                         in:fly={{ delay: 1000*i, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
@@ -60,7 +76,7 @@
                 </p>
                 {/if}
             {/each}
-            {#if textFade && scrollIndex == 0}
+            {#if textFade && currAnimalIndex == 1}
                 {#each copy.intro.slice(2,4) as text, i}
                         <p  
                             id="intro-text-{i}"
@@ -70,7 +86,7 @@
                     </p>
                 {/each}
             {/if}
-            {#if textFade && scrollIndex == 1}
+            {#if textFade && currAnimalIndex == 2}
                 {#each copy.intro.slice(4,6) as text, i}
                     <p  
                         id="intro-text-{i}"
@@ -80,41 +96,49 @@
                     </p>
                 {/each}
             {/if}
-            {#if textFade && scrollIndex >= 2}
-                <p  
-                        id="intro-text-6"
-                        in:fly={{ delay: 500, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                        out:fade
-                    >{copy.intro[6].value}
-                </p>
-            {/if}
         </div>
     </div>
-    <Scrolly bind:value={scrollIndex}>
-        {#each steps as step, i}
-            <div class="step"></div>
-        {/each}
-    </Scrolly>
-    <div class="spacer" />
 </section>
 
 <style>
     #intro {
         width: 100%;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100svh;
     }
     .slider-container {
         position: absolute;
-        right: 2rem;
+        right: 1rem;
         top: 50%;
         transform: translate(0, -50%);
         height: 100svh;
         z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
     }
+
+    .range-wrapper {
+        height: 80svh;
+        position: relative;
+    }
+
+    #price-lock {
+        width: 3.5rem;
+        text-transform: uppercase;
+        font-size: var(--12px);
+        font-weight: 700;
+    }
+
     .sticky {
         width: 100%;
         height: 100svh;
-		position: sticky;
+        padding: 4rem 1rem;
+		position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -176,7 +200,7 @@
     }
 
     .text-container p {
-        font-size: var(--24px);
+        font-size: var(--20px);
         max-width: 300px;
         position: absolute;
         color: var(--wine-tan);
