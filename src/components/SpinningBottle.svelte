@@ -1,17 +1,26 @@
 <script>
+    import { createEventDispatcher, onMount } from "svelte";
     import Range from "$components/helpers/Range.svelte";
-    let leftPos = "-50%";
+    import { fly, fade } from 'svelte/transition';
     let shouldSpin = true;
     let wineWidth;
 
-    export let bottlePos;
-    export let scrollIndex;
+    export let bottleIndex;
+    export let bottleSlot;
+    export let startingPos;
+    export let targetPos;
+    export let rangeValue;
+    export let pricesLocked;
+    export let actualPrice;
 
-    setTimeout(() => {
-        leftPos = bottlePos == "center" ? "50%" :
-                bottlePos == "left" ? "25%" :
-                "75%"
-    },0)
+    let leftPos = startingPos;
+
+    const dispatch = createEventDispatcher();
+
+    function handleRangeChange(event) {
+        rangeValue = event.detail;          // Directly use the dispatched value
+        dispatch('rangeChange', rangeValue); // Notify parent
+    }
 
     function handleTransitionEnd() {
         shouldSpin = false;
@@ -39,69 +48,70 @@
         let container = e.currentTarget;
         container.style.backgroundPosition = "0 0"; 
     }
+
+    onMount(() => {
+        setTimeout(() => {
+            leftPos = targetPos;
+        }, (bottleIndex) * 1000);
+    });
 </script>
 
-<div class="banner banner-{bottlePos}" >
-    <div class="product" style="left: {leftPos}" on:transitionend={handleTransitionEnd}>
-        {#if scrollIndex >= 2}
-            <div class="range-wrapper">
-                <Range />
-            </div>
-        {/if}
-        <!-- <div class="wine" class:spin={shouldSpin} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div> -->
-        <div class="wine" class:spin={shouldSpin}></div>
-    </div>
+
+<div class="product product-{bottleSlot}" style="left: {leftPos};" on:transitionend={handleTransitionEnd}>
+    {#if !shouldSpin}
+        <div in:fade class="range-wrapper">
+            <Range 
+                bind:value={rangeValue} 
+                on:input={handleRangeChange} 
+                showTicks={true} 
+                pricesLocked={pricesLocked}
+                actualPrice={actualPrice} 
+            />
+        </div>
+    {/if}
+    <div class="wine" class:spin={shouldSpin} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
 </div>
 
 
+
 <style>
-    .banner {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        padding: 4rem 2rem;
-    }
     .range-wrapper {
         position: absolute;
-        left: -1rem;
-        top: 2rem;
-        height: 92%;
-        display: flex;
-        flex-direction: row;
-        align-items: start;
-        justify-content: end;
+        width: 100%;
+        left: 0rem;
+        bottom: 0rem;
+        padding: 0 1rem;
     }
-    .banner .product {
-        height: calc(100% - 10rem);
+    .product {
+        height: 100%;
         aspect-ratio: 1/3.5;
         position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        bottom: 0;
+        transform: translate(-50%, 0);
         z-index: 1;
-        --left: 0;
-        transition: 2s ease-in;
+        left: 0;
+        transition: left 2s ease-in;
+        padding-bottom: 4rem;
     }
-    .banner-center .product .wine, .banner-right .product .wine, .banner-left .product .wine {
+    .product-center .wine, .product-right .wine, .product-left .wine {
         height: 100%;
         aspect-ratio: 1/3.5;
         cursor: pointer;
     }
 
-    .banner-center .product .wine {
+    .product-center .wine {
         background: url("assets/images/stock/testspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
-    .banner-right .product .wine {
+    .product-right .wine {
         background: url("assets/images/stock/lionspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
-    .banner-left .product .wine {
+    .product-left .wine {
         background: url("assets/images/stock/lionspin.png");
         background-position: 0 0;
         background-size: auto 100%;

@@ -1,19 +1,21 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount, createEventDispatcher } from "svelte";
 	import { range, format } from "d3";
+	import { fade } from 'svelte/transition';
 	export let min = 0;
 	export let max = 700;
 	export let step = 1;
 	export let showTicks = false;
 	export let value = min;
 	export let label = "";
-	export let rangeIndex;
-	export let currAnimalIndex;
-	export let animal;
+	export let pricesLocked;
+	export let actualPrice;
 
-	let rangeInput;
-	let labelElement;
 	let thumbOffset = 0;
+	let labelElement;
+	let rangeInput;
+
+	const dispatch = createEventDispatcher();
 
 	const getDecimalCount = (value) => {
 		if (Math.floor(value) === value) return 0;
@@ -21,14 +23,23 @@
 	};
 
 	$: decimals = getDecimalCount(step);
-	$: ticks = showTicks ? range(min, max + step, 100).filter(d => d <= max) : [];
-	
-	function updateThumbOffset(value) {
-		if (rangeInput && labelElement) {
-			const percent = (value - min) / (max - min);
-			const thumbPosition = percent * rangeInput.offsetHeight;
+	$: ticks = [0, 700];
 
-			thumbOffset = -thumbPosition;
+	function handleInput(event) {
+        value = +event.target.value; // Ensure value is a number
+        dispatch("input", value);    // Dispatch value directly, not wrapped in an object
+    }
+
+	$: actualPricePosition = ((actualPrice - min) / (max - min)) * 100;
+
+    function updateThumbOffset(value) {
+		if (rangeInput) {
+			const rangeWidth = rangeInput.offsetWidth;
+			const thumbWidth = parseInt(getComputedStyle(rangeInput).getPropertyValue('--thumb-width'), 10) || 24;
+			const percent = (value - min) / (max - min);
+			
+			// Correct calculation to center the label on the thumb
+			thumbOffset = percent * rangeWidth;
 		}
 	}
 
@@ -36,74 +47,96 @@
 		updateThumbOffset(value);
 	});
 
-	$: console.log(rangeIndex, currAnimalIndex)
-
 	$: updateThumbOffset(value);
 </script>
 
-<div class="range" class:disabled={rangeIndex !== currAnimalIndex} class:hidden={rangeIndex > currAnimalIndex}>
+<div class="range">
 	<div class="ticks">
 		{#each ticks as tick}
 			<span class="tick">${format(`.${decimals}f`)(tick)}</span>
 		{/each}
 	</div>
-	<input type="range" 
-		aria-label={label} 
-		{min} {max} {step} 
-		bind:value
+	<input 
+        type="range" 
+        aria-label={label} 
+        {min} 
+        {max} 
+        {step} 
+        bind:value 
 		bind:this={rangeInput}
-		disabled={rangeIndex !== currAnimalIndex} 
-		/>
-	{#if rangeIndex == currAnimalIndex}
-		<div class="thumb-label" bind:this={labelElement} style="transform: translateY({thumbOffset}px)">
+        on:input={handleInput}
+		disabled={pricesLocked} />
+		<div class="thumb-label" style="left: {thumbOffset}px;">
 			<p>${value}</p>
-			<p>{animal}</p>
 		</div>
-	{/if}
+		{#if pricesLocked}
+			<div transition:fade class="actualPrice" style="left: {actualPricePosition}%">
+				<p>${format(`.${decimals}f`)(actualPrice)}</p>
+			</div>
+    	{/if}
 </div>
 
 <style>
-	.range {
-		--thumb-width: 24px;
-		--tick-font-size: 12px;
+	.actualPrice {
 		position: absolute;
 		top: 0;
 		left: 0;
-		margin-bottom: calc(var(--thumb-width) * 2);
-	}
-	.range.disabled {
-		pointer-events: none;
+		height: var(--thumb-width);
+		width: var(--thumb-width);
+		border-radius: 50%;
+		background: transparent;
+		border: 2px dashed var(--wine-red);
+		appearance: none;
+		margin-top: calc(var(--thumb-width) / -3);
 	}
 
-	.range.hidden input, .range.hidden .ticks {
-		display: none;
+	.actualPrice p {
+		position: absolute;
+		top: -2.75rem;
+		left: 50%;
+		font-size: 0.75rem;
+		color: var(--wine-red);
+		font-size: var(--18px);
+		font-weight: 700;
+		font-family: var(--sans);
+		text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
 	}
 
 	.thumb-label {
 		position: absolute;
-		right: 50%;
-		transform: translateX(-50%);
+		top: -31px;
+		width: 50px;
+		left: 0;
+        transform: translateX(-50%);
 		color: var(--wine-tan);
 		border-radius: 4px;
-		font-size: var(--20px);
+		font-size: var(--18px);
 		font-family: var(--sans);
 		font-weight: bold;
-		margin-right: 1rem;
 		text-align: right;
 		text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
-		pointer-events: none; /* Prevents interactions */
-		/* transition: transform 0.1s ease-out; */
+		pointer-events: none; 
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.thumb-label p {
 		margin: 0;
 		line-height: 1;
-		min-width: 200px;
+		text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
+	}
+
+	.range {
+		--thumb-width: 24px;
+		--tick-font-size: 12px;
+		position: relative;
+		margin-bottom: calc(var(--thumb-width) * 2);
 	}
 
 	input[type="range"] {
 		display: block;
-		height: 80svh;
+		width: 100%;
 		appearance: none;
 		cursor: pointer;
 		padding: 0;
@@ -111,8 +144,11 @@
 		background: transparent;
 		position: relative;
 		outline: none;
-		writing-mode: vertical-lr;
-		direction: rtl;
+	}
+
+	input[type="range"]:disabled {
+		cursor: not-allowed;
+		opacity: 0.6;       
 	}
 
 	input[type="range"]:focus {
@@ -126,18 +162,25 @@
 	}
 
 	input[type="range"]::-webkit-slider-runnable-track {
-		height: 100%;
-		width: 2px;
+		width: 100%;
+		height: calc(var(--thumb-width) / 8);
 		background: var(--wine-med-gray);
+		border-radius: 4px;
 	}
 
 	input[type="range"]::-webkit-slider-thumb {
-		width: var(--thumb-width);
 		height: var(--thumb-width);
+		width: var(--thumb-width);
 		border-radius: 50%;
 		background: var(--wine-tan);
+		border: 3px solid var(--wine-black);
 		appearance: none;
-		margin-left: calc(var(--thumb-width) / -2.25);
+		margin-top: calc(var(--thumb-width) / -3);
+	}
+
+	input[type="range"]::-webkit-slider-thumb::after {
+		content: "name";
+		color: white;
 	}
 
 	input[type="range"]:focus::-webkit-slider-runnable-track {
@@ -145,8 +188,8 @@
 	}
 
 	input[type="range"]::-moz-range-track {
-		height: 100%;
-		width: 2px;
+		width: 100%;
+		height: calc(var(--thumb-width) / 4);
 		background: var(--wine-med-gray);
 		border-radius: 4px;
 	}
@@ -156,12 +199,12 @@
 		height: var(--thumb-width);
 		width: var(--thumb-width);
 		border-radius: 50%;
-		background: var(--wine-tan);
+		background: var(--color-gray-900);
 	}
 
 	input[type="range"]::-ms-track {
-		width: 2px;
-		height: 100%;
+		width: 100%;
+		height: calc(var(--thumb-width) / 4);
 		background: transparent;
 		border-color: transparent;
 		border-width: 16px 0;
@@ -170,7 +213,7 @@
 
 	input[type="range"]::-ms-fill-lower,
 	input[type="range"]::-ms-fill-upper {
-		background: var(--color-gray-300);
+		background: var(--wine-med-gray);
 		border: 0.2px solid var(--color-black);
 		border-radius: 4px;
 		box-shadow: 1px 1px 1px var(--color-black), 0 0 1px var(--color-black);
@@ -180,52 +223,47 @@
 		height: var(--thumb-width);
 		width: var(--thumb-width);
 		border-radius: 50%;
-		background: var(--wine-tan);
+		background: var(--color-gray-900);
 	}
 
 	input[type="range"]:focus::-ms-fill-lower,
 	input[type="range"]:focus::-ms-fill-upper {
-		background: var(--color-gray-300);
+		background: var(--wine-med-gray);
 	}
 
 	.ticks {
-		height: 100%;
-		width: auto;
+		width: 100%;
 		display: flex;
-		flex-direction: column-reverse;
-		justify-content: space-between; /* This evenly spaces them */
-		align-items: flex-end; /* Align to the left */
+		justify-content: space-between;
+		padding: 0 calc(var(--thumb-width) / 2);
+		margin: 0;
+		user-select: none;
 		position: absolute;
-		left: calc(var(--thumb-width) * -1.5);
+		left: 0;
+		bottom: -0.25rem;
+		transform: translate(0, 100%);
 	}
 
 	.tick {
 		display: flex;
-		align-items: center;
+		justify-content: center;
 		font-size: var(--tick-font-size);
 		line-height: 1;
-		text-align: right;
+		text-align: center;
+		width: 1px;
+		background: transparent;
 		color: var(--wine-tan);
+		padding-top: calc(var(--thumb-width) / 2);
 		position: relative;
-		width: auto;
 		font-family: var(--sans);
-	}
-
-	.tick:before {
-		display: block;
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: calc(var(--thumb-width) / 3);
+		font-size: var(--14px);
 	}
 
 	.tick:first-of-type {
-		transform: translate(-1px, 0);
+		transform: translate(-5px, 0);
 	}
 
 	.tick:last-of-type {
-		transform: translate(1px, 0);
+		transform: translate(-3px, 0);
 	}
 </style>
