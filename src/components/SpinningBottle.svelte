@@ -84,6 +84,7 @@
     }
     .product {
         height: 100%;
+        max-height: 600px;
         aspect-ratio: 1/3.5;
         position: absolute;
         bottom: 0;
@@ -106,7 +107,7 @@
     }
 
     .product-right .wine {
-        background: url("assets/images/stock/lionspin.png");
+        background: url("assets/images/stock/birdspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }

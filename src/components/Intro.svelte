@@ -87,7 +87,7 @@
     <div class="bg">
         <div class="bg-text-container">
             <div class="bg-text" style={parent_style}>
-                <h1 >The pour-gin<br> of species</h1>
+                <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .bg {
@@ -129,7 +129,7 @@
 
     .bottles {
         width: 100%;
-        height: 70svh;
+        height: 60svh;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -210,7 +210,6 @@
         line-height: 0.8;
         text-align: center;
         opacity: 0.4;
-        font-size: 400px;
     }
 
     .text-container {
