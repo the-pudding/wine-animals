@@ -3,16 +3,13 @@
     import { fit, parent_style } from "@leveluptuts/svelte-fit";
     import { fly, fade } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
+    import Scrolly from "$components/helpers/Scrolly.svelte";
     import SpinningBottle from "$components/SpinningBottle.svelte";
 
     const copy = getContext("copy");
     let textFade = false;
-    let bottlesVisible = [false, false, false];
-    let targetPositions = ["50%", "75%", "25%"];
-    let bottlePositions = ["-50%", "-50%", "-50%"];
-    let rangeValues = [0,0,0];
-    let actualPrices = ["610", "18.33", "43.17"];
     let pricesLocked = false;
+    let scrollIndex;
 
     let openingWines = [
         { name: "Bionic Frog", winery: "Cayuse Vineyards", country: "United States", price: 610, bottleSlot: "center", bottleVisible: false, targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
@@ -35,71 +32,125 @@
 
     function lockClick() {
         pricesLocked = true;
+        document.body.style.overflow = "visible";
     }
 
-    // Handler to update range values
-    function handleRangeChange(index, value) {
-        openingWines[index].rangeValue = value;
-    }
+    $: console.log({scrollIndex});
 </script>
 
 <section id='intro'>
-    <div class="fg">
-        <div class="text-container">
-            {#if textFade && !pricesLocked}
-                <p  
-                    id="intro-text"
-                    in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                    out:fade={{delay: 0, duration: 500}}
-                    >{copy.intro.slice(0,1)[0].value}
-                    <span class="instructions">Go ahead, use the sliders. Here are three wines.</span>
-                </p>
-            {:else if textFade && pricesLocked}
-                <p  
-                    id="intro-text"
-                    in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                    out:fade={{delay: 0, duration: 500}}
-                    >Even if you didn’t get it right, your rankings show something important: what you assume expense looks like. 
-                    <span class="instructions">Scroll for more</span>
-                </p>
-            {/if}
-        </div>
-        <div class="bottles">
-            {#each openingWines as wine, i}
-                <SpinningBottle 
-                    bottleIndex={i}
-                    bottlePos={wine.bottleSlot} 
-                    pricesLocked={pricesLocked}
-                    startingPos={wine.startingPos}
-                    targetPos={wine.targetPos}
-                    actualPrice={wine.price}
-                    bottleSlot={wine.bottleSlot}
-                    bind:rangeValue={wine.rangeValue} />
-            {/each}
-        </div>
-        <div class="controls">
-            <button id="lock" on:click={lockClick}>
-                Set prices
-            </button>
-            <p>Skip to story</p>
-        </div>
-    </div>
-    <div class="bg">
-        <div class="bg-text-container">
-            <div class="bg-text" style={parent_style}>
-                <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
+    <div class="sticky">
+        <div class="fg">
+            <div class="text-container">
+                {#if textFade && !pricesLocked}
+                    <p  
+                        id="intro-text"
+                        in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                        out:fade={{delay: 0, duration: 500}}
+                        >{copy.intro.slice(0,1)[0].text}
+                        <span class="instructions">{copy.intro.slice(0,1)[0].instructions}</span>
+                    </p>
+                {:else if textFade && pricesLocked}
+                    <p  
+                        id="intro-text"
+                        in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                        out:fade={{delay: 0, duration: 500}}
+                        >{copy.intro.slice(1,2)[0].text}
+                        <span class="instructions">{copy.intro.slice(1,2)[0].instructions}</span>
+                    </p>
+                {/if}
+            </div>
+            <div class="bottles">
+                {#each openingWines as wine, i}
+                    <SpinningBottle 
+                        bottleIndex={i}
+                        bottlePos={wine.bottleSlot} 
+                        pricesLocked={pricesLocked}
+                        startingPos={wine.startingPos}
+                        targetPos={wine.targetPos}
+                        actualPrice={wine.price}
+                        bottleSlot={wine.bottleSlot}
+                        bind:rangeValue={wine.rangeValue} />
+                {/each}
+            </div>
+            <div class="controls">
+                <button id="lock" on:click={lockClick}>
+                    Set prices
+                </button>
+                <p>Skip to story</p>
             </div>
         </div>
+        <div class="bg">
+            <div class="bg-text-container">
+                <div class="bg-text" style={parent_style}>
+                    <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Scrolly bind:value={scrollIndex}>
+        {#each copy.scroll as step, i}
+            <div class="step"><p>{step.value}</p></div>
+        {/each}
+    </Scrolly>
+    <div class="spacer" />
+    <div class="post-scroll prose">
+        {#each copy.postScroll as graf, i}
+            <p>{graf.value}</p>
+        {/each}
     </div>
 </section>
 
 <style>
     #intro {
         width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100svh;
+    }
+
+    .sticky {
+        width: 100%;
+        height: calc(100svh - 100px);
+		position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+		top: 0;
+		transition: all 1s;
+        z-index: 1;
+        overflow: hidden;
+	}
+
+    .spacer {
+		height: 75vh;
+	}
+	.step {
+		height: 80vh;
+		text-align: center;
+        z-index: 1000;
+        max-width: 30rem;
+        margin: 0 auto;
+        opacity: 1;
+        pointer-events: none;
+	}
+
+    .step:first-of-type {
+        margin-top: 20%;
+    }
+
+    .step p {
+        background: white;
+        padding: 2rem 1rem;
+        border: 1px solid var(--fanfic-black);
+        pointer-events: auto;
+    }
+
+    .prose {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .prose p {
+        color: var(--wine-tan);
     }
 
     .fg, .bg {
@@ -108,7 +159,7 @@
         top: 0;
         left: 0;
         height: 100svh;
-        padding: 6rem 2rem 3rem 2rem;
+        padding: 2rem;
     }
 
     .fg {
