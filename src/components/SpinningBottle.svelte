@@ -60,15 +60,37 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function animatePosition(direction) {
-        shouldSpin = [true, true, true];
-        let delayIndex = direction === "in" ? bottleIndex : (2 - bottleIndex); 
-        let delayTime = direction === "in" ? 500 : 500;
-
-        await delay(delayIndex * 500); 
-        leftPos = direction === "in" ? targetPos : startingPos; 
-        await delay(delayTime); 
+    function getDistance(start, end) {
+        return Math.abs(parseFloat(end) - parseFloat(start)); // Convert to number and find absolute difference
     }
+
+    async function animatePosition(direction) {
+        // Convert positions from percentages to numeric values
+        let startPos = parseFloat(startingPos);
+        let endPos = parseFloat(targetPos);
+
+        // Calculate distance each bottle needs to travel
+        let distance = getDistance(startingPos, targetPos);
+
+        // Define speed (e.g., it takes 1000ms to move 100%)
+        let speed = 10; // Adjust this value to control speed
+        let duration = distance * speed; // Adjust duration based on distance
+
+        let delayIndex = direction === "in" ? bottleIndex : (2 - bottleIndex);
+        let delayTime = duration / 2; // Optional: adjust staggering
+
+        await delay(delayIndex * 250); // Stagger each bottle's movement
+
+        if (direction === "out") {
+            shouldSpin = [...shouldSpin];  // Ensure reactivity
+            shouldSpin[bottleIndex] = true; // Only set spin for this bottle
+        }
+
+        leftPos = direction === "in" ? targetPos : startingPos;
+
+        await delay(delayTime + 500); 
+    }
+
 
     onMount(async() => {
         await animatePosition(direction);
@@ -141,19 +163,19 @@
     }
 
     .product-center .wine {
-        background: url("assets/images/stock/testspin.png");
+        background: url("/assets/images/stock/testspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-right .wine {
-        background: url("assets/images/stock/birdspin.png");
+        background: url("/assets/images/stock/birdspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-left .wine {
-        background: url("assets/images/stock/lionspin.png");
+        background: url("/assets/images/stock/lionspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }

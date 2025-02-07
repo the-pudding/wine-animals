@@ -135,7 +135,7 @@
 		margin-bottom: calc(var(--thumb-width) * 2);
 	}
 
-	.range.skipped input[type="range"]::-webkit-slider-thumb, .thumb-label  {
+	.range.skipped input[type="range"]::-webkit-slider-thumb, .range.skipped .thumb-label  {
 		opacity: 0;
 	}
 
