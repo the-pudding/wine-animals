@@ -1,6 +1,8 @@
 import { writable } from "svelte/store";
 import allWineData from "$data/wineData.csv";
 
+export const bottleSpinState = writable({});
+
 export const favWinesList = writable([]);
 export const wineSet = writable("animals/humans");
 export const metricSelect = writable("price");

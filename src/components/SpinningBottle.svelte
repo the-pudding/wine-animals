@@ -2,9 +2,9 @@
     import { createEventDispatcher, onMount } from "svelte";
     import Range from "$components/helpers/Range.svelte";
     import { fly, fade } from 'svelte/transition';
-    let shouldSpin = true;
     let wineWidth;
 
+    export let scrollIndex;
     export let bottleIndex;
     export let bottleSlot;
     export let startingPos;
@@ -12,8 +12,11 @@
     export let rangeValue;
     export let pricesLocked;
     export let actualPrice;
+    export let rangeVisible = false;
 
     let leftPos = startingPos;
+    $: direction = "in";
+    let shouldSpin = [true, true, true];
 
     const dispatch = createEventDispatcher();
 
@@ -22,8 +25,13 @@
         dispatch('rangeChange', rangeValue); // Notify parent
     }
 
-    function handleTransitionEnd() {
-        shouldSpin = false;
+    function handleTransitionEnd(event) {
+        if (event.propertyName !== "left") return; // ✅ Ignore opacity or other transitions
+
+        console.log(`Transition ended → Bottle ${bottleIndex}`);
+
+        shouldSpin = [...shouldSpin];
+        shouldSpin[bottleIndex] = false;
     }
 
     function mousemoveBottle(e) {
@@ -49,27 +57,48 @@
         container.style.backgroundPosition = "0 0"; 
     }
 
-    onMount(() => {
-        setTimeout(() => {
-            leftPos = targetPos;
-        }, (bottleIndex) * 1000);
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function animatePosition(direction) {
+        shouldSpin = [true, true, true];
+        let delayIndex = direction === "in" ? bottleIndex : (2 - bottleIndex); 
+        let delayTime = direction === "in" ? 500 : 500;
+
+        await delay(delayIndex * 500); 
+        leftPos = direction === "in" ? targetPos : startingPos; 
+        await delay(delayTime); 
+    }
+
+    onMount(async() => {
+        await animatePosition(direction);
     });
+
+    $: if (scrollIndex == 2) {
+        direction = "out"
+        animatePosition(direction)
+    }
+
+    $: console.log(shouldSpin)
 </script>
 
 
-<div class="product product-{bottleSlot}" style="left: {leftPos};" on:transitionend={handleTransitionEnd}>
-    {#if !shouldSpin}
-        <div in:fade class="range-wrapper">
-            <Range 
-                bind:value={rangeValue} 
-                on:input={handleRangeChange} 
-                showTicks={true} 
-                pricesLocked={pricesLocked}
-                actualPrice={actualPrice} 
-            />
-        </div>
-    {/if}
-    <div class="wine" class:spin={shouldSpin} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
+<div class="product 
+    product-{bottleSlot}" 
+    class:faded={scrollIndex == 0 && bottleSlot !== 'left' || scrollIndex == 1 && bottleSlot !== 'center'}
+    style="left: {leftPos};" 
+    on:transitionend={handleTransitionEnd}>
+    <div class="range-wrapper" class:visible={shouldSpin[bottleIndex] == false}>
+        <Range 
+            bind:value={rangeValue} 
+            on:input={handleRangeChange} 
+            showTicks={true} 
+            pricesLocked={pricesLocked}
+            actualPrice={actualPrice} 
+        />
+    </div>
+    <div class="wine" class:spin={shouldSpin[bottleIndex]} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
 </div>
 
 
@@ -81,6 +110,13 @@
         left: 0rem;
         bottom: 0rem;
         padding: 0 1rem;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+
+    .range-wrapper.visible {
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
     }
     .product {
         height: 100%;
@@ -93,6 +129,11 @@
         left: 0;
         transition: left 2s ease-in;
         padding-bottom: 4rem;
+    }
+
+    .product.faded {
+        opacity: 0.25;
+        transition: opacity 0.5s ease-in;
     }
     .product-center .wine, .product-right .wine, .product-left .wine {
         height: 100%;

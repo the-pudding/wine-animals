@@ -5,28 +5,24 @@
     import { quintOut } from 'svelte/easing';
     import Scrolly from "$components/helpers/Scrolly.svelte";
     import SpinningBottle from "$components/SpinningBottle.svelte";
+    import inView from "$actions/inView.js";
 
     const copy = getContext("copy");
+    const steps =[0,1,2,3,4];
     let textFade = false;
     let pricesLocked = false;
     let scrollIndex;
 
     let openingWines = [
-        { name: "Bionic Frog", winery: "Cayuse Vineyards", country: "United States", price: 610, bottleSlot: "center", bottleVisible: false, targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
-        { name: "Cuvée Ortolan", winery: "Château Marjosse", country: "France", price: 43.17, bottleSlot: "right", bottleVisible: false, targetPos: "75%", startingPos: "-50%", rangeValue: 0 },
-        { name: "Bordeaux Supérieur", winery: "Château Les Gravieres de la Brandille", country: "France", price: 18.33, bottleSlot: "left", bottleVisible: false, targetPos: "25%", startingPos: "-50%", rangeValue: 0 }
+        { name: "Cuvée Ortolan", winery: "Château Marjosse", country: "France", price: 43.17, bottleSlot: "right", targetPos: "75%", startingPos: "-50%", rangeValue: 0 },
+        { name: "Bionic Frog", winery: "Cayuse Vineyards", country: "United States", price: 610, bottleSlot: "center", targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
+        { name: "Bordeaux Supérieur", winery: "Château Les Gravieres de la Brandille", country: "France", price: 18.33, bottleSlot: "left", targetPos: "25%", startingPos: "-50%", rangeValue: 0 }
     ];
 
     onMount(() => {
         setTimeout(() => {
             textFade = true;
         }, 1000);
-
-        openingWines.forEach((wine, i) => {
-            setTimeout(() => {
-                wine.bottleVisible = true;
-            }, (i + 1) * 1000);
-        });
     });
 
 
@@ -35,34 +31,42 @@
         document.body.style.overflow = "visible";
     }
 
-    $: console.log({scrollIndex});
+    // $: console.log({scrollIndex});
+
+    $: selectedText = textFade 
+        ? (!pricesLocked && scrollIndex === undefined) 
+            ? copy.intro[0] 
+            : (pricesLocked && scrollIndex === undefined) 
+                ? copy.intro[1] 
+                : (pricesLocked && scrollIndex !== undefined) 
+                    ? copy.intro[scrollIndex+2] 
+                    : null 
+        : null;
 </script>
 
 <section id='intro'>
     <div class="sticky">
         <div class="fg">
             <div class="text-container">
-                {#if textFade && !pricesLocked}
-                    <p  
-                        id="intro-text"
-                        in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                        out:fade={{delay: 0, duration: 500}}
-                        >{copy.intro.slice(0,1)[0].text}
-                        <span class="instructions">{copy.intro.slice(0,1)[0].instructions}</span>
-                    </p>
-                {:else if textFade && pricesLocked}
-                    <p  
-                        id="intro-text"
-                        in:fly={{ delay: 1000, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
-                        out:fade={{delay: 0, duration: 500}}
-                        >{copy.intro.slice(1,2)[0].text}
-                        <span class="instructions">{copy.intro.slice(1,2)[0].instructions}</span>
-                    </p>
+                {#if selectedText}
+                    {#key selectedText}
+                        <p  
+                            id="intro-text"
+                            in:fly={{ delay: 500, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
+                            out:fade={{delay: 0, duration: 500}}
+                        >
+                            {selectedText.text}
+                            {#if selectedText.instructions}
+                                <span class="instructions">{selectedText.instructions}</span>
+                            {/if}
+                        </p>
+                    {/key}
                 {/if}
             </div>
             <div class="bottles">
                 {#each openingWines as wine, i}
                     <SpinningBottle 
+                        scrollIndex={scrollIndex}
                         bottleIndex={i}
                         bottlePos={wine.bottleSlot} 
                         pricesLocked={pricesLocked}
@@ -73,37 +77,63 @@
                         bind:rangeValue={wine.rangeValue} />
                 {/each}
             </div>
-            <div class="controls">
+            <div class="controls" class:hidden={pricesLocked} transition:fade>
                 <button id="lock" on:click={lockClick}>
                     Set prices
                 </button>
-                <p>Skip to story</p>
+                <p>Just show me the prices</p>
             </div>
         </div>
         <div class="bg">
             <div class="bg-text-container">
                 <div class="bg-text" style={parent_style}>
-                    <h1 use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
+                    <h1 class:highlight={scrollIndex == 4} use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
+                    {#if scrollIndex == 4}
+                        <div class="byline" transition:fade>
+                            <p>By Charles Dar-Wine</p>
+                            <p>By Fox Meyer with Jan Diehm</p>
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
     </div>
+    <div class="spacer" />
     <Scrolly bind:value={scrollIndex}>
-        {#each copy.scroll as step, i}
-            <div class="step"><p>{step.value}</p></div>
+        {#each steps as step, i}
+            {#if i !== 3}
+            <div class="step"></div>
+            {:else}
+                <div class="step">
+                    {#each copy.preHeadline as graf, i}
+                        <p>{graf.value}</p>
+                    {/each}
+                </div>
+            {/if}
         {/each}
     </Scrolly>
     <div class="spacer" />
-    <div class="post-scroll prose">
-        {#each copy.postScroll as graf, i}
-            <p>{graf.value}</p>
-        {/each}
-    </div>
+</section>
+<section id="postIntro">
+    {#each copy.postHeadline as graf, i}
+        <p class="prose">{graf.value}</p>
+    {/each}
 </section>
 
 <style>
+    #postIntro {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    #postIntro .prose {
+        font-size: var(--18px);
+        line-height: 1.65;
+        color: var(--wine-tan);
+    }
+
     #intro {
         width: 100%;
+        position: relative;
     }
 
     .sticky {
@@ -115,51 +145,48 @@
         justify-content: center;
         align-items: center;
 		top: 0;
+        left: 0;
 		transition: all 1s;
         z-index: 1;
         overflow: hidden;
 	}
 
     .spacer {
-		height: 75vh;
+		height: 50vh;
 	}
 	.step {
-		height: 80vh;
+		height: 70vh;
 		text-align: center;
         z-index: 1000;
-        max-width: 30rem;
+        max-width: 700px;
         margin: 0 auto;
         opacity: 1;
         pointer-events: none;
 	}
 
-    .step:first-of-type {
+    /* .step:first-of-type {
         margin-top: 20%;
-    }
+    } */
 
     .step p {
-        background: white;
-        padding: 2rem 1rem;
-        border: 1px solid var(--fanfic-black);
-        pointer-events: auto;
-    }
-
-    .prose {
+        text-align: left;
         max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .prose p {
+        line-height: 1.65;
         color: var(--wine-tan);
+        font-size: var(--24px);
+        line-height: 1.65;
+        background: none;
+        z-index: 1000;
+        margin: 2rem 0;
     }
 
     .fg, .bg {
         width: 100%;
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        height: 100svh;
-        padding: 2rem;
+        padding: 8rem 2rem 2rem 2rem;
     }
 
     .fg {
@@ -167,7 +194,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .bg {
@@ -192,6 +219,11 @@
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    .controls.hidden {
+        opacity: 0;
+        pointer-events: none;
     }
 
     #lock {
@@ -261,6 +293,27 @@
         line-height: 0.8;
         text-align: center;
         opacity: 0.4;
+        transition: opacity 1s, color 1s;
+    }
+
+    .bg-text h1.highlight {
+        opacity: 1;
+        color: var(--wine-tan);
+    }
+
+    .byline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--wine-tan);
+        font-family: var(--sans);
+        padding-top: 4rem;
+    }
+
+    .byline p {
+        font-size: var(--18px);
+        margin: 0;
+        padding: 0;
     }
 
     .text-container {
