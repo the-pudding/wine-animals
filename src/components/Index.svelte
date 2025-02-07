@@ -94,7 +94,7 @@
 <!-- <Demo /> -->
 <!-- <Footer /> -->
 <Intro />
-<!-- <Explore /> -->
+<Explore />
 
 <!-- <div class="white">
 	<div class="selects">

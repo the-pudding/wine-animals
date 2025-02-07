@@ -5,13 +5,19 @@
     import { quintOut } from 'svelte/easing';
     import Scrolly from "$components/helpers/Scrolly.svelte";
     import SpinningBottle from "$components/SpinningBottle.svelte";
-    import inView from "$actions/inView.js";
+    import arrowDown from "$svg/arrow-down-circle.svg";
 
     const copy = getContext("copy");
     const steps =[0,1,2,3,4];
     let textFade = false;
     let pricesLocked = false;
+    let skipLocked = false;
     let scrollIndex;
+    let bottleHighlights;
+
+    let hoverImageSrc;
+    let hoverImageVisible = false;
+    let hoverImageStyle;
 
     let openingWines = [
         { name: "Cuvée Ortolan", winery: "Château Marjosse", country: "France", price: 43.17, bottleSlot: "right", targetPos: "75%", startingPos: "-50%", rangeValue: 0 },
@@ -23,7 +29,39 @@
         setTimeout(() => {
             textFade = true;
         }, 1000);
+
+        bottleHighlights = document.querySelectorAll(".bottleHighlight");
+
+        console.log(bottleHighlights)
+
+        bottleHighlights.forEach(bottle => {
+            bottle.addEventListener("mouseenter", (event) => handleBottleHover(event, true));
+            bottle.addEventListener("mouseleave", (event) => handleBottleHover(event, false));
+        });
     });
+
+    function handleBottleHover(event, isHovering) {
+        if (!event || !event.target) return;
+        const element = event.target;
+        if (!element) return;
+        const rect = element.getBoundingClientRect();
+        const isLeft = rect.left < window.innerWidth / 2; // Determine if it's on the left or right
+
+        const spanText = element.innerText.trim().replace(/\s+/g, '-');
+
+        console.log(spanText);
+        if (isHovering && spanText) {
+            hoverImageSrc = `assets/images/1spans/${spanText}.png`; // Set image based on text
+            hoverImageVisible = true;
+            hoverImageStyle = `
+                top: ${rect.top + window.scrollY-75}px; 
+                left: ${isLeft ? "15%" : "80%"}; 
+            `;
+        } else {
+            hoverImageVisible = false;
+            hoverImageSrc = '';
+        }
+    }
 
 
     function lockClick() {
@@ -31,7 +69,15 @@
         document.body.style.overflow = "visible";
     }
 
-    // $: console.log({scrollIndex});
+    function skipLock() {
+        skipLocked = true;
+        pricesLocked = true;
+        lockClick();
+    }
+
+    function spanMouseover() {
+
+    }
 
     $: selectedText = textFade 
         ? (!pricesLocked && scrollIndex === undefined) 
@@ -42,6 +88,8 @@
                     ? copy.intro[scrollIndex+2] 
                     : null 
         : null;
+
+    $: isStruck = scrollIndex == 4 ? true : false;
 </script>
 
 <section id='intro'>
@@ -54,8 +102,12 @@
                             id="intro-text"
                             in:fly={{ delay: 500, duration: 1000, y: 100, opacity: 0, easing: quintOut }}
                             out:fade={{delay: 0, duration: 500}}
-                        >
-                            {selectedText.text}
+                        >   
+                            {#if skipLocked && scrollIndex == undefined}
+                                {@html selectedText.skippedText}
+                            {:else}
+                                {@html selectedText.text}
+                            {/if}
                             {#if selectedText.instructions}
                                 <span class="instructions">{selectedText.instructions}</span>
                             {/if}
@@ -74,14 +126,26 @@
                         targetPos={wine.targetPos}
                         actualPrice={wine.price}
                         bottleSlot={wine.bottleSlot}
+                        skipLocked={skipLocked}
                         bind:rangeValue={wine.rangeValue} />
                 {/each}
             </div>
-            <div class="controls" class:hidden={pricesLocked} transition:fade>
-                <button id="lock" on:click={lockClick}>
-                    Set prices
-                </button>
-                <p>Just show me the prices</p>
+            <div class="controls" class:hidden={scrollIndex >= 0} transition:fade>
+                {#if !pricesLocked}
+                    <button id="lock" on:click={lockClick}>
+                        Set prices
+                    </button>
+                    <button id="skip" on:click={skipLock}>
+                        Just show me the prices
+                    </button>
+                {:else}
+                <div class="scroll-hint">
+                    <div class="svg-wrapper">
+                        {@html arrowDown}
+                    </div>
+                    <p>Scroll</p>
+                </div>
+                {/if}
             </div>
         </div>
         <div class="bg">
@@ -90,8 +154,8 @@
                     <h1 class:highlight={scrollIndex == 4} use:fit={{min_size: 12, max_size:400 }}>The pour-gin<br> of species</h1>
                     {#if scrollIndex == 4}
                         <div class="byline" transition:fade>
-                            <p>By Charles Dar-Wine</p>
-                            <p>By Fox Meyer with Jan Diehm</p>
+                            <p class="strikethrough {isStruck ? 'animate' : ''}">By {copy.bylineFake}</p>
+                            <p>By {@html copy.byline}</p>
                         </div>
                     {/if}
                 </div>
@@ -106,7 +170,7 @@
             {:else}
                 <div class="step">
                     {#each copy.preHeadline as graf, i}
-                        <p>{graf.value}</p>
+                        <p>{@html graf.value}</p>
                     {/each}
                 </div>
             {/if}
@@ -116,14 +180,47 @@
 </section>
 <section id="postIntro">
     {#each copy.postHeadline as graf, i}
-        <p class="prose">{graf.value}</p>
+        <p class="prose">{@html graf.value}</p>
     {/each}
+    {#if hoverImageVisible}
+        <img transition:fade={{duration:250}} src={hoverImageSrc} class="hover-image" style={hoverImageStyle} />
+    {/if}
 </section>
 
 <style>
+    .hover-image {
+        position: absolute;
+        width: 70px;
+        height: auto;
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .strikethrough {
+    position: relative;
+    display: inline-block;
+}
+
+.strikethrough::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--wine-red); /* Change color if needed */
+    transition: width 0.4s ease-in-out;
+}
+
+.strikethrough.animate::after {
+    width: 100%;
+}
+
     #postIntro {
         max-width: 700px;
         margin: 0 auto;
+        margin-bottom: 10rem;
     }
     #postIntro .prose {
         font-size: var(--18px);
@@ -138,7 +235,7 @@
 
     .sticky {
         width: 100%;
-        height: calc(100svh - 100px);
+        height: 100svh;
 		position: sticky;
         display: flex;
         flex-direction: column;
@@ -186,7 +283,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        padding: 8rem 2rem 2rem 2rem;
+        padding: 6rem 2rem 4rem 2rem;
     }
 
     .fg {
@@ -195,6 +292,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        gap: 1.5rem;
+        pointer-events: none;
     }
 
     .bg {
@@ -202,7 +301,7 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
-        pointer-events: none;
+        /* pointer-events: none; */
     }
 
     .bottles {
@@ -212,6 +311,7 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
+        pointer-events: none;
     }
 
     .controls {
@@ -219,6 +319,7 @@
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+        pointer-events: auto;
     }
 
     .controls.hidden {
@@ -238,17 +339,25 @@
         transition: 0.5s all;
     }
 
-    .controls p {
+    #lock:hover {
+        opacity: 0.8;
+        transform: translateY(-4px);
+    }
+
+    #skip {
+        background: transparent;
         color: var(--wine-tan);
         font-style: italic;
         font-family: var(--sans);
-        padding: 0; 
+        padding: 0.5rem 0; 
         margin: 0;
         font-size: var(--14px);
+        text-decoration: underline;
+        transition: 0.5s all;
     }
 
-    #lock:hover {
-        opacity: 0.8;
+    #skip:hover {
+        opacity: 0.5;
         transform: translateY(-4px);
     }
 
@@ -316,14 +425,23 @@
         padding: 0;
     }
 
+    :global(.byline p a) {
+        color: var(--wine-tan);
+    }
+
+    :global(.byline p a:hover) {
+        color: var(--wine-red);
+    }
+
     .text-container {
         width: 100%;
-        height: 6rem;
+        height: 7rem;
         z-index: 999;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
+        pointer-events: auto;
     }
 
     .text-container p {
@@ -344,5 +462,83 @@
         font-family: var(--sans);
         font-size: var(--16px);
         padding: 0.5rem 0;
+    }
+
+    :global(.actualPriceSpan, .yourGuessesSpan) {
+        position: relative;
+        margin-left: 2rem;
+        font-weight: 700;
+    }
+
+    :global(.actualPriceSpan::before) {
+        content: '';
+        height: 1.25rem;
+        width: 1.25rem;
+        border: 2px dashed var(--wine-red);
+        border-radius: 50%;
+        position: absolute;
+        top: 0.5rem;
+        left: -1.75rem;
+    }
+
+    :global(.yourGuessesSpan::before) {
+        content: '';
+        height: 1.25rem;
+        width: 1.25rem;
+        background: var(--wine-tan);
+        border-radius: 50%;
+        position: absolute;
+        top: 0.5rem;
+        left: -1.75rem;
+        opacity: 0.75;
+    }
+
+    .scroll-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    :global(.scroll-hint svg) {
+        fill: none;
+        stroke: var(--wine-tan);
+        height: 3rem;
+        width: 3rem;
+        stroke-width: 2px;
+    }
+
+    .svg-wrapper {
+        position: relative;
+        animation: bounceUp 1s infinite;
+    }
+
+    .scroll-hint p {
+        color: var(--wine-tan);
+        font-family: var(--sans);
+        padding: 0.5rem 0;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    :global(.bottleHighlight) {
+        font-family: var(--sans);
+        font-weight: 700;
+        color: var(--wine-black);
+        background: var(--wine-tan);
+        padding: 0.125rem 0.25rem;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    :global(.bottleHighlight:hover) {
+        background: var(--wine-red);
+    }
+
+    @keyframes bounceUp {
+        0%       { bottom:2px; }
+        25%, 75% { bottom:4px; }
+        50%      { bottom:6px; }
+        100%     { bottom:0; }
     }
 </style>

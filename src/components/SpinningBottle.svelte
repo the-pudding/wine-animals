@@ -13,6 +13,7 @@
     export let pricesLocked;
     export let actualPrice;
     export let rangeVisible = false;
+    export let skipLocked;
 
     let leftPos = startingPos;
     $: direction = "in";
@@ -27,8 +28,6 @@
 
     function handleTransitionEnd(event) {
         if (event.propertyName !== "left") return; // ✅ Ignore opacity or other transitions
-
-        console.log(`Transition ended → Bottle ${bottleIndex}`);
 
         shouldSpin = [...shouldSpin];
         shouldSpin[bottleIndex] = false;
@@ -79,8 +78,6 @@
         direction = "out"
         animatePosition(direction)
     }
-
-    $: console.log(shouldSpin)
 </script>
 
 
@@ -96,6 +93,7 @@
             showTicks={true} 
             pricesLocked={pricesLocked}
             actualPrice={actualPrice} 
+            skipLocked={skipLocked}
         />
     </div>
     <div class="wine" class:spin={shouldSpin[bottleIndex]} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
@@ -129,6 +127,7 @@
         left: 0;
         transition: left 2s ease-in;
         padding-bottom: 4rem;
+        pointer-events: auto;
     }
 
     .product.faded {
