@@ -90,6 +90,7 @@
         : null;
 
     $: isStruck = scrollIndex == 4 ? true : false;
+    $: console.log(scrollIndex)
 </script>
 
 <section id='intro'>
