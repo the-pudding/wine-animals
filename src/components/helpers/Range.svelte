@@ -10,7 +10,7 @@
 	export let label = "";
 	export let pricesLocked;
 	export let actualPrice;
-	export let skipLocked;
+	export let pricesSkipped;
 
 	let thumbOffset = 0;
 	let labelElement;
@@ -51,7 +51,7 @@
 	$: updateThumbOffset(value);
 </script>
 
-<div class="range" class:skipped={skipLocked}>
+<div class="range" class:skipped={pricesSkipped}>
 	<div class="ticks">
 		{#each ticks as tick}
 			<span class="tick">${format(`.${decimals}f`)(tick)}</span>

@@ -1,37 +1,21 @@
 <script>
     import { createEventDispatcher, onMount } from "svelte";
     import Range from "$components/helpers/Range.svelte";
-    import { fly, fade } from 'svelte/transition';
-    let wineWidth;
+    import scrollY from "$stores/scrollY.js";
 
     export let scrollIndex;
     export let bottleIndex;
-    export let bottleSlot;
-    export let startingPos;
-    export let targetPos;
-    export let rangeValue;
+    export let wineData;
+    export let containerDimensions;
+    export let bottlePosLeft;
     export let pricesLocked;
-    export let actualPrice;
-    export let rangeVisible = false;
-    export let skipLocked;
+    export let pricesSkipped;
 
-    let leftPos = startingPos;
-    $: direction = "in";
-    let shouldSpin = [true, true, true];
-
-    const dispatch = createEventDispatcher();
-
-    function handleRangeChange(event) {
-        rangeValue = event.detail;          // Directly use the dispatched value
-        dispatch('rangeChange', rangeValue); // Notify parent
-    }
-
-    function handleTransitionEnd(event) {
-        if (event.propertyName !== "left") return; // ✅ Ignore opacity or other transitions
-
-        shouldSpin = [...shouldSpin];
-        shouldSpin[bottleIndex] = false;
-    }
+    let wineWidth;
+    let aspectRatio = 3.5;
+    let shouldSpin = [true,true,true];
+    let rangeValue;
+    let actualPrice = wineData.price;
 
     function mousemoveBottle(e) {
         let container = e.currentTarget;
@@ -56,58 +40,50 @@
         container.style.backgroundPosition = "0 0"; 
     }
 
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+    function getMaxElementSize(screenWidth, screenHeight) {
+        let maxWidthBasedOnScreen = screenWidth / 3;
+        let maxWidthBasedOnHeight = screenHeight / aspectRatio;
+
+        let w = Math.min(maxWidthBasedOnScreen, maxWidthBasedOnHeight);
+        let h = w * aspectRatio;
+
+        return { width: w, height: h };
     }
 
-    function getDistance(start, end) {
-        return Math.abs(parseFloat(end) - parseFloat(start)); // Convert to number and find absolute difference
-    }
+    function handleTransitionEnd(event) {
+        if (event.propertyName !== "left") return; // Only trigger on left transition
 
-    async function animatePosition(direction) {
-        // Convert positions from percentages to numeric values
-        let startPos = parseFloat(startingPos);
-        let endPos = parseFloat(targetPos);
+        console.log(`Transition ended for bottle ${bottleIndex}. Before update:`, shouldSpin[bottleIndex]);
 
-        // Calculate distance each bottle needs to travel
-        let distance = getDistance(startingPos, targetPos);
+        shouldSpin = [...shouldSpin]; 
+        shouldSpin[bottleIndex] = false;
 
-        // Define speed (e.g., it takes 1000ms to move 100%)
-        let speed = 10; // Adjust this value to control speed
-        let duration = distance * speed; // Adjust duration based on distance
-
-        let delayIndex = direction === "in" ? bottleIndex : (2 - bottleIndex);
-        let delayTime = duration / 2; // Optional: adjust staggering
-
-        await delay(delayIndex * 250); // Stagger each bottle's movement
-
-        if (direction === "out") {
-            shouldSpin = [...shouldSpin];  // Ensure reactivity
-            shouldSpin[bottleIndex] = true; // Only set spin for this bottle
-        }
-
-        leftPos = direction === "in" ? targetPos : startingPos;
-
-        await delay(delayTime + 500); 
+        console.log(`After update:`, shouldSpin[bottleIndex]);
     }
 
 
-    onMount(async() => {
-        await animatePosition(direction);
-    });
 
-    $: if (scrollIndex == 2) {
-        direction = "out"
-        animatePosition(direction)
+    function handleRangeChange(event) {
+        rangeValue = event.detail;
+        dispatch('rangeChange', rangeValue);
+    }
+
+    $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
+    $: transitionDelay = scrollIndex < 2 || scrollIndex == 1 && $scrollY !== "up" || scrollIndex == undefined ? (3 - 1 - bottleIndex) * 500 : bottleIndex * 500;
+
+    $: if (scrollIndex == 2 || scrollIndex == 1 && $scrollY == "up") {
+        shouldSpin = [true,true,true];
     }
 </script>
 
 
-<div class="product 
-    product-{bottleSlot}" 
-    class:faded={scrollIndex == 0 && bottleSlot !== 'left' || scrollIndex == 1 && bottleSlot !== 'center'}
-    style="left: {leftPos};" 
-    on:transitionend={handleTransitionEnd}>
+<div class="product product-{wineData.bottleSlot}" 
+    class:faded={scrollIndex == 0 && wineData.bottleSlot !== 'left' || scrollIndex == 1 && wineData.bottleSlot !== 'center'}
+    style="--transition-delay: {transitionDelay}ms;
+        width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).width}px;
+        height:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).height}px;
+        left: {bottlePosLeft};"
+        on:transitionend={handleTransitionEnd}>
     <div class="range-wrapper" class:visible={shouldSpin[bottleIndex] == false}>
         <Range 
             bind:value={rangeValue} 
@@ -115,10 +91,15 @@
             showTicks={true} 
             pricesLocked={pricesLocked}
             actualPrice={actualPrice} 
-            skipLocked={skipLocked}
+            pricesSkipped={pricesSkipped}
         />
     </div>
-    <div class="wine" class:spin={shouldSpin[bottleIndex]} on:mousemove={mousemoveBottle} on:mouseleave={mouseleaveBottle}></div>
+    <div class="wine"
+        class:spin={(scrollIndex === undefined && shouldSpin[bottleIndex]) ||
+            (scrollIndex === 2 && shouldSpin[bottleIndex]) ||
+            (scrollIndex === 1 && $scrollY === "up" && shouldSpin[bottleIndex])}
+        on:mousemove={mousemoveBottle}
+        on:mouseleave={mouseleaveBottle}></div>
 </div>
 
 
@@ -140,24 +121,24 @@
     }
     .product {
         height: 100%;
-        max-height: 600px;
         aspect-ratio: 1/3.5;
-        position: absolute;
-        bottom: 0;
-        transform: translate(-50%, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 1;
-        left: 0;
-        transition: left 2s ease-in;
-        padding-bottom: 4rem;
+        transition: left 2s ease-in var(--transition-delay), opacity 0.5s ease-in;
         pointer-events: auto;
+        position: absolute;
+        top: 0;
+        left: -50%;
+        transform: translate(-50%, 0);
     }
 
     .product.faded {
         opacity: 0.25;
-        transition: opacity 0.5s ease-in;
     }
     .product-center .wine, .product-right .wine, .product-left .wine {
-        height: 100%;
+        height: calc(100% - 150px);
         aspect-ratio: 1/3.5;
         cursor: pointer;
     }
@@ -184,6 +165,7 @@
     .spin {
         animation: spin 0.6s steps(8) infinite;
         transition: background-position 0s; 
+        pointer-events: none;
     }
 
     @keyframes spin {

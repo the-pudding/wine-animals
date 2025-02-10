@@ -1,19 +1,27 @@
 import { browser } from "$app/environment";
 import { readable } from "svelte/store";
 
-export default readable(0, (set) => {
+export default readable("none", (set) => {
 	let ticking = false;
 	let lastScrollY = 0;
+	let lastDirection = "none"; // Initial state
 
-	const updateScrollY = () => {
-		set(lastScrollY);
+	const updateScrollDirection = () => {
+		const currentScrollY = window.scrollY;
+		const direction = currentScrollY > lastScrollY ? "down" : currentScrollY < lastScrollY ? "up" : lastDirection;
+
+		if (direction !== lastDirection) {
+			set(direction);
+			lastDirection = direction;
+		}
+
+		lastScrollY = currentScrollY;
 		ticking = false;
 	};
 
 	const onScroll = () => {
-		lastScrollY = window.scrollY;
 		if (!ticking) {
-			requestAnimationFrame(updateScrollY);
+			requestAnimationFrame(updateScrollDirection);
 			ticking = true;
 		}
 	};
