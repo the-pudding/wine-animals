@@ -1,8 +1,8 @@
 <script>
-	export let title = "Title TK";
-	export let description = "Description TK";
-	export let url = "https://pudding.cool";
-	export let keywords = "";
+	export let title = "The Pour-gin of Species";
+	export let description = "We scraped the labels of to 10,000 wines to see if we could predict the price and quality of a bottle based on the animal on the label.";
+	export let url = "https://pudding.cool/2025/03/wine-animals";
+	export let keywords = "wine, animal, label, vivino, bottle, price, quality, design, data, analysis, predict, drink, packaging, alcohol";
 	export let preloadFont = [];
 </script>
 
@@ -19,7 +19,7 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:locale" content="en_US" />
 
-	<meta property="og:image" content="{url}/assets/social-facebook.jpg" />
+	<meta property="og:image" content="{url}/assets/images/social.jpg" />
 	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="600" />
@@ -29,7 +29,7 @@
 	<meta name="twitter:creator" content="@puddingviz" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image:src" content="{url}/assets/social-twitter.jpg" />
+	<meta name="twitter:image:src" content="{url}/assets/images/social.jpg" />
 
 	<meta name="robots" content="max-image-preview:large" />
 
