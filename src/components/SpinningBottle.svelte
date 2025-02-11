@@ -140,19 +140,19 @@
     }
 
     .product-center .wine {
-        background: url("/assets/images/stock/testspin.png");
+        background: url("/assets/images/spins/frogspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-right .wine {
-        background: url("/assets/images/stock/birdspin.png");
+        background: url("/assets/images/spins/birdspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-left .wine {
-        background: url("/assets/images/stock/lionspin.png");
+        background: url("/assets/images/spins/lionspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
