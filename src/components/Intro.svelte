@@ -32,12 +32,14 @@
 
         bottleHighlights = document.querySelectorAll(".bottleHighlight");
 
-        console.log(bottleHighlights)
-
         bottleHighlights.forEach(bottle => {
             bottle.addEventListener("mouseenter", (event) => handleBottleHover(event, true));
             bottle.addEventListener("mouseleave", (event) => handleBottleHover(event, false));
         });
+
+        if (scrollIndex !== undefined) {
+            document.body.style.overflow = "visible";
+        }
     });
 
     function handleBottleHover(event, isHovering) {

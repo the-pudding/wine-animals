@@ -1,4 +1,6 @@
 <script>
+	import { chartView } from "$stores/misc.js";
+
 	export let label;
 	export let style = "inner";
 	export let options = ["on", "off"];
@@ -14,6 +16,10 @@
 		checked = state === "true" ? false : true;
 		value = checked ? options[0] : options[1];
 	};
+
+	$: chartViewLocal = checked ? "scatter" : "histogram";
+
+	$: chartView.set(chartViewLocal);
 </script>
 
 <div class="toggle toggle--{style}">
@@ -32,24 +38,37 @@
 </div>
 
 <style>
+	.toggle {
+		z-index: 1000;
+		width: 65%;
+		margin: 0 auto;
+		font-family: var(--sans);
+	}
 	.toggle button,
 	.label {
 		font-family: inherit;
-		font-size: 1em;
+		font-size: var(--12px);
+		text-transform: uppercase;
+		color: var(--wine-black);
+	}
+
+	.label {
+		color: var(--wine-tan);
 	}
 
 	.toggle--inner [role="switch"][aria-checked="true"] :first-child,
 	[role="switch"][aria-checked="false"] :last-child {
 		display: inline-block;
 		border-radius: 4px;
-		background: var(--color-gray-900);
-		color: var(--color-gray-100);
+		background: var(--wine-red);
+		color: var(--wine-black);
 	}
 
 	.toggle--inner button {
 		padding: 0.5em;
-		background-color: var(--color-white);
-		border: 2px solid var(--color-gray-900);
+		font-size: var(--16px);
+		text-transform: capitalize;
+		background-color: var(--wine-tan);
 	}
 
 	.toggle--inner button span {
@@ -61,7 +80,7 @@
 	}
 
 	.toggle--inner button:focus {
-		box-shadow: 0 0 4px 0 var(--color-focus);
+		/* box-shadow: 0 0 4px 0 var(--color-focus); */
 	}
 
 	.toggle--slider {
@@ -74,33 +93,19 @@
 		height: 2em;
 		position: relative;
 		margin-left: 0.5em;
-		background: var(--color-gray-300);
+		background: var(--wine-tan);
+		transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
 	}
 
 	.toggle--slider button:focus {
-		box-shadow: 0 0px 4px var(--color-focus);
+		/* box-shadow: 0 0px 4px var(--color-focus); */
 	}
-
-	.toggle--slider button::before {
-		content: "";
-		position: absolute;
-		width: 1.5em;
-		height: 1.5em;
-		background: var(--color-white);
-		border-radius: 4px;
-		top: 0.25em;
-		right: 1.75em;
-	}
-
 	.toggle--slider button[aria-checked="true"] {
-		background-color: var(--color-gray-900);
-	}
-
-	.toggle--slider button[aria-checked="true"]::before {
-		transform: translateX(1.5em);
+		background-color: var(--wine-red);
+		transition: transform 0.5s;
 	}
 
 	.toggle--slider button:focus {
-		box-shadow: 0 0 4px 0 var(--color-focus);
+		/* box-shadow: 0 0 4px 0 var(--color-focus); */
 	}
 </style>

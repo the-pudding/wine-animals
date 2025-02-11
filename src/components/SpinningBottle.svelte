@@ -53,12 +53,8 @@
     function handleTransitionEnd(event) {
         if (event.propertyName !== "left") return; // Only trigger on left transition
 
-        console.log(`Transition ended for bottle ${bottleIndex}. Before update:`, shouldSpin[bottleIndex]);
-
         shouldSpin = [...shouldSpin]; 
         shouldSpin[bottleIndex] = false;
-
-        console.log(`After update:`, shouldSpin[bottleIndex]);
     }
 
 

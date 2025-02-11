@@ -21,8 +21,10 @@
     let animationsFire = false;
     let pricesLocked = false;
     let pricesSkipped = false;
-
-    $: console.log({scrollIndex});
+    let hoverImageSrc;
+    let hoverImageVisible = false;
+    let hoverImageStyle;
+    let bottleHighlights;
 
     $: selectedText = animationsFire 
         ? (!pricesLocked && scrollIndex === undefined) 
@@ -35,10 +37,55 @@
         : null;
 
     onMount(() => {
+        if (scrollIndex !== undefined) {
+            document.body.style.overflow = "visible";
+        }
         setTimeout(() => {
             animationsFire = true;
         }, 500)
+
+        bottleHighlights = document.querySelectorAll(".bottleHighlight");
+        bottleHighlights.forEach(bottle => {
+            bottle.addEventListener("mouseenter", (event) => handleBottleHover(event, true));
+            bottle.addEventListener("mouseleave", (event) => handleBottleHover(event, false));
+        });
     })
+
+    function handleBottleHover(event, isHovering) {
+        if (!event || !event.target) return;
+        const element = event.target;
+        if (!element) return;
+        const rect = element.getBoundingClientRect();
+
+        const container = document.getElementById("post-intro");
+        if (!container) return;
+        const containerRect = container.getBoundingClientRect();
+
+        const topOffset = rect.top - containerRect.top; 
+        const leftOffset = rect.left - containerRect.left;
+
+        const isLeft = rect.left < window.innerWidth / 2; // Determine if it's on the left or right
+
+        const spanText = element.innerText.trim().replace(/\s+/g, '-');
+        const newSrc = `assets/images/1spans/${spanText}.png`;
+
+        if (isHovering && spanText) {
+            if (hoverImageSrc !== newSrc) {
+                hoverImageSrc = ""; // Temporarily reset
+                setTimeout(() => {
+                    hoverImageSrc = newSrc; // Update after a brief moment
+                }, 10);
+            }
+            hoverImageVisible = true;
+            hoverImageStyle = `
+                top: ${topOffset-75}px; 
+                left: ${isLeft ? "-15%" : "100%"}; 
+            `;
+        } else {
+            hoverImageVisible = false;
+            hoverImageSrc = '';
+        }
+    }
 
     function lockClick() {
         pricesLocked = true;
@@ -50,6 +97,8 @@
         pricesLocked = true;
         lockClick();
     }
+
+    // $: console.log({scrollIndex});
 </script>
 
 <section id="intro">
@@ -116,16 +165,14 @@
         <div class="bg">
             <div class="bg-text-container">
                 <div class="bg-text">
-                    <div class="head-container">
-                        <h1 class:highlight={scrollIndex == 4}>The pour-gin<br> of species</h1>
-                        <h1 class:highlight={scrollIndex == 4}>The pour-gin<br> of species</h1>
+                    <div class="head-container" style={parent_style}>
+                        <h1 use:fit={{min_size: 12, max_size:350 }} class:highlight={scrollIndex == 4 || scrollIndex == "exit"}>The pour-gin<br> of species</h1>
+                        <h1 use:fit={{min_size: 12, max_size:350 }} class:highlight={scrollIndex == 4 || scrollIndex == "exit"}>The pour-gin<br> of species</h1>
                     </div>
-                    {#if scrollIndex == 4}
-                        <div class="byline" transition:fade>
-                            <p class="strikethrough">By {copy.bylineFake}</p>
-                            <p>By {@html copy.byline}</p>
-                        </div>
-                    {/if}
+                    <div class="byline" style="opacity: {scrollIndex == 4 || scrollIndex == "exit" ? 1 : 0}">
+                        <p class="strikethrough">By {copy.bylineFake}<span class="strike-line" class:animate={scrollIndex == 4 || scrollIndex == "exit"}></span></p>
+                        <p>By {@html copy.byline}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,6 +191,14 @@
         {/each}
     </Scrolly>
     <div class="spacer" />
+</section>
+<section id="post-intro">
+    {#each copy.postHeadline as graf, i}
+        <p class="prose">{@html graf.value}</p>
+    {/each}
+    {#if hoverImageVisible}
+        <img transition:fade={{duration:250}} src={hoverImageSrc} class="hover-image" style={hoverImageStyle} alt="mini wine bottle" />
+    {/if}
 </section>
 
 <style>
@@ -296,6 +351,13 @@
         animation: bounceUp 1s infinite;
     }
 
+    @keyframes bounceUp {
+        0%       { bottom:2px; }
+        25%, 75% { bottom:4px; }
+        50%      { bottom:6px; }
+        100%     { bottom:0; }
+    }
+
     .scroll-hint p {
         color: var(--wine-tan);
         font-family: var(--sans);
@@ -408,27 +470,39 @@
         line-height: 0.8;
         text-align: center;
         opacity: 0.4;
-        transition: opacity 1s, color 1s;
+        transition: opacity 1s ease-in, color 1s ease-in;
     }
 
-    .bg-text h1:nth-child(2).highlight {
-        color: #222733;
-        opacity: 0.5;
-        animation: animate 6s ease-in-out infinite;
+    .bg-text h1:nth-child(2) {
+        opacity: 0;
+        animation: animate 8s ease-in-out infinite;
+        animation-play-state: paused; 
+        transition: opacity 1s ease-in 1s, color 1s ease-in 1s; /* 1s delay */
     }
-
-    @keyframes animate {
-    0%, 100% {
-        clip-path: path("M0,300 C150,150 350,450 600,300 C850,150 1050,450 1200,300 C1350,150 1550,450 1800,300 L1800,600 L0,600 Z");
-    }
-    50% {
-        clip-path: path("M0,360 C150,240 350,540 600,360 C850,180 1050,540 1200,360 C1350,240 1550,540 1800,360 L1800,600 L0,600 Z");
-    }
-}
 
     .bg-text h1:nth-child(1).highlight {
         opacity: 1;
         color: var(--wine-tan);
+    }
+
+    .bg-text h1:nth-child(2).highlight {
+        color: #c4bca9;
+        opacity: 1;
+        animation-play-state: running;
+        transition-delay: 0s;
+    }
+
+    .bg-text h1:nth-child(2):not(.highlight) {
+        transition: opacity 0s ease-in-out, color 0s ease-in-out;
+    }
+
+    @keyframes animate {
+        0%, 100% {
+            clip-path: path("M0,100 C150,0 350,250 600,100 C850,0 1050,250 1200,100 C1350,0 1550,250 1800,100 L1800,600 L0,600 Z");
+        }
+        50% {
+            clip-path: path("M0,160 C150,40 350,340 600,160 C850,-20 1050,340 1200,160 C1350,40 1550,340 1800,160 L1800,600 L0,600 Z");
+        }
     }
 
     .byline {
@@ -438,12 +512,14 @@
         color: var(--wine-tan);
         font-family: var(--sans);
         padding-top: 4rem;
+        transition: opacity 0.5s ease-in;
     }
 
     .byline p {
         font-size: var(--18px);
         margin: 0;
         padding: 0;
+        position: relative;
     }
 
     :global(.byline p a) {
@@ -454,10 +530,52 @@
         color: var(--wine-red);
     }
 
-    @keyframes bounceUp {
-        0%       { bottom:2px; }
-        25%, 75% { bottom:4px; }
-        50%      { bottom:6px; }
-        100%     { bottom:0; }
+    .strike-line {
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        border-top: 3px solid var(--wine-red);
+        width: 0;
+        transform: rotate(-1deg);
+        transition: width 0.5s ease-in 1s;
+    }
+
+    .strike-line.animate {
+        width: 175px;
+    }
+
+    #post-intro {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-bottom: 10rem;
+        position: relative;
+    }
+    #post-intro .prose {
+        font-size: var(--20px);
+        line-height: 1.65;
+        color: var(--wine-tan);
+    }
+
+    .hover-image {
+        position: absolute;
+        width: 70px;
+        height: auto;
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    :global(.bottleHighlight) {
+        font-family: var(--sans);
+        font-weight: 700;
+        color: var(--wine-black);
+        background: var(--wine-tan);
+        padding: 0.125rem 0.25rem;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    :global(.bottleHighlight:hover) {
+        background: var(--wine-red);
     }
 </style>

@@ -36,7 +36,7 @@
 		easing: eases.cubicInOut
 	};
 
-    $: console.log({$bigScatterData})
+    // $: console.log({$bigScatterData})
 
     // Regression Line
     const regression = d3Regression.regressionExp()
@@ -48,7 +48,7 @@
         y: +d.price  // Convert rating to a number
     }))
     $: trendLine = regression(points);
-    $: console.log($highlightWine)
+    // $: console.log($highlightWine)
 </script>
 
 <section id="scatter-explore">
@@ -98,8 +98,7 @@
 <style>
     #scatter-explore {
         width: 100%;
-        max-width: 1200px;
-        height: auto;
+        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -118,7 +117,7 @@
         font-family: var(--sans);
     }
     .chart-wrapper {
-        width: calc(100% - 300px);
+        width: 100%;
         aspect-ratio: 1;
         display: flex;
         flex-direction: column;

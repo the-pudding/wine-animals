@@ -3,6 +3,8 @@ import allWineData from "$data/wineData.csv";
 
 export const bottleSpinState = writable({});
 
+export const chartView = writable("scatter");
+
 export const favWinesList = writable([]);
 export const wineSet = writable("animals/humans");
 export const metricSelect = writable("price");
