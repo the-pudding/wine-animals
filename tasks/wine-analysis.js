@@ -18,6 +18,7 @@ const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "pea
 
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
+const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"]
 
 let summary = [];
 let catSummary = [];
@@ -72,6 +73,25 @@ function summarizeWines(animalGroup, metric, data, i) {
     const rating4_45Percent = rating4_45.length/filteredWines.length*100;
     const rating45abovePercent = rating45above.length/filteredWines.length*100;
 
+    // WINE TYPE
+    const typeDessert = filteredWines.filter(d => d.type == wineTypeBuckets[0]);
+    const typeFortified = filteredWines.filter(d => d.type == wineTypeBuckets[1]);
+    const typeRed = filteredWines.filter(d => d.type == wineTypeBuckets[2]);
+    const typeRose = filteredWines.filter(d => d.type == wineTypeBuckets[3]);
+    const typeSparkling = filteredWines.filter(d => d.type == wineTypeBuckets[4]);
+    const typeWhite = filteredWines.filter(d => d.type == wineTypeBuckets[5]);
+
+    const typeDessertPercent = typeDessert.length/filteredWines.length*100;
+    const typeFortifiedPercent = typeFortified.length/filteredWines.length*100;
+    const typeRedPercent = typeRed.length/filteredWines.length*100;
+    const typeRosePercent = typeRose.length/filteredWines.length*100;
+    const typeSparklingPercent = typeSparkling.length/filteredWines.length*100;
+    const typeWhitePercent = typeWhite.length/filteredWines.length*100;
+
+    // MEDIANS
+    const medianPrice = d3.median(filteredWines, d => d.price);
+    const medianRating = d3.median(filteredWines, d => d.rating);
+
     const toPush = {animalGroup, 
         count: filteredWines.length, 
         price10belowCount: price10below.length, 
@@ -105,7 +125,21 @@ function summarizeWines(animalGroup, metric, data, i) {
         rating3_35Percent, 
         rating35_4Percent, 
         rating4_45Percent, 
-        rating45abovePercent
+        rating45abovePercent,
+        typeDessertCount: typeDessert.length,
+        typeFortifiedCount: typeFortified.length,
+        typeRedCount: typeRed.length,
+        typeRoseCount: typeRose.length,
+        typeSparklingCount: typeSparkling.length,
+        typeWhiteCount: typeWhite.length,
+        typeDessertPercent,
+        typeFortifiedPercent,
+        typeRedPercent,
+        typeRosePercent,
+        typeSparklingPercent,
+        typeWhitePercent,
+        medianPrice,
+        medianRating
     };
 
     if (metric == "all") {
@@ -142,6 +176,13 @@ function formatCSV(data, metric) {
             { category: "rating", bucket: "rating35_4", percent: d.rating35_4Percent, count: d.rating35_4Count },
             { category: "rating", bucket: "rating4_45", percent: d.rating4_45Percent, count: d.rating4_45Count },
             { category: "rating", bucket: "rating45above", percent: d.rating45abovePercent, count: d.rating45aboveCount },
+            { category: "type", bucket: "typeDessert", percent: d.typeDessertPercent, count: d.typeDessertCount },
+            { category: "type", bucket: "typeFortified", percent: d.typeFortifiedPercent, count: d.typeFortifiedCount },
+            { category: "type", bucket: "typeRed", percent: d.typeRedPercent, count: d.typeRedCount },
+            { category: "type", bucket: "typeRose", percent: d.typeRosePercent, count: d.typeRoseCount },
+            { category: "type", bucket: "typeSparkling", percent: d.typeSparklingPercent, count: d.typeSparklingCount },
+            { category: "median", bucket: "medianPrice", percent: null, count: d.medianPrice },
+            { category: "median", bucket: "medianRating", percent: null, count: d.medianRating }
         ];
 
         if (metric == "all") {
@@ -201,6 +242,12 @@ function addTotalCounts(fullData, metric) {
         let total35_4 = fullData.filter(d => d.ratingBucket == "3.6–4").length;
         let total4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5").length;
         let total45above = fullData.filter(d => d.ratingBucket == "4.6 & above").length;
+        let totalDessert = fullData.filter(d => d.type == "Dessert").length;
+        let totalFortified = fullData.filter(d => d.type == "Fortified").length;
+        let totalRed = fullData.filter(d => d.type == "Red").length;
+        let totalRose = fullData.filter(d => d.type == "Rose").length;
+        let totalSparkling = fullData.filter(d => d.type == "Sparkling").length;
+        let totalWhite = fullData.filter(d => d.type == "White").length;
 
         let animalOnlyCount = fullData.filter(d => d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice10below = fullData.filter(d => d.priceBucket == "<10" && d.topgroup !== "none" && d.topgroup !== "human").length;
@@ -219,13 +266,24 @@ function addTotalCounts(fullData, metric) {
         let animalOnlyprice130_139 = fullData.filter(d => d.priceBucket == "130–139.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice140_149 = fullData.filter(d => d.priceBucket == "140–150" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice150above = fullData.filter(d => d.priceBucket == "150+" && d.topgroup !== "none" && d.topgroup !== "human").length;
-        let animalOnly3below = fullData.filter(d => d.ratingBucket == "3 & less" && d.topgroup !== "none").length;
-        let animalOnly3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5" && d.topgroup !== "none").length;
-        let animalOnly35_4 = fullData.filter(d => d.ratingBucket == "3.6–4" && d.topgroup !== "none").length;
-        let animalOnly4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5" && d.topgroup !== "none").length;
-        let animalOnly45above = fullData.filter(d => d.ratingBucket == "4.6 & above" && d.topgroup !== "none").length;
+        let animalOnly3below = fullData.filter(d => d.ratingBucket == "3 & less" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnly3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnly35_4 = fullData.filter(d => d.ratingBucket == "3.6–4" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnly4_45 = fullData.filter(d => d.ratingBucket == "4.1–4.5" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnly45above = fullData.filter(d => d.ratingBucket == "4.6 & above" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyDessert = fullData.filter(d => d.type == "Dessert" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyFortified = fullData.filter(d => d.type == "Fortified" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyRed = fullData.filter(d => d.type == "Red" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyRose = fullData.filter(d => d.type == "Rose").length;
+        let animalOnlySparkling = fullData.filter(d => d.type == "Sparkling" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyWhite = fullData.filter(d => d.type == "White" && d.topgroup !== "none" && d.topgroup !== "human").length;
 
-        console.log(totalCount, animalOnlyCount)
+        // MEDIANS
+        let totalMedianPrice = d3.median(fullData.filter(d => d.price <= 150), d => d.price);
+        let totalMedianRating = d3.median(fullData.filter(d => d.price <= 150), d => d.rating);
+        let animalOnlyMedianPrice = d3.median(fullData.filter(d => d.price <= 150 &&  d.topgroup !== "none" && d.topgroup !== "human"), d => d.price);
+        let animalOnlyMedianRating = d3.median(fullData.filter(d => d.price <= 150 &&  d.topgroup !== "none" && d.topgroup !== "human"), d => d.rating);
+
         let allObject = {
             animalGroup: "all",
             count: totalCount,
@@ -272,7 +330,16 @@ function addTotalCounts(fullData, metric) {
             rating3_35Percent: total3_35/totalCount*100,
             rating35_4Percent: total35_4/totalCount*100,
             rating4_45Percent: total4_45/totalCount*100,
-            rating45abovePercent: total45above/totalCount*100
+            rating45abovePercent: total45above/totalCount*100,
+
+            typeDessertPercent: totalDessert/totalCount*100,
+            typeFortifiedPercent: totalFortified/totalCount*100,
+            typeRedPercent: totalRed/totalCount*100,
+            typeRosePercent: totalRose/totalCount*100,
+            typeSparklingPercent: totalSparkling/totalCount*100,
+            typeWhitePercent: totalWhite/totalCount*100,
+            medianPrice:  totalMedianPrice,
+            medianRating: totalMedianRating
         }
 
         let animalOnlyObject = {
@@ -321,7 +388,16 @@ function addTotalCounts(fullData, metric) {
             rating3_35Percent: animalOnly3_35/animalOnlyCount*100,
             rating35_4Percent: animalOnly35_4/animalOnlyCount*100,
             rating4_45Percent: animalOnly4_45/animalOnlyCount*100,
-            rating45abovePercent: animalOnly45above/animalOnlyCount*100
+            rating45abovePercent: animalOnly45above/animalOnlyCount*100,
+
+            typeDessertPercent: animalOnlyDessert/animalOnlyCount*100,
+            typeFortifiedPercent: animalOnlyFortified/animalOnlyCount*100,
+            typeRedPercent: animalOnlyRed/animalOnlyCount*100,
+            typeRosePercent: animalOnlyRose/animalOnlyCount*100,
+            typeSparklingPercent: animalOnlySparkling/animalOnlyCount*100,
+            typeWhitePercent: animalOnlyWhite/animalOnlyCount*100,
+            medianPrice:  animalOnlyMedianPrice,
+            medianRating: animalOnlyMedianRating
         }
 
         if (metric == "cats") { 
@@ -344,6 +420,7 @@ function init() {
     addTotalCounts(data, "all");
 
     // CREATE FLAT DATA
+    console.log(summary)
     formatCSV(summary, "all");
 
     const concatSummaryData = [].concat(...flatSummary).map(d => ({ ...d }));

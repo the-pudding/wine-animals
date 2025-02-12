@@ -9,7 +9,7 @@
     import birdIcon from "$svg/bird.svg";
     import topIcon from "$svg/top.svg";
     import touchIcon from "$svg/touch.svg";
-    import ScatterExplore from "$components/ScatterExplore.svelte";
+    import ScrollScatter from "$components/ScrollScatter.svelte";
 
     const copy = getContext("copy");
     
@@ -49,7 +49,7 @@
         <div class="chart-wrapper">
             {#if $chartView == "scatter"}
                 <div class="scatter-wrapper" transition:fade>
-                    <ScatterExplore />
+                    <ScrollScatter />
                 </div>
             {:else}
                 <div class="histo-wrapper" transition:fade>

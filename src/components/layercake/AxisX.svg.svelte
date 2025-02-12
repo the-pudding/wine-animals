@@ -90,10 +90,10 @@
 	}
 
 	.x-axis .tick.tick-0 text {
-		transform: translateX(4px);
+		transform: translateX(6px);
 	}
 
 	.x-axis .tick:last-child text {
-		transform: translateX(-4px);
+		transform: translateX(-6px);
 	}
 </style>

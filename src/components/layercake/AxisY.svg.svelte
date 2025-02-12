@@ -21,7 +21,7 @@
 		: $yScale.ticks(ticks);
 </script>
 
-<g class="axis y-axis" transform="translate({-$padding.left}, 0)">
+<g class="axis y-axis" transform="translate(0, 0)">
 	{#each tickVals as tick}
 		<g
 			class="tick tick-{tick}"
@@ -30,6 +30,7 @@
 			{#if gridlines !== false}
 				<line class="gridline" x2={$width} y1={yTick} y2={yTick} />
 					<text
+					transform="translate(-30, 0)"
 					x={xTick}
 					y={yTick}
 					dx={dxTick}
