@@ -25,6 +25,7 @@
     let hoverImageVisible = false;
     let hoverImageStyle;
     let bottleHighlights;
+    let buttonVisible = false;
 
     $: selectedText = animationsFire 
         ? (!pricesLocked && scrollIndex === undefined) 
@@ -43,6 +44,10 @@
         setTimeout(() => {
             animationsFire = true;
         }, 500)
+
+        setTimeout(() => {
+            buttonVisible = true;
+        }, 3500)
 
         bottleHighlights = document.querySelectorAll(".bottleHighlight");
         bottleHighlights.forEach(bottle => {
@@ -97,8 +102,6 @@
         pricesLocked = true;
         lockClick();
     }
-
-    // $: console.log({scrollIndex});
 </script>
 
 <section id="intro">
@@ -145,10 +148,10 @@
             <div class="controls" class:hidden={scrollIndex >= 0 || scrollIndex == "exit"}>
                 {#if !pricesLocked}
                 <div class="button-wrapper">
-                    <button id="lock" on:click={lockClick}>
+                    <button id="lock" on:click={lockClick} disabled={!buttonVisible}>
                         Set prices
                     </button>
-                    <button id="skip" on:click={skipLock}>
+                    <button id="skip" on:click={skipLock} disabled={!buttonVisible}>
                         Just show me the prices
                     </button>
                 </div>
@@ -309,7 +312,7 @@
         transition: 0.5s all;
     }
 
-    #lock:hover {
+    #lock:hover:enabled {
         opacity: 0.8;
         transform: translateY(-4px);
     }
@@ -326,7 +329,7 @@
         transition: 0.5s all;
     }
 
-    #skip:hover {
+    #skip:hover:enabled {
         opacity: 0.5;
         transform: translateY(-4px);
     }

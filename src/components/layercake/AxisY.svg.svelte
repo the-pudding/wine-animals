@@ -30,7 +30,7 @@
 			{#if gridlines !== false}
 				<line class="gridline" x2={$width} y1={yTick} y2={yTick} />
 					<text
-					transform="translate(-30, 0)"
+					transform="translate(2, -2)"
 					x={xTick}
 					y={yTick}
 					dx={dxTick}

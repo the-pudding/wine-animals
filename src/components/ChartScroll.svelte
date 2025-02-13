@@ -49,7 +49,7 @@
         <div class="chart-wrapper">
             {#if $chartView == "scatter"}
                 <div class="scatter-wrapper" transition:fade>
-                    <ScrollScatter />
+                    <ScrollScatter chartScrollIndex={chartScrollIndex}/>
                 </div>
             {:else}
                 <div class="histo-wrapper" transition:fade>

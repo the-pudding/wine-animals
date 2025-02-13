@@ -92,7 +92,7 @@
     </div>
     <div class="wine"
         class:spin={(scrollIndex === undefined && shouldSpin[bottleIndex]) ||
-            (scrollIndex === 2 && shouldSpin[bottleIndex]) ||
+            (scrollIndex >= 2 && shouldSpin[bottleIndex]) ||
             (scrollIndex === 1 && $scrollY === "up" && shouldSpin[bottleIndex])}
         on:mousemove={mousemoveBottle}
         on:mouseleave={mouseleaveBottle}></div>
