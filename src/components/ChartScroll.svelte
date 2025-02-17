@@ -20,7 +20,7 @@
     let svgIcons = [catIcon, expensiveIcon, birdIcon, topIcon, touchIcon];
 
     $: {
-        if (chartScrollIndex === undefined || chartScrollIndex < 7) {
+        if (chartScrollIndex === undefined || chartScrollIndex < 11) {
             activeSection = "cat";
         } else if (chartScrollIndex < 12) {
             activeSection = "expensive";
