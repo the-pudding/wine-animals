@@ -4,7 +4,7 @@
 
 	const { data, xGet, yGet, xScale, } = getContext("LayerCake");
 
-	export let stroke = "#000000";
+	export let stroke = "#CFCABF";
 
 	export let curve = curveStepAfter;
 

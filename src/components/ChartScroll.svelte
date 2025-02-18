@@ -10,6 +10,7 @@
     import topIcon from "$svg/top.svg";
     import touchIcon from "$svg/touch.svg";
     import ScrollScatter from "$components/ScrollScatter.svelte";
+    import ScrollHisto from "$components/ScrollHisto.svelte";
 
     const copy = getContext("copy");
     
@@ -30,6 +31,12 @@
             activeSection = "top";
         } else {
             activeSection = "explore";
+        }
+
+        if (chartScrollIndex >= 10) {
+            chartView.set("histogram");
+        } else {
+            chartView.set("scatter");
         }
     }
 
@@ -53,7 +60,7 @@
                 </div>
             {:else}
                 <div class="histo-wrapper" transition:fade>
-                    <p>testing</p>
+                    <ScrollHisto chartScrollIndex={chartScrollIndex}/>
                 </div>
             {/if}
         </div>
@@ -205,5 +212,41 @@
     :global(button svg) {
         width: 100%;
         height: 100%;
+    }
+
+    :global(.median-line-span, .compare-line-span, .sweet-rect-span) {
+        position: relative;
+        font-weight: 700;
+        margin-right: 2.5rem;
+        white-space: nowrap;
+        
+    }
+
+    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after) {
+        position: absolute;
+        top: 50%;
+        right: -2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        content: "";
+        margin: 0 0 0 1rem;
+    }
+
+    :global(.median-line-span::after) {
+        border-top: 3px solid var(--wine-red);
+    }
+
+    :global(.compare-line-span::after) {
+        top: 40%;
+        height: 0.5rem;
+        border-top: 2px solid var(--color-gray-600);
+        border-bottom: 2px solid var(--color-gray-600);
+    }
+
+    :global(.sweet-rect-span::after) {
+        background: rgb(54, 59, 69, 0.75);
+        top: 0;
+        border-top: 2px solid var(--wine-tan);
+        border-left: 2px solid var(--wine-tan);
     }
 </style>

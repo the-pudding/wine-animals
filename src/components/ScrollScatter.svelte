@@ -11,6 +11,7 @@
     import { cubicOut } from 'svelte/easing';
     import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
+    import { chartView } from "$stores/misc.js";
 
     export let chartScrollIndex;
 
@@ -42,8 +43,6 @@
         }
     }
 
-    $: console.log(chartScrollIndex)
-
     $: updateDomains(chartScrollIndex);
 
     $: {
@@ -51,8 +50,6 @@
             bigScatterData.set(filteredRawData.filter(d => d.topgroup == "cat"))
         }
     }
-
-    // console.log($bigScatterData)
 </script>
 
 <section id="scatter">

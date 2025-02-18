@@ -54,6 +54,7 @@
 
 </script>
 
+{#if randomDataForGenerations}
 <g class="compare-wrapper">
     {#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
@@ -72,6 +73,7 @@
 		</g>
 	{/each}
 </g>
+{/if}
 
 {#if chartScrollIndex >= 4}
     <g class="wines-wrapper">

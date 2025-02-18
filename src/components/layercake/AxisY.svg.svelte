@@ -27,16 +27,18 @@
 			class="tick tick-{tick}"
 			transform="translate({$xRange[0]}, {$yScale(tick)})"
 		>
-			{#if gridlines !== false}
+			{#if gridlines !== false || tick === 0}
 				<line class="gridline" x2={$width} y1={yTick} y2={yTick} />
-					<text
-					transform="translate(2, -2)"
-					x={xTick}
-					y={yTick}
-					dx={dxTick}
-					dy={dyTick}
-					style="text-anchor:{textAnchor};">${formatTick(tick)}</text
-				>
+					{#if gridlines !== false}
+						<text
+						transform="translate(2, -2)"
+						x={xTick}
+						y={yTick}
+						dx={dxTick}
+						dy={dyTick}
+						style="text-anchor:{textAnchor};">${formatTick(tick)}</text
+					>
+					{/if}
 			{/if}
 			{#if tickMarks === true}
 				<line class="tick-mark" x1="0" x2={6} y1={yTick} y2={yTick} />
