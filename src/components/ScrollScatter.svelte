@@ -20,6 +20,8 @@
     const xKeyReg = d => +d.price;
     const yKeyReg = d => +d.rating;
 
+    let catSteals = [];
+
     medianData.forEach(d => {
         d[xKey] = +d[xKey];
         d[yKey] = +d[yKey];
@@ -46,10 +48,13 @@
     $: updateDomains(chartScrollIndex);
 
     $: {
-        if (chartScrollIndex >= 4) {
-            bigScatterData.set(filteredRawData.filter(d => d.topgroup == "cat"))
+        if (chartScrollIndex >= 4 && chartScrollIndex < 14) {
+            bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle")))
+        } else if (chartScrollIndex >= 14) {
+            bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("fish-like")));
         }
     }
+    $: console.log($bigScatterData.length)
 </script>
 
 <section id="scatter">

@@ -38,8 +38,8 @@
 
     // Generate random subsets from rawData with length matching $bigScatterData
 	let randomDataForGenerations = filteredRawData !== 0 
-		? generateRandomDataForGenerations(filteredRawData, $data[1].length, generations)
-		: undefined;
+        ? generateRandomDataForGenerations(filteredRawData, $data[1]?.length || 0, generations)
+        : undefined;
 
 	function generateRandomSubset(data, targetLength) {
 		// Shuffle rawData and select a subset with the same length as $bigScatterData
@@ -52,6 +52,11 @@
 		return generations.map(() => generateRandomSubset(data, targetLength));
 	}
 
+    $: if ($data[1]?.length) {
+        tick().then(() => {
+            randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
+        });
+    }
 </script>
 
 {#if randomDataForGenerations}

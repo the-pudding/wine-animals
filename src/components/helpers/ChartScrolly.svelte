@@ -106,7 +106,7 @@
 <style>
 	div {
 		position: relative;
-		z-index: 1000;
+		z-index: 900;
 		padding: 0 8rem 0 0;
         display: flex;
         pointer-events: none;

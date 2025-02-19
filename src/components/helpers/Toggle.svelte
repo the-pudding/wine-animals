@@ -5,6 +5,7 @@
 	export let style = "inner";
 	export let options = ["on", "off"];
 	export let value = options[0];
+	export let chartScrollIndex;
 
 	$: checked = $chartView === "scatter";
 
@@ -22,6 +23,7 @@
 		role="switch"
 		aria-checked={checked}
 		aria-labelledby={id}
+		class:disabled={chartScrollIndex !== 13}
 		on:click={handleClick}
 	>
 		{#if style === "inner"}
@@ -37,6 +39,11 @@
 		width: 65%;
 		margin: 0 auto;
 		font-family: var(--sans);
+	}
+	.toggle button.disabled {
+		pointer-events: none;
+		cursor: not-allowed;
+		opacity: 0.5;
 	}
 	.toggle button,
 	.label {

@@ -55,8 +55,6 @@
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
-
-    $: console.log(chartScrollIndex)
 </script>
 
 <section id="distribution">
@@ -120,6 +118,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        pointer-events: auto;
     }
 
     .key {

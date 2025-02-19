@@ -48,7 +48,6 @@
         y: +d.price  // Convert rating to a number
     }))
     $: trendLine = regression(points);
-    $: console.log($highlightWine)
 </script>
 
 <section id="scatter-explore">

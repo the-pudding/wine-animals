@@ -26,9 +26,7 @@
     }
 
     function sumTotalWines(data) {
-        console.log(data.length)
         const totalCount = data.reduce((sum, item) => sum += item.count, 0);
-        console.log(totalCount)
         return totalCount
     }
 

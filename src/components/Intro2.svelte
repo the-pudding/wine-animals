@@ -489,7 +489,7 @@
     }
 
     .bg-text h1:nth-child(2).highlight {
-        color: #c4bca9;
+        color: #d0b3bc;
         opacity: 1;
         animation-play-state: running;
         transition-delay: 0s;
@@ -540,7 +540,7 @@
         border-top: 3px solid var(--wine-red);
         width: 0;
         transform: rotate(-1deg);
-        transition: width 0.5s ease-in 1s;
+        transition: width 1s ease-in 2s;
     }
 
     .strike-line.animate {

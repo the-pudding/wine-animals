@@ -40,11 +40,6 @@
         }
     }
 
-    function setSubgroups(data) {
-        console.log({selectedAnimal})
-        subgroups = canineSubgroups
-    }
-
     function updateScatterData(
         selectedAnimalSTORE,
         selectedTypeSTORE,
@@ -86,9 +81,6 @@
         });
 
         bigScatterData.set(filteredData);
-
-        console.log($bigScatterData)
-        setSubgroups($bigScatterData)
     }
 
     $: storeUpdates(selectedAnimal, "animal")
@@ -96,7 +88,6 @@
     $: storeUpdates(selectedCountry, "country")
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
 
-    $: console.log(selectedAnimal.length)
     function findSteals(data) {
         let avgPrice = d3.mean(meanData, d => d.price);
         let avgRating = d3.mean(meanData, d => d.rating);

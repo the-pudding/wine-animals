@@ -51,7 +51,6 @@
 
         const spanText = element.innerText.trim().replace(/\s+/g, '-');
 
-        console.log(spanText);
         if (isHovering && spanText) {
             hoverImageSrc = `assets/images/1spans/${spanText}.png`; // Set image based on text
             hoverImageVisible = true;
@@ -92,7 +91,6 @@
         : null;
 
     $: isStruck = scrollIndex == 4 ? true : false;
-    $: console.log(scrollIndex)
 </script>
 
 <section id='intro'>

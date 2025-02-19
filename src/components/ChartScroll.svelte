@@ -12,6 +12,7 @@
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Summary from "$components/Summary.svelte";
+    import rawData from "$data/wineData.csv";
 
     const copy = getContext("copy");
     
@@ -20,6 +21,28 @@
     let skipToExplore;
     let sections = ["cat", "expensive", "bird", "top", "explore"];
     let svgIcons = [catIcon, expensiveIcon, birdIcon, topIcon, touchIcon];
+
+    // TO-DO fix calculations
+    function findTop5WinesByPriceAndRating(data) {
+        return data
+            .sort((a, b) => {
+                // Sort by price ascending
+                if (a.rating !== b.rating) return a.rating - b.rating;
+                // If prices are the same, sort by rating descending
+                return b.price - a.price;
+            })
+            .slice(0, 5); // Get the top 5
+    }
+
+    let catSteals = findTop5WinesByPriceAndRating(
+        rawData.filter(
+            d => d.price <= 150 &&
+                d.topgroup.includes("cat") && // Includes "cat"
+                !d.topgroup.includes("cattle") && // Excludes "cattle"
+                d.topgroup !== "human" &&
+                d.topgroup !== "none"
+        )
+    );
 
     $: {
         if (chartScrollIndex === undefined || chartScrollIndex < 14) {
@@ -49,21 +72,20 @@
         skipToExplore = document.querySelector(".skipToExplore");
         skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
     })
+
+    $: console.log({chartScrollIndex});
 </script>
 
 <section id="chart-scroll">
     <div class="sticky">
-        <Toggle label={"view"} options={["scatter", "histogram"]}/>
+        <Toggle label={"view"} options={["scatter", "histogram"]} chartScrollIndex={chartScrollIndex}/>
         <div class="chart-wrapper">
-            {#if $chartView == "scatter"}
-                <div class="scatter-wrapper" transition:fade>
-                    <ScrollScatter chartScrollIndex={chartScrollIndex}/>
-                </div>
-            {:else}
-                <div class="histo-wrapper" transition:fade>
-                    <ScrollHisto chartScrollIndex={chartScrollIndex}/>
-                </div>
-            {/if}
+            <div class="scatter-wrapper" class:active={$chartView == "scatter"}>
+                <ScrollScatter chartScrollIndex={chartScrollIndex}/>
+            </div>
+            <div class="histo-wrapper" class:active={$chartView == "histogram"}>
+                <ScrollHisto chartScrollIndex={chartScrollIndex}/>
+            </div>
         </div>
         <div class="section-buttons">
             {#each sections as section, i}
@@ -82,7 +104,7 @@
                 {/each}
                 {#if i == 13}
                 <div class="summary">
-                    <Summary animal={"cat"} />
+                    <Summary animal={"cat"} data={catSteals} />
                 </div>
                 {/if}
             </div>
@@ -123,6 +145,12 @@
         top: 0;
         left: 0;
         z-index: 900;
+        opacity: 0;
+        transition: opacity 0.5s linear;
+    }
+
+    .scatter-wrapper.active, .histo-wrapper.active {
+        opacity: 1;
     }
 
     .spacer {
@@ -131,7 +159,7 @@
 
 	.step {
 		height: 70vh;
-        z-index: 1000;
+        z-index: 900;
         max-width: 25%;
         opacity: 1;
 	}
@@ -148,7 +176,7 @@
         font-size: var(--20px);
         line-height: 1.65;
         background: none;
-        z-index: 1000;
+        z-index: 900;
         margin: 2rem 0;
         pointer-events: auto;
     }
