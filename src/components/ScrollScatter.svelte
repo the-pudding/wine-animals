@@ -8,7 +8,7 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
     import { tweened } from 'svelte/motion';
-    import { cubicOut } from 'svelte/easing';
+    import { cubicIn } from 'svelte/easing';
     import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import { chartView } from "$stores/misc.js";
@@ -29,8 +29,8 @@
     const padding = 10;
     const color = '#CFCABF';
 
-    let xDomain = tweened([3.7, 4.2], { duration: 2000, easing: cubicOut });
-    let yDomain = tweened([20, 35], { duration: 2000, easing: cubicOut });
+    let xDomain = tweened([3.7, 4.2], { duration: 2000, easing: cubicIn });
+    let yDomain = tweened([20, 35], { duration: 2000, easing: cubicIn });
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
     async function updateDomains(chartScrollIndex) {

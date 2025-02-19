@@ -69,7 +69,7 @@
 	.voronoi-cell {
 	  fill: none;
 	  stroke: none;
-	  pointer-events: none;
+	  pointer-events: all;
 	  outline: none;
 	  cursor: pointer;
 	}

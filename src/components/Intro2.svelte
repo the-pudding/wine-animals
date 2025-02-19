@@ -561,7 +561,7 @@
 
     .hover-image {
         position: absolute;
-        width: 70px;
+        width: 80px;
         height: auto;
         z-index: 1000;
         transition: opacity 0.3s ease;

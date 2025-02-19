@@ -201,6 +201,7 @@ function formatCSV(data, metric) {
             { category: "type", bucket: "typeRed", percent: d.typeRedPercent, count: d.typeRedCount },
             { category: "type", bucket: "typeRose", percent: d.typeRosePercent, count: d.typeRoseCount },
             { category: "type", bucket: "typeSparkling", percent: d.typeSparklingPercent, count: d.typeSparklingCount },
+            { category: "type", bucket: "typeWhite", percent: d.typeWhitePercent, count: d.typeWhiteCount },
             { category: "median", bucket: "medianPrice", percent: null, count: d.medianPrice },
             { category: "median", bucket: "medianRating", percent: null, count: d.medianRating }
         ];

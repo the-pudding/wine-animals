@@ -19,12 +19,13 @@ amphibian/reptile,rating,Below 3 stars,0,0
 amphibian/reptile,rating,3–3.4 stars,2.631578947368421,1
 amphibian/reptile,rating,3.5–3.9 stars,60.526315789473685,23
 amphibian/reptile,rating,4–4.4 stars,34.21052631578947,13
-amphibian/reptile,rating,4.5+ stars ,2.631578947368421,1
+amphibian/reptile,rating,4.5+ stars,2.631578947368421,1
 amphibian/reptile,type,Dessert,2.631578947368421,1
 amphibian/reptile,type,Fortified,0,0
 amphibian/reptile,type,Red,44.73684210526316,17
 amphibian/reptile,type,Rose,2.631578947368421,1
 amphibian/reptile,type,Sparkling,2.631578947368421,1
+amphibian/reptile,type,White,47.368421052631575,18
 amphibian/reptile,median,medianPrice,,30.965000000000003
 amphibian/reptile,median,medianRating,,3.95
 bear,price,Below $10,0,0
@@ -47,12 +48,13 @@ bear,rating,Below 3 stars,0,0
 bear,rating,3–3.4 stars,4.3478260869565215,1
 bear,rating,3.5–3.9 stars,43.47826086956522,10
 bear,rating,4–4.4 stars,47.82608695652174,11
-bear,rating,4.5+ stars ,4.3478260869565215,1
+bear,rating,4.5+ stars,4.3478260869565215,1
 bear,type,Dessert,0,0
 bear,type,Fortified,0,0
 bear,type,Red,43.47826086956522,10
 bear,type,Rose,13.043478260869565,3
 bear,type,Sparkling,0,0
+bear,type,White,43.47826086956522,10
 bear,median,medianPrice,,31.55
 bear,median,medianRating,,4.1
 bird,price,Below $10,0.8695652173913043,4
@@ -75,12 +77,13 @@ bird,rating,Below 3 stars,0,0
 bird,rating,3–3.4 stars,5.6521739130434785,26
 bird,rating,3.5–3.9 stars,55.21739130434783,254
 bird,rating,4–4.4 stars,38.04347826086957,175
-bird,rating,4.5+ stars ,1.0869565217391304,5
+bird,rating,4.5+ stars,1.0869565217391304,5
 bird,type,Dessert,1.0869565217391304,5
 bird,type,Fortified,1.5217391304347827,7
 bird,type,Red,40.869565217391305,188
 bird,type,Rose,8.043478260869565,37
 bird,type,Sparkling,6.304347826086956,29
+bird,type,White,42.173913043478265,194
 bird,median,medianPrice,,25.99
 bird,median,medianRating,,4
 canine,price,Below $10,0.8849557522123894,1
@@ -103,12 +106,13 @@ canine,rating,Below 3 stars,0,0
 canine,rating,3–3.4 stars,4.424778761061947,5
 canine,rating,3.5–3.9 stars,56.63716814159292,64
 canine,rating,4–4.4 stars,37.16814159292036,42
-canine,rating,4.5+ stars ,1.7699115044247788,2
+canine,rating,4.5+ stars,1.7699115044247788,2
 canine,type,Dessert,2.6548672566371683,3
 canine,type,Fortified,0,0
 canine,type,Red,43.36283185840708,49
 canine,type,Rose,12.389380530973451,14
 canine,type,Sparkling,5.3097345132743365,6
+canine,type,White,36.283185840707965,41
 canine,median,medianPrice,,28.99
 canine,median,medianRating,,4
 cat,price,Below $10,2.980132450331126,9
@@ -131,12 +135,13 @@ cat,rating,Below 3 stars,0,0
 cat,rating,3–3.4 stars,5.629139072847682,17
 cat,rating,3.5–3.9 stars,42.05298013245033,127
 cat,rating,4–4.4 stars,50.66225165562914,153
-cat,rating,4.5+ stars ,1.6556291390728477,5
+cat,rating,4.5+ stars,1.6556291390728477,5
 cat,type,Dessert,2.980132450331126,9
 cat,type,Fortified,3.3112582781456954,10
 cat,type,Red,49.337748344370866,149
 cat,type,Rose,2.980132450331126,9
 cat,type,Sparkling,10.927152317880795,33
+cat,type,White,30.4635761589404,92
 cat,median,medianPrice,,34.99
 cat,median,medianRating,,4.1
 cattle/camelus,price,Below $10,2.2222222222222223,1
@@ -159,12 +164,13 @@ cattle/camelus,rating,Below 3 stars,0,0
 cattle/camelus,rating,3–3.4 stars,4.444444444444445,2
 cattle/camelus,rating,3.5–3.9 stars,64.44444444444444,29
 cattle/camelus,rating,4–4.4 stars,26.666666666666668,12
-cattle/camelus,rating,4.5+ stars ,4.444444444444445,2
+cattle/camelus,rating,4.5+ stars,4.444444444444445,2
 cattle/camelus,type,Dessert,0,0
 cattle/camelus,type,Fortified,2.2222222222222223,1
 cattle/camelus,type,Red,57.77777777777777,26
 cattle/camelus,type,Rose,2.2222222222222223,1
 cattle/camelus,type,Sparkling,6.666666666666667,3
+cattle/camelus,type,White,31.11111111111111,14
 cattle/camelus,median,medianPrice,,22
 cattle/camelus,median,medianRating,,3.9
 deer-like,price,Below $10,0,0
@@ -187,12 +193,13 @@ deer-like,rating,Below 3 stars,0,0
 deer-like,rating,3–3.4 stars,4.166666666666666,2
 deer-like,rating,3.5–3.9 stars,60.416666666666664,29
 deer-like,rating,4–4.4 stars,35.41666666666667,17
-deer-like,rating,4.5+ stars ,0,0
+deer-like,rating,4.5+ stars,0,0
 deer-like,type,Dessert,0,0
 deer-like,type,Fortified,2.083333333333333,1
 deer-like,type,Red,52.083333333333336,25
 deer-like,type,Rose,8.333333333333332,4
 deer-like,type,Sparkling,2.083333333333333,1
+deer-like,type,White,35.41666666666667,17
 deer-like,median,medianPrice,,29.49
 deer-like,median,medianRating,,3.95
 fish-like,price,Below $10,0,0
@@ -215,12 +222,13 @@ fish-like,rating,Below 3 stars,0,0
 fish-like,rating,3–3.4 stars,1.7543859649122806,1
 fish-like,rating,3.5–3.9 stars,75.43859649122807,43
 fish-like,rating,4–4.4 stars,22.807017543859647,13
-fish-like,rating,4.5+ stars ,0,0
+fish-like,rating,4.5+ stars,0,0
 fish-like,type,Dessert,1.7543859649122806,1
 fish-like,type,Fortified,0,0
 fish-like,type,Red,24.561403508771928,14
 fish-like,type,Rose,10.526315789473683,6
 fish-like,type,Sparkling,1.7543859649122806,1
+fish-like,type,White,61.40350877192983,35
 fish-like,median,medianPrice,,22.99
 fish-like,median,medianRating,,3.9
 horse,price,Below $10,2.5974025974025974,4
@@ -243,12 +251,13 @@ horse,rating,Below 3 stars,0.6493506493506493,1
 horse,rating,3–3.4 stars,9.740259740259742,15
 horse,rating,3.5–3.9 stars,48.701298701298704,75
 horse,rating,4–4.4 stars,39.61038961038961,61
-horse,rating,4.5+ stars ,1.2987012987012987,2
+horse,rating,4.5+ stars,1.2987012987012987,2
 horse,type,Dessert,3.2467532467532463,5
 horse,type,Fortified,0.6493506493506493,1
 horse,type,Red,44.15584415584416,68
 horse,type,Rose,6.493506493506493,10
 horse,type,Sparkling,7.142857142857142,11
+horse,type,White,38.311688311688314,59
 horse,median,medianPrice,,25.244999999999997
 horse,median,medianRating,,4
 human,price,Below $10,2.1148036253776437,21
@@ -271,12 +280,13 @@ human,rating,Below 3 stars,0.2014098690835851,2
 human,rating,3–3.4 stars,5.740181268882175,57
 human,rating,3.5–3.9 stars,55.99194360523666,556
 human,rating,4–4.4 stars,37.05941591137966,368
-human,rating,4.5+ stars ,1.0070493454179255,10
+human,rating,4.5+ stars,1.0070493454179255,10
 human,type,Dessert,1.812688821752266,18
 human,type,Fortified,1.6112789526686808,16
 human,type,Red,43.605236656596176,433
 human,type,Rose,8.66062437059416,86
 human,type,Sparkling,8.761329305135952,87
+human,type,White,35.54884189325277,353
 human,median,medianPrice,,27.335
 human,median,medianRating,,4
 insect,price,Below $10,1.0869565217391304,1
@@ -299,12 +309,13 @@ insect,rating,Below 3 stars,0,0
 insect,rating,3–3.4 stars,11.956521739130435,11
 insect,rating,3.5–3.9 stars,55.434782608695656,51
 insect,rating,4–4.4 stars,31.521739130434785,29
-insect,rating,4.5+ stars ,1.0869565217391304,1
+insect,rating,4.5+ stars,1.0869565217391304,1
 insect,type,Dessert,2.1739130434782608,2
 insect,type,Fortified,0,0
 insect,type,Red,29.347826086956523,27
 insect,type,Rose,15.217391304347828,14
 insect,type,Sparkling,3.260869565217391,3
+insect,type,White,50,46
 insect,median,medianPrice,,22.2
 insect,median,medianRating,,3.9
 marine invertebrate,price,Below $10,2.5,1
@@ -327,12 +338,13 @@ marine invertebrate,rating,Below 3 stars,0,0
 marine invertebrate,rating,3–3.4 stars,2.5,1
 marine invertebrate,rating,3.5–3.9 stars,77.5,31
 marine invertebrate,rating,4–4.4 stars,20,8
-marine invertebrate,rating,4.5+ stars ,0,0
+marine invertebrate,rating,4.5+ stars,0,0
 marine invertebrate,type,Dessert,2.5,1
 marine invertebrate,type,Fortified,0,0
 marine invertebrate,type,Red,20,8
 marine invertebrate,type,Rose,7.5,3
 marine invertebrate,type,Sparkling,2.5,1
+marine invertebrate,type,White,67.5,27
 marine invertebrate,median,medianPrice,,23.335
 marine invertebrate,median,medianRating,,3.9
 mythical,price,Below $10,0,0
@@ -355,12 +367,13 @@ mythical,rating,Below 3 stars,0,0
 mythical,rating,3–3.4 stars,4.878048780487805,6
 mythical,rating,3.5–3.9 stars,43.90243902439025,54
 mythical,rating,4–4.4 stars,47.15447154471545,58
-mythical,rating,4.5+ stars ,4.0650406504065035,5
+mythical,rating,4.5+ stars,4.0650406504065035,5
 mythical,type,Dessert,1.6260162601626018,2
 mythical,type,Fortified,2.4390243902439024,3
 mythical,type,Red,46.34146341463415,57
 mythical,type,Rose,4.878048780487805,6
 mythical,type,Sparkling,6.504065040650407,8
+mythical,type,White,38.21138211382114,47
 mythical,median,medianPrice,,34.99
 mythical,median,medianRating,,4.1
 none,price,Below $10,1.441621467313731,101
@@ -383,12 +396,13 @@ none,rating,Below 3 stars,0.09991435912075364,7
 none,rating,3–3.4 stars,4.681701398801027,328
 none,rating,3.5–3.9 stars,49.90008564087924,3496
 none,rating,4–4.4 stars,43.7482158150157,3065
-none,rating,4.5+ stars ,1.5700827861832714,110
+none,rating,4.5+ stars,1.5700827861832714,110
 none,type,Dessert,2.2552098201541537,158
 none,type,Fortified,1.4558949471881244,102
 none,type,Red,43.29146445903511,3033
 none,type,Rose,8.093063088781046,567
 none,type,Sparkling,7.8932343705395365,553
+none,type,White,37.01113331430202,2593
 none,median,medianPrice,,29.99
 none,median,medianRating,,4
 pachyderm,price,Below $10,0,0
@@ -411,12 +425,13 @@ pachyderm,rating,Below 3 stars,0,0
 pachyderm,rating,3–3.4 stars,13.043478260869565,3
 pachyderm,rating,3.5–3.9 stars,56.52173913043478,13
 pachyderm,rating,4–4.4 stars,26.08695652173913,6
-pachyderm,rating,4.5+ stars ,4.3478260869565215,1
+pachyderm,rating,4.5+ stars,4.3478260869565215,1
 pachyderm,type,Dessert,0,0
 pachyderm,type,Fortified,0,0
 pachyderm,type,Red,39.130434782608695,9
 pachyderm,type,Rose,13.043478260869565,3
 pachyderm,type,Sparkling,0,0
+pachyderm,type,White,47.82608695652174,11
 pachyderm,median,medianPrice,,23.445
 pachyderm,median,medianRating,,3.9
 rabbit,price,Below $10,0,0
@@ -439,12 +454,13 @@ rabbit,rating,Below 3 stars,0,0
 rabbit,rating,3–3.4 stars,4,1
 rabbit,rating,3.5–3.9 stars,56.00000000000001,14
 rabbit,rating,4–4.4 stars,40,10
-rabbit,rating,4.5+ stars ,0,0
+rabbit,rating,4.5+ stars,0,0
 rabbit,type,Dessert,4,1
 rabbit,type,Fortified,0,0
 rabbit,type,Red,44,11
 rabbit,type,Rose,8,2
 rabbit,type,Sparkling,4,1
+rabbit,type,White,40,10
 rabbit,median,medianPrice,,29.99
 rabbit,median,medianRating,,4
 ram-like,price,Below $10,1.6666666666666667,1
@@ -467,12 +483,13 @@ ram-like,rating,Below 3 stars,0,0
 ram-like,rating,3–3.4 stars,5,3
 ram-like,rating,3.5–3.9 stars,65,39
 ram-like,rating,4–4.4 stars,28.333333333333332,17
-ram-like,rating,4.5+ stars ,1.6666666666666667,1
+ram-like,rating,4.5+ stars,1.6666666666666667,1
 ram-like,type,Dessert,0,0
 ram-like,type,Fortified,1.6666666666666667,1
 ram-like,type,Red,33.33333333333333,20
 ram-like,type,Rose,11.666666666666666,7
 ram-like,type,Sparkling,0,0
+ram-like,type,White,53.333333333333336,32
 ram-like,median,medianPrice,,21.865
 ram-like,median,medianRating,,3.9
 suid,price,Below $10,0,0
@@ -495,12 +512,13 @@ suid,rating,Below 3 stars,3.571428571428571,1
 suid,rating,3–3.4 stars,3.571428571428571,1
 suid,rating,3.5–3.9 stars,60.71428571428571,17
 suid,rating,4–4.4 stars,32.142857142857146,9
-suid,rating,4.5+ stars ,0,0
+suid,rating,4.5+ stars,0,0
 suid,type,Dessert,0,0
 suid,type,Fortified,3.571428571428571,1
 suid,type,Red,46.42857142857143,13
 suid,type,Rose,25,7
 suid,type,Sparkling,7.142857142857142,2
+suid,type,White,17.857142857142858,5
 suid,median,medianPrice,,23.22
 suid,median,medianRating,,3.8
 animal wine,price,Below $10,1.544660846205507,23
@@ -523,12 +541,13 @@ animal wine,rating,Below 3 stars,0.1343183344526528,2
 animal wine,rating,3–3.4 stars,6.111484217595701,91
 animal wine,rating,3.5–3.9 stars,52.71994627266622,785
 animal wine,rating,4–4.4 stars,39.62390866353257,590
-animal wine,rating,4.5+ stars ,1.4103425117528543,21
+animal wine,rating,4.5+ stars,1.4103425117528543,21
 animal wine,type,Dessert,1.9476158495634655,
 animal wine,type,Fortified,1.4775016789791806,
 animal wine,type,Red,41.302887844190735,
 animal wine,type,Rose,50.83948959032908,
 animal wine,type,Sparkling,6.447280053727333,
+animal wine,type,White,40.83277367360645,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
 all,price,Below $10,1.535323169422375,143
@@ -551,11 +570,12 @@ all,rating,Below 3 stars,0.11810178226325961,11
 all,rating,3–3.4 stars,4.9710113807172,463
 all,rating,3.5–3.9 stars,50.91260468112518,4742
 all,rating,4–4.4 stars,42.51664161477346,3960
-all,rating,4.5+ stars ,1.4816405411208933,138
+all,rating,4.5+ stars,1.4816405411208933,138
 all,type,Dessert,2.168778183379858,
 all,type,Fortified,1.470904015460597,
 all,type,Red,42.9783122181662,
 all,type,Rose,8.12754992484432,
 all,type,Sparkling,7.794717629375134,
+all,type,White,37.459738028773884,
 all,median,medianPrice,,28.99
 all,median,medianRating,,4

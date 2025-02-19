@@ -25,6 +25,7 @@ cat,type,typeFortified,0,0
 cat,type,typeRed,33.33333333333333,4
 cat,type,typeRose,16.666666666666664,2
 cat,type,typeSparkling,8.333333333333332,1
+cat,type,typeWhite,41.66666666666667,5
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
 cheetah,price,Below $10,0,0
@@ -53,6 +54,7 @@ cheetah,type,typeFortified,0,0
 cheetah,type,typeRed,100,1
 cheetah,type,typeRose,0,0
 cheetah,type,typeSparkling,0,0
+cheetah,type,typeWhite,0,0
 cheetah,median,medianPrice,,16.99
 cheetah,median,medianRating,,3.7
 cougar,price,Below $10,0,0
@@ -81,6 +83,7 @@ cougar,type,typeFortified,0,0
 cougar,type,typeRed,100,2
 cougar,type,typeRose,0,0
 cougar,type,typeSparkling,0,0
+cougar,type,typeWhite,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
 jaguar/leopard/panther,price,Below $10,0,0
@@ -109,6 +112,7 @@ jaguar/leopard/panther,type,typeFortified,33.33333333333333,1
 jaguar/leopard/panther,type,typeRed,0,0
 jaguar/leopard/panther,type,typeRose,0,0
 jaguar/leopard/panther,type,typeSparkling,33.33333333333333,1
+jaguar/leopard/panther,type,typeWhite,33.33333333333333,1
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
 lion,price,Below $10,3.004291845493562,7
@@ -137,6 +141,7 @@ lion,type,typeFortified,3.4334763948497855,8
 lion,type,typeRed,48.497854077253216,113
 lion,type,typeRose,2.1459227467811157,5
 lion,type,typeSparkling,12.017167381974248,28
+lion,type,typeWhite,30.042918454935624,70
 lion,median,medianPrice,,39.98
 lion,median,medianRating,,4.1
 lion crest,price,Below $10,3.6269430051813467,7
@@ -165,6 +170,7 @@ lion crest,type,typeFortified,3.6269430051813467,7
 lion crest,type,typeRed,48.704663212435236,94
 lion crest,type,typeRose,2.072538860103627,4
 lion crest,type,typeSparkling,13.471502590673575,26
+lion crest,type,typeWhite,27.979274611398964,54
 lion crest,median,medianPrice,,39.985
 lion crest,median,medianRating,,4.1
 lynx,price,Below $10,0,0
@@ -193,6 +199,7 @@ lynx,type,typeFortified,0,0
 lynx,type,typeRed,50,2
 lynx,type,typeRose,25,1
 lynx,type,typeSparkling,0,0
+lynx,type,typeWhite,25,1
 lynx,median,medianPrice,,33.375
 lynx,median,medianRating,,4.1
 tiger,price,Below $10,0,0
@@ -221,6 +228,7 @@ tiger,type,typeFortified,0,0
 tiger,type,typeRed,0,0
 tiger,type,typeRose,0,0
 tiger,type,typeSparkling,0,0
+tiger,type,typeWhite,100,1
 tiger,median,medianPrice,,89.99
 tiger,median,medianRating,,4.4
 animal wine,price,Below $10,1.544660846205507,23
@@ -249,6 +257,7 @@ animal wine,type,typeFortified,1.4775016789791806,
 animal wine,type,typeRed,41.302887844190735,
 animal wine,type,typeRose,50.83948959032908,
 animal wine,type,typeSparkling,6.447280053727333,
+animal wine,type,typeWhite,40.83277367360645,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
 all,price,Below $10,1.535323169422375,143
@@ -277,5 +286,6 @@ all,type,typeFortified,1.470904015460597,
 all,type,typeRed,42.9783122181662,
 all,type,typeRose,8.12754992484432,
 all,type,typeSparkling,7.794717629375134,
+all,type,typeWhite,37.459738028773884,
 all,median,medianPrice,,28.99
 all,median,medianRating,,4

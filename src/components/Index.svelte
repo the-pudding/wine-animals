@@ -95,8 +95,8 @@
 <!-- <Demo /> -->
 <Intro />
 <ChartScroll />
+<Explore />
 <Footer />
-<!-- <Explore /> -->
 
 <!-- <div class="white">
 	<div class="selects">

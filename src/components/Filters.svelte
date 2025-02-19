@@ -122,16 +122,6 @@
         </div>
         <div class="filter">
             <MultiSelect 
-                bind:selected={selectedSubGroup}
-                options={subgroups} 
-                disabled={selectedAnimal.length == 0 ? true : false}
-                valType = "type"
-                placeholder="All sub groups"
-                removeAllTitle="Remove all sub groups"
-            /> 
-        </div>
-        <div class="filter">
-            <MultiSelect 
                 bind:selected={selectedType}
                 options={wineType} 
                 valType = "type"

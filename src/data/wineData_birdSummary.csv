@@ -25,6 +25,7 @@ duck,type,typeFortified,2.272727272727273,1
 duck,type,typeRed,29.545454545454547,13
 duck,type,typeRose,6.8181818181818175,3
 duck,type,typeSparkling,11.363636363636363,5
+duck,type,typeWhite,47.72727272727273,21
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
 flightless bird,price,Below $10,28.57142857142857,2
@@ -53,6 +54,7 @@ flightless bird,type,typeFortified,0,0
 flightless bird,type,typeRed,28.57142857142857,2
 flightless bird,type,typeRose,14.285714285714285,1
 flightless bird,type,typeSparkling,0,0
+flightless bird,type,typeWhite,57.14285714285714,4
 flightless bird,median,medianPrice,,14.99
 flightless bird,median,medianRating,,3.8
 game bird,price,Below $10,0,0
@@ -81,6 +83,7 @@ game bird,type,typeFortified,4.3478260869565215,1
 game bird,type,typeRed,47.82608695652174,11
 game bird,type,typeRose,13.043478260869565,3
 game bird,type,typeSparkling,8.695652173913043,2
+game bird,type,typeWhite,26.08695652173913,6
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
 junglefowl,price,Below $10,0,0
@@ -109,6 +112,7 @@ junglefowl,type,typeFortified,0,0
 junglefowl,type,typeRed,39.130434782608695,18
 junglefowl,type,typeRose,6.521739130434782,3
 junglefowl,type,typeSparkling,8.695652173913043,4
+junglefowl,type,typeWhite,45.65217391304348,21
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
 owl,price,Below $10,0,0
@@ -137,6 +141,7 @@ owl,type,typeFortified,0,0
 owl,type,typeRed,37.68115942028986,26
 owl,type,typeRose,10.144927536231885,7
 owl,type,typeSparkling,5.797101449275362,4
+owl,type,typeWhite,46.3768115942029,32
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
 peacock,price,Below $10,0,0
@@ -165,6 +170,7 @@ peacock,type,typeFortified,0,0
 peacock,type,typeRed,38.46153846153847,5
 peacock,type,typeRose,7.6923076923076925,1
 peacock,type,typeSparkling,15.384615384615385,2
+peacock,type,typeWhite,38.46153846153847,5
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
 penguin,price,Below $10,0,0
@@ -193,6 +199,7 @@ penguin,type,typeFortified,0,0
 penguin,type,typeRed,0,0
 penguin,type,typeRose,0,0
 penguin,type,typeSparkling,0,0
+penguin,type,typeWhite,100,2
 penguin,median,medianPrice,,14.469999999999999
 penguin,median,medianRating,,3.55
 raptor,price,Below $10,0.9900990099009901,1
@@ -221,6 +228,7 @@ raptor,type,typeFortified,2.9702970297029703,3
 raptor,type,typeRed,42.57425742574257,43
 raptor,type,typeRose,2.9702970297029703,3
 raptor,type,typeSparkling,7.920792079207921,8
+raptor,type,typeWhite,43.56435643564357,44
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
 shorebird,price,Below $10,0,0
@@ -249,6 +257,7 @@ shorebird,type,typeFortified,0,0
 shorebird,type,typeRed,9.090909090909092,1
 shorebird,type,typeRose,9.090909090909092,1
 shorebird,type,typeSparkling,9.090909090909092,1
+shorebird,type,typeWhite,63.63636363636363,7
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
 songbird,price,Below $10,0,0
@@ -277,6 +286,7 @@ songbird,type,typeFortified,0.5494505494505495,1
 songbird,type,typeRed,46.7032967032967,85
 songbird,type,typeRose,8.791208791208792,16
 songbird,type,typeSparkling,4.395604395604396,8
+songbird,type,typeWhite,38.46153846153847,70
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
 wading bird,price,Below $10,0,0
@@ -305,6 +315,7 @@ wading bird,type,typeFortified,4,1
 wading bird,type,typeRed,48,12
 wading bird,type,typeRose,8,2
 wading bird,type,typeSparkling,4,1
+wading bird,type,typeWhite,32,8
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
 animal wine,price,Below $10,1.544660846205507,23
@@ -333,6 +344,7 @@ animal wine,type,typeFortified,1.4775016789791806,
 animal wine,type,typeRed,41.302887844190735,
 animal wine,type,typeRose,50.83948959032908,
 animal wine,type,typeSparkling,6.447280053727333,
+animal wine,type,typeWhite,40.83277367360645,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
 all,price,Below $10,1.535323169422375,143
@@ -361,5 +373,6 @@ all,type,typeFortified,1.470904015460597,
 all,type,typeRed,42.9783122181662,
 all,type,typeRose,8.12754992484432,
 all,type,typeSparkling,7.794717629375134,
+all,type,typeWhite,37.459738028773884,
 all,median,medianPrice,,28.99
 all,median,medianRating,,4
