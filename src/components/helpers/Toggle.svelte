@@ -6,20 +6,14 @@
 	export let options = ["on", "off"];
 	export let value = options[0];
 
-	let checked = value === options[0];
+	$: checked = $chartView === "scatter";
 
 	const id = `toggle-${Math.floor(Math.random() * 1000000)}`;
 
-	const handleClick = (event) => {
-		const target = event.target;
-		const state = target.getAttribute("aria-checked");
-		checked = state === "true" ? false : true;
-		value = checked ? options[0] : options[1];
+	const handleClick = () => {
+		checked = !checked;
+		$chartView = checked ? "scatter" : "histogram";
 	};
-
-	$: chartViewLocal = checked ? "scatter" : "histogram";
-
-	$: chartView.set(chartViewLocal);
 </script>
 
 <div class="toggle toggle--{style}">

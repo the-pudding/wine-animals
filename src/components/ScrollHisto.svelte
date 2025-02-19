@@ -55,6 +55,8 @@
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
+
+    $: console.log(chartScrollIndex)
 </script>
 
 <section id="distribution">
@@ -65,16 +67,17 @@
         {@const xScaleLine = d3.scalePoint()
             .domain(xDomainLine)
             .range([0, width])}
-        <div class="chart-wrapper">
-            <h3>{category.key}</h3>
+        <div class="chart-wrapper" class:active={i == 0 && chartScrollIndex >= 10 ||
+            i == 1 && chartScrollIndex >= 11 ||
+            i == 2 && chartScrollIndex >= 12}>
             <div class="chart-layers">
-                <div class="chart-container bars" id="bars_{category[0]}" style="width:100%">
+                <div class="chart-container bars" id="bars_{category[0]}">
                     <LayerCake
                     bind:width
                     padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
                     x={xKey}
                     y={yKey}
-                    xScale={d3.scaleBand().paddingInner(0.02).round(true)}
+                    xScale={d3.scaleBand().paddingInner(0.04)}
                     xDomain={category.xDomain}
                     yDomain={[0, 100]}
                     data={category.values}
@@ -102,6 +105,7 @@
                     </LayerCake>
                 </div>
             </div>
+            <h3>{category.key}</h3>
         </div>
     {/each}
 </section>
@@ -206,6 +210,12 @@
         justify-content: center;
         position: relative;
         margin: 2rem;
+        transition: opacity 0.4s linear;
+        opacity: 0;
+    }
+
+    .chart-wrapper.active {
+        opacity: 1;
     }
 
     h3 {
@@ -213,7 +223,7 @@
         font-size: var(--16px);
         font-weight: 700;
         text-align: center;
-        margin: 0;
+        margin: 2.5rem 0 0 0;
         color: var(--wine-tan);
         text-transform: uppercase;
     }
@@ -236,9 +246,5 @@
         position: absolute;
         width: 100%;
         height: 100%;
-    }
-
-    .bars {
-        width: calc(100% * 0.95)
     }
 </style>

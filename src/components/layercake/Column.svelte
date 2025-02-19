@@ -141,7 +141,11 @@
 		fill: var(--wine-tan);
 	}
 
-	.price-text:nth-of-type(even) {
+	.price-text:not(:nth-of-type(5n)) {
 		display: none;
+	}
+
+	.price-text:first-of-type {
+		display: inline-block;
 	}
 </style>

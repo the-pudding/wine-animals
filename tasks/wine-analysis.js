@@ -16,7 +16,7 @@ const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lio
 const birdData = data.filter(d => d.topgroup.includes("bird"));
 const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]; 
 
-const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100+"];
+const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100–109.99", "110–119.99", "120–129.99", "130–139.99", "140–149.99", "150+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
 const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"]
 
@@ -46,7 +46,12 @@ function summarizeWines(animalGroup, metric, data, i) {
     const price70_79 = filteredWines.filter(d => d.priceBucket == priceBuckets[7]);
     const price80_89 = filteredWines.filter(d => d.priceBucket == priceBuckets[8]);
     const price90_99 = filteredWines.filter(d => d.priceBucket == priceBuckets[9]);
-    const price100above = filteredWines.filter(d => d.priceBucket == priceBuckets[10]);
+    const price100_109 = filteredWines.filter(d => d.priceBucket == priceBuckets[10]);
+    const price110_119  = filteredWines.filter(d => d.priceBucket == priceBuckets[11]);
+    const price120_129  = filteredWines.filter(d => d.priceBucket == priceBuckets[12]);
+    const price130_139  = filteredWines.filter(d => d.priceBucket == priceBuckets[13]);
+    const price140_149  = filteredWines.filter(d => d.priceBucket == priceBuckets[14]);
+    const price150above  = filteredWines.filter(d => d.priceBucket == priceBuckets[15]);
 
     const price10belowPercent = price10below.length/filteredWines.length*100;
     const price10_19Percent = price10_19.length/filteredWines.length*100;
@@ -58,7 +63,12 @@ function summarizeWines(animalGroup, metric, data, i) {
     const price70_79Percent = price70_79.length/filteredWines.length*100;
     const price80_89Percent = price80_89.length/filteredWines.length*100;
     const price90_99Percent = price90_99.length/filteredWines.length*100;
-    const price100abovePercent = price100above.length/filteredWines.length*100;
+    const price100_109Percent = price100_109.length/filteredWines.length*100;
+    const price110_119Percent = price110_119.length/filteredWines.length*100;
+    const price120_129Percent = price120_129.length/filteredWines.length*100;
+    const price130_139Percent = price130_139.length/filteredWines.length*100;
+    const price140_149Percent = price140_149.length/filteredWines.length*100;
+    const price150abovePercent = price150above.length/filteredWines.length*100;
 
     // RATING
     const rating3below = filteredWines.filter(d => d.ratingBucket == ratingBuckets[0]);
@@ -104,7 +114,12 @@ function summarizeWines(animalGroup, metric, data, i) {
         price70_79Count: price70_79.length,
         price80_89Count: price80_89.length,
         price90_99Count: price90_99.length,
-        price100aboveCount: price100above.length,
+        price100_109Count: price100_109.length,
+        price110_119Count: price110_119.length,
+        price120_129Count: price120_129.length,
+        price130_139Count: price130_139.length,
+        price140_149Count: price140_149.length,
+        price150aboveCount: price150above.length,
         price10belowPercent, 
         price10_19Percent, 
         price20_29Percent, 
@@ -115,7 +130,12 @@ function summarizeWines(animalGroup, metric, data, i) {
         price70_79Percent,
         price80_89Percent,
         price90_99Percent,
-        price100abovePercent,
+        price100_109Percent,
+        price110_119Percent,
+        price120_129Percent,
+        price130_139Percent,
+        price140_149Percent,
+        price150abovePercent,
         rating3belowCount: rating3below.length, 
         rating3_35Count: rating3_35.length, 
         rating35_4Count: rating35_4.length,
@@ -155,21 +175,21 @@ function formatCSV(data, metric) {
     data.forEach(d => {
         const animalGroup = d.animalGroup;
         const bucketData = [
-            { category: "price", bucket: "$10 below", percent: d.price10belowPercent, count: d.price10belowCount },
-            { category: "price", bucket: "$10–19", percent: d.price10_19Percent, count: d.price10_19Count },
-            { category: "price", bucket: "$20–29", percent: d.price20_29Percent, count: d.price20_29Count },
-            { category: "price", bucket: "$30–39", percent: d.price30_39Percent, count: d.price30_39Count },
-            { category: "price", bucket: "$40–49", percent: d.price40_49Percent, count: d.price40_49Count },
-            { category: "price", bucket: "$50–59", percent: d.price50_59Percent, count: d.price50_59Count },
-            { category: "price", bucket: "$60–69", percent: d.price60_69Percent, count: d.price60_69Count },
-            { category: "price", bucket: "$70–79", percent: d.price70_79Percent, count: d.price70_79Count },
-            { category: "price", bucket: "$80–89", percent: d.price80_89Percent, count: d.price80_89Count },
-            { category: "price", bucket: "$90–99", percent: d.price90_99Percent, count: d.price90_99Count },
-            { category: "price", bucket: "$100–109", percent: d.price100_109Percent, count: d.price100_109Count },
-            { category: "price", bucket: "$110–119", percent: d.price110_119Percent, count: d.price110_119Count },
-            { category: "price", bucket: "$120–129", percent: d.price120_129Percent, count: d.price120_129Count },
-            { category: "price", bucket: "$130–139", percent: d.price130_139Percent, count: d.price130_139Count },
-            { category: "price", bucket: "$140–150", percent: d.price140_149Percent, count: d.price140_149Count },
+            { category: "price", bucket: "Below $10", percent: d.price10belowPercent, count: d.price10belowCount },
+            { category: "price", bucket: "$10–19.99", percent: d.price10_19Percent, count: d.price10_19Count },
+            { category: "price", bucket: "$20–29.99", percent: d.price20_29Percent, count: d.price20_29Count },
+            { category: "price", bucket: "$30–39.99", percent: d.price30_39Percent, count: d.price30_39Count },
+            { category: "price", bucket: "$40–49.99", percent: d.price40_49Percent, count: d.price40_49Count },
+            { category: "price", bucket: "$50–59.99", percent: d.price50_59Percent, count: d.price50_59Count },
+            { category: "price", bucket: "$60–69.99", percent: d.price60_69Percent, count: d.price60_69Count },
+            { category: "price", bucket: "$70–79.99", percent: d.price70_79Percent, count: d.price70_79Count },
+            { category: "price", bucket: "$80–89.99", percent: d.price80_89Percent, count: d.price80_89Count },
+            { category: "price", bucket: "$90–99.99", percent: d.price90_99Percent, count: d.price90_99Count },
+            { category: "price", bucket: "$100–109.99", percent: d.price100_109Percent, count: d.price100_109Count },
+            { category: "price", bucket: "$110–119.99", percent: d.price110_119Percent, count: d.price110_119Count },
+            { category: "price", bucket: "$120–129.99", percent: d.price120_129Percent, count: d.price120_129Count },
+            { category: "price", bucket: "$130–139.99", percent: d.price130_139Percent, count: d.price130_139Count },
+            { category: "price", bucket: "$140–149.99", percent: d.price140_149Percent, count: d.price140_149Count },
             { category: "price", bucket: "$150+", percent: d.price150abovePercent, count: d.price150aboveCount},
             { category: "rating", bucket: "rating3below", percent: d.rating3belowPercent, count: d.rating3belowCount },
             { category: "rating", bucket: "rating3_35", percent: d.rating3_35Percent, count: d.rating3_35Count },
@@ -235,7 +255,7 @@ function addTotalCounts(fullData, metric) {
         let totalprice110_119 = fullData.filter(d => d.priceBucket == "110–119.99").length;
         let totalprice120_129 = fullData.filter(d => d.priceBucket == "120–129.99").length;
         let totalprice130_139 = fullData.filter(d => d.priceBucket == "130–139.99").length;
-        let totalprice140_149 = fullData.filter(d => d.priceBucket == "140–150").length;
+        let totalprice140_149 = fullData.filter(d => d.priceBucket == "140–149.99").length;
         let totalprice150above = fullData.filter(d => d.priceBucket == "150+").length;
         let total3below = fullData.filter(d => d.ratingBucket == "3 & less").length;
         let total3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5").length;
@@ -264,7 +284,7 @@ function addTotalCounts(fullData, metric) {
         let animalOnlyprice110_119 = fullData.filter(d => d.priceBucket == "110–119.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice120_129 = fullData.filter(d => d.priceBucket == "120–129.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice130_139 = fullData.filter(d => d.priceBucket == "130–139.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
-        let animalOnlyprice140_149 = fullData.filter(d => d.priceBucket == "140–150" && d.topgroup !== "none" && d.topgroup !== "human").length;
+        let animalOnlyprice140_149 = fullData.filter(d => d.priceBucket == "140–149.99" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnlyprice150above = fullData.filter(d => d.priceBucket == "150+" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnly3below = fullData.filter(d => d.ratingBucket == "3 & less" && d.topgroup !== "none" && d.topgroup !== "human").length;
         let animalOnly3_35 = fullData.filter(d => d.ratingBucket == "3.1–3.5" && d.topgroup !== "none" && d.topgroup !== "human").length;

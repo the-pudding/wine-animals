@@ -11,6 +11,7 @@
     import touchIcon from "$svg/touch.svg";
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import ScrollHisto from "$components/ScrollHisto.svelte";
+    import Summary from "$components/Summary.svelte";
 
     const copy = getContext("copy");
     
@@ -21,11 +22,11 @@
     let svgIcons = [catIcon, expensiveIcon, birdIcon, topIcon, touchIcon];
 
     $: {
-        if (chartScrollIndex === undefined || chartScrollIndex < 11) {
+        if (chartScrollIndex === undefined || chartScrollIndex < 14) {
             activeSection = "cat";
-        } else if (chartScrollIndex < 12) {
+        } else if (chartScrollIndex < 20) {
             activeSection = "expensive";
-        } else if (chartScrollIndex < 19) {
+        } else if (chartScrollIndex < 22) {
             activeSection = "bird";
         } else if (chartScrollIndex < 23) {
             activeSection = "top";
@@ -33,7 +34,7 @@
             activeSection = "explore";
         }
 
-        if (chartScrollIndex >= 10) {
+        if (chartScrollIndex >= 10 && chartScrollIndex < 14) {
             chartView.set("histogram");
         } else {
             chartView.set("scatter");
@@ -79,6 +80,11 @@
                 {#each step.block as graf, i}
                     <p>{@html graf.value}</p>
                 {/each}
+                {#if i == 13}
+                <div class="summary">
+                    <Summary animal={"cat"} />
+                </div>
+                {/if}
             </div>
         {/each}
     </Scrolly>
@@ -129,6 +135,10 @@
         max-width: 25%;
         opacity: 1;
 	}
+
+    #step-13 {
+        height: 140vh;
+    }
 
     .step p {
         text-align: left;

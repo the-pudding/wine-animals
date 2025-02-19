@@ -1,20 +1,20 @@
 animalGroup,category,bucket,percent,count
-cat,price,$10 below,8.333333333333332,1
-cat,price,$10–19,8.333333333333332,1
-cat,price,$20–29,25,3
-cat,price,$30–39,16.666666666666664,2
-cat,price,$40–49,8.333333333333332,1
-cat,price,$50–59,0,0
-cat,price,$60–69,16.666666666666664,2
-cat,price,$70–79,0,0
-cat,price,$80–89,0,0
-cat,price,$90–99,8.333333333333332,1
-cat,price,$100–109,,
-cat,price,$110–119,,
-cat,price,$120–129,,
-cat,price,$130–139,,
-cat,price,$140–150,,
-cat,price,$150+,,
+cat,price,Below $10,8.333333333333332,1
+cat,price,$10–19.99,8.333333333333332,1
+cat,price,$20–29.99,25,3
+cat,price,$30–39.99,16.666666666666664,2
+cat,price,$40–49.99,8.333333333333332,1
+cat,price,$50–59.99,0,0
+cat,price,$60–69.99,16.666666666666664,2
+cat,price,$70–79.99,0,0
+cat,price,$80–89.99,0,0
+cat,price,$90–99.99,8.333333333333332,1
+cat,price,$100–109.99,0,0
+cat,price,$110–119.99,0,0
+cat,price,$120–129.99,0,0
+cat,price,$130–139.99,0,0
+cat,price,$140–149.99,0,0
+cat,price,$150+,8.333333333333332,1
 cat,rating,rating3below,0,0
 cat,rating,rating3_35,16.666666666666664,2
 cat,rating,rating35_4,33.33333333333333,4
@@ -27,22 +27,22 @@ cat,type,typeRose,16.666666666666664,2
 cat,type,typeSparkling,8.333333333333332,1
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
-cheetah,price,$10 below,0,0
-cheetah,price,$10–19,100,1
-cheetah,price,$20–29,0,0
-cheetah,price,$30–39,0,0
-cheetah,price,$40–49,0,0
-cheetah,price,$50–59,0,0
-cheetah,price,$60–69,0,0
-cheetah,price,$70–79,0,0
-cheetah,price,$80–89,0,0
-cheetah,price,$90–99,0,0
-cheetah,price,$100–109,,
-cheetah,price,$110–119,,
-cheetah,price,$120–129,,
-cheetah,price,$130–139,,
-cheetah,price,$140–150,,
-cheetah,price,$150+,,
+cheetah,price,Below $10,0,0
+cheetah,price,$10–19.99,100,1
+cheetah,price,$20–29.99,0,0
+cheetah,price,$30–39.99,0,0
+cheetah,price,$40–49.99,0,0
+cheetah,price,$50–59.99,0,0
+cheetah,price,$60–69.99,0,0
+cheetah,price,$70–79.99,0,0
+cheetah,price,$80–89.99,0,0
+cheetah,price,$90–99.99,0,0
+cheetah,price,$100–109.99,0,0
+cheetah,price,$110–119.99,0,0
+cheetah,price,$120–129.99,0,0
+cheetah,price,$130–139.99,0,0
+cheetah,price,$140–149.99,0,0
+cheetah,price,$150+,0,0
 cheetah,rating,rating3below,0,0
 cheetah,rating,rating3_35,0,0
 cheetah,rating,rating35_4,100,1
@@ -55,22 +55,22 @@ cheetah,type,typeRose,0,0
 cheetah,type,typeSparkling,0,0
 cheetah,median,medianPrice,,16.99
 cheetah,median,medianRating,,3.7
-cougar,price,$10 below,0,0
-cougar,price,$10–19,0,0
-cougar,price,$20–29,50,1
-cougar,price,$30–39,50,1
-cougar,price,$40–49,0,0
-cougar,price,$50–59,0,0
-cougar,price,$60–69,0,0
-cougar,price,$70–79,0,0
-cougar,price,$80–89,0,0
-cougar,price,$90–99,0,0
-cougar,price,$100–109,,
-cougar,price,$110–119,,
-cougar,price,$120–129,,
-cougar,price,$130–139,,
-cougar,price,$140–150,,
-cougar,price,$150+,,
+cougar,price,Below $10,0,0
+cougar,price,$10–19.99,0,0
+cougar,price,$20–29.99,50,1
+cougar,price,$30–39.99,50,1
+cougar,price,$40–49.99,0,0
+cougar,price,$50–59.99,0,0
+cougar,price,$60–69.99,0,0
+cougar,price,$70–79.99,0,0
+cougar,price,$80–89.99,0,0
+cougar,price,$90–99.99,0,0
+cougar,price,$100–109.99,0,0
+cougar,price,$110–119.99,0,0
+cougar,price,$120–129.99,0,0
+cougar,price,$130–139.99,0,0
+cougar,price,$140–149.99,0,0
+cougar,price,$150+,0,0
 cougar,rating,rating3below,0,0
 cougar,rating,rating3_35,50,1
 cougar,rating,rating35_4,0,0
@@ -83,22 +83,22 @@ cougar,type,typeRose,0,0
 cougar,type,typeSparkling,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
-jaguar/leopard/panther,price,$10 below,0,0
-jaguar/leopard/panther,price,$10–19,0,0
-jaguar/leopard/panther,price,$20–29,100,3
-jaguar/leopard/panther,price,$30–39,0,0
-jaguar/leopard/panther,price,$40–49,0,0
-jaguar/leopard/panther,price,$50–59,0,0
-jaguar/leopard/panther,price,$60–69,0,0
-jaguar/leopard/panther,price,$70–79,0,0
-jaguar/leopard/panther,price,$80–89,0,0
-jaguar/leopard/panther,price,$90–99,0,0
-jaguar/leopard/panther,price,$100–109,,
-jaguar/leopard/panther,price,$110–119,,
-jaguar/leopard/panther,price,$120–129,,
-jaguar/leopard/panther,price,$130–139,,
-jaguar/leopard/panther,price,$140–150,,
-jaguar/leopard/panther,price,$150+,,
+jaguar/leopard/panther,price,Below $10,0,0
+jaguar/leopard/panther,price,$10–19.99,0,0
+jaguar/leopard/panther,price,$20–29.99,100,3
+jaguar/leopard/panther,price,$30–39.99,0,0
+jaguar/leopard/panther,price,$40–49.99,0,0
+jaguar/leopard/panther,price,$50–59.99,0,0
+jaguar/leopard/panther,price,$60–69.99,0,0
+jaguar/leopard/panther,price,$70–79.99,0,0
+jaguar/leopard/panther,price,$80–89.99,0,0
+jaguar/leopard/panther,price,$90–99.99,0,0
+jaguar/leopard/panther,price,$100–109.99,0,0
+jaguar/leopard/panther,price,$110–119.99,0,0
+jaguar/leopard/panther,price,$120–129.99,0,0
+jaguar/leopard/panther,price,$130–139.99,0,0
+jaguar/leopard/panther,price,$140–149.99,0,0
+jaguar/leopard/panther,price,$150+,0,0
 jaguar/leopard/panther,rating,rating3below,0,0
 jaguar/leopard/panther,rating,rating3_35,0,0
 jaguar/leopard/panther,rating,rating35_4,33.33333333333333,1
@@ -111,22 +111,22 @@ jaguar/leopard/panther,type,typeRose,0,0
 jaguar/leopard/panther,type,typeSparkling,33.33333333333333,1
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
-lion,price,$10 below,3.004291845493562,7
-lion,price,$10–19,15.450643776824036,36
-lion,price,$20–29,21.030042918454935,49
-lion,price,$30–39,11.587982832618025,27
-lion,price,$40–49,7.296137339055794,17
-lion,price,$50–59,7.725321888412018,18
-lion,price,$60–69,5.150214592274678,12
-lion,price,$70–79,4.291845493562231,10
-lion,price,$80–89,4.291845493562231,10
-lion,price,$90–99,3.004291845493562,7
-lion,price,$100–109,,
-lion,price,$110–119,,
-lion,price,$120–129,,
-lion,price,$130–139,,
-lion,price,$140–150,,
-lion,price,$150+,,
+lion,price,Below $10,3.004291845493562,7
+lion,price,$10–19.99,15.450643776824036,36
+lion,price,$20–29.99,21.030042918454935,49
+lion,price,$30–39.99,11.587982832618025,27
+lion,price,$40–49.99,7.296137339055794,17
+lion,price,$50–59.99,7.725321888412018,18
+lion,price,$60–69.99,5.150214592274678,12
+lion,price,$70–79.99,4.291845493562231,10
+lion,price,$80–89.99,4.291845493562231,10
+lion,price,$90–99.99,3.004291845493562,7
+lion,price,$100–109.99,0.4291845493562232,1
+lion,price,$110–119.99,0.4291845493562232,1
+lion,price,$120–129.99,0.4291845493562232,1
+lion,price,$130–139.99,1.7167381974248928,4
+lion,price,$140–149.99,1.2875536480686696,3
+lion,price,$150+,12.875536480686694,30
 lion,rating,rating3below,0,0
 lion,rating,rating3_35,4.721030042918455,11
 lion,rating,rating35_4,39.05579399141631,91
@@ -139,22 +139,22 @@ lion,type,typeRose,2.1459227467811157,5
 lion,type,typeSparkling,12.017167381974248,28
 lion,median,medianPrice,,39.98
 lion,median,medianRating,,4.1
-lion crest,price,$10 below,3.6269430051813467,7
-lion crest,price,$10–19,15.544041450777202,30
-lion crest,price,$20–29,19.170984455958546,37
-lion crest,price,$30–39,12.953367875647666,25
-lion crest,price,$40–49,6.7357512953367875,13
-lion crest,price,$50–59,8.808290155440414,17
-lion crest,price,$60–69,4.145077720207254,8
-lion crest,price,$70–79,3.6269430051813467,7
-lion crest,price,$80–89,4.66321243523316,9
-lion crest,price,$90–99,3.6269430051813467,7
-lion crest,price,$100–109,,
-lion crest,price,$110–119,,
-lion crest,price,$120–129,,
-lion crest,price,$130–139,,
-lion crest,price,$140–150,,
-lion crest,price,$150+,,
+lion crest,price,Below $10,3.6269430051813467,7
+lion crest,price,$10–19.99,15.544041450777202,30
+lion crest,price,$20–29.99,19.170984455958546,37
+lion crest,price,$30–39.99,12.953367875647666,25
+lion crest,price,$40–49.99,6.7357512953367875,13
+lion crest,price,$50–59.99,8.808290155440414,17
+lion crest,price,$60–69.99,4.145077720207254,8
+lion crest,price,$70–79.99,3.6269430051813467,7
+lion crest,price,$80–89.99,4.66321243523316,9
+lion crest,price,$90–99.99,3.6269430051813467,7
+lion crest,price,$100–109.99,0.5181347150259068,1
+lion crest,price,$110–119.99,0.5181347150259068,1
+lion crest,price,$120–129.99,0.5181347150259068,1
+lion crest,price,$130–139.99,1.5544041450777202,3
+lion crest,price,$140–149.99,1.0362694300518136,2
+lion crest,price,$150+,12.953367875647666,25
 lion crest,rating,rating3below,0,0
 lion crest,rating,rating3_35,5.181347150259067,10
 lion crest,rating,rating35_4,37.82383419689119,73
@@ -167,22 +167,22 @@ lion crest,type,typeRose,2.072538860103627,4
 lion crest,type,typeSparkling,13.471502590673575,26
 lion crest,median,medianPrice,,39.985
 lion crest,median,medianRating,,4.1
-lynx,price,$10 below,0,0
-lynx,price,$10–19,25,1
-lynx,price,$20–29,25,1
-lynx,price,$30–39,0,0
-lynx,price,$40–49,25,1
-lynx,price,$50–59,0,0
-lynx,price,$60–69,0,0
-lynx,price,$70–79,0,0
-lynx,price,$80–89,0,0
-lynx,price,$90–99,0,0
-lynx,price,$100–109,,
-lynx,price,$110–119,,
-lynx,price,$120–129,,
-lynx,price,$130–139,,
-lynx,price,$140–150,,
-lynx,price,$150+,,
+lynx,price,Below $10,0,0
+lynx,price,$10–19.99,25,1
+lynx,price,$20–29.99,25,1
+lynx,price,$30–39.99,0,0
+lynx,price,$40–49.99,25,1
+lynx,price,$50–59.99,0,0
+lynx,price,$60–69.99,0,0
+lynx,price,$70–79.99,0,0
+lynx,price,$80–89.99,0,0
+lynx,price,$90–99.99,0,0
+lynx,price,$100–109.99,0,0
+lynx,price,$110–119.99,0,0
+lynx,price,$120–129.99,0,0
+lynx,price,$130–139.99,25,1
+lynx,price,$140–149.99,0,0
+lynx,price,$150+,0,0
 lynx,rating,rating3below,0,0
 lynx,rating,rating3_35,25,1
 lynx,rating,rating35_4,25,1
@@ -195,22 +195,22 @@ lynx,type,typeRose,25,1
 lynx,type,typeSparkling,0,0
 lynx,median,medianPrice,,33.375
 lynx,median,medianRating,,4.1
-tiger,price,$10 below,0,0
-tiger,price,$10–19,0,0
-tiger,price,$20–29,0,0
-tiger,price,$30–39,0,0
-tiger,price,$40–49,0,0
-tiger,price,$50–59,0,0
-tiger,price,$60–69,0,0
-tiger,price,$70–79,0,0
-tiger,price,$80–89,100,1
-tiger,price,$90–99,0,0
-tiger,price,$100–109,,
-tiger,price,$110–119,,
-tiger,price,$120–129,,
-tiger,price,$130–139,,
-tiger,price,$140–150,,
-tiger,price,$150+,,
+tiger,price,Below $10,0,0
+tiger,price,$10–19.99,0,0
+tiger,price,$20–29.99,0,0
+tiger,price,$30–39.99,0,0
+tiger,price,$40–49.99,0,0
+tiger,price,$50–59.99,0,0
+tiger,price,$60–69.99,0,0
+tiger,price,$70–79.99,0,0
+tiger,price,$80–89.99,100,1
+tiger,price,$90–99.99,0,0
+tiger,price,$100–109.99,0,0
+tiger,price,$110–119.99,0,0
+tiger,price,$120–129.99,0,0
+tiger,price,$130–139.99,0,0
+tiger,price,$140–149.99,0,0
+tiger,price,$150+,0,0
 tiger,rating,rating3below,0,0
 tiger,rating,rating3_35,0,0
 tiger,rating,rating35_4,0,0
@@ -223,21 +223,21 @@ tiger,type,typeRose,0,0
 tiger,type,typeSparkling,0,0
 tiger,median,medianPrice,,89.99
 tiger,median,medianRating,,4.4
-animal wine,price,$10 below,1.544660846205507,23
-animal wine,price,$10–19,29.079919408999327,433
-animal wine,price,$20–29,25.92343854936199,386
-animal wine,price,$30–39,12.49160510409671,186
-animal wine,price,$40–49,7.0517125587642715,105
-animal wine,price,$50–59,4.499664204163868,67
-animal wine,price,$60–69,4.029550033579583,60
-animal wine,price,$70–79,2.552048354600403,38
-animal wine,price,$80–89,1.9476158495634655,29
-animal wine,price,$90–99,1.9476158495634655,29
-animal wine,price,$100–109,0.8730691739422431,13
-animal wine,price,$110–119,0.9402283411685695,14
-animal wine,price,$120–129,0.5372733378106112,8
-animal wine,price,$130–139,0.6715916722632639,10
-animal wine,price,$140–150,0.5372733378106112,8
+animal wine,price,Below $10,1.544660846205507,23
+animal wine,price,$10–19.99,29.079919408999327,433
+animal wine,price,$20–29.99,25.92343854936199,386
+animal wine,price,$30–39.99,12.49160510409671,186
+animal wine,price,$40–49.99,7.0517125587642715,105
+animal wine,price,$50–59.99,4.499664204163868,67
+animal wine,price,$60–69.99,4.029550033579583,60
+animal wine,price,$70–79.99,2.552048354600403,38
+animal wine,price,$80–89.99,1.9476158495634655,29
+animal wine,price,$90–99.99,1.9476158495634655,29
+animal wine,price,$100–109.99,0.8730691739422431,13
+animal wine,price,$110–119.99,0.9402283411685695,14
+animal wine,price,$120–129.99,0.5372733378106112,8
+animal wine,price,$130–139.99,0.6715916722632639,10
+animal wine,price,$140–149.99,0.5372733378106112,8
 animal wine,price,$150+,5.372733378106111,80
 animal wine,rating,rating3below,0.1343183344526528,2
 animal wine,rating,rating3_35,6.111484217595701,91
@@ -251,21 +251,21 @@ animal wine,type,typeRose,50.83948959032908,
 animal wine,type,typeSparkling,6.447280053727333,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
-all,price,$10 below,1.535323169422375,143
-all,price,$10–19,24.629589864719776,2294
-all,price,$20–29,25.26304487867726,2353
-all,price,$30–39,13.77496242216019,1283
-all,price,$40–49,8.12754992484432,757
-all,price,$50–59,6.10908310070861,569
-all,price,$60–69,4.273137212797939,398
-all,price,$70–79,2.9525445565814903,275
-all,price,$80–89,2.2117242860210435,206
-all,price,$90–99,1.8788919905518575,175
-all,price,$100–109,1.1917543482928923,111
-all,price,$110–119,0.8374490015031136,78
-all,price,$120–129,0.9770238350869659,91
-all,price,$130–139,0.6119819626368906,57
-all,price,$140–150,0.6334550139574834,59
+all,price,Below $10,1.535323169422375,143
+all,price,$10–19.99,24.629589864719776,2294
+all,price,$20–29.99,25.26304487867726,2353
+all,price,$30–39.99,13.77496242216019,1283
+all,price,$40–49.99,8.12754992484432,757
+all,price,$50–59.99,6.10908310070861,569
+all,price,$60–69.99,4.273137212797939,398
+all,price,$70–79.99,2.9525445565814903,275
+all,price,$80–89.99,2.2117242860210435,206
+all,price,$90–99.99,1.8788919905518575,175
+all,price,$100–109.99,1.1917543482928923,111
+all,price,$110–119.99,0.8374490015031136,78
+all,price,$120–129.99,0.9770238350869659,91
+all,price,$130–139.99,0.6119819626368906,57
+all,price,$140–149.99,0.6334550139574834,59
 all,price,$150+,4.992484432037793,465
 all,rating,rating3below,0.11810178226325961,11
 all,rating,rating3_35,4.9710113807172,463
