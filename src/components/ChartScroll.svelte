@@ -57,7 +57,7 @@
             activeSection = "explore";
         }
 
-        if (chartScrollIndex >= 10 && chartScrollIndex < 14) {
+        if (chartScrollIndex >= 9 && chartScrollIndex < 12) {
             chartView.set("histogram");
         } else {
             chartView.set("scatter");
@@ -158,7 +158,7 @@
 	}
 
 	.step {
-		height: 70vh;
+		height: 90vh;
         z-index: 900;
         max-width: 25%;
         opacity: 1;
@@ -252,15 +252,16 @@
         height: 100%;
     }
 
-    :global(.median-line-span, .compare-line-span, .sweet-rect-span) {
+    :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span) {
         position: relative;
         font-weight: 700;
         margin-right: 2.5rem;
         white-space: nowrap;
+        font-family: var(--sans);
         
     }
 
-    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after) {
+    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after, .cream-line-span::after) {
         position: absolute;
         top: 50%;
         right: -2rem;
@@ -272,6 +273,10 @@
 
     :global(.median-line-span::after) {
         border-top: 3px solid var(--wine-red);
+    }
+
+    :global(.cream-line-span::after) {
+        border-top: 3px solid var(--wine-tan);
     }
 
     :global(.compare-line-span::after) {
@@ -286,5 +291,28 @@
         top: 0;
         border-top: 2px solid var(--wine-tan);
         border-left: 2px solid var(--wine-tan);
+    }
+
+    :global(.more-span) {
+        font-weight: 700;
+        background: var(--wine-red);
+        color: var(--wine-black);
+        padding: 0.125rem 0.25rem;
+        border-radius: 3px;
+        font-family: var(--sans);
+    }
+
+    :global(.less-span) {
+        font-weight: 700;
+        background: var(--wine-gold);
+        color: var(--wine-black);
+        padding: 0.125rem 0.25rem;
+        border-radius: 3px;
+        font-family: var(--sans);
+    }
+
+    :global(.bold) {
+        font-weight: 700;
+        font-family: var(--sans);
     }
 </style>

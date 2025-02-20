@@ -28,6 +28,7 @@ duck,type,typeSparkling,11.363636363636363,5
 duck,type,typeWhite,47.72727272727273,21
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
+duck,median,steals,25,11
 flightless bird,price,Below $10,28.57142857142857,2
 flightless bird,price,$10–19.99,42.857142857142854,3
 flightless bird,price,$20–29.99,28.57142857142857,2
@@ -57,6 +58,7 @@ flightless bird,type,typeSparkling,0,0
 flightless bird,type,typeWhite,57.14285714285714,4
 flightless bird,median,medianPrice,,14.99
 flightless bird,median,medianRating,,3.8
+flightless bird,median,steals,14.285714285714285,1
 game bird,price,Below $10,0,0
 game bird,price,$10–19.99,34.78260869565217,8
 game bird,price,$20–29.99,30.434782608695656,7
@@ -86,6 +88,7 @@ game bird,type,typeSparkling,8.695652173913043,2
 game bird,type,typeWhite,26.08695652173913,6
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
+game bird,median,steals,26.08695652173913,6
 junglefowl,price,Below $10,0,0
 junglefowl,price,$10–19.99,28.26086956521739,13
 junglefowl,price,$20–29.99,23.91304347826087,11
@@ -115,6 +118,7 @@ junglefowl,type,typeSparkling,8.695652173913043,4
 junglefowl,type,typeWhite,45.65217391304348,21
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
+junglefowl,median,steals,19.565217391304348,9
 owl,price,Below $10,0,0
 owl,price,$10–19.99,33.33333333333333,23
 owl,price,$20–29.99,28.985507246376812,20
@@ -144,6 +148,7 @@ owl,type,typeSparkling,5.797101449275362,4
 owl,type,typeWhite,46.3768115942029,32
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
+owl,median,steals,17.391304347826086,12
 peacock,price,Below $10,0,0
 peacock,price,$10–19.99,23.076923076923077,3
 peacock,price,$20–29.99,30.76923076923077,4
@@ -173,6 +178,7 @@ peacock,type,typeSparkling,15.384615384615385,2
 peacock,type,typeWhite,38.46153846153847,5
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
+peacock,median,steals,30.76923076923077,4
 penguin,price,Below $10,0,0
 penguin,price,$10–19.99,100,2
 penguin,price,$20–29.99,0,0
@@ -202,6 +208,7 @@ penguin,type,typeSparkling,0,0
 penguin,type,typeWhite,100,2
 penguin,median,medianPrice,,14.469999999999999
 penguin,median,medianRating,,3.55
+penguin,median,steals,0,0
 raptor,price,Below $10,0.9900990099009901,1
 raptor,price,$10–19.99,29.7029702970297,30
 raptor,price,$20–29.99,16.831683168316832,17
@@ -231,6 +238,7 @@ raptor,type,typeSparkling,7.920792079207921,8
 raptor,type,typeWhite,43.56435643564357,44
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
+raptor,median,steals,15.841584158415841,16
 shorebird,price,Below $10,0,0
 shorebird,price,$10–19.99,36.36363636363637,4
 shorebird,price,$20–29.99,45.45454545454545,5
@@ -260,6 +268,7 @@ shorebird,type,typeSparkling,9.090909090909092,1
 shorebird,type,typeWhite,63.63636363636363,7
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
+shorebird,median,steals,54.54545454545454,6
 songbird,price,Below $10,0,0
 songbird,price,$10–19.99,34.61538461538461,63
 songbird,price,$20–29.99,34.065934065934066,62
@@ -289,6 +298,7 @@ songbird,type,typeSparkling,4.395604395604396,8
 songbird,type,typeWhite,38.46153846153847,70
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
+songbird,median,steals,29.120879120879124,53
 wading bird,price,Below $10,0,0
 wading bird,price,$10–19.99,48,12
 wading bird,price,$20–29.99,20,5
@@ -318,6 +328,7 @@ wading bird,type,typeSparkling,4,1
 wading bird,type,typeWhite,32,8
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
+wading bird,median,steals,20,5
 animal wine,price,Below $10,1.544660846205507,23
 animal wine,price,$10–19.99,29.079919408999327,433
 animal wine,price,$20–29.99,25.92343854936199,386
@@ -347,6 +358,7 @@ animal wine,type,typeSparkling,6.447280053727333,
 animal wine,type,typeWhite,40.83277367360645,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
+animal wine,median,steals,23.10275352585628,344
 all,price,Below $10,1.535323169422375,143
 all,price,$10–19.99,24.629589864719776,2294
 all,price,$20–29.99,25.26304487867726,2353
@@ -376,3 +388,4 @@ all,type,typeSparkling,7.794717629375134,
 all,type,typeWhite,37.459738028773884,
 all,median,medianPrice,,28.99
 all,median,medianRating,,4
+all,median,steals,23.12647627227829,2154

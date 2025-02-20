@@ -65,9 +65,9 @@
         {@const xScaleLine = d3.scalePoint()
             .domain(xDomainLine)
             .range([0, width])}
-        <div class="chart-wrapper" class:active={i == 0 && chartScrollIndex >= 10 ||
-            i == 1 && chartScrollIndex >= 11 ||
-            i == 2 && chartScrollIndex >= 12}>
+        <div class="chart-wrapper" class:active={i == 0 && chartScrollIndex >= 9 ||
+            i == 1 && chartScrollIndex >= 10 ||
+            i == 2 && chartScrollIndex >= 11}>
             <div class="chart-layers">
                 <div class="chart-container bars" id="bars_{category[0]}">
                     <LayerCake

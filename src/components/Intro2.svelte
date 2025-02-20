@@ -404,6 +404,7 @@
         position: relative;
         margin-left: 2rem;
         font-weight: 700;
+        font-family: var(--sans);
     }
 
     :global(.actualPriceSpan::before) {

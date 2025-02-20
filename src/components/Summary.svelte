@@ -1,16 +1,30 @@
 <script>
-    import { getContext, onMount } from "svelte";
+    import { getContext, onMount, tick } from "svelte";
     import starIcon from "$svg/star.svg";
+    import rawData from "$data/wineData_summary.csv";
 
     const copy = getContext("copy");
 
     export let animal;
     export let data;
+
+    let stealPercent = Math.round(rawData.filter(d => d.animalGroup == animal && d.bucket == "steals")[0].percent);
+
+    onMount(async () => {
+        await tick(); // Wait for DOM to update
+
+        if (typeof document !== 'undefined') {
+            let catSpans = document.querySelectorAll('.cat-steal-span');
+            catSpans.forEach(span => {
+                span.textContent = stealPercent;
+            });
+        }
+    });
 </script>
 
 <ol>
     {#each copy.catSummary as item, i}
-        <li>{item.value}</li>
+        <li>{@html item.value}</li>
     {/each}
 </ol>
 <div class="our-picks">

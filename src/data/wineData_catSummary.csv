@@ -28,6 +28,7 @@ cat,type,typeSparkling,8.333333333333332,1
 cat,type,typeWhite,41.66666666666667,5
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
+cat,median,steals,25,3
 cheetah,price,Below $10,0,0
 cheetah,price,$10–19.99,100,1
 cheetah,price,$20–29.99,0,0
@@ -57,6 +58,7 @@ cheetah,type,typeSparkling,0,0
 cheetah,type,typeWhite,0,0
 cheetah,median,medianPrice,,16.99
 cheetah,median,medianRating,,3.7
+cheetah,median,steals,0,0
 cougar,price,Below $10,0,0
 cougar,price,$10–19.99,0,0
 cougar,price,$20–29.99,50,1
@@ -86,6 +88,7 @@ cougar,type,typeSparkling,0,0
 cougar,type,typeWhite,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
+cougar,median,steals,50,1
 jaguar/leopard/panther,price,Below $10,0,0
 jaguar/leopard/panther,price,$10–19.99,0,0
 jaguar/leopard/panther,price,$20–29.99,100,3
@@ -115,6 +118,7 @@ jaguar/leopard/panther,type,typeSparkling,33.33333333333333,1
 jaguar/leopard/panther,type,typeWhite,33.33333333333333,1
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
+jaguar/leopard/panther,median,steals,66.66666666666666,2
 lion,price,Below $10,3.004291845493562,7
 lion,price,$10–19.99,15.450643776824036,36
 lion,price,$20–29.99,21.030042918454935,49
@@ -144,6 +148,7 @@ lion,type,typeSparkling,12.017167381974248,28
 lion,type,typeWhite,30.042918454935624,70
 lion,median,medianPrice,,39.98
 lion,median,medianRating,,4.1
+lion,median,steals,18.025751072961373,42
 lion crest,price,Below $10,3.6269430051813467,7
 lion crest,price,$10–19.99,15.544041450777202,30
 lion crest,price,$20–29.99,19.170984455958546,37
@@ -173,6 +178,7 @@ lion crest,type,typeSparkling,13.471502590673575,26
 lion crest,type,typeWhite,27.979274611398964,54
 lion crest,median,medianPrice,,39.985
 lion crest,median,medianRating,,4.1
+lion crest,median,steals,18.134715025906736,35
 lynx,price,Below $10,0,0
 lynx,price,$10–19.99,25,1
 lynx,price,$20–29.99,25,1
@@ -202,6 +208,7 @@ lynx,type,typeSparkling,0,0
 lynx,type,typeWhite,25,1
 lynx,median,medianPrice,,33.375
 lynx,median,medianRating,,4.1
+lynx,median,steals,25,1
 tiger,price,Below $10,0,0
 tiger,price,$10–19.99,0,0
 tiger,price,$20–29.99,0,0
@@ -231,6 +238,7 @@ tiger,type,typeSparkling,0,0
 tiger,type,typeWhite,100,1
 tiger,median,medianPrice,,89.99
 tiger,median,medianRating,,4.4
+tiger,median,steals,0,0
 animal wine,price,Below $10,1.544660846205507,23
 animal wine,price,$10–19.99,29.079919408999327,433
 animal wine,price,$20–29.99,25.92343854936199,386
@@ -260,6 +268,7 @@ animal wine,type,typeSparkling,6.447280053727333,
 animal wine,type,typeWhite,40.83277367360645,
 animal wine,median,medianPrice,,25.75
 animal wine,median,medianRating,,4
+animal wine,median,steals,23.10275352585628,344
 all,price,Below $10,1.535323169422375,143
 all,price,$10–19.99,24.629589864719776,2294
 all,price,$20–29.99,25.26304487867726,2353
@@ -289,3 +298,4 @@ all,type,typeSparkling,7.794717629375134,
 all,type,typeWhite,37.459738028773884,
 all,median,medianPrice,,28.99
 all,median,medianRating,,4
+all,median,steals,23.12647627227829,2154

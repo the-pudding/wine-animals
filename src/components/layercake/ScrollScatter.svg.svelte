@@ -60,7 +60,8 @@
 </script>
 
 {#if randomDataForGenerations}
-<g class="compare-wrapper">
+<g class="compare-wrapper"
+    class:hidden={chartScrollIndex == 14}>
     {#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert rating to a number
@@ -86,7 +87,8 @@
         {@const cx = chartScrollIndex >= 5 ? $xGet(d) : $xGet($data[0][4])}
         {@const cy = chartScrollIndex >= 5 ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
-            <g class="wine-circle wine-circle-{animal}">
+            <g class="wine-circle wine-circle-{animal}"
+                class:hidden={chartScrollIndex == 14}>
                 <circle 
                     cx={cx} 
                     cy={cy} 
@@ -109,9 +111,9 @@
                         chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" || chartScrollIndex == 3 && animal == "cat" ? r+30 : r+10}
         {@const animal = d.topGroup.replace(/[/\-\s].*/, '')}
             {#if d.topGroup == "no animals" || d.topGroup == "all animals" || d.topGroup == "all wines" }
-                {#if chartScrollIndex == undefined || chartScrollIndex < 4 }
+                {#if chartScrollIndex == undefined || chartScrollIndex < 4}
                     <g class="medians active"
-                    class:hidden={chartScrollIndex >= 3}>
+                    class:hidden={chartScrollIndex >= 4}>
                         <circle 
                             cx={cx} 
                             cy={cy} 
@@ -139,7 +141,7 @@
                     chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
                     chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ||
                     chartScrollIndex >= 3 && animal == "cat"}
-                class:hidden={chartScrollIndex >= 3 && animal !== "cat" || chartScrollIndex >= 5}>
+                class:hidden={chartScrollIndex >= 4 && animal !== "cat"}>
                 <circle 
                     cx={cx} 
                     cy={cy} 
@@ -197,7 +199,8 @@
     </text>
 </g>
 
-<g class="trendline" class:active={chartScrollIndex >= 7}>
+<g class="trendline" 
+    class:active={chartScrollIndex >= 7 && chartScrollIndex !== 14}>
     {#if path}
         <path class="expRegression" d={path} />
     {/if}
@@ -242,6 +245,10 @@
         font-family: var(--sans);
         font-size: var(--12px);
         fill: var(--wine-tan);
+    }
+    .compare-wrapper.hidden {
+        opacity: 0;
+        transition: opacity 0.4s linear;
     }
 
     g.trendline, g.compare-lines {

@@ -50,11 +50,10 @@
     $: {
         if (chartScrollIndex >= 4 && chartScrollIndex < 14) {
             bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle")))
-        } else if (chartScrollIndex >= 14) {
+        } else if (chartScrollIndex >= 15) {
             bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("fish-like")));
         }
     }
-    $: console.log($bigScatterData.length)
 </script>
 
 <section id="scatter">

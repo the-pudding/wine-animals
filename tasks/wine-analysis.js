@@ -18,7 +18,10 @@ const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "pea
 
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100–109.99", "110–119.99", "120–129.99", "130–139.99", "140–149.99", "150+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
-const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"]
+const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
+
+const totalAvgPrice = d3.mean(data.filter(d => d.price <= 150), d => d.price);
+const totalAvgRating = d3.mean(data.filter(d => d.price <= 150), d => d.rating);
 
 let summary = [];
 let catSummary = [];
@@ -102,6 +105,10 @@ function summarizeWines(animalGroup, metric, data, i) {
     const medianPrice = d3.median(filteredWines, d => d.price);
     const medianRating = d3.median(filteredWines, d => d.rating);
 
+    // STEALS
+    const steals = filteredWines.filter(d => d.price <= totalAvgPrice && d.rating >= totalAvgRating).length;
+    const stealsPercent = steals/filteredWines.length*100;
+
     const toPush = {animalGroup, 
         count: filteredWines.length, 
         price10belowCount: price10below.length, 
@@ -159,7 +166,9 @@ function summarizeWines(animalGroup, metric, data, i) {
         typeSparklingPercent,
         typeWhitePercent,
         medianPrice,
-        medianRating
+        medianRating,
+        steals,
+        stealsPercent
     };
 
     if (metric == "all") {
@@ -203,7 +212,8 @@ function formatCSV(data, metric) {
             { category: "type", bucket: "typeSparkling", percent: d.typeSparklingPercent, count: d.typeSparklingCount },
             { category: "type", bucket: "typeWhite", percent: d.typeWhitePercent, count: d.typeWhiteCount },
             { category: "median", bucket: "medianPrice", percent: null, count: d.medianPrice },
-            { category: "median", bucket: "medianRating", percent: null, count: d.medianRating }
+            { category: "median", bucket: "medianRating", percent: null, count: d.medianRating },
+            { category: "median", bucket: "steals", percent: d.stealsPercent , count: d.steals }
         ];
 
         if (metric == "all") {
@@ -305,6 +315,12 @@ function addTotalCounts(fullData, metric) {
         let animalOnlyMedianPrice = d3.median(fullData.filter(d => d.price <= 150 &&  d.topgroup !== "none" && d.topgroup !== "human"), d => d.price);
         let animalOnlyMedianRating = d3.median(fullData.filter(d => d.price <= 150 &&  d.topgroup !== "none" && d.topgroup !== "human"), d => d.rating);
 
+        // STEALS
+        let totalSteals = fullData.filter(d => d.price <= totalAvgPrice && d.rating >= totalAvgRating).length;
+        let totalStealsPercent = totalSteals/totalCount*100;
+        let animalOnlySteals = fullData.filter(d => d.topgroup !== "none" && d.topgroup !== "human" && d.price <= totalAvgPrice && d.rating >= totalAvgRating).length;
+        let animalOnlyStealsPercent = animalOnlySteals/animalOnlyCount*100;
+
         let allObject = {
             animalGroup: "all",
             count: totalCount,
@@ -360,7 +376,9 @@ function addTotalCounts(fullData, metric) {
             typeSparklingPercent: totalSparkling/totalCount*100,
             typeWhitePercent: totalWhite/totalCount*100,
             medianPrice:  totalMedianPrice,
-            medianRating: totalMedianRating
+            medianRating: totalMedianRating,
+            steals: totalSteals,
+            stealsPercent: totalStealsPercent
         }
 
         let animalOnlyObject = {
@@ -418,7 +436,9 @@ function addTotalCounts(fullData, metric) {
             typeSparklingPercent: animalOnlySparkling/animalOnlyCount*100,
             typeWhitePercent: animalOnlyWhite/animalOnlyCount*100,
             medianPrice:  animalOnlyMedianPrice,
-            medianRating: animalOnlyMedianRating
+            medianRating: animalOnlyMedianRating,
+            steals: animalOnlySteals,
+            stealsPercent: animalOnlyStealsPercent
         }
 
         if (metric == "cats") { 
@@ -441,7 +461,6 @@ function init() {
     addTotalCounts(data, "all");
 
     // CREATE FLAT DATA
-    console.log(summary)
     formatCSV(summary, "all");
 
     const concatSummaryData = [].concat(...flatSummary).map(d => ({ ...d }));
