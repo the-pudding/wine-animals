@@ -1,391 +1,331 @@
 animalGroup,category,bucket,percent,count
-duck,price,Below $10,2.272727272727273,1
-duck,price,$10–19.99,18.181818181818183,8
-duck,price,$20–29.99,29.545454545454547,13
-duck,price,$30–39.99,15.909090909090908,7
-duck,price,$40–49.99,6.8181818181818175,3
-duck,price,$50–59.99,11.363636363636363,5
-duck,price,$60–69.99,2.272727272727273,1
-duck,price,$70–79.99,4.545454545454546,2
-duck,price,$80–89.99,0,0
-duck,price,$90–99.99,2.272727272727273,1
-duck,price,$100–109.99,2.272727272727273,1
-duck,price,$110–119.99,0,0
-duck,price,$120–129.99,0,0
-duck,price,$130–139.99,0,0
-duck,price,$140–149.99,2.272727272727273,1
-duck,price,$150+,2.272727272727273,1
-duck,rating,rating3below,0,0
-duck,rating,rating3_35,4.545454545454546,2
-duck,rating,rating35_4,52.27272727272727,23
-duck,rating,rating4_45,40.909090909090914,18
-duck,rating,rating45above,2.272727272727273,1
-duck,type,typeDessert,2.272727272727273,1
-duck,type,typeFortified,2.272727272727273,1
-duck,type,typeRed,29.545454545454547,13
-duck,type,typeRose,6.8181818181818175,3
-duck,type,typeSparkling,11.363636363636363,5
-duck,type,typeWhite,47.72727272727273,21
+duck,price,<10,2.272727272727273,1
+duck,price,10–19.99,18.181818181818183,8
+duck,price,20–29.99,29.545454545454547,13
+duck,price,30–39.99,15.909090909090908,7
+duck,price,40–49.99,6.8181818181818175,3
+duck,price,50–59.99,11.363636363636363,5
+duck,price,60–69.99,2.272727272727273,1
+duck,price,70–79.99,4.545454545454546,2
+duck,price,80–89.99,0,0
+duck,price,90–99.99,2.272727272727273,1
+duck,price,100–109.99,2.272727272727273,1
+duck,price,110–119.99,0,0
+duck,price,120–129.99,0,0
+duck,price,130–139.99,0,0
+duck,price,140–149.99,2.272727272727273,1
+duck,price,150+,2.272727272727273,1
+duck,rating,3 & less,0,0
+duck,rating,3.1–3.5,4.545454545454546,2
+duck,rating,3.6–4,52.27272727272727,23
+duck,rating,4.1–4.5,40.909090909090914,18
+duck,rating,4.6 & above,2.272727272727273,1
+duck,type,Dessert,2.272727272727273,1
+duck,type,Fortified,2.272727272727273,1
+duck,type,Red,29.545454545454547,13
+duck,type,Rose,6.8181818181818175,3
+duck,type,Sparkling,11.363636363636363,5
+duck,type,White,47.72727272727273,21
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
-duck,median,steals,25,11
-flightless bird,price,Below $10,28.57142857142857,2
-flightless bird,price,$10–19.99,42.857142857142854,3
-flightless bird,price,$20–29.99,28.57142857142857,2
-flightless bird,price,$30–39.99,0,0
-flightless bird,price,$40–49.99,0,0
-flightless bird,price,$50–59.99,0,0
-flightless bird,price,$60–69.99,0,0
-flightless bird,price,$70–79.99,0,0
-flightless bird,price,$80–89.99,0,0
-flightless bird,price,$90–99.99,0,0
-flightless bird,price,$100–109.99,0,0
-flightless bird,price,$110–119.99,0,0
-flightless bird,price,$120–129.99,0,0
-flightless bird,price,$130–139.99,0,0
-flightless bird,price,$140–149.99,0,0
-flightless bird,price,$150+,0,0
-flightless bird,rating,rating3below,0,0
-flightless bird,rating,rating3_35,28.57142857142857,2
-flightless bird,rating,rating35_4,71.42857142857143,5
-flightless bird,rating,rating4_45,0,0
-flightless bird,rating,rating45above,0,0
-flightless bird,type,typeDessert,0,0
-flightless bird,type,typeFortified,0,0
-flightless bird,type,typeRed,28.57142857142857,2
-flightless bird,type,typeRose,14.285714285714285,1
-flightless bird,type,typeSparkling,0,0
-flightless bird,type,typeWhite,57.14285714285714,4
+duck,steals,steals,25,11
+flightless bird,price,<10,28.57142857142857,2
+flightless bird,price,10–19.99,42.857142857142854,3
+flightless bird,price,20–29.99,28.57142857142857,2
+flightless bird,price,30–39.99,0,0
+flightless bird,price,40–49.99,0,0
+flightless bird,price,50–59.99,0,0
+flightless bird,price,60–69.99,0,0
+flightless bird,price,70–79.99,0,0
+flightless bird,price,80–89.99,0,0
+flightless bird,price,90–99.99,0,0
+flightless bird,price,100–109.99,0,0
+flightless bird,price,110–119.99,0,0
+flightless bird,price,120–129.99,0,0
+flightless bird,price,130–139.99,0,0
+flightless bird,price,140–149.99,0,0
+flightless bird,price,150+,0,0
+flightless bird,rating,3 & less,0,0
+flightless bird,rating,3.1–3.5,28.57142857142857,2
+flightless bird,rating,3.6–4,71.42857142857143,5
+flightless bird,rating,4.1–4.5,0,0
+flightless bird,rating,4.6 & above,0,0
+flightless bird,type,Dessert,0,0
+flightless bird,type,Fortified,0,0
+flightless bird,type,Red,28.57142857142857,2
+flightless bird,type,Rose,14.285714285714285,1
+flightless bird,type,Sparkling,0,0
+flightless bird,type,White,57.14285714285714,4
 flightless bird,median,medianPrice,,14.99
 flightless bird,median,medianRating,,3.8
-flightless bird,median,steals,14.285714285714285,1
-game bird,price,Below $10,0,0
-game bird,price,$10–19.99,34.78260869565217,8
-game bird,price,$20–29.99,30.434782608695656,7
-game bird,price,$30–39.99,13.043478260869565,3
-game bird,price,$40–49.99,0,0
-game bird,price,$50–59.99,8.695652173913043,2
-game bird,price,$60–69.99,4.3478260869565215,1
-game bird,price,$70–79.99,4.3478260869565215,1
-game bird,price,$80–89.99,0,0
-game bird,price,$90–99.99,0,0
-game bird,price,$100–109.99,0,0
-game bird,price,$110–119.99,0,0
-game bird,price,$120–129.99,0,0
-game bird,price,$130–139.99,0,0
-game bird,price,$140–149.99,0,0
-game bird,price,$150+,4.3478260869565215,1
-game bird,rating,rating3below,0,0
-game bird,rating,rating3_35,8.695652173913043,2
-game bird,rating,rating35_4,56.52173913043478,13
-game bird,rating,rating4_45,34.78260869565217,8
-game bird,rating,rating45above,0,0
-game bird,type,typeDessert,0,0
-game bird,type,typeFortified,4.3478260869565215,1
-game bird,type,typeRed,47.82608695652174,11
-game bird,type,typeRose,13.043478260869565,3
-game bird,type,typeSparkling,8.695652173913043,2
-game bird,type,typeWhite,26.08695652173913,6
+flightless bird,steals,steals,14.285714285714285,1
+game bird,price,<10,0,0
+game bird,price,10–19.99,34.78260869565217,8
+game bird,price,20–29.99,30.434782608695656,7
+game bird,price,30–39.99,13.043478260869565,3
+game bird,price,40–49.99,0,0
+game bird,price,50–59.99,8.695652173913043,2
+game bird,price,60–69.99,4.3478260869565215,1
+game bird,price,70–79.99,4.3478260869565215,1
+game bird,price,80–89.99,0,0
+game bird,price,90–99.99,0,0
+game bird,price,100–109.99,0,0
+game bird,price,110–119.99,0,0
+game bird,price,120–129.99,0,0
+game bird,price,130–139.99,0,0
+game bird,price,140–149.99,0,0
+game bird,price,150+,4.3478260869565215,1
+game bird,rating,3 & less,0,0
+game bird,rating,3.1–3.5,8.695652173913043,2
+game bird,rating,3.6–4,56.52173913043478,13
+game bird,rating,4.1–4.5,34.78260869565217,8
+game bird,rating,4.6 & above,0,0
+game bird,type,Dessert,0,0
+game bird,type,Fortified,4.3478260869565215,1
+game bird,type,Red,47.82608695652174,11
+game bird,type,Rose,13.043478260869565,3
+game bird,type,Sparkling,8.695652173913043,2
+game bird,type,White,26.08695652173913,6
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
-game bird,median,steals,26.08695652173913,6
-junglefowl,price,Below $10,0,0
-junglefowl,price,$10–19.99,28.26086956521739,13
-junglefowl,price,$20–29.99,23.91304347826087,11
-junglefowl,price,$30–39.99,6.521739130434782,3
-junglefowl,price,$40–49.99,17.391304347826086,8
-junglefowl,price,$50–59.99,0,0
-junglefowl,price,$60–69.99,2.1739130434782608,1
-junglefowl,price,$70–79.99,4.3478260869565215,2
-junglefowl,price,$80–89.99,2.1739130434782608,1
-junglefowl,price,$90–99.99,0,0
-junglefowl,price,$100–109.99,0,0
-junglefowl,price,$110–119.99,2.1739130434782608,1
-junglefowl,price,$120–129.99,0,0
-junglefowl,price,$130–139.99,0,0
-junglefowl,price,$140–149.99,2.1739130434782608,1
-junglefowl,price,$150+,10.869565217391305,5
-junglefowl,rating,rating3below,0,0
-junglefowl,rating,rating3_35,4.3478260869565215,2
-junglefowl,rating,rating35_4,47.82608695652174,22
-junglefowl,rating,rating4_45,43.47826086956522,20
-junglefowl,rating,rating45above,4.3478260869565215,2
-junglefowl,type,typeDessert,0,0
-junglefowl,type,typeFortified,0,0
-junglefowl,type,typeRed,39.130434782608695,18
-junglefowl,type,typeRose,6.521739130434782,3
-junglefowl,type,typeSparkling,8.695652173913043,4
-junglefowl,type,typeWhite,45.65217391304348,21
+game bird,steals,steals,26.08695652173913,6
+junglefowl,price,<10,0,0
+junglefowl,price,10–19.99,28.26086956521739,13
+junglefowl,price,20–29.99,23.91304347826087,11
+junglefowl,price,30–39.99,6.521739130434782,3
+junglefowl,price,40–49.99,17.391304347826086,8
+junglefowl,price,50–59.99,0,0
+junglefowl,price,60–69.99,2.1739130434782608,1
+junglefowl,price,70–79.99,4.3478260869565215,2
+junglefowl,price,80–89.99,2.1739130434782608,1
+junglefowl,price,90–99.99,0,0
+junglefowl,price,100–109.99,0,0
+junglefowl,price,110–119.99,2.1739130434782608,1
+junglefowl,price,120–129.99,0,0
+junglefowl,price,130–139.99,0,0
+junglefowl,price,140–149.99,2.1739130434782608,1
+junglefowl,price,150+,10.869565217391305,5
+junglefowl,rating,3 & less,0,0
+junglefowl,rating,3.1–3.5,4.3478260869565215,2
+junglefowl,rating,3.6–4,47.82608695652174,22
+junglefowl,rating,4.1–4.5,43.47826086956522,20
+junglefowl,rating,4.6 & above,4.3478260869565215,2
+junglefowl,type,Dessert,0,0
+junglefowl,type,Fortified,0,0
+junglefowl,type,Red,39.130434782608695,18
+junglefowl,type,Rose,6.521739130434782,3
+junglefowl,type,Sparkling,8.695652173913043,4
+junglefowl,type,White,45.65217391304348,21
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
-junglefowl,median,steals,19.565217391304348,9
-owl,price,Below $10,0,0
-owl,price,$10–19.99,33.33333333333333,23
-owl,price,$20–29.99,28.985507246376812,20
-owl,price,$30–39.99,8.695652173913043,6
-owl,price,$40–49.99,13.043478260869565,9
-owl,price,$50–59.99,0,0
-owl,price,$60–69.99,1.4492753623188406,1
-owl,price,$70–79.99,2.898550724637681,2
-owl,price,$80–89.99,1.4492753623188406,1
-owl,price,$90–99.99,0,0
-owl,price,$100–109.99,0,0
-owl,price,$110–119.99,1.4492753623188406,1
-owl,price,$120–129.99,0,0
-owl,price,$130–139.99,0,0
-owl,price,$140–149.99,1.4492753623188406,1
-owl,price,$150+,7.246376811594203,5
-owl,rating,rating3below,0,0
-owl,rating,rating3_35,2.898550724637681,2
-owl,rating,rating35_4,57.971014492753625,40
-owl,rating,rating4_45,36.231884057971016,25
-owl,rating,rating45above,2.898550724637681,2
-owl,type,typeDessert,0,0
-owl,type,typeFortified,0,0
-owl,type,typeRed,37.68115942028986,26
-owl,type,typeRose,10.144927536231885,7
-owl,type,typeSparkling,5.797101449275362,4
-owl,type,typeWhite,46.3768115942029,32
+junglefowl,steals,steals,19.565217391304348,9
+owl,price,<10,0,0
+owl,price,10–19.99,33.33333333333333,23
+owl,price,20–29.99,28.985507246376812,20
+owl,price,30–39.99,8.695652173913043,6
+owl,price,40–49.99,13.043478260869565,9
+owl,price,50–59.99,0,0
+owl,price,60–69.99,1.4492753623188406,1
+owl,price,70–79.99,2.898550724637681,2
+owl,price,80–89.99,1.4492753623188406,1
+owl,price,90–99.99,0,0
+owl,price,100–109.99,0,0
+owl,price,110–119.99,1.4492753623188406,1
+owl,price,120–129.99,0,0
+owl,price,130–139.99,0,0
+owl,price,140–149.99,1.4492753623188406,1
+owl,price,150+,7.246376811594203,5
+owl,rating,3 & less,0,0
+owl,rating,3.1–3.5,2.898550724637681,2
+owl,rating,3.6–4,57.971014492753625,40
+owl,rating,4.1–4.5,36.231884057971016,25
+owl,rating,4.6 & above,2.898550724637681,2
+owl,type,Dessert,0,0
+owl,type,Fortified,0,0
+owl,type,Red,37.68115942028986,26
+owl,type,Rose,10.144927536231885,7
+owl,type,Sparkling,5.797101449275362,4
+owl,type,White,46.3768115942029,32
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
-owl,median,steals,17.391304347826086,12
-peacock,price,Below $10,0,0
-peacock,price,$10–19.99,23.076923076923077,3
-peacock,price,$20–29.99,30.76923076923077,4
-peacock,price,$30–39.99,7.6923076923076925,1
-peacock,price,$40–49.99,7.6923076923076925,1
-peacock,price,$50–59.99,0,0
-peacock,price,$60–69.99,23.076923076923077,3
-peacock,price,$70–79.99,0,0
-peacock,price,$80–89.99,0,0
-peacock,price,$90–99.99,0,0
-peacock,price,$100–109.99,7.6923076923076925,1
-peacock,price,$110–119.99,0,0
-peacock,price,$120–129.99,0,0
-peacock,price,$130–139.99,0,0
-peacock,price,$140–149.99,0,0
-peacock,price,$150+,0,0
-peacock,rating,rating3below,0,0
-peacock,rating,rating3_35,7.6923076923076925,1
-peacock,rating,rating35_4,30.76923076923077,4
-peacock,rating,rating4_45,61.53846153846154,8
-peacock,rating,rating45above,0,0
-peacock,type,typeDessert,0,0
-peacock,type,typeFortified,0,0
-peacock,type,typeRed,38.46153846153847,5
-peacock,type,typeRose,7.6923076923076925,1
-peacock,type,typeSparkling,15.384615384615385,2
-peacock,type,typeWhite,38.46153846153847,5
+owl,steals,steals,17.391304347826086,12
+peacock,price,<10,0,0
+peacock,price,10–19.99,23.076923076923077,3
+peacock,price,20–29.99,30.76923076923077,4
+peacock,price,30–39.99,7.6923076923076925,1
+peacock,price,40–49.99,7.6923076923076925,1
+peacock,price,50–59.99,0,0
+peacock,price,60–69.99,23.076923076923077,3
+peacock,price,70–79.99,0,0
+peacock,price,80–89.99,0,0
+peacock,price,90–99.99,0,0
+peacock,price,100–109.99,7.6923076923076925,1
+peacock,price,110–119.99,0,0
+peacock,price,120–129.99,0,0
+peacock,price,130–139.99,0,0
+peacock,price,140–149.99,0,0
+peacock,price,150+,0,0
+peacock,rating,3 & less,0,0
+peacock,rating,3.1–3.5,7.6923076923076925,1
+peacock,rating,3.6–4,30.76923076923077,4
+peacock,rating,4.1–4.5,61.53846153846154,8
+peacock,rating,4.6 & above,0,0
+peacock,type,Dessert,0,0
+peacock,type,Fortified,0,0
+peacock,type,Red,38.46153846153847,5
+peacock,type,Rose,7.6923076923076925,1
+peacock,type,Sparkling,15.384615384615385,2
+peacock,type,White,38.46153846153847,5
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
-peacock,median,steals,30.76923076923077,4
-penguin,price,Below $10,0,0
-penguin,price,$10–19.99,100,2
-penguin,price,$20–29.99,0,0
-penguin,price,$30–39.99,0,0
-penguin,price,$40–49.99,0,0
-penguin,price,$50–59.99,0,0
-penguin,price,$60–69.99,0,0
-penguin,price,$70–79.99,0,0
-penguin,price,$80–89.99,0,0
-penguin,price,$90–99.99,0,0
-penguin,price,$100–109.99,0,0
-penguin,price,$110–119.99,0,0
-penguin,price,$120–129.99,0,0
-penguin,price,$130–139.99,0,0
-penguin,price,$140–149.99,0,0
-penguin,price,$150+,0,0
-penguin,rating,rating3below,0,0
-penguin,rating,rating3_35,50,1
-penguin,rating,rating35_4,50,1
-penguin,rating,rating4_45,0,0
-penguin,rating,rating45above,0,0
-penguin,type,typeDessert,0,0
-penguin,type,typeFortified,0,0
-penguin,type,typeRed,0,0
-penguin,type,typeRose,0,0
-penguin,type,typeSparkling,0,0
-penguin,type,typeWhite,100,2
+peacock,steals,steals,30.76923076923077,4
+penguin,price,<10,0,0
+penguin,price,10–19.99,100,2
+penguin,price,20–29.99,0,0
+penguin,price,30–39.99,0,0
+penguin,price,40–49.99,0,0
+penguin,price,50–59.99,0,0
+penguin,price,60–69.99,0,0
+penguin,price,70–79.99,0,0
+penguin,price,80–89.99,0,0
+penguin,price,90–99.99,0,0
+penguin,price,100–109.99,0,0
+penguin,price,110–119.99,0,0
+penguin,price,120–129.99,0,0
+penguin,price,130–139.99,0,0
+penguin,price,140–149.99,0,0
+penguin,price,150+,0,0
+penguin,rating,3 & less,0,0
+penguin,rating,3.1–3.5,50,1
+penguin,rating,3.6–4,50,1
+penguin,rating,4.1–4.5,0,0
+penguin,rating,4.6 & above,0,0
+penguin,type,Dessert,0,0
+penguin,type,Fortified,0,0
+penguin,type,Red,0,0
+penguin,type,Rose,0,0
+penguin,type,Sparkling,0,0
+penguin,type,White,100,2
 penguin,median,medianPrice,,14.469999999999999
 penguin,median,medianRating,,3.55
-penguin,median,steals,0,0
-raptor,price,Below $10,0.9900990099009901,1
-raptor,price,$10–19.99,29.7029702970297,30
-raptor,price,$20–29.99,16.831683168316832,17
-raptor,price,$30–39.99,13.861386138613863,14
-raptor,price,$40–49.99,6.9306930693069315,7
-raptor,price,$50–59.99,4.9504950495049505,5
-raptor,price,$60–69.99,6.9306930693069315,7
-raptor,price,$70–79.99,5.9405940594059405,6
-raptor,price,$80–89.99,1.9801980198019802,2
-raptor,price,$90–99.99,3.9603960396039604,4
-raptor,price,$100–109.99,0.9900990099009901,1
-raptor,price,$110–119.99,2.9702970297029703,3
-raptor,price,$120–129.99,0,0
-raptor,price,$130–139.99,0.9900990099009901,1
-raptor,price,$140–149.99,0,0
-raptor,price,$150+,2.9702970297029703,3
-raptor,rating,rating3below,0,0
-raptor,rating,rating3_35,6.9306930693069315,7
-raptor,rating,rating35_4,50.495049504950494,51
-raptor,rating,rating4_45,42.57425742574257,43
-raptor,rating,rating45above,0,0
-raptor,type,typeDessert,0,0
-raptor,type,typeFortified,2.9702970297029703,3
-raptor,type,typeRed,42.57425742574257,43
-raptor,type,typeRose,2.9702970297029703,3
-raptor,type,typeSparkling,7.920792079207921,8
-raptor,type,typeWhite,43.56435643564357,44
+penguin,steals,steals,0,0
+raptor,price,<10,0.9900990099009901,1
+raptor,price,10–19.99,29.7029702970297,30
+raptor,price,20–29.99,16.831683168316832,17
+raptor,price,30–39.99,13.861386138613863,14
+raptor,price,40–49.99,6.9306930693069315,7
+raptor,price,50–59.99,4.9504950495049505,5
+raptor,price,60–69.99,6.9306930693069315,7
+raptor,price,70–79.99,5.9405940594059405,6
+raptor,price,80–89.99,1.9801980198019802,2
+raptor,price,90–99.99,3.9603960396039604,4
+raptor,price,100–109.99,0.9900990099009901,1
+raptor,price,110–119.99,2.9702970297029703,3
+raptor,price,120–129.99,0,0
+raptor,price,130–139.99,0.9900990099009901,1
+raptor,price,140–149.99,0,0
+raptor,price,150+,2.9702970297029703,3
+raptor,rating,3 & less,0,0
+raptor,rating,3.1–3.5,6.9306930693069315,7
+raptor,rating,3.6–4,50.495049504950494,51
+raptor,rating,4.1–4.5,42.57425742574257,43
+raptor,rating,4.6 & above,0,0
+raptor,type,Dessert,0,0
+raptor,type,Fortified,2.9702970297029703,3
+raptor,type,Red,42.57425742574257,43
+raptor,type,Rose,2.9702970297029703,3
+raptor,type,Sparkling,7.920792079207921,8
+raptor,type,White,43.56435643564357,44
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
-raptor,median,steals,15.841584158415841,16
-shorebird,price,Below $10,0,0
-shorebird,price,$10–19.99,36.36363636363637,4
-shorebird,price,$20–29.99,45.45454545454545,5
-shorebird,price,$30–39.99,9.090909090909092,1
-shorebird,price,$40–49.99,0,0
-shorebird,price,$50–59.99,0,0
-shorebird,price,$60–69.99,9.090909090909092,1
-shorebird,price,$70–79.99,0,0
-shorebird,price,$80–89.99,0,0
-shorebird,price,$90–99.99,0,0
-shorebird,price,$100–109.99,0,0
-shorebird,price,$110–119.99,0,0
-shorebird,price,$120–129.99,0,0
-shorebird,price,$130–139.99,0,0
-shorebird,price,$140–149.99,0,0
-shorebird,price,$150+,0,0
-shorebird,rating,rating3below,0,0
-shorebird,rating,rating3_35,9.090909090909092,1
-shorebird,rating,rating35_4,36.36363636363637,4
-shorebird,rating,rating4_45,54.54545454545454,6
-shorebird,rating,rating45above,0,0
-shorebird,type,typeDessert,9.090909090909092,1
-shorebird,type,typeFortified,0,0
-shorebird,type,typeRed,9.090909090909092,1
-shorebird,type,typeRose,9.090909090909092,1
-shorebird,type,typeSparkling,9.090909090909092,1
-shorebird,type,typeWhite,63.63636363636363,7
+raptor,steals,steals,15.841584158415841,16
+shorebird,price,<10,0,0
+shorebird,price,10–19.99,36.36363636363637,4
+shorebird,price,20–29.99,45.45454545454545,5
+shorebird,price,30–39.99,9.090909090909092,1
+shorebird,price,40–49.99,0,0
+shorebird,price,50–59.99,0,0
+shorebird,price,60–69.99,9.090909090909092,1
+shorebird,price,70–79.99,0,0
+shorebird,price,80–89.99,0,0
+shorebird,price,90–99.99,0,0
+shorebird,price,100–109.99,0,0
+shorebird,price,110–119.99,0,0
+shorebird,price,120–129.99,0,0
+shorebird,price,130–139.99,0,0
+shorebird,price,140–149.99,0,0
+shorebird,price,150+,0,0
+shorebird,rating,3 & less,0,0
+shorebird,rating,3.1–3.5,9.090909090909092,1
+shorebird,rating,3.6–4,36.36363636363637,4
+shorebird,rating,4.1–4.5,54.54545454545454,6
+shorebird,rating,4.6 & above,0,0
+shorebird,type,Dessert,9.090909090909092,1
+shorebird,type,Fortified,0,0
+shorebird,type,Red,9.090909090909092,1
+shorebird,type,Rose,9.090909090909092,1
+shorebird,type,Sparkling,9.090909090909092,1
+shorebird,type,White,63.63636363636363,7
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
-shorebird,median,steals,54.54545454545454,6
-songbird,price,Below $10,0,0
-songbird,price,$10–19.99,34.61538461538461,63
-songbird,price,$20–29.99,34.065934065934066,62
-songbird,price,$30–39.99,10.989010989010989,20
-songbird,price,$40–49.99,4.395604395604396,8
-songbird,price,$50–59.99,2.7472527472527473,5
-songbird,price,$60–69.99,4.395604395604396,8
-songbird,price,$70–79.99,0.5494505494505495,1
-songbird,price,$80–89.99,1.098901098901099,2
-songbird,price,$90–99.99,2.7472527472527473,5
-songbird,price,$100–109.99,1.6483516483516485,3
-songbird,price,$110–119.99,0,0
-songbird,price,$120–129.99,0,0
-songbird,price,$130–139.99,0.5494505494505495,1
-songbird,price,$140–149.99,0,0
-songbird,price,$150+,2.197802197802198,4
-songbird,rating,rating3below,0,0
-songbird,rating,rating3_35,3.8461538461538463,7
-songbird,rating,rating35_4,59.89010989010989,109
-songbird,rating,rating4_45,35.16483516483517,64
-songbird,rating,rating45above,1.098901098901099,2
-songbird,type,typeDessert,1.098901098901099,2
-songbird,type,typeFortified,0.5494505494505495,1
-songbird,type,typeRed,46.7032967032967,85
-songbird,type,typeRose,8.791208791208792,16
-songbird,type,typeSparkling,4.395604395604396,8
-songbird,type,typeWhite,38.46153846153847,70
+shorebird,steals,steals,54.54545454545454,6
+songbird,price,<10,0,0
+songbird,price,10–19.99,34.61538461538461,63
+songbird,price,20–29.99,34.065934065934066,62
+songbird,price,30–39.99,10.989010989010989,20
+songbird,price,40–49.99,4.395604395604396,8
+songbird,price,50–59.99,2.7472527472527473,5
+songbird,price,60–69.99,4.395604395604396,8
+songbird,price,70–79.99,0.5494505494505495,1
+songbird,price,80–89.99,1.098901098901099,2
+songbird,price,90–99.99,2.7472527472527473,5
+songbird,price,100–109.99,1.6483516483516485,3
+songbird,price,110–119.99,0,0
+songbird,price,120–129.99,0,0
+songbird,price,130–139.99,0.5494505494505495,1
+songbird,price,140–149.99,0,0
+songbird,price,150+,2.197802197802198,4
+songbird,rating,3 & less,0,0
+songbird,rating,3.1–3.5,3.8461538461538463,7
+songbird,rating,3.6–4,59.89010989010989,109
+songbird,rating,4.1–4.5,35.16483516483517,64
+songbird,rating,4.6 & above,1.098901098901099,2
+songbird,type,Dessert,1.098901098901099,2
+songbird,type,Fortified,0.5494505494505495,1
+songbird,type,Red,46.7032967032967,85
+songbird,type,Rose,8.791208791208792,16
+songbird,type,Sparkling,4.395604395604396,8
+songbird,type,White,38.46153846153847,70
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
-songbird,median,steals,29.120879120879124,53
-wading bird,price,Below $10,0,0
-wading bird,price,$10–19.99,48,12
-wading bird,price,$20–29.99,20,5
-wading bird,price,$30–39.99,4,1
-wading bird,price,$40–49.99,12,3
-wading bird,price,$50–59.99,4,1
-wading bird,price,$60–69.99,8,2
-wading bird,price,$70–79.99,0,0
-wading bird,price,$80–89.99,0,0
-wading bird,price,$90–99.99,0,0
-wading bird,price,$100–109.99,0,0
-wading bird,price,$110–119.99,0,0
-wading bird,price,$120–129.99,0,0
-wading bird,price,$130–139.99,0,0
-wading bird,price,$140–149.99,0,0
-wading bird,price,$150+,4,1
-wading bird,rating,rating3below,0,0
-wading bird,rating,rating3_35,8,2
-wading bird,rating,rating35_4,56.00000000000001,14
-wading bird,rating,rating4_45,36,9
-wading bird,rating,rating45above,0,0
-wading bird,type,typeDessert,4,1
-wading bird,type,typeFortified,4,1
-wading bird,type,typeRed,48,12
-wading bird,type,typeRose,8,2
-wading bird,type,typeSparkling,4,1
-wading bird,type,typeWhite,32,8
+songbird,steals,steals,29.120879120879124,53
+wading bird,price,<10,0,0
+wading bird,price,10–19.99,48,12
+wading bird,price,20–29.99,20,5
+wading bird,price,30–39.99,4,1
+wading bird,price,40–49.99,12,3
+wading bird,price,50–59.99,4,1
+wading bird,price,60–69.99,8,2
+wading bird,price,70–79.99,0,0
+wading bird,price,80–89.99,0,0
+wading bird,price,90–99.99,0,0
+wading bird,price,100–109.99,0,0
+wading bird,price,110–119.99,0,0
+wading bird,price,120–129.99,0,0
+wading bird,price,130–139.99,0,0
+wading bird,price,140–149.99,0,0
+wading bird,price,150+,4,1
+wading bird,rating,3 & less,0,0
+wading bird,rating,3.1–3.5,8,2
+wading bird,rating,3.6–4,56.00000000000001,14
+wading bird,rating,4.1–4.5,36,9
+wading bird,rating,4.6 & above,0,0
+wading bird,type,Dessert,4,1
+wading bird,type,Fortified,4,1
+wading bird,type,Red,48,12
+wading bird,type,Rose,8,2
+wading bird,type,Sparkling,4,1
+wading bird,type,White,32,8
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
-wading bird,median,steals,20,5
-animal wine,price,Below $10,1.544660846205507,23
-animal wine,price,$10–19.99,29.079919408999327,433
-animal wine,price,$20–29.99,25.92343854936199,386
-animal wine,price,$30–39.99,12.49160510409671,186
-animal wine,price,$40–49.99,7.0517125587642715,105
-animal wine,price,$50–59.99,4.499664204163868,67
-animal wine,price,$60–69.99,4.029550033579583,60
-animal wine,price,$70–79.99,2.552048354600403,38
-animal wine,price,$80–89.99,1.9476158495634655,29
-animal wine,price,$90–99.99,1.9476158495634655,29
-animal wine,price,$100–109.99,0.8730691739422431,13
-animal wine,price,$110–119.99,0.9402283411685695,14
-animal wine,price,$120–129.99,0.5372733378106112,8
-animal wine,price,$130–139.99,0.6715916722632639,10
-animal wine,price,$140–149.99,0.5372733378106112,8
-animal wine,price,$150+,5.372733378106111,80
-animal wine,rating,rating3below,0.1343183344526528,2
-animal wine,rating,rating3_35,6.111484217595701,91
-animal wine,rating,rating35_4,52.71994627266622,785
-animal wine,rating,rating4_45,39.62390866353257,590
-animal wine,rating,rating45above,1.4103425117528543,21
-animal wine,type,typeDessert,1.9476158495634655,
-animal wine,type,typeFortified,1.4775016789791806,
-animal wine,type,typeRed,41.302887844190735,
-animal wine,type,typeRose,50.83948959032908,
-animal wine,type,typeSparkling,6.447280053727333,
-animal wine,type,typeWhite,40.83277367360645,
-animal wine,median,medianPrice,,25.75
-animal wine,median,medianRating,,4
-animal wine,median,steals,23.10275352585628,344
-all,price,Below $10,1.535323169422375,143
-all,price,$10–19.99,24.629589864719776,2294
-all,price,$20–29.99,25.26304487867726,2353
-all,price,$30–39.99,13.77496242216019,1283
-all,price,$40–49.99,8.12754992484432,757
-all,price,$50–59.99,6.10908310070861,569
-all,price,$60–69.99,4.273137212797939,398
-all,price,$70–79.99,2.9525445565814903,275
-all,price,$80–89.99,2.2117242860210435,206
-all,price,$90–99.99,1.8788919905518575,175
-all,price,$100–109.99,1.1917543482928923,111
-all,price,$110–119.99,0.8374490015031136,78
-all,price,$120–129.99,0.9770238350869659,91
-all,price,$130–139.99,0.6119819626368906,57
-all,price,$140–149.99,0.6334550139574834,59
-all,price,$150+,4.992484432037793,465
-all,rating,rating3below,0.11810178226325961,11
-all,rating,rating3_35,4.9710113807172,463
-all,rating,rating35_4,50.91260468112518,4742
-all,rating,rating4_45,42.51664161477346,3960
-all,rating,rating45above,1.4816405411208933,138
-all,type,typeDessert,2.168778183379858,
-all,type,typeFortified,1.470904015460597,
-all,type,typeRed,42.9783122181662,
-all,type,typeRose,8.12754992484432,
-all,type,typeSparkling,7.794717629375134,
-all,type,typeWhite,37.459738028773884,
-all,median,medianPrice,,28.99
-all,median,medianRating,,4
-all,median,steals,23.12647627227829,2154
+wading bird,steals,steals,20,5
