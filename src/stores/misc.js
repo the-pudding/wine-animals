@@ -23,3 +23,7 @@ export const selectedPriceRangeSTORE = writable([3, 150]);
 export const selectedRatingRangeSTORE = writable([2.5, 5]);
 export const selectedYearRangeSTORE = writable([1850, 2023]);
 export const highlightWine = writable(undefined);
+
+// INTRO SELECTION
+export const bottleSelected = writable(false);
+export const animalSelected = writable(undefined);

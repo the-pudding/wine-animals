@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from "svelte";
 	import { animalSelect, metricSelect, topgroupSelect } from "$stores/misc.js";
-	import Intro from "$components/Intro2.svelte";
+	import Intro from "$components/Intro3.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import PhotoTest from "$components/PhotoTest.svelte";
 	import Distribution from "$components/Distribution.svelte";
@@ -94,11 +94,11 @@
 <!-- <WIP /> -->
 <!-- <Demo /> -->
 <Intro />
-<ChartScroll />
+<!-- <ChartScroll />
 <Explore />
-<Footer />
+<Footer /> -->
 
-<div class="white">
+<!-- <div class="white">
 	<div class="selects">
 		<Select options={optionsAnimal} id={"id-animalSelect"}/>
 		<Select options={optionsMetric} id={"id-metricSelect"}/>
@@ -113,7 +113,7 @@
 			<Distribution data={dataSet} />
 		{/key}
 	{/if}
-</div>
+</div> -->
 
 <style>
 	.white {

@@ -1,15 +1,15 @@
 <script>
     import { createEventDispatcher, onMount } from "svelte";
+    import { bottleSelected, animalSelected } from "$stores/misc.js";
     import Range from "$components/helpers/Range.svelte";
-    import scrollY from "$stores/scrollY.js";
-
-    export let scrollIndex;
+    
     export let bottleIndex;
     export let wineData;
     export let containerDimensions;
     export let bottlePosLeft;
     export let pricesLocked;
     export let pricesSkipped;
+    export let scrollY;
 
     let wineWidth;
     let aspectRatio = 3.5;
@@ -57,43 +57,62 @@
         shouldSpin[bottleIndex] = false;
     }
 
+    export function handleClick(data) {
+        // Update shared store state so all components can react if needed.
+        animalSelected.set(data.animal);
+        bottleSelected.set(true);
 
+        // Select all product elements and update their classes and left style.
+        const products = document.querySelectorAll('.product');
+        products.forEach(product => {
+            const prodAnimal = product.getAttribute('data-animal');
+            const wineDiv = product.querySelector('.wine');
+            if (prodAnimal !== $animalSelected) {
+            product.classList.add('faded');
+            // Unselected bottles return to their starting position.
+            product.style.left = data.startingPos;
+            } else {
+            product.classList.remove('faded');
+            // Selected bottle moves to the center.
+            product.style.left = "50%";
+            }
+        });
 
-    function handleRangeChange(event) {
-        rangeValue = event.detail;
-        dispatch('rangeChange', rangeValue);
-    }
+        // Update the shouldSpin array:
+        // If a product is centered (left === "50%"), it doesn't spin.
+        shouldSpin = Array.from(products).map(product =>
+            product.style.left === "50%" ? false : true
+        );
+
+        // Optionally, update each wine div's spin class accordingly.
+        products.forEach(product => {
+            const wineDiv = product.querySelector('.wine');
+            if (wineDiv) {
+            if (product.style.left === "50%") {
+                wineDiv.classList.remove('spin');
+            } else {
+                wineDiv.classList.add('spin');
+            }
+            }
+        });
+        }
 
     $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
-    $: transitionDelay = scrollIndex < 2 || scrollIndex == 1 && $scrollY !== "up" || scrollIndex == undefined ? (3 - 1 - bottleIndex) * 500 : bottleIndex * 500;
-
-    $: if (scrollIndex == 2 || scrollIndex == 1 && $scrollY == "up") {
-        shouldSpin = [true,true,true];
-    }
+    $: transitionDelay = $bottleSelected == false ? (3 - 1 - bottleIndex) * 300 : bottleIndex * 300;
+    $: if (scrollY > 50) { shouldSpin = [true,true,true]; } 
 </script>
 
 
 <div class="product product-{wineData.bottleSlot}" 
-    class:faded={scrollIndex == 0 && wineData.bottleSlot !== 'left' || scrollIndex == 1 && wineData.bottleSlot !== 'center'}
+    data-animal={wineData.animal}
     style="--transition-delay: {transitionDelay}ms;
         width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).width}px;
         height:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).height}px;
         left: {bottlePosLeft};"
-        on:transitionend={handleTransitionEnd}>
-    <div class="range-wrapper" class:visible={shouldSpin[bottleIndex] == false}>
-        <Range 
-            bind:value={rangeValue} 
-            on:input={handleRangeChange} 
-            showTicks={true} 
-            pricesLocked={pricesLocked}
-            actualPrice={actualPrice} 
-            pricesSkipped={pricesSkipped}
-        />
-    </div>
+        on:transitionend={handleTransitionEnd}
+        on:click={() => handleClick(wineData)}>
     <div class="wine"
-        class:spin={(scrollIndex === undefined && shouldSpin[bottleIndex]) ||
-            (scrollIndex >= 2 && shouldSpin[bottleIndex]) ||
-            (scrollIndex === 1 && $scrollY === "up" && shouldSpin[bottleIndex])}
+        class:spin={shouldSpin[bottleIndex]}
         on:mousemove={mousemoveBottle}
         on:mouseleave={mouseleaveBottle}></div>
 </div>
@@ -122,7 +141,7 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
-        transition: left 2s ease-in var(--transition-delay), opacity 0.5s ease-in;
+        transition: left 1.5s ease-in var(--transition-delay), opacity 0.5s ease-in;
         pointer-events: auto;
         position: absolute;
         top: 0;
