@@ -1,5 +1,8 @@
 <script>
+   import { fly, fade } from 'svelte/transition';
+
    export let exampleType;
+   export let scrollIndex;
 
    const rightData = [
        {
@@ -51,22 +54,39 @@
 
 </script>
 
-<div class="example-wrapper">
-    {#each data as example, i}
-        <div class="example">
-            <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
-            <p>{@html example.text}</p>
-        </div>
-    {/each}
-</div>
+{#if exampleType == "right"}
+    <div class="example-wrapper">
+        {#each rightData as example, i}
+            {#if scrollIndex == 3}
+            <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
+                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
+                <p>{@html example.text}</p>
+            </div>
+            {/if}
+        {/each}
+    </div>
+{:else}
+    <div class="example-wrapper">
+        {#each wrongData as example, i}
+            {#if scrollIndex == 4}
+            <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
+                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
+                <p>{@html example.text}</p>
+            </div>
+            {/if}
+        {/each}
+    </div>
+{/if}
 
 <style>
-        .example-wrapper {
-        max-width: 1000px;
+    .example-wrapper {
+        position: absolute;
+        width: 100%;
+        max-width: 1200px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 2rem;
         margin: 4rem auto;
     }
 
@@ -79,8 +99,8 @@
     }
 
     .example p {
-        font-family: var(--sans);
-        font-size: var(--16px);
+        font-family: var(--mono);
+        font-size: var(--14px);
         color: var(--wine-tan);
     }
 </style>

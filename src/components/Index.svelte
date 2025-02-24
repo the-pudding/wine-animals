@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from "svelte";
 	import { animalSelect, metricSelect, topgroupSelect } from "$stores/misc.js";
-	import Intro from "$components/Intro3.svelte";
+	import Intro from "$components/Intro4.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import PhotoTest from "$components/PhotoTest.svelte";
 	import Distribution from "$components/Distribution.svelte";

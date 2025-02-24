@@ -24,7 +24,6 @@ body {
   margin: 0;
   background: var(--wine-black);
   color: var(--wine-tan);
-  overflow: hidden;
 }
 
 /**

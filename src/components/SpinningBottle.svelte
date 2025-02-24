@@ -9,7 +9,7 @@
     export let bottlePosLeft;
     export let pricesLocked;
     export let pricesSkipped;
-    export let scrollY;
+    export let scrollIndex;
 
     let wineWidth;
     let aspectRatio = 3.5;
@@ -99,7 +99,7 @@
 
     $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
     $: transitionDelay = $bottleSelected == false ? (3 - 1 - bottleIndex) * 300 : bottleIndex * 300;
-    $: if (scrollY > 50) { shouldSpin = [true,true,true]; } 
+    $: if (scrollIndex >= 2) { shouldSpin = [true,true,true]; } 
 </script>
 
 

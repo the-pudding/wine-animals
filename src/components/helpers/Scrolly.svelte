@@ -17,13 +17,13 @@
 	export let bottom = 0;
 	export let increments = 100;
 	export let value = undefined;
+	export let container;
 
 	const steps = [];
 	const threshold = [];
 
 	let nodes = [];
 	let intersectionObservers = [];
-	let container;
 
 	$: top, bottom, update();
 	let previousRatios = new Array(steps.length).fill(0);
@@ -108,5 +108,6 @@
 		position: relative;
 		z-index: 900;
 		padding: 0 0.75rem;
+		pointer-events: none;
 	}
 </style>
