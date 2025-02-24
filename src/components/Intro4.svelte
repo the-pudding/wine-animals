@@ -4,6 +4,7 @@
     import Bottles from "$components/Intro.Bottles.svelte";
     import GPTExamples from "$components/GPTExamples.svelte";
     import IntroSummaryBottles from "$components/Intro.SummaryBottles.svelte";
+    import IntroHeadline from "$components/Intro.Headline.svelte";
     import { bottleSelected, animalSelected } from "$stores/misc.js";
 
     let scrollIndex;
@@ -51,6 +52,7 @@
 
 <section id="intro">
     <div class="sticky">
+        <IntroHeadline scrollIndex={scrollIndex}/>
         <Bottles scrollIndex={scrollIndex}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"right"}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"wrong"}/>
@@ -89,7 +91,6 @@
         flex-direction: column;
         justify-content: top;
         align-items: center;
-        padding-top: 20svh;
 		top: 0;
         left: 0;
 		transition: all 1s;
@@ -98,7 +99,7 @@
 	}
 
     .spacer {
-		height: 50vh;
+		height: 200vh;
 	}
 	.step {
 		height: 100vh;

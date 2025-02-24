@@ -42,5 +42,6 @@
         align-items: center;
         pointer-events: none;
         gap: 4rem;
+        margin-top: 20svh;
     }
 </style>

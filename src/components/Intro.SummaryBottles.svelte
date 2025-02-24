@@ -1,4 +1,5 @@
 <script>
+    import { getContext, onMount } from "svelte";
     import summaryData from "$data/wineData_summary.csv";
     import * as d3 from "d3";
     import {flip} from 'svelte/animate';
@@ -55,17 +56,21 @@
         }
     }
 
+    $: animate = scrollIndex >= 5 ? true : false;
 
-  $: console.log({currMetric})
+    $: console.log({animate})
 
 </script>
 
-{#if scrollIndex >= 5}
+{#if scrollIndex >= 4 && scrollIndex <= 7}
 <div class="summary-bottles" transition:fade>
     <div class="animal-wrapper">
         {#each currData as animal, i (animal[0])}
-            <div class="animal-group" animate:flip={{duration: 500}}
-                class:active={animal[0] === $animalSelected}>
+            <div class="animal-group active" 
+                style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                animate:flip={{duration: 1000}}
+                class:active={animal[0] === $animalSelected}
+                class:animated={animate}>
                 <p>
                     {#if currMetric == undefined}
                     {:else if currMetric == "price"}
@@ -99,6 +104,7 @@
         pointer-events: none;
         gap: 1rem;
         padding: 1rem;
+        margin-top: 10svh;
     }
 
     .animal-wrapper {
@@ -115,10 +121,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transform: translateX(-100%);
+        transition: transform 500ms ease, opacity 500ms ease;
+        opacity: 0;
     }
 
     .animal-group.active {
-        transform: translateY(20px);
+        opacity: 1;
+    }
+
+    .animal-group.animated {
+        transform: translateX(0);
+        opacity: 1;
     }
 
     img {
