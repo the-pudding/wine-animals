@@ -48,15 +48,15 @@
 
 <section id="distribution">
     <div class="key">
-        <div style="background: #448b81">
+        <div style="background: var(--wine-gold)">
             <p class="topline">Fewer wines than all wines</p>
             <p class="desc">Less than than -5% difference</p>
         </div>
-        <div style="background: #f0ebd7">
+        <div style="background: #38425d">
             <p class="topline">About the same percentage</p>
             <p class="desc">Greater -5% to 5% difference</p>
         </div>
-        <div style="background: #c35e34">
+        <div style="background: var(--wine-red)">
             <p class="topline">More wines than all wines</p>
             <p class="desc">Greater than 5% difference</p>
         </div>
@@ -135,7 +135,8 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        background: var(--color-bg);
+        background: var(--wine-black);
+        color: var(--wine-tan);
     }
 
     .key {

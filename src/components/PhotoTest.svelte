@@ -79,6 +79,7 @@
     section {
         border-top: 1px solid black;
         margin: 4rem 0 0 0;
+        color: var(--wine-tan);
     }
     .wrapper {
         display: flex;
@@ -89,7 +90,7 @@
         margin: 0 0 3rem 0;
         position: sticky;
         top: 0;
-        background: rgba(255,255,255,0.9);
+        background: var(--wine-black);
         border: none;
         padding: 1rem;
     }
