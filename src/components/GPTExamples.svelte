@@ -1,10 +1,11 @@
 <script>
    import { fly, fade } from 'svelte/transition';
+   import Icon from "$components/helpers/Icon.svelte";
 
    export let exampleType;
    export let scrollIndex;
 
-   const rightData = [
+   const correctData = [
        {
            img: "3216207",
            text: "The image on the wine label features a <span class='bold'>duck</span>, which is an animal."
@@ -50,17 +51,22 @@
        }
    ];
    
-   $: data = exampleType == "right" ? rightData : wrongData;
+   $: data = exampleType == "correct" ? correctData : wrongData;
 
 </script>
 
-{#if exampleType == "right"}
+{#if exampleType == "correct"}
     <div class="example-wrapper">
-        {#each rightData as example, i}
+        {#each correctData as example, i}
             {#if scrollIndex == 3}
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
-                <p>{@html example.text}</p>
+                <p>
+                    <span class="correct-icon">
+                        <Icon name="check" />
+                    </span>
+                    {@html example.text}
+                </p>
             </div>
             {/if}
         {/each}
@@ -71,7 +77,12 @@
             {#if scrollIndex == 4}
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
-                <p>{@html example.text}</p>
+                <p>
+                    <span class="wrong-icon">
+                        <Icon name="x" />
+                    </span>
+                    {@html example.text}
+                </p>
             </div>
             {/if}
         {/each}
@@ -102,7 +113,25 @@
 
     .example p {
         font-family: var(--mono);
-        font-size: var(--14px);
+        font-size: var(--12px);
         color: var(--wine-tan);
+    }
+
+    .correct-icon, .wrong-icon {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .correct-icon {
+        background: green;
+    }
+
+    .wrong-icon {
+        background: red;
     }
 </style>

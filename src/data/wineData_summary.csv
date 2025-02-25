@@ -1,34 +1,34 @@
 animalGroup,category,bucket,percent,count
-amphibian/reptile,price,<10,0,0
-amphibian/reptile,price,10–19.99,36.84210526315789,14
-amphibian/reptile,price,20–29.99,13.157894736842104,5
-amphibian/reptile,price,30–39.99,13.157894736842104,5
-amphibian/reptile,price,40–49.99,7.894736842105263,3
-amphibian/reptile,price,50–59.99,2.631578947368421,1
-amphibian/reptile,price,60–69.99,13.157894736842104,5
-amphibian/reptile,price,70–79.99,2.631578947368421,1
-amphibian/reptile,price,80–89.99,2.631578947368421,1
-amphibian/reptile,price,90–99.99,0,0
-amphibian/reptile,price,100–109.99,2.631578947368421,1
-amphibian/reptile,price,110–119.99,0,0
-amphibian/reptile,price,120–129.99,0,0
-amphibian/reptile,price,130–139.99,0,0
-amphibian/reptile,price,140–149.99,0,0
-amphibian/reptile,price,150+,5.263157894736842,2
-amphibian/reptile,rating,3 & less,0,0
-amphibian/reptile,rating,3.1–3.5,2.631578947368421,1
-amphibian/reptile,rating,3.6–4,60.526315789473685,23
-amphibian/reptile,rating,4.1–4.5,34.21052631578947,13
-amphibian/reptile,rating,4.6 & above,2.631578947368421,1
-amphibian/reptile,type,Dessert,2.631578947368421,1
-amphibian/reptile,type,Fortified,0,0
-amphibian/reptile,type,Red,44.73684210526316,17
-amphibian/reptile,type,Rose,2.631578947368421,1
-amphibian/reptile,type,Sparkling,2.631578947368421,1
-amphibian/reptile,type,White,47.368421052631575,18
-amphibian/reptile,median,medianPrice,,30.965000000000003
-amphibian/reptile,median,medianRating,,3.95
-amphibian/reptile,steals,steals,10.526315789473683,4
+amphibian,price,<10,0,0
+amphibian,price,10–19.99,36.84210526315789,14
+amphibian,price,20–29.99,13.157894736842104,5
+amphibian,price,30–39.99,13.157894736842104,5
+amphibian,price,40–49.99,7.894736842105263,3
+amphibian,price,50–59.99,2.631578947368421,1
+amphibian,price,60–69.99,13.157894736842104,5
+amphibian,price,70–79.99,2.631578947368421,1
+amphibian,price,80–89.99,2.631578947368421,1
+amphibian,price,90–99.99,0,0
+amphibian,price,100–109.99,2.631578947368421,1
+amphibian,price,110–119.99,0,0
+amphibian,price,120–129.99,0,0
+amphibian,price,130–139.99,0,0
+amphibian,price,140–149.99,0,0
+amphibian,price,150+,5.263157894736842,2
+amphibian,rating,3 & less,0,0
+amphibian,rating,3.1–3.5,2.631578947368421,1
+amphibian,rating,3.6–4,60.526315789473685,23
+amphibian,rating,4.1–4.5,34.21052631578947,13
+amphibian,rating,4.6 & above,2.631578947368421,1
+amphibian,type,Dessert,2.631578947368421,1
+amphibian,type,Fortified,0,0
+amphibian,type,Red,44.73684210526316,17
+amphibian,type,Rose,2.631578947368421,1
+amphibian,type,Sparkling,2.631578947368421,1
+amphibian,type,White,47.368421052631575,18
+amphibian,median,medianPrice,,30.965000000000003
+amphibian,median,medianRating,,3.95
+amphibian,steals,steals,10.526315789473683,4
 bear,price,<10,0,0
 bear,price,10–19.99,30.434782608695656,7
 bear,price,20–29.99,17.391304347826086,4
@@ -149,96 +149,96 @@ cat,type,White,30.4635761589404,92
 cat,median,medianPrice,,34.99
 cat,median,medianRating,,4.1
 cat,steals,steals,18.874172185430464,57
-cattle/camelus,price,<10,2.2222222222222223,1
-cattle/camelus,price,10–19.99,35.55555555555556,16
-cattle/camelus,price,20–29.99,28.888888888888886,13
-cattle/camelus,price,30–39.99,6.666666666666667,3
-cattle/camelus,price,40–49.99,8.88888888888889,4
-cattle/camelus,price,50–59.99,2.2222222222222223,1
-cattle/camelus,price,60–69.99,2.2222222222222223,1
-cattle/camelus,price,70–79.99,2.2222222222222223,1
-cattle/camelus,price,80–89.99,0,0
-cattle/camelus,price,90–99.99,4.444444444444445,2
-cattle/camelus,price,100–109.99,0,0
-cattle/camelus,price,110–119.99,0,0
-cattle/camelus,price,120–129.99,0,0
-cattle/camelus,price,130–139.99,0,0
-cattle/camelus,price,140–149.99,0,0
-cattle/camelus,price,150+,6.666666666666667,3
-cattle/camelus,rating,3 & less,0,0
-cattle/camelus,rating,3.1–3.5,4.444444444444445,2
-cattle/camelus,rating,3.6–4,64.44444444444444,29
-cattle/camelus,rating,4.1–4.5,26.666666666666668,12
-cattle/camelus,rating,4.6 & above,4.444444444444445,2
-cattle/camelus,type,Dessert,0,0
-cattle/camelus,type,Fortified,2.2222222222222223,1
-cattle/camelus,type,Red,57.77777777777777,26
-cattle/camelus,type,Rose,2.2222222222222223,1
-cattle/camelus,type,Sparkling,6.666666666666667,3
-cattle/camelus,type,White,31.11111111111111,14
-cattle/camelus,median,medianPrice,,22
-cattle/camelus,median,medianRating,,3.9
-cattle/camelus,steals,steals,17.77777777777778,8
-deer-like,price,<10,0,0
-deer-like,price,10–19.99,31.25,15
-deer-like,price,20–29.99,20.833333333333336,10
-deer-like,price,30–39.99,20.833333333333336,10
-deer-like,price,40–49.99,6.25,3
-deer-like,price,50–59.99,0,0
-deer-like,price,60–69.99,4.166666666666666,2
-deer-like,price,70–79.99,6.25,3
-deer-like,price,80–89.99,2.083333333333333,1
-deer-like,price,90–99.99,0,0
-deer-like,price,100–109.99,2.083333333333333,1
-deer-like,price,110–119.99,0,0
-deer-like,price,120–129.99,0,0
-deer-like,price,130–139.99,0,0
-deer-like,price,140–149.99,0,0
-deer-like,price,150+,6.25,3
-deer-like,rating,3 & less,0,0
-deer-like,rating,3.1–3.5,4.166666666666666,2
-deer-like,rating,3.6–4,60.416666666666664,29
-deer-like,rating,4.1–4.5,35.41666666666667,17
-deer-like,rating,4.6 & above,0,0
-deer-like,type,Dessert,0,0
-deer-like,type,Fortified,2.083333333333333,1
-deer-like,type,Red,52.083333333333336,25
-deer-like,type,Rose,8.333333333333332,4
-deer-like,type,Sparkling,2.083333333333333,1
-deer-like,type,White,35.41666666666667,17
-deer-like,median,medianPrice,,29.49
-deer-like,median,medianRating,,3.95
-deer-like,steals,steals,20.833333333333336,10
-fish-like,price,<10,0,0
-fish-like,price,10–19.99,40.35087719298245,23
-fish-like,price,20–29.99,42.10526315789473,24
-fish-like,price,30–39.99,10.526315789473683,6
-fish-like,price,40–49.99,1.7543859649122806,1
-fish-like,price,50–59.99,3.508771929824561,2
-fish-like,price,60–69.99,0,0
-fish-like,price,70–79.99,0,0
-fish-like,price,80–89.99,1.7543859649122806,1
-fish-like,price,90–99.99,0,0
-fish-like,price,100–109.99,0,0
-fish-like,price,110–119.99,0,0
-fish-like,price,120–129.99,0,0
-fish-like,price,130–139.99,0,0
-fish-like,price,140–149.99,0,0
-fish-like,price,150+,0,0
-fish-like,rating,3 & less,0,0
-fish-like,rating,3.1–3.5,1.7543859649122806,1
-fish-like,rating,3.6–4,75.43859649122807,43
-fish-like,rating,4.1–4.5,22.807017543859647,13
-fish-like,rating,4.6 & above,0,0
-fish-like,type,Dessert,1.7543859649122806,1
-fish-like,type,Fortified,0,0
-fish-like,type,Red,24.561403508771928,14
-fish-like,type,Rose,10.526315789473683,6
-fish-like,type,Sparkling,1.7543859649122806,1
-fish-like,type,White,61.40350877192983,35
-fish-like,median,medianPrice,,22.99
-fish-like,median,medianRating,,3.9
-fish-like,steals,steals,40.35087719298245,23
+cattle,price,<10,2.2222222222222223,1
+cattle,price,10–19.99,35.55555555555556,16
+cattle,price,20–29.99,28.888888888888886,13
+cattle,price,30–39.99,6.666666666666667,3
+cattle,price,40–49.99,8.88888888888889,4
+cattle,price,50–59.99,2.2222222222222223,1
+cattle,price,60–69.99,2.2222222222222223,1
+cattle,price,70–79.99,2.2222222222222223,1
+cattle,price,80–89.99,0,0
+cattle,price,90–99.99,4.444444444444445,2
+cattle,price,100–109.99,0,0
+cattle,price,110–119.99,0,0
+cattle,price,120–129.99,0,0
+cattle,price,130–139.99,0,0
+cattle,price,140–149.99,0,0
+cattle,price,150+,6.666666666666667,3
+cattle,rating,3 & less,0,0
+cattle,rating,3.1–3.5,4.444444444444445,2
+cattle,rating,3.6–4,64.44444444444444,29
+cattle,rating,4.1–4.5,26.666666666666668,12
+cattle,rating,4.6 & above,4.444444444444445,2
+cattle,type,Dessert,0,0
+cattle,type,Fortified,2.2222222222222223,1
+cattle,type,Red,57.77777777777777,26
+cattle,type,Rose,2.2222222222222223,1
+cattle,type,Sparkling,6.666666666666667,3
+cattle,type,White,31.11111111111111,14
+cattle,median,medianPrice,,22
+cattle,median,medianRating,,3.9
+cattle,steals,steals,17.77777777777778,8
+deer,price,<10,0,0
+deer,price,10–19.99,31.25,15
+deer,price,20–29.99,20.833333333333336,10
+deer,price,30–39.99,20.833333333333336,10
+deer,price,40–49.99,6.25,3
+deer,price,50–59.99,0,0
+deer,price,60–69.99,4.166666666666666,2
+deer,price,70–79.99,6.25,3
+deer,price,80–89.99,2.083333333333333,1
+deer,price,90–99.99,0,0
+deer,price,100–109.99,2.083333333333333,1
+deer,price,110–119.99,0,0
+deer,price,120–129.99,0,0
+deer,price,130–139.99,0,0
+deer,price,140–149.99,0,0
+deer,price,150+,6.25,3
+deer,rating,3 & less,0,0
+deer,rating,3.1–3.5,4.166666666666666,2
+deer,rating,3.6–4,60.416666666666664,29
+deer,rating,4.1–4.5,35.41666666666667,17
+deer,rating,4.6 & above,0,0
+deer,type,Dessert,0,0
+deer,type,Fortified,2.083333333333333,1
+deer,type,Red,52.083333333333336,25
+deer,type,Rose,8.333333333333332,4
+deer,type,Sparkling,2.083333333333333,1
+deer,type,White,35.41666666666667,17
+deer,median,medianPrice,,29.49
+deer,median,medianRating,,3.95
+deer,steals,steals,20.833333333333336,10
+fish,price,<10,0,0
+fish,price,10–19.99,40.35087719298245,23
+fish,price,20–29.99,42.10526315789473,24
+fish,price,30–39.99,10.526315789473683,6
+fish,price,40–49.99,1.7543859649122806,1
+fish,price,50–59.99,3.508771929824561,2
+fish,price,60–69.99,0,0
+fish,price,70–79.99,0,0
+fish,price,80–89.99,1.7543859649122806,1
+fish,price,90–99.99,0,0
+fish,price,100–109.99,0,0
+fish,price,110–119.99,0,0
+fish,price,120–129.99,0,0
+fish,price,130–139.99,0,0
+fish,price,140–149.99,0,0
+fish,price,150+,0,0
+fish,rating,3 & less,0,0
+fish,rating,3.1–3.5,1.7543859649122806,1
+fish,rating,3.6–4,75.43859649122807,43
+fish,rating,4.1–4.5,22.807017543859647,13
+fish,rating,4.6 & above,0,0
+fish,type,Dessert,1.7543859649122806,1
+fish,type,Fortified,0,0
+fish,type,Red,24.561403508771928,14
+fish,type,Rose,10.526315789473683,6
+fish,type,Sparkling,1.7543859649122806,1
+fish,type,White,61.40350877192983,35
+fish,median,medianPrice,,22.99
+fish,median,medianRating,,3.9
+fish,steals,steals,40.35087719298245,23
 horse,price,<10,2.5974025974025974,4
 horse,price,10–19.99,37.01298701298701,57
 horse,price,20–29.99,15.584415584415584,24
@@ -329,36 +329,36 @@ insect,type,White,50,46
 insect,median,medianPrice,,22.2
 insect,median,medianRating,,3.9
 insect,steals,steals,20.652173913043477,19
-marine invertebrate,price,<10,2.5,1
-marine invertebrate,price,10–19.99,32.5,13
-marine invertebrate,price,20–29.99,30,12
-marine invertebrate,price,30–39.99,20,8
-marine invertebrate,price,40–49.99,7.5,3
-marine invertebrate,price,50–59.99,2.5,1
-marine invertebrate,price,60–69.99,0,0
-marine invertebrate,price,70–79.99,0,0
-marine invertebrate,price,80–89.99,0,0
-marine invertebrate,price,90–99.99,2.5,1
-marine invertebrate,price,100–109.99,0,0
-marine invertebrate,price,110–119.99,0,0
-marine invertebrate,price,120–129.99,2.5,1
-marine invertebrate,price,130–139.99,0,0
-marine invertebrate,price,140–149.99,0,0
-marine invertebrate,price,150+,0,0
-marine invertebrate,rating,3 & less,0,0
-marine invertebrate,rating,3.1–3.5,2.5,1
-marine invertebrate,rating,3.6–4,77.5,31
-marine invertebrate,rating,4.1–4.5,20,8
-marine invertebrate,rating,4.6 & above,0,0
-marine invertebrate,type,Dessert,2.5,1
-marine invertebrate,type,Fortified,0,0
-marine invertebrate,type,Red,20,8
-marine invertebrate,type,Rose,7.5,3
-marine invertebrate,type,Sparkling,2.5,1
-marine invertebrate,type,White,67.5,27
-marine invertebrate,median,medianPrice,,23.335
-marine invertebrate,median,medianRating,,3.9
-marine invertebrate,steals,steals,35,14
+marine,price,<10,2.5,1
+marine,price,10–19.99,32.5,13
+marine,price,20–29.99,30,12
+marine,price,30–39.99,20,8
+marine,price,40–49.99,7.5,3
+marine,price,50–59.99,2.5,1
+marine,price,60–69.99,0,0
+marine,price,70–79.99,0,0
+marine,price,80–89.99,0,0
+marine,price,90–99.99,2.5,1
+marine,price,100–109.99,0,0
+marine,price,110–119.99,0,0
+marine,price,120–129.99,2.5,1
+marine,price,130–139.99,0,0
+marine,price,140–149.99,0,0
+marine,price,150+,0,0
+marine,rating,3 & less,0,0
+marine,rating,3.1–3.5,2.5,1
+marine,rating,3.6–4,77.5,31
+marine,rating,4.1–4.5,20,8
+marine,rating,4.6 & above,0,0
+marine,type,Dessert,2.5,1
+marine,type,Fortified,0,0
+marine,type,Red,20,8
+marine,type,Rose,7.5,3
+marine,type,Sparkling,2.5,1
+marine,type,White,67.5,27
+marine,median,medianPrice,,23.335
+marine,median,medianRating,,3.9
+marine,steals,steals,35,14
 mythical,price,<10,0,0
 mythical,price,10–19.99,18.69918699186992,23
 mythical,price,20–29.99,25.203252032520325,31
@@ -479,66 +479,66 @@ rabbit,type,White,40,10
 rabbit,median,medianPrice,,29.99
 rabbit,median,medianRating,,4
 rabbit,steals,steals,28.000000000000004,7
-ram-like,price,<10,1.6666666666666667,1
-ram-like,price,10–19.99,40,24
-ram-like,price,20–29.99,28.333333333333332,17
-ram-like,price,30–39.99,13.333333333333334,8
-ram-like,price,40–49.99,0,0
-ram-like,price,50–59.99,3.3333333333333335,2
-ram-like,price,60–69.99,3.3333333333333335,2
-ram-like,price,70–79.99,0,0
-ram-like,price,80–89.99,1.6666666666666667,1
-ram-like,price,90–99.99,0,0
-ram-like,price,100–109.99,1.6666666666666667,1
-ram-like,price,110–119.99,0,0
-ram-like,price,120–129.99,1.6666666666666667,1
-ram-like,price,130–139.99,1.6666666666666667,1
-ram-like,price,140–149.99,0,0
-ram-like,price,150+,3.3333333333333335,2
-ram-like,rating,3 & less,0,0
-ram-like,rating,3.1–3.5,5,3
-ram-like,rating,3.6–4,65,39
-ram-like,rating,4.1–4.5,28.333333333333332,17
-ram-like,rating,4.6 & above,1.6666666666666667,1
-ram-like,type,Dessert,0,0
-ram-like,type,Fortified,1.6666666666666667,1
-ram-like,type,Red,33.33333333333333,20
-ram-like,type,Rose,11.666666666666666,7
-ram-like,type,Sparkling,0,0
-ram-like,type,White,53.333333333333336,32
-ram-like,median,medianPrice,,21.865
-ram-like,median,medianRating,,3.9
-ram-like,steals,steals,26.666666666666668,16
-suid,price,<10,0,0
-suid,price,10–19.99,35.714285714285715,10
-suid,price,20–29.99,28.57142857142857,8
-suid,price,30–39.99,21.428571428571427,6
-suid,price,40–49.99,3.571428571428571,1
-suid,price,50–59.99,0,0
-suid,price,60–69.99,0,0
-suid,price,70–79.99,3.571428571428571,1
-suid,price,80–89.99,0,0
-suid,price,90–99.99,0,0
-suid,price,100–109.99,0,0
-suid,price,110–119.99,0,0
-suid,price,120–129.99,3.571428571428571,1
-suid,price,130–139.99,0,0
-suid,price,140–149.99,0,0
-suid,price,150+,3.571428571428571,1
-suid,rating,3 & less,3.571428571428571,1
-suid,rating,3.1–3.5,3.571428571428571,1
-suid,rating,3.6–4,60.71428571428571,17
-suid,rating,4.1–4.5,32.142857142857146,9
-suid,rating,4.6 & above,0,0
-suid,type,Dessert,0,0
-suid,type,Fortified,3.571428571428571,1
-suid,type,Red,46.42857142857143,13
-suid,type,Rose,25,7
-suid,type,Sparkling,7.142857142857142,2
-suid,type,White,17.857142857142858,5
-suid,median,medianPrice,,23.22
-suid,median,medianRating,,3.8
-suid,steals,steals,25,7
+ram,price,<10,1.6666666666666667,1
+ram,price,10–19.99,40,24
+ram,price,20–29.99,28.333333333333332,17
+ram,price,30–39.99,13.333333333333334,8
+ram,price,40–49.99,0,0
+ram,price,50–59.99,3.3333333333333335,2
+ram,price,60–69.99,3.3333333333333335,2
+ram,price,70–79.99,0,0
+ram,price,80–89.99,1.6666666666666667,1
+ram,price,90–99.99,0,0
+ram,price,100–109.99,1.6666666666666667,1
+ram,price,110–119.99,0,0
+ram,price,120–129.99,1.6666666666666667,1
+ram,price,130–139.99,1.6666666666666667,1
+ram,price,140–149.99,0,0
+ram,price,150+,3.3333333333333335,2
+ram,rating,3 & less,0,0
+ram,rating,3.1–3.5,5,3
+ram,rating,3.6–4,65,39
+ram,rating,4.1–4.5,28.333333333333332,17
+ram,rating,4.6 & above,1.6666666666666667,1
+ram,type,Dessert,0,0
+ram,type,Fortified,1.6666666666666667,1
+ram,type,Red,33.33333333333333,20
+ram,type,Rose,11.666666666666666,7
+ram,type,Sparkling,0,0
+ram,type,White,53.333333333333336,32
+ram,median,medianPrice,,21.865
+ram,median,medianRating,,3.9
+ram,steals,steals,26.666666666666668,16
+pig,price,<10,0,0
+pig,price,10–19.99,35.714285714285715,10
+pig,price,20–29.99,28.57142857142857,8
+pig,price,30–39.99,21.428571428571427,6
+pig,price,40–49.99,3.571428571428571,1
+pig,price,50–59.99,0,0
+pig,price,60–69.99,0,0
+pig,price,70–79.99,3.571428571428571,1
+pig,price,80–89.99,0,0
+pig,price,90–99.99,0,0
+pig,price,100–109.99,0,0
+pig,price,110–119.99,0,0
+pig,price,120–129.99,3.571428571428571,1
+pig,price,130–139.99,0,0
+pig,price,140–149.99,0,0
+pig,price,150+,3.571428571428571,1
+pig,rating,3 & less,3.571428571428571,1
+pig,rating,3.1–3.5,3.571428571428571,1
+pig,rating,3.6–4,60.71428571428571,17
+pig,rating,4.1–4.5,32.142857142857146,9
+pig,rating,4.6 & above,0,0
+pig,type,Dessert,0,0
+pig,type,Fortified,3.571428571428571,1
+pig,type,Red,46.42857142857143,13
+pig,type,Rose,25,7
+pig,type,Sparkling,7.142857142857142,2
+pig,type,White,17.857142857142858,5
+pig,median,medianPrice,,23.22
+pig,median,medianRating,,3.8
+pig,steals,steals,25,7
 all,price,<10,1.535323169422375,143
 all,price,10–19.99,24.629589864719776,2294
 all,price,20–29.99,25.26304487867726,2353

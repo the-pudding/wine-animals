@@ -54,23 +54,25 @@
     <div class="sticky">
         <IntroHeadline scrollIndex={scrollIndex}/>
         <Bottles scrollIndex={scrollIndex}/>
-        <GPTExamples scrollIndex={scrollIndex} exampleType={"right"}/>
+        <GPTExamples scrollIndex={scrollIndex} exampleType={"correct"}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"wrong"}/>
         <IntroSummaryBottles scrollIndex={scrollIndex}/>
     </div>
     <Scrolly bind:value={scrollIndex} bind:container={scrollyContainer}>
         {#each steps as step, i}
             <div class="step">
-                <p> 
-                    {#if i == 1}
-                        {@html selectedText}
-                    {:else}
-                        {@html step.value}
-                            {#if i == 0}
-                                <span on:click={handleRandomClick} class="instructions">{copy.opening[0].instructions}</span>
-                            {/if}
-                    {/if}
-                </p>
+                <div class="step-inner">
+                    <p> 
+                        {#if i == 1}
+                            {@html selectedText}
+                        {:else}
+                            {@html step.value}
+                                {#if i == 0}
+                                    <span on:click={handleRandomClick} class="instructions">{copy.opening[0].instructions}</span>
+                                {/if}
+                        {/if}
+                    </p>
+                </div>
             </div>
         {/each}
     </Scrolly>
@@ -114,16 +116,23 @@
         margin-top: -90vh;
     }
 
+    .step-inner {
+        background: rgba(24,26,31,0.98);
+        padding: 2rem 3rem; 
+        border: 1px solid var(--wine-dark-gray);
+        border-radius: 3px;
+    }
+
     .step p {
         text-align: left;
         max-width: 600px;
         line-height: 1.65;
         color: var(--wine-tan);
-        font-size: var(--24px);
+        font-size: var(--20px);
         line-height: 1.65;
         background: none;
         z-index: 1000;
-        margin: 2rem 0;
+        margin: 0;
         pointer-events: auto;
     }
 
@@ -141,7 +150,7 @@
         font-size: var(--18px);
         background: rgba(207,202,191, 0.8);
         color: var(--wine-black);
-        padding: 0.5rem 0.25rem;
+        padding: 0.25rem;
         border-radius: 3px;
         box-decoration-break: clone;
     }

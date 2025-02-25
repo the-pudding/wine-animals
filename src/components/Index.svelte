@@ -90,15 +90,15 @@
 	{/key}
 </div> -->
 
-<PhotoTest />
+<!-- <PhotoTest /> -->
 <!-- <WIP /> -->
 <!-- <Demo /> -->
-<!-- <Intro /> -->
+<Intro />
 <!-- <ChartScroll /> -->
-<Explore />
+<!-- <Explore /> -->
 <!-- <Footer /> -->
 
-<div class="white">
+<!-- <div class="white">
 	<div class="selects">
 		<Select options={optionsAnimal} id={"id-animalSelect"}/>
 		<Select options={optionsMetric} id={"id-metricSelect"}/>
@@ -113,7 +113,7 @@
 			<Distribution data={dataSet} />
 		{/key}
 	{/if}
-</div>
+</div> -->
 
 <style>
 	.white {

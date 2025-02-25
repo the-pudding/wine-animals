@@ -5,7 +5,7 @@
 	export let name;
 	export let size = "1em"; // can be a number of a css value
 	export let color = undefined;
-	export let strokeWidth = undefined;
+	export let strokeWidth = 3;
 	export let rotation;
 
 	let Component;

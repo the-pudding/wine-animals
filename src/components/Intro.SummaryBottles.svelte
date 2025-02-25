@@ -5,11 +5,30 @@
     import {flip} from 'svelte/animate';
     import { fly, fade } from 'svelte/transition';
     import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import Icon from "$components/helpers/Icon.svelte";
 
     export let scrollIndex;
 
     let currData;
     let currMetric;
+    let transitionsCompleted = 0;
+
+    const animalSubgroups = [
+        {animal: "amphibian", subgroups: "lizards, snakes, frogs"},
+        {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
+        {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
+        {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
+        {animal: "cattle", subgroups: "cows, oxen, bulls, etc."},
+        {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
+        {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
+        {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
+        {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
+        {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
+        {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
+        {animal: "pig", subgroups: "boar"},
+        {animal: "rabbit", subgroups: "hare"},
+        {animal: "ram", subgroups: "sheep, goats"},
+    ]
 
     const filteredData = summaryData.filter(d => d.animalGroup !== "animal wines" && 
             d.animalGroup !== "all" &&
@@ -37,6 +56,26 @@
             });
         }
     
+    function handleTransitionEnd(event) {
+        const totalTransitions = 15;
+        // Optionally filter by property if multiple properties transition.
+        if (event.propertyName === 'transform') {
+        transitionsCompleted += 1;
+        if (transitionsCompleted === totalTransitions) {
+            console.log('All transitions complete!');
+            // You can now trigger any follow-up action.
+        }
+        // Remove listener if you only want to count once per element:
+        event.currentTarget.removeEventListener('transitionend', handleTransitionEnd);
+        }
+    }
+
+    function getAnimalSubgroup(animalName) {
+        return animalSubgroups.find(
+        item => item.animal.toLowerCase() === animalName.toLowerCase()
+        );
+    }
+    
     $: {
         if (scrollIndex <= 5) {
             currData = Object.entries(restructuredData).sort(
@@ -57,9 +96,6 @@
     }
 
     $: animate = scrollIndex >= 5 ? true : false;
-
-    $: console.log({animate})
-
 </script>
 
 {#if scrollIndex >= 4 && scrollIndex <= 7}
@@ -68,10 +104,11 @@
         {#each currData as animal, i (animal[0])}
             <div class="animal-group active" 
                 style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                on:transitionend={handleTransitionEnd}
                 animate:flip={{duration: 1000}}
                 class:active={animal[0] === $animalSelected}
                 class:animated={animate}>
-                <p>
+                <p class="num">
                     {#if currMetric == undefined}
                     {:else if currMetric == "price"}
                         ${animal[1].medianPrice.toFixed(2)}
@@ -79,14 +116,24 @@
                         {animal[1].medianRating}
                     {/if}
                 </p>
-                <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
+                <div class="img-wrapper">
+                    {#if animal[0] === $animalSelected}
+                        <img src="./assets/images/blank-bottle-outline.png" alt="wine bottle with red outline" />
+                    {:else}
+                        <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
+                    {/if}
+                    <img class="img-icon" src="./assets/images/icons/{animal[0]}.png" alt="{animal[0]} icon" />
+                </div>
                 <p>{animal[0]}</p>
+                {#if getAnimalSubgroup(animal[0])}
+                    <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
+                {/if}
             </div>
         {/each}
     </div>
     <div class="labels" class:hidden={scrollIndex <= 5}>
-        <p>Lower {currMetric}</p>
-        <p>Higher {currMetric}</p>
+        <p><Icon name="chevron-left"/>Lower {currMetric}</p>
+        <p>Higher {currMetric}<Icon name="chevron-right"/></p>
     </div>
 </div>
 {/if}
@@ -102,7 +149,7 @@
         justify-content: center;
         align-items: center;
         pointer-events: none;
-        gap: 1rem;
+        gap: 3rem;
         padding: 1rem;
         margin-top: 10svh;
     }
@@ -121,31 +168,64 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        transform: translateX(-100%);
+        transform: translate(-100%, 0);
         transition: transform 500ms ease, opacity 500ms ease;
         opacity: 0;
     }
 
-    .animal-group.active {
+    .animal-group.animated {
+        transform: translate(0, 0);
         opacity: 1;
     }
 
-    .animal-group.animated {
-        transform: translateX(0);
-        opacity: 1;
+    .animal-group.active {
+        transform: translate(0, -30px);
+    }
+
+    .img-wrapper {
+        width: 100%;
+        aspect-ratio: 1 / 4;
+        position: relative;
+        margin-bottom: 1rem;
     }
 
     img {
         width: 100%;
+        position: absolute;
+        display: inline-block;
+    }
+
+    .img-icon {
+        top: 45%;
     }
 
     p {
         font-family: var(--sans);
-        font-weight: 700;
         color: var(--wine-tan);
-        font-size: var(--12px);
+        font-size: var(--14px);
         text-transform: capitalize;
         text-align: center;
+        margin: 0.125rem 0;
+    }
+
+    .animal-group.active p {
+        font-weight: 700;
+    }
+
+    .num {
+        font-size: var(--18px); 
+    }
+
+    .subgroup {
+        color: var(--wine-blue);
+        font-size: var(--12px);
+        text-transform: none;
+        line-height: 1.125;
+        margin: 0;
+    }
+
+    .animal-group.active p.subgroup {
+        font-weight: 500;
     }
 
     .labels {
@@ -156,9 +236,32 @@
         max-width: 1200px;
         transition: opacity 0.5s ease-in;
         opacity: 1;
+        padding-top: 0.25rem;
+        border-top: 1px solid var(--wine-blue);
     }
 
     .labels.hidden {
         opacity: 0;
+    }
+
+    .labels p {
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: var(--12px);
+    }
+
+    :global(.labels p span) {
+        position: relative;
+        top: 2px;
+    }
+
+    :global(.labels p span:first-of-type) {
+        margin-right: 2px;
+    }
+
+    :global(.labels p span:last-of-type) {
+        margin-left: 2px;
     }
 </style>
