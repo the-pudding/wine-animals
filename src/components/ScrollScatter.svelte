@@ -40,20 +40,14 @@
             xDomain.set([3.7, 4.2]);
             yDomain.set([20, 35]);
         } else {
-            xDomain.set([3, 5]);
+            xDomain.set([3, 4.8]);
             yDomain.set([0, 150]);
         }
     }
 
     $: updateDomains(chartScrollIndex);
 
-    $: {
-        if (chartScrollIndex >= 4 && chartScrollIndex < 14) {
-            bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle")))
-        } else if (chartScrollIndex >= 15) {
-            bigScatterData.set(filteredRawData.filter(d => d.topgroup.includes("fish-like")));
-        }
-    }
+    $: console.log({$bigScatterData})
 </script>
 
 <section id="scatter">

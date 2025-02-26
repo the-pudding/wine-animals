@@ -94,7 +94,7 @@
 <!-- <WIP /> -->
 <!-- <Demo /> -->
 <Intro />
-<!-- <ChartScroll /> -->
+<ChartScroll />
 <!-- <Explore /> -->
 <!-- <Footer /> -->
 

@@ -15,12 +15,13 @@
     const steps = copy.steps;
 
     $: selectedText = copy.opening[0][$animalSelected];
+    $: selectedPriceText = copy.opening[0][($animalSelected + "Price")]
+    $: selectedRatingText = copy.opening[0][($animalSelected + "Rating")]
 
     $: console.log(scrollIndex);
-    $: console.log($animalSelected);
 
     function handleRandomClick() {
-        const animals = ["lion", "frog", "bird"];
+        const animals = ["cat", "frog", "bird"];
         const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
         
         // Update shared state.
@@ -65,6 +66,12 @@
                     <p> 
                         {#if i == 1}
                             {@html selectedText}
+                        {:else if i == 6}
+                            {@html step.value}
+                            {@html selectedPriceText}
+                        {:else if i == 7}
+                            {@html step.value}
+                            {@html selectedRatingText}
                         {:else}
                             {@html step.value}
                                 {#if i == 0}
@@ -76,13 +83,32 @@
             </div>
         {/each}
     </Scrolly>
-    <div class="spacer" />
+    <!-- <div class="spacer" /> -->
+</section>
+<section id="post-intro">
+    {#each copy.postIntro as graf, i}
+        <p class="prose">{@html graf.value}</p>
+    {/each}
+    <!-- {#if hoverImageVisible}
+        <img transition:fade={{duration:250}} src={hoverImageSrc} class="hover-image" style={hoverImageStyle} />
+    {/if} -->
 </section>
 
 <style>
-    #intro {
+    #intro, #post-intro {
         width: 100%;
         position: relative;
+    }
+
+    #post-intro {
+        max-width: 700px;
+        margin: 4rem auto;
+    }
+
+    .prose {
+        color: var(--wine-tan);
+        font-size: var(--18px);
+        line-height: 1.65;
     }
 
     .sticky {
@@ -106,7 +132,7 @@
 	.step {
 		height: 100vh;
         z-index: 1000;
-        max-width: 600px;
+        max-width: 550px;
         margin: 0 auto;
         opacity: 1;
         pointer-events: none;
@@ -118,7 +144,7 @@
 
     .step-inner {
         background: rgba(24,26,31,0.98);
-        padding: 2rem 3rem; 
+        padding: 2rem; 
         border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
     }
@@ -126,9 +152,8 @@
     .step p {
         text-align: left;
         max-width: 600px;
-        line-height: 1.65;
         color: var(--wine-tan);
-        font-size: var(--20px);
+        font-size: var(--18px);
         line-height: 1.65;
         background: none;
         z-index: 1000;
@@ -147,16 +172,29 @@
 
     :global(.prompt) {
         font-family: var(--mono);
-        font-size: var(--18px);
-        background: rgba(207,202,191, 0.8);
+        font-size: var(--16px);
+        background: rgba(154,150,142, 1);
         color: var(--wine-black);
         padding: 0.25rem;
         border-radius: 3px;
         box-decoration-break: clone;
     }
 
+    :global(.selected-animal-span) {
+        font-family: var(--sans);
+        font-weight: 700;
+        padding: 0.25rem;
+        border-radius: 3px;
+        border: 3px solid var(--wine-red);
+        box-decoration-break: clone;
+    }
+
     :global(.step p a) {
         color: var(--wine-tan);
+    }
+
+    :global(.step .bold) {
+        font-family: var(--sans);
     }
 
     :global(.step p a:hover) {

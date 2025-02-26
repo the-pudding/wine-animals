@@ -63,28 +63,25 @@
     }
     
     $: {
-        if (scrollIndex <= 5) {
+        if (scrollIndex !== 12) {
             currData = Object.entries(restructuredData).sort(
                 ([animalA], [animalB]) => animalA.localeCompare(animalB)
             );
             currMetric = undefined;
-        } else if (scrollIndex == 6) {
-            currData = Object.entries(restructuredData).sort(
-                ([, aData], [, bData]) => aData.medianPrice - bData.medianPrice
-            );
-            currMetric = "price";
         } else {
             currData = Object.entries(restructuredData).sort(
-                ([, aData], [, bData]) => aData.medianRating - bData.medianRating
+                ([, aData], [, bData]) => aData.steals.percent - bData.steals.percent
             );
-            currMetric = "rating";
+            currMetric = "steals";
         }
     }
 
-    $: animate = scrollIndex >= 5 ? true : false;
+    $: animate = scrollIndex == 12 ? true : false;
+
+    $: console.log({currData})
 </script>
 
-{#if scrollIndex >= 4 && scrollIndex <= 7}
+{#if scrollIndex >= 12 && currData !== undefined}
 <div class="summary-bottles" transition:fade>
     <div class="animal-wrapper">
         {#each currData as animal, i (animal[0])}
@@ -94,12 +91,7 @@
                 class:active={animal[0] === $animalSelected}
                 class:animated={animate}>
                 <p class="num">
-                    {#if currMetric == undefined}
-                    {:else if currMetric == "price"}
-                        ${animal[1].medianPrice.toFixed(2)}
-                    {:else}
-                        {animal[1].medianRating}
-                    {/if}
+                    {animal[1].steals.percent.toFixed(1)}%
                 </p>
                 <div class="img-wrapper">
                     {#if animal[0] === $animalSelected}
@@ -119,22 +111,14 @@
     <div class="labels" class:hidden={scrollIndex <= 5}>
         <p><Icon name="chevron-left"/>Lower {currMetric}</p>
         <p>Higher {currMetric}<Icon name="chevron-right"/></p>
-        {#if currMetric == undefined}
-        {:else}
-            <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "67%"}">
-                <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
-                <div class="median-circle"></div>
-                <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
-            </div>
-            {#if currMetric !== "rating"}
-                <div class="median-mark" style="left: 70%">
-                    <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
-                    <div class="median-circle"></div>
-                    <p>All wines</p>
-                </div>
-            {/if}
-        {/if}
-</div>
+
+        <div class="median-mark" style="left: 46%">
+            <p class="num">23.1%</p>
+            <div class="median-circle"></div>
+            <p>All wines & animal wines</p>
+        </div>
+
+    </div>
 </div>
 {/if}
 

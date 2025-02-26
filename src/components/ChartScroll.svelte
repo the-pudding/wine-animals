@@ -13,6 +13,7 @@
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Summary from "$components/Summary.svelte";
     import rawData from "$data/wineData.csv";
+    import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
 
     const copy = getContext("copy");
     
@@ -56,12 +57,6 @@
         } else {
             activeSection = "explore";
         }
-
-        if (chartScrollIndex >= 9 && chartScrollIndex < 12) {
-            chartView.set("histogram");
-        } else {
-            chartView.set("scatter");
-        }
     }
 
     function handleSkipClick(event) {
@@ -69,8 +64,8 @@
     }
 
     onMount(() => {
-        skipToExplore = document.querySelector(".skipToExplore");
-        skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
+        // skipToExplore = document.querySelector(".skipToExplore");
+        // skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
     })
 
     $: console.log({chartScrollIndex});
@@ -78,14 +73,18 @@
 
 <section id="chart-scroll">
     <div class="sticky">
-        <Toggle label={"view"} options={["scatter", "histogram"]} chartScrollIndex={chartScrollIndex}/>
+        <!-- <Toggle label={"view"} options={["scatter", "histogram"]} chartScrollIndex={chartScrollIndex}/> -->
         <div class="chart-wrapper">
-            <div class="scatter-wrapper" class:active={$chartView == "scatter"}>
+            <div class="scatter-wrapper" class:active={chartScrollIndex !== 12}>
                 <ScrollScatter chartScrollIndex={chartScrollIndex}/>
             </div>
-            <div class="histo-wrapper" class:active={$chartView == "histogram"}>
-                <ScrollHisto chartScrollIndex={chartScrollIndex}/>
+            <div class="lineup-wrapper" class:active={chartScrollIndex == 12}>
+                <SummaryBottles scrollIndex={chartScrollIndex}/>
             </div>
+            
+            <!-- <div class="histo-wrapper" class:active={$chartView == "histogram"}>
+                <ScrollHisto chartScrollIndex={chartScrollIndex}/>
+            </div> -->
         </div>
         <div class="section-buttons">
             {#each sections as section, i}
@@ -102,11 +101,6 @@
                 {#each step.block as graf, i}
                     <p>{@html graf.value}</p>
                 {/each}
-                {#if i == 13}
-                <div class="summary">
-                    <Summary animal={"cat"} data={catSteals} />
-                </div>
-                {/if}
             </div>
         {/each}
     </Scrolly>
@@ -133,13 +127,12 @@
 	}
 
     .chart-wrapper {
-        width: 65%;
-        aspect-ratio: 1/1; 
+        width: 100%;
+        height: 100%;
         position: relative;
     }
 
-    .scatter-wrapper, .histo-wrapper {
-        width: 100%;
+    .scatter-wrapper, .lineup-wrapper {
         height: 100%;
         position: absolute;
         top: 0;
@@ -149,7 +142,15 @@
         transition: opacity 0.5s linear;
     }
 
-    .scatter-wrapper.active, .histo-wrapper.active {
+    .scatter-wrapper {
+        width: 65%;
+    }
+
+    .lineup-wrapper {
+        width: 100%;
+    }
+
+    .scatter-wrapper.active, .lineup-wrapper.active {
         opacity: 1;
     }
 
@@ -252,7 +253,7 @@
         height: 100%;
     }
 
-    :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span) {
+    :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span, .selected-bottle-circle-span) {
         position: relative;
         font-weight: 700;
         margin-right: 2.5rem;
@@ -261,7 +262,7 @@
         
     }
 
-    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after, .cream-line-span::after) {
+    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after, .cream-line-span::after, .selected-bottle-circle-span::after) {
         position: absolute;
         top: 50%;
         right: -2rem;
@@ -269,6 +270,12 @@
         height: 1.5rem;
         content: "";
         margin: 0 0 0 1rem;
+    }
+
+    :global(.selected-bottle-circle-span::after) {
+        border: 3px solid var(--wine-red);
+        border-radius: 50%;
+        top: 0%;
     }
 
     :global(.median-line-span::after) {
@@ -313,6 +320,5 @@
 
     :global(.bold) {
         font-weight: 700;
-        font-family: var(--sans);
     }
 </style>
