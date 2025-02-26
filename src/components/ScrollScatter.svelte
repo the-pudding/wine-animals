@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { tick } from "svelte";
+    import { fly, fade } from 'svelte/transition';
     import { LayerCake, Svg, Html } from 'layercake';
     import ScrollScatterSvg from "$components/layercake/ScrollScatter.svg.svelte";
     import medianData from "$data/wineData_median.csv"
@@ -47,6 +48,12 @@
 
     $: updateDomains(chartScrollIndex);
 
+    // $: if (chartScrollIndex < 9) {
+    //     bigScatterData.set(filteredRawData)
+    // } else if (chartScrollIndex == 9) {
+    //     bigScatterData.set(filteredRawData.filter(d => d.topgroup == "bird"))
+    // }
+
     $: console.log({$bigScatterData})
 </script>
 
@@ -71,6 +78,14 @@
                 <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
             </Svg>
         </LayerCake>
+        {#if chartScrollIndex == 7 || chartScrollIndex == 8}
+            <div class="quadrants" transition:fade>
+                <p style="left: 27%; top: 40%">Bad Expensive Wine</p>
+                <p style="left: 69%; top: 40%">Good Expensive Wine</p>
+                <p style="left: 27%; top: 80%">Bad Cheap Wine</p>
+                <p style="left: 69%; top: 80%">Good Cheap Wine</p>
+            </div>
+        {/if}
         <p class="label label-price">More expensive →</p>
         <p class="label label-rating">Better rating →</p>
     </div>
@@ -92,6 +107,25 @@
         height: 100%;
         overflow: hidden;
         padding: 2rem;
+    }
+
+    .quadrants {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 3rem;
+    }
+
+    .quadrants p {
+        position: absolute;
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: var(--18px); 
+        transform: translate(-50%, -50%);
+        color: var(--wine-tan);
+        text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
     }
 
     .label {

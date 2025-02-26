@@ -28,7 +28,7 @@ cat,type,Sparkling,8.333333333333332,1
 cat,type,White,41.66666666666667,5
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
-cat,steals,steals,25,3
+cat,steals,steals,8.333333333333332,1
 cheetah,price,<10,0,0
 cheetah,price,10–19.99,100,1
 cheetah,price,20–29.99,0,0
@@ -88,7 +88,7 @@ cougar,type,Sparkling,0,0
 cougar,type,White,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
-cougar,steals,steals,50,1
+cougar,steals,steals,0,0
 jaguar/leopard/panther,price,<10,0,0
 jaguar/leopard/panther,price,10–19.99,0,0
 jaguar/leopard/panther,price,20–29.99,100,3
@@ -118,7 +118,7 @@ jaguar/leopard/panther,type,Sparkling,33.33333333333333,1
 jaguar/leopard/panther,type,White,33.33333333333333,1
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
-jaguar/leopard/panther,steals,steals,66.66666666666666,2
+jaguar/leopard/panther,steals,steals,33.33333333333333,1
 lion,price,<10,3.004291845493562,7
 lion,price,10–19.99,15.450643776824036,36
 lion,price,20–29.99,21.030042918454935,49
@@ -148,7 +148,7 @@ lion,type,Sparkling,12.017167381974248,28
 lion,type,White,30.042918454935624,70
 lion,median,medianPrice,,39.98
 lion,median,medianRating,,4.1
-lion,steals,steals,18.025751072961373,42
+lion,steals,steals,9.44206008583691,22
 lion crest,price,<10,3.6269430051813467,7
 lion crest,price,10–19.99,15.544041450777202,30
 lion crest,price,20–29.99,19.170984455958546,37
@@ -178,7 +178,7 @@ lion crest,type,Sparkling,13.471502590673575,26
 lion crest,type,White,27.979274611398964,54
 lion crest,median,medianPrice,,39.985
 lion crest,median,medianRating,,4.1
-lion crest,steals,steals,18.134715025906736,35
+lion crest,steals,steals,9.32642487046632,18
 lynx,price,<10,0,0
 lynx,price,10–19.99,25,1
 lynx,price,20–29.99,25,1

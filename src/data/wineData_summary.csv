@@ -28,7 +28,7 @@ amphibian,type,Sparkling,2.631578947368421,1
 amphibian,type,White,47.368421052631575,18
 amphibian,median,medianPrice,,30.965000000000003
 amphibian,median,medianRating,,3.95
-amphibian,steals,steals,10.526315789473683,4
+amphibian,steals,steals,5.263157894736842,2
 bear,price,<10,0,0
 bear,price,10–19.99,30.434782608695656,7
 bear,price,20–29.99,17.391304347826086,4
@@ -58,7 +58,7 @@ bear,type,Sparkling,0,0
 bear,type,White,43.47826086956522,10
 bear,median,medianPrice,,31.55
 bear,median,medianRating,,4.1
-bear,steals,steals,30.434782608695656,7
+bear,steals,steals,13.043478260869565,3
 bird,price,<10,0.8695652173913043,4
 bird,price,10–19.99,31.956521739130434,147
 bird,price,20–29.99,28.695652173913043,132
@@ -88,7 +88,7 @@ bird,type,Sparkling,6.304347826086956,29
 bird,type,White,42.173913043478265,194
 bird,median,medianPrice,,25.99
 bird,median,medianRating,,4
-bird,steals,steals,24.130434782608695,111
+bird,steals,steals,16.52173913043478,76
 canine,price,<10,0.8849557522123894,1
 canine,price,10–19.99,29.20353982300885,33
 canine,price,20–29.99,25.663716814159294,29
@@ -118,7 +118,7 @@ canine,type,Sparkling,5.3097345132743365,6
 canine,type,White,36.283185840707965,41
 canine,median,medianPrice,,28.99
 canine,median,medianRating,,4
-canine,steals,steals,22.123893805309734,25
+canine,steals,steals,10.619469026548673,12
 cat,price,<10,2.980132450331126,9
 cat,price,10–19.99,18.211920529801322,55
 cat,price,20–29.99,23.178807947019866,70
@@ -148,7 +148,7 @@ cat,type,Sparkling,10.927152317880795,33
 cat,type,White,30.4635761589404,92
 cat,median,medianPrice,,34.99
 cat,median,medianRating,,4.1
-cat,steals,steals,18.874172185430464,57
+cat,steals,steals,10.264900662251655,31
 cattle,price,<10,2.2222222222222223,1
 cattle,price,10–19.99,35.55555555555556,16
 cattle,price,20–29.99,28.888888888888886,13
@@ -178,7 +178,7 @@ cattle,type,Sparkling,6.666666666666667,3
 cattle,type,White,31.11111111111111,14
 cattle,median,medianPrice,,22
 cattle,median,medianRating,,3.9
-cattle,steals,steals,17.77777777777778,8
+cattle,steals,steals,13.333333333333334,6
 deer,price,<10,0,0
 deer,price,10–19.99,31.25,15
 deer,price,20–29.99,20.833333333333336,10
@@ -208,7 +208,7 @@ deer,type,Sparkling,2.083333333333333,1
 deer,type,White,35.41666666666667,17
 deer,median,medianPrice,,29.49
 deer,median,medianRating,,3.95
-deer,steals,steals,20.833333333333336,10
+deer,steals,steals,6.25,3
 fish,price,<10,0,0
 fish,price,10–19.99,40.35087719298245,23
 fish,price,20–29.99,42.10526315789473,24
@@ -238,7 +238,7 @@ fish,type,Sparkling,1.7543859649122806,1
 fish,type,White,61.40350877192983,35
 fish,median,medianPrice,,22.99
 fish,median,medianRating,,3.9
-fish,steals,steals,40.35087719298245,23
+fish,steals,steals,26.31578947368421,15
 horse,price,<10,2.5974025974025974,4
 horse,price,10–19.99,37.01298701298701,57
 horse,price,20–29.99,15.584415584415584,24
@@ -268,7 +268,7 @@ horse,type,Sparkling,7.142857142857142,11
 horse,type,White,38.311688311688314,59
 horse,median,medianPrice,,25.244999999999997
 horse,median,medianRating,,4
-horse,steals,steals,21.428571428571427,33
+horse,steals,steals,13.636363636363635,21
 human,price,<10,2.1148036253776437,21
 human,price,10–19.99,27.59315206445116,274
 human,price,20–29.99,26.586102719033235,264
@@ -298,7 +298,7 @@ human,type,Sparkling,8.761329305135952,87
 human,type,White,35.54884189325277,353
 human,median,medianPrice,,27.335
 human,median,medianRating,,4
-human,steals,steals,22.255790533736153,221
+human,steals,steals,13.595166163141995,135
 insect,price,<10,1.0869565217391304,1
 insect,price,10–19.99,35.869565217391305,33
 insect,price,20–29.99,30.434782608695656,28
@@ -328,7 +328,7 @@ insect,type,Sparkling,3.260869565217391,3
 insect,type,White,50,46
 insect,median,medianPrice,,22.2
 insect,median,medianRating,,3.9
-insect,steals,steals,20.652173913043477,19
+insect,steals,steals,18.478260869565215,17
 marine,price,<10,2.5,1
 marine,price,10–19.99,32.5,13
 marine,price,20–29.99,30,12
@@ -358,7 +358,7 @@ marine,type,Sparkling,2.5,1
 marine,type,White,67.5,27
 marine,median,medianPrice,,23.335
 marine,median,medianRating,,3.9
-marine,steals,steals,35,14
+marine,steals,steals,25,10
 mythical,price,<10,0,0
 mythical,price,10–19.99,18.69918699186992,23
 mythical,price,20–29.99,25.203252032520325,31
@@ -388,7 +388,7 @@ mythical,type,Sparkling,6.504065040650407,8
 mythical,type,White,38.21138211382114,47
 mythical,median,medianPrice,,34.99
 mythical,median,medianRating,,4.1
-mythical,steals,steals,25.203252032520325,31
+mythical,steals,steals,15.447154471544716,19
 none,price,<10,1.441621467313731,101
 none,price,10–19.99,23.465600913502712,1644
 none,price,20–29.99,24.978589780188408,1750
@@ -418,7 +418,7 @@ none,type,Sparkling,7.8932343705395365,553
 none,type,White,37.01113331430202,2593
 none,median,medianPrice,,29.99
 none,median,medianRating,,4
-none,steals,steals,23.251498715386813,1629
+none,steals,steals,13.873822437910363,972
 pachyderm,price,<10,0,0
 pachyderm,price,10–19.99,34.78260869565217,8
 pachyderm,price,20–29.99,30.434782608695656,7
@@ -478,7 +478,7 @@ rabbit,type,Sparkling,4,1
 rabbit,type,White,40,10
 rabbit,median,medianPrice,,29.99
 rabbit,median,medianRating,,4
-rabbit,steals,steals,28.000000000000004,7
+rabbit,steals,steals,12,3
 ram,price,<10,1.6666666666666667,1
 ram,price,10–19.99,40,24
 ram,price,20–29.99,28.333333333333332,17
@@ -508,7 +508,7 @@ ram,type,Sparkling,0,0
 ram,type,White,53.333333333333336,32
 ram,median,medianPrice,,21.865
 ram,median,medianRating,,3.9
-ram,steals,steals,26.666666666666668,16
+ram,steals,steals,18.333333333333332,11
 pig,price,<10,0,0
 pig,price,10–19.99,35.714285714285715,10
 pig,price,20–29.99,28.57142857142857,8
@@ -538,7 +538,7 @@ pig,type,Sparkling,7.142857142857142,2
 pig,type,White,17.857142857142858,5
 pig,median,medianPrice,,23.22
 pig,median,medianRating,,3.8
-pig,steals,steals,25,7
+pig,steals,steals,10.714285714285714,3
 all,price,<10,1.535323169422375,143
 all,price,10–19.99,24.629589864719776,2294
 all,price,20–29.99,25.26304487867726,2353
@@ -568,7 +568,7 @@ all,type,Sparkling,7.794717629375134,726
 all,type,White,37.459738028773884,3489
 all,median,medianPrice,,29.99
 all,median,medianRating,,4
-all,steals,steals,23.12647627227829,2154
+all,steals,steals,13.94674683272493,1299
 animal wines,price,<10,1.544660846205507,23
 animal wines,price,10–19.99,29.079919408999327,433
 animal wines,price,20–29.99,25.92343854936199,386
@@ -598,4 +598,4 @@ animal wines,type,Sparkling,6.447280053727333,96
 animal wines,type,White,40.83277367360645,608
 animal wines,median,medianPrice,,26.99
 animal wines,median,medianRating,,4
-animal wines,steals,steals,23.10275352585628,344
+animal wines,steals,steals,14.5063801208865,216

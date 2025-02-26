@@ -86,14 +86,14 @@
                 <ScrollHisto chartScrollIndex={chartScrollIndex}/>
             </div> -->
         </div>
-        <div class="section-buttons">
+        <!-- <div class="section-buttons">
             {#each sections as section, i}
                 <button class:active={activeSection == section}>
                     <span>{section}</span>
                     {@html svgIcons[i]}
                 </button>
             {/each}
-        </div>
+        </div> -->
     </div>
     <Scrolly bind:value={chartScrollIndex}>
         {#each copy.chartScroll as step, i}

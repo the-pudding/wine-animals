@@ -22,8 +22,8 @@ const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & a
 const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
 
 // AVERAGES
-const totalAvgPrice = d3.mean(data.filter(d => d.price <= 150), d => d.price);
-const totalAvgRating = d3.mean(data.filter(d => d.price <= 150), d => d.rating);
+const totalAvgPrice = d3.median(data.filter(d => d.price <= 150), d => d.price);
+const totalAvgRating = d3.median(data.filter(d => d.price <= 150), d => d.rating);
 
 // CAT AND BIRD FILTER
 const catData = data.filter(d => d.topgroup.includes("cat") && !d.topgroup.includes("cattle"));

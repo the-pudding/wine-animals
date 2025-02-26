@@ -109,7 +109,11 @@
         {@const cx = chartScrollIndex >= 5 ? $xGet(d) : $xGet($data[0][4])}
         {@const cy = chartScrollIndex >= 5 ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
-        <g class="wine-circle wine-circle-{animal}" class:hidden={chartScrollIndex == 14}>
+        <g class="wine-circle wine-circle-{animal}" 
+            class:hidden={chartScrollIndex == 9 && d.topgroup !== "bird" ||
+                chartScrollIndex == 10 && d.topgroup !== "amphibian/reptile" ||
+                chartScrollIndex == 11 && d.topgroup !== "cat"}
+        >
           <circle 
             cx={cx} 
             cy={cy} 
@@ -158,7 +162,10 @@
                         <circle 
                             cx={cx} 
                             cy={cy} 
-                            r={chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
+                            r={chartScrollIndex == undefined || chartScrollIndex < 3 
+                                ? r 
+                                : chartScrollIndex == 3 ? 40
+                                : 4} 
                             fill={"transparent"} 
                             stroke={"#9D0432"} 
                             stroke-width={strokeWidth} 
@@ -183,7 +190,7 @@
                     chartScrollIndex == 0 || 
                     chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
                     chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ||
-                    chartScrollIndex >= 3 }
+                    chartScrollIndex >= 4 }
                 class:hidden={chartScrollIndex >= 5}>
                 <circle 
                     cx={cx} 
@@ -261,7 +268,11 @@
 	}
 
     .medians-wrapper circle {
-        opacity: 0.85; 
+        opacity: 0.3; 
+    }
+
+    .medians-wrapper .active circle {
+        opacity: 0.95; 
     }
 
     #selected-circle {

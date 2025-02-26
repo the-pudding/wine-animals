@@ -28,7 +28,7 @@ duck,type,Sparkling,11.363636363636363,5
 duck,type,White,47.72727272727273,21
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
-duck,steals,steals,25,11
+duck,steals,steals,13.636363636363635,6
 flightless bird,price,<10,28.57142857142857,2
 flightless bird,price,10–19.99,42.857142857142854,3
 flightless bird,price,20–29.99,28.57142857142857,2
@@ -88,7 +88,7 @@ game bird,type,Sparkling,8.695652173913043,2
 game bird,type,White,26.08695652173913,6
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
-game bird,steals,steals,26.08695652173913,6
+game bird,steals,steals,21.73913043478261,5
 junglefowl,price,<10,0,0
 junglefowl,price,10–19.99,28.26086956521739,13
 junglefowl,price,20–29.99,23.91304347826087,11
@@ -118,7 +118,7 @@ junglefowl,type,Sparkling,8.695652173913043,4
 junglefowl,type,White,45.65217391304348,21
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
-junglefowl,steals,steals,19.565217391304348,9
+junglefowl,steals,steals,10.869565217391305,5
 owl,price,<10,0,0
 owl,price,10–19.99,33.33333333333333,23
 owl,price,20–29.99,28.985507246376812,20
@@ -148,7 +148,7 @@ owl,type,Sparkling,5.797101449275362,4
 owl,type,White,46.3768115942029,32
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
-owl,steals,steals,17.391304347826086,12
+owl,steals,steals,8.695652173913043,6
 peacock,price,<10,0,0
 peacock,price,10–19.99,23.076923076923077,3
 peacock,price,20–29.99,30.76923076923077,4
@@ -178,7 +178,7 @@ peacock,type,Sparkling,15.384615384615385,2
 peacock,type,White,38.46153846153847,5
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
-peacock,steals,steals,30.76923076923077,4
+peacock,steals,steals,23.076923076923077,3
 penguin,price,<10,0,0
 penguin,price,10–19.99,100,2
 penguin,price,20–29.99,0,0
@@ -238,7 +238,7 @@ raptor,type,Sparkling,7.920792079207921,8
 raptor,type,White,43.56435643564357,44
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
-raptor,steals,steals,15.841584158415841,16
+raptor,steals,steals,7.920792079207921,8
 shorebird,price,<10,0,0
 shorebird,price,10–19.99,36.36363636363637,4
 shorebird,price,20–29.99,45.45454545454545,5
@@ -268,7 +268,7 @@ shorebird,type,Sparkling,9.090909090909092,1
 shorebird,type,White,63.63636363636363,7
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
-shorebird,steals,steals,54.54545454545454,6
+shorebird,steals,steals,36.36363636363637,4
 songbird,price,<10,0,0
 songbird,price,10–19.99,34.61538461538461,63
 songbird,price,20–29.99,34.065934065934066,62
@@ -298,7 +298,7 @@ songbird,type,Sparkling,4.395604395604396,8
 songbird,type,White,38.46153846153847,70
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
-songbird,steals,steals,29.120879120879124,53
+songbird,steals,steals,22.52747252747253,41
 wading bird,price,<10,0,0
 wading bird,price,10–19.99,48,12
 wading bird,price,20–29.99,20,5
@@ -328,4 +328,4 @@ wading bird,type,Sparkling,4,1
 wading bird,type,White,32,8
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
-wading bird,steals,steals,20,5
+wading bird,steals,steals,16,4

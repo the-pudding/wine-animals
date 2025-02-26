@@ -18,7 +18,7 @@
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
-        {animal: "cattle", subgroups: "cows, oxen, bulls, etc."},
+        {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
@@ -77,8 +77,6 @@
     }
 
     $: animate = scrollIndex == 12 ? true : false;
-
-    $: console.log({currData})
 </script>
 
 {#if scrollIndex >= 12 && currData !== undefined}
@@ -112,10 +110,16 @@
         <p><Icon name="chevron-left"/>Lower {currMetric}</p>
         <p>Higher {currMetric}<Icon name="chevron-right"/></p>
 
-        <div class="median-mark" style="left: 46%">
-            <p class="num">23.1%</p>
+        <div class="median-mark" style="left: 59%">
+            <p class="num">13.9%</p>
             <div class="median-circle"></div>
-            <p>All wines & animal wines</p>
+            <p>All wines</p>
+        </div>
+
+        <div class="median-mark" style="left: 61%">
+            <p class="num">14.5%</p>
+            <div class="median-circle"></div>
+            <p>Animal wines</p>
         </div>
 
     </div>

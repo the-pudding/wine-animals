@@ -18,7 +18,7 @@
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
-        {animal: "cattle", subgroups: "cows, oxen, bulls, etc."},
+        {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
