@@ -12,60 +12,18 @@
     import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
 
-    export let data;
+    export let animal;
 
     const meanData = allWineData.filter(d => d.price <= 150);
 
-    let topgroups = $animalSelect == "birds" 
-        ? ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]
-        : $animalSelect == "cats"
-        ? ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"]
-        : ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
-                "deer-like", "fish-like", "horse", "human", "insect",
-                "marine invertebrate", "mythical", "none", "pachyderm",
-                "rabbit", "ram-like", "suid"
-                ];
+    let animalData = allWineData.filter(d => 
+            d.topgroup.includes(animal) &&
+            d.price <= 150);
 
-    function findMissingItem(array1, array2) {
-        // Serialize objects to strings for comparison
-        const stringify = obj => JSON.stringify(obj);
-
-        // Create a frequency map based on serialized objects
-        const combined = [...array1, ...array2];
-        const frequencyMap = {};
-
-        combined.forEach(item => {
-            const key = stringify(item);
-            frequencyMap[key] = (frequencyMap[key] || 0) + 1;
-        });
-
-        // Find the item with an odd frequency and parse it back into an object
-        for (const key in frequencyMap) {
-            if (frequencyMap[key] % 2 !== 0) {
-                return JSON.parse(key); // Return the original object
-            }
-        }
-
-        return null; // No missing item found
-    }
-
-    function filterData(animal) {
-
-        let filteredData;
-        if ($animalSelect == "birds") {
-           filteredData = animal == "owl" 
-           ? filteredData = data.filter(d => d.subgroup.includes(animal) && !d.subgroup.includes("junglefowl") && d.price<= 150)
-           : filteredData = data.filter(d => d.subgroup.includes(animal) && d.price <= 150)
-           let birdArray = data.filter(d => d.topgroup.includes("bird"));
-        } else if ($animalSelect == "cats") {
-            filteredData = data.filter(d => d.finalAnimal.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 150)
-        } else {
-            filteredData = animal == "cat" 
-            ? data.filter(d => d.topgroup.includes(animal) && !d.topgroup.includes("cattle") && d.price <= 150)
-            : data.filter(d => d.topgroup.includes(animal) && d.price <= 150)
-        }
-        return filteredData;
-    }
+    const points = animalData.map(d => ({
+        x: +d.rating,  // Convert price to a number
+        y: +d.price  // Convert rating to a number
+    }))
 
     const curve = d3.curveLinear;
     const yKey = 'price';
@@ -73,7 +31,7 @@
     const xKeyReg = d => +d.rating;
     const yKeyReg = d => +d.price;
 
-    data.forEach(d => {
+    animalData.forEach(d => {
         d[xKey] = +d[xKey];
         d[yKey] = +d[yKey];
     });
@@ -91,6 +49,8 @@
     const regression = d3Regression.regressionExp()
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
+    
+    const trendLine = regression(points)
 
     function calcSteepness(data, animal) {
         let sumSlopes = 0;
@@ -102,48 +62,35 @@
         const averageSteepness = sumSlopes / data.length;
         return averageSteepness;
     }
+
+    const steepness = calcSteepness(trendLine, animal)
 </script>
 
 <section id="scatter">
-        {#each topgroups as animal, i}
-            {@const animalData = filterData(animal)}
-            {@const points = animalData.map(d => ({
-                x: +d.rating,  // Convert price to a number
-                y: +d.price  // Convert rating to a number
-            }))}
-            {@const trendLine = regression(points)}
-            {@const steepness = calcSteepness(trendLine, animal)}
-            {@const avgPrice = d3.mean(meanData, d => d.price)}
-            {@const avgRating = d3.mean(meanData, d => d.rating)}
-            {@const lowPriceGoodRating = animalData.filter(d => d.price < avgPrice && d.rating > avgRating).length}
-            <div class="chart-wrapper">
-                <h3>{animal}</h3>
-                <p class="tot-count">{animalData.length} wines</p>
-                <p class="tot-count">{Math.round(steepness)} avg. steepness</p>
-                <p class="tot-count">{Math.round(lowPriceGoodRating/animalData.length*100)}% ({lowPriceGoodRating}/{animalData.length})</p>
-                <div class="chart-container" id="scatterplot" style="pointer-events:none">
-                        <LayerCake
-                            padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
-                            x={xKey}
-                            y={yKey}
-                            data={[animalData, trendLine]}
-                            xDomain={[2, 5]}
-                            yDomain={[0, 150]}
-                        >
-                            <Svg>
-                                <AxisX 
-                                    gridlines={true} 
-                                    ticks={7}
-                                />
-                                <AxisY 
-                                    gridlines={true} 
-                                    ticks={3} />
-                                <ScatterSvg {r} fill={color} />
-                            </Svg>
-                        </LayerCake>
-                </div>
-            </div>
-        {/each}
+    <div class="chart-wrapper">
+        <p class="tot-count">{animalData.length} wines</p>
+        <div class="chart-container" id="scatterplot" style="pointer-events:none">
+                <LayerCake
+                    padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
+                    x={xKey}
+                    y={yKey}
+                    data={[animalData, trendLine]}
+                    xDomain={[2, 5]}
+                    yDomain={[0, 150]}
+                >
+                    <Svg>
+                        <AxisX 
+                            gridlines={true} 
+                            ticks={7}
+                        />
+                        <AxisY 
+                            gridlines={true} 
+                            ticks={3} />
+                        <ScatterSvg {r} fill={color} />
+                    </Svg>
+                </LayerCake>
+        </div>
+    </div>
 </section>
 
 <style>
@@ -161,8 +108,7 @@
 
     .chart-wrapper {
         width: 100%;
-        width: 250px;
-        max-width: 250px;
+        aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -186,7 +132,7 @@
 
     .chart-container {
         width: 100%;
-        height: 250px;
+        height: 100%;
         overflow: hidden;
         padding-right: 3px;
     }

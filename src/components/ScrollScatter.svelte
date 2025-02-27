@@ -13,6 +13,7 @@
     import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import { chartView } from "$stores/misc.js";
+    import Range from "$components/helpers/Range.svelte";
 
     export let chartScrollIndex;
 
@@ -58,7 +59,15 @@
 </script>
 
 <section id="scatter">
-    <div class="chart-container" id="scatterplot" style="pointer-events:none">
+    <div class="chart-container" id="scatterplot">
+        {#if chartScrollIndex >= 13}
+            <div class="range-wrapper range-rating">
+                <Range min={3} max={4.8} step={0.1} metric={"rating"} />
+            </div>
+            <div class="range-wrapper range-price">
+                <Range min={0} max={150} step={1} metric={"price"}/>
+            </div>
+        {/if}
         <LayerCake
             padding={{ top: 20, right: 0, bottom: 20, left: 10 }}
             x={xKey}
@@ -93,12 +102,13 @@
 
 <style>
     #scatter {
-        height: calc(100% - 4rem);
+        height: 100%;
         aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
         margin-bottom: 5rem;
     }
 
@@ -106,7 +116,8 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        padding: 2rem;
+        padding: 4rem;
+        position: relative;
     }
 
     .quadrants {
@@ -133,19 +144,30 @@
         font-weight: 700;
         text-transform: uppercase;
         font-size: var(--12px);
-        color: var(--wine-tan);
+        color: var(--wine-dark-tan);
         position: absolute;
     }
 
     .label-price {
-        top: 4.25rem;
-        left: -2rem;
+        top: 7.25rem;
+        left: 0rem;
         transform: rotate(-90deg);
     }
 
     .label-rating {
-        right: 2.5rem;
-        bottom: 3.5rem;
+        right: 0.5rem;
+        bottom: 1.5rem;
         transform: translate(-50%, 0);
+    }
+
+    .range-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        padding: 5rem 4rem 5.25rem 4.5rem;
+        pointer-events: none;
     }
 </style>

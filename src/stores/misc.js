@@ -27,3 +27,10 @@ export const highlightWine = writable(undefined);
 // INTRO SELECTION
 export const bottleSelected = writable(false);
 export const animalSelected = writable(undefined);
+
+// STEAL RANGES
+export const stealPriceNum = writable(29.99);
+export const stealRatingNum = writable(4);
+export const stealData = writable([]);
+export const stealPercent = writable();
+export const stealTopgroupCounts = writable([]);

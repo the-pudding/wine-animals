@@ -6,10 +6,17 @@
 	import * as d3 from "d3";
     import * as d3Regression from 'd3-regression';
     import rawData from "$data/wineData.csv";
-    import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import { bottleSelected, animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
+	import { stealTopgroupCounts } from "../../stores/misc";
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
+
+    const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
+		"deer-like", "fish-like", "horse", "insect",
+		"marine invertebrate", "mythical", "pachyderm",
+		"rabbit", "ram-like", "suid"
+	];
 
 	export let r = 30;
 	export let fill = "#ccc";
@@ -20,8 +27,6 @@
     $: selectedWine = $animalSelected == "cat" ? "159436402"
         : $animalSelected == "frog" ? "156622800"
         :  "165876644";
-
-    $: console.log(selectedWine)
 
     // Trendline
     const regression = d3Regression.regressionExp()
@@ -59,6 +64,50 @@
 		return generations.map(() => generateRandomSubset(data, targetLength));
 	}
 
+    function setStealData($stealPriceNum, $stealRatingNum) {
+        return rawData.filter(d => 
+            d.price <= $stealPriceNum &&
+            d.rating >= $stealRatingNum &&
+            d.topgroup !== "none" &&
+            d.topgroup !== "human" &&
+            d.price <= 150
+        )
+    }
+
+    $: steals = setStealData($stealPriceNum, $stealRatingNum);
+    $: stealsPercent = steals.length/filteredRawData.length*100;
+
+    $: stealData.set(steals);
+    $: stealPercent.set(stealsPercent);
+
+    $: topgroupCounts = [];
+
+	$: {
+		// Temporary map for counting occurrences
+		let countMap = new Map();
+
+		$stealData.forEach(d => {
+			// Split topgroup string into an array
+			const groups = d.topgroup.split(",").map(g => g.trim());
+
+			// Check for matches and update count
+			groups.forEach(group => {
+				if (topgroups.includes(group)) {
+					countMap.set(group, (countMap.get(group) || 0) + 1);
+				}
+			});
+		});
+
+		// Convert map to array
+		topgroupCounts = Array.from(countMap, ([group, count]) => ({ group, count }))
+			.sort((a, b) => b.count - a.count);
+	}
+
+    $: console.log({topgroupCounts, $stealData})
+
+    $: stealTopgroupCounts.set(topgroupCounts)
+    $: console.log($stealTopgroupCounts)
+
     $: if ($data[1]?.length) {
         tick().then(() => {
             randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
@@ -92,10 +141,10 @@
     {#if chartScrollIndex >= 8}
         <rect
             class="highlight-quadrant"
-            x={$xScale(d3.median(filteredRawData, d => d.rating))}
-            y={$yScale(d3.median(filteredRawData, d => d.price))}
-            width={$xScale(d3.median(filteredRawData, d => d.rating) - 0.2)}
-            height={$height - $yScale(d3.median(filteredRawData, d => d.price))}
+            x={$xScale($stealRatingNum)}
+            y={$yScale($stealPriceNum)}
+            width={$width - $xScale($stealRatingNum)}
+            height={$height - $yScale($stealPriceNum)}
             fill="#363B45"
             opacity=0.5
         />
@@ -218,25 +267,28 @@
 {/if}
 
 <g class="median-markings" class:active={chartScrollIndex >= 7}>
-    <line class="priceAVG" x1={0} y1={$yScale(d3.median(filteredRawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(filteredRawData, d => d.price))} />
-    <line class="ratingAVG" x1={$xScale(d3.median(filteredRawData, d => d.rating))} y1={0} x2={$xScale(d3.median(filteredRawData, d => d.rating))} y2={$height} />
+    <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+    <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+
+    <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width + $padding.right} y2={$yScale($stealPriceNum)} />
+    <line class="ratingAVG" x1={$xScale($stealRatingNum)} y1={0} x2={$xScale($stealRatingNum)} y2={$height} />
     <text 
         class="label"
         x={$width} 
-        y={$yScale(d3.median(filteredRawData, d => d.price)) - 10}
+        y={$yScale(d3.median(rawData, d => d.price)) - 10}
         text-anchor="end"
         fill="white">
-        Med. price (${d3.median(filteredRawData, d => d.price)})
+        Med. price (${d3.median(rawData, d => d.price)})
     </text>
 
     <text 
         class="label"
-        x={$xScale(d3.median(filteredRawData, d => d.rating)) - 140}
+        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
         y={17} 
-        transform={`rotate(-90, ${$xScale(d3.median(filteredRawData, d => d.rating))}, 0)`} 
+        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
         text-anchor="start"
         fill="white">
-        Med. rating ({d3.median(filteredRawData, d => d.rating)} stars)
+        Med. rating ({d3.median(rawData, d => d.rating)} stars)
     </text>
 </g>
 
@@ -292,7 +344,7 @@
         font-weight: 700;
         font-family: var(--sans);
         font-size: var(--12px);
-        fill: var(--wine-tan);
+        fill: var(--wine-dark-tan);;
     }
     .compare-wrapper.hidden {
         opacity: 0;
@@ -327,6 +379,11 @@
     .priceAVG, .ratingAVG {
         stroke-width: 2;
         stroke: var(--wine-tan);
+    }
+
+    .priceAVG-gray, .ratingAVG-gray {
+        stroke-width: 2;
+        stroke: var(--wine-dark-tan);
     }
 
     .median-markings {

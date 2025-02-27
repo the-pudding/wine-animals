@@ -13,6 +13,7 @@
 
     export let chartScrollIndex;
     export let width;
+    export let animal;
 
     data.forEach(d => {
         d[yKey] = +d[yKey];
@@ -23,7 +24,7 @@
     const groupedData = d3.groups(data, d => d.animalGroup);
     const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};
 
-    let currAnimalData = data.filter(d => d.animalGroup == "cat");
+    let currAnimalData = data.filter(d => d.animalGroup == animal);
     let currAnimalGroupedData = d3.groups(currAnimalData, d => d.category)
         .filter(d => d[0] !== "median")
         .map(([key, values]) => {
@@ -65,46 +66,46 @@
         {@const xScaleLine = d3.scalePoint()
             .domain(xDomainLine)
             .range([0, width])}
-        <div class="chart-wrapper" class:active={i == 0 && chartScrollIndex >= 9 ||
-            i == 1 && chartScrollIndex >= 10 ||
-            i == 2 && chartScrollIndex >= 11}>
-            <div class="chart-layers">
-                <div class="chart-container bars" id="bars_{category[0]}">
-                    <LayerCake
-                    bind:width
-                    padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
-                    x={xKey}
-                    y={yKey}
-                    xScale={d3.scaleBand().paddingInner(0.04)}
-                    xDomain={category.xDomain}
-                    yDomain={[0, 100]}
-                    data={category.values}
-                    >
-                        <Svg>
-                            <AxisY snapBaselineLabel gridlines={false}/>
-                            <Column {allWineData} />
-                        </Svg>
-                    </LayerCake>
-                </div>
-                <div class="chart-container" id="line" style="pointer-events:none">
-                    <LayerCake
+        {#if category.key !== "steals"}
+            <div class="chart-wrapper">
+                <div class="chart-layers">
+                    <div class="chart-container bars" id="bars_{category[0]}">
+                        <LayerCake
                         bind:width
                         padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
                         x={xKey}
                         y={yKey}
-                        xScale={xScaleLine}
-                        xDomain={xDomainLine}
+                        xScale={d3.scaleBand().paddingInner(0.04)}
+                        xDomain={category.xDomain}
                         yDomain={[0, 100]}
-                        data={matchingLineData}
+                        data={category.values}
                         >
                             <Svg>
-                                <Line />
+                                <AxisY snapBaselineLabel gridlines={false}/>
+                                <Column {allWineData} />
                             </Svg>
-                    </LayerCake>
+                        </LayerCake>
+                    </div>
+                    <div class="chart-container" id="line" style="pointer-events:none">
+                        <LayerCake
+                            bind:width
+                            padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                            x={xKey}
+                            y={yKey}
+                            xScale={xScaleLine}
+                            xDomain={xDomainLine}
+                            yDomain={[0, 100]}
+                            data={matchingLineData}
+                            >
+                                <Svg>
+                                    <Line />
+                                </Svg>
+                        </LayerCake>
+                    </div>
                 </div>
+                <h3>{category.key}</h3>
             </div>
-            <h3>{category.key}</h3>
-        </div>
+        {/if}
     {/each}
 </section>
 
@@ -208,13 +209,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        margin: 2rem;
         transition: opacity 0.4s linear;
-        opacity: 0;
-    }
-
-    .chart-wrapper.active {
-        opacity: 1;
     }
 
     h3 {

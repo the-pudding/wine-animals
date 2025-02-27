@@ -1,7 +1,8 @@
 <script>
     import { getContext, onMount } from "svelte";
-    import { chartView } from "$stores/misc.js";
+    import { stealPriceNum, stealRatingNum, stealData, stealPercent, stealTopgroupCounts} from "$stores/misc.js";
     import { fly, fade } from 'svelte/transition';
+    import * as d3 from "d3";
     import Scrolly from "$components/helpers/ChartScrolly.svelte";
     import Toggle from "$components/helpers/Toggle.svelte";
     import catIcon from "$svg/cat.svg";
@@ -101,6 +102,18 @@
                 {#each step.block as graf, i}
                     <p>{@html graf.value}</p>
                 {/each}
+                {#if i == 13 && $stealPercent}
+                    <p><span class="bold">{$stealPercent.toFixed(2)}%</span> of animal wines are steals when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> and the rating <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
+                    <!-- <div class="steal-bar-wrapper">
+                        {#each $stealTopgroupCounts as topgroup, i}
+                            <div class="steal-bar">
+                                <p class="animal">{topgroup.group}</p>
+                                <div class="bar" style="width: calc({topgroup.count/500*100}% - 6rem)"></div>
+                                <p>{topgroup.count}</p>
+                            </div>
+                        {/each}
+                    </div> -->
+                {/if}
             </div>
         {/each}
     </Scrolly>
@@ -148,6 +161,7 @@
 
     .lineup-wrapper {
         width: 100%;
+        z-index: 1;
     }
 
     .scatter-wrapper.active, .lineup-wrapper.active {
@@ -320,5 +334,38 @@
 
     :global(.bold) {
         font-weight: 700;
+    }
+
+    .steal-bar-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .steal-bar {
+        width: 100%;
+        height: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .steal-bar p {
+        margin: 0;
+        padding: 0;
+        font-family: var(--sans);
+        font-size: var(--14px);
+        text-transform: capitalize;
+    }
+
+    .steal-bar p.animal {
+        width: 6rem;
+        text-align: right;
+    }
+
+    .bar {
+        height: 100%;
+        background: var(--wine-red);
     }
 </style>

@@ -13,12 +13,10 @@
 	export let strokeWidth = 0;
 	export let addRandom = false;
 
-	const meanData = rawData.filter(d => d.price <= 150);
-
 	const regressionLine = $data[1];
 
-	const priceAVG = d3.mean(meanData, d => d.price);
-	const ratingAVG = d3.mean(meanData, d => d.rating);
+	const priceMed = d3.median(rawData, d => d.price);
+	const ratingMed = d3.median(rawData, d => d.rating);
 
 	let path;
 	let mounted = false;
@@ -91,12 +89,12 @@
 <g class="rect">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.mean(meanData, d => d.rating))}
-		y={$yScale(d3.mean(meanData, d => d.price))}
-		width={250 - 23 - $xScale(d3.mean(meanData, d => d.rating))}
-		height={210 - $yScale(d3.mean(meanData, d => d.price))}
-		fill="#dfdfdf"
-		opacity="0.7"
+		x={$xScale(d3.median(rawData, d => d.rating))}
+		y={$yScale(d3.median(rawData, d => d.price))}
+		width={250 - 23 - $xScale(d3.median(rawData, d => d.rating))}
+		height={210 - $yScale(d3.median(rawData, d => d.price))}
+		fill="#363B45"
+		opacity="0.5"
 	/>
 </g>
 <g>
@@ -107,15 +105,13 @@
             cx={cx} 
             cy={cy} 
             r={r} 
-            fill={fill} 
-            stroke={stroke} 
-            stroke-width={strokeWidth} 
+            fill={"#38425D"} 
         />
     {/each}
 </g>
 {#if addRandom == true}
 	{#each generations as generation, i}
-		{@const randomData = generateRandomComparison(meanData)}
+		{@const randomData = generateRandomComparison(rawData)}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert price to a number
 			y: +d.price  // Convert rating to a number
@@ -134,8 +130,8 @@
 	{/each}
 {/if}
 <g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(meanData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(meanData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.mean(meanData, d => d.rating))} y1={0} x2={$xScale(d3.mean(meanData, d => d.rating))} y2={$height} />
+	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}
@@ -143,20 +139,18 @@
 
 <style>
 	circle {
-		opacity: 0.75;
-		stroke-width: 1;
-		stroke: white;
+		opacity: 0.5;
 		pointer-events: auto;
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
-		stroke: #c35e34;
+		stroke: var(--wine-red);
 		fill: none;
 	}
 
 	.priceAVG, .ratingAVG {
 		stroke-width: 1;
-		stroke: #000000;
+		stroke: var(--wine-tan);
 	}
 	.fade {
 		opacity: 0.25;

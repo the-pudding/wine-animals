@@ -2,15 +2,14 @@
 	import { onMount, createEventDispatcher } from "svelte";
 	import { range, format } from "d3";
 	import { fade } from 'svelte/transition';
+	import { stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import { get } from "svelte/store";
 	export let min = 0;
 	export let max = 700;
 	export let step = 1;
 	export let showTicks = false;
-	export let value = min;
 	export let label = "";
-	export let pricesLocked;
-	export let actualPrice;
-	export let pricesSkipped;
+	export let metric;
 
 	let thumbOffset = 0;
 	let labelElement;
@@ -18,20 +17,18 @@
 
 	const dispatch = createEventDispatcher();
 
-	const getDecimalCount = (value) => {
-		if (Math.floor(value) === value) return 0;
-		return value.toString().split(".")[1].length || 0;
-	};
+	let boundStore = metric === "price" ? stealPriceNum : stealRatingNum;
 
-	$: decimals = getDecimalCount(step);
-	$: ticks = [0, 700];
+	let value = get(boundStore);
+
+	$: boundStore.set(value);
+
+	$: console.log($stealPriceNum, $stealRatingNum)
 
 	function handleInput(event) {
         value = +event.target.value; // Ensure value is a number
         dispatch("input", value);    // Dispatch value directly, not wrapped in an object
     }
-
-	$: actualPricePosition = ((actualPrice - min) / (max - min)) * 100;
 
     function updateThumbOffset(value) {
 		if (rangeInput) {
@@ -51,12 +48,7 @@
 	$: updateThumbOffset(value);
 </script>
 
-<div class="range" class:skipped={pricesSkipped}>
-	<div class="ticks">
-		{#each ticks as tick}
-			<span class="tick">${format(`.${decimals}f`)(tick)}</span>
-		{/each}
-	</div>
+<div class="range" id="range-{metric}">
 	<input 
         type="range" 
         aria-label={label} 
@@ -65,19 +57,29 @@
         {step} 
         bind:value 
 		bind:this={rangeInput}
-        on:input={handleInput}
-		disabled={pricesLocked} />
+        on:input={handleInput} />
 		<div class="thumb-label" style="left: {thumbOffset}px;">
-			<p>${value}</p>
+			<p>{value}</p>
 		</div>
-		{#if pricesLocked}
-			<div transition:fade class="actualPrice" style="left: {actualPricePosition}%">
-				<p>${format(`.${decimals}f`)(actualPrice)}</p>
-			</div>
-    	{/if}
 </div>
 
 <style>
+	#range-price {
+		position: absolute;
+		width: calc(100% - 9.25rem);
+		transform: rotate(-90deg) translate(-100%, 0);
+		transform-origin: left top;
+		left: calc(100% - 4.125rem);
+		pointer-events: auto;
+	}
+
+	#range-rating {
+		position: absolute;
+		width: calc(100% - 6.75rem);
+		pointer-events: auto;
+		left: 3.75rem;
+	}
+
 	.actualPrice {
 		position: absolute;
 		top: 0;
@@ -131,7 +133,6 @@
 	.range {
 		--thumb-width: 24px;
 		--tick-font-size: 12px;
-		position: relative;
 		margin-bottom: calc(var(--thumb-width) * 2);
 	}
 
@@ -156,7 +157,7 @@
 		opacity: 0.6;       
 	}
 
-	input[type="range"]:focus {
+	/* input[type="range"]:focus {
 		box-shadow: 0 0 4px 0 var(--color-focus, #999);
 	}
 
@@ -164,12 +165,12 @@
 	input[type="range"]:focus::-moz-range-thumb,
 	input[type="range"]:focus::-ms-thumb {
 		box-shadow: 0 0 4px 0 var(--color-focus, #999);
-	}
+	} */
 
 	input[type="range"]::-webkit-slider-runnable-track {
 		width: 100%;
 		height: calc(var(--thumb-width) / 8);
-		background: var(--wine-med-gray);
+		background: transparent;
 		border-radius: 4px;
 	}
 
@@ -188,9 +189,9 @@
 		color: white;
 	}
 
-	input[type="range"]:focus::-webkit-slider-runnable-track {
+	/* input[type="range"]:focus::-webkit-slider-runnable-track {
 		background: var(--wine-med-gray);
-	}
+	} */
 
 	input[type="range"]::-moz-range-track {
 		width: 100%;
@@ -231,10 +232,10 @@
 		background: var(--color-gray-900);
 	}
 
-	input[type="range"]:focus::-ms-fill-lower,
+	/* input[type="range"]:focus::-ms-fill-lower,
 	input[type="range"]:focus::-ms-fill-upper {
 		background: var(--wine-med-gray);
-	}
+	} */
 
 	.ticks {
 		width: 100%;
