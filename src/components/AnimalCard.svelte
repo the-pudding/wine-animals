@@ -1,7 +1,9 @@
 <script>
     import { getContext } from "svelte";
+    import starIcon from "$svg/star.svg";
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Scatter from "$components/Scatter.svelte";
+    import medianData from "$data/wineData_median.csv";
 
     export let animal;
 
@@ -17,6 +19,27 @@
                 <img src="./assets/images/icons/{strippedAnimal}.png" />
             </div>
             <h3>{animal}</h3>
+            <p>
+                <span class="bold">Median price:</span>
+                ${medianData.find(d => d.topGroup == animal).price} 
+            </p>
+            <p>
+                <span class="bold">Median rating:</span>
+                {medianData.find(d => d.topGroup == animal).rating} 
+                <span class="stars">
+                    {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
+                        <span class="full-star">{@html starIcon}</span> <!-- Full star -->
+                    {/each}
+            
+                    {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
+                        <span class="partial-star">
+                            <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
+                                {@html starIcon}
+                            </span>
+                        </span> <!-- Partial star -->
+                    {/if}
+                </span>
+            </p>
             {#if copy.summaryCards.find(card => card.animal === animal)}
                 {@const selectedCard = copy.summaryCards.find(card => card.animal === animal)}
                 <ul>
@@ -24,6 +47,11 @@
                         <li>{point}</li>
                     {/each}
                 </ul>
+                {#if selectedCard.text}
+                    {#each selectedCard.text as graf, i}
+                        <p>{@html graf.value}</p>
+                    {/each}
+                {/if}
             {/if}
         </div>
         <div class="rail" id="rail-center">
@@ -69,5 +97,52 @@
 
     .icon img {
         width: 90%;
+    }
+
+    .stars-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+    }
+
+    .stars {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        top: 0.25rem;
+    }
+
+    :global(.full-star svg, .partial-star svg) {
+        height: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    :global(.full-star svg path, .partial-star svg path) {
+        fill: var(--wine-tan);
+        stroke: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .full-star {
+        width: 1.25rem;
+        height: 1.25rem; 
+    }
+
+    .partial-star {
+        display: inline-block;
+        width: 1.25rem; /* Adjust based on your star icon size */
+        height: 1.25rem;
+        position: relative;
+    }
+
+    .partial-star-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+        white-space: nowrap;
     }
 </style>
