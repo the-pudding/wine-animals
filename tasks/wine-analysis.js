@@ -7,10 +7,10 @@ const data = d3.csvParse(raw);
 const OUT_PATH = "./src/data/";
 
 // ANIMAL GROUPINGS
-const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
-   "deer-like", "fish-like", "horse", "human", "insect",
+const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
+   "deer", "fish", "horse", "human",
    "marine invertebrate", "mythical", "none", "pachyderm",
-   "rabbit", "ram-like", "suid"
+   "rabbit", "ram", "pig"
 ];
 
 const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"];

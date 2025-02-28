@@ -40,61 +40,72 @@
 	}
 
 	function handleMouseover(e, d) {
-		hideTooltip.set(false);
-		let tooltip = d3.select(".tooltip");
+    hideTooltip.set(false);
+    
+    // Find the tooltip closest to the hovered chart
+    let parentChart = e.target.closest("#distribution"); // Find the nearest chart container
+    let tooltip = parentChart.querySelector(".tooltip");  // Get the tooltip inside this chart
 
-		// Get bounding box of `#distribution`
-		let containerBounds = document.getElementById("distribution").getBoundingClientRect();
+	console.log(parentChart, tooltip)
+    if (!tooltip) return; // Ensure the tooltip exists
 
-		// Mouse position relative to `#distribution`
-		let mouseX = e.clientX - containerBounds.left; // X relative to container
-		let mouseY = e.clientY - containerBounds.top; // Y relative to container
+    // Get bounding box of `parentChart` instead of global `#distribution`
+    let containerBounds = parentChart.getBoundingClientRect();
 
-		// Get tooltip size
-		const tooltipWidth = tooltip.node().offsetWidth;
-		const tooltipHeight = tooltip.node().offsetHeight;
+    // Mouse position relative to the hovered chart
+    let mouseX = e.clientX - containerBounds.left;
+    let mouseY = e.clientY - containerBounds.top;
 
-		// Default tooltip position (right of cursor)
-		let left = mouseX + 15;
-		let top = mouseY - tooltipHeight / 2;
+    // Get tooltip size
+    const tooltipWidth = tooltip.offsetWidth;
+    const tooltipHeight = tooltip.offsetHeight;
 
-		// Prevent tooltip from going off the right edge
-		if (mouseX + tooltipWidth + 20 > containerBounds.width) {
-			left = mouseX - tooltipWidth - 15; // Move left instead
-		}
+    // Default tooltip position (right of cursor)
+    let left = mouseX + 15;
+    let top = mouseY - tooltipHeight / 2;
 
-		// Prevent tooltip from going off the bottom edge
-		if (mouseY + tooltipHeight + 20 > containerBounds.height) {
-			top = containerBounds.height - tooltipHeight - 15; // Keep it within bounds
-		}
+    // Prevent tooltip from going off the right edge
+    if (mouseX + tooltipWidth + 20 > containerBounds.width) {
+        left = mouseX - tooltipWidth - 15;
+    }
 
-		// Prevent tooltip from going off the top
-		if (mouseY - tooltipHeight < 0) {
-			top = 15; // Keep it inside
-		}
+    // Prevent tooltip from going off the bottom edge
+    if (mouseY + tooltipHeight + 20 > containerBounds.height) {
+        top = containerBounds.height - tooltipHeight - 15;
+    }
 
-		// Set tooltip position relative to `#distribution`
-		tooltip
-			.style("left", `${left}px`)
-			.style("top", `${top}px`)
-			.style("opacity", 1)
-			.html(
-				`<p class="animal"><span class="bolded">${d.animalGroup}</span></p>
-				<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.bucket}</span> wines</p>`
-			);
+    // Prevent tooltip from going off the top
+    if (mouseY - tooltipHeight < 0) {
+        top = 15;
+    }
 
-		// Highlight hovered bar
-		d3.selectAll("rect").classed("notHover", true);
-		e.target.classList.add("hover");
-	}
+    // Set tooltip position relative to the hovered chart
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+    tooltip.style.opacity = 1;
+    tooltip.innerHTML = `
+        <p class="animal"><span class="bolded">${d.animalGroup}</span></p>
+        <p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.bucket}</span> wines</p>
+    `;
+
+    // Highlight hovered bar only within this chart
+    parentChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
+    e.target.classList.add("hover");
+}
 
 
 
-	function handleMouseleave() {
-		hideTooltip.set(true);
-		d3.select(".tooltip").style("opacity", 0); // Hide tooltip smoothly
-		d3.selectAll("rect").classed("notHover", false).classed("hover", false);
-	}
+
+function handleMouseleave(e) {
+    hideTooltip.set(true);
+
+    let parentChart = e.target.closest("#distribution");
+    let tooltip = parentChart?.querySelector(".tooltip");
+
+    if (tooltip) tooltip.style.opacity = 0; // Hide tooltip smoothly
+    parentChart?.querySelectorAll("rect").forEach(rect => rect.classList.remove("notHover", "hover"));
+}
+
 </script>
 
 <g>

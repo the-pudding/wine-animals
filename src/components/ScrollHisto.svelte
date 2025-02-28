@@ -5,7 +5,6 @@
     import Line from "$components/layercake/Line.svelte";
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
-    import Tooltip from "$components/layercake/Tooltip.html.svelte";
     import * as d3 from "d3";
     import { hideTooltip } from "$stores/misc.js";
     import { animalSelect, metricSelect } from "$stores/misc.js";
@@ -181,12 +180,14 @@
 
     :global(.tooltip p) {
         margin: 0;
+        color: var(--wine-black)
     }
 
     :global(.tooltip .animal) {
         padding: 0 0 0.25rem 0;
         margin: 0 0 0.25rem 0;
         border-bottom: 1px solid var(--color-gray-300);
+        text-transform: capitalize;
     }
 
     :global(.bolded) {

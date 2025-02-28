@@ -14,7 +14,7 @@
     let transitionsCompleted = 0;
 
     const animalSubgroups = [
-        {animal: "amphibian", subgroups: "lizards, snakes, frogs"},
+        {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs"},
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
@@ -22,7 +22,7 @@
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
-        {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
+        {animal: "marine invertebrate", subgroups: "lobster, crab, shrimp, octopi, etc."},
         {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
         {animal: "pig", subgroups: "boar"},
@@ -97,9 +97,9 @@
                     {:else}
                         <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
                     {/if}
-                    <img class="img-icon" src="./assets/images/icons/{animal[0]}.png" alt="{animal[0]} icon" />
+                    <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                 </div>
-                <p>{animal[0]}</p>
+                <p>{animal[0].replace("/", " / ")}</p>
                 {#if getAnimalSubgroup(animal[0])}
                     <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
                 {/if}

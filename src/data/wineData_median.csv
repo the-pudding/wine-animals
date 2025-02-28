@@ -2,18 +2,18 @@ topGroup,price,rating
 amphibian/reptile,30.97,3.95
 bear,31.55,4.1
 bird,25.99,4
+bug,22.66,3.9
 canine,28.99,4
 cat,34.99,4.1
-cattle,22.00,3.8
-deer,29.99,3.9
-fish,22.99,3.9
-horse,25.24,4
-insect,22.20,3.9
-marine invertebrate,23.34,3.9
+cattle,22.50,3.9
+deer,30.49,4
+fish,24.99,3.9
+horse,25,4
+marine invertebrate,22.67,3.9
 mythical,34.99,4.1
-pachyderm,23.45,3.9
-rabbit,29.49,4
-ram,21.86,3.9
+pachyderm,24.22,3.9
+rabbit,29.99,4
+ram,21.74,3.9
 pig,23.22,3.8
 all animals,26.99,4
 all wines,29.99,4

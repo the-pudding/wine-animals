@@ -82,6 +82,8 @@
     }
 
     $: animate = scrollIndex >= 5 ? true : false;
+
+    console.log({currData})
 </script>
 
 {#if scrollIndex >= 4 && scrollIndex <= 7}
@@ -107,7 +109,7 @@
                     {:else}
                         <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
                     {/if}
-                    <img class="img-icon" src="./assets/images/icons/{animal[0]}.png" alt="{animal[0]} icon" />
+                    <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                 </div>
                 <p>{animal[0]}</p>
                 {#if getAnimalSubgroup(animal[0])}

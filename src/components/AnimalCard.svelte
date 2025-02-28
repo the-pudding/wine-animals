@@ -1,24 +1,39 @@
 <script>
+    import { getContext } from "svelte";
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Scatter from "$components/Scatter.svelte";
 
     export let animal;
+
+    const copy = getContext("copy");
+
+    let strippedAnimal = animal.replace(/[^a-zA-Z0-9]/g, "");
 </script>
 
-<div class="animal-card">
-    <div class="rail" id="rail-left">
-        <div class="icon">
-            <!-- <img src="./assets/images/icons/{animal}.png" /> -->
+{#if animal !== "human" && animal !== "none"}
+    <div class="animal-card">
+        <div class="rail" id="rail-left">
+            <div class="icon">
+                <img src="./assets/images/icons/{strippedAnimal}.png" />
+            </div>
+            <h3>{animal}</h3>
+            {#if copy.summaryCards.find(card => card.animal === animal)}
+                {@const selectedCard = copy.summaryCards.find(card => card.animal === animal)}
+                <ul>
+                    {#each selectedCard.points as point}
+                        <li>{point}</li>
+                    {/each}
+                </ul>
+            {/if}
         </div>
-        <h3>{animal}</h3>
+        <div class="rail" id="rail-center">
+            <ScrollHisto animal={animal}/>
+        </div>
+        <div class="rail" id="rail-right">
+            <Scatter animal={animal}/>
+        </div>
     </div>
-    <div class="rail" id="rail-center">
-        <Scatter animal={animal}/>
-    </div>
-    <div class="rail" id="rail-right">
-        <ScrollHisto animal={animal}/>
-    </div>
-</div>
+{/if}
 
 <style>
     .animal-card {
@@ -30,6 +45,7 @@
         display: flex;
         flex-direction: row;
         gap: 4rem;
+        color: var(--wine-tan);
     }
 
     .rail {
@@ -38,6 +54,7 @@
 
     h3 {
         color: var(--wine-tan);
+        text-transform: capitalize;
     }
 
     .icon {

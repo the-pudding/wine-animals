@@ -12,10 +12,10 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
-    const topgroups = ["amphibian/reptile", "bear", "bird", "canine", "cat", "cattle/camelus",
-		"deer-like", "fish-like", "horse", "insect",
-		"marine invertebrate", "mythical", "pachyderm",
-		"rabbit", "ram-like", "suid"
+    const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
+		"deer", "fish", "horse", "human",
+		"marine invertebrate", "mythical", "none", "pachyderm", "pig",
+		"rabbit", "ram"
 	];
 
 	export let r = 30;
@@ -33,16 +33,27 @@
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
 
-    $: points = $data[1].map(d => ({
+    $: pointData = chartScrollIndex == 9
+        ? $data[1].filter(d => d.topgroup == "bird")
+        : chartScrollIndex == 10
+        ? $data[1].filter(d => d.topgroup == "amphibian/reptile")
+        : chartScrollIndex == 11
+        ? $data[1].filter(d => d.topgroup == "cat")
+        : $data[1];
+
+    $: points = pointData.map(d => ({
         x: +d.rating,  // Convert price to a number
         y: +d.price  // Convert rating to a number
     }))
+
+
+
     $: trendLine = regression(points);
 
     $: path = d3.line()
 			.x(d => $xScale(d[0]))
 			.y(d => $yScale(d[1]))
-			(trendLine );
+			(trendLine);
 
     // Compare lines
     const maxLength = 99;
@@ -103,10 +114,7 @@
 			.sort((a, b) => b.count - a.count);
 	}
 
-    $: console.log({topgroupCounts, $stealData})
-
     $: stealTopgroupCounts.set(topgroupCounts)
-    $: console.log($stealTopgroupCounts)
 
     $: if ($data[1]?.length) {
         tick().then(() => {
@@ -137,8 +145,8 @@
 </g>
 {/if} -->
 
-<g class="median-markings" class:active={chartScrollIndex >= 7}>
-    {#if chartScrollIndex >= 8}
+<g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
+    {#if chartScrollIndex >= 8 || chartScrollIndex == "exit"}
         <rect
             class="highlight-quadrant"
             x={$xScale($stealRatingNum)}
@@ -151,12 +159,12 @@
     {/if}
 </g>
 
-{#if chartScrollIndex >= 4}
+{#if chartScrollIndex >= 4 || chartScrollIndex == "exit"}
   <g class="wines-wrapper">
     {#each $data[1] as d, i}
       {#if selectedWine !== d.id}
-        {@const cx = chartScrollIndex >= 5 ? $xGet(d) : $xGet($data[0][4])}
-        {@const cy = chartScrollIndex >= 5 ? $yGet(d) : $yGet($data[0][4])}
+        {@const cx = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $xGet(d) : $xGet($data[0][4])}
+        {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" 
             class:hidden={chartScrollIndex == 9 && d.topgroup !== "bird" ||
@@ -177,17 +185,17 @@
 
     {#each $data[1] as d, i}
       {#if selectedWine === d.id}
-        {@const cx = chartScrollIndex >= 5 ? $xGet(d) : $xGet($data[0][4])}
-        {@const cy = chartScrollIndex >= 5 ? $yGet(d) : $yGet($data[0][4])}
+        {@const cx = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $xGet(d) : $xGet($data[0][4])}
+        {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" class:hidden={chartScrollIndex == 14}>
           <circle 
             id="selected-circle"
             cx={cx} 
             cy={cy} 
-            r={chartScrollIndex >= 5 ? 6 : 4} 
+            r={chartScrollIndex >= 5 && chartScrollIndex < 9 ? 6 : 4} 
             fill={"#38425D"}  
-            stroke={chartScrollIndex >= 5 ? "#9D0432" : "none"} 
+            stroke={chartScrollIndex >= 5 && chartScrollIndex < 9 ? "#F7A039" : "none"} 
             stroke-width={strokeWidth} 
           />
         </g>
@@ -203,7 +211,7 @@
         {@const cy = $yGet(d)}
         {@const imageSize = chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
                         chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ? r+30 : r+10}
-        {@const animal = d.topGroup.replace(/[/\-\s].*/, '')}
+        {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "all animals" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
                     <g class="medians active"
@@ -253,7 +261,7 @@
                 />
                 {#if chartScrollIndex == undefined || chartScrollIndex < 4}
                     <image 
-                        href={`assets/images/icons/${animal}.png`} 
+                        href={`assets/images/icons/${animal.replace(/[^a-zA-Z0-9]/g, "")}.png`} 
                         x={cx - imageSize / 2} 
                         y={cy - imageSize / 2} 
                         width={imageSize} 
@@ -266,7 +274,7 @@
     </g>
 {/if}
 
-<g class="median-markings" class:active={chartScrollIndex >= 7}>
+<g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
     <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
     <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 
@@ -293,7 +301,7 @@
 </g>
 
 <g class="trendline" 
-    class:active={chartScrollIndex == 6}>
+    class:active={chartScrollIndex >= 6 || chartScrollIndex == "exit"}>
     {#if path}
         <path class="expRegression" d={path} />
     {/if}
@@ -367,7 +375,7 @@
     g.trendline path {
         stroke: var(--wine-red);
         fill: none;
-        stroke-width: 3;
+        stroke-width: 2;
     }
 
     g.compare-lines path {
@@ -384,6 +392,7 @@
     .priceAVG-gray, .ratingAVG-gray {
         stroke-width: 2;
         stroke: var(--wine-dark-tan);
+        stroke-dasharray: 3;
     }
 
     .median-markings {

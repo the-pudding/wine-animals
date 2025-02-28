@@ -49,18 +49,12 @@
 
     $: updateDomains(chartScrollIndex);
 
-    // $: if (chartScrollIndex < 9) {
-    //     bigScatterData.set(filteredRawData)
-    // } else if (chartScrollIndex == 9) {
-    //     bigScatterData.set(filteredRawData.filter(d => d.topgroup == "bird"))
-    // }
-
-    $: console.log({$bigScatterData})
+    // $: console.log({$bigScatterData})
 </script>
 
 <section id="scatter">
     <div class="chart-container" id="scatterplot">
-        {#if chartScrollIndex >= 13}
+        {#if chartScrollIndex >= 13 || chartScrollIndex == "exit"}
             <div class="range-wrapper range-rating">
                 <Range min={3} max={4.8} step={0.1} metric={"rating"} />
             </div>

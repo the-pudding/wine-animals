@@ -4,6 +4,7 @@
 	import * as d3Regression from 'd3-regression';
 	import { topgroupSelect } from "$stores/misc.js";
 	import rawData from "$data/wineData.csv"
+	import { bottleSelected, animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
@@ -86,15 +87,15 @@
     }
 </script>
 
-<g class="rect">
+<g class="median-markings">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.median(rawData, d => d.rating))}
-		y={$yScale(d3.median(rawData, d => d.price))}
-		width={250 - 23 - $xScale(d3.median(rawData, d => d.rating))}
-		height={210 - $yScale(d3.median(rawData, d => d.price))}
+		x={$xScale($stealRatingNum)}
+		y={$yScale($stealPriceNum)}
+		width={$width - $xScale($stealRatingNum)}
+		height={$height - $yScale($stealPriceNum)}
 		fill="#363B45"
-		opacity="0.5"
+		opacity=0.5
 	/>
 </g>
 <g>
@@ -130,8 +131,16 @@
 	{/each}
 {/if}
 <g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+	<line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
 	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+	{#if path}
+		<path class="expRegression" d={path} />
+	{/if}
+</g>
+
+<g class="median-markings">
+    <line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+    <line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}
@@ -149,11 +158,7 @@
 	}
 
 	.priceAVG, .ratingAVG {
-		stroke-width: 1;
+		stroke-width: 2;
 		stroke: var(--wine-tan);
-	}
-	.fade {
-		opacity: 0.25;
-		stroke: var(--color-gray-200);
 	}
 </style>

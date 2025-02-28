@@ -4,6 +4,7 @@
 	import Intro from "$components/Intro4.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
+	import AnimalCardNav from "$components/AnimalCard.Nav.svelte";
 	import PhotoTest from "$components/PhotoTest.svelte";
 	import Distribution from "$components/Distribution.svelte";
 	import Scatter from "$components/Scatter.svelte";
@@ -23,10 +24,10 @@
 
 	let optionsMetric = ["price", "rating"];
 	let optionsAnimal = ["all", "cats", "birds"];
-	const topgroups = ["amphibian/reptile", "bear", "bird", "cat", "cattle/camelus",
-		"deer-like", "canine", "fish-like", "horse", "insect",
-		"marine invertebrate", "mythical", "pachyderm",
-		"rabbit", "ram-like", "suid"
+	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
+		"deer", "fish", "horse", "human",
+		"marine invertebrate", "mythical", "none", "pachyderm", "pig",
+		"rabbit", "ram"
 	];
 
 	function setData($animalSelect, $metricSelect) {
@@ -97,6 +98,7 @@
 <Intro />
 <ChartScroll />
 <div class="cards">
+	<AnimalCardNav />
 	{#each topgroups as animal, i}
 		<AnimalCard animal={animal}/>
 	{/each}

@@ -270,35 +270,35 @@ shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
 shorebird,steals,steals,36.36363636363637,4
 songbird,price,<10,0,0
-songbird,price,10–19.99,34.61538461538461,63
-songbird,price,20–29.99,34.065934065934066,62
-songbird,price,30–39.99,10.989010989010989,20
-songbird,price,40–49.99,4.395604395604396,8
-songbird,price,50–59.99,2.7472527472527473,5
-songbird,price,60–69.99,4.395604395604396,8
-songbird,price,70–79.99,0.5494505494505495,1
-songbird,price,80–89.99,1.098901098901099,2
-songbird,price,90–99.99,2.7472527472527473,5
-songbird,price,100–109.99,1.6483516483516485,3
+songbird,price,10–19.99,34.42622950819672,63
+songbird,price,20–29.99,33.87978142076503,62
+songbird,price,30–39.99,10.92896174863388,20
+songbird,price,40–49.99,4.371584699453552,8
+songbird,price,50–59.99,2.73224043715847,5
+songbird,price,60–69.99,4.371584699453552,8
+songbird,price,70–79.99,0.546448087431694,1
+songbird,price,80–89.99,1.092896174863388,2
+songbird,price,90–99.99,2.73224043715847,5
+songbird,price,100–109.99,1.639344262295082,3
 songbird,price,110–119.99,0,0
 songbird,price,120–129.99,0,0
-songbird,price,130–139.99,0.5494505494505495,1
+songbird,price,130–139.99,0.546448087431694,1
 songbird,price,140–149.99,0,0
-songbird,price,150+,2.197802197802198,4
+songbird,price,150+,2.73224043715847,5
 songbird,rating,3 & less,0,0
-songbird,rating,3.1–3.5,3.8461538461538463,7
-songbird,rating,3.6–4,59.89010989010989,109
-songbird,rating,4.1–4.5,35.16483516483517,64
-songbird,rating,4.6 & above,1.098901098901099,2
-songbird,type,Dessert,1.098901098901099,2
-songbird,type,Fortified,0.5494505494505495,1
-songbird,type,Red,46.7032967032967,85
-songbird,type,Rose,8.791208791208792,16
-songbird,type,Sparkling,4.395604395604396,8
-songbird,type,White,38.46153846153847,70
+songbird,rating,3.1–3.5,3.825136612021858,7
+songbird,rating,3.6–4,59.56284153005464,109
+songbird,rating,4.1–4.5,35.51912568306011,65
+songbird,rating,4.6 & above,1.092896174863388,2
+songbird,type,Dessert,1.092896174863388,2
+songbird,type,Fortified,0.546448087431694,1
+songbird,type,Red,46.994535519125684,86
+songbird,type,Rose,8.743169398907105,16
+songbird,type,Sparkling,4.371584699453552,8
+songbird,type,White,38.25136612021858,70
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
-songbird,steals,steals,22.52747252747253,41
+songbird,steals,steals,22.404371584699454,41
 wading bird,price,<10,0,0
 wading bird,price,10–19.99,48,12
 wading bird,price,20–29.99,20,5

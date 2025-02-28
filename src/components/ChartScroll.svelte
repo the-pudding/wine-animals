@@ -287,7 +287,7 @@
     }
 
     :global(.selected-bottle-circle-span::after) {
-        border: 3px solid var(--wine-red);
+        border: 3px solid var(--wine-gold);
         border-radius: 50%;
         top: 0%;
     }

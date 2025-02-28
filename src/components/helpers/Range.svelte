@@ -59,7 +59,12 @@
 		bind:this={rangeInput}
         on:input={handleInput} />
 		<div class="thumb-label" style="left: {thumbOffset}px;">
-			<p>{value}</p>
+			<p>
+				{#if metric == "price"}
+					$
+				{/if}
+				{value}
+			</p>
 		</div>
 </div>
 
@@ -80,31 +85,6 @@
 		left: 3.75rem;
 	}
 
-	.actualPrice {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: var(--thumb-width);
-		width: var(--thumb-width);
-		border-radius: 50%;
-		background: transparent;
-		border: 2px dashed var(--wine-red);
-		appearance: none;
-		margin-top: calc(var(--thumb-width) / -3);
-	}
-
-	.actualPrice p {
-		position: absolute;
-		top: -2.75rem;
-		left: 50%;
-		font-size: 0.75rem;
-		color: var(--wine-red);
-		font-size: var(--18px);
-		font-weight: 700;
-		font-family: var(--sans);
-		text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
-	}
-
 	.thumb-label {
 		position: absolute;
 		top: -31px;
@@ -122,6 +102,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	#range-price .thumb-label {
+		transform: translateX(-50%) rotate(90deg);
+		top: 31px;
 	}
 
 	.thumb-label p {
