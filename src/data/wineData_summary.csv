@@ -26,6 +26,18 @@ amphibian/reptile,type,Red,44.73684210526316,17
 amphibian/reptile,type,Rose,2.631578947368421,1
 amphibian/reptile,type,Sparkling,2.631578947368421,1
 amphibian/reptile,type,White,47.368421052631575,18
+amphibian/reptile,country,France,10.526315789473683,4
+amphibian/reptile,country,United States,39.473684210526315,15
+amphibian/reptile,country,Italy,13.157894736842104,5
+amphibian/reptile,country,Spain,13.157894736842104,5
+amphibian/reptile,country,Argentina,0,0
+amphibian/reptile,country,Portugal,0,0
+amphibian/reptile,country,South Africa,5.263157894736842,2
+amphibian/reptile,country,Australia,10.526315789473683,4
+amphibian/reptile,country,Germany,0,0
+amphibian/reptile,country,Chile,5.263157894736842,2
+amphibian/reptile,country,New Zealand,2.631578947368421,1
+amphibian/reptile,country,Austria,0,0
 amphibian/reptile,median,medianPrice,,30.965000000000003
 amphibian/reptile,median,medianRating,,3.95
 amphibian/reptile,steals,steals,5.263157894736842,2
@@ -56,6 +68,18 @@ bear,type,Red,43.47826086956522,10
 bear,type,Rose,13.043478260869565,3
 bear,type,Sparkling,0,0
 bear,type,White,43.47826086956522,10
+bear,country,France,13.043478260869565,3
+bear,country,United States,60.86956521739131,14
+bear,country,Italy,13.043478260869565,3
+bear,country,Spain,13.043478260869565,3
+bear,country,Argentina,0,0
+bear,country,Portugal,0,0
+bear,country,South Africa,0,0
+bear,country,Australia,0,0
+bear,country,Germany,0,0
+bear,country,Chile,0,0
+bear,country,New Zealand,0,0
+bear,country,Austria,0,0
 bear,median,medianPrice,,31.55
 bear,median,medianRating,,4.1
 bear,steals,steals,13.043478260869565,3
@@ -86,6 +110,18 @@ bird,type,Red,40.99783080260303,189
 bird,type,Rose,8.026030368763557,37
 bird,type,Sparkling,6.29067245119306,29
 bird,type,White,42.0824295010846,194
+bird,country,France,17.136659436008678,79
+bird,country,United States,23.427331887201735,108
+bird,country,Italy,21.69197396963124,100
+bird,country,Spain,7.809110629067245,36
+bird,country,Argentina,3.036876355748373,14
+bird,country,Portugal,4.121475054229935,19
+bird,country,South Africa,6.073752711496746,28
+bird,country,Australia,3.68763557483731,17
+bird,country,Germany,2.8199566160520604,13
+bird,country,Chile,1.5184381778741864,7
+bird,country,New Zealand,5.42299349240781,25
+bird,country,Austria,1.3015184381778742,6
 bird,median,medianPrice,,25.99
 bird,median,medianRating,,4
 bird,steals,steals,16.48590021691974,76
@@ -116,6 +152,18 @@ bug,type,Red,30.612244897959183,30
 bug,type,Rose,14.285714285714285,14
 bug,type,Sparkling,3.061224489795918,3
 bug,type,White,50,49
+bug,country,France,14.285714285714285,14
+bug,country,United States,22.448979591836736,22
+bug,country,Italy,20.408163265306122,20
+bug,country,Spain,8.16326530612245,8
+bug,country,Argentina,5.1020408163265305,5
+bug,country,Portugal,2.0408163265306123,2
+bug,country,South Africa,3.061224489795918,3
+bug,country,Australia,7.142857142857142,7
+bug,country,Germany,3.061224489795918,3
+bug,country,Chile,1.0204081632653061,1
+bug,country,New Zealand,6.122448979591836,6
+bug,country,Austria,5.1020408163265305,5
 bug,median,medianPrice,,22.655
 bug,median,medianRating,,3.9
 bug,steals,steals,21.428571428571427,21
@@ -146,6 +194,18 @@ canine,type,Red,43.47826086956522,50
 canine,type,Rose,12.173913043478262,14
 canine,type,Sparkling,5.217391304347826,6
 canine,type,White,36.52173913043478,42
+canine,country,France,20.869565217391305,24
+canine,country,United States,18.26086956521739,21
+canine,country,Italy,24.347826086956523,28
+canine,country,Spain,6.086956521739131,7
+canine,country,Argentina,0,0
+canine,country,Portugal,5.217391304347826,6
+canine,country,South Africa,9.565217391304348,11
+canine,country,Australia,2.608695652173913,3
+canine,country,Germany,4.3478260869565215,5
+canine,country,Chile,0,0
+canine,country,New Zealand,3.4782608695652173,4
+canine,country,Austria,2.608695652173913,3
 canine,median,medianPrice,,28.99
 canine,median,medianRating,,4
 canine,steals,steals,10.434782608695652,12
@@ -176,6 +236,18 @@ cat,type,Red,49.34640522875817,151
 cat,type,Rose,2.941176470588235,9
 cat,type,Sparkling,10.784313725490197,33
 cat,type,White,30.718954248366014,94
+cat,country,France,39.21568627450981,120
+cat,country,United States,12.418300653594772,38
+cat,country,Italy,21.241830065359476,65
+cat,country,Spain,7.8431372549019605,24
+cat,country,Argentina,3.594771241830065,11
+cat,country,Portugal,2.287581699346405,7
+cat,country,South Africa,3.9215686274509802,12
+cat,country,Australia,1.6339869281045754,5
+cat,country,Germany,1.9607843137254901,6
+cat,country,Chile,2.941176470588235,9
+cat,country,New Zealand,0.32679738562091504,1
+cat,country,Austria,1.3071895424836601,4
 cat,median,medianPrice,,34.99
 cat,median,medianRating,,4.1
 cat,steals,steals,10.130718954248366,31
@@ -206,6 +278,18 @@ cattle,type,Red,56.52173913043478,26
 cattle,type,Rose,2.1739130434782608,1
 cattle,type,Sparkling,6.521739130434782,3
 cattle,type,White,32.608695652173914,15
+cattle,country,France,6.521739130434782,3
+cattle,country,United States,17.391304347826086,8
+cattle,country,Italy,21.73913043478261,10
+cattle,country,Spain,17.391304347826086,8
+cattle,country,Argentina,13.043478260869565,6
+cattle,country,Portugal,2.1739130434782608,1
+cattle,country,South Africa,4.3478260869565215,2
+cattle,country,Australia,0,0
+cattle,country,Germany,0,0
+cattle,country,Chile,8.695652173913043,4
+cattle,country,New Zealand,0,0
+cattle,country,Austria,4.3478260869565215,2
 cattle,median,medianPrice,,22.494999999999997
 cattle,median,medianRating,,3.9
 cattle,steals,steals,13.043478260869565,6
@@ -236,6 +320,18 @@ deer,type,Red,50,25
 deer,type,Rose,8,4
 deer,type,Sparkling,2,1
 deer,type,White,38,19
+deer,country,France,16,8
+deer,country,United States,28.000000000000004,14
+deer,country,Italy,6,3
+deer,country,Spain,12,6
+deer,country,Argentina,2,1
+deer,country,Portugal,0,0
+deer,country,South Africa,18,9
+deer,country,Australia,6,3
+deer,country,Germany,6,3
+deer,country,Chile,2,1
+deer,country,New Zealand,0,0
+deer,country,Austria,2,1
 deer,median,medianPrice,,30.49
 deer,median,medianRating,,4
 deer,steals,steals,6,3
@@ -266,6 +362,18 @@ fish,type,Red,24.193548387096776,15
 fish,type,Rose,9.67741935483871,6
 fish,type,Sparkling,3.225806451612903,2
 fish,type,White,61.29032258064516,38
+fish,country,France,12.903225806451612,8
+fish,country,United States,22.58064516129032,14
+fish,country,Italy,11.29032258064516,7
+fish,country,Spain,11.29032258064516,7
+fish,country,Argentina,3.225806451612903,2
+fish,country,Portugal,3.225806451612903,2
+fish,country,South Africa,6.451612903225806,4
+fish,country,Australia,14.516129032258066,9
+fish,country,Germany,4.838709677419355,3
+fish,country,Chile,0,0
+fish,country,New Zealand,4.838709677419355,3
+fish,country,Austria,3.225806451612903,2
 fish,median,medianPrice,,24.99
 fish,median,medianRating,,3.9
 fish,steals,steals,24.193548387096776,15
@@ -296,6 +404,18 @@ horse,type,Red,43.44827586206896,63
 horse,type,Rose,6.896551724137931,10
 horse,type,Sparkling,7.586206896551724,11
 horse,type,White,37.93103448275862,55
+horse,country,France,20.689655172413794,30
+horse,country,United States,21.379310344827587,31
+horse,country,Italy,28.965517241379313,42
+horse,country,Spain,4.137931034482759,6
+horse,country,Argentina,6.206896551724138,9
+horse,country,Portugal,2.0689655172413794,3
+horse,country,South Africa,4.137931034482759,6
+horse,country,Australia,0.6896551724137931,1
+horse,country,Germany,2.7586206896551726,4
+horse,country,Chile,4.137931034482759,6
+horse,country,New Zealand,1.3793103448275863,2
+horse,country,Austria,0.6896551724137931,1
 horse,median,medianPrice,,25
 horse,median,medianRating,,4
 horse,steals,steals,14.482758620689657,21
@@ -326,6 +446,18 @@ human,type,Red,43.605236656596176,433
 human,type,Rose,8.66062437059416,86
 human,type,Sparkling,8.761329305135952,87
 human,type,White,35.54884189325277,353
+human,country,France,20.84592145015106,207
+human,country,United States,18.22759315206445,181
+human,country,Italy,24.169184290030213,240
+human,country,Spain,12.386706948640484,123
+human,country,Argentina,4.632426988922457,46
+human,country,Portugal,2.6183282980866065,26
+human,country,South Africa,3.0211480362537766,30
+human,country,Australia,3.5246727089627394,35
+human,country,Germany,2.920443101711984,29
+human,country,Chile,3.5246727089627394,35
+human,country,New Zealand,1.3091641490433032,13
+human,country,Austria,1.9133937562940584,19
 human,median,medianPrice,,27.335
 human,median,medianRating,,4
 human,steals,steals,13.595166163141995,135
@@ -356,6 +488,18 @@ marine invertebrate,type,Red,15.151515151515152,5
 marine invertebrate,type,Rose,9.090909090909092,3
 marine invertebrate,type,Sparkling,3.0303030303030303,1
 marine invertebrate,type,White,69.6969696969697,23
+marine invertebrate,country,France,30.303030303030305,10
+marine invertebrate,country,United States,12.121212121212121,4
+marine invertebrate,country,Italy,21.21212121212121,7
+marine invertebrate,country,Spain,15.151515151515152,5
+marine invertebrate,country,Argentina,3.0303030303030303,1
+marine invertebrate,country,Portugal,0,0
+marine invertebrate,country,South Africa,3.0303030303030303,1
+marine invertebrate,country,Australia,0,0
+marine invertebrate,country,Germany,0,0
+marine invertebrate,country,Chile,0,0
+marine invertebrate,country,New Zealand,15.151515151515152,5
+marine invertebrate,country,Austria,0,0
 marine invertebrate,median,medianPrice,,22.67
 marine invertebrate,median,medianRating,,3.9
 marine invertebrate,steals,steals,18.181818181818183,6
@@ -386,6 +530,18 @@ mythical,type,Red,46.72131147540984,57
 mythical,type,Rose,4.918032786885246,6
 mythical,type,Sparkling,6.557377049180328,8
 mythical,type,White,37.704918032786885,46
+mythical,country,France,21.311475409836063,26
+mythical,country,United States,22.131147540983605,27
+mythical,country,Italy,30.327868852459016,37
+mythical,country,Spain,9.01639344262295,11
+mythical,country,Argentina,2.459016393442623,3
+mythical,country,Portugal,0.819672131147541,1
+mythical,country,South Africa,2.459016393442623,3
+mythical,country,Australia,3.278688524590164,4
+mythical,country,Germany,2.459016393442623,3
+mythical,country,Chile,2.459016393442623,3
+mythical,country,New Zealand,0,0
+mythical,country,Austria,1.639344262295082,2
 mythical,median,medianPrice,,34.99
 mythical,median,medianRating,,4.1
 mythical,steals,steals,14.754098360655737,18
@@ -416,6 +572,18 @@ none,type,Red,43.29955758527187,3034
 none,type,Rose,8.091908091908092,567
 none,type,Sparkling,7.892107892107893,553
 none,type,White,37.00585129156558,2593
+none,country,France,27.32981304409876,1915
+none,country,United States,22.49179392036535,1576
+none,country,Italy,20.322534608248894,1424
+none,country,Spain,9.875838447267018,692
+none,country,Argentina,3.0112744398458684,211
+none,country,Portugal,2.7258455829884403,191
+none,country,South Africa,2.2263450834879404,156
+none,country,Australia,2.4261452832881405,170
+none,country,Germany,2.169259312116455,152
+none,country,Chile,2.2263450834879404,156
+none,country,New Zealand,2.097902097902098,147
+none,country,Austria,1.8124732410446696,127
 none,median,medianPrice,,29.99
 none,median,medianRating,,4
 none,steals,steals,13.871842443271015,972
@@ -446,6 +614,18 @@ pachyderm,type,Red,37.5,9
 pachyderm,type,Rose,12.5,3
 pachyderm,type,Sparkling,0,0
 pachyderm,type,White,50,12
+pachyderm,country,France,16.666666666666664,4
+pachyderm,country,United States,25,6
+pachyderm,country,Italy,16.666666666666664,4
+pachyderm,country,Spain,4.166666666666666,1
+pachyderm,country,Argentina,0,0
+pachyderm,country,Portugal,4.166666666666666,1
+pachyderm,country,South Africa,25,6
+pachyderm,country,Australia,0,0
+pachyderm,country,Germany,0,0
+pachyderm,country,Chile,0,0
+pachyderm,country,New Zealand,0,0
+pachyderm,country,Austria,4.166666666666666,1
 pachyderm,median,medianPrice,,24.22
 pachyderm,median,medianRating,,3.9
 pachyderm,steals,steals,8.333333333333332,2
@@ -476,6 +656,18 @@ rabbit,type,Red,44,11
 rabbit,type,Rose,8,2
 rabbit,type,Sparkling,4,1
 rabbit,type,White,40,10
+rabbit,country,France,12,3
+rabbit,country,United States,16,4
+rabbit,country,Italy,20,5
+rabbit,country,Spain,16,4
+rabbit,country,Argentina,8,2
+rabbit,country,Portugal,0,0
+rabbit,country,South Africa,0,0
+rabbit,country,Australia,4,1
+rabbit,country,Germany,12,3
+rabbit,country,Chile,0,0
+rabbit,country,New Zealand,0,0
+rabbit,country,Austria,12,3
 rabbit,median,medianPrice,,29.99
 rabbit,median,medianRating,,4
 rabbit,steals,steals,12,3
@@ -506,6 +698,18 @@ ram,type,Red,33.33333333333333,19
 ram,type,Rose,12.280701754385964,7
 ram,type,Sparkling,0,0
 ram,type,White,52.63157894736842,30
+ram,country,France,21.052631578947366,12
+ram,country,United States,14.035087719298245,8
+ram,country,Italy,21.052631578947366,12
+ram,country,Spain,7.017543859649122,4
+ram,country,Argentina,1.7543859649122806,1
+ram,country,Portugal,5.263157894736842,3
+ram,country,South Africa,14.035087719298245,8
+ram,country,Australia,5.263157894736842,3
+ram,country,Germany,1.7543859649122806,1
+ram,country,Chile,0,0
+ram,country,New Zealand,5.263157894736842,3
+ram,country,Austria,1.7543859649122806,1
 ram,median,medianPrice,,21.74
 ram,median,medianRating,,3.9
 ram,steals,steals,19.298245614035086,11
@@ -536,6 +740,18 @@ pig,type,Red,46.42857142857143,13
 pig,type,Rose,25,7
 pig,type,Sparkling,7.142857142857142,2
 pig,type,White,17.857142857142858,5
+pig,country,France,21.428571428571427,6
+pig,country,United States,14.285714285714285,4
+pig,country,Italy,21.428571428571427,6
+pig,country,Spain,14.285714285714285,4
+pig,country,Argentina,0,0
+pig,country,Portugal,10.714285714285714,3
+pig,country,South Africa,3.571428571428571,1
+pig,country,Australia,7.142857142857142,2
+pig,country,Germany,0,0
+pig,country,Chile,0,0
+pig,country,New Zealand,7.142857142857142,2
+pig,country,Austria,0,0
 pig,median,medianPrice,,23.22
 pig,median,medianRating,,3.8
 pig,steals,steals,10.714285714285714,3
@@ -566,6 +782,18 @@ all,type,Red,42.9783122181662,4003
 all,type,Rose,8.12754992484432,757
 all,type,Sparkling,7.794717629375134,726
 all,type,White,37.459738028773884,3489
+all,country,France,25.971655572256818,2419
+all,country,United States,21.999141077947176,2049
+all,country,Italy,20.828859780974877,1940
+all,country,Spain,9.877603607472622,920
+all,country,Argentina,3.15653854412712,294
+all,country,Portugal,2.7592870946961563,257
+all,country,South Africa,2.7270775177152675,254
+all,country,Australia,2.716340992054971,253
+all,country,Germany,2.3405625939445995,218
+all,country,Chile,2.2761434399828215,212
+all,country,New Zealand,2.233197337341636,208
+all,country,Austria,1.8037363109297833,168
 all,median,medianPrice,,29.99
 all,median,medianRating,,4
 all,steals,steals,13.94674683272493,1299
@@ -596,6 +824,18 @@ animal wines,type,Red,41.263440860215056,614
 animal wines,type,Rose,7.997311827956989,119
 animal wines,type,Sparkling,6.451612903225806,96
 animal wines,type,White,40.86021505376344,608
+animal wines,country,France,22.177419354838708,330
+animal wines,country,United States,21.370967741935484,318
+animal wines,country,Italy,21.841397849462364,325
+animal wines,country,Spain,8.131720430107526,121
+animal wines,country,Argentina,3.1586021505376345,47
+animal wines,country,Portugal,3.0913978494623655,46
+animal wines,country,South Africa,5.376344086021505,80
+animal wines,country,Australia,3.494623655913978,52
+animal wines,country,Germany,2.956989247311828,44
+animal wines,country,Chile,1.747311827956989,26
+animal wines,country,New Zealand,3.293010752688172,49
+animal wines,country,Austria,1.747311827956989,26
 animal wines,median,medianPrice,,26.99
 animal wines,median,medianRating,,4
 animal wines,steals,steals,14.516129032258066,216

@@ -20,6 +20,8 @@ const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "pea
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100–109.99", "110–119.99", "120–129.99", "130–139.99", "140–149.99", "150+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
 const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
+const countryBuckets = ["France", "United States", "Italy", "Spain", "Argentina",
+                        "Portugal", "South Africa", "Australia", "Germany", "Chile", "New Zealand", "Austria"]
 
 // AVERAGES
 const totalAvgPrice = d3.median(data.filter(d => d.price <= 150), d => d.price);
@@ -58,6 +60,7 @@ function summarizeWines(animalGroup, dataset, metric) {
         priceData: getCountsAndPercents(priceBuckets, "priceBucket"),
         ratingData: getCountsAndPercents(ratingBuckets, "ratingBucket"),
         typeData: getCountsAndPercents(wineTypeBuckets, "type"),
+        countryData: getCountsAndPercents(countryBuckets, "country"),
         medianPrice: d3.median(filteredWines, d => d.price),
         medianRating: d3.median(filteredWines, d => d.rating),
         steals: {
@@ -81,6 +84,10 @@ function formatCSV(summaryData) {
         ...wineTypeBuckets.map(bucket => ({
             animalGroup: d.animalGroup, category: "type", bucket,
             percent: d.typeData[bucket].percent || 0, count: d.typeData[bucket].count || 0
+        })),
+        ...countryBuckets.map(bucket => ({
+            animalGroup: d.animalGroup, category: "country", bucket,
+            percent: d.countryData[bucket].percent || 0, count: d.countryData[bucket].count || 0
         })),
         { animalGroup: d.animalGroup, category: "median", bucket: "medianPrice", percent: null, count: d.medianPrice },
         { animalGroup: d.animalGroup, category: "median", bucket: "medianRating", percent: null, count: d.medianRating },

@@ -316,7 +316,7 @@
 
     :global(.more-span) {
         font-weight: 700;
-        background: var(--wine-red);
+        background: var(--wine-green);
         color: var(--wine-black);
         padding: 0.125rem 0.25rem;
         border-radius: 3px;
@@ -325,7 +325,7 @@
 
     :global(.less-span) {
         font-weight: 700;
-        background: var(--wine-gold);
+        background: var(--wine-red);
         color: var(--wine-black);
         padding: 0.125rem 0.25rem;
         border-radius: 3px;

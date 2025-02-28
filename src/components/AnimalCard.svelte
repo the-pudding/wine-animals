@@ -15,50 +15,54 @@
 {#if animal !== "human" && animal !== "none"}
     <div class="animal-card">
         <div class="rail" id="rail-left">
-            <div class="icon">
-                <img src="./assets/images/icons/{strippedAnimal}.png" />
-            </div>
-            <h3>{animal}</h3>
-            <p>
-                <span class="bold">Median price:</span>
-                ${medianData.find(d => d.topGroup == animal).price} 
-            </p>
-            <p>
-                <span class="bold">Median rating:</span>
-                {medianData.find(d => d.topGroup == animal).rating} 
-                <span class="stars">
-                    {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
-                        <span class="full-star">{@html starIcon}</span> <!-- Full star -->
-                    {/each}
-            
-                    {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
-                        <span class="partial-star">
-                            <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
-                                {@html starIcon}
+            <div class="deets">
+                <div class="icon">
+                    <img src="./assets/images/icons/{strippedAnimal}.png" />
+                </div>
+                <h3>{animal}</h3>
+                <div class="medians-wrapper">
+                    <div class="median">
+                        <p>Median price</p>
+                        <p>${medianData.find(d => d.topGroup == animal).price}</p>
+                    </div>
+                    <div class="median">
+                        <p>Median rating</p>
+                        <p>{medianData.find(d => d.topGroup == animal).rating}
+                            <span class="stars">
+                                {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
+                                    <span class="full-star">{@html starIcon}</span> <!-- Full star -->
+                                {/each}
+                        
+                                {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
+                                    <span class="partial-star">
+                                        <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
+                                            {@html starIcon}
+                                        </span>
+                                    </span> <!-- Partial star -->
+                                {/if}
                             </span>
-                        </span> <!-- Partial star -->
+                        </p>
+                    </div>
+                    <div class="median">
+                        <p>Steals %</p>
+                        <p>XX%</p>
+                    </div>
+                </div>
+                {#if copy.summaryCards.find(card => card.animal === animal)}
+                    {@const selectedCard = copy.summaryCards.find(card => card.animal === animal)}
+                    {#if selectedCard.text}
+                        {#each selectedCard.text as graf, i}
+                            <p>{@html graf.value}</p>
+                        {/each}
                     {/if}
-                </span>
-            </p>
-            {#if copy.summaryCards.find(card => card.animal === animal)}
-                {@const selectedCard = copy.summaryCards.find(card => card.animal === animal)}
-                <ul>
-                    {#each selectedCard.points as point}
-                        <li>{point}</li>
-                    {/each}
-                </ul>
-                {#if selectedCard.text}
-                    {#each selectedCard.text as graf, i}
-                        <p>{@html graf.value}</p>
-                    {/each}
                 {/if}
-            {/if}
-        </div>
-        <div class="rail" id="rail-center">
-            <ScrollHisto animal={animal}/>
+            </div>
+            <div class="scatter-wrapper">
+                <Scatter animal={animal}/>
+            </div>
         </div>
         <div class="rail" id="rail-right">
-            <Scatter animal={animal}/>
+            <ScrollHisto animal={animal}/>
         </div>
     </div>
 {/if}
@@ -66,23 +70,79 @@
 <style>
     .animal-card {
         width: calc(100% - 4rem);
-        margin: 0 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
         border: 1px solid var(--wine-med-gray);
         border-radius: 3px;
         padding: 2rem;
         display: flex;
-        flex-direction: row;
-        gap: 4rem;
+        flex-direction: column;
+        gap: 1rem;
         color: var(--wine-tan);
     }
 
-    .rail {
-        width: 33%;
+    #rail-left {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #rail-right {
+        width: 100%;
+    }
+
+    .deets {
+        width: 40%;
+        padding-right: 2rem;
+    }
+
+    .deets p {
+        font-size: var(--18px);
+        line-height: 1.65;
+    }
+
+    .medians-wrapper {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .median {
+        width: 40%;
+        font-family: var(--sans);
+    }
+
+    .median:first-of-type {
+        max-width: 35%;
+    }
+
+    .median:last-of-type {
+        max-width: 25%;
+    }
+
+    .median p:first-of-type {
+        text-transform: uppercase;
+        margin: 0;
+        color: var(--wine-dark-tan);
+        font-size: var(--14px);
+    }
+
+    .median p:nth-of-type(2) {
+        font-size: var(--32px);
+        margin: 0;
+    }
+
+    .scatter-wrapper {
+        width: 60%;
     }
 
     h3 {
         color: var(--wine-tan);
         text-transform: capitalize;
+        font-size: var(--36px);
+        font-weight: 700;
     }
 
     .icon {
@@ -99,18 +159,12 @@
         width: 90%;
     }
 
-    .stars-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 700;
-    }
-
     .stars {
         display: inline-flex;
         align-items: center;
+        margin: 0;
         position: relative;
-        top: 0.25rem;
+        top: -0.25rem;
     }
 
     :global(.full-star svg, .partial-star svg) {

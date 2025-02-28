@@ -10,6 +10,8 @@
     import { animalSelect, metricSelect } from "$stores/misc.js";
     import data from "$data/wineData_summary.csv";
 
+    const copy = getContext("copy");
+
     export let chartScrollIndex;
     export let width;
     export let animal;
@@ -66,12 +68,14 @@
             .domain(xDomainLine)
             .range([0, width])}
         {#if category.key !== "steals"}
+            {@const matchedCopy = copy.summaryCards.find(card => card.animal === animal)}
             <div class="chart-wrapper">
+                <h5>{category.key}</h5>
                 <div class="chart-layers">
                     <div class="chart-container bars" id="bars_{category[0]}">
                         <LayerCake
                         bind:width
-                        padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                        padding={{ top: 0, right: 0, bottom: 40, left: 0 }}
                         x={xKey}
                         y={yKey}
                         xScale={d3.scaleBand().paddingInner(0.04)}
@@ -88,7 +92,7 @@
                     <div class="chart-container" id="line" style="pointer-events:none">
                         <LayerCake
                             bind:width
-                            padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                            padding={{ top: 0, right: 0, bottom: 40, left: 0 }}
                             x={xKey}
                             y={yKey}
                             xScale={xScaleLine}
@@ -102,7 +106,15 @@
                         </LayerCake>
                     </div>
                 </div>
-                <h3>{category.key}</h3>
+                {#if category.key == "price"}
+                    <p class="comments">{@html matchedCopy.priceComments}</p>
+                {:else if category.key == "rating"}
+                    <p class="comments">{@html matchedCopy.ratingComments}</p>
+                {:else if category.key == "type"}
+                    <p class="comments">{@html matchedCopy.typeComments}</p>
+                {:else if category.key == "country"}
+                    <p class="comments">{@html matchedCopy.countryComments}</p>
+                {/if}
             </div>
         {/if}
     {/each}
@@ -113,12 +125,14 @@
         width: 100%;
         height: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         position: relative;
         pointer-events: auto;
+        gap: 4rem;
+        margin-bottom: 2rem;
     }
 
     .key {
@@ -135,6 +149,18 @@
 
     .key p {
         margin: 0;
+    }
+
+    .comments {
+        margin: 0.5rem 0 0 0;
+        font-family: var(--sans);
+        font-size: var(--18px);
+    }
+
+    .category-span {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: var(--20px);
     }
 
     .axis-labels {
@@ -203,24 +229,23 @@
     }
 
     .chart-wrapper {
-        width: 100%;
-        max-width: 600px;
+        width: calc(25% - 4rem);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         position: relative;
         transition: opacity 0.4s linear;
     }
 
-    h3 {
-        font-family: var(--sans);
-        font-size: var(--16px);
+    h5 {
+        font-family: var(--serif);
+        font-size: var(--20px);
         font-weight: 700;
         text-align: center;
         margin: 2.5rem 0 0 0;
         color: var(--wine-tan);
-        text-transform: uppercase;
+        text-transform: capitalize;
     }
 
     .tot-count {

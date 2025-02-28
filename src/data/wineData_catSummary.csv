@@ -26,6 +26,18 @@ cat,type,Red,33.33333333333333,4
 cat,type,Rose,16.666666666666664,2
 cat,type,Sparkling,8.333333333333332,1
 cat,type,White,41.66666666666667,5
+cat,country,France,50,6
+cat,country,United States,8.333333333333332,1
+cat,country,Italy,25,3
+cat,country,Spain,0,0
+cat,country,Argentina,8.333333333333332,1
+cat,country,Portugal,0,0
+cat,country,South Africa,0,0
+cat,country,Australia,0,0
+cat,country,Germany,0,0
+cat,country,Chile,8.333333333333332,1
+cat,country,New Zealand,0,0
+cat,country,Austria,0,0
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
 cat,steals,steals,8.333333333333332,1
@@ -56,6 +68,18 @@ cheetah,type,Red,100,1
 cheetah,type,Rose,0,0
 cheetah,type,Sparkling,0,0
 cheetah,type,White,0,0
+cheetah,country,France,0,0
+cheetah,country,United States,0,0
+cheetah,country,Italy,0,0
+cheetah,country,Spain,0,0
+cheetah,country,Argentina,0,0
+cheetah,country,Portugal,0,0
+cheetah,country,South Africa,100,1
+cheetah,country,Australia,0,0
+cheetah,country,Germany,0,0
+cheetah,country,Chile,0,0
+cheetah,country,New Zealand,0,0
+cheetah,country,Austria,0,0
 cheetah,median,medianPrice,,16.99
 cheetah,median,medianRating,,3.7
 cheetah,steals,steals,0,0
@@ -86,6 +110,18 @@ cougar,type,Red,100,2
 cougar,type,Rose,0,0
 cougar,type,Sparkling,0,0
 cougar,type,White,0,0
+cougar,country,France,0,0
+cougar,country,United States,50,1
+cougar,country,Italy,0,0
+cougar,country,Spain,0,0
+cougar,country,Argentina,0,0
+cougar,country,Portugal,0,0
+cougar,country,South Africa,0,0
+cougar,country,Australia,0,0
+cougar,country,Germany,0,0
+cougar,country,Chile,50,1
+cougar,country,New Zealand,0,0
+cougar,country,Austria,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
 cougar,steals,steals,0,0
@@ -116,6 +152,18 @@ jaguar/leopard/panther,type,Red,0,0
 jaguar/leopard/panther,type,Rose,0,0
 jaguar/leopard/panther,type,Sparkling,33.33333333333333,1
 jaguar/leopard/panther,type,White,33.33333333333333,1
+jaguar/leopard/panther,country,France,0,0
+jaguar/leopard/panther,country,United States,33.33333333333333,1
+jaguar/leopard/panther,country,Italy,0,0
+jaguar/leopard/panther,country,Spain,33.33333333333333,1
+jaguar/leopard/panther,country,Argentina,0,0
+jaguar/leopard/panther,country,Portugal,0,0
+jaguar/leopard/panther,country,South Africa,0,0
+jaguar/leopard/panther,country,Australia,0,0
+jaguar/leopard/panther,country,Germany,0,0
+jaguar/leopard/panther,country,Chile,33.33333333333333,1
+jaguar/leopard/panther,country,New Zealand,0,0
+jaguar/leopard/panther,country,Austria,0,0
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
 jaguar/leopard/panther,steals,steals,33.33333333333333,1
@@ -146,6 +194,18 @@ lion,type,Red,48.728813559322035,115
 lion,type,Rose,2.11864406779661,5
 lion,type,Sparkling,11.864406779661017,28
 lion,type,White,30.08474576271186,71
+lion,country,France,47.03389830508475,111
+lion,country,United States,10.16949152542373,24
+lion,country,Italy,21.610169491525426,51
+lion,country,Spain,6.3559322033898304,15
+lion,country,Argentina,1.694915254237288,4
+lion,country,Portugal,2.5423728813559325,6
+lion,country,South Africa,2.9661016949152543,7
+lion,country,Australia,2.11864406779661,5
+lion,country,Germany,2.5423728813559325,6
+lion,country,Chile,0.847457627118644,2
+lion,country,New Zealand,0.423728813559322,1
+lion,country,Austria,0.847457627118644,2
 lion,median,medianPrice,,39.985
 lion,median,medianRating,,4.1
 lion,steals,steals,9.322033898305085,22
@@ -176,6 +236,18 @@ lion crest,type,Red,48.97959183673469,96
 lion crest,type,Rose,2.0408163265306123,4
 lion crest,type,Sparkling,13.26530612244898,26
 lion crest,type,White,28.061224489795915,55
+lion crest,country,France,50,98
+lion crest,country,United States,6.63265306122449,13
+lion crest,country,Italy,20.918367346938776,41
+lion crest,country,Spain,6.63265306122449,13
+lion crest,country,Argentina,2.0408163265306123,4
+lion crest,country,Portugal,2.5510204081632653,5
+lion crest,country,South Africa,3.571428571428571,7
+lion crest,country,Australia,2.0408163265306123,4
+lion crest,country,Germany,2.5510204081632653,5
+lion crest,country,Chile,1.0204081632653061,2
+lion crest,country,New Zealand,0.5102040816326531,1
+lion crest,country,Austria,0.5102040816326531,1
 lion crest,median,medianPrice,,39.99
 lion crest,median,medianRating,,4.1
 lion crest,steals,steals,9.183673469387756,18
@@ -206,6 +278,18 @@ lynx,type,Red,50,2
 lynx,type,Rose,25,1
 lynx,type,Sparkling,0,0
 lynx,type,White,25,1
+lynx,country,France,0,0
+lynx,country,United States,50,2
+lynx,country,Italy,0,0
+lynx,country,Spain,0,0
+lynx,country,Argentina,0,0
+lynx,country,Portugal,0,0
+lynx,country,South Africa,50,2
+lynx,country,Australia,0,0
+lynx,country,Germany,0,0
+lynx,country,Chile,0,0
+lynx,country,New Zealand,0,0
+lynx,country,Austria,0,0
 lynx,median,medianPrice,,33.375
 lynx,median,medianRating,,4.1
 lynx,steals,steals,25,1
@@ -236,6 +320,18 @@ tiger,type,Red,0,0
 tiger,type,Rose,0,0
 tiger,type,Sparkling,0,0
 tiger,type,White,100,1
+tiger,country,France,0,0
+tiger,country,United States,100,1
+tiger,country,Italy,0,0
+tiger,country,Spain,0,0
+tiger,country,Argentina,0,0
+tiger,country,Portugal,0,0
+tiger,country,South Africa,0,0
+tiger,country,Australia,0,0
+tiger,country,Germany,0,0
+tiger,country,Chile,0,0
+tiger,country,New Zealand,0,0
+tiger,country,Austria,0,0
 tiger,median,medianPrice,,89.99
 tiger,median,medianRating,,4.4
 tiger,steals,steals,0,0

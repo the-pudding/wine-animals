@@ -26,6 +26,18 @@ duck,type,Red,29.545454545454547,13
 duck,type,Rose,6.8181818181818175,3
 duck,type,Sparkling,11.363636363636363,5
 duck,type,White,47.72727272727273,21
+duck,country,France,4.545454545454546,2
+duck,country,United States,43.18181818181818,19
+duck,country,Italy,15.909090909090908,7
+duck,country,Spain,2.272727272727273,1
+duck,country,Argentina,0,0
+duck,country,Portugal,6.8181818181818175,3
+duck,country,South Africa,4.545454545454546,2
+duck,country,Australia,11.363636363636363,5
+duck,country,Germany,0,0
+duck,country,Chile,0,0
+duck,country,New Zealand,9.090909090909092,4
+duck,country,Austria,0,0
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
 duck,steals,steals,13.636363636363635,6
@@ -56,6 +68,18 @@ flightless bird,type,Red,28.57142857142857,2
 flightless bird,type,Rose,14.285714285714285,1
 flightless bird,type,Sparkling,0,0
 flightless bird,type,White,57.14285714285714,4
+flightless bird,country,France,0,0
+flightless bird,country,United States,14.285714285714285,1
+flightless bird,country,Italy,14.285714285714285,1
+flightless bird,country,Spain,0,0
+flightless bird,country,Argentina,0,0
+flightless bird,country,Portugal,0,0
+flightless bird,country,South Africa,28.57142857142857,2
+flightless bird,country,Australia,0,0
+flightless bird,country,Germany,0,0
+flightless bird,country,Chile,0,0
+flightless bird,country,New Zealand,42.857142857142854,3
+flightless bird,country,Austria,0,0
 flightless bird,median,medianPrice,,14.99
 flightless bird,median,medianRating,,3.8
 flightless bird,steals,steals,14.285714285714285,1
@@ -86,6 +110,18 @@ game bird,type,Red,47.82608695652174,11
 game bird,type,Rose,13.043478260869565,3
 game bird,type,Sparkling,8.695652173913043,2
 game bird,type,White,26.08695652173913,6
+game bird,country,France,13.043478260869565,3
+game bird,country,United States,26.08695652173913,6
+game bird,country,Italy,21.73913043478261,5
+game bird,country,Spain,4.3478260869565215,1
+game bird,country,Argentina,8.695652173913043,2
+game bird,country,Portugal,0,0
+game bird,country,South Africa,4.3478260869565215,1
+game bird,country,Australia,8.695652173913043,2
+game bird,country,Germany,0,0
+game bird,country,Chile,0,0
+game bird,country,New Zealand,0,0
+game bird,country,Austria,4.3478260869565215,1
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
 game bird,steals,steals,21.73913043478261,5
@@ -116,6 +152,18 @@ junglefowl,type,Red,39.130434782608695,18
 junglefowl,type,Rose,6.521739130434782,3
 junglefowl,type,Sparkling,8.695652173913043,4
 junglefowl,type,White,45.65217391304348,21
+junglefowl,country,France,36.95652173913043,17
+junglefowl,country,United States,8.695652173913043,4
+junglefowl,country,Italy,21.73913043478261,10
+junglefowl,country,Spain,13.043478260869565,6
+junglefowl,country,Argentina,0,0
+junglefowl,country,Portugal,0,0
+junglefowl,country,South Africa,4.3478260869565215,2
+junglefowl,country,Australia,6.521739130434782,3
+junglefowl,country,Germany,4.3478260869565215,2
+junglefowl,country,Chile,2.1739130434782608,1
+junglefowl,country,New Zealand,2.1739130434782608,1
+junglefowl,country,Austria,0,0
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
 junglefowl,steals,steals,10.869565217391305,5
@@ -146,6 +194,18 @@ owl,type,Red,37.68115942028986,26
 owl,type,Rose,10.144927536231885,7
 owl,type,Sparkling,5.797101449275362,4
 owl,type,White,46.3768115942029,32
+owl,country,France,28.985507246376812,20
+owl,country,United States,14.492753623188406,10
+owl,country,Italy,18.84057971014493,13
+owl,country,Spain,11.594202898550725,8
+owl,country,Argentina,0,0
+owl,country,Portugal,5.797101449275362,4
+owl,country,South Africa,4.3478260869565215,3
+owl,country,Australia,4.3478260869565215,3
+owl,country,Germany,2.898550724637681,2
+owl,country,Chile,1.4492753623188406,1
+owl,country,New Zealand,4.3478260869565215,3
+owl,country,Austria,1.4492753623188406,1
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
 owl,steals,steals,8.695652173913043,6
@@ -176,6 +236,18 @@ peacock,type,Red,38.46153846153847,5
 peacock,type,Rose,7.6923076923076925,1
 peacock,type,Sparkling,15.384615384615385,2
 peacock,type,White,38.46153846153847,5
+peacock,country,France,30.76923076923077,4
+peacock,country,United States,15.384615384615385,2
+peacock,country,Italy,15.384615384615385,2
+peacock,country,Spain,0,0
+peacock,country,Argentina,0,0
+peacock,country,Portugal,0,0
+peacock,country,South Africa,15.384615384615385,2
+peacock,country,Australia,0,0
+peacock,country,Germany,0,0
+peacock,country,Chile,0,0
+peacock,country,New Zealand,7.6923076923076925,1
+peacock,country,Austria,0,0
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
 peacock,steals,steals,23.076923076923077,3
@@ -206,6 +278,18 @@ penguin,type,Red,0,0
 penguin,type,Rose,0,0
 penguin,type,Sparkling,0,0
 penguin,type,White,100,2
+penguin,country,France,0,0
+penguin,country,United States,0,0
+penguin,country,Italy,50,1
+penguin,country,Spain,0,0
+penguin,country,Argentina,0,0
+penguin,country,Portugal,0,0
+penguin,country,South Africa,0,0
+penguin,country,Australia,50,1
+penguin,country,Germany,0,0
+penguin,country,Chile,0,0
+penguin,country,New Zealand,0,0
+penguin,country,Austria,0,0
 penguin,median,medianPrice,,14.469999999999999
 penguin,median,medianRating,,3.55
 penguin,steals,steals,0,0
@@ -236,6 +320,18 @@ raptor,type,Red,42.57425742574257,43
 raptor,type,Rose,2.9702970297029703,3
 raptor,type,Sparkling,7.920792079207921,8
 raptor,type,White,43.56435643564357,44
+raptor,country,France,12.871287128712872,13
+raptor,country,United States,24.752475247524753,25
+raptor,country,Italy,32.67326732673268,33
+raptor,country,Spain,1.9801980198019802,2
+raptor,country,Argentina,2.9702970297029703,3
+raptor,country,Portugal,3.9603960396039604,4
+raptor,country,South Africa,7.920792079207921,8
+raptor,country,Australia,4.9504950495049505,5
+raptor,country,Germany,3.9603960396039604,4
+raptor,country,Chile,0,0
+raptor,country,New Zealand,3.9603960396039604,4
+raptor,country,Austria,0,0
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
 raptor,steals,steals,7.920792079207921,8
@@ -266,6 +362,18 @@ shorebird,type,Red,9.090909090909092,1
 shorebird,type,Rose,9.090909090909092,1
 shorebird,type,Sparkling,9.090909090909092,1
 shorebird,type,White,63.63636363636363,7
+shorebird,country,France,9.090909090909092,1
+shorebird,country,United States,36.36363636363637,4
+shorebird,country,Italy,0,0
+shorebird,country,Spain,18.181818181818183,2
+shorebird,country,Argentina,9.090909090909092,1
+shorebird,country,Portugal,0,0
+shorebird,country,South Africa,0,0
+shorebird,country,Australia,0,0
+shorebird,country,Germany,0,0
+shorebird,country,Chile,0,0
+shorebird,country,New Zealand,18.181818181818183,2
+shorebird,country,Austria,9.090909090909092,1
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
 shorebird,steals,steals,36.36363636363637,4
@@ -296,6 +404,18 @@ songbird,type,Red,46.994535519125684,86
 songbird,type,Rose,8.743169398907105,16
 songbird,type,Sparkling,4.371584699453552,8
 songbird,type,White,38.25136612021858,70
+songbird,country,France,19.12568306010929,35
+songbird,country,United States,18.579234972677597,34
+songbird,country,Italy,20.21857923497268,37
+songbird,country,Spain,9.836065573770492,18
+songbird,country,Argentina,4.918032786885246,9
+songbird,country,Portugal,3.278688524590164,6
+songbird,country,South Africa,7.650273224043716,14
+songbird,country,Australia,1.639344262295082,3
+songbird,country,Germany,3.278688524590164,6
+songbird,country,Chile,3.278688524590164,6
+songbird,country,New Zealand,4.918032786885246,9
+songbird,country,Austria,1.639344262295082,3
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
 songbird,steals,steals,22.404371584699454,41
@@ -326,6 +446,18 @@ wading bird,type,Red,48,12
 wading bird,type,Rose,8,2
 wading bird,type,Sparkling,4,1
 wading bird,type,White,32,8
+wading bird,country,France,16,4
+wading bird,country,United States,28.000000000000004,7
+wading bird,country,Italy,12,3
+wading bird,country,Spain,20,5
+wading bird,country,Argentina,0,0
+wading bird,country,Portugal,8,2
+wading bird,country,South Africa,8,2
+wading bird,country,Australia,4,1
+wading bird,country,Germany,4,1
+wading bird,country,Chile,0,0
+wading bird,country,New Zealand,0,0
+wading bird,country,Austria,0,0
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
 wading bird,steals,steals,16,4

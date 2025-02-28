@@ -68,7 +68,6 @@
 
 <section id="scatter">
     <div class="chart-wrapper">
-        <p class="tot-count">{animalData.length} wines</p>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
                 <LayerCake
                     padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
@@ -112,7 +111,7 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        margin: 2rem;
+        margin: 0;
     }
     h3 {
         font-family: var(--sans);
