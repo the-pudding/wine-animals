@@ -14,7 +14,7 @@
 	export let strokeWidth = 0;
 	export let addRandom = false;
 
-	const regressionLine = $data[1];
+	$: regressionLine = $data[1];
 
 	const priceMed = d3.median(rawData, d => d.price);
 	const ratingMed = d3.median(rawData, d => d.rating);
@@ -25,13 +25,13 @@
 	let randomSteepnessNode;
 
 	onMount(() => {
-       path = d3.line()
-			.x(d => $xScale(d[0]))
-			.y(d => $yScale(d[1]))
-			(regressionLine);
-
 		mounted = true;
 	});
+
+	$: path = d3.line()
+		.x(d => $xScale(d[0]))
+		.y(d => $yScale(d[1]))
+		(regressionLine);
 
 	const maxLength = 99;
     const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
@@ -61,39 +61,39 @@
 	let randomAvgSlope;
 	let randomCount;
 
-	function calcSteepness(data, randomData) {
-        let sumSlopes = 0;
-        data.forEach(point => {
-            const [x, y] = point;
-            const slope = data.a * data.b * Math.exp(data.b * x);
-            sumSlopes += slope;
-        });
-        const averageSteepness = sumSlopes / data.length;
-		steepnessValues.push(averageSteepness)
+	// function calcSteepness(data, randomData) {
+    //     let sumSlopes = 0;
+    //     data.forEach(point => {
+    //         const [x, y] = point;
+    //         const slope = data.a * data.b * Math.exp(data.b * x);
+    //         sumSlopes += slope;
+    //     });
+    //     const averageSteepness = sumSlopes / data.length;
+	// 	steepnessValues.push(averageSteepness)
 
-		if (steepnessValues.length == generations.length) {
-			randomAvgSlope = d3.mean(steepnessValues, d => d);
-			randomCount = randomData.length;	
-		}
+	// 	if (steepnessValues.length == generations.length) {
+	// 		randomAvgSlope = d3.mean(steepnessValues, d => d);
+	// 		randomCount = randomData.length;	
+	// 	}
 
-        return averageSteepness;
-    }
+    //     return averageSteepness;
+    // }
 
-	$: if (mounted) {
-		randomSteepnessNode = d3.selectAll("#random-steepness-text");
-		if (randomSteepnessNode.node() && randomAvgSlope) {
-			randomSteepnessNode.text(`${Math.round(randomAvgSlope)} avg. random steepness`);
-        }
-    }
+	// $: if (mounted) {
+	// 	randomSteepnessNode = d3.selectAll("#random-steepness-text");
+	// 	if (randomSteepnessNode.node() && randomAvgSlope) {
+	// 		randomSteepnessNode.text(`${Math.round(randomAvgSlope)} avg. random steepness`);
+    //     }
+    // }
 </script>
 
 <g class="median-markings">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale($stealRatingNum)}
-		y={$yScale($stealPriceNum)}
-		width={$width - $xScale($stealRatingNum)}
-		height={$height - $yScale($stealPriceNum)}
+		x={$xScale(4)}
+		y={$yScale(29.99)}
+		width={$width - $xScale(4)}
+		height={$height - $yScale(29.99)}
 		fill="#363B45"
 		opacity=0.5
 	/>
@@ -110,7 +110,7 @@
         />
     {/each}
 </g>
-{#if addRandom == true}
+<!-- {#if addRandom == true}
 	{#each generations as generation, i}
 		{@const randomData = generateRandomComparison(rawData)}
 		{@const points = randomData.map(d => ({
@@ -129,7 +129,7 @@
 			{/if}
 		</g>
 	{/each}
-{/if}
+{/if} -->
 <g class="lines">
 	<line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
 	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />

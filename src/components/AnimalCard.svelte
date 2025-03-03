@@ -1,9 +1,10 @@
 <script>
-    import { getContext } from "svelte";
+    import { getContext, onMount } from "svelte";
     import starIcon from "$svg/star.svg";
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Scatter from "$components/Scatter.svelte";
     import medianData from "$data/wineData_median.csv";
+    import { bigScatterData } from "$stores/misc.js";
 
     export let animal;
 
@@ -13,7 +14,7 @@
 </script>
 
 {#if animal !== "human" && animal !== "none"}
-    <div class="animal-card">
+    <div class="animal-card" id="animal-card-{strippedAnimal}">
         <div class="rail" id="rail-left">
             <div class="deets">
                 <div class="icon">
@@ -58,7 +59,7 @@
                 {/if}
             </div>
             <div class="scatter-wrapper">
-                <Scatter animal={animal}/>
+                <Scatter animal={animal} />
             </div>
         </div>
         <div class="rail" id="rail-right">
@@ -79,6 +80,7 @@
         flex-direction: column;
         gap: 1rem;
         color: var(--wine-tan);
+        box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
     }
 
     #rail-left {

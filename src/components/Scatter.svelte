@@ -11,6 +11,7 @@
     import * as d3Regression from 'd3-regression';
     import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
+    import Icon from "$components/helpers/Icon.svelte";
 
     export let animal;
 
@@ -20,7 +21,7 @@
             d.topgroup.includes(animal) &&
             d.price <= 150);
 
-    const points = animalData.map(d => ({
+    let points = animalData.map(d => ({
         x: +d.rating,  // Convert price to a number
         y: +d.price  // Convert rating to a number
     }))
@@ -50,20 +51,53 @@
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
     
-    const trendLine = regression(points)
+    let trendLine = regression(points);
 
-    function calcSteepness(data, animal) {
-        let sumSlopes = 0;
-        data.forEach(point => {
-            const [x, y] = point;
-            const slope = data.a * data.b * Math.exp(data.b * x);
-            sumSlopes += slope;
-        });
-        const averageSteepness = sumSlopes / data.length;
-        return averageSteepness;
+    let summaryBtns;
+    let subgroup;
+    let clickedAnimal;
+
+    function handleSummaryClick(event) {
+        let id = event.target.id.split("-")[0];
+        subgroup = id;
+
+        clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
+
+        if (clickedAnimal == animal) {
+            animalData = allWineData.filter(d => 
+                d.topgroup.includes(animal) &&
+                d.subgroup.includes(id) &&
+                d.price <= 150);
+
+            points = animalData.map(d => ({
+                x: +d.rating,  // Convert price to a number
+                y: +d.price  // Convert rating to a number
+            }))
+
+            trendLine = regression(points);
+        }
     }
 
-    const steepness = calcSteepness(trendLine, animal)
+    onMount(() => {
+        summaryBtns = document.querySelectorAll(".summary-btn");
+        summaryBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => handleSummaryClick(event));
+        });
+    })
+
+    function resetClick(){
+        subgroup = undefined;
+        animalData = allWineData.filter(d => 
+            d.topgroup.includes(animal) &&
+            d.price <= 150);
+
+        points = animalData.map(d => ({
+            x: +d.rating,  // Convert price to a number
+            y: +d.price  // Convert rating to a number
+        }))
+
+        trendLine = regression(points);
+    }
 </script>
 
 <section id="scatter">
@@ -89,6 +123,20 @@
                     </Svg>
                 </LayerCake>
         </div>
+        <div class="deets">
+            <p>Now viewing <span class="bold">{animal}s</span>
+                {#if subgroup !== undefined && clickedAnimal == animal}
+                    <span class="subgroup-span">
+                        <Icon name="chevron-right" size={"1rem"}/>
+                        <span class="bold">{subgroup}s</span>
+                    </span>
+                {/if}
+            </p>
+            <button id="refesh-btn" on:click={resetClick}>
+                <Icon name="refresh-ccw" size={"1rem"}/>
+                Reset to all {animal}s
+            </button>
+        </div>
     </div>
 </section>
 
@@ -113,6 +161,24 @@
         position: relative;
         margin: 0;
     }
+    .deets {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--sans);
+        padding: 0.5rem 0rem 0.5rem 1rem;
+    }
+
+    .deets p {
+        margin: 0;
+    }
+
+    :global(.subgroup-span .icon, #refresh-btn .icon) {
+        position: relative;
+        top: 2px;
+    }
+
     h3 {
         font-family: var(--sans);
         font-size: var(--14px);

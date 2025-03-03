@@ -61,9 +61,10 @@
 		<div class="thumb-label" style="left: {thumbOffset}px;">
 			<p>
 				{#if metric == "price"}
-					$
+					${value}
+				{:else}
+					{value}
 				{/if}
-				{value}
 			</p>
 		</div>
 </div>
@@ -76,6 +77,7 @@
 		transform-origin: left top;
 		left: calc(100% - 4.125rem);
 		pointer-events: auto;
+		overflow: visible;
 	}
 
 	#range-rating {
@@ -88,7 +90,7 @@
 	.thumb-label {
 		position: absolute;
 		top: -31px;
-		width: 50px;
+		width: 60px;
 		left: 0;
         transform: translateX(-50%);
 		color: var(--wine-tan);
@@ -106,7 +108,8 @@
 
 	#range-price .thumb-label {
 		transform: translateX(-50%) rotate(90deg);
-		top: 31px;
+		top: 40px;
+		justify-content: flex-start;
 	}
 
 	.thumb-label p {
