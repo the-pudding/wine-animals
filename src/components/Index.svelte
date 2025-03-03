@@ -144,6 +144,6 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
+		gap: 6rem;
 	}
 </style>

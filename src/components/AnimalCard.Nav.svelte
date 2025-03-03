@@ -1,6 +1,7 @@
 <script>
     import { onMount, tick } from "svelte";
     import * as d3 from "d3";
+    import { navAnimal } from "$stores/misc.js";
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "human",
@@ -11,7 +12,7 @@
     let Carousel; // for saving Carousel component class
     let carousel; // for calling methods of the carousel instance
     let w;
-    let itemW = 40;
+    let itemW = 140;
     let carouselLength = topgroups.length
     let particleNum;
     let carouselContainer;
@@ -19,20 +20,23 @@
 
     function updateParticles(w) {
         particleNum = Math.ceil(w/itemW);
+        console.log(particleNum)
     }
 
-    async function updateNavPos(currAnimal, particleNum) {
-        await tick();
-        if (particleNum) {
-                const page = Math.floor((currAnimal-1)/particleNum)
-                if (page >= 0) {
-                    carousel.goTo(page, { animated: true })  
-                }
-        }
-    }
+    // async function updateNavPos(currAnimal, particleNum) {
+    //     await tick(); // Ensures the DOM updates before running
+
+    //     if (particleNum) {
+    //         const index = topgroups.indexOf(currAnimal); // Find index of selected animal
+    //         if (index >= 0 && carousel) {
+    //             const page = Math.floor(index / particleNum); // Determine which page to show
+    //             carousel.goTo(page, { animated: true }); // Move to the correct page
+    //         }
+    //     }
+    // }
 
     $: updateParticles(w);
-    $: updateNavPos(currAnimal, particleNum);
+    // $: updateNavPos(currAnimal, particleNum);
 
     onMount(async () => {
         const module = await import('svelte-carousel');
@@ -40,6 +44,7 @@
     });
 
     function handleItemClick(e) {
+        currAnimal = e.target.id.split("-")[0];
         const item = e.target.parentNode.parentNode;
         const itemClass = item.className;
         if (itemClass.includes("navBlock")) {
@@ -48,6 +53,14 @@
             const navBlocks = d3.selectAll(".navBlock").classed("isActive", false);
             const dupeBlocks = d3.selectAll(`#${itemID}`).classed("isActive", true);
             item.classList.add("isActive");
+        }
+
+        const targetElement = document.querySelector(`#animal-card-${currAnimal}`);
+        if (targetElement) {
+            const offset = 140;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
     }
 </script>
@@ -60,15 +73,21 @@
             this={Carousel}
             bind:this={carousel}
             particlesToShow={particleNum}
-            particlesToScroll={particleNum}
+            particlesToScroll={4}
             arrows={false}
+            swiping={true}
+            initialPageIndex={0}
             dots={false}>
             {#each topgroups as animal, i}
                 {#if animal !== "none" && animal !== "human"}
-                    <div class="navBlock" class:isActive={animal == "amphibian/reptile"} id="nav_{animal.replace(/[^a-zA-Z0-9]/g, "")}">
+                    <div class="navBlock" 
+                        class:isActive={animal == $navAnimal} 
+                        id="nav_{animal.replace(/[^a-zA-Z0-9]/g, "")}"
+                    >
                         <div class="img-wrapper">
                             <img src="assets/images/icons/{animal.replace(/[^a-zA-Z0-9]/g, "")}.png"
                             alt="{animal} icon"
+                            id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
                             class="navIcon">
                         </div>
                         <p>{animal}</p>

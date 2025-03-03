@@ -1,19 +1,19 @@
-topGroup,price,rating
-amphibian/reptile,30.97,3.95
-bear,31.55,4.1
-bird,25.99,4
-bug,22.66,3.9
-canine,28.99,4
-cat,34.99,4.1
-cattle,22.50,3.9
-deer,30.49,4
-fish,24.99,3.9
-horse,25,4
-marine invertebrate,22.67,3.9
-mythical,34.99,4.1
-pachyderm,24.22,3.9
-rabbit,29.99,4
-ram,21.74,3.9
-pig,23.22,3.8
-all animals,26.99,4
-all wines,29.99,4
+topGroup,price,rating,steals
+amphibian/reptile,30.97,3.95,5.7
+bear,31.55,4.1,13
+bird,25.99,4,16.5
+bug,22.66,3.9,21.4
+canine,28.99,4,10.4
+cat,34.99,4.1,10.1
+cattle,22.50,3.9,13
+deer,30.49,4,6
+fish,24.99,3.9,24.2
+horse,25,4,14.5
+marine invertebrate,22.67,3.9,18.2
+mythical,34.99,4.1,14.8
+pachyderm,24.22,3.9,8.3
+rabbit,29.99,4,12
+ram,21.74,3.9,19.3
+pig,23.22,3.8,10.7
+all animals,26.99,4,14.5
+all wines,29.99,4,13.9

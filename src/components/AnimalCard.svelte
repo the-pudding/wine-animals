@@ -4,17 +4,32 @@
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Scatter from "$components/Scatter.svelte";
     import medianData from "$data/wineData_median.csv";
-    import { bigScatterData } from "$stores/misc.js";
+    import { bigScatterData, navAnimal } from "$stores/misc.js";
+    import inView from "$actions/inView.js";
 
     export let animal;
 
     const copy = getContext("copy");
 
     let strippedAnimal = animal.replace(/[^a-zA-Z0-9]/g, "");
+
+    function handleView(viewState, animal) {
+
+        if (viewState == "enter") {
+            navAnimal.set(animal);
+        } else {
+            navAnimal.set(undefined);
+        }
+    }
 </script>
 
 {#if animal !== "human" && animal !== "none"}
-    <div class="animal-card" id="animal-card-{strippedAnimal}">
+    <div class="animal-card" 
+        id="animal-card-{strippedAnimal}"
+        use:inView={{ bottom: 40 }}
+        on:enter={() => handleView("enter", animal)}
+        on:exit={() =>  handleView("exit", animal)}
+    >
         <div class="rail" id="rail-left">
             <div class="deets">
                 <div class="icon">
@@ -45,8 +60,8 @@
                         </p>
                     </div>
                     <div class="median">
-                        <p>Steals %</p>
-                        <p>XX%</p>
+                        <p>Steals</p>
+                        <p>{medianData.find(d => d.topGroup == animal).steals}%</p>
                     </div>
                 </div>
                 {#if copy.summaryCards.find(card => card.animal === animal)}
