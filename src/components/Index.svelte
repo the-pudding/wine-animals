@@ -1,6 +1,7 @@
 <script>
 	import { getContext } from "svelte";
 	import { currAnimalSlide } from "$stores/misc.js";
+	import inView from "$actions/inView.js"
 	import Intro from "$components/Intro4.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
@@ -18,13 +19,38 @@
 	];
 
 	let sliderEl;
+	let tapVisible = false;
+
+	function handleTap(direction) {
+			if (direction === "left") {
+				sliderEl.prev();
+			} else {
+				sliderEl.next();
+			}
+
+		currAnimalSlide.update(n => {
+			if (direction === "left") return Math.max(0, n - 1); // Prevent going below 0
+			if (direction === "right") return Math.min(topgroups.length - 1, n + 1); // Prevent exceeding last index
+			return n;
+		});
+	}
+
+	$: console.log($currAnimalSlide)
+	$: sliderEl == $currAnimalSlide;
 </script>
 
 <Intro />
 <ChartScroll />
-<div class="cards">
+<div 
+	class="cards"
+	use:inView
+	on:enter={() => tapVisible = true}
+	on:exit={() => tapVisible = false}
+>
 	<AnimalCardNav />
-	<Tap showArrows={true} currAnimalSlide={$currAnimalSlide}/>
+	{#if tapVisible}
+		<Tap showArrows={true} on:tap={e => handleTap(e.detail)}/>
+	{/if}
 	<Slider bind:this={sliderEl}>
 		{#each topgroups as animal, i}
 			<Slide>

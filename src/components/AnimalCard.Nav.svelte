@@ -1,7 +1,7 @@
 <script>
     import { onMount, tick } from "svelte";
     import * as d3 from "d3";
-    import { navAnimal } from "$stores/misc.js";
+    import { navAnimal, currAnimalSlide } from "$stores/misc.js";
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "human",
@@ -44,24 +44,24 @@
     });
 
     function handleItemClick(e) {
-        currAnimal = e.target.id.split("-")[0];
-        const item = e.target.parentNode.parentNode;
-        const itemClass = item.className;
-        if (itemClass.includes("navBlock")) {
-            const itemID = e.target.parentNode.parentNode.id;
-            const next = itemID.split("_")[1]
-            const navBlocks = d3.selectAll(".navBlock").classed("isActive", false);
-            const dupeBlocks = d3.selectAll(`#${itemID}`).classed("isActive", true);
-            item.classList.add("isActive");
-        }
+        // currAnimal = e.target.id.split("-")[0];
+        // const item = e.target.parentNode.parentNode;
+        // const itemClass = item.className;
+        // if (itemClass.includes("navBlock")) {
+        //     const itemID = e.target.parentNode.parentNode.id;
+        //     const next = itemID.split("_")[1]
+        //     const navBlocks = d3.selectAll(".navBlock").classed("isActive", false);
+        //     const dupeBlocks = d3.selectAll(`#${itemID}`).classed("isActive", true);
+        //     item.classList.add("isActive");
+        // }
 
-        const targetElement = document.querySelector(`#animal-card-${currAnimal}`);
-        if (targetElement) {
-            const offset = 140;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+        // const targetElement = document.querySelector(`#animal-card-${currAnimal}`);
+        // if (targetElement) {
+        //     const offset = 140;
+        //     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
 
-            window.scrollTo({ top: targetPosition, behavior: "smooth" });
-        }
+        //     window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        // }
     }
 </script>
 
@@ -81,7 +81,7 @@
             {#each topgroups as animal, i}
                 {#if animal !== "none" && animal !== "human"}
                     <div class="navBlock" 
-                        class:isActive={animal == $navAnimal} 
+                        class:isActive={animal == topgroups[$currAnimalSlide]} 
                         id="nav_{animal.replace(/[^a-zA-Z0-9]/g, "")}"
                     >
                         <div class="img-wrapper">

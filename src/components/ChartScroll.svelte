@@ -68,8 +68,6 @@
         // skipToExplore = document.querySelector(".skipToExplore");
         // skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
     })
-
-    $: console.log({chartScrollIndex});
 </script>
 
 <section id="chart-scroll">

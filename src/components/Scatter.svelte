@@ -124,7 +124,7 @@
                 </LayerCake>
         </div>
         <div class="deets">
-            <p>Now viewing <span class="bold">{animal}s</span>
+            <p>Now showing <span class="bold">{animal}s</span>
                 {#if subgroup !== undefined && clickedAnimal == animal}
                     <span class="subgroup-span">
                         <Icon name="chevron-right" size={"1rem"}/>
