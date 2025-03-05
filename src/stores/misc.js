@@ -35,5 +35,6 @@ export const stealData = writable([]);
 export const stealPercent = writable();
 export const stealTopgroupCounts = writable([]);
 
-// NAV SUMMARY
+// ANIMAL CARDS
 export const navAnimal = writable("amphibian/reptile");
+export const currAnimalSlide = writable(0);

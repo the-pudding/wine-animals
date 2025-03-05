@@ -85,7 +85,7 @@
 
 <style>
     .animal-card {
-        width: calc(100% - 4rem);
+        width: 100vw;
         max-width: 1200px;
         margin: 0 auto;
         border: 1px solid var(--wine-med-gray);

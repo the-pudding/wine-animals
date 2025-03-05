@@ -76,7 +76,7 @@
 	button {
 		position: absolute;
 		cursor: pointer;
-		background: none;
+		background: orange;
 		border-radius: 0;
 		outline: none;
 		border: none;
