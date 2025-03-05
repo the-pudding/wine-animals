@@ -62,25 +62,27 @@
                 <Range min={0} max={150} step={1} metric={"price"}/>
             </div>
         {/if}
-        <LayerCake
-            padding={{ top: 20, right: 0, bottom: 20, left: 10 }}
-            x={xKey}
-            y={yKey}
-            data={[medianData, $bigScatterData]}
-            xDomain={$xDomain}
-            yDomain={$yDomain}
-        >
-            <Svg>
-                <AxisX 
-                    gridlines={true} 
-                    ticks={7}
-                />
-                <AxisY 
-                    gridlines={true} 
-                    ticks={3} />
-                <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
-            </Svg>
-        </LayerCake>
+        <div class="chart-inner">
+            <LayerCake
+                padding={{ top: 20, right: 10, bottom: 20, left: 10 }}
+                x={xKey}
+                y={yKey}
+                data={[medianData, $bigScatterData]}
+                xDomain={$xDomain}
+                yDomain={$yDomain}
+            >
+                <Svg>
+                    <AxisX 
+                        gridlines={true} 
+                        ticks={7}
+                    />
+                    <AxisY 
+                        gridlines={true} 
+                        ticks={3} />
+                    <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
+                </Svg>
+            </LayerCake>
+        </div>
         {#if chartScrollIndex == 7 || chartScrollIndex == 8}
             <div class="quadrants" transition:fade>
                 <p style="left: 27%; top: 40%">Bad Expensive Wine</p>
@@ -112,6 +114,12 @@
         /* overflow: hidden; */
         padding: 4rem;
         position: relative;
+    }
+
+    .chart-inner {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
     }
 
     .quadrants {

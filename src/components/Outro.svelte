@@ -1,6 +1,7 @@
 <script>
     import { getContext, onMount } from "svelte";
     const copy = getContext("copy");
+    import ChevronRight from "lucide-svelte/icons/chevron-right";
 </script>
 
 <section id='outro'>
@@ -11,7 +12,40 @@
     </div>
     <div id="methods">
         <h3>Methodology</h3>
-        {#each copy.methods as graf, i}
+        {#each copy.methodsA as graf, i}
+            <p>{@html graf.value}</p>
+        {/each}
+        <div class="examples">
+            <div class="change">
+                <h5>Were rolled up</h5>
+                <ul>
+                    {#each copy.methodsExChange as example, i}
+                        <li>
+                            <span>{example.animal}</span>
+                            <ChevronRight color={"#CFCABF"} strokeWidth={2} />
+                            <span>{example.subgroup}</span>
+                            <ChevronRight color={"#CFCABF"} strokeWidth={2} />
+                            <span>{example.topgroup}</span>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+            <div class="same">
+                <h5>Stayed the same</h5>
+                <ul>
+                    {#each copy.methodsExSame as example, i}
+                        <li>
+                            <span>{example.animal}</span>
+                            <ChevronRight color={"#CFCABF"} strokeWidth={2} />
+                            <span>{example.subgroup}</span>
+                            <ChevronRight color={"#CFCABF"} strokeWidth={2} />
+                            <span>{example.topgroup}</span>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
+        {#each copy.methodsB as graf, i}
             <p>{@html graf.value}</p>
         {/each}
     </div>
@@ -44,10 +78,30 @@
         font-size: var(--20px);
     }
 
-    #methods p {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #methods p, li {
         font-family: var(--sans);
         font-size: var(--14px);
         line-height: 1.65;
+    }
+
+    li {
+        padding: 0 0 0.5rem 0;
+    }
+
+    li:not(:last-of-type) {
+        border-bottom: 1px solid var(--wine-med-gray);
+    }
+
+    :global(#methods li svg) {
+        width: 18px;
+        position: relative;
+        top: 7px;
     }
 
     :global(#methods a) {
@@ -56,5 +110,33 @@
 
     :global(#methods a:hover) {
         color: var(--wine-red);
+    }
+
+    .examples {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+        margin: 2rem 0rem 3rem 0rem;
+    }
+
+    .change, .same {
+        min-width: 200px;
+    }
+
+    h5 {
+        text-transform: uppercase;
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: var(--16px);
+        margin: 0;
+    }
+
+    :global(#methods span.code, #methods li span) {
+        background: var(--wine-dark-tan);
+        color: var(--wine-black);
+        font-family: var(--mono);
+        border-radius: 3px;
+        padding: 0.125rem 0.25rem;
+        font-size: var(--12px);
     }
 </style>

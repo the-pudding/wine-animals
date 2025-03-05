@@ -2,6 +2,7 @@
 	import ChevronLeft from "lucide-svelte/icons/chevron-left";
 	import ChevronRight from "lucide-svelte/icons/chevron-right";
 	import { createEventDispatcher } from "svelte";
+	import { currAnimalSlide } from "$stores/misc.js";
 
 	export let debug = false;
 	export let enableKeyboard = false;
@@ -9,9 +10,9 @@
 	export let showArrows = false; // boolean or array of directions
 	export let disable = [];
 	export let directions = ["left", "right"];
-	export let size = "64px";
+	export let size = "100px";
 	export let arrowSize = "48px";
-	export let arrowStroke = "#000";
+	export let arrowStroke = "#181A1F";
 	export let arrowStrokeWidth = "2";
 	export let arrowPosition = "center"; // start, center, end
 
@@ -47,14 +48,15 @@
 			aria-label={dir}
 			class="{dir} {arrowPosition}"
 			class:full
-			disabled={disable.includes(dir)}
+			disabled={dir == "left" && $currAnimalSlide == 0
+				|| dir == "right" && $currAnimalSlide == 17}
 		>
 			{#if visibleArrows.includes(dir)}
-				<span style="font-size: {arrowSize};">
+				<span style="width: {arrowSize};">
 					{#if dir === "left"}
-						<ChevronLeft color={arrowStroke} strokeWidth={arrowStrokeWidth} />
+						<ChevronLeft color={"#181A1F"} strokeWidth={arrowStrokeWidth} />
 					{:else if dir === "right"}
-						<ChevronRight color={arrowStroke} strokeWidth={arrowStrokeWidth} />
+						<ChevronRight color={"#181A1F"} strokeWidth={arrowStrokeWidth} />
 					{/if}
 				</span>
 			{/if}
@@ -76,7 +78,7 @@
 	button {
 		position: absolute;
 		cursor: pointer;
-		background: orange;
+		background: var(--wine-tan);
 		border-radius: 0;
 		outline: none;
 		border: none;
@@ -85,23 +87,49 @@
 		display: flex;
 	}
 
+	button.left::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: var(--wine-tan);
+		border-radius: 50%;
+		position: absolute;
+		right: -50%;
+		top: 0;
+	}
+
+	button.right::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: var(--wine-tan);
+		border-radius: 50%;
+		position: absolute;
+		left: -50%;
+		top: 0;
+	}
+
 	button:disabled {
 		opacity: 0.2;
 		cursor: not-allowed;
 	}
 
-	button:hover {
-		background-color: rgba(255, 255, 255, 0.2);
+	button:not([disabled]):hover { 
+		background-color: var(--wine-dark-tan);
+	}
+
+	button:not([disabled]):hover::before { 
+		background-color: var(--wine-dark-tan);
 	}
 
 	.left {
-		left: 0;
+		left: -90px;
 		top: 0;
 		/* text-align: left; */
 	}
 
 	.right {
-		right: 0;
+		right: -90px;
 		top: 0;
 		/* text-align: right; */
 	}
@@ -181,7 +209,20 @@
 	span {
 		display: inline-block;
 		line-height: 1;
-		opacity: 0.5;
+	}
+
+	.left span {
+		position: absolute;
+		right: -40%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.right span {
+		position: absolute;
+		left: -40%;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	.debug .left {
