@@ -13,9 +13,7 @@
 
 	const copy = getContext("copy");
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
-		"deer", "fish", "horse", "human",
-		"marine invertebrate", "mythical", "none", "pachyderm", "pig",
-		"rabbit", "ram"
+		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig", "rabbit", "ram"
 	];
 
 	let sliderEl;

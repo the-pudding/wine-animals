@@ -91,8 +91,20 @@ function formatCSV(summaryData) {
         })),
         { animalGroup: d.animalGroup, category: "median", bucket: "medianPrice", percent: null, count: d.medianPrice },
         { animalGroup: d.animalGroup, category: "median", bucket: "medianRating", percent: null, count: d.medianRating },
+        { animalGroup: d.animalGroup, category: "count", bucket: "count", percent: null, count: d.count },
         { animalGroup: d.animalGroup, category: "steals", bucket: "steals", percent: d.steals.percent, count: d.steals.count }
     ]);
+}
+
+// FORMAT MEDIAN CSV
+function formatMedianCSV(summaryData) {
+    return summaryData.map(d => ({
+        animalGroup: d.animalGroup,
+        medianPrice: d.medianPrice,
+        medianRating: d.medianRating,
+        stealPercent: d.steals.percent,
+        totalCount: d.count
+    }));
 }
 
 // GENERATE SUMMARIES
@@ -131,6 +143,14 @@ function init() {
     writeCSV("wineData_summary", generateSummary(data, "all", topgroups));
     writeCSV("wineData_catSummary", generateSummary(catData, "cat", cats));
     writeCSV("wineData_birdSummary", generateSummary(birdData, "bird", birds));
+
+    const medianSummary = formatMedianCSV([
+        ...topgroups.map(group => summarizeWines(group, data, "all")),
+        summarizeWines("all", data, "all wines"),
+        summarizeWines("animal wines", data, "animal wines")
+    ]);
+
+    writeCSV("wineData_median", medianSummary);
 
     console.log("Wine analysis complete!");
 }

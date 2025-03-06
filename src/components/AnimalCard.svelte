@@ -39,7 +39,11 @@
                 <div class="medians-wrapper">
                     <div class="median">
                         <p>Median price</p>
-                        <p>${medianData.find(d => d.topGroup == animal).price}</p>
+                        <p>${(medianData.find(d => d.topGroup == animal).price).toFixed(2)}</p>
+                    </div>
+                    <div class="median">
+                        <p>Total wines</p>
+                        <p>{medianData.find(d => d.topGroup == animal).totalCount}</p>
                     </div>
                     <div class="median">
                         <p>Median rating</p>
@@ -61,7 +65,7 @@
                     </div>
                     <div class="median">
                         <p>Steals</p>
-                        <p>{medianData.find(d => d.topGroup == animal).steals}%</p>
+                        <p>{Math.round(medianData.find(d => d.topGroup == animal).stealPercent * 10) / 10}%</p>
                     </div>
                 </div>
                 {#if copy.summaryCards.find(card => card.animal === animal)}
@@ -73,11 +77,11 @@
                     {/if}
                 {/if}
             </div>
+        </div>
+        <div class="rail" id="rail-right">
             <div class="scatter-wrapper">
                 <Scatter animal={animal} />
             </div>
-        </div>
-        <div class="rail" id="rail-right">
             <ScrollHisto animal={animal}/>
         </div>
     </div>
@@ -85,31 +89,31 @@
 
 <style>
     .animal-card {
-        width: 100vw;
+        width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         border: 1px solid var(--wine-med-gray);
         border-radius: 3px;
         padding: 2rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
         color: var(--wine-tan);
         box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
     }
 
     #rail-left {
-        width: 100%;
+        width: 35%;
         display: flex;
         flex-direction: row;
     }
 
     #rail-right {
-        width: 100%;
+        width: 65%;
     }
 
     .deets {
-        width: 40%;
+        width: 100%;
         padding-right: 2rem;
     }
 
@@ -122,21 +126,19 @@
         margin: 0;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 0;
         justify-content: space-between;
     }
 
     .median {
-        width: 40%;
+        width: 50%;
         font-family: var(--sans);
     }
 
-    .median:first-of-type {
-        max-width: 35%;
-    }
-
-    .median:last-of-type {
-        max-width: 25%;
+    .median p {
+        margin: 0;
+        padding: 0;
     }
 
     .median p:first-of-type {
@@ -152,7 +154,7 @@
     }
 
     .scatter-wrapper {
-        width: 60%;
+        width: 100%;
     }
 
     h3 {

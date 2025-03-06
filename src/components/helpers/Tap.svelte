@@ -49,7 +49,7 @@
 			class="{dir} {arrowPosition}"
 			class:full
 			disabled={dir == "left" && $currAnimalSlide == 0
-				|| dir == "right" && $currAnimalSlide == 17}
+				|| dir == "right" && $currAnimalSlide == 15}
 		>
 			{#if visibleArrows.includes(dir)}
 				<span style="width: {arrowSize};">

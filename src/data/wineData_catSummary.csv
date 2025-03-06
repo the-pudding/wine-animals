@@ -40,6 +40,7 @@ cat,country,New Zealand,0,0
 cat,country,Austria,0,0
 cat,median,medianPrice,,35.465
 cat,median,medianRating,,4.05
+cat,count,count,,12
 cat,steals,steals,8.333333333333332,1
 cheetah,price,<10,0,0
 cheetah,price,10–19.99,100,1
@@ -82,6 +83,7 @@ cheetah,country,New Zealand,0,0
 cheetah,country,Austria,0,0
 cheetah,median,medianPrice,,16.99
 cheetah,median,medianRating,,3.7
+cheetah,count,count,,1
 cheetah,steals,steals,0,0
 cougar,price,<10,0,0
 cougar,price,10–19.99,0,0
@@ -124,6 +126,7 @@ cougar,country,New Zealand,0,0
 cougar,country,Austria,0,0
 cougar,median,medianPrice,,31.080000000000002
 cougar,median,medianRating,,3.85
+cougar,count,count,,2
 cougar,steals,steals,0,0
 jaguar/leopard/panther,price,<10,0,0
 jaguar/leopard/panther,price,10–19.99,0,0
@@ -166,6 +169,7 @@ jaguar/leopard/panther,country,New Zealand,0,0
 jaguar/leopard/panther,country,Austria,0,0
 jaguar/leopard/panther,median,medianPrice,,22.42
 jaguar/leopard/panther,median,medianRating,,4.1
+jaguar/leopard/panther,count,count,,3
 jaguar/leopard/panther,steals,steals,33.33333333333333,1
 lion,price,<10,2.9661016949152543,7
 lion,price,10–19.99,15.677966101694915,37
@@ -208,6 +212,7 @@ lion,country,New Zealand,0.423728813559322,1
 lion,country,Austria,0.847457627118644,2
 lion,median,medianPrice,,39.985
 lion,median,medianRating,,4.1
+lion,count,count,,236
 lion,steals,steals,9.322033898305085,22
 lion crest,price,<10,3.571428571428571,7
 lion crest,price,10–19.99,15.816326530612246,31
@@ -250,6 +255,7 @@ lion crest,country,New Zealand,0.5102040816326531,1
 lion crest,country,Austria,0.5102040816326531,1
 lion crest,median,medianPrice,,39.99
 lion crest,median,medianRating,,4.1
+lion crest,count,count,,196
 lion crest,steals,steals,9.183673469387756,18
 lynx,price,<10,0,0
 lynx,price,10–19.99,25,1
@@ -292,6 +298,7 @@ lynx,country,New Zealand,0,0
 lynx,country,Austria,0,0
 lynx,median,medianPrice,,33.375
 lynx,median,medianRating,,4.1
+lynx,count,count,,4
 lynx,steals,steals,25,1
 tiger,price,<10,0,0
 tiger,price,10–19.99,0,0
@@ -334,4 +341,5 @@ tiger,country,New Zealand,0,0
 tiger,country,Austria,0,0
 tiger,median,medianPrice,,89.99
 tiger,median,medianRating,,4.4
+tiger,count,count,,1
 tiger,steals,steals,0,0

@@ -212,7 +212,7 @@
         {@const imageSize = chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
                         chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ? r+30 : r+10}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
-            {#if d.topGroup == "all animals" || d.topGroup == "all wines" }
+            {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
                     <g class="medians active"
                     class:hidden={chartScrollIndex >= 5}>
@@ -239,7 +239,7 @@
                         {/if}
                     </g>
                 {/if}
-            {:else if d.topGroup !== "no animals"}
+            {:else if d.topGroup !== "all" && d.topGroup !== "animal wines"}
             <g id={`${animal}-group`} 
                 class="groupings"
                 class:active={

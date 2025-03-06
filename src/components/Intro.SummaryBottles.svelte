@@ -14,8 +14,9 @@
     let transitionsCompleted = 0;
 
     const animalSubgroups = [
-        {animal: "amphibian", subgroups: "lizards, snakes, frogs"},
+        {animal: "amphibian", subgroups: "lizards, snakes, frogs, etc."},
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
+        {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
         {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},

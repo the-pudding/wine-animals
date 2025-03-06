@@ -40,6 +40,7 @@ duck,country,New Zealand,9.090909090909092,4
 duck,country,Austria,0,0
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
+duck,count,count,,44
 duck,steals,steals,13.636363636363635,6
 flightless bird,price,<10,28.57142857142857,2
 flightless bird,price,10–19.99,42.857142857142854,3
@@ -82,6 +83,7 @@ flightless bird,country,New Zealand,42.857142857142854,3
 flightless bird,country,Austria,0,0
 flightless bird,median,medianPrice,,14.99
 flightless bird,median,medianRating,,3.8
+flightless bird,count,count,,7
 flightless bird,steals,steals,14.285714285714285,1
 game bird,price,<10,0,0
 game bird,price,10–19.99,34.78260869565217,8
@@ -124,6 +126,7 @@ game bird,country,New Zealand,0,0
 game bird,country,Austria,4.3478260869565215,1
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
+game bird,count,count,,23
 game bird,steals,steals,21.73913043478261,5
 junglefowl,price,<10,0,0
 junglefowl,price,10–19.99,28.26086956521739,13
@@ -166,6 +169,7 @@ junglefowl,country,New Zealand,2.1739130434782608,1
 junglefowl,country,Austria,0,0
 junglefowl,median,medianPrice,,29.85
 junglefowl,median,medianRating,,4
+junglefowl,count,count,,46
 junglefowl,steals,steals,10.869565217391305,5
 owl,price,<10,0,0
 owl,price,10–19.99,33.33333333333333,23
@@ -208,6 +212,7 @@ owl,country,New Zealand,4.3478260869565215,3
 owl,country,Austria,1.4492753623188406,1
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
+owl,count,count,,69
 owl,steals,steals,8.695652173913043,6
 peacock,price,<10,0,0
 peacock,price,10–19.99,23.076923076923077,3
@@ -250,6 +255,7 @@ peacock,country,New Zealand,7.6923076923076925,1
 peacock,country,Austria,0,0
 peacock,median,medianPrice,,25.69
 peacock,median,medianRating,,4.1
+peacock,count,count,,13
 peacock,steals,steals,23.076923076923077,3
 penguin,price,<10,0,0
 penguin,price,10–19.99,100,2
@@ -292,6 +298,7 @@ penguin,country,New Zealand,0,0
 penguin,country,Austria,0,0
 penguin,median,medianPrice,,14.469999999999999
 penguin,median,medianRating,,3.55
+penguin,count,count,,2
 penguin,steals,steals,0,0
 raptor,price,<10,0.9900990099009901,1
 raptor,price,10–19.99,29.7029702970297,30
@@ -334,6 +341,7 @@ raptor,country,New Zealand,3.9603960396039604,4
 raptor,country,Austria,0,0
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
+raptor,count,count,,101
 raptor,steals,steals,7.920792079207921,8
 shorebird,price,<10,0,0
 shorebird,price,10–19.99,36.36363636363637,4
@@ -376,6 +384,7 @@ shorebird,country,New Zealand,18.181818181818183,2
 shorebird,country,Austria,9.090909090909092,1
 shorebird,median,medianPrice,,22.95
 shorebird,median,medianRating,,4.1
+shorebird,count,count,,11
 shorebird,steals,steals,36.36363636363637,4
 songbird,price,<10,0,0
 songbird,price,10–19.99,34.42622950819672,63
@@ -418,6 +427,7 @@ songbird,country,New Zealand,4.918032786885246,9
 songbird,country,Austria,1.639344262295082,3
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
+songbird,count,count,,183
 songbird,steals,steals,22.404371584699454,41
 wading bird,price,<10,0,0
 wading bird,price,10–19.99,48,12
@@ -460,4 +470,5 @@ wading bird,country,New Zealand,0,0
 wading bird,country,Austria,0,0
 wading bird,median,medianPrice,,20.25
 wading bird,median,medianRating,,3.8
+wading bird,count,count,,25
 wading bird,steals,steals,16,4

@@ -98,13 +98,38 @@
 
         trendLine = regression(points);
     }
+
+    function pluralize(animal){
+        if (animal == "amphibian/reptile") {
+            return "amphibians/reptiles"
+        } else if (animal == "cattle" || animal == "deer" || animal == "fish") {
+            return animal
+        } else {
+            return `${animal}s`
+        }
+    }
 </script>
 
 <section id="scatter">
     <div class="chart-wrapper">
+        <h4>Individual wines</h4>
+        <div class="deets">
+            <p>Now showing <span class="bold">{pluralize(animal)}</span>
+                {#if subgroup !== undefined && clickedAnimal == animal}
+                    <span class="subgroup-span">
+                        <Icon name="chevron-right" size={"1rem"}/>
+                        <span class="bold">{subgroup}s</span>
+                    </span>
+                {/if}
+            </p>
+            <button id="refesh-btn" on:click={resetClick}>
+                <Icon name="refresh-ccw" size={"1rem"}/>
+                Reset to all {animal} wines
+            </button>
+        </div>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
                 <LayerCake
-                    padding={{ top: 20, right: 0, bottom: 20, left: 20 }}
+                    padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
                     x={xKey}
                     y={yKey}
                     data={[animalData, trendLine]}
@@ -123,20 +148,6 @@
                     </Svg>
                 </LayerCake>
         </div>
-        <div class="deets">
-            <p>Now showing <span class="bold">{animal}s</span>
-                {#if subgroup !== undefined && clickedAnimal == animal}
-                    <span class="subgroup-span">
-                        <Icon name="chevron-right" size={"1rem"}/>
-                        <span class="bold">{subgroup}s</span>
-                    </span>
-                {/if}
-            </p>
-            <button id="refesh-btn" on:click={resetClick}>
-                <Icon name="refresh-ccw" size={"1rem"}/>
-                Reset to all {animal}s
-            </button>
-        </div>
     </div>
 </section>
 
@@ -153,6 +164,12 @@
         color: var(--wine-tan);
     }
 
+    h4 {
+        font-size: var(--20px);
+        font-weight: 700;
+        margin: 0;
+    }
+
     .chart-wrapper {
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -167,11 +184,12 @@
         justify-content: space-between;
         align-items: center;
         font-family: var(--sans);
-        padding: 0.5rem 0rem 0.5rem 1rem;
+        padding: 0.5rem 0rem;
     }
 
     .deets p {
         margin: 0;
+        font-size: var(--18px);
     }
 
     :global(.subgroup-span .icon, #refresh-btn .icon) {

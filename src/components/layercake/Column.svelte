@@ -7,6 +7,21 @@
 
     const dispatch = createEventDispatcher();
 
+	const countryAbbrev = [
+        {country: "France", abbrev: "FR"},
+        {country: "United States", abbrev: "US"},
+        {country: "Italy", abbrev: "IT"},
+        {country: "Spain", abbrev: "ES"},
+        {country: "Argentina", abbrev: "AR"},
+        {country: "Portugal", abbrev: "PT"},
+        {country: "South Africa", abbrev: "ZA"},
+        {country: "Australia", abbrev: "AU"},
+        {country: "Germany", abbrev: "DE"},
+        {country: "Chile", abbrev: "CL"},
+        {country: "New Zealand", abbrev: "NZ"},
+        {country: "Austria", abbrev: "AT"},
+    ];
+
 	$: columnWidth = (d) => {
 		const vals = $xGet(d);
 		return Math.max(0, vals[1] - vals[0]);
@@ -83,10 +98,15 @@
     tooltip.style.left = `${left}px`;
     tooltip.style.top = `${top}px`;
     tooltip.style.opacity = 1;
-    tooltip.innerHTML = `
-        <p class="animal"><span class="bolded">${d.animalGroup}</span></p>
-        <p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of the wines with this animal are <span class="bolded">${d.bucket}</span> wines</p>
-    `;
+	console.log(d.category)
+    tooltip.innerHTML = d.category == "price" 
+		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines cost between <span class="bolded">$${d.bucket}</span></p>`
+		: d.category == "rating" 
+		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are rated between <span class="bolded">${d.bucket} stars</span></p>`
+		: d.category == "type"
+		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are <span class="bolded">${d.bucket}</span> wines</p>`
+		: `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are from <span class="bolded">${d.bucket}</span></p>` 
+	;
 
     // Highlight hovered bar only within this chart
     parentChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
@@ -105,7 +125,6 @@ function handleMouseleave(e) {
     if (tooltip) tooltip.style.opacity = 0; // Hide tooltip smoothly
     parentChart?.querySelectorAll("rect").forEach(rect => rect.classList.remove("notHover", "hover"));
 }
-
 </script>
 
 <g>
@@ -128,7 +147,19 @@ function handleMouseleave(e) {
 				on:mouseover|preventDefault={(e) => handleMouseover(e,d)}
 				on:mouseleave={handleMouseleave}
 			/>
-			<text class="bucket-text {d.category}-text" x={x + width / 2} y={localHeight + 24} text-anchor="middle">{d.bucket}</text>
+			<text class="bucket-text {d.category}-text" x={x + width / 2} y={localHeight + 24} text-anchor="middle">
+				{#if d.category == "country"}
+					{countryAbbrev[i].abbrev}
+				{:else if d.category == "price"}
+					{#if d.bucket == "50–59.99" || d.bucket == "100–109.99" || d.bucket == "150+"}
+						${d.bucket}
+					{:else if d.bucket == "<10"}
+						{"<$10"}
+					{/if}
+				{:else}
+					{d.bucket}
+				{/if}
+			</text>
 		{/if}
 	{/each}
 </g>
@@ -152,11 +183,11 @@ function handleMouseleave(e) {
 		fill: var(--wine-tan);
 	}
 
-	.price-text:not(:nth-of-type(5n)) {
+	/* .price-text:not(:nth-of-type(5n)) {
 		display: none;
 	}
 
 	.price-text:first-of-type {
 		display: inline-block;
-	}
+	} */
 </style>
