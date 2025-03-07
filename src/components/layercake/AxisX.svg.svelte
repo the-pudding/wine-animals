@@ -79,7 +79,7 @@
 	}
 
 	.tick text {
-		fill: var(--wine-tan);
+		fill: var(--wine-dark-tan);
 		font-family: var(--sans);
 		font-size: 14px;
 	}
@@ -95,5 +95,11 @@
 
 	.x-axis .tick:last-child text {
 		transform: translateX(-6px);
+	}
+
+	@media(max-width:700px) {
+		.tick text {
+			font-size: 12px;
+		}
 	}
 </style>

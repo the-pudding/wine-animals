@@ -18,10 +18,10 @@
     $: selectedPriceText = copy.opening[0][($animalSelected + "Price")]
     $: selectedRatingText = copy.opening[0][($animalSelected + "Rating")]
 
-    $: console.log(scrollIndex);
+    $: console.log(scrollIndex, $animalSelected);
 
     function handleRandomClick() {
-        const animals = ["cat", "frog", "bird"];
+        const animals = ["cat", "cattle", "bird"];
         const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
         
         // Update shared state.
@@ -101,6 +101,7 @@
     }
 
     #post-intro {
+        width: 100%;
         max-width: 700px;
         margin: 4rem auto;
     }
@@ -199,5 +200,23 @@
 
     :global(.step p a:hover) {
         color: var(--wine-red);
+    }
+
+    @media(max-width: 700px) {
+        .step p {
+            font-size: var(--16px);
+        }
+
+        :global(.prompt) {
+            font-size: var(--14px);
+        }
+
+        #post-intro {
+            padding: 0 1rem;
+        }
+
+        .prose {
+            font-size: var(--16px);
+        }
     }
 </style>

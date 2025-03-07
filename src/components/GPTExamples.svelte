@@ -21,10 +21,6 @@
        {
            img: "168501049",
            text: "The image shows a wine label. There is an illustration of a <span class='correct-prompt'>bird</span> in flight at the top of the label, which is an animal."
-       },
-       {
-           img: "154534671",
-           text: "There is an image of a <span class='correct-prompt'>bird, specifically a <span class='correct-prompt'>goose</span>, on the wine label."
        }
    ];
 
@@ -44,10 +40,6 @@
        {
            img: "167324613",
            text: "This appears to be an image of a wine label that reads 'Spook Light - Skin Fermented - Pinot Gris' from 'Hawke's Bay'. The label features some illustrations that resemble <span class='wrong-prompt'>insects</span> around the edges, such as moths or butterflies. I <span class='wrong-prompt'>do not see any animals or humans</span> on this label."
-       },
-       {
-           img: "170789857",
-           text: "This wine label features a branch which appears to have leaves and  <span class='wrong-prompt'>possibly grapes or some kind of fruit</span> on it. There are <span class='wrong-prompt'>no visible animals or humans</span> on the label. "
        }
    ];
    
@@ -156,5 +148,11 @@
     :global(.wrong-prompt) {
         font-weight: 700;
         border-bottom: 2px solid var(--wine-red);
+    }
+
+    @media(max-width:700px) {
+        .example p {
+            font-size: 10px;
+        }
     }
 </style>

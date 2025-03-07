@@ -32,40 +32,44 @@
     >
         <div class="rail" id="rail-left">
             <div class="deets">
-                <div class="icon">
-                    <img src="./assets/images/icons/{strippedAnimal}.png" />
-                </div>
-                <h3>{animal}</h3>
-                <div class="medians-wrapper">
-                    <div class="median">
-                        <p>Median price</p>
-                        <p>${(medianData.find(d => d.topGroup == animal).price).toFixed(2)}</p>
+                <div class="topline-wrapper">
+                    <div class="icon-name-wrapper">
+                        <div class="icon">
+                            <img src="./assets/images/icons/{strippedAnimal}.png" />
+                        </div>
+                        <h3>{animal}</h3>
                     </div>
-                    <div class="median">
-                        <p>Total wines</p>
-                        <p>{medianData.find(d => d.topGroup == animal).totalCount}</p>
-                    </div>
-                    <div class="median">
-                        <p>Median rating</p>
-                        <p>{medianData.find(d => d.topGroup == animal).rating}
-                            <span class="stars">
-                                {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
-                                    <span class="full-star">{@html starIcon}</span> <!-- Full star -->
-                                {/each}
-                        
-                                {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
-                                    <span class="partial-star">
-                                        <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
-                                            {@html starIcon}
-                                        </span>
-                                    </span> <!-- Partial star -->
-                                {/if}
-                            </span>
-                        </p>
-                    </div>
-                    <div class="median">
-                        <p>Steals</p>
-                        <p>{Math.round(medianData.find(d => d.topGroup == animal).stealPercent * 10) / 10}%</p>
+                    <div class="medians-wrapper">
+                        <div class="median">
+                            <p>Median price</p>
+                            <p>${(medianData.find(d => d.topGroup == animal).price).toFixed(2)}</p>
+                        </div>
+                        <div class="median">
+                            <p>Total wines</p>
+                            <p>{medianData.find(d => d.topGroup == animal).totalCount}</p>
+                        </div>
+                        <div class="median">
+                            <p>Median rating</p>
+                            <p>{medianData.find(d => d.topGroup == animal).rating}
+                                <span class="stars">
+                                    {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
+                                        <span class="full-star">{@html starIcon}</span> <!-- Full star -->
+                                    {/each}
+                            
+                                    {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
+                                        <span class="partial-star">
+                                            <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
+                                                {@html starIcon}
+                                            </span>
+                                        </span> <!-- Partial star -->
+                                    {/if}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="median">
+                            <p>Steals</p>
+                            <p>{Math.round(medianData.find(d => d.topGroup == animal).stealPercent * 10) / 10}%</p>
+                        </div>
                     </div>
                 </div>
                 {#if copy.summaryCards.find(card => card.animal === animal)}
@@ -120,6 +124,17 @@
     .deets p {
         font-size: var(--18px);
         line-height: 1.65;
+    }
+
+    .topline-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .icon-name-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .medians-wrapper {
@@ -217,5 +232,63 @@
         height: 100%;
         overflow: hidden;
         white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+        .animal-card {
+            flex-direction: column;
+        }
+
+        #rail-left, #rail-right {
+            width: 100%;
+        }
+
+        .deets {
+            padding: 0;
+        }
+
+        .topline-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .icon-name-wrapper {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .median-wrapper {
+            flex-wrap: nowrap;
+        }
+
+        .median {
+            width: 25%;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .icon {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        h3 {
+           font-size: var(--28px); 
+        }
+
+        .median p:first-of-type {
+            font-size: var(--12px);
+        }
+
+        .median p:nth-of-type(2) {
+            font-size: var(--24px);
+        }
+
+        .deets p {
+            font-size: var(--16px);
+        }
     }
 </style>

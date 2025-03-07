@@ -219,4 +219,17 @@
         overflow: hidden;
         padding-right: 3px;
     }
+
+    @media (max-width: 700px) {
+        #scatter {
+            margin-bottom: 2rem;
+        }
+        h4 {
+            font-size: var(--18px);
+        }
+
+        .deets p {
+            font-size: var(--16px);
+        }
+    }
 </style>

@@ -71,7 +71,7 @@
                 .range([0, width])}
             {#if category.key !== "steals" && category.key !== "count"}
                 {@const matchedCopy = copy.summaryCards.find(card => card.animal === animal)}
-                <div class="chart-wrapper">
+                <div class="chart-wrapper" id="chart-wrapper-{category.key}">
                     <h5>{category.key}</h5>
                     <div class="chart-layers">
                         <div class="chart-container bars" id="bars_{category[0]}">
@@ -165,6 +165,7 @@
         margin: 0.5rem 0 0 0;
         font-family: var(--sans);
         font-size: var(--18px);
+        width: 100%;
     }
 
     .category-span {
@@ -284,5 +285,24 @@
         position: absolute;
         width: 100%;
         height: 100%;
+    }
+
+    @media (max-width: 700px) {
+        .quad-wrapper {
+            flex-wrap: nowrap;
+            flex-direction: column;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+        }
+
+        h5 {
+            margin: 1rem 0 0 0;
+        }
+
+        .comments {
+            font-size: var(--16px);
+        }
     }
 </style>

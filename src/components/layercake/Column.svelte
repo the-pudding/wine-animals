@@ -55,63 +55,63 @@
 	}
 
 	function handleMouseover(e, d) {
-    hideTooltip.set(false);
-    
-    // Find the tooltip closest to the hovered chart
-    let parentChart = e.target.closest("#distribution"); // Find the nearest chart container
-    let tooltip = parentChart.querySelector(".tooltip");  // Get the tooltip inside this chart
+		hideTooltip.set(false);
+		
+		// Find the tooltip closest to the hovered chart
+		let parentChart = e.target.closest("#distribution"); // Find the nearest chart container
+		let tooltip = parentChart.querySelector(".tooltip");  // Get the tooltip inside this chart
+		let categoryChart = e.target.closest(".chart-wrapper");
 
-	console.log(parentChart, tooltip)
-    if (!tooltip) return; // Ensure the tooltip exists
+		if (!tooltip) return; // Ensure the tooltip exists
 
-    // Get bounding box of `parentChart` instead of global `#distribution`
-    let containerBounds = parentChart.getBoundingClientRect();
+		// Get bounding box of `parentChart` instead of global `#distribution`
+		let containerBounds = parentChart.getBoundingClientRect();
 
-    // Mouse position relative to the hovered chart
-    let mouseX = e.clientX - containerBounds.left;
-    let mouseY = e.clientY - containerBounds.top;
+		// Mouse position relative to the hovered chart
+		let mouseX = e.clientX - containerBounds.left;
+		let mouseY = e.clientY - containerBounds.top;
 
-    // Get tooltip size
-    const tooltipWidth = tooltip.offsetWidth;
-    const tooltipHeight = tooltip.offsetHeight;
+		// Get tooltip size
+		const tooltipWidth = tooltip.offsetWidth;
+		const tooltipHeight = tooltip.offsetHeight;
 
-    // Default tooltip position (right of cursor)
-    let left = mouseX + 15;
-    let top = mouseY - tooltipHeight / 2;
+		// Default tooltip position (right of cursor)
+		let left = mouseX + 15;
+		let top = mouseY - tooltipHeight / 2;
 
-    // Prevent tooltip from going off the right edge
-    if (mouseX + tooltipWidth + 20 > containerBounds.width) {
-        left = mouseX - tooltipWidth - 15;
-    }
+		// Prevent tooltip from going off the right edge
+		if (mouseX + tooltipWidth + 20 > containerBounds.width) {
+			left = mouseX - tooltipWidth - 15;
+		}
 
-    // Prevent tooltip from going off the bottom edge
-    if (mouseY + tooltipHeight + 20 > containerBounds.height) {
-        top = containerBounds.height - tooltipHeight - 15;
-    }
+		// Prevent tooltip from going off the bottom edge
+		if (mouseY + tooltipHeight + 20 > containerBounds.height) {
+			top = containerBounds.height - tooltipHeight - 15;
+		}
 
-    // Prevent tooltip from going off the top
-    if (mouseY - tooltipHeight < 0) {
-        top = 15;
-    }
+		// Prevent tooltip from going off the top
+		if (mouseY - tooltipHeight < 0) {
+			top = 15;
+		}
 
-    // Set tooltip position relative to the hovered chart
-    tooltip.style.left = `${left}px`;
-    tooltip.style.top = `${top}px`;
-    tooltip.style.opacity = 1;
-	console.log(d.category)
-    tooltip.innerHTML = d.category == "price" 
-		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines cost between <span class="bolded">$${d.bucket}</span></p>`
-		: d.category == "rating" 
-		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are rated between <span class="bolded">${d.bucket} stars</span></p>`
-		: d.category == "type"
-		? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are <span class="bolded">${d.bucket}</span> wines</p>`
-		: `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are from <span class="bolded">${d.bucket}</span></p>` 
-	;
+		// Set tooltip position relative to the hovered chart
+		tooltip.style.left = `${left}px`;
+		tooltip.style.top = `${top}px`;
+		tooltip.style.opacity = 1;
+		console.log(d.category)
+		tooltip.innerHTML = d.category == "price" 
+			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines cost between <span class="bolded">$${d.bucket}</span></p>`
+			: d.category == "rating" 
+			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are rated between <span class="bolded">${d.bucket} stars</span></p>`
+			: d.category == "type"
+			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are <span class="bolded">${d.bucket}</span> wines</p>`
+			: `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are from <span class="bolded">${d.bucket}</span></p>` 
+		;
 
-    // Highlight hovered bar only within this chart
-    parentChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
-    e.target.classList.add("hover");
-}
+		// Highlight hovered bar only within this chart
+		categoryChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
+		e.target.classList.add("hover");
+	}
 
 
 
@@ -180,7 +180,13 @@ function handleMouseleave(e) {
 		font-size: 14px;
 		font-weight: 500;
 		font-family: var(--sans);
-		fill: var(--wine-tan);
+		fill: var(--wine-dark-tan);
+	}
+
+	@media (max-width: 700px) {
+		.bucket-text {
+			font-size: var(--12px);
+		}
 	}
 
 	/* .price-text:not(:nth-of-type(5n)) {

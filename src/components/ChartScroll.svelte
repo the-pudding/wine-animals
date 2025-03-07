@@ -186,7 +186,7 @@
         max-width: 700px;
         line-height: 1.65;
         color: var(--wine-tan);
-        font-size: var(--20px);
+        font-size: var(--18px);
         line-height: 1.65;
         background: none;
         z-index: 900;
@@ -365,5 +365,22 @@
     .bar {
         height: 100%;
         background: var(--wine-red);
+    }
+
+    @media(max-width: 700px) {
+        .scatter-wrapper {
+            width: 100%;
+        }
+
+        .step {
+            height: 90vh;
+            z-index: 900;
+            max-width: 90%;
+            opacity: 1;
+        }
+
+        .step p {
+            font-size: var(--16px);
+        }
     }
 </style>

@@ -139,4 +139,18 @@
         padding: 0.125rem 0.25rem;
         font-size: var(--12px);
     }
+
+    @media(max-width: 700px) {
+        #closing p {
+            font-size: var(--16px);
+        }
+    }
+
+    @media(max-width: 600px) {
+        .examples {
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+    }
 </style>

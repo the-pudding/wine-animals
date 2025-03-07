@@ -44,7 +44,6 @@
 	{#each directions as dir}
 		<button
 			on:click={dispatch("tap", dir)}
-			style="width: {getW(dir)}; height: {getH(dir)};"
 			aria-label={dir}
 			class="{dir} {arrowPosition}"
 			class:full
@@ -52,7 +51,7 @@
 				|| dir == "right" && $currAnimalSlide == 15}
 		>
 			{#if visibleArrows.includes(dir)}
-				<span style="width: {arrowSize};">
+				<span class="arrow-span">
 					{#if dir === "left"}
 						<ChevronLeft color={"#181A1F"} strokeWidth={arrowStrokeWidth} />
 					{:else if dir === "right"}
@@ -85,6 +84,13 @@
 		box-shadow: none;
 		pointer-events: auto;
 		display: flex;
+		width: 80px;
+		height: 80px;
+	}
+
+	.arrow-span {
+		width: 36px;
+		height: 36px;
 	}
 
 	button.left::before {
@@ -123,13 +129,13 @@
 	}
 
 	.left {
-		left: -90px;
+		left: -70px;
 		top: 0;
 		/* text-align: left; */
 	}
 
 	.right {
-		right: -90px;
+		right: -70px;
 		top: 0;
 		/* text-align: right; */
 	}
@@ -243,5 +249,25 @@
 	.debug .down {
 		background: orange;
 		opacity: 0.5;
+	}
+
+	@media(max-width: 700px) {
+		button {
+			width: 60px;
+			height: 60px;
+		}
+
+		.left {
+			left: -50px;
+		}
+
+		.right {
+			right: -50px;
+		}
+
+		.arrow-span {
+			width: 30px;
+			height: 30px;
+		}
 	}
 </style>

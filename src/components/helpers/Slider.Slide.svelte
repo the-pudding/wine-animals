@@ -32,4 +32,10 @@
 		height: 100%;
 		padding: 0 2rem;
 	}
+
+	@media(max-width: 700px) {
+		.slide {
+			padding: 0 1rem;
+		}
+	}
 </style>

@@ -14,7 +14,7 @@
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "human",
-		"marine invertebrate", "mythical", "none", "pachyderm", "pig",
+		"marine invertebrate", "mythical creature", "none", "pachyderm", "pig",
 		"rabbit", "ram"
 	];
 
@@ -25,8 +25,8 @@
     export let chartScrollIndex;
 
     $: selectedWine = $animalSelected == "cat" ? "159436402"
-        : $animalSelected == "frog" ? "156622800"
-        :  "165876644";
+        : $animalSelected == "cattle" ? "159742039"
+        :  "157063319";
 
     // Trendline
     const regression = d3Regression.regressionExp()
@@ -36,7 +36,7 @@
     $: pointData = chartScrollIndex == 9
         ? $data[1].filter(d => d.topgroup == "bird")
         : chartScrollIndex == 10
-        ? $data[1].filter(d => d.topgroup == "amphibian/reptile")
+        ? $data[1].filter(d => d.topgroup == "cattle")
         : chartScrollIndex == 11
         ? $data[1].filter(d => d.topgroup == "cat")
         : $data[1];
@@ -168,7 +168,7 @@
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" 
             class:hidden={chartScrollIndex == 9 && d.topgroup !== "bird" ||
-                chartScrollIndex == 10 && d.topgroup !== "amphibian/reptile" ||
+                chartScrollIndex == 10 && d.topgroup !== "cattle" ||
                 chartScrollIndex == 11 && d.topgroup !== "cat"}
         >
           <circle 
@@ -210,7 +210,7 @@
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
         {@const imageSize = chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ? r+30 : r+10}
+                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? r+30 : r+10}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
@@ -246,14 +246,14 @@
                     chartScrollIndex == undefined || 
                     chartScrollIndex == 0 || 
                     chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                    chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ||
+                    chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ||
                     chartScrollIndex >= 4 }
                 class:hidden={chartScrollIndex >= 5}>
                 <circle 
                     cx={cx} 
                     cy={cy} 
                     r={chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythical" ? 40 : 
+                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? 40 : 
                         chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
                     fill={fill} 
                     stroke={"none"} 

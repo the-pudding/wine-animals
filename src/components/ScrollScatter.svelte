@@ -98,6 +98,7 @@
 
 <style>
     #scatter {
+        width: 100%;
         height: 100%;
         aspect-ratio: 1 / 1;
         display: flex;
@@ -119,7 +120,6 @@
     .chart-inner {
         width: 100%;
         height: 100%;
-        overflow: hidden;
     }
 
     .quadrants {
@@ -171,5 +171,25 @@
         z-index: 1000;
         padding: 5rem 4rem 5.25rem 4.5rem;
         pointer-events: none;
+    }
+
+    @media(max-width: 700px) {
+        .chart-container {
+            padding: 2rem;
+        }
+
+        .label-price {
+            top: 5.25rem;
+            left: -1.75rem;
+        }
+
+        .label-rating {
+            bottom: -0.25rem;
+            right: -0.75rem;
+        }
+
+        .quadrants p {
+            font-size: var(--16px); 
+        }
     }
 </style>

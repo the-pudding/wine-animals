@@ -107,10 +107,10 @@
 	div {
 		position: relative;
 		z-index: 900;
-		padding: 0 8rem 0 0;
+		padding: 0;
         display: flex;
         pointer-events: none;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
 	}
 </style>
