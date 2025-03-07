@@ -1,5 +1,6 @@
 <script>
     import SpinningBottle from "$components/SpinningBottle.svelte";
+    import { createEventDispatcher } from "svelte";
 
     export let scrollIndex;
 
@@ -8,6 +9,11 @@
         { animal: "cat", name: "Bordeaux Supérieur", winery: "Château Les Gravieres de la Brandille", country: "France", price: 18.33, bottleSlot: "center", targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
         { animal: "bird", name: "Pinot Noir", winery: "Mohua", country: "New Zealand", price: 21.95, bottleSlot: "right", targetPos: "75%", startingPos: "-25%", rangeValue: 0 }
     ];
+    const dispatch = createEventDispatcher();
+
+    function handleBottleClick(event) {
+        dispatch("bottleClicked", event.detail);
+    }
 
     let bottlesWidth = 0;
     let bottlesHeight = 0;
@@ -18,6 +24,7 @@
     {#if bottlesWidth && bottlesHeight}
         {#each openingWines as wine, i}
             <SpinningBottle 
+                on:bottleClicked={handleBottleClick}
                 bind:this={bottleRefs[i]}
                 scrollIndex={scrollIndex}
                 bottleIndex={i}

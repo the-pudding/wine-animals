@@ -37,6 +37,7 @@
 	$: sliderEl == $currAnimalSlide;
 </script>
 
+<div id="gradient"></div>
 <Intro />
 <ChartScroll />
 <div 
@@ -62,6 +63,13 @@
 <!-- <Footer /> -->
 
 <style>
+	#gradient {
+		width: 100%;
+		height: 100svh;
+		position: fixed;
+		z-index: 1;
+		background: linear-gradient(to bottom, #181A1F, #14161a);
+	}
 	.white {
 		background: var(--color-bg);
 		width: 100%;

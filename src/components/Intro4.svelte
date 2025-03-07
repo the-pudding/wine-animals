@@ -11,6 +11,12 @@
     let scrollyContainer; // Reference to the Scrolly container
 
     const copy = getContext("copy");
+    const openingWines = [
+        { animal: "cattle", name: "Pinotage", winery: "Survivor", country: "South Africa", price: 21.99, bottleSlot: "left", targetPos: "25%", startingPos: "-75%", rangeValue: 0 },
+        { animal: "cat", name: "Bordeaux Supérieur", winery: "Château Les Gravieres de la Brandille", country: "France", price: 18.33, bottleSlot: "center", targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
+        { animal: "bird", name: "Pinot Noir", winery: "Mohua", country: "New Zealand", price: 21.95, bottleSlot: "right", targetPos: "75%", startingPos: "-25%", rangeValue: 0 }
+    ];
+    let shouldSpin = [false, false, false];
 
     const steps = copy.steps;
 
@@ -21,19 +27,45 @@
     $: console.log(scrollIndex, $animalSelected);
 
     function handleRandomClick() {
-        const animals = ["cat", "cattle", "bird"];
-        const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+        const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
         
-        // Update shared state.
-        animalSelected.set(randomAnimal);
+        handleBottleClick(randomAnimal)
+    }
+
+    function handleBottleClick(data) {
+        console.log("Bottle clicked in Intro4:", data);
+        // Perform additional actions if needed
+        animalSelected.set(data.animal);
         bottleSelected.set(true);
-        
-        // Find the index in openingWines that matches the random animal.
-        const index = openingWines.findIndex(wine => wine.animal === randomAnimal);
-            if (index !== -1 && bottleRefs[index]) {
-                // Call the child's handleClick using the wine data from the parent.
-                bottleRefs[index].handleClick(openingWines[index]);
+
+        const products = document.querySelectorAll(".product");
+        products.forEach((product) => {
+        const prodAnimal = product.getAttribute("data-animal");
+        const wineDiv = product.querySelector(".wine");
+        if (prodAnimal !== $animalSelected) {
+            product.classList.add("faded");
+            product.style.left = data.startingPos;
+        } else {
+            product.classList.remove("faded");
+            product.style.left = "50%";
+        }
+        });
+
+        shouldSpin = Array.from(products).map(
+            (product) => product.style.left === "50%" ? false : true
+        );
+
+        products.forEach((product) => {
+        const wineDiv = product.querySelector(".wine");
+        if (wineDiv) {
+            if (product.style.left === "50%") {
+            wineDiv.classList.remove("spin");
+            } else {
+            wineDiv.classList.add("spin");
             }
+        }
+        });
+
     }
 
     // When $bottleSelected becomes true, scroll to the second step (index 1)

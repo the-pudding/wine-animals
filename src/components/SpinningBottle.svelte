@@ -17,6 +17,8 @@
     let rangeValue;
     let actualPrice = wineData.price;
 
+    const dispatch = createEventDispatcher();
+
     function mousemoveBottle(e) {
         let container = e.currentTarget;
         let mouseX = e.offsetX;
@@ -58,44 +60,40 @@
     }
 
     export function handleClick(data) {
-        // Update shared store state so all components can react if needed.
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
-        // Select all product elements and update their classes and left style.
-        const products = document.querySelectorAll('.product');
-        products.forEach(product => {
-            const prodAnimal = product.getAttribute('data-animal');
-            const wineDiv = product.querySelector('.wine');
-            if (prodAnimal !== $animalSelected) {
-            product.classList.add('faded');
-            // Unselected bottles return to their starting position.
+        const products = document.querySelectorAll(".product");
+        products.forEach((product) => {
+        const prodAnimal = product.getAttribute("data-animal");
+        const wineDiv = product.querySelector(".wine");
+        if (prodAnimal !== $animalSelected) {
+            product.classList.add("faded");
             product.style.left = data.startingPos;
-            } else {
-            product.classList.remove('faded');
-            // Selected bottle moves to the center.
+        } else {
+            product.classList.remove("faded");
             product.style.left = "50%";
-            }
+        }
         });
 
-        // Update the shouldSpin array:
-        // If a product is centered (left === "50%"), it doesn't spin.
-        shouldSpin = Array.from(products).map(product =>
-            product.style.left === "50%" ? false : true
+        shouldSpin = Array.from(products).map(
+        (product) => product.style.left === "50%" ? false : true
         );
 
-        // Optionally, update each wine div's spin class accordingly.
-        products.forEach(product => {
-            const wineDiv = product.querySelector('.wine');
-            if (wineDiv) {
+        products.forEach((product) => {
+        const wineDiv = product.querySelector(".wine");
+        if (wineDiv) {
             if (product.style.left === "50%") {
-                wineDiv.classList.remove('spin');
+            wineDiv.classList.remove("spin");
             } else {
-                wineDiv.classList.add('spin');
+            wineDiv.classList.add("spin");
             }
-            }
-        });
         }
+        });
+
+        // Emit event to parent component
+        dispatch("bottleClicked", data);
+    }
 
     $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
     $: transitionDelay = $bottleSelected == false ? (3 - 1 - bottleIndex) * 300 : bottleIndex * 300;
@@ -111,10 +109,14 @@
         left: {bottlePosLeft};"
         on:transitionend={handleTransitionEnd}
         on:click={() => handleClick(wineData)}>
+    <div class="shadows">
+
+    </div>
     <div class="wine"
         class:spin={shouldSpin[bottleIndex]}
         on:mousemove={mousemoveBottle}
-        on:mouseleave={mouseleaveBottle}></div>
+        on:mouseleave={mouseleaveBottle}>
+    </div>
 </div>
 
 
@@ -181,6 +183,18 @@
         animation: spin 0.6s steps(8) infinite;
         transition: background-position 0s; 
         pointer-events: none;
+    }
+
+    .shadows {
+        position: absolute;
+        bottom: 90px;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: black;
+        filter: blur(30px);
+        z-index: 1;
+        border-radius: 400px / 100px;
     }
 
     @keyframes spin {

@@ -11,7 +11,7 @@
 
     let currData;
     let currMetric;
-    let transitionsCompleted = 0;
+    let innerWidth;
 
     const animalSubgroups = [
         {animal: "amphibian", subgroups: "lizards, snakes, frogs, etc."},
@@ -83,61 +83,113 @@
     }
 
     $: animate = scrollIndex >= 5 ? true : false;
-
-    console.log({currData})
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 {#if scrollIndex >= 4 && scrollIndex <= 7}
 <div class="summary-bottles" transition:fade>
-    <div class="animal-wrapper">
-        {#each currData as animal, i (animal[0])}
-            <div class="animal-group active" 
-                style="transition-delay: {(currData.length - i - 1) * 100}ms;"
-                animate:flip={{duration: 1000}}
-                class:active={animal[0] === $animalSelected}
-                class:animated={animate}>
-                <p class="num">
-                    {#if currMetric == undefined}
-                    {:else if currMetric == "price"}
-                        ${animal[1].medianPrice.toFixed(2)}
-                    {:else}
-                        {animal[1].medianRating}
+    {#if innerWidth > 700}
+        <div class="animal-wrapper">
+            {#each currData as animal, i (animal[0])}
+                <div class="animal-group active" 
+                    style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                    animate:flip={{duration: 1000}}
+                    class:active={animal[0] === $animalSelected}
+                    class:animated={animate}>
+                    <p class="num">
+                        {#if currMetric == undefined}
+                        {:else if currMetric == "price"}
+                            ${animal[1].medianPrice.toFixed(2)}
+                        {:else}
+                            {animal[1].medianRating}
+                        {/if}
+                    </p>
+                    <div class="img-wrapper">
+                        {#if animal[0] === $animalSelected}
+                            <img src="./assets/images/blank-bottle-outline.png" alt="wine bottle with red outline" />
+                        {:else}
+                            <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
+                        {/if}
+                        <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
+                    </div>
+                    <p>{animal[0]}</p>
+                    {#if getAnimalSubgroup(animal[0])}
+                        <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
                     {/if}
-                </p>
-                <div class="img-wrapper">
-                    {#if animal[0] === $animalSelected}
-                        <img src="./assets/images/blank-bottle-outline.png" alt="wine bottle with red outline" />
-                    {:else}
-                        <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
-                    {/if}
-                    <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                 </div>
-                <p>{animal[0]}</p>
-                {#if getAnimalSubgroup(animal[0])}
-                    <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
-                {/if}
-            </div>
-        {/each}
-    </div>
-    <div class="labels" class:hidden={scrollIndex <= 5}>
-        <p><Icon name="chevron-left"/>Lower {currMetric}</p>
-        <p>Higher {currMetric}<Icon name="chevron-right"/></p>
-        {#if currMetric == undefined}
-        {:else}
-            <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "67%"}">
-                <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
-                <div class="median-circle"></div>
-                <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
-            </div>
-            {#if currMetric !== "rating"}
-                <div class="median-mark" style="left: 70%">
-                    <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
+            {/each}
+        </div>
+        <div class="labels" class:hidden={scrollIndex <= 5}>
+            <p><Icon name="chevron-left"/>Lower {currMetric}</p>
+            <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
+            {#if currMetric !== undefined}
+                <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "67%"}">
+                    <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
                     <div class="median-circle"></div>
-                    <p>All wines</p>
+                    <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
                 </div>
+                {#if currMetric !== "rating"}
+                    <div class="median-mark" style="left: 70%">
+                        <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
+                        <div class="median-circle"></div>
+                        <p>All wines</p>
+                    </div>
+                {/if}
             {/if}
-        {/if}
-</div>
+        </div>
+    {:else}
+        <div class="labels" class:hidden={scrollIndex <= 5}>
+            <p class="low"><Icon name="chevron-up"/>Lower {currMetric}</p>
+            <p class="high"><Icon name="chevron-down"/>Higher {currMetric}</p>  
+            {#if currMetric !== undefined}
+                <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "65%"}">
+                    <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
+                    <div class="median-circle"></div>
+                    <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
+                </div>
+                {#if currMetric !== "rating"}
+                    <div class="median-mark" style="top: 62%">
+                        <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
+                        <div class="median-circle"></div>
+                        <p>All wines</p>
+                    </div>
+                {/if}
+            {/if}
+        </div>
+        <div class="animal-wrapper">
+            {#each currData as animal, i (animal[0])}
+                <div class="animal-group active" 
+                    style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                    animate:flip={{duration: 1000}}
+                    class:active={animal[0] === $animalSelected}
+                    class:animated={animate}>
+                    <p class="num">
+                        {#if currMetric == undefined}
+                        {:else if currMetric == "price"}
+                            ${animal[1].medianPrice.toFixed(2)}
+                        {:else}
+                            {animal[1].medianRating}
+                        {/if}
+                    </p>
+                    <div class="img-wrapper">
+                        {#if animal[0] === $animalSelected}
+                            <img src="./assets/images/blank-bottle-outline-horiz.png" alt="wine bottle with red outline" />
+                        {:else}
+                            <img src="./assets/images/blank-bottle-horiz.png" alt="wine bottle" />
+                        {/if}
+                        <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
+                    </div>
+                    <div class="animal-deets">
+                        <p>{animal[0]}</p>
+                        {#if getAnimalSubgroup(animal[0])}
+                            <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
+                        {/if}
+                    </div>
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
 {/if}
 
@@ -162,6 +214,7 @@
         flex-direction: row;
         justify-content: center;
         width: 100%;
+        height: 100%;
         max-width: 1200px;
         gap: 1rem;
     }
@@ -299,5 +352,101 @@
         background: var(--wine-tan);
         border: 2px solid var(--wine-black);
         border-radius: 50%;
+    }
+
+    @media(max-width:700px) {
+        .summary-bottles {
+            flex-direction: row;
+        }
+        .animal-wrapper {
+            flex-direction: column;
+            padding-left: 2.5rem;
+        }
+
+        .animal-group {
+            flex-direction: row;
+            width: 100%;
+            height: calc(100% / 16);
+            align-items: center;
+        }
+
+        .img-wrapper {
+            aspect-ratio: 4 / 1;
+            height: 100%;
+            width: 120px;
+            margin: 0 0.5rem;
+        }
+
+        .animal-group.active {
+            transform: translate(30px, 0);
+            padding-right: 2rem;
+        }
+
+        .img-icon {
+            top: 0;
+            height: 80%;
+            width: auto;
+            left: 31%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .num {
+            width: 80px;
+            text-align: right;
+            margin: 0;
+            font-size: var(--16px);
+        }
+
+        .subgroup {
+            margin-left: 0.5rem;
+            text-align: left;
+        }
+
+        .animal-deets {
+            display: flex;
+            flex-direction: row;
+            width: calc(100% - 200px);;
+        }
+
+        .labels {
+            position: absolute;
+            left: 2.5rem;
+            width: 100%;
+            top: 0;
+            border-top: none;
+            border-left: 1px solid var(--wine-blue);
+            height: 100%;
+            pointer-events: none;
+            font-size: var(--16px);
+        }
+
+        .labels .low {
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .labels .high {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -0.5rem;
+        }
+
+        .median-mark {
+            top: 0;
+            left: -30px;
+            gap: 0;
+        }
+
+        .median-mark .num {
+            width: auto;
+            font-size: var(--16px);
+        }
+
+        .labels .median-mark p.num  {
+            font-size: var(--16px);
+        }
     }
 </style>
