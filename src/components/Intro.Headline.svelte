@@ -9,8 +9,8 @@
 
 <div class="headline-wrapper">
     <div class="head-container" style={parent_style} class:hidden={scrollIndex == "exit"}>
-        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-gin<br> of species</h1>
-        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-gin<br> of species</h1>
+        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
+        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
     </div>
     <div class="byline" style="opacity: {scrollIndex == 8 ? 1 : 0}">
         <p class="strikethrough">By {copy.bylineFake}<span class="strike-line" class:animate={scrollIndex == 8 || scrollIndex == "exit"}></span></p>
