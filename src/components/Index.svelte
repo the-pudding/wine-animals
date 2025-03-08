@@ -1,7 +1,8 @@
 <script>
 	import { getContext } from "svelte";
 	import { currAnimalSlide } from "$stores/misc.js";
-	import inView from "$actions/inView.js"
+	import inView from "$actions/inView.js";
+	import Icon from "$components/helpers/Icon.svelte";
 	import Intro from "$components/Intro4.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
@@ -10,6 +11,7 @@
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
+	import * as d3 from "d3";
 
 	const copy = getContext("copy");
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
@@ -31,6 +33,10 @@
 			if (direction === "right") return Math.min(topgroups.length - 1, n + 1); // Prevent exceeding last index
 			return n;
 		});
+	}
+
+	function tooltipCloseClick() {
+		d3.select("#universal-tooltip").classed("visible", false)
 	}
 
 	$: console.log($currAnimalSlide)
@@ -59,10 +65,101 @@
 	</Slider>
 </div>
 <Outro />
+<div id="universal-tooltip">
+	<button class="close" on:click={tooltipCloseClick}>
+		<Icon name="x" size={"1.5rem"}/>
+	</button>
+	<img src="" />
+	<div class="deets">
+		<p class="wine-name"></p>
+		<p class="winery-name"></p>
+		<p class="animal"></p>
+		<div class="price-rating">
+			<p class="price"></p>
+			<p class="rating"></p>
+		</div>
+	</div>
+</div>
 <!-- <Explore /> -->
 <!-- <Footer /> -->
 
 <style>
+	#universal-tooltip {
+        position: fixed;
+        left: 0;
+        bottom: -160px;
+        width: 100%;
+        height: 160px;
+		padding: 0.5rem;
+        background: rgba(207, 202, 191, 0.98);
+		border-top: 1px solid var(--wine-dark-gray);
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 1rem;
+		z-index: 1000;
+		transition: bottom 0.5s linear;
+    }
+
+	#universal-tooltip button {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		background: none;
+		border: 2px solid var(--wine-black);
+		border-radius: 50%;
+		height: 2.5rem;
+		width: 2.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#universal-tooltip button:hover {
+		background: var(--wine-black);
+	}
+
+	:global(#universal-tooltip button svg) {
+		margin-top: 4px;
+	}
+
+	:global(#universal-tooltip button:hover svg path) {
+		stroke: var(--wine-tan);
+	}
+
+	#universal-tooltip img {
+		height: 100%;
+	}
+
+	#universal-tooltip .deets {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#universal-tooltip .deets p {
+		margin: 0;
+		padding: 0;
+		font-family: var(--sans);
+	}
+
+	#universal-tooltip .wine-name {
+		font-weight: 700;
+	}
+
+	#universal-tooltip .winery-name {
+		font-style: italic;
+	}
+
+	#universal-tooltip .deets .price-rating {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+	:global(#universal-tooltip.visible) {
+		bottom: 0 !important;
+	}
+
 	#gradient {
 		width: 100%;
 		height: 100svh;

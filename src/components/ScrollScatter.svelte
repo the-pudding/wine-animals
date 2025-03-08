@@ -81,7 +81,6 @@
                         gridlines={true} 
                         ticks={3} />
                     <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
-                    <Voronoi stroke="#333" {chartScrollIndex}/>
                 </Svg>
             </LayerCake>
         </div>

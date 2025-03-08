@@ -14,10 +14,10 @@
 	function mouseoverCircle(point) {
 		console.log(point)
 
-	  d3.selectAll(".wine-circle.active").style("opacity", 0.1).style("fill", "#38425D");
+	  d3.selectAll(".card-wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
 
-	  d3.selectAll(`#circle-${point.data.id}`)
-	  	.style("opacity", 0.8)
+	  d3.selectAll(`#card-wine-circle-${point.data.id}`)
+	  	.style("opacity", 1)
 		.style("fill", "#CFCABF")
 		.transition(500)
 		.attr("r", 10)
@@ -25,32 +25,43 @@
 			this.parentNode.appendChild(this); // Append to the end of the parent
 		});
 
-	  highlightWine.set(point.data)
+		setTooltip(point.data)
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".wine-circle circle")
-		.style("opacity", 0.5)
+		d3.selectAll(".card-wine-circle circle")
+		.style("opacity", 0.8)
 		.style("fill", "#38425D")
 		.transition(500)
 		.attr("r", 4);
 
-		highlightWine.set(undefined)
+		// let tooltip = d3.selectAll("#universal-tooltip");
+		// tooltip.classed("visible", false);
+	}
+
+	function setTooltip(data) {
+		let tooltip = d3.select("#universal-tooltip");
+		tooltip.classed("visible", true);
+
+		console.log(data)
+
+		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);
+
+		tooltip.select(".wine-name").text(data.name);
+		tooltip.select(".winery-name").text(`${data.winery}, ${data.country}`);
+		tooltip.select(".animal").text(`${data.topgroup}`);
+		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
+		tooltip.select(".rating").text(`${data.rating} stars`);
+		
 	}
 
 	$: console.log({chartScrollIndex})
   
-	$: points = chartScrollIndex < 5 
-		? $data[0].map(d => {
+	$: points = $data[0].map(d => {
 				const point = [$xGet(d), $yGet(d)];
 				point.data = d;
 				return point;
 		})
-		: $data[1].map(d => {
-				const point = [$xGet(d), $yGet(d)];
-				point.data = d;
-				return point;
-		});
   
 	$: uniquePoints = uniques(points, d => d.join(), false);
   
@@ -60,7 +71,7 @@
   {#each uniquePoints as point, i}
 	<path
 		id={`voronoi-${point.data.id}`}
-		class={$bigScatterData.includes(point.data) ? "voronoi-cell active" : " voronoi-cell inactive"}
+		class={"voronoi-cell active"}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
 		mouseoverCircle(point);

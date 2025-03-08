@@ -96,7 +96,7 @@
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        border: 1px solid var(--wine-med-gray);
+        border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
         padding: 2rem;
         display: flex;

@@ -98,11 +98,12 @@
 		opacity=0.5
 	/>
 </g>
-<g>
+<g class="card-wine-circle">
 	{#each $data[0] as d, i}
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
         <circle 
+			id={`card-wine-circle-${d.id}`}
             cx={cx} 
             cy={cy} 
             r={r} 
@@ -148,7 +149,8 @@
 
 <style>
 	circle {
-		opacity: 0.5;
+		fill: #38425D;
+		opacity: 0.8;
 		pointer-events: auto;
 	}
 	.regression, .expRegression {

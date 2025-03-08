@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { LayerCake, Svg, Html } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
+    import Voronoi from "$components/layercake/Voronoi.svelte";
     import { animalSelect, bigScatterData } from "$stores/misc.js";
     import allWineData from "$data/wineData.csv"
 
@@ -145,6 +146,7 @@
                             gridlines={true} 
                             ticks={3} />
                         <ScatterSvg {r} fill={color} />
+                        <Voronoi stroke="#333" />
                     </Svg>
                 </LayerCake>
         </div>
