@@ -9,14 +9,16 @@
   
 	/** @type {String|undefined} [stroke] – An optional stroke color, which is likely only useful for testing to make sure the shapes drew correctly. */
 	export let stroke = undefined;
+	export let chartScrollIndex;
   
 	function mouseoverCircle(point) {
+		console.log(point)
 
-	  d3.selectAll(".circle-explore.active").style("opacity", 0.1).style("fill", "#38425D");
+	  d3.selectAll(".wine-circle.active").style("opacity", 0.1).style("fill", "#38425D");
 
 	  d3.selectAll(`#circle-${point.data.id}`)
 	  	.style("opacity", 0.8)
-		.style("fill", "#ffffff")
+		.style("fill", "#CFCABF")
 		.transition(500)
 		.attr("r", 10)
 		.each(function () {
@@ -27,20 +29,28 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".circle-explore.active")
-		.style("opacity", 0.1)
+		d3.selectAll(".wine-circle circle")
+		.style("opacity", 0.5)
 		.style("fill", "#38425D")
 		.transition(500)
-		.attr("r", 6);
+		.attr("r", 4);
 
 		highlightWine.set(undefined)
 	}
+
+	$: console.log({chartScrollIndex})
   
-	$: points = $data[0].map(d => {
-	  const point = [$xGet(d), $yGet(d)];
-	  point.data = d;
-	  return point;
-	});
+	$: points = chartScrollIndex < 5 
+		? $data[0].map(d => {
+				const point = [$xGet(d), $yGet(d)];
+				point.data = d;
+				return point;
+		})
+		: $data[1].map(d => {
+				const point = [$xGet(d), $yGet(d)];
+				point.data = d;
+				return point;
+		});
   
 	$: uniquePoints = uniques(points, d => d.join(), false);
   

@@ -113,10 +113,12 @@
                         {/if}
                         <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                     </div>
-                    <p>{animal[0]}</p>
-                    {#if getAnimalSubgroup(animal[0])}
-                        <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
-                    {/if}
+                    <div class="animal-deets">
+                        <p>{animal[0]}</p>
+                        {#if getAnimalSubgroup(animal[0])}
+                            <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
+                        {/if}
+                    </div>
                 </div>
             {/each}
         </div>
@@ -197,7 +199,7 @@
     .summary-bottles {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: auto;
         max-height: 80svh;
         display: flex;
         flex-direction: column;
@@ -227,6 +229,7 @@
         transform: translate(-100%, 0);
         transition: transform 500ms ease, opacity 500ms ease;
         opacity: 0;
+        gap: 0.5rem;
     }
 
     .animal-group.animated {
@@ -357,6 +360,7 @@
     @media(max-width:700px) {
         .summary-bottles {
             flex-direction: row;
+            height: 100%;
         }
         .animal-wrapper {
             flex-direction: column;

@@ -150,7 +150,7 @@
 		position: sticky;
         display: flex;
         flex-direction: column;
-        justify-content: top;
+        justify-content: center;
         align-items: center;
 		top: 0;
         left: 0;

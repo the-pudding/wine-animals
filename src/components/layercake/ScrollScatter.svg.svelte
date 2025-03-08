@@ -172,6 +172,7 @@
                 chartScrollIndex == 11 && d.topgroup !== "cat"}
         >
           <circle 
+            id={`circle-${d.id}`}
             cx={cx} 
             cy={cy} 
             r={4} 
@@ -190,7 +191,8 @@
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" class:hidden={chartScrollIndex == 14}>
           <circle 
-            id="selected-circle"
+            id={`circle-${d.id}`}
+            class="selected-circle"
             cx={cx} 
             cy={cy} 
             r={chartScrollIndex >= 5 && chartScrollIndex < 9 ? 6 : 4} 
@@ -335,7 +337,7 @@
         opacity: 0.95; 
     }
 
-    #selected-circle {
+    .selected-circle {
         opacity: 1;
     }
 
