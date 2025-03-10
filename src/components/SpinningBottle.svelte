@@ -109,7 +109,6 @@
         : bottleIndex * 300;
     $: if (scrollIndex >= 2) { shouldSpin = [true,true,true]; } 
     $: if (outroVisible == false || outroVisible == undefined) { spin4 = true };
-    $: console.log({outroVisible, spin4})
 </script>
 
 

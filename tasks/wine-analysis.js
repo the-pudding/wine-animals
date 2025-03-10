@@ -9,7 +9,7 @@ const OUT_PATH = "./src/data/";
 // ANIMAL GROUPINGS
 const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
    "deer", "fish", "horse", "human",
-   "marine invertebrate", "mythical", "none", "pachyderm",
+   "marine invertebrate", "mythical creature", "none", "pachyderm",
    "rabbit", "ram", "pig"
 ];
 

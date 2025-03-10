@@ -1,18 +1,8 @@
 <script>
-    import { getContext, onMount } from "svelte";
-    import { stealPriceNum, stealRatingNum, stealData, stealPercent, stealTopgroupCounts} from "$stores/misc.js";
-    import { fly, fade } from 'svelte/transition';
-    import * as d3 from "d3";
+    import { getContext } from "svelte";
+    import { stealPriceNum, stealRatingNum, stealPercent, animalSelected} from "$stores/misc.js";
     import Scrolly from "$components/helpers/ChartScrolly.svelte";
-    import Toggle from "$components/helpers/Toggle.svelte";
-    import catIcon from "$svg/cat.svg";
-    import expensiveIcon from "$svg/expensive.svg";
-    import birdIcon from "$svg/bird.svg";
-    import topIcon from "$svg/top.svg";
-    import touchIcon from "$svg/touch.svg";
     import ScrollScatter from "$components/ScrollScatter.svelte";
-    import ScrollHisto from "$components/ScrollHisto.svelte";
-    import Summary from "$components/Summary.svelte";
     import rawData from "$data/wineData.csv";
     import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
 
@@ -20,31 +10,14 @@
     
     let chartScrollIndex;
     let activeSection;
-    let skipToExplore;
     let innerHeight;
     let innerWidth;
 
-    // TO-DO fix calculations
-    function findTop5WinesByPriceAndRating(data) {
-        return data
-            .sort((a, b) => {
-                // Sort by price ascending
-                if (a.rating !== b.rating) return a.rating - b.rating;
-                // If prices are the same, sort by rating descending
-                return b.price - a.price;
-            })
-            .slice(0, 5); // Get the top 5
+    function formatStars(rating) {
+        let string = rating + "";
+        let ratingReplaced = string.replace(".", "_");
+        return `star${ratingReplaced}_tan.svg`
     }
-
-    let catSteals = findTop5WinesByPriceAndRating(
-        rawData.filter(
-            d => d.price <= 150 &&
-                d.topgroup.includes("cat") && // Includes "cat"
-                !d.topgroup.includes("cattle") && // Excludes "cattle"
-                d.topgroup !== "human" &&
-                d.topgroup !== "none"
-        )
-    );
 
     $: {
         if (chartScrollIndex === undefined || chartScrollIndex < 14) {
@@ -60,28 +33,19 @@
         }
     }
 
-    $: minDimension = innerHeight && innerWidth ? d3.min([innerHeight, innerWidth]) : null;
+    $: selectedWine = $animalSelected == "cat" ? "159436402"
+        : $animalSelected == "cattle" ? "159742039"
+        :  "157063319";
 
-    function handleSkipClick(event) {
-        activeSection = "explore";
-    }
-
-    onMount(() => {
-        // skipToExplore = document.querySelector(".skipToExplore");
-        // skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
-    })
-
-    $: console.log($stealPercent)
+    $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
 </script>
 
 <svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
 
 <section id="chart-scroll">
     <div class="sticky">
-        <!-- <Toggle label={"view"} options={["scatter", "histogram"]} chartScrollIndex={chartScrollIndex}/> -->
         <div class="chart-wrapper">
             <div class="scatter-wrapper" 
-                style="max-height: {minDimension}px; max-width: {minDimension}px"
                 class:active={chartScrollIndex !== 12}
             >
                 <ScrollScatter chartScrollIndex={chartScrollIndex}/>
@@ -89,19 +53,7 @@
             <div class="lineup-wrapper" class:active={chartScrollIndex == 12}>
                 <SummaryBottles scrollIndex={chartScrollIndex}/>
             </div>
-            
-            <!-- <div class="histo-wrapper" class:active={$chartView == "histogram"}>
-                <ScrollHisto chartScrollIndex={chartScrollIndex}/>
-            </div> -->
         </div>
-        <!-- <div class="section-buttons">
-            {#each sections as section, i}
-                <button class:active={activeSection == section}>
-                    <span>{section}</span>
-                    {@html svgIcons[i]}
-                </button>
-            {/each}
-        </div> -->
     </div>
     <Scrolly bind:value={chartScrollIndex}>
         {#each copy.chartScroll as step, i}
@@ -121,7 +73,25 @@
                                 </div>
                             {/each}
                         </div> -->
-                    {/if}                
+                    {/if}   
+                    {#if i == 5}  
+                        <div class="selected-bottle-display">
+                            <img src="/assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
+                            <div class="deets">
+                                <p class="wine-name"><span class="bold">{selectedBottleData[0].name}</span></p>
+                                <p class="winery-name">{selectedBottleData[0].winery}</p>
+                                <p class="animal">{selectedBottleData[0].topgroup}</p>
+                                <p class="type">{selectedBottleData[0].type}</p>
+                                <div class="price-rating">
+                                    <p class="price">${selectedBottleData[0].price}</p>
+                                    <p class="rating">
+                                        {selectedBottleData[0].rating}
+                                        <span class="stars"><img alt="stars" src="/assets/images/stars/{formatStars(selectedBottleData[0].rating)}" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> 
+                    {/if}          
                 </div>
             </div>
         {/each}
@@ -158,6 +128,7 @@
     }
 
     .scatter-wrapper, .lineup-wrapper {
+        width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
@@ -199,6 +170,14 @@
         height: 140vh;
     }
 
+    .step-inner { 
+        background: rgba(24, 26, 31, 0.98);
+        padding: 1rem 2rem;
+        border: 1px solid var(--wine-dark-gray);
+        border-radius: 3px;
+        box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
+    }
+
     .step p {
         text-align: left;
         max-width: 700px;
@@ -211,6 +190,55 @@
         margin: 2rem 0;
         pointer-events: auto;
     }
+
+    .selected-bottle-display {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .selected-bottle-display img {
+        width: 140px;
+        aspect-ratio: auto;
+    }
+
+    .selected-bottle-display .deets {
+        width: calc(100% - 140px);
+    }
+
+    .selected-bottle-display .deets p {
+        margin: 0;
+        font-family: var(--sans);
+        font-size: var(--16px);
+        line-height: 1.25rem;
+    }
+
+    .selected-bottle-display .winery-name {
+		font-style: italic;
+	}
+
+	.selected-bottle-display .deets .price-rating {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+    .selected-bottle-display .deets .rating {
+		display: flex;
+		flex-direction: row;
+		gap: 0.25rem;
+		align-items: center;
+	}
+
+    .selected-bottle-display .deets .rating .stars {
+        display: inline-block;
+    }
+
+	.selected-bottle-display .deets .rating .stars img {
+        width: auto;
+		height: 18px;
+		margin-top: -4px;
+	}
 
     :global(.skipToExplore) {
         font-family: var(--sans);
@@ -422,14 +450,6 @@
 
         .step {
             max-width: 550px;
-        }
-
-        .step-inner {
-            background: rgba(24, 26, 31, 0.98);
-            padding: 1rem 2rem;
-            border: 1px solid var(--wine-dark-gray);
-            border-radius: 3px;
-            box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
         }
 	}
 

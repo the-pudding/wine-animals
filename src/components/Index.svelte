@@ -11,6 +11,7 @@
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
+	import WineSelection from "$components/WineSelection.svelte";
 	import * as d3 from "d3";
 
 	const copy = getContext("copy");
@@ -47,14 +48,12 @@
 	}
 
 	$: checkScroll(scrollY);
-
-	$: console.log($currAnimalSlide)
-	$: sliderEl == $currAnimalSlide;
 </script>
 
 <svelte:window bind:scrollY={scrollY} />
 
 <div id="gradient"></div>
+<!-- <WineSelection /> -->
 <Intro />
 <ChartScroll />
 <div 

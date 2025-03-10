@@ -85,18 +85,20 @@
     .example-wrapper {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: auto;
         max-height: 80svh;
         max-width: 1200px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 2rem;
-        margin: 20svh auto auto auto;
+        margin: 4rem auto auto auto;
+        padding: 2rem;
+        flex-wrap: nowrap;
     }
 
     .example {
-        width: 20%;
+        width: 25%;
         max-width: 170px;
         display: flex;
         flex-direction: column;
@@ -151,6 +153,19 @@
     }
 
     @media(max-width:700px) {
+        .example-wrapper {
+            flex-wrap: wrap;
+        }
+
+        .example {
+            width: calc(50% - 2rem);
+            max-width: 160px;
+        }
+
+        .example:nth-child(2) {
+            clear: left; /* Forces a new row every 3 items */
+        }
+
         .example p {
             font-size: 10px;
         }

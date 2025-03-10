@@ -20,7 +20,7 @@
 
     function updateParticles(w) {
         particleNum = Math.ceil(w/itemW);
-        console.log(particleNum)
+        // console.log(particleNum)
     }
 
     // async function updateNavPos(currAnimal, particleNum) {

@@ -75,8 +75,6 @@
 
 		let relevantData = allWinesSummaryData.filter(v => v.bucket == d.bucket);
 
-		console.log(relevantData)
-
 		let text = d.category == "price" 
 			? `<p class="details">
 					<span class="bolded">${Math.round(d.percent)}%</span> 

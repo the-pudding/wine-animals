@@ -430,12 +430,12 @@ songbird,median,medianRating,,4
 songbird,count,count,,183
 songbird,steals,steals,22.404371584699454,41
 wading bird,price,<10,0,0
-wading bird,price,10–19.99,48,12
-wading bird,price,20–29.99,20,5
-wading bird,price,30–39.99,4,1
-wading bird,price,40–49.99,12,3
-wading bird,price,50–59.99,4,1
-wading bird,price,60–69.99,8,2
+wading bird,price,10–19.99,46.15384615384615,12
+wading bird,price,20–29.99,23.076923076923077,6
+wading bird,price,30–39.99,3.8461538461538463,1
+wading bird,price,40–49.99,11.538461538461538,3
+wading bird,price,50–59.99,3.8461538461538463,1
+wading bird,price,60–69.99,7.6923076923076925,2
 wading bird,price,70–79.99,0,0
 wading bird,price,80–89.99,0,0
 wading bird,price,90–99.99,0,0
@@ -444,31 +444,31 @@ wading bird,price,110–119.99,0,0
 wading bird,price,120–129.99,0,0
 wading bird,price,130–139.99,0,0
 wading bird,price,140–149.99,0,0
-wading bird,price,150+,4,1
+wading bird,price,150+,3.8461538461538463,1
 wading bird,rating,3 & less,0,0
-wading bird,rating,3.1–3.5,8,2
-wading bird,rating,3.6–4,56.00000000000001,14
-wading bird,rating,4.1–4.5,36,9
+wading bird,rating,3.1–3.5,7.6923076923076925,2
+wading bird,rating,3.6–4,53.84615384615385,14
+wading bird,rating,4.1–4.5,38.46153846153847,10
 wading bird,rating,4.6 & above,0,0
-wading bird,type,Dessert,4,1
-wading bird,type,Fortified,4,1
-wading bird,type,Red,48,12
-wading bird,type,Rose,8,2
-wading bird,type,Sparkling,4,1
-wading bird,type,White,32,8
-wading bird,country,France,16,4
-wading bird,country,United States,28.000000000000004,7
-wading bird,country,Italy,12,3
-wading bird,country,Spain,20,5
+wading bird,type,Dessert,3.8461538461538463,1
+wading bird,type,Fortified,3.8461538461538463,1
+wading bird,type,Red,50,13
+wading bird,type,Rose,7.6923076923076925,2
+wading bird,type,Sparkling,3.8461538461538463,1
+wading bird,type,White,30.76923076923077,8
+wading bird,country,France,19.230769230769234,5
+wading bird,country,United States,26.923076923076923,7
+wading bird,country,Italy,11.538461538461538,3
+wading bird,country,Spain,19.230769230769234,5
 wading bird,country,Argentina,0,0
-wading bird,country,Portugal,8,2
-wading bird,country,South Africa,8,2
-wading bird,country,Australia,4,1
-wading bird,country,Germany,4,1
+wading bird,country,Portugal,7.6923076923076925,2
+wading bird,country,South Africa,7.6923076923076925,2
+wading bird,country,Australia,3.8461538461538463,1
+wading bird,country,Germany,3.8461538461538463,1
 wading bird,country,Chile,0,0
 wading bird,country,New Zealand,0,0
 wading bird,country,Austria,0,0
-wading bird,median,medianPrice,,20.25
-wading bird,median,medianRating,,3.8
-wading bird,count,count,,25
-wading bird,steals,steals,16,4
+wading bird,median,medianPrice,,21.119999999999997
+wading bird,median,medianRating,,3.8499999999999996
+wading bird,count,count,,26
+wading bird,steals,steals,15.384615384615385,4

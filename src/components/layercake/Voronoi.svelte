@@ -7,7 +7,6 @@
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
-	/** @type {String|undefined} [stroke] – An optional stroke color, which is likely only useful for testing to make sure the shapes drew correctly. */
 	export let stroke = undefined;
 	export let chartScrollIndex;
   
@@ -36,13 +35,9 @@
 		.style("fill", "#38425D")
 		.transition(500)
 		.attr("r", 4);
-
-		// let tooltip = d3.selectAll("#universal-tooltip");
-		// tooltip.classed("visible", false);
 	}
 
 	function formatStars(rating) {
-        console.log(rating)
         let string = rating + "";
         let ratingReplaced = string.replace(".", "_");
         return `star${ratingReplaced}.svg`
@@ -61,7 +56,7 @@
 		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
 		tooltip.select(".rating").html(
 			`${data.rating}
-			<span class="stars"><img src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
+			<span class="stars"><img alt="stars" src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
 		);
 		
 	}

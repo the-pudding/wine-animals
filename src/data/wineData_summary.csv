@@ -19,7 +19,7 @@ amphibian/reptile,rating,3 & less,0,0
 amphibian/reptile,rating,3.1–3.5,2.631578947368421,1
 amphibian/reptile,rating,3.6–4,60.526315789473685,23
 amphibian/reptile,rating,4.1–4.5,34.21052631578947,13
-amphibian/reptile,rating,4.6+,2.631578947368421,1
+amphibian/reptile,rating,4.6 & above,2.631578947368421,1
 amphibian/reptile,type,Dessert,2.631578947368421,1
 amphibian/reptile,type,Fortified,0,0
 amphibian/reptile,type,Red,44.73684210526316,17
@@ -62,7 +62,7 @@ bear,rating,3 & less,0,0
 bear,rating,3.1–3.5,4.3478260869565215,1
 bear,rating,3.6–4,43.47826086956522,10
 bear,rating,4.1–4.5,47.82608695652174,11
-bear,rating,4.6+,4.3478260869565215,1
+bear,rating,4.6 & above,4.3478260869565215,1
 bear,type,Dessert,0,0
 bear,type,Fortified,0,0
 bear,type,Red,43.47826086956522,10
@@ -85,49 +85,49 @@ bear,median,medianPrice,,31.55
 bear,median,medianRating,,4.1
 bear,count,count,,23
 bear,steals,steals,13.043478260869565,3
-bird,price,<10,0.8676789587852495,4
-bird,price,10–19.99,31.887201735357916,147
-bird,price,20–29.99,28.633405639913235,132
-bird,price,30–39.99,11.279826464208242,52
-bird,price,40–49.99,6.724511930585683,31
-bird,price,50–59.99,3.9045553145336225,18
-bird,price,60–69.99,4.55531453362256,21
-bird,price,70–79.99,2.6030368763557483,12
-bird,price,80–89.99,1.0845986984815619,5
-bird,price,90–99.99,1.9522776572668112,9
-bird,price,100–109.99,1.3015184381778742,6
-bird,price,110–119.99,0.8676789587852495,4
+bird,price,<10,0.8658008658008658,4
+bird,price,10–19.99,31.818181818181817,147
+bird,price,20–29.99,28.78787878787879,133
+bird,price,30–39.99,11.255411255411255,52
+bird,price,40–49.99,6.70995670995671,31
+bird,price,50–59.99,3.896103896103896,18
+bird,price,60–69.99,4.545454545454546,21
+bird,price,70–79.99,2.5974025974025974,12
+bird,price,80–89.99,1.0822510822510822,5
+bird,price,90–99.99,1.948051948051948,9
+bird,price,100–109.99,1.2987012987012987,6
+bird,price,110–119.99,0.8658008658008658,4
 bird,price,120–129.99,0,0
-bird,price,130–139.99,0.43383947939262474,2
-bird,price,140–149.99,0.43383947939262474,2
-bird,price,150+,3.470715835140998,16
+bird,price,130–139.99,0.4329004329004329,2
+bird,price,140–149.99,0.4329004329004329,2
+bird,price,150+,3.463203463203463,16
 bird,rating,3 & less,0,0
-bird,rating,3.1–3.5,5.639913232104121,26
-bird,rating,3.6–4,55.09761388286334,254
-bird,rating,4.1–4.5,38.17787418655097,176
-bird,rating,4.6+,1.0845986984815619,5
-bird,type,Dessert,1.0845986984815619,5
-bird,type,Fortified,1.5184381778741864,7
-bird,type,Red,40.99783080260303,189
-bird,type,Rose,8.026030368763557,37
-bird,type,Sparkling,6.29067245119306,29
-bird,type,White,42.0824295010846,194
-bird,country,France,17.136659436008678,79
-bird,country,United States,23.427331887201735,108
-bird,country,Italy,21.69197396963124,100
-bird,country,Spain,7.809110629067245,36
-bird,country,Argentina,3.036876355748373,14
-bird,country,Portugal,4.121475054229935,19
-bird,country,South Africa,6.073752711496746,28
-bird,country,Australia,3.68763557483731,17
-bird,country,Germany,2.8199566160520604,13
-bird,country,Chile,1.5184381778741864,7
-bird,country,New Zealand,5.42299349240781,25
-bird,country,Austria,1.3015184381778742,6
+bird,rating,3.1–3.5,5.627705627705628,26
+bird,rating,3.6–4,54.97835497835498,254
+bird,rating,4.1–4.5,38.311688311688314,177
+bird,rating,4.6 & above,1.0822510822510822,5
+bird,type,Dessert,1.0822510822510822,5
+bird,type,Fortified,1.5151515151515151,7
+bird,type,Red,41.125541125541126,190
+bird,type,Rose,8.008658008658008,37
+bird,type,Sparkling,6.277056277056277,29
+bird,type,White,41.99134199134199,194
+bird,country,France,17.316017316017316,80
+bird,country,United States,23.376623376623375,108
+bird,country,Italy,21.645021645021643,100
+bird,country,Spain,7.792207792207792,36
+bird,country,Argentina,3.0303030303030303,14
+bird,country,Portugal,4.112554112554113,19
+bird,country,South Africa,6.0606060606060606,28
+bird,country,Australia,3.67965367965368,17
+bird,country,Germany,2.813852813852814,13
+bird,country,Chile,1.5151515151515151,7
+bird,country,New Zealand,5.411255411255411,25
+bird,country,Austria,1.2987012987012987,6
 bird,median,medianPrice,,25.99
 bird,median,medianRating,,4
-bird,count,count,,461
-bird,steals,steals,16.48590021691974,76
+bird,count,count,,462
+bird,steals,steals,16.450216450216452,76
 bug,price,<10,1.0204081632653061,1
 bug,price,10–19.99,33.6734693877551,33
 bug,price,20–29.99,33.6734693877551,33
@@ -148,7 +148,7 @@ bug,rating,3 & less,0,0
 bug,rating,3.1–3.5,11.224489795918368,11
 bug,rating,3.6–4,57.14285714285714,56
 bug,rating,4.1–4.5,30.612244897959183,30
-bug,rating,4.6+,1.0204081632653061,1
+bug,rating,4.6 & above,1.0204081632653061,1
 bug,type,Dessert,2.0408163265306123,2
 bug,type,Fortified,0,0
 bug,type,Red,30.612244897959183,30
@@ -191,7 +191,7 @@ canine,rating,3 & less,0,0
 canine,rating,3.1–3.5,4.3478260869565215,5
 canine,rating,3.6–4,56.52173913043478,65
 canine,rating,4.1–4.5,37.391304347826086,43
-canine,rating,4.6+,1.7391304347826086,2
+canine,rating,4.6 & above,1.7391304347826086,2
 canine,type,Dessert,2.608695652173913,3
 canine,type,Fortified,0,0
 canine,type,Red,43.47826086956522,50
@@ -234,7 +234,7 @@ cat,rating,3 & less,0,0
 cat,rating,3.1–3.5,5.555555555555555,17
 cat,rating,3.6–4,42.15686274509804,129
 cat,rating,4.1–4.5,50.326797385620914,154
-cat,rating,4.6+,1.9607843137254901,6
+cat,rating,4.6 & above,1.9607843137254901,6
 cat,type,Dessert,2.941176470588235,9
 cat,type,Fortified,3.2679738562091507,10
 cat,type,Red,49.34640522875817,151
@@ -277,7 +277,7 @@ cattle,rating,3 & less,0,0
 cattle,rating,3.1–3.5,4.3478260869565215,2
 cattle,rating,3.6–4,65.21739130434783,30
 cattle,rating,4.1–4.5,26.08695652173913,12
-cattle,rating,4.6+,4.3478260869565215,2
+cattle,rating,4.6 & above,4.3478260869565215,2
 cattle,type,Dessert,0,0
 cattle,type,Fortified,2.1739130434782608,1
 cattle,type,Red,56.52173913043478,26
@@ -320,7 +320,7 @@ deer,rating,3 & less,0,0
 deer,rating,3.1–3.5,4,2
 deer,rating,3.6–4,57.99999999999999,29
 deer,rating,4.1–4.5,38,19
-deer,rating,4.6+,0,0
+deer,rating,4.6 & above,0,0
 deer,type,Dessert,0,0
 deer,type,Fortified,2,1
 deer,type,Red,50,25
@@ -363,7 +363,7 @@ fish,rating,3 & less,0,0
 fish,rating,3.1–3.5,1.6129032258064515,1
 fish,rating,3.6–4,74.19354838709677,46
 fish,rating,4.1–4.5,24.193548387096776,15
-fish,rating,4.6+,0,0
+fish,rating,4.6 & above,0,0
 fish,type,Dessert,1.6129032258064515,1
 fish,type,Fortified,0,0
 fish,type,Red,24.193548387096776,15
@@ -406,7 +406,7 @@ horse,rating,3 & less,0.6896551724137931,1
 horse,rating,3.1–3.5,9.655172413793103,14
 horse,rating,3.6–4,48.96551724137931,71
 horse,rating,4.1–4.5,39.310344827586206,57
-horse,rating,4.6+,1.3793103448275863,2
+horse,rating,4.6 & above,1.3793103448275863,2
 horse,type,Dessert,3.4482758620689653,5
 horse,type,Fortified,0.6896551724137931,1
 horse,type,Red,43.44827586206896,63
@@ -449,7 +449,7 @@ human,rating,3 & less,0.2014098690835851,2
 human,rating,3.1–3.5,5.740181268882175,57
 human,rating,3.6–4,55.99194360523666,556
 human,rating,4.1–4.5,37.05941591137966,368
-human,rating,4.6+,1.0070493454179255,10
+human,rating,4.6 & above,1.0070493454179255,10
 human,type,Dessert,1.812688821752266,18
 human,type,Fortified,1.6112789526686808,16
 human,type,Red,43.605236656596176,433
@@ -476,7 +476,7 @@ marine invertebrate,price,<10,3.0303030303030303,1
 marine invertebrate,price,10–19.99,39.39393939393939,13
 marine invertebrate,price,20–29.99,21.21212121212121,7
 marine invertebrate,price,30–39.99,21.21212121212121,7
-marine invertebrate,price,40–49.99,9.090909090909092,3
+marine invertebrate,price,40–49.99,12.121212121212121,4
 marine invertebrate,price,50–59.99,0,0
 marine invertebrate,price,60–69.99,0,0
 marine invertebrate,price,70–79.99,0,0
@@ -484,7 +484,7 @@ marine invertebrate,price,80–89.99,0,0
 marine invertebrate,price,90–99.99,3.0303030303030303,1
 marine invertebrate,price,100–109.99,0,0
 marine invertebrate,price,110–119.99,0,0
-marine invertebrate,price,120–129.99,3.0303030303030303,1
+marine invertebrate,price,120–129.99,0,0
 marine invertebrate,price,130–139.99,0,0
 marine invertebrate,price,140–149.99,0,0
 marine invertebrate,price,150+,0,0
@@ -492,7 +492,7 @@ marine invertebrate,rating,3 & less,0,0
 marine invertebrate,rating,3.1–3.5,3.0303030303030303,1
 marine invertebrate,rating,3.6–4,78.78787878787878,26
 marine invertebrate,rating,4.1–4.5,18.181818181818183,6
-marine invertebrate,rating,4.6+,0,0
+marine invertebrate,rating,4.6 & above,0,0
 marine invertebrate,type,Dessert,3.0303030303030303,1
 marine invertebrate,type,Fortified,0,0
 marine invertebrate,type,Red,15.151515151515152,5
@@ -535,7 +535,7 @@ mythical creature,rating,3 & less,0,0
 mythical creature,rating,3.1–3.5,5.737704918032787,7
 mythical creature,rating,3.6–4,42.62295081967213,52
 mythical creature,rating,4.1–4.5,49.18032786885246,60
-mythical creature,rating,4.6+,2.459016393442623,3
+mythical creature,rating,4.6 & above,2.459016393442623,3
 mythical creature,type,Dessert,1.639344262295082,2
 mythical creature,type,Fortified,2.459016393442623,3
 mythical creature,type,Red,46.72131147540984,57
@@ -578,7 +578,7 @@ none,rating,3 & less,0.0999000999000999,7
 none,rating,3.1–3.5,4.681033252461824,328
 none,rating,3.6–4,49.89296417867846,3496
 none,rating,4.1–4.5,43.741972313400886,3065
-none,rating,4.6+,1.5841301555587268,111
+none,rating,4.6 & above,1.5841301555587268,111
 none,type,Dessert,2.2548879691736836,158
 none,type,Fortified,1.4556871699728844,102
 none,type,Red,43.29955758527187,3034
@@ -621,7 +621,7 @@ pachyderm,rating,3 & less,0,0
 pachyderm,rating,3.1–3.5,12.5,3
 pachyderm,rating,3.6–4,58.333333333333336,14
 pachyderm,rating,4.1–4.5,25,6
-pachyderm,rating,4.6+,4.166666666666666,1
+pachyderm,rating,4.6 & above,4.166666666666666,1
 pachyderm,type,Dessert,0,0
 pachyderm,type,Fortified,0,0
 pachyderm,type,Red,37.5,9
@@ -664,7 +664,7 @@ rabbit,rating,3 & less,0,0
 rabbit,rating,3.1–3.5,4,1
 rabbit,rating,3.6–4,56.00000000000001,14
 rabbit,rating,4.1–4.5,40,10
-rabbit,rating,4.6+,0,0
+rabbit,rating,4.6 & above,0,0
 rabbit,type,Dessert,4,1
 rabbit,type,Fortified,0,0
 rabbit,type,Red,44,11
@@ -707,7 +707,7 @@ ram,rating,3 & less,0,0
 ram,rating,3.1–3.5,5.263157894736842,3
 ram,rating,3.6–4,68.42105263157895,39
 ram,rating,4.1–4.5,24.561403508771928,14
-ram,rating,4.6+,1.7543859649122806,1
+ram,rating,4.6 & above,1.7543859649122806,1
 ram,type,Dessert,0,0
 ram,type,Fortified,1.7543859649122806,1
 ram,type,Red,33.33333333333333,19
@@ -750,7 +750,7 @@ pig,rating,3 & less,3.571428571428571,1
 pig,rating,3.1–3.5,3.571428571428571,1
 pig,rating,3.6–4,60.71428571428571,17
 pig,rating,4.1–4.5,32.142857142857146,9
-pig,rating,4.6+,0,0
+pig,rating,4.6 & above,0,0
 pig,type,Dessert,0,0
 pig,type,Fortified,3.571428571428571,1
 pig,type,Red,46.42857142857143,13
@@ -777,7 +777,7 @@ all,price,<10,1.535323169422375,143
 all,price,10–19.99,24.629589864719776,2294
 all,price,20–29.99,25.26304487867726,2353
 all,price,30–39.99,13.77496242216019,1283
-all,price,40–49.99,8.12754992484432,757
+all,price,40–49.99,8.138286450504618,758
 all,price,50–59.99,6.10908310070861,569
 all,price,60–69.99,4.273137212797939,398
 all,price,70–79.99,2.9525445565814903,275
@@ -785,7 +785,7 @@ all,price,80–89.99,2.2117242860210435,206
 all,price,90–99.99,1.8788919905518575,175
 all,price,100–109.99,1.1917543482928923,111
 all,price,110–119.99,0.8374490015031136,78
-all,price,120–129.99,0.9770238350869659,91
+all,price,120–129.99,0.9662873094266696,90
 all,price,130–139.99,0.6119819626368906,57
 all,price,140–149.99,0.6334550139574834,59
 all,price,150+,4.992484432037793,465
@@ -793,7 +793,7 @@ all,rating,3 & less,0.11810178226325961,11
 all,rating,3.1–3.5,4.9710113807172,463
 all,rating,3.6–4,50.91260468112518,4742
 all,rating,4.1–4.5,42.51664161477346,3960
-all,rating,4.6+,1.4816405411208933,138
+all,rating,4.6 & above,1.4816405411208933,138
 all,type,Dessert,2.168778183379858,202
 all,type,Fortified,1.470904015460597,137
 all,type,Red,42.9783122181662,4003
@@ -820,7 +820,7 @@ animal wines,price,<10,1.5456989247311828,23
 animal wines,price,10–19.99,29.0994623655914,433
 animal wines,price,20–29.99,25.940860215053764,386
 animal wines,price,30–39.99,12.5,186
-animal wines,price,40–49.99,7.056451612903227,105
+animal wines,price,40–49.99,7.123655913978495,106
 animal wines,price,50–59.99,4.502688172043011,67
 animal wines,price,60–69.99,4.032258064516129,60
 animal wines,price,70–79.99,2.553763440860215,38
@@ -828,7 +828,7 @@ animal wines,price,80–89.99,1.9489247311827957,29
 animal wines,price,90–99.99,1.9489247311827957,29
 animal wines,price,100–109.99,0.8736559139784945,13
 animal wines,price,110–119.99,0.9408602150537635,14
-animal wines,price,120–129.99,0.5376344086021506,8
+animal wines,price,120–129.99,0.47043010752688175,7
 animal wines,price,130–139.99,0.6720430107526881,10
 animal wines,price,140–149.99,0.5376344086021506,8
 animal wines,price,150+,5.309139784946237,79
@@ -836,7 +836,7 @@ animal wines,rating,3 & less,0.13440860215053765,2
 animal wines,rating,3.1–3.5,6.115591397849462,91
 animal wines,rating,3.6–4,52.755376344086024,785
 animal wines,rating,4.1–4.5,39.6505376344086,590
-animal wines,rating,4.6+,1.3440860215053763,20
+animal wines,rating,4.6 & above,1.3440860215053763,20
 animal wines,type,Dessert,1.9489247311827957,29
 animal wines,type,Fortified,1.478494623655914,22
 animal wines,type,Red,41.263440860215056,614

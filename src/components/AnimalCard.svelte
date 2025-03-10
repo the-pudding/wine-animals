@@ -23,7 +23,6 @@
     }
 
     function formatStars(rating) {
-        console.log(rating)
         let string = rating + "";
         let ratingReplaced = string.replace(".", "_");
         return `star${ratingReplaced}_tan.svg`
@@ -59,7 +58,7 @@
                             <p>Median rating</p>
                             <p>{medianData.find(d => d.topGroup == animal).rating}
                                 <span class="stars">
-                                    <img src="./assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
+                                    <img alt="stars" src="/assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
                                 </span>
                             </p>
                         </div>
