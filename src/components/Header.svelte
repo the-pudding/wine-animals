@@ -19,6 +19,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		z-index: 900;
 	}
 	.wordmark {
 		max-width: 10em;

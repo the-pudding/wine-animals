@@ -2,6 +2,7 @@
 	import { onMount, createEventDispatcher } from "svelte";
 	import { range, format } from "d3";
 	import { fade } from 'svelte/transition';
+	import Icon from "$components/helpers/Icon.svelte";
 	import { stealPriceNum, stealRatingNum } from "$stores/misc.js";
 	import { get } from "svelte/store";
 	export let min = 0;
@@ -22,8 +23,6 @@
 	let value = get(boundStore);
 
 	$: boundStore.set(value);
-
-	$: console.log($stealPriceNum, $stealRatingNum)
 
 	function handleInput(event) {
         value = +event.target.value; // Ensure value is a number
@@ -75,7 +74,7 @@
 		width: calc(100% - 9.25rem);
 		transform: rotate(-90deg) translate(-100%, 0);
 		transform-origin: left top;
-		left: calc(100% - 4.125rem);
+		left: calc(100% - 4.9rem);
 		pointer-events: auto;
 		overflow: visible;
 	}
@@ -89,7 +88,7 @@
 
 	.thumb-label {
 		position: absolute;
-		top: -31px;
+		top: -36px;
 		width: 60px;
 		left: 0;
         transform: translateX(-50%);
@@ -108,7 +107,7 @@
 
 	#range-price .thumb-label {
 		transform: translateX(-50%) rotate(90deg);
-		top: 40px;
+		top: 50px;
 		justify-content: flex-start;
 	}
 
@@ -119,7 +118,7 @@
 	}
 
 	.range {
-		--thumb-width: 24px;
+		--thumb-width: 36px;
 		--tick-font-size: 12px;
 		margin-bottom: calc(var(--thumb-width) * 2);
 	}
@@ -162,19 +161,34 @@
 		border-radius: 4px;
 	}
 
-	input[type="range"]::-webkit-slider-thumb {
+	#range-price input[type="range"]::-webkit-slider-thumb {
 		height: var(--thumb-width);
 		width: var(--thumb-width);
+  		appearance: none;
 		border-radius: 50%;
-		background: var(--wine-tan);
+		background: url("/assets/images/range-vert.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 		border: 3px solid var(--wine-black);
 		appearance: none;
 		margin-top: calc(var(--thumb-width) / -3);
+		margin-left: 40px;
+		position: relative;
 	}
 
-	input[type="range"]::-webkit-slider-thumb::after {
-		content: "name";
-		color: white;
+	#range-rating input[type="range"]::-webkit-slider-thumb {
+		height: var(--thumb-width);
+		width: var(--thumb-width);
+  		appearance: none;
+		border-radius: 50%;
+		background: url("/assets/images/range-vert.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		border: 3px solid var(--wine-black);
+		appearance: none;
+		margin-top: calc(var(--thumb-width) / -3);
+		margin-left: -6px;
+		position: relative;
 	}
 
 	/* input[type="range"]:focus::-webkit-slider-runnable-track {
@@ -189,11 +203,11 @@
 	}
 
 	input[type="range"]::-moz-range-thumb {
-		box-shadow: 1px 1px 1px var(--color-black), 0 0 1px var(--color-black);
 		height: var(--thumb-width);
 		width: var(--thumb-width);
 		border-radius: 50%;
-		background: var(--color-gray-900);
+		appearance: none;
+		background: url("/assets/images/range-vert.png");
 	}
 
 	input[type="range"]::-ms-track {
@@ -217,7 +231,7 @@
 		height: var(--thumb-width);
 		width: var(--thumb-width);
 		border-radius: 50%;
-		background: var(--color-gray-900);
+		background: url("./assets/images/icons/cat.png");
 	}
 
 	/* input[type="range"]:focus::-ms-fill-lower,

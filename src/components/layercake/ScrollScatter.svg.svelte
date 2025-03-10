@@ -277,14 +277,14 @@
 {/if}
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
-    <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+    <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width} y2={$yScale(d3.median(rawData, d => d.price))} />
     <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 
     <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width + $padding.right} y2={$yScale($stealPriceNum)} />
     <line class="ratingAVG" x1={$xScale($stealRatingNum)} y1={0} x2={$xScale($stealRatingNum)} y2={$height} />
     <text 
         class="label"
-        x={$width} 
+        x={$width-20} 
         y={$yScale(d3.median(rawData, d => d.price)) - 10}
         text-anchor="end"
         fill="white">
@@ -293,7 +293,7 @@
 
     <text 
         class="label"
-        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
+        x={$xScale(d3.median(rawData, d => d.rating)) - 160}
         y={17} 
         transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
         text-anchor="start"

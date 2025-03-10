@@ -21,8 +21,8 @@
     let chartScrollIndex;
     let activeSection;
     let skipToExplore;
-    let sections = ["cat", "expensive", "bird", "top", "explore"];
-    let svgIcons = [catIcon, expensiveIcon, birdIcon, topIcon, touchIcon];
+    let innerHeight;
+    let innerWidth;
 
     // TO-DO fix calculations
     function findTop5WinesByPriceAndRating(data) {
@@ -60,6 +60,8 @@
         }
     }
 
+    $: minDimension = innerHeight && innerWidth ? d3.min([innerHeight, innerWidth]) : null;
+
     function handleSkipClick(event) {
         activeSection = "explore";
     }
@@ -68,13 +70,20 @@
         // skipToExplore = document.querySelector(".skipToExplore");
         // skipToExplore.addEventListener("click", (event) => handleSkipClick(event));
     })
+
+    $: console.log($stealPercent)
 </script>
+
+<svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
 
 <section id="chart-scroll">
     <div class="sticky">
         <!-- <Toggle label={"view"} options={["scatter", "histogram"]} chartScrollIndex={chartScrollIndex}/> -->
         <div class="chart-wrapper">
-            <div class="scatter-wrapper" class:active={chartScrollIndex !== 12}>
+            <div class="scatter-wrapper" 
+                style="max-height: {minDimension}px; max-width: {minDimension}px"
+                class:active={chartScrollIndex !== 12}
+            >
                 <ScrollScatter chartScrollIndex={chartScrollIndex}/>
             </div>
             <div class="lineup-wrapper" class:active={chartScrollIndex == 12}>
@@ -97,21 +106,23 @@
     <Scrolly bind:value={chartScrollIndex}>
         {#each copy.chartScroll as step, i}
             <div id="step-{i}" class="step">
-                {#each step.block as graf, i}
-                    <p>{@html graf.value}</p>
-                {/each}
-                {#if i == 13 && $stealPercent}
-                    <p><span class="bold">{$stealPercent.toFixed(2)}%</span> of animal wines are steals when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> and the rating <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
-                    <!-- <div class="steal-bar-wrapper">
-                        {#each $stealTopgroupCounts as topgroup, i}
-                            <div class="steal-bar">
-                                <p class="animal">{topgroup.group}</p>
-                                <div class="bar" style="width: calc({topgroup.count/500*100}% - 6rem)"></div>
-                                <p>{topgroup.count}</p>
-                            </div>
-                        {/each}
-                    </div> -->
-                {/if}
+                <div class="step-inner">
+                    {#each step.block as graf, i}
+                        <p>{@html graf.value}</p>
+                    {/each}
+                    {#if i == 13 && $stealPercent || i == 13 && $stealPercent == 0}
+                        <p><span class="bold">{$stealPercent.toFixed(2)}%</span> of animal wines are steals when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> and the rating <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
+                        <!-- <div class="steal-bar-wrapper">
+                            {#each $stealTopgroupCounts as topgroup, i}
+                                <div class="steal-bar">
+                                    <p class="animal">{topgroup.group}</p>
+                                    <div class="bar" style="width: calc({topgroup.count/500*100}% - 6rem)"></div>
+                                    <p>{topgroup.count}</p>
+                                </div>
+                            {/each}
+                        </div> -->
+                    {/if}                
+                </div>
             </div>
         {/each}
     </Scrolly>
@@ -141,6 +152,9 @@
         width: 100%;
         height: 100%;
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     .scatter-wrapper, .lineup-wrapper {
@@ -154,7 +168,11 @@
     }
 
     .scatter-wrapper {
-        width: 65%;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        transform: translate(0,0);
+        padding: 3rem 0 5rem 0;
     }
 
     .lineup-wrapper {
@@ -173,7 +191,7 @@
 	.step {
 		height: 90vh;
         z-index: 900;
-        max-width: 25%;
+        max-width: 400px;
         opacity: 1;
 	}
 
@@ -366,6 +384,54 @@
         height: 100%;
         background: var(--wine-red);
     }
+
+    :global(.slider-span) {
+        font-weight: 700;
+        font-family: var(--sans);
+        position: relative;
+        padding-left: 2.5rem;
+    }
+
+    :global(.slider-span::before) {
+        content: '';
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        left: 0;
+        top: -4px;
+        background: url("./assets/images/range-vert.png");
+        background-size: 2rem 2rem;
+        background-repeat: no-repeat;
+    }
+
+    @media(max-width: 1400px) {
+		.sticky {
+			align-items: center;
+            justify-content: center;
+		}
+
+        .chart-wrapper {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scatter-wrapper {
+            left: 50%;
+            transform: translate(-50%,0);
+        }
+
+        .step {
+            max-width: 550px;
+        }
+
+        .step-inner {
+            background: rgba(24, 26, 31, 0.98);
+            padding: 1rem 2rem;
+            border: 1px solid var(--wine-dark-gray);
+            border-radius: 3px;
+            box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
+        }
+	}
 
     @media(max-width: 700px) {
         .scatter-wrapper {

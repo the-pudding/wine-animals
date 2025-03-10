@@ -33,7 +33,7 @@
                 bottlePosLeft={scrollIndex >= 0 && scrollIndex < 2
                     ? wine.targetPos 
                     : wine.startingPos}
-                bind:rangeValue={wine.rangeValue} />
+                />
         {/each}
     {/if}
 </div>

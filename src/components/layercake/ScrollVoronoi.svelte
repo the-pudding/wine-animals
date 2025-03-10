@@ -13,12 +13,12 @@
   
 	function mouseoverCircle(point) {
 		// console.log(point)
-
+	
 		tooltipType.set("bottle")
 
-		d3.selectAll(".card-wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
+		d3.selectAll(".wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
 
-		d3.selectAll(`#card-wine-circle-${point.data.id}`)
+		d3.selectAll(`#circle-${point.data.id}`)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
 			.transition(500)
@@ -31,7 +31,7 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".card-wine-circle circle")
+		d3.selectAll(".wine-circle circle")
 		.style("opacity", 0.8)
 		.style("fill", "#38425D")
 		.transition(500)
@@ -56,7 +56,7 @@
 		
 	}
   
-	$: points = $data[0].map(d => {
+	$: points = $data[1].map(d => {
 				const point = [$xGet(d), $yGet(d)];
 				point.data = d;
 				return point;
@@ -70,7 +70,13 @@
   {#each uniquePoints as point, i}
 	<path
 		id={`voronoi-${point.data.id}`}
-		class={"voronoi-cell active"}
+		class={"voronoi-cell"}
+        class:active={chartScrollIndex >= 5 && chartScrollIndex < 9 
+            || chartScrollIndex == 9 && point.data.topgroup.includes("bird")
+            || chartScrollIndex == 10 && point.data.topgroup.includes("cattle")
+            || chartScrollIndex == 11 && point.data.topgroup.includes("cat")
+            || chartScrollIndex == 13
+            || chartScrollIndex == "exit"}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
 		mouseoverCircle(point);
@@ -89,11 +95,11 @@
 	.voronoi-cell {
 	  fill: none;
 	  stroke: none;
-	  pointer-events: all;
+	  pointer-events: none;
 	  outline: none;
 	  cursor: pointer;
 	}
-	.voronoi-cell.inactive {
-		pointer-events: none;
+	.voronoi-cell.active {
+		pointer-events: all;
 	}
   </style>

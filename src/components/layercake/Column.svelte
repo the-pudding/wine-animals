@@ -1,7 +1,8 @@
 <script>
 	import { getContext, createEventDispatcher } from "svelte";
-	import { hideTooltip } from "$stores/misc.js";
+	import { tooltipType } from "$stores/misc.js";
 	import * as d3 from "d3";
+	import summaryData from "$data/wineData_summary.csv";
 
 	const { data, xGet, yGet, yRange, xScale, xDomain, y, x, height } = getContext("LayerCake");
 
@@ -21,6 +22,8 @@
         {country: "New Zealand", abbrev: "NZ"},
         {country: "Austria", abbrev: "AT"},
     ];
+
+	const allWinesSummaryData = summaryData.filter(d => d.animalGroup == "all");
 
 	$: columnWidth = (d) => {
 		const vals = $xGet(d);
@@ -55,69 +58,62 @@
 	}
 
 	function handleMouseover(e, d) {
-		hideTooltip.set(false);
-		
-		// Find the tooltip closest to the hovered chart
-		let parentChart = e.target.closest("#distribution"); // Find the nearest chart container
-		let tooltip = parentChart.querySelector(".tooltip");  // Get the tooltip inside this chart
 		let categoryChart = e.target.closest(".chart-wrapper");
 
-		if (!tooltip) return; // Ensure the tooltip exists
+		tooltipType.set("histo")
 
-		// Get bounding box of `parentChart` instead of global `#distribution`
-		let containerBounds = parentChart.getBoundingClientRect();
-
-		// Mouse position relative to the hovered chart
-		let mouseX = e.clientX - containerBounds.left;
-		let mouseY = e.clientY - containerBounds.top;
-
-		// Get tooltip size
-		const tooltipWidth = tooltip.offsetWidth;
-		const tooltipHeight = tooltip.offsetHeight;
-
-		// Default tooltip position (right of cursor)
-		let left = mouseX + 15;
-		let top = mouseY - tooltipHeight / 2;
-
-		// Prevent tooltip from going off the right edge
-		if (mouseX + tooltipWidth + 20 > containerBounds.width) {
-			left = mouseX - tooltipWidth - 15;
-		}
-
-		// Prevent tooltip from going off the bottom edge
-		if (mouseY + tooltipHeight + 20 > containerBounds.height) {
-			top = containerBounds.height - tooltipHeight - 15;
-		}
-
-		// Prevent tooltip from going off the top
-		if (mouseY - tooltipHeight < 0) {
-			top = 15;
-		}
-
-		// Set tooltip position relative to the hovered chart
-		tooltip.style.left = `${left}px`;
-		tooltip.style.top = `${top}px`;
-		tooltip.style.opacity = 1;
-		console.log(d.category)
-		tooltip.innerHTML = d.category == "price" 
-			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines cost between <span class="bolded">$${d.bucket}</span></p>`
-			: d.category == "rating" 
-			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are rated between <span class="bolded">${d.bucket} stars</span></p>`
-			: d.category == "type"
-			? `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are <span class="bolded">${d.bucket}</span> wines</p>`
-			: `<p class="details"><span class="bolded">${Math.round(d.percent)}%</span> of <span class="bolded">${d.animalGroup}</span> wines are from <span class="bolded">${d.bucket}</span></p>` 
-		;
+		setTooltip(d)
 
 		// Highlight hovered bar only within this chart
 		categoryChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
 		e.target.classList.add("hover");
 	}
 
+	function setTooltip(d) {
+		let tooltip = d3.select("#universal-tooltip");
+		tooltip.classed("visible", true);
+
+		let relevantData = allWinesSummaryData.filter(v => v.bucket == d.bucket);
+
+		console.log(relevantData)
+
+		let text = d.category == "price" 
+			? `<p class="details">
+					<span class="bolded">${Math.round(d.percent)}%</span> 
+					of <span class="bolded">${d.animalGroup}</span> wines 
+					cost between <span class="bolded">$${d.bucket}</span>,
+					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
+					</p>`
+			: d.category == "rating" 
+			? `<p class="details">
+					<span class="bolded">${Math.round(d.percent)}%</span> 
+					of <span class="bolded">${d.animalGroup}</span> wines 
+					are rated between <span class="bolded">${d.bucket} stars</span>,
+					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
+					</p>`
+			: d.category == "type"
+			? `<p class="details">
+					<span class="bolded">${Math.round(d.percent)}%</span> 
+					of <span class="bolded">${d.animalGroup}</span> wines 
+					are <span class="bolded">${d.bucket}</span> wines,
+					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
+					</p>`
+			: `<p class="details">
+					<span class="bolded">${Math.round(d.percent)}%</span> 
+					of <span class="bolded">${d.animalGroup}</span> wines 
+					are from <span class="bolded">${d.bucket}</span>,
+					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
+					</p>` 
+		;
+
+		tooltip.select(".summary").html(text)
+		
+	}
+
 
 
 
 function handleMouseleave(e) {
-    hideTooltip.set(true);
 
     let parentChart = e.target.closest("#distribution");
     let tooltip = parentChart?.querySelector(".tooltip");

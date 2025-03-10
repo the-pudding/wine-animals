@@ -146,7 +146,7 @@
                             gridlines={true} 
                             ticks={3} />
                         <ScatterSvg {r} fill={color} />
-                        <Voronoi stroke="#333" />
+                        <Voronoi />
                     </Svg>
                 </LayerCake>
         </div>

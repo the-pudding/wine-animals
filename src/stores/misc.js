@@ -38,3 +38,6 @@ export const stealTopgroupCounts = writable([]);
 // ANIMAL CARDS
 export const navAnimal = writable("amphibian/reptile");
 export const currAnimalSlide = writable(0);
+
+// UNIVERSAL TOOLTIP
+export const tooltipType = writable(null);

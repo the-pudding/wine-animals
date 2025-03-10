@@ -21,10 +21,8 @@
     const steps = copy.steps;
 
     $: selectedText = copy.opening[0][$animalSelected];
-    $: selectedPriceText = copy.opening[0][($animalSelected + "Price")]
-    $: selectedRatingText = copy.opening[0][($animalSelected + "Rating")]
-
-    $: console.log(scrollIndex, $animalSelected);
+    $: selectedPriceText = copy.opening[0][($animalSelected + "Price")];
+    $: selectedRatingText = copy.opening[0][($animalSelected + "Rating")];
 
     function handleRandomClick() {
         const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
@@ -33,7 +31,7 @@
     }
 
     function handleBottleClick(data) {
-        console.log("Bottle clicked in Intro4:", data);
+        // console.log("Bottle clicked in Intro4:", data);
         // Perform additional actions if needed
         animalSelected.set(data.animal);
         bottleSelected.set(true);
@@ -169,6 +167,7 @@
         margin: 0 auto;
         opacity: 1;
         pointer-events: none;
+        z-index: 1000;
 	}
 
     .step:first-of-type {
@@ -180,6 +179,7 @@
         padding: 2rem; 
         border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
+        box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
     }
 
     .step p {

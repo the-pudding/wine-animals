@@ -111,6 +111,14 @@
         display: flex;
         pointer-events: none;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
+		padding-right: 4rem;
+	}
+
+	@media(max-width: 1400px) {
+		div {
+			align-items: center;
+			padding-right: 0;
+		}
 	}
 </style>

@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from "svelte";
-	import { currAnimalSlide } from "$stores/misc.js";
+	import { currAnimalSlide, tooltipType } from "$stores/misc.js";
 	import inView from "$actions/inView.js";
 	import Icon from "$components/helpers/Icon.svelte";
 	import Intro from "$components/Intro4.svelte";
@@ -69,16 +69,21 @@
 	<button class="close" on:click={tooltipCloseClick}>
 		<Icon name="x" size={"1.5rem"}/>
 	</button>
-	<img src="" />
-	<div class="deets">
-		<p class="wine-name"></p>
-		<p class="winery-name"></p>
-		<p class="animal"></p>
-		<div class="price-rating">
-			<p class="price"></p>
-			<p class="rating"></p>
+	{#if $tooltipType == "bottle"}
+		<img src="" />
+		<div class="deets">
+			<p class="wine-name"></p>
+			<p class="winery-name"></p>
+			<p class="animal"></p>
+			<p class="type"></p>
+			<div class="price-rating">
+				<p class="price"></p>
+				<p class="rating"></p>
+			</div>
 		</div>
-	</div>
+	{:else if $tooltipType == "histo"}
+		<div class="summary"></div>
+	{/if}
 </div>
 <!-- <Explore /> -->
 <!-- <Footer /> -->
@@ -140,6 +145,14 @@
 		margin: 0;
 		padding: 0;
 		font-family: var(--sans);
+		text-transform: capitalize;
+	}
+
+	:global(#universal-tooltip .details){
+		margin: 0;
+		padding: 1rem;
+		max-width: 550px;
+		font-family: var(--sans);
 	}
 
 	#universal-tooltip .wine-name {
@@ -166,6 +179,7 @@
 		position: fixed;
 		z-index: 1;
 		background: linear-gradient(to bottom, #181A1F, #14161a);
+		pointer-events: none;
 	}
 	.white {
 		background: var(--color-bg);

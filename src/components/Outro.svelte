@@ -2,10 +2,31 @@
     import { getContext, onMount } from "svelte";
     const copy = getContext("copy");
     import ChevronRight from "lucide-svelte/icons/chevron-right";
+	import SpinningBottle from "./SpinningBottle.svelte";
+    import inView from "$actions/inView.js";
+
+    let bottlesWidth = 0;
+    let bottlesHeight = 0;
+    let outroVisible = false;
+
+    const wine = { animal: "fish", name: "Sauvignon Blanc", winery: "Mount Fishtail", country: "New Zealand", price: 15.99, bottleSlot: "center-lone", targetPos: "50%", startingPos: "-50%"};
 </script>
 
-<section id='outro'>
+<section id='outro'
+    use:inView
+    on:enter={() => outroVisible = true}
+    on:exit={() => outroVisible = false}>
     <div id="closing">
+        <div class="bottle-wrapper" bind:clientHeight={bottlesHeight} bind:clientWidth={bottlesWidth}>
+            <SpinningBottle 
+                wineData={wine}
+                bottleIndex={4}
+                containerDimensions={{bottlesWidth, bottlesHeight}}
+                {outroVisible}
+                bottlePosLeft={outroVisible
+                    ? wine.targetPos 
+                    : wine.startingPos} />
+        </div>
         {#each copy.outro as graf, i}
             <p>{@html graf.value}</p>
         {/each}
@@ -61,6 +82,13 @@
         color: var(--wine-tan);
         padding: 10rem 1rem 1rem 1rem;
         gap: 4rem;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .bottle-wrapper {
+        width: 100%;
+        height: 80svh;
     }
 
     #methods, #closing {

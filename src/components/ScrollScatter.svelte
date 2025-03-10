@@ -7,7 +7,7 @@
     import medianData from "$data/wineData_median.csv"
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
-    import Voronoi from "$components/layercake/Voronoi.svelte";
+    import Voronoi from "$components/layercake/ScrollVoronoi.svelte";
     import * as d3 from "d3";
     import { tweened } from 'svelte/motion';
     import { cubicIn } from 'svelte/easing';
@@ -50,7 +50,7 @@
 
     $: updateDomains(chartScrollIndex);
 
-    // $: console.log({$bigScatterData})
+    $:console.log(chartScrollIndex)
 </script>
 
 <section id="scatter">
@@ -81,6 +81,7 @@
                         gridlines={true} 
                         ticks={3} />
                     <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
+                    <Voronoi {chartScrollIndex} />
                 </Svg>
             </LayerCake>
         </div>

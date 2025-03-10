@@ -10,10 +10,12 @@
     export let pricesLocked;
     export let pricesSkipped;
     export let scrollIndex;
+    export let outroVisible;
 
     let wineWidth;
     let aspectRatio = 3.5;
     let shouldSpin = [true,true,true];
+    let spin4 = true;
     let rangeValue;
     let actualPrice = wineData.price;
 
@@ -57,6 +59,10 @@
 
         shouldSpin = [...shouldSpin]; 
         shouldSpin[bottleIndex] = false;
+
+        if (outroVisible) {
+            spin4 = false;
+        }
     }
 
     export function handleClick(data) {
@@ -96,8 +102,14 @@
     }
 
     $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
-    $: transitionDelay = $bottleSelected == false ? (3 - 1 - bottleIndex) * 300 : bottleIndex * 300;
+    $: transitionDelay = $bottleSelected == false 
+        ? (3 - 1 - bottleIndex) * 300 
+        : bottleIndex == 4 
+        ? 0  
+        : bottleIndex * 300;
     $: if (scrollIndex >= 2) { shouldSpin = [true,true,true]; } 
+    $: if (outroVisible == false || outroVisible == undefined) { spin4 = true };
+    $: console.log({outroVisible, spin4})
 </script>
 
 
@@ -113,7 +125,7 @@
 
     </div>
     <div class="wine"
-        class:spin={shouldSpin[bottleIndex]}
+        class:spin={bottleIndex == 4 ? spin4 : shouldSpin[bottleIndex]}
         on:mousemove={mousemoveBottle}
         on:mouseleave={mouseleaveBottle}>
     </div>
@@ -154,7 +166,7 @@
     .product.faded {
         opacity: 0.25;
     }
-    .product-center .wine, .product-right .wine, .product-left .wine {
+    .product-center .wine, .product-right .wine, .product-left .wine, .product-center-lone .wine {
         height: calc(100% - 150px);
         aspect-ratio: 1/3.5;
         cursor: pointer;
@@ -174,6 +186,12 @@
 
     .product-left .wine {
         background: url("/assets/images/spins/cowspin.png");
+        background-position: 0 0;
+        background-size: auto 100%;
+    }
+
+    .product-center-lone .wine {
+        background: url("/assets/images/spins/fishtailspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
