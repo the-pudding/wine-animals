@@ -76,7 +76,7 @@
                     {/if}   
                     {#if i == 5}  
                         <div class="selected-bottle-display">
-                            <img src="/assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
+                            <img src="./assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
                             <div class="deets">
                                 <p class="wine-name"><span class="bold">{selectedBottleData[0].name}</span></p>
                                 <p class="winery-name">{selectedBottleData[0].winery}</p>
@@ -86,7 +86,7 @@
                                     <p class="price">${selectedBottleData[0].price}</p>
                                     <p class="rating">
                                         {selectedBottleData[0].rating}
-                                        <span class="stars"><img alt="stars" src="/assets/images/stars/{formatStars(selectedBottleData[0].rating)}" /></span>
+                                        <span class="stars"><img alt="stars" src="./assets/images/stars/{formatStars(selectedBottleData[0].rating)}" /></span>
                                     </p>
                                 </div>
                             </div>

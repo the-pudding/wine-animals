@@ -231,7 +231,7 @@
                         />
                         {#if chartScrollIndex == undefined || chartScrollIndex <= 3}
                             <text 
-                                class="label"
+                                class="label-yellow"
                                 x={cx + 46} 
                                 y={cy + 2} 
                                 text-anchor="start" 
@@ -356,6 +356,14 @@
         font-family: var(--sans);
         font-size: var(--12px);
         fill: var(--wine-dark-tan);
+    }
+
+    .label-yellow {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--sans);
+        font-size: var(--12px);
+        fill: var(--wine-gold);
     }
     .compare-wrapper.hidden {
         opacity: 0;

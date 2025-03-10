@@ -58,7 +58,7 @@
                             <p>Median rating</p>
                             <p>{medianData.find(d => d.topGroup == animal).rating}
                                 <span class="stars">
-                                    <img alt="stars" src="/assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
+                                    <img alt="stars" src="./assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
                                 </span>
                             </p>
                         </div>
