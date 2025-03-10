@@ -52,7 +52,10 @@
 		tooltip.select(".animal").text(`${data.topgroup}`);
 		tooltip.select(".type").text(`${data.type}`);
 		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
-		tooltip.select(".rating").text(`${data.rating} stars`);
+		tooltip.select(".rating").html(
+			`${data.rating}
+			<span class="stars"><img src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
+		);
 		
 	}
   

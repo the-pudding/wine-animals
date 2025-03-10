@@ -61,7 +61,7 @@
 		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
 		tooltip.select(".rating").html(
 			`${data.rating}
-			<span class="stars"><img src="src/svg/stars/${formatStars(data.rating)}" /></span>`
+			<span class="stars"><img src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
 		);
 		
 	}
