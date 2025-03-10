@@ -303,13 +303,13 @@
     }
 
     :global(.selected-bottle-circle-span::after) {
-        border: 3px solid var(--wine-gold);
+        border: 3px solid var(--wine-red);
         border-radius: 50%;
         top: 0%;
     }
 
     :global(.median-line-span::after) {
-        border-top: 3px solid var(--wine-red);
+        border-top: 3px solid var(--wine-gold);
     }
 
     :global(.cream-line-span::after) {
@@ -399,7 +399,7 @@
         position: absolute;
         left: 0;
         top: -4px;
-        background: url("./assets/images/range-vert.png");
+        background: url("/assets/images/range-vert.png");
         background-size: 2rem 2rem;
         background-repeat: no-repeat;
     }

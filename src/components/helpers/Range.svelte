@@ -71,7 +71,7 @@
 <style>
 	#range-price {
 		position: absolute;
-		width: calc(100% - 9.25rem);
+		width: calc(100% - 17.25rem);
 		transform: rotate(-90deg) translate(-100%, 0);
 		transform-origin: left top;
 		left: calc(100% - 4.9rem);
@@ -106,7 +106,7 @@
 	}
 
 	#range-price .thumb-label {
-		transform: translateX(-50%) rotate(90deg);
+		transform: rotate(90deg);
 		top: 50px;
 		justify-content: flex-start;
 	}
@@ -172,7 +172,7 @@
 		border: 3px solid var(--wine-black);
 		appearance: none;
 		margin-top: calc(var(--thumb-width) / -3);
-		margin-left: 40px;
+		margin-left: 14px;
 		position: relative;
 	}
 

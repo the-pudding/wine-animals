@@ -20,6 +20,7 @@
 
 	let sliderEl;
 	let tapVisible = false;
+	let scrollY;
 
 	function handleTap(direction) {
 			if (direction === "left") {
@@ -39,9 +40,19 @@
 		d3.select("#universal-tooltip").classed("visible", false)
 	}
 
+	function checkScroll(scrollY) {
+		if (scrollY !== undefined) {
+			d3.select("#universal-tooltip").classed("visible", false)
+		}
+	}
+
+	$: checkScroll(scrollY);
+
 	$: console.log($currAnimalSlide)
 	$: sliderEl == $currAnimalSlide;
 </script>
+
+<svelte:window bind:scrollY={scrollY} />
 
 <div id="gradient"></div>
 <Intro />
@@ -167,6 +178,18 @@
 		display: flex;
 		flex-direction: row;
 		gap: 1rem;
+	}
+
+	#universal-tooltip .deets .rating {
+		display: flex;
+		flex-direction: row;
+		gap: 0.25rem;
+		align-items: center;
+	}
+
+	:global(#universal-tooltip .deets .rating .stars img) {
+		height: 18px;
+		margin-top: -4px;
 	}
 
 	:global(#universal-tooltip.visible) {

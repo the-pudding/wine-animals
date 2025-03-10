@@ -73,7 +73,7 @@
         products.forEach((product) => {
         const prodAnimal = product.getAttribute("data-animal");
         const wineDiv = product.querySelector(".wine");
-        if (prodAnimal !== $animalSelected) {
+        if (prodAnimal !== $animalSelected && bottleIndex !== 4) {
             product.classList.add("faded");
             product.style.left = data.startingPos;
         } else {

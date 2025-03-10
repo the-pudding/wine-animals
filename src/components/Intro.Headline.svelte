@@ -61,7 +61,7 @@
     }
 
     h1:nth-child(2).highlight {
-        color: #d0b3bc;
+        color: var(--wine-red);
         opacity: 1;
         animation-play-state: running;
         transition-delay: 0.5s;

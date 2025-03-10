@@ -6,6 +6,7 @@
     import IntroSummaryBottles from "$components/Intro.SummaryBottles.svelte";
     import IntroHeadline from "$components/Intro.Headline.svelte";
     import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import Icon from "$components/helpers/Icon.svelte";
 
     let scrollIndex;
     let scrollyContainer; // Reference to the Scrolly container
@@ -109,6 +110,11 @@
                                 {/if}
                         {/if}
                     </p>
+                    {#if i == 1}
+                        <div class="scroll-hint">
+                            <Icon name="chevron-down" size={"1.5rem"}/>
+                        </div>
+                    {/if}
                 </div>
             </div>
         {/each}
@@ -180,6 +186,7 @@
         border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
         box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
+        position: relative;
     }
 
     .step p {
@@ -192,6 +199,25 @@
         z-index: 1000;
         margin: 0;
         pointer-events: auto;
+    }
+
+    .scroll-hint {
+        width: 3rem;
+        height: 3rem;
+        background: var(--wine-dark-tan);
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: bounceUp 1s infinite;
+    }
+
+    :global(.scroll-hint .icon) {
+        margin-top: 6px;
     }
 
     :global(.instructions) {
@@ -232,6 +258,12 @@
 
     :global(.step p a:hover) {
         color: var(--wine-red);
+    }
+
+    @keyframes bounceUp {
+        0%       { bottom:-24px; }
+        50%      { bottom:-28px; }
+        100%     { bottom:-24px; }
     }
 
     @media(max-width: 700px) {

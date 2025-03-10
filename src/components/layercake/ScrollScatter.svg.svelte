@@ -197,7 +197,7 @@
             cy={cy} 
             r={chartScrollIndex >= 5 && chartScrollIndex < 9 ? 6 : 4} 
             fill={"#38425D"}  
-            stroke={chartScrollIndex >= 5 && chartScrollIndex < 9 ? "#F7A039" : "none"} 
+            stroke={chartScrollIndex >= 5 && chartScrollIndex < 9 ? "#7b0439" : "none"} 
             stroke-width={strokeWidth} 
           />
         </g>
@@ -212,7 +212,7 @@
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
         {@const imageSize = chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? r+30 : r+10}
+                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? r+40 : r+20}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
@@ -226,16 +226,16 @@
                                 : chartScrollIndex == 3 ? 40
                                 : 4} 
                             fill={"transparent"} 
-                            stroke={"#9D0432"} 
+                            stroke={"#F7A039"} 
                             stroke-width={strokeWidth} 
                         />
                         {#if chartScrollIndex == undefined || chartScrollIndex <= 3}
                             <text 
                                 class="label"
-                                x={cx} 
+                                x={cx + 46} 
                                 y={cy + 2} 
-                                text-anchor="middle" 
-                                fill={fill}>
+                                text-anchor="start" 
+                                fill={"#F7A039"}>
                                 {d.topGroup}
                             </text>
                         {/if}
@@ -258,12 +258,12 @@
                         chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? 40 : 
                         chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
                     fill={fill} 
-                    stroke={"none"} 
-                    stroke-width={strokeWidth} 
+                    stroke={$animalSelected == d.topGroup ? "#7b0439" : "none"} 
+                    stroke-width={2} 
                 />
                 {#if chartScrollIndex == undefined || chartScrollIndex < 4}
                     <image 
-                        href={`assets/images/icons/${animal.replace(/[^a-zA-Z0-9]/g, "")}.png`} 
+                        href={d.topGroup == "cat" || d.topGroup == "mythical creature" ? "assets/images/icons/catmyth.png" : `assets/images/icons/${animal.replace(/[^a-zA-Z0-9]/g, "")}.png`} 
                         x={cx - imageSize / 2} 
                         y={cy - imageSize / 2} 
                         width={imageSize} 
@@ -280,7 +280,7 @@
     <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width} y2={$yScale(d3.median(rawData, d => d.price))} />
     <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 
-    <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width + $padding.right} y2={$yScale($stealPriceNum)} />
+    <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width} y2={$yScale($stealPriceNum)} />
     <line class="ratingAVG" x1={$xScale($stealRatingNum)} y1={0} x2={$xScale($stealRatingNum)} y2={$height} />
     <text 
         class="label"
@@ -331,6 +331,7 @@
 
     .medians-wrapper circle {
         opacity: 0.3; 
+        stroke-dasharray: 3px;
     }
 
     .medians-wrapper .active circle {
@@ -354,7 +355,7 @@
         font-weight: 700;
         font-family: var(--sans);
         font-size: var(--12px);
-        fill: var(--wine-dark-tan);;
+        fill: var(--wine-dark-tan);
     }
     .compare-wrapper.hidden {
         opacity: 0;
@@ -375,7 +376,7 @@
     }
 
     g.trendline path {
-        stroke: var(--wine-red);
+        stroke: var(--wine-gold);
         fill: none;
         stroke-width: 2;
     }

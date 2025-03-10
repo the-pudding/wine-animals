@@ -41,6 +41,13 @@
 		// tooltip.classed("visible", false);
 	}
 
+	function formatStars(rating) {
+        console.log(rating)
+        let string = rating + "";
+        let ratingReplaced = string.replace(".", "_");
+        return `star${ratingReplaced}.svg`
+    }
+
 	function setTooltip(data) {
 		let tooltip = d3.select("#universal-tooltip");
 		tooltip.classed("visible", true);
@@ -52,7 +59,10 @@
 		tooltip.select(".animal").text(`${data.topgroup}`);
 		tooltip.select(".type").text(`${data.type}`);
 		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
-		tooltip.select(".rating").text(`${data.rating} stars`);
+		tooltip.select(".rating").html(
+			`${data.rating}
+			<span class="stars"><img src="src/svg/stars/${formatStars(data.rating)}" /></span>`
+		);
 		
 	}
   

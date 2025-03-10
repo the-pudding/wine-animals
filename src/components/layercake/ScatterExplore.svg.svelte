@@ -135,7 +135,7 @@
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
-		stroke: #9D0432;
+		stroke: var(--wine-red);
 		fill: none;
 	}
 

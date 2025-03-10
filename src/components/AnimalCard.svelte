@@ -21,6 +21,13 @@
             navAnimal.set(undefined);
         }
     }
+
+    function formatStars(rating) {
+        console.log(rating)
+        let string = rating + "";
+        let ratingReplaced = string.replace(".", "_");
+        return `star${ratingReplaced}_tan.svg`
+    }
 </script>
 
 {#if animal !== "human" && animal !== "none"}
@@ -52,17 +59,7 @@
                             <p>Median rating</p>
                             <p>{medianData.find(d => d.topGroup == animal).rating}
                                 <span class="stars">
-                                    {#each Array(Math.floor(medianData.find(d => d.topGroup == animal).rating)).fill(0) as _, i}
-                                        <span class="full-star">{@html starIcon}</span> <!-- Full star -->
-                                    {/each}
-                            
-                                    {#if medianData.find(d => d.topGroup == animal).rating % 1 !== 0}
-                                        <span class="partial-star">
-                                            <span class="partial-star-inner" style="width: {Math.round((medianData.find(d => d.topGroup == animal).rating % 1) * 100)+20}%;">
-                                                {@html starIcon}
-                                            </span>
-                                        </span> <!-- Partial star -->
-                                    {/if}
+                                    <img src="src/svg/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
                                 </span>
                             </p>
                         </div>
@@ -154,6 +151,9 @@
     .median p {
         margin: 0;
         padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .median p:first-of-type {
@@ -198,40 +198,11 @@
         align-items: center;
         margin: 0;
         position: relative;
-        top: -0.25rem;
+        line-height: 0;
     }
 
-    :global(.full-star svg, .partial-star svg) {
-        height: 100%;
-        aspect-ratio: 1 / 1;
-    }
-
-    :global(.full-star svg path, .partial-star svg path) {
-        fill: var(--wine-tan);
-        stroke: none;
-        width: 100%;
-        height: 100%;
-    }
-
-    .full-star {
-        width: 1.25rem;
-        height: 1.25rem; 
-    }
-
-    .partial-star {
-        display: inline-block;
-        width: 1.25rem; /* Adjust based on your star icon size */
-        height: 1.25rem;
-        position: relative;
-    }
-
-    .partial-star-inner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        overflow: hidden;
-        white-space: nowrap;
+    .stars img {
+        height: 16px;
     }
 
     @media (max-width: 900px) {

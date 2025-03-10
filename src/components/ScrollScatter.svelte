@@ -87,10 +87,10 @@
         </div>
         {#if chartScrollIndex == 7 || chartScrollIndex == 8}
             <div class="quadrants" transition:fade>
-                <p style="left: 27%; top: 40%">Bad Expensive Wine</p>
-                <p style="left: 69%; top: 40%">Good Expensive Wine</p>
-                <p style="left: 27%; top: 80%">Bad Cheap Wine</p>
-                <p style="left: 69%; top: 80%">Good Cheap Wine</p>
+                <p style="left: 30%; top: 40%">Bad Expensive Wine</p>
+                <p style="left: 75%; top: 40%">Good Expensive Wine</p>
+                <p style="left: 30%; top: 80%">Bad Cheap Wine</p>
+                <p style="left: 75%; top: 80%">Good Cheap Wine</p>
             </div>
         {/if}
         <p class="label label-price">More expensive →</p>
@@ -131,6 +131,7 @@
         top: 0;
         left: 0;
         padding: 3rem;
+        pointer-events: none;
     }
 
     .quadrants p {
