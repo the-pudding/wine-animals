@@ -11,6 +11,7 @@
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
+	import Explore from "$components/Explore.svelte";
 	import WineSelection from "$components/WineSelection.svelte";
 	import * as d3 from "d3";
 
@@ -52,7 +53,7 @@
 
 <svelte:window bind:scrollY={scrollY} />
 
-<div id="gradient"></div>
+<!-- <div id="gradient"></div> -->
 <!-- <WineSelection /> -->
 <Intro />
 <ChartScroll />
@@ -95,7 +96,7 @@
 		<div class="summary"></div>
 	{/if}
 </div>
-<!-- <Explore /> -->
+<Explore />
 <!-- <Footer /> -->
 
 <style>

@@ -37,7 +37,7 @@
         ? $data[1].filter(d => d.topgroup == "bird")
         : chartScrollIndex == 10
         ? $data[1].filter(d => d.topgroup == "cattle")
-        : chartScrollIndex == 11
+        : chartScrollIndex == 11 || chartScrollIndex == 12
         ? $data[1].filter(d => d.topgroup == "cat")
         : $data[1];
 
@@ -331,11 +331,11 @@
 
     .medians-wrapper circle {
         opacity: 0.3; 
-        stroke-dasharray: 3px;
     }
 
     .medians-wrapper .active circle {
         opacity: 0.95; 
+        stroke-dasharray: 3px;
     }
 
     .selected-circle {

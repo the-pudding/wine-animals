@@ -71,7 +71,7 @@
 <style>
 	#range-price {
 		position: absolute;
-		width: calc(100% - 17.25rem);
+		width: calc(100% + 4rem);
 		transform: rotate(-90deg) translate(-100%, 0);
 		transform-origin: left top;
 		left: calc(100% - 4.9rem);
@@ -157,7 +157,7 @@
 	input[type="range"]::-webkit-slider-runnable-track {
 		width: 100%;
 		height: calc(var(--thumb-width) / 8);
-		background: transparent;
+		background: blue;
 		border-radius: 4px;
 	}
 
@@ -171,8 +171,8 @@
 		background-size: 100% 100%;
 		border: 3px solid var(--wine-black);
 		appearance: none;
-		margin-top: calc(var(--thumb-width) / -3);
-		margin-left: 14px;
+		margin-top: 0;
+		margin-left: 0;
 		position: relative;
 	}
 
