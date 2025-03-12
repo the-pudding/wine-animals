@@ -53,7 +53,7 @@
 
 <svelte:window bind:scrollY={scrollY} />
 
-<!-- <div id="gradient"></div> -->
+<div id="gradient"></div>
 <!-- <WineSelection /> -->
 <Intro />
 <ChartScroll />

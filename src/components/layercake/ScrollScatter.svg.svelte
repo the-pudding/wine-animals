@@ -37,7 +37,7 @@
         ? $data[1].filter(d => d.topgroup == "bird")
         : chartScrollIndex == 10
         ? $data[1].filter(d => d.topgroup == "cattle")
-        : chartScrollIndex == 11 || chartScrollIndex == 12
+        : chartScrollIndex == 11
         ? $data[1].filter(d => d.topgroup == "cat")
         : $data[1];
 

@@ -23,3 +23,10 @@
     <Filters />
     <ScatterExplore />
 </section>
+
+<style>
+    #explore {
+        position: relative;
+        z-index: 900;
+    }
+</style>

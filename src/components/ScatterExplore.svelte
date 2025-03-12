@@ -97,11 +97,7 @@
 <style>
     #scatter-explore {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin: 0 auto 5rem auto;
+        margin-bottom: 5rem;
     }
     .report {
         background: var(--color-gray-100);
@@ -118,11 +114,11 @@
     .chart-wrapper {
         width: 100%;
         max-width: 900px;
-        aspect-ratio: 1;
+        aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
         position: relative;
-        margin: 2rem;
+        margin: 2rem auto;
     }
     .chart-top {
         max-width: 500px;

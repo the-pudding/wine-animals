@@ -53,7 +53,7 @@
 		&& $selectedYearRangeSTORE[1] == 2023;
 </script>
 
-<g class="rect">
+<g class="median-markings active">
 	<rect
 		class="highlight-quadrant"
 		x={$xScale(d3.mean(filteredRawData, d => d.rating))}
@@ -61,13 +61,32 @@
 		width={$xScale(d3.mean(filteredRawData, d => d.rating))}
 		height={$height - $yScale(d3.mean(filteredRawData, d => d.price))}
 		fill="#363B45"
-		opacity="0.3"
+		opacity=0.5
 	/>
 </g>
+
 <g class="lines">
 	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(filteredRawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(filteredRawData, d => d.price))} />
 	<line class="ratingAVG" x1={$xScale(d3.mean(filteredRawData, d => d.rating))} y1={0} x2={$xScale(d3.mean(filteredRawData, d => d.rating))} y2={$height} />
 </g>
+<text 
+        class="label"
+        x={$width-4} 
+        y={$yScale(d3.median(rawData, d => d.price)) - 28}
+        text-anchor="end"
+        fill="white">
+        Med. price (${d3.median(rawData, d => d.price)})
+    </text>
+
+    <text 
+        class="label"
+        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
+        y={-20} 
+        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
+        text-anchor="start"
+        fill="white">
+        Med. rating ({d3.median(rawData, d => d.rating)} stars)
+    </text>
 <g>
     <!-- Render circles that are not in $bigScatterData first -->
     {#each $data[0] as d, i (d.id)}
@@ -79,7 +98,7 @@
 				class="circle-explore inactive"
                 cx={cx} 
                 cy={cy} 
-                r={r} 
+                r={4} 
                 fill="#363B45"
                 opacity={0}
             />
@@ -96,7 +115,7 @@
 				class="circle-explore active"
                 cx={cx} 
                 cy={cy} 
-                r={r} 
+                r={4} 
                 fill={fill} 
                 opacity={0.8}
             />
@@ -135,16 +154,24 @@
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
-		stroke: var(--wine-red);
+		stroke: var(--wine-gold);
 		fill: none;
 	}
 
 	.priceAVG, .ratingAVG {
 		stroke-width: 2;
-		stroke: #C9C4B8;
+        stroke: var(--wine-tan);
 	}
 	.fade {
-		opacity: 0.05;
-		stroke: #C9C4B8;
+		opacity: 0.5;
+		stroke: #363B45;
 	}
+
+	.label {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--sans);
+        font-size: var(--12px);
+        fill: var(--wine-dark-tan);
+    }
 </style>

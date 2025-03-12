@@ -162,7 +162,6 @@
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 5rem;
-        background: var(--wine-black);
         color: var(--wine-tan);
     }
 

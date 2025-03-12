@@ -20,11 +20,13 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 900;
+		pointer-events: none;
 	}
 	.wordmark {
 		max-width: 10em;
 		margin: 0 auto;
 		padding: 1em 0;
+		pointer-events: auto;
 	}
 
 	.wordmark a {

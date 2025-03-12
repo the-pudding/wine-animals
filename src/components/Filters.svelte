@@ -168,7 +168,7 @@
         width: 50%;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .filter {
@@ -184,10 +184,15 @@
     label {
         width: 80px;
         text-align: right;
-        color: white;
+        color: var(--wine-dark-tan);
+        font-family: var(--sans);
+        text-transform: uppercase;
+        font-size: var(--14px);
     }
 
     :global(#filters .multiselect) {
-        background: white !important;
+        background: var(--wine-tan) !important;
+        height: 2.5rem !important;
+        font-family: var(--sans) !important;
     }
 </style>

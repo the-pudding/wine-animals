@@ -50,22 +50,28 @@
 
     $: updateDomains(chartScrollIndex);
 
-    $:console.log(chartScrollIndex)
+    $:console.log(chartScrollIndex);
+
+    let windowW;
+    let rangeW;
+    let rangeH;
 </script>
+
+<svelte:window bind:innerWidth={windowW} />
 
 <section id="scatter">
     <div class="chart-container" id="scatterplot">
         {#if chartScrollIndex >= 13 || chartScrollIndex == "exit"}
-            <div class="range-wrapper range-rating">
-                <Range min={3} max={4.8} step={0.1} metric={"rating"} />
-            </div>
-            <div class="range-wrapper range-price">
-                <Range min={0} max={150} step={1} metric={"price"}/>
+            <div class="range-wrapper" bind:offsetWidth={rangeW} bind:offsetHeight={rangeH}>
+                {#if rangeW && rangeH}
+                    <Range min={3} max={4.8} step={0.1} metric={"rating"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 90} />
+                    <Range min={0} max={150} step={1} metric={"price"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 90} />
+                {/if}
             </div>
         {/if}
         <div class="chart-inner">
             <LayerCake
-                padding={{ top: 20, right: 10, bottom: 20, left: 10 }}
+                padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
                 x={xKey}
                 y={yKey}
                 data={[medianData, $bigScatterData]}
@@ -115,7 +121,7 @@
         width: 100%;
         height: 100%;
         /* overflow: hidden; */
-        padding: 4rem;
+        padding: 6rem;
         position: relative;
     }
 
@@ -154,14 +160,14 @@
     }
 
     .label-price {
-        top: 7.25rem;
-        left: 0rem;
+        top: 8.25rem;
+        left: 1rem;
         transform: rotate(-90deg);
     }
 
     .label-rating {
-        right: 0.5rem;
-        bottom: 1.5rem;
+        right: 2.5rem;
+        bottom: 2rem;
         transform: translate(-50%, 0);
     }
 
@@ -172,23 +178,27 @@
         width: 100%;
         height: 100%;
         z-index: 1000;
-        padding: 5rem 4rem 5.25rem 4.5rem;
+        padding: 6rem;
         pointer-events: none;
     }
 
     @media(max-width: 700px) {
         .chart-container {
-            padding: 2rem;
+            padding: 4rem;
+        }
+
+        .range-wrapper {
+            padding: 4rem;
         }
 
         .label-price {
-            top: 5.25rem;
-            left: -1.75rem;
+            top: 6.25rem;
+            left: -1rem;
         }
 
         .label-rating {
-            bottom: -0.25rem;
-            right: -0.75rem;
+            right: 0.75rem;
+            bottom: 0;
         }
 
         .quadrants p {

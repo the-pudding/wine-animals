@@ -15,9 +15,9 @@
 
 		tooltipType.set("bottle")
 
-		d3.selectAll(".card-wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
+		d3.selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
 
-		d3.selectAll(`#card-wine-circle-${point.data.id}`)
+		d3.selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
 			.transition(500)
@@ -30,7 +30,7 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".card-wine-circle circle")
+		d3.selectAll(".card-wine-circle circle, .circle-explore")
 		.style("opacity", 0.8)
 		.style("fill", "#38425D")
 		.transition(500)
@@ -94,11 +94,11 @@
 	.voronoi-cell {
 	  fill: none;
 	  stroke: none;
-	  pointer-events: all;
+	  pointer-events: none;
 	  outline: none;
 	  cursor: pointer;
 	}
-	.voronoi-cell.inactive {
-		pointer-events: none;
+	.voronoi-cell.active {
+		pointer-events: all;
 	}
   </style>

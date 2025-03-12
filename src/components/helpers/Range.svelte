@@ -11,6 +11,9 @@
 	export let showTicks = false;
 	export let label = "";
 	export let metric;
+	export let rangeW;
+	export let rangeH;
+	export let padding;
 
 	let thumbOffset = 0;
 	let labelElement;
@@ -23,6 +26,8 @@
 	let value = get(boundStore);
 
 	$: boundStore.set(value);
+
+	$: console.log({rangeW, rangeH})
 
 	function handleInput(event) {
         value = +event.target.value; // Ensure value is a number
@@ -47,7 +52,8 @@
 	$: updateThumbOffset(value);
 </script>
 
-<div class="range" id="range-{metric}">
+<div class="range" id="range-{metric}" 
+	style="width: calc({metric == "price" ? rangeH : rangeW }px - {padding}px">
 	<input 
         type="range" 
         aria-label={label} 
@@ -71,19 +77,18 @@
 <style>
 	#range-price {
 		position: absolute;
-		width: calc(100% + 4rem);
 		transform: rotate(-90deg) translate(-100%, 0);
 		transform-origin: left top;
-		left: calc(100% - 4.9rem);
+		top: 4.25rem;
+		left: calc(100% - 6rem);
 		pointer-events: auto;
 		overflow: visible;
 	}
 
 	#range-rating {
 		position: absolute;
-		width: calc(100% - 6.75rem);
 		pointer-events: auto;
-		left: 3.75rem;
+		left: 78px;
 	}
 
 	.thumb-label {
@@ -106,8 +111,9 @@
 	}
 
 	#range-price .thumb-label {
-		transform: rotate(90deg);
-		top: 50px;
+		transform: rotate(90deg) translate(0, -6px);
+		transform-origin: left top;
+		top: 24px;
 		justify-content: flex-start;
 	}
 
@@ -135,6 +141,7 @@
 		padding: 0;
 		margin: 0;
 		background: transparent;
+		/* background: blue; */
 		position: relative;
 		outline: none;
 	}
@@ -157,7 +164,7 @@
 	input[type="range"]::-webkit-slider-runnable-track {
 		width: 100%;
 		height: calc(var(--thumb-width) / 8);
-		background: blue;
+		background: transparent;
 		border-radius: 4px;
 	}
 
@@ -171,8 +178,8 @@
 		background-size: 100% 100%;
 		border: 3px solid var(--wine-black);
 		appearance: none;
-		margin-top: 0;
-		margin-left: 0;
+		margin-left: calc(var(--thumb-width) / -3);
+		margin-top: -18px;
 		position: relative;
 	}
 
@@ -187,7 +194,6 @@
 		border: 3px solid var(--wine-black);
 		appearance: none;
 		margin-top: calc(var(--thumb-width) / -3);
-		margin-left: -6px;
 		position: relative;
 	}
 
@@ -273,5 +279,16 @@
 
 	.tick:last-of-type {
 		transform: translate(-3px, 0);
+	}
+
+	@media(max-width: 700px) {
+		#range-price {
+			left: calc(100% - 4rem);
+			top: 2.25rem;
+		}
+
+		#range-rating {
+			left: 3rem;
+		}
 	}
 </style>
