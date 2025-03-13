@@ -14,7 +14,7 @@
 
     let wineWidth;
     let aspectRatio = 3.5;
-    let shouldSpin = [true,true,true];
+    let shouldSpin = [true,true,true,true];
     let spin4 = true;
     let rangeValue;
     let actualPrice = wineData.price;
@@ -69,6 +69,8 @@
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
+        console.log($animalSelected)
+
         const products = document.querySelectorAll(".product");
         products.forEach((product) => {
         const prodAnimal = product.getAttribute("data-animal");
@@ -107,7 +109,7 @@
         : bottleIndex == 4 
         ? 0  
         : bottleIndex * 300;
-    $: if (scrollIndex >= 2) { shouldSpin = [true,true,true]; } 
+    $: if (scrollIndex >= 2) { shouldSpin = [true,true,true,true]; } 
     $: if (outroVisible == false || outroVisible == undefined) { spin4 = true };
 </script>
 
@@ -165,26 +167,32 @@
     .product.faded {
         opacity: 0.25;
     }
-    .product-center .wine, .product-right .wine, .product-left .wine, .product-center-lone .wine {
+    .product .wine {
         height: calc(100% - 150px);
         aspect-ratio: 1/3.5;
         cursor: pointer;
     }
 
-    .product-center .wine {
+    .product-farleft .wine {
         background: url("/assets/images/spins/lionspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
-    .product-right .wine {
+    .product-centerleft .wine {
         background: url("/assets/images/spins/birdspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
-    .product-left .wine {
-        background: url("/assets/images/spins/cowspin.png");
+    .product-centerright .wine {
+        background: url("/assets/images/spins/pigspin.png");
+        background-position: 0 0;
+        background-size: auto 100%;
+    }
+
+    .product-farright .wine {
+        background: url("/assets/images/spins/frogspin.png");
         background-position: 0 0;
         background-size: auto 100%;
     }

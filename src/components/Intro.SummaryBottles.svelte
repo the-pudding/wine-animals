@@ -14,7 +14,7 @@
     let innerWidth;
 
     const animalSubgroups = [
-        {animal: "amphibian", subgroups: "lizards, snakes, frogs, etc."},
+        {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
         {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},

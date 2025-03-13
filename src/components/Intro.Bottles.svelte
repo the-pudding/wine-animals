@@ -5,9 +5,10 @@
     export let scrollIndex;
 
     const openingWines = [
-        { animal: "cattle", name: "Pinotage", winery: "Survivor", country: "South Africa", price: 21.99, bottleSlot: "left", targetPos: "25%", startingPos: "-75%", rangeValue: 0 },
-        { animal: "cat", name: "Bordeaux Supérieur", winery: "Château Les Gravieres de la Brandille", country: "France", price: 18.33, bottleSlot: "center", targetPos: "50%", startingPos: "-50%", rangeValue: 0 },
-        { animal: "bird", name: "Pinot Noir", winery: "Mohua", country: "New Zealand", price: 21.95, bottleSlot: "right", targetPos: "75%", startingPos: "-25%", rangeValue: 0 }
+        { animal: "cat", name: "Poppóne", winery: "Antonutti", country: "Italy", price: 34.99, rating: 4.3, bottleSlot: "farleft", targetPos: "20%", startingPos: "-80%", wineQuad: "good expensive"},
+        { animal: "bird", name: "Sauvignon Blanc", winery: "Tomtit", country: "New Zealand", price: 22.67, rating: 4.1, bottleSlot: "centerleft", targetPos: "40%", startingPos: "-60%", wineQuad: "good cheap"},
+        { animal: "pig", name: "Sus Scrofa", winery: "Pardas", country: "Spain", price: 20.83, rating: 3.6,  bottleSlot: "centerright", targetPos: "60%", startingPos: "-40%", wineQuad: "bad cheap"},
+        { animal: "amphibian/reptile", name: "Tïn Bianco", winery: "Montesecondo", country: "Italy", price: 39.99, rating: 3.8, bottleSlot: "farright", targetPos: "80%", startingPos: "-20%", wineQuad: "bad expensive"},
     ];
     const dispatch = createEventDispatcher();
 

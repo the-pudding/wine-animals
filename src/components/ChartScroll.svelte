@@ -33,11 +33,14 @@
         }
     }
 
-    $: selectedWine = $animalSelected == "cat" ? "159436402"
-        : $animalSelected == "cattle" ? "159742039"
-        :  "157063319";
+    $: selectedWine = $animalSelected == "cat" ? "161008470"
+        : $animalSelected == "bird" ? "173188559"
+        : $animalSelected == "pig" ?"171574314"
+        : "161239002";
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
+
+    $: console.log(chartScrollIndex)
 </script>
 
 <svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
@@ -91,7 +94,10 @@
                                 </div>
                             </div>
                         </div> 
-                    {/if}          
+                    {/if}  
+                    {#if i == 8}
+                        <p>{@html $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianQuad")] : copy.opening[0][($animalSelected + "Quad")]}</p>
+                    {/if}        
                 </div>
             </div>
         {/each}

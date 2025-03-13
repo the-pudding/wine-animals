@@ -24,9 +24,10 @@
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
-    $: selectedWine = $animalSelected == "cat" ? "159436402"
-        : $animalSelected == "cattle" ? "159742039"
-        :  "157063319";
+    $: selectedWine = $animalSelected == "cat" ? "161008470"
+        : $animalSelected == "bird" ? "173188559"
+        : $animalSelected == "pig" ?"171574314"
+        : "161239002";
 
     // Trendline
     const regression = d3Regression.regressionExp()
@@ -333,9 +334,12 @@
         opacity: 0.3; 
     }
 
+    .medians circle {
+        stroke-dasharray: 3px;
+    }
+
     .medians-wrapper .active circle {
         opacity: 0.95; 
-        stroke-dasharray: 3px;
     }
 
     .selected-circle {

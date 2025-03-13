@@ -96,7 +96,7 @@
 		<div class="summary"></div>
 	{/if}
 </div>
-<Explore />
+<Explore /> 
 <!-- <Footer /> -->
 
 <style>
