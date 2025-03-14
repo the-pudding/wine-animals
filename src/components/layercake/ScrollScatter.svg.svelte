@@ -35,11 +35,13 @@
         .y(d => d.y); // Accessor for y value
 
     $: pointData = chartScrollIndex == 9
-        ? $data[1].filter(d => d.topgroup == "bird")
+        ? $data[1].filter(d => d.topgroup.includes == "amphibian/reptile")
         : chartScrollIndex == 10
-        ? $data[1].filter(d => d.topgroup == "cattle")
+        ? $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"))
         : chartScrollIndex == 11
-        ? $data[1].filter(d => d.topgroup == "cat")
+        ? $data[1].filter(d => d.topgroup.includes  == "pig")
+        : chartScrollIndex == 12
+        ? $data[1].filter(d => d.topgroup.includes  == "bird")
         : $data[1];
 
     $: points = pointData.map(d => ({
@@ -122,6 +124,8 @@
             randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
         });
     }
+
+    $: console.log($data[1].filter(d => d.topgroup.includes("amphibian/reptile")))
 </script>
 
 <!-- {#if randomDataForGenerations}
@@ -168,9 +172,12 @@
         {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" 
-            class:hidden={chartScrollIndex == 9 && d.topgroup !== "bird" ||
-                chartScrollIndex == 10 && d.topgroup !== "cattle" ||
-                chartScrollIndex == 11 && d.topgroup !== "cat"}
+            class:hidden={
+                (chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile")) ||
+                (chartScrollIndex == 10 && (!d.topgroup.includes("cat") || (d.topgroup.includes("cattle") && !d.topgroup.includes("cat")))) ||
+                (chartScrollIndex == 11 && !d.topgroup.includes("pig")) ||
+                (chartScrollIndex == 12 && !d.topgroup.includes("bird"))
+            }
         >
           <circle 
             id={`circle-${d.id}`}
@@ -190,15 +197,19 @@
         {@const cx = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $xGet(d) : $xGet($data[0][4])}
         {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
-        <g class="wine-circle wine-circle-{animal}" class:hidden={chartScrollIndex == 14}>
+        <g class="wine-circle wine-circle-{animal}" 
+            class:hidden={chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile") ||
+               chartScrollIndex == 10 && !d.topgroup.includes("cat") ||
+               chartScrollIndex == 11 && !d.topgroup.includes("pig") 
+               || chartScrollIndex == 12 && !d.topgroup.includes("bird")}>
           <circle 
             id={`circle-${d.id}`}
             class="selected-circle"
             cx={cx} 
             cy={cy} 
-            r={chartScrollIndex >= 5 && chartScrollIndex < 9 ? 6 : 4} 
+            r={chartScrollIndex >= 5 && chartScrollIndex < 12 ? 10 : 4} 
             fill={"#38425D"}  
-            stroke={chartScrollIndex >= 5 && chartScrollIndex < 9 ? "#7b0439" : "none"} 
+            stroke={chartScrollIndex >= 5 && chartScrollIndex < 12 ? "#7b0439" : "none"} 
             stroke-width={strokeWidth} 
           />
         </g>
@@ -317,6 +328,7 @@
 
     .wines-wrapper g.hidden, .medians-wrapper g.hidden {
         opacity: 0;
+        pointer-events: none;
     }
 
     .wines-wrapper g, .medians-wrapper g {

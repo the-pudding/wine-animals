@@ -49,11 +49,11 @@
     <div class="sticky">
         <div class="chart-wrapper">
             <div class="scatter-wrapper" 
-                class:active={chartScrollIndex !== 12}
+                class:active={chartScrollIndex !== 13}
             >
                 <ScrollScatter chartScrollIndex={chartScrollIndex}/>
             </div>
-            <div class="lineup-wrapper" class:active={chartScrollIndex == 12}>
+            <div class="lineup-wrapper" class:active={chartScrollIndex == 13}>
                 <SummaryBottles scrollIndex={chartScrollIndex}/>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     {#each step.block as graf, i}
                         <p>{@html graf.value}</p>
                     {/each}
-                    {#if i == 13 && $stealPercent || i == 13 && $stealPercent == 0}
+                    {#if i == 14 && $stealPercent || i == 13 && $stealPercent == 0}
                         <p><span class="bold">{$stealPercent.toFixed(2)}%</span> of animal wines are steals when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> and the rating <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
                         <!-- <div class="steal-bar-wrapper">
                             {#each $stealTopgroupCounts as topgroup, i}

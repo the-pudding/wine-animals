@@ -114,7 +114,7 @@
                         <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                     </div>
                     <div class="animal-deets">
-                        <p>{animal[0]}</p>
+                        <p>{animal[0] == "amphibian/reptile" ? "amphibian / reptile" : animal[0]}</p>
                         {#if getAnimalSubgroup(animal[0])}
                             <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
                         {/if}
@@ -122,36 +122,38 @@
                 </div>
             {/each}
         </div>
-        <div class="labels" class:hidden={scrollIndex <= 5}>
-            <p><Icon name="chevron-left"/>Lower {currMetric}</p>
-            <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
-            {#if currMetric !== undefined}
-                <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "67%"}">
-                    <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
-                    <div class="median-circle"></div>
-                    <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
-                </div>
-                {#if currMetric !== "rating"}
-                    <div class="median-mark" style="left: 70%">
-                        <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
+        {#if innerWidth >= 1100}
+            <div class="labels" class:hidden={scrollIndex <= 5}>
+                <p><Icon name="chevron-left"/>Lower {currMetric}</p>
+                <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
+                {#if currMetric !== undefined}
+                    <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "62%"}">
+                        <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
                         <div class="median-circle"></div>
-                        <p>All wines</p>
+                        <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
                     </div>
+                    {#if currMetric !== "rating"}
+                        <div class="median-mark" style="left: 63%">
+                            <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
+                            <div class="median-circle"></div>
+                            <p>All wines</p>
+                        </div>
+                    {/if}
                 {/if}
-            {/if}
-        </div>
+            </div>
+        {/if}
     {:else}
         <div class="labels" class:hidden={scrollIndex <= 5}>
             <p class="low"><Icon name="chevron-up"/>Lower {currMetric}</p>
             <p class="high"><Icon name="chevron-down"/>Higher {currMetric}</p>  
             {#if currMetric !== undefined}
-                <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "65%"}">
+                <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "61%"}">
                     <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
                     <div class="median-circle"></div>
                     <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
                 </div>
                 {#if currMetric !== "rating"}
-                    <div class="median-mark" style="top: 62%">
+                    <div class="median-mark" style="top: 61%">
                         <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
                         <div class="median-circle"></div>
                         <p>All wines</p>
@@ -207,7 +209,7 @@
         align-items: center;
         pointer-events: none;
         gap: 6rem;
-        padding: 1rem;
+        padding: 2rem;
         margin-top: 10svh;
     }
 
@@ -222,7 +224,7 @@
     }
 
     .animal-group {
-        width: 5%;
+        width: 4.75%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -245,7 +247,7 @@
         width: 100%;
         aspect-ratio: 1 / 4;
         position: relative;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     img {
@@ -357,6 +359,28 @@
         border-radius: 50%;
     }
 
+    @media(max-width: 1100px) {
+        .animal-wrapper {
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 900px;
+            gap: 1rem;
+        }
+
+        .animal-group {
+            width: 10%;
+            margin-bottom: 2rem;
+        }
+
+        .img-wrapper {
+            max-width: 50px;
+        }
+
+        img {
+            max-width: 50px;
+        }
+    }
+
     @media(max-width:700px) {
         .summary-bottles {
             flex-direction: row;
@@ -365,20 +389,29 @@
         .animal-wrapper {
             flex-direction: column;
             padding-left: 2.5rem;
+            flex-wrap: nowrap;
+            gap: 0.75rem;
         }
 
         .animal-group {
             flex-direction: row;
+            flex-wrap: nowrap;
             width: 100%;
-            height: calc(100% / 16);
+            height: 4.5%;
             align-items: center;
+            margin-bottom: 0;
         }
 
         .img-wrapper {
             aspect-ratio: 4 / 1;
             height: 100%;
-            width: 120px;
-            margin: 0 0.5rem;
+            width: auto;
+            max-width: none;
+            margin: 0;
+        }
+
+        img {
+            max-width: none;
         }
 
         .animal-group.active {
@@ -395,7 +428,7 @@
         }
 
         .num {
-            width: 80px;
+            width: 70px;
             text-align: right;
             margin: 0;
             font-size: var(--16px);
@@ -408,8 +441,17 @@
 
         .animal-deets {
             display: flex;
-            flex-direction: row;
-            width: calc(100% - 200px);;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .animal-deets p {
+            text-align: left;
+            margin: 0;
+        }
+
+        .subgroup {
+            margin: 0;
         }
 
         .labels {
@@ -444,13 +486,19 @@
             gap: 0;
         }
 
-        .median-mark .num {
-            width: auto;
-            font-size: var(--16px);
+        .labels .median-mark p {
+            font-size: var(--12px);
+            text-align: center;
+            line-height: 1.125;
         }
 
         .labels .median-mark p.num  {
-            font-size: var(--16px);
+            font-size: var(--14px);
+        }
+
+        .median-circle {
+            width: 1rem;
+            height: 1rem;
         }
     }
 </style>

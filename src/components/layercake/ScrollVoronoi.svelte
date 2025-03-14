@@ -9,6 +9,8 @@
 
 	export let stroke = undefined;
 	export let chartScrollIndex;
+
+	let pointsData;
   
 	function mouseoverCircle(point) {
 		// console.log(point)
@@ -60,8 +62,24 @@
 		);
 		
 	}
+
+	function setPointsData(chartScrollIndex) {
+		if (chartScrollIndex == 9) {
+			pointsData = $data[1].filter(d => d.topgroup.includes("amphibian/reptile"));
+		} else if (chartScrollIndex == 10) {	
+			pointsData = $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"));
+		} else if (chartScrollIndex == 11) {
+			pointsData = $data[1].filter(d => d.topgroup.includes("pig"));
+		} else if (chartScrollIndex == 12) {
+			pointsData = $data[1].filter(d => d.topgroup.includes("bird"));
+		} else {
+			pointsData = $data[1];
+		}
+	}
+
+	$: setPointsData(chartScrollIndex);
   
-	$: points = $data[1].map(d => {
+	$: points = pointsData.map(d => {
 				const point = [$xGet(d), $yGet(d)];
 				point.data = d;
 				return point;
@@ -76,12 +94,15 @@
 	<path
 		id={`voronoi-${point.data.id}`}
 		class={"voronoi-cell"}
-        class:active={chartScrollIndex >= 5 && chartScrollIndex < 9 
-            || chartScrollIndex == 9 && point.data.topgroup.includes("bird")
-            || chartScrollIndex == 10 && point.data.topgroup.includes("cattle")
-            || chartScrollIndex == 11 && point.data.topgroup.includes("cat")
-            || chartScrollIndex == 13
-            || chartScrollIndex == "exit"}
+        class:active={
+			(chartScrollIndex >= 5 && chartScrollIndex < 9) ||
+			(chartScrollIndex == 9 && point.data.topgroup.includes("amphibian/reptile")) ||
+			(chartScrollIndex == 10 && (point.data.topgroup.includes("cat") || !point.data.topgroup.includes("cattle"))) ||
+			(chartScrollIndex == 11 && point.data.topgroup.includes("pig")) ||
+			(chartScrollIndex == 12 && point.data.topgroup.includes("bird")) ||
+			(chartScrollIndex == 14) ||
+			(chartScrollIndex == "exit")
+		}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
 		mouseoverCircle(point);
@@ -103,6 +124,7 @@
 	  pointer-events: none;
 	  outline: none;
 	  cursor: pointer;
+	  pointer-events: none;
 	}
 	.voronoi-cell.active {
 		pointer-events: all;

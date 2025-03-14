@@ -11,18 +11,19 @@
 
     let currData;
     let currMetric;
-    let transitionsCompleted = 0;
+    let innerWidth;
 
     const animalSubgroups = [
-        {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs"},
+        {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
         {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
+        {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
         {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
-        {animal: "marine invertebrate", subgroups: "lobster, crab, shrimp, octopi, etc."},
+        {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
         {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
         {animal: "pig", subgroups: "boar"},
@@ -63,7 +64,7 @@
     }
     
     $: {
-        if (scrollIndex !== 12) {
+        if (scrollIndex !== 13) {
             currData = Object.entries(restructuredData).sort(
                 ([animalA], [animalB]) => animalA.localeCompare(animalB)
             );
@@ -76,53 +77,100 @@
         }
     }
 
-    $: animate = scrollIndex == 12 ? true : false;
+    $: animate = scrollIndex == 13 ? true : false;
 </script>
 
-{#if scrollIndex >= 12 && currData !== undefined}
-<div class="summary-bottles" transition:fade>
-    <div class="animal-wrapper">
-        {#each currData as animal, i (animal[0])}
-            <div class="animal-group active" 
-                style="transition-delay: {(currData.length - i - 1) * 100}ms;"
-                animate:flip={{duration: 1000}}
-                class:active={animal[0] === $animalSelected}
-                class:animated={animate}>
-                <p class="num">
-                    {animal[1].steals.percent.toFixed(1)}%
-                </p>
-                <div class="img-wrapper">
-                    {#if animal[0] === $animalSelected}
-                        <img src="./assets/images/blank-bottle-outline.png" alt="wine bottle with red outline" />
-                    {:else}
-                        <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
-                    {/if}
-                    <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
-                </div>
-                <p>{animal[0].replace("/", " / ")}</p>
-                {#if getAnimalSubgroup(animal[0])}
-                    <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
-                {/if}
-            </div>
-        {/each}
-    </div>
-    <div class="labels" class:hidden={scrollIndex <= 5}>
-        <p><Icon name="chevron-left"/>Lower {currMetric}</p>
-        <p>Higher {currMetric}<Icon name="chevron-right"/></p>
+<svelte:window bind:innerWidth={innerWidth} />
 
-        <div class="median-mark" style="left: 59%">
+{#if scrollIndex >= 13 && currData !== undefined}
+<div class="summary-bottles" transition:fade>
+    {#if innerWidth > 700}
+        <div class="animal-wrapper">
+            {#each currData as animal, i (animal[0])}
+                <div class="animal-group active" 
+                    style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                    animate:flip={{duration: 1000}}
+                    class:active={animal[0] === $animalSelected}
+                    class:animated={animate}>
+                    <p class="num">
+                        {animal[1].steals.percent.toFixed(1)}%
+                    </p>
+                    <div class="img-wrapper">
+                        {#if animal[0] === $animalSelected}
+                            <img src="./assets/images/blank-bottle-outline.png" alt="wine bottle with red outline" />
+                        {:else}
+                            <img src="./assets/images/blank-bottle.png" alt="wine bottle" />
+                        {/if}
+                        <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
+                    </div>
+                    <div class="animal-deets">
+                        <p>{animal[0] == "amphibian/reptile" ? "amphibian / reptile" : animal[0]}</p>
+                        {#if getAnimalSubgroup(animal[0])}
+                            <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
+                        {/if}
+                    </div>
+                </div>
+            {/each}
+        </div>
+        {#if innerWidth >= 1100}
+            <div class="labels" class:hidden={scrollIndex <= 5}>
+                <p><Icon name="chevron-left"/>Lower {currMetric}</p>
+                <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
+                <div class="median-mark" style="left: 52%">
+                    <p class="num">13.9%</p>
+                    <div class="median-circle"></div>
+                    <p>Animal wines</p>
+                </div>
+                <div class="median-mark" style="left: 58%">
+                    <p class="num">14.5%</p>
+                    <div class="median-circle"></div>
+                    <p>All wines</p>
+                </div>
+            </div>
+        {/if}
+    {:else}
+    <div class="labels" class:hidden={scrollIndex <= 5}>
+        <p class="low"><Icon name="chevron-up"/>Lower {currMetric}</p>
+        <p class="high"><Icon name="chevron-down"/>Higher {currMetric}</p>  
+        <div class="median-mark" style="top: 50.5%">
             <p class="num">13.9%</p>
+            <div class="median-circle"></div>
+            <p>Animal</p>
+        </div>
+        <div class="median-mark" style="top: 57.5%">
+            <p class="num">14.5%</p>
             <div class="median-circle"></div>
             <p>All wines</p>
         </div>
-
-        <div class="median-mark" style="left: 61%">
-            <p class="num">14.5%</p>
-            <div class="median-circle"></div>
-            <p>Animal wines</p>
-        </div>
-
     </div>
+        <div class="animal-wrapper">
+            {#each currData as animal, i (animal[0])}
+                <div class="animal-group active" 
+                    style="transition-delay: {(currData.length - i - 1) * 100}ms;"
+                    animate:flip={{duration: 1000}}
+                    class:active={animal[0] === $animalSelected}
+                    class:animated={animate}>
+                    <p class="num">
+                        {animal[1].steals.percent.toFixed(1)}%
+                    </p>
+                    <div class="img-wrapper">
+                        {#if animal[0] === $animalSelected}
+                            <img src="./assets/images/blank-bottle-outline-horiz.png" alt="wine bottle with red outline" />
+                        {:else}
+                            <img src="./assets/images/blank-bottle-horiz.png" alt="wine bottle" />
+                        {/if}
+                        <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
+                    </div>
+                    <div class="animal-deets">
+                        <p>{animal[0]}</p>
+                        {#if getAnimalSubgroup(animal[0])}
+                            <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
+                        {/if}
+                    </div>
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
 {/if}
 
@@ -130,7 +178,7 @@
     .summary-bottles {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: auto;
         max-height: 80svh;
         display: flex;
         flex-direction: column;
@@ -138,7 +186,7 @@
         align-items: center;
         pointer-events: none;
         gap: 6rem;
-        padding: 1rem;
+        padding: 2rem;
         margin-top: 10svh;
     }
 
@@ -147,18 +195,20 @@
         flex-direction: row;
         justify-content: center;
         width: 100%;
+        height: 100%;
         max-width: 1200px;
         gap: 1rem;
     }
 
     .animal-group {
-        width: 5%;
+        width: 4.75%;
         display: flex;
         flex-direction: column;
         align-items: center;
         transform: translate(-100%, 0);
         transition: transform 500ms ease, opacity 500ms ease;
         opacity: 0;
+        gap: 0.5rem;
     }
 
     .animal-group.animated {
@@ -174,7 +224,7 @@
         width: 100%;
         aspect-ratio: 1 / 4;
         position: relative;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     img {
@@ -284,5 +334,148 @@
         background: var(--wine-tan);
         border: 2px solid var(--wine-black);
         border-radius: 50%;
+    }
+
+    @media(max-width: 1100px) {
+        .animal-wrapper {
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 900px;
+            gap: 1rem;
+        }
+
+        .animal-group {
+            width: 10%;
+            margin-bottom: 2rem;
+        }
+
+        .img-wrapper {
+            max-width: 50px;
+        }
+
+        img {
+            max-width: 50px;
+        }
+    }
+
+    @media(max-width:700px) {
+        .summary-bottles {
+            flex-direction: row;
+            height: 100%;
+        }
+        .animal-wrapper {
+            flex-direction: column;
+            padding-left: 2.5rem;
+            flex-wrap: nowrap;
+            gap: 0.75rem;
+        }
+
+        .animal-group {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 4.5%;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .img-wrapper {
+            aspect-ratio: 4 / 1;
+            height: 100%;
+            width: auto;
+            max-width: none;
+            margin: 0;
+        }
+
+        img {
+            max-width: none;
+        }
+
+        .animal-group.active {
+            transform: translate(30px, 0);
+            padding-right: 2rem;
+        }
+
+        .img-icon {
+            top: 0;
+            height: 80%;
+            width: auto;
+            left: 31%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .num {
+            width: 100px;
+            text-align: right;
+            margin: 0;
+            font-size: var(--16px);
+        }
+
+        .subgroup {
+            margin-left: 0.5rem;
+            text-align: left;
+        }
+
+        .animal-deets {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .animal-deets p {
+            text-align: left;
+            margin: 0;
+        }
+
+        .subgroup {
+            margin: 0;
+        }
+
+        .labels {
+            position: absolute;
+            left: 2.5rem;
+            width: 100%;
+            top: 0;
+            border-top: none;
+            border-left: 1px solid var(--wine-blue);
+            height: 100%;
+            pointer-events: none;
+            font-size: var(--16px);
+        }
+
+        .labels .low {
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .labels .high {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -0.5rem;
+        }
+
+        .median-mark {
+            top: 0;
+            left: -30px;
+            gap: 0;
+        }
+
+        .labels .median-mark p {
+            font-size: var(--12px);
+            text-align: center;
+            line-height: 1.125;
+        }
+
+        .labels .median-mark p.num  {
+            font-size: var(--14px);
+        }
+
+        .median-circle {
+            width: 1rem;
+            height: 1rem;
+        }
     }
 </style>
