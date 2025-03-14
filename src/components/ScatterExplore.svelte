@@ -3,8 +3,8 @@
     import { LayerCake, Svg, Canvas } from "layercake";
     import ScatterSvgExplore from "$components/layercake/ScatterExplore.svg.svelte";
     import ScatterCanvas from "$components/layercake/Scatter.canvas.svelte";
-    import Voronoi from "$components/layercake/Voronoi.svelte";
-    import { bigScatterData, highlightWine } from "$stores/misc.js";
+    import Voronoi from "$components/layercake/ExploreVoronoi.svelte";
+    import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
@@ -13,6 +13,7 @@
     import * as d3Regression from 'd3-regression';
     import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
+	import { searchedWineSTORE } from "../stores/misc";
 
 
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
@@ -36,7 +37,7 @@
 		easing: eases.cubicInOut
 	};
 
-    // $: console.log({$bigScatterData})
+    $: console.log({$bigScatterData, $searchedWineSTORE})
 
     // Regression Line
     const regression = d3Regression.regressionExp()
@@ -53,12 +54,12 @@
 <section id="scatter-explore">
     <div class="chart-wrapper">
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
-                {#key [filteredRawData, trendLine]}
+                {#key [$bigScatterData, trendLine]}
                 <LayerCake
                     padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
                     x={xKey}
                     y={yKey}
-                    data={[filteredRawData, trendLine]}
+                    data={[$bigScatterData, trendLine]}
                     xDomain={[2,5]}
                     yDomain={[0,150]}
                 >
@@ -79,25 +80,12 @@
                 {/key}
         </div>
     </div>
-    <div class="tooltip-details">
-        {#if $highlightWine !== undefined}
-            <p>{$highlightWine.year}</p>
-            <p>{$highlightWine.name}</p>
-            <p>Winery: {$highlightWine.winery}</p>
-            <p>Type: {$highlightWine.type}</p>
-            <p>Country:{$highlightWine.country}</p>
-            <p>Animal: {$highlightWine.topgroup}</p>
-            <p>Price: ${$highlightWine.price}</p>
-            <p>Rating: {$highlightWine.rating}</p>
-            <img src="https://{$highlightWine.imageUrl}" />
-        {/if}
-    </div>
 </section>
 
 <style>
     #scatter-explore {
         width: 100%;
-        margin-bottom: 5rem;
+        height: calc(100svh - 420px);
     }
     .report {
         background: var(--color-gray-100);
@@ -113,8 +101,8 @@
     }
     .chart-wrapper {
         width: 100%;
+        height: 100%;
         max-width: 900px;
-        aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
         position: relative;

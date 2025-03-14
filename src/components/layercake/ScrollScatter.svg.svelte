@@ -124,8 +124,6 @@
             randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
         });
     }
-
-    $: console.log($data[1].filter(d => d.topgroup.includes("amphibian/reptile")))
 </script>
 
 <!-- {#if randomDataForGenerations}

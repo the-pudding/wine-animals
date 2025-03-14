@@ -2,8 +2,7 @@
 	import { getContext, createEventDispatcher } from 'svelte';
 	import { uniques } from 'layercake';
 	import * as d3 from "d3";
-	import { Delaunay } from 'd3-delaunay';
-	import { bigScatterData, highlightWine, tooltipType } from "$stores/misc.js";
+	import { tooltipType } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   

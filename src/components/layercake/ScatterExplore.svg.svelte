@@ -122,7 +122,7 @@
         {/if}
     {/each}
 </g>
-{#if addRandom && baseFilters && $bigScatterData.length < 1059 && $bigScatterData.length >= 10}
+<!-- {#if addRandom && baseFilters && $bigScatterData.length < 1059 && $bigScatterData.length >= 10}
 	{#each randomDataForGenerations as randomData, i}
 		{@const points = randomData.map(d => ({
 			x: +d.rating,  // Convert rating to a number
@@ -139,7 +139,7 @@
 			{/if}
 		</g>
 	{/each}
-{/if}
+{/if} -->
 {#if baseFilters && $bigScatterData.length >= 10}
 	<g class="lines">
 		{#if path}

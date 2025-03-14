@@ -26,6 +26,8 @@
 
 <style>
     #explore {
+        width: 100%;
+        height: 100svh;
         position: relative;
         z-index: 900;
     }

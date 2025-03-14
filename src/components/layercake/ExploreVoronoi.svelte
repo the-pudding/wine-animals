@@ -1,24 +1,22 @@
 <script>
-	import { getContext, createEventDispatcher } from 'svelte';
+	import { getContext } from 'svelte';
 	import { uniques } from 'layercake';
 	import * as d3 from "d3";
 	import { tooltipType } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
-
+  
 	export let stroke = undefined;
 	export let chartScrollIndex;
-
-	let pointsData;
   
 	function mouseoverCircle(point) {
 		// console.log(point)
-	
+
 		tooltipType.set("bottle")
 
-		d3.selectAll(".wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
+		d3.selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
 
-		d3.selectAll(`#circle-${point.data.id}`)
+		d3.selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
 			.transition(500)
@@ -31,7 +29,7 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".wine-circle circle")
+		d3.selectAll(".card-wine-circle circle, .circle-explore")
 		.style("opacity", 0.8)
 		.style("fill", "#38425D")
 		.transition(500)
@@ -61,24 +59,8 @@
 		);
 		
 	}
-
-	function setPointsData(chartScrollIndex) {
-		if (chartScrollIndex == 9) {
-			pointsData = $data[1].filter(d => d.topgroup.includes("amphibian/reptile"));
-		} else if (chartScrollIndex == 10) {	
-			pointsData = $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"));
-		} else if (chartScrollIndex == 11) {
-			pointsData = $data[1].filter(d => d.topgroup.includes("pig"));
-		} else if (chartScrollIndex == 12) {
-			pointsData = $data[1].filter(d => d.topgroup.includes("bird"));
-		} else {
-			pointsData = $data[1];
-		}
-	}
-
-	$: setPointsData(chartScrollIndex);
   
-	$: points = pointsData.map(d => {
+	$: points = $data[0].map(d => {
 				const point = [$xGet(d), $yGet(d)];
 				point.data = d;
 				return point;
@@ -92,16 +74,7 @@
   {#each uniquePoints as point, i}
 	<path
 		id={`voronoi-${point.data.id}`}
-		class={"voronoi-cell"}
-        class:active={
-			(chartScrollIndex >= 5 && chartScrollIndex < 9) ||
-			(chartScrollIndex == 9 && point.data.topgroup.includes("amphibian/reptile")) ||
-			(chartScrollIndex == 10 && (point.data.topgroup.includes("cat") || !point.data.topgroup.includes("cattle"))) ||
-			(chartScrollIndex == 11 && point.data.topgroup.includes("pig")) ||
-			(chartScrollIndex == 12 && point.data.topgroup.includes("bird")) ||
-			(chartScrollIndex == 14) ||
-			(chartScrollIndex == "exit")
-		}
+		class={"voronoi-cell active"}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
 		mouseoverCircle(point);
@@ -123,7 +96,6 @@
 	  pointer-events: none;
 	  outline: none;
 	  cursor: pointer;
-	  pointer-events: none;
 	}
 	.voronoi-cell.active {
 		pointer-events: all;
