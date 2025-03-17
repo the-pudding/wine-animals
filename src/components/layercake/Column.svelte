@@ -58,9 +58,8 @@
 	}
 
 	function handleMouseover(e, d) {
-		let categoryChart = e.target.closest(".chart-wrapper");
-
 		tooltipType.set("histo")
+		let categoryChart = e.target.closest(".chart-wrapper");
 
 		setTooltip(d)
 
@@ -129,6 +128,7 @@ function handleMouseleave(e) {
 			{@const width = $xScale.bandwidth ? $xScale.bandwidth() : columnWidth(d)}
 			{@const height = columnHeight(d)}
 			<rect
+				role="tooltip"
 				class={d.bucket}
 				data-id={i}
 				{x}
@@ -139,6 +139,7 @@ function handleMouseleave(e) {
 				{stroke}
 				stroke-width={strokeWidth}
 				on:mouseover|preventDefault={(e) => handleMouseover(e,d)}
+				on:focus={(e) => handleMouseover(e,d)}
 				on:mouseleave={handleMouseleave}
 			/>
 			<text class="bucket-text {d.category}-text" x={x + width / 2} y={localHeight + 24} text-anchor="middle">

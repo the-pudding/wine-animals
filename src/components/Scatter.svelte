@@ -13,6 +13,7 @@
     import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
     import Icon from "$components/helpers/Icon.svelte";
+	import { tooltipType } from "../stores/misc";
 
     export let animal;
 
@@ -55,16 +56,19 @@
     let trendLine = regression(points);
 
     let summaryBtns;
+    let individWineBtns;
     let subgroup;
     let clickedAnimal;
 
     function handleSummaryClick(event) {
         let id = event.target.id.split("-")[0];
-        subgroup = id;
+        if (id == "gamebird") { id == "game bird"}
+
+        subgroup = id == "human" ? "human rider" : id;
 
         clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
 
-        if (clickedAnimal == animal) {
+        if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal !== "bug" && clickedAnimal !== "mythicalcreature") {
             animalData = allWineData.filter(d => 
                 d.topgroup.includes(animal) &&
                 d.subgroup.includes(id) &&
@@ -76,10 +80,76 @@
             }))
 
             trendLine = regression(points);
+        } else {
+            animalData = allWineData.filter(d => 
+                d.topgroup.includes(animal) &&
+                d.finalAnimal.includes(id) &&
+                d.price <= 150);
+
+            points = animalData.map(d => ({
+                x: +d.rating,  // Convert price to a number
+                y: +d.price  // Convert rating to a number
+            }))
+
+            trendLine = regression(points);
         }
     }
 
+    function handleIndividWineClick(event) {
+        resetClick();
+        let closestCard = d3.select(event.target.closest(".animal-card"));
+
+        closestCard.selectAll(".card-wine-circle circle")
+            .transition()
+            .duration(500)
+            .style("opacity", 0.8)
+            .style("fill", "#38425D")
+            .attr("r", 4);
+
+        let id = event.target.id;
+
+        closestCard.select(`#card-wine-circle-${id}`)
+            .transition()
+            .duration(500)
+            .style("opacity", 1)
+			.style("fill", "#CFCABF")
+			.attr("r", 10)
+
+        let data = allWineData.filter(d => d.id == id);
+            
+        setTooltip(data[0])
+    }
+
+    function setTooltip(data) {
+        tooltipType.set("bottle")
+		let tooltip = d3.select("#universal-tooltip");
+		tooltip.classed("visible", true);
+
+		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);
+
+		tooltip.select(".wine-name").text(data.name);
+		tooltip.select(".winery-name").text(`${data.winery}, ${data.country}`);
+		tooltip.select(".animal").text(`${data.topgroup}`);
+		tooltip.select(".type").text(`${data.type}`);
+		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
+		tooltip.select(".rating").html(
+			`${data.rating}
+			<span class="stars"><img alt="stars" src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
+		);
+	}
+
+    function formatStars(rating) {
+        let string = rating + "";
+        let ratingReplaced = string.replace(".", "_");
+        return `star${ratingReplaced}.svg`
+    }
+
     onMount(() => {
+        individWineBtns = document.querySelectorAll(".individ-wine-btn");
+        individWineBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => handleIndividWineClick(event));
+        });
+
         summaryBtns = document.querySelectorAll(".summary-btn");
         summaryBtns.forEach(btn => {
             btn.addEventListener("click", (event) => handleSummaryClick(event));
@@ -103,23 +173,38 @@
     function pluralize(animal){
         if (animal == "amphibian/reptile") {
             return "amphibians/reptiles"
-        } else if (animal == "cattle" || animal == "deer" || animal == "fish") {
+        } else if (animal == "cattle" || animal == "deer" || animal == "fish" || animal == "sheep") {
             return animal
         } else {
             return `${animal}s`
         }
     }
+
+    function handleMouseover(e) {
+        tooltipType.set("bottle")
+    }
+
+    function handleMouseleave(e) {
+        tooltipType.set(undefined);
+
+        let tooltip = d3.select("#universal-tooltip");
+		tooltip.classed("visible", false);
+    }
 </script>
 
 <section id="scatter">
-    <div class="chart-wrapper">
+    <div class="chart-wrapper"
+        on:mouseover|preventDefault={(e) => handleMouseover(e)}
+        on:focus={(e) => handleMouseover(e)}
+        on:mouseleave={handleMouseleave}
+        role="presentation">
         <h4>Individual wines</h4>
         <div class="deets">
             <p>Now showing <span class="bold">{pluralize(animal)}</span>
-                {#if subgroup !== undefined && clickedAnimal == animal}
+                {#if subgroup !== undefined && clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "")}
                     <span class="subgroup-span">
                         <Icon name="chevron-right" size={"1rem"}/>
-                        <span class="bold">{subgroup}s</span>
+                        <span class="bold">{pluralize(subgroup)}s</span>
                     </span>
                 {/if}
             </p>

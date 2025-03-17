@@ -27,8 +27,6 @@
 
 	$: boundStore.set(value);
 
-	$: console.log({rangeW, rangeH})
-
 	function handleInput(event) {
         value = +event.target.value; // Ensure value is a number
         dispatch("input", value);    // Dispatch value directly, not wrapped in an object

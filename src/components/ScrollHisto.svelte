@@ -7,7 +7,7 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
     import { hideTooltip } from "$stores/misc.js";
-    import { animalSelect, metricSelect } from "$stores/misc.js";
+    import { animalSelect, metricSelect, tooltipType } from "$stores/misc.js";
     import data from "$data/wineData_summary.csv";
 
     const copy = getContext("copy");
@@ -57,12 +57,27 @@
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
+
+    function handleMouseover(e) {
+        tooltipType.set("histo")
+    }
+
+    function handleMouseleave(e) {
+        tooltipType.set(undefined);
+
+        let tooltip = d3.select("#universal-tooltip");
+		tooltip.classed("visible", false);
+    }
 </script>
 
 <section id="distribution">
     <h4>Wine distribution</h4>
     <div class="tooltip" class:hidden={$hideTooltip}></div>
-    <div class="quad-wrapper">
+    <div class="quad-wrapper"
+        on:mouseover|preventDefault={(e) => handleMouseover(e)}
+        on:focus={(e) => handleMouseover(e)}
+        on:mouseleave={handleMouseleave}
+        role="presentation">
         {#each currAnimalGroupedData as category, i}
             {@const matchingLineData = allWineGroupedData.find(([key]) => key === category.key)?.[1] || []}
             {@const xDomainLine = [...new Set(matchingLineData.map(d => d.bucket))]}

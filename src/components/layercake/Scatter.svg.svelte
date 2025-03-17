@@ -104,6 +104,7 @@
         {@const cy = $yGet(d)}
         <circle 
 			id={`card-wine-circle-${d.id}`}
+			data-d={JSON.stringify(d)}
             cx={cx} 
             cy={cy} 
             r={r} 

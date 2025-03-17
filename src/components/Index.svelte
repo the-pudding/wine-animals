@@ -40,6 +40,15 @@
 
 	function tooltipCloseClick() {
 		d3.select("#universal-tooltip").classed("visible", false)
+
+		d3.selectAll(".card-wine-circle circle")
+            .transition()
+            .duration(500)
+            .style("opacity", 0.8)
+            .style("fill", "#38425D")
+            .attr("r", 4);
+		
+		tooltipType.set(undefined);
 	}
 
 	function checkScroll(scrollY) {
@@ -92,7 +101,7 @@
 				<p class="rating"></p>
 			</div>
 		</div>
-	{:else if $tooltipType == "histo"}
+	{:else}
 		<div class="summary"></div>
 	{/if}
 </div>
@@ -116,6 +125,10 @@
 		z-index: 1000;
 		transition: bottom 0.5s linear;
     }
+
+	:global(#universal-tooltip.visible) {
+		bottom: 0 !important;
+	}
 
 	#universal-tooltip button {
 		position: absolute;
@@ -192,8 +205,15 @@
 		margin-top: -4px;
 	}
 
-	:global(#universal-tooltip.visible) {
-		bottom: 0 !important;
+	:global(#universal-tooltip .chevron) {
+		display: inline-block;
+		line-height: 1;
+	}
+
+	:global(#universal-tooltip .chevron img) {
+		height: 18px;
+		position: relative;
+		top: 2px;
 	}
 
 	#gradient {

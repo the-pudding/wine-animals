@@ -3,6 +3,7 @@
 	import { uniques } from 'layercake';
 	import * as d3 from "d3";
 	import { tooltipType } from "$stores/misc.js";
+	import chevronRight from "$svg/chevron-right.svg";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
@@ -17,9 +18,10 @@
 		d3.selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
 
 		d3.selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
+			.transition()
+            .duration(500)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
-			.transition(500)
 			.attr("r", 10)
 			.each(function () {
 				this.parentNode.appendChild(this); // Append to the end of the parent
@@ -30,10 +32,11 @@
 
 	function mouseleaveCircle(point) {
 		d3.selectAll(".card-wine-circle circle, .circle-explore")
-		.style("opacity", 0.8)
-		.style("fill", "#38425D")
-		.transition(500)
-		.attr("r", 4);
+			.transition()
+			.duration(500)
+			.style("opacity", 0.8)
+			.style("fill", "#38425D")
+			.attr("r", 4);
 	}
 
 	function formatStars(rating) {
@@ -50,7 +53,10 @@
 
 		tooltip.select(".wine-name").text(data.name);
 		tooltip.select(".winery-name").text(`${data.winery}, ${data.country}`);
-		tooltip.select(".animal").text(`${data.topgroup}`);
+		tooltip.select(".animal").html(
+			`${data.topgroup}
+		 	<span class="chevron"><img alt="stars" src="./assets/images/chevron-right.png" /></span>
+			${data.finalAnimal}`);
 		tooltip.select(".type").text(`${data.type}`);
 		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
 		tooltip.select(".rating").html(
