@@ -3,7 +3,7 @@
     import { LayerCake, Svg, Html } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
     import Voronoi from "$components/layercake/Voronoi.svelte";
-    import { animalSelect, bigScatterData } from "$stores/misc.js";
+    import { animalSelect, bigScatterData, navAnimal } from "$stores/misc.js";
     import allWineData from "$data/wineData.csv"
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
@@ -190,6 +190,8 @@
         let tooltip = d3.select("#universal-tooltip");
 		tooltip.classed("visible", false);
     }
+
+    $: resetClick($navAnimal)
 </script>
 
 <section id="scatter">

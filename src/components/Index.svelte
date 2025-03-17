@@ -6,7 +6,7 @@
 	import Intro from "$components/Intro4.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
-	import AnimalCardNav from "$components/AnimalCard.Nav.svelte";
+	import AnimalCardNav from "$components/AnimalCard.Nav2.svelte";
 	import Slider from "$components/helpers/Slider.svelte";
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";
@@ -57,7 +57,15 @@
 		}
 	}
 
+	function moveSlider() {
+		if (sliderEl) {
+			sliderEl.jump($currAnimalSlide);
+			console.log("Jumping to:", $currAnimalSlide);
+		}
+	}
+
 	$: checkScroll(scrollY);
+	$: moveSlider($currAnimalSlide);
 </script>
 
 <svelte:window bind:scrollY={scrollY} />

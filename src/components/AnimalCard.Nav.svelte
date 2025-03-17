@@ -4,8 +4,7 @@
     import { navAnimal, currAnimalSlide } from "$stores/misc.js";
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
-		"deer", "fish", "horse", "human",
-		"marine invertebrate", "mythical", "none", "pachyderm", "pig",
+		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
 		"rabbit", "ram"
 	];
 
@@ -72,11 +71,11 @@
         <svelte:component 
             this={Carousel}
             bind:this={carousel}
-            particlesToShow={particleNum}
-            particlesToScroll={4}
+            particlesToShow={16}
+            particlesToScroll={1}
             arrows={false}
             swiping={true}
-            initialPageIndex={0}
+            initialPageIndex={1}
             dots={false}>
             {#each topgroups as animal, i}
                 {#if animal !== "none" && animal !== "human"}
