@@ -94,11 +94,6 @@
 		id={`voronoi-${point.data.id}`}
 		class={"voronoi-cell"}
         class:active={
-			(chartScrollIndex >= 5 && chartScrollIndex < 9) ||
-			(chartScrollIndex == 9 && point.data.topgroup.includes("amphibian/reptile")) ||
-			(chartScrollIndex == 10 && (point.data.topgroup.includes("cat") || !point.data.topgroup.includes("cattle"))) ||
-			(chartScrollIndex == 11 && point.data.topgroup.includes("pig")) ||
-			(chartScrollIndex == 12 && point.data.topgroup.includes("bird")) ||
 			(chartScrollIndex == 14) ||
 			(chartScrollIndex == "exit")
 		}

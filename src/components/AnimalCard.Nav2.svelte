@@ -4,7 +4,7 @@
 
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "marine invertebrate", "mythical", "pachyderm", "pig",
-		"rabbit", "ram"
+		"rabbit", "sheep"
 	];
 
 	let nav; // Reference to the <nav> element
@@ -84,8 +84,6 @@
 
         // Smoothly scroll the navigation
         nav.scrollTo({ left: nav.scrollLeft + offset, behavior: "smooth" });
-
-        console.log(`Auto-centering: Moving by ${offset}px`);
     }
 
 	// 🟢 Initialize event listeners and center first item
@@ -108,7 +106,6 @@
     $: centerActiveElement($navAnimal);
 
     function handleClick(animal, i) {
-        console.log("Clicked", animal);
         navAnimal.set(animal);
         currAnimalSlide.set(i);
     }

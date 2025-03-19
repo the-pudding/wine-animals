@@ -5,7 +5,7 @@
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
-		"rabbit", "ram"
+		"rabbit", "sheep"
 	];
 
     let Carousel; // for saving Carousel component class

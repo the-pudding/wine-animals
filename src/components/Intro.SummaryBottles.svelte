@@ -15,7 +15,7 @@
 
     const animalSubgroups = [
         {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
-        {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
+        {animal: "bird", subgroups: "songbirds, chicken, ducks, raptors, etc."},
         {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
@@ -28,7 +28,7 @@
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
         {animal: "pig", subgroups: "boar"},
         {animal: "rabbit", subgroups: "hare"},
-        {animal: "ram", subgroups: "sheep, goats"},
+        {animal: "sheep", subgroups: "rams, goats"},
     ];
 
     const filteredData = summaryData.filter(d => d.animalGroup !== "animal wines" && 

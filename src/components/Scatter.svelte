@@ -1,16 +1,15 @@
 <script>
     import { onMount } from "svelte";
-    import { LayerCake, Svg, Html } from 'layercake';
+    import { LayerCake, Svg } from 'layercake';
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
     import Voronoi from "$components/layercake/Voronoi.svelte";
-    import { animalSelect, bigScatterData, navAnimal } from "$stores/misc.js";
+    import { navAnimal } from "$stores/misc.js";
     import allWineData from "$data/wineData.csv"
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
     import * as d3Regression from 'd3-regression';
-    import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
     import Icon from "$components/helpers/Icon.svelte";
 	import { tooltipType } from "../stores/misc";

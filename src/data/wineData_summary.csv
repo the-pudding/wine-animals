@@ -386,49 +386,49 @@ fish,median,medianPrice,,24.99
 fish,median,medianRating,,3.9
 fish,count,count,,62
 fish,steals,steals,24.193548387096776,15
-horse,price,<10,2.7586206896551726,4
-horse,price,10–19.99,36.55172413793103,53
-horse,price,20–29.99,16.551724137931036,24
-horse,price,30–39.99,11.03448275862069,16
-horse,price,40–49.99,11.724137931034482,17
-horse,price,50–59.99,5.517241379310345,8
-horse,price,60–69.99,4.827586206896552,7
-horse,price,70–79.99,2.0689655172413794,3
-horse,price,80–89.99,2.0689655172413794,3
-horse,price,90–99.99,2.0689655172413794,3
+horse,price,<10,2.7777777777777777,4
+horse,price,10–19.99,36.11111111111111,52
+horse,price,20–29.99,16.666666666666664,24
+horse,price,30–39.99,11.11111111111111,16
+horse,price,40–49.99,11.805555555555555,17
+horse,price,50–59.99,5.555555555555555,8
+horse,price,60–69.99,4.861111111111112,7
+horse,price,70–79.99,2.083333333333333,3
+horse,price,80–89.99,2.083333333333333,3
+horse,price,90–99.99,2.083333333333333,3
 horse,price,100–109.99,0,0
-horse,price,110–119.99,2.0689655172413794,3
-horse,price,120–129.99,0.6896551724137931,1
+horse,price,110–119.99,2.083333333333333,3
+horse,price,120–129.99,0.6944444444444444,1
 horse,price,130–139.99,0,0
 horse,price,140–149.99,0,0
-horse,price,150+,2.0689655172413794,3
-horse,rating,3 & less,0.6896551724137931,1
-horse,rating,3.1–3.5,9.655172413793103,14
-horse,rating,3.6–4,48.96551724137931,71
-horse,rating,4.1–4.5,39.310344827586206,57
-horse,rating,4.6 & above,1.3793103448275863,2
-horse,type,Dessert,3.4482758620689653,5
-horse,type,Fortified,0.6896551724137931,1
-horse,type,Red,43.44827586206896,63
-horse,type,Rose,6.896551724137931,10
-horse,type,Sparkling,7.586206896551724,11
-horse,type,White,37.93103448275862,55
-horse,country,France,20.689655172413794,30
-horse,country,United States,21.379310344827587,31
-horse,country,Italy,28.965517241379313,42
-horse,country,Spain,4.137931034482759,6
-horse,country,Argentina,6.206896551724138,9
-horse,country,Portugal,2.0689655172413794,3
-horse,country,South Africa,4.137931034482759,6
-horse,country,Australia,0.6896551724137931,1
-horse,country,Germany,2.7586206896551726,4
-horse,country,Chile,4.137931034482759,6
-horse,country,New Zealand,1.3793103448275863,2
-horse,country,Austria,0.6896551724137931,1
-horse,median,medianPrice,,25
+horse,price,150+,2.083333333333333,3
+horse,rating,3 & less,0.6944444444444444,1
+horse,rating,3.1–3.5,9.722222222222223,14
+horse,rating,3.6–4,49.30555555555556,71
+horse,rating,4.1–4.5,38.88888888888889,56
+horse,rating,4.6 & above,1.3888888888888888,2
+horse,type,Dessert,3.4722222222222223,5
+horse,type,Fortified,0.6944444444444444,1
+horse,type,Red,43.05555555555556,62
+horse,type,Rose,6.944444444444445,10
+horse,type,Sparkling,7.638888888888889,11
+horse,type,White,38.19444444444444,55
+horse,country,France,20.13888888888889,29
+horse,country,United States,21.52777777777778,31
+horse,country,Italy,29.166666666666668,42
+horse,country,Spain,4.166666666666666,6
+horse,country,Argentina,6.25,9
+horse,country,Portugal,2.083333333333333,3
+horse,country,South Africa,4.166666666666666,6
+horse,country,Australia,0.6944444444444444,1
+horse,country,Germany,2.7777777777777777,4
+horse,country,Chile,4.166666666666666,6
+horse,country,New Zealand,1.3888888888888888,2
+horse,country,Austria,0.6944444444444444,1
+horse,median,medianPrice,,25.244999999999997
 horse,median,medianRating,,4
-horse,count,count,,145
-horse,steals,steals,14.482758620689657,21
+horse,count,count,,144
+horse,steals,steals,13.88888888888889,20
 human,price,<10,2.1148036253776437,21
 human,price,10–19.99,27.59315206445116,274
 human,price,20–29.99,26.586102719033235,264
@@ -516,48 +516,48 @@ marine invertebrate,median,medianRating,,3.9
 marine invertebrate,count,count,,33
 marine invertebrate,steals,steals,18.181818181818183,6
 mythical creature,price,<10,0,0
-mythical creature,price,10–19.99,20.491803278688526,25
-mythical creature,price,20–29.99,23.770491803278688,29
-mythical creature,price,30–39.99,12.295081967213115,15
-mythical creature,price,40–49.99,9.01639344262295,11
-mythical creature,price,50–59.99,6.557377049180328,8
-mythical creature,price,60–69.99,3.278688524590164,4
-mythical creature,price,70–79.99,4.918032786885246,6
-mythical creature,price,80–89.99,4.098360655737705,5
-mythical creature,price,90–99.99,0.819672131147541,1
-mythical creature,price,100–109.99,2.459016393442623,3
-mythical creature,price,110–119.99,0.819672131147541,1
-mythical creature,price,120–129.99,2.459016393442623,3
-mythical creature,price,130–139.99,1.639344262295082,2
-mythical creature,price,140–149.99,1.639344262295082,2
-mythical creature,price,150+,5.737704918032787,7
+mythical creature,price,10–19.99,21.138211382113823,26
+mythical creature,price,20–29.99,23.577235772357724,29
+mythical creature,price,30–39.99,12.195121951219512,15
+mythical creature,price,40–49.99,8.94308943089431,11
+mythical creature,price,50–59.99,6.504065040650407,8
+mythical creature,price,60–69.99,3.2520325203252036,4
+mythical creature,price,70–79.99,4.878048780487805,6
+mythical creature,price,80–89.99,4.0650406504065035,5
+mythical creature,price,90–99.99,0.8130081300813009,1
+mythical creature,price,100–109.99,2.4390243902439024,3
+mythical creature,price,110–119.99,0.8130081300813009,1
+mythical creature,price,120–129.99,2.4390243902439024,3
+mythical creature,price,130–139.99,1.6260162601626018,2
+mythical creature,price,140–149.99,1.6260162601626018,2
+mythical creature,price,150+,5.691056910569105,7
 mythical creature,rating,3 & less,0,0
-mythical creature,rating,3.1–3.5,5.737704918032787,7
-mythical creature,rating,3.6–4,42.62295081967213,52
-mythical creature,rating,4.1–4.5,49.18032786885246,60
-mythical creature,rating,4.6 & above,2.459016393442623,3
-mythical creature,type,Dessert,1.639344262295082,2
-mythical creature,type,Fortified,2.459016393442623,3
-mythical creature,type,Red,46.72131147540984,57
-mythical creature,type,Rose,4.918032786885246,6
-mythical creature,type,Sparkling,6.557377049180328,8
-mythical creature,type,White,37.704918032786885,46
-mythical creature,country,France,21.311475409836063,26
-mythical creature,country,United States,22.131147540983605,27
-mythical creature,country,Italy,30.327868852459016,37
-mythical creature,country,Spain,9.01639344262295,11
-mythical creature,country,Argentina,2.459016393442623,3
-mythical creature,country,Portugal,0.819672131147541,1
-mythical creature,country,South Africa,2.459016393442623,3
-mythical creature,country,Australia,3.278688524590164,4
-mythical creature,country,Germany,2.459016393442623,3
-mythical creature,country,Chile,2.459016393442623,3
+mythical creature,rating,3.1–3.5,5.691056910569105,7
+mythical creature,rating,3.6–4,42.27642276422765,52
+mythical creature,rating,4.1–4.5,49.59349593495935,61
+mythical creature,rating,4.6 & above,2.4390243902439024,3
+mythical creature,type,Dessert,1.6260162601626018,2
+mythical creature,type,Fortified,2.4390243902439024,3
+mythical creature,type,Red,47.15447154471545,58
+mythical creature,type,Rose,4.878048780487805,6
+mythical creature,type,Sparkling,6.504065040650407,8
+mythical creature,type,White,37.39837398373984,46
+mythical creature,country,France,21.951219512195124,27
+mythical creature,country,United States,21.951219512195124,27
+mythical creature,country,Italy,30.081300813008134,37
+mythical creature,country,Spain,8.94308943089431,11
+mythical creature,country,Argentina,2.4390243902439024,3
+mythical creature,country,Portugal,0.8130081300813009,1
+mythical creature,country,South Africa,2.4390243902439024,3
+mythical creature,country,Australia,3.2520325203252036,4
+mythical creature,country,Germany,2.4390243902439024,3
+mythical creature,country,Chile,2.4390243902439024,3
 mythical creature,country,New Zealand,0,0
-mythical creature,country,Austria,1.639344262295082,2
+mythical creature,country,Austria,1.6260162601626018,2
 mythical creature,median,medianPrice,,34.99
 mythical creature,median,medianRating,,4.1
-mythical creature,count,count,,122
-mythical creature,steals,steals,14.754098360655737,18
+mythical creature,count,count,,123
+mythical creature,steals,steals,15.447154471544716,19
 none,price,<10,1.4414157271300128,101
 none,price,10–19.99,23.462252033680606,1644
 none,price,20–29.99,24.975024975024976,1750
@@ -687,49 +687,49 @@ rabbit,median,medianPrice,,29.99
 rabbit,median,medianRating,,4
 rabbit,count,count,,25
 rabbit,steals,steals,12,3
-ram,price,<10,1.7543859649122806,1
-ram,price,10–19.99,42.10526315789473,24
-ram,price,20–29.99,29.82456140350877,17
-ram,price,30–39.99,14.035087719298245,8
-ram,price,40–49.99,0,0
-ram,price,50–59.99,3.508771929824561,2
-ram,price,60–69.99,1.7543859649122806,1
-ram,price,70–79.99,0,0
-ram,price,80–89.99,1.7543859649122806,1
-ram,price,90–99.99,0,0
-ram,price,100–109.99,0,0
-ram,price,110–119.99,0,0
-ram,price,120–129.99,1.7543859649122806,1
-ram,price,130–139.99,1.7543859649122806,1
-ram,price,140–149.99,0,0
-ram,price,150+,1.7543859649122806,1
-ram,rating,3 & less,0,0
-ram,rating,3.1–3.5,5.263157894736842,3
-ram,rating,3.6–4,68.42105263157895,39
-ram,rating,4.1–4.5,24.561403508771928,14
-ram,rating,4.6 & above,1.7543859649122806,1
-ram,type,Dessert,0,0
-ram,type,Fortified,1.7543859649122806,1
-ram,type,Red,33.33333333333333,19
-ram,type,Rose,12.280701754385964,7
-ram,type,Sparkling,0,0
-ram,type,White,52.63157894736842,30
-ram,country,France,21.052631578947366,12
-ram,country,United States,14.035087719298245,8
-ram,country,Italy,21.052631578947366,12
-ram,country,Spain,7.017543859649122,4
-ram,country,Argentina,1.7543859649122806,1
-ram,country,Portugal,5.263157894736842,3
-ram,country,South Africa,14.035087719298245,8
-ram,country,Australia,5.263157894736842,3
-ram,country,Germany,1.7543859649122806,1
-ram,country,Chile,0,0
-ram,country,New Zealand,5.263157894736842,3
-ram,country,Austria,1.7543859649122806,1
-ram,median,medianPrice,,21.74
-ram,median,medianRating,,3.9
-ram,count,count,,57
-ram,steals,steals,19.298245614035086,11
+sheep,price,<10,1.7543859649122806,1
+sheep,price,10–19.99,42.10526315789473,24
+sheep,price,20–29.99,29.82456140350877,17
+sheep,price,30–39.99,14.035087719298245,8
+sheep,price,40–49.99,0,0
+sheep,price,50–59.99,3.508771929824561,2
+sheep,price,60–69.99,1.7543859649122806,1
+sheep,price,70–79.99,0,0
+sheep,price,80–89.99,1.7543859649122806,1
+sheep,price,90–99.99,0,0
+sheep,price,100–109.99,0,0
+sheep,price,110–119.99,0,0
+sheep,price,120–129.99,1.7543859649122806,1
+sheep,price,130–139.99,1.7543859649122806,1
+sheep,price,140–149.99,0,0
+sheep,price,150+,1.7543859649122806,1
+sheep,rating,3 & less,0,0
+sheep,rating,3.1–3.5,5.263157894736842,3
+sheep,rating,3.6–4,68.42105263157895,39
+sheep,rating,4.1–4.5,24.561403508771928,14
+sheep,rating,4.6 & above,1.7543859649122806,1
+sheep,type,Dessert,0,0
+sheep,type,Fortified,1.7543859649122806,1
+sheep,type,Red,33.33333333333333,19
+sheep,type,Rose,12.280701754385964,7
+sheep,type,Sparkling,0,0
+sheep,type,White,52.63157894736842,30
+sheep,country,France,21.052631578947366,12
+sheep,country,United States,14.035087719298245,8
+sheep,country,Italy,21.052631578947366,12
+sheep,country,Spain,7.017543859649122,4
+sheep,country,Argentina,1.7543859649122806,1
+sheep,country,Portugal,5.263157894736842,3
+sheep,country,South Africa,14.035087719298245,8
+sheep,country,Australia,5.263157894736842,3
+sheep,country,Germany,1.7543859649122806,1
+sheep,country,Chile,0,0
+sheep,country,New Zealand,5.263157894736842,3
+sheep,country,Austria,1.7543859649122806,1
+sheep,median,medianPrice,,21.74
+sheep,median,medianRating,,3.9
+sheep,count,count,,57
+sheep,steals,steals,19.298245614035086,11
 pig,price,<10,0,0
 pig,price,10–19.99,35.714285714285715,10
 pig,price,20–29.99,28.57142857142857,8

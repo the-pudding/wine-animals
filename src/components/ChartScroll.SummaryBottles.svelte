@@ -26,9 +26,9 @@
         {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
         {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
-        {animal: "pig", subgroups: "boar"},
-        {animal: "rabbit", subgroups: "hare"},
-        {animal: "ram", subgroups: "sheep, goats"},
+        {animal: "pig", subgroups: "boars, hogs"},
+        {animal: "rabbit", subgroups: "hares"},
+        {animal: "sheep", subgroups: "goats, rams"},
     ];
 
     const filteredData = summaryData.filter(d => d.animalGroup !== "animal wines" && 

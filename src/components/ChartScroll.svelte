@@ -47,6 +47,12 @@
 
 <section id="chart-scroll">
     <div class="sticky">
+        <p class="steals-sentence"
+            class:active={chartScrollIndex == 14 || chartScrollIndex == "exit"}>
+            You can get a good deal on <span class="bold">{$stealPercent}% of animal wines</span> 
+            when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
+            and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span>
+        </p>
         <div class="chart-wrapper">
             <div class="scatter-wrapper" 
                 class:active={chartScrollIndex !== 13}
@@ -65,18 +71,6 @@
                     {#each step.block as graf, i}
                         <p>{@html graf.value}</p>
                     {/each}
-                    {#if i == 14 && $stealPercent || i == 13 && $stealPercent == 0}
-                        <p><span class="bold">{$stealPercent.toFixed(2)}%</span> of animal wines are steals when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> and the rating <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
-                        <!-- <div class="steal-bar-wrapper">
-                            {#each $stealTopgroupCounts as topgroup, i}
-                                <div class="steal-bar">
-                                    <p class="animal">{topgroup.group}</p>
-                                    <div class="bar" style="width: calc({topgroup.count/500*100}% - 6rem)"></div>
-                                    <p>{topgroup.count}</p>
-                                </div>
-                            {/each}
-                        </div> -->
-                    {/if}   
                     {#if i == 5}  
                         <div class="selected-bottle-display">
                             <img src="./assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
@@ -124,6 +118,18 @@
         overflow: hidden;
 	}
 
+    .steals-sentence {
+        color: var(--wine-tan);
+        font-family: var(--sans);
+        position: absolute;
+        top: 4rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        max-width: 900px;
+        opacity: 0;
+        transition: opacity 0.25s linear;
+    }
+
     .chart-wrapper {
         width: 100%;
         height: 100%;
@@ -141,7 +147,7 @@
         left: 0;
         z-index: 900;
         opacity: 0;
-        transition: opacity 0.5s linear;
+        transition: opacity 0.25s linear;
     }
 
     .scatter-wrapper {
@@ -149,7 +155,7 @@
         height: 100%;
         left: 0;
         transform: translate(0,0);
-        padding: 3rem 0 5rem 0;
+        padding: 6rem 0 6rem 0;
     }
 
     .lineup-wrapper {
@@ -157,7 +163,7 @@
         z-index: 1;
     }
 
-    .scatter-wrapper.active, .lineup-wrapper.active {
+    .scatter-wrapper.active, .lineup-wrapper.active, .steals-sentence.active {
         opacity: 1;
     }
 
@@ -337,13 +343,13 @@
     }
 
     :global(.selected-bottle-circle-span::after) {
-        border: 3px solid var(--wine-red);
+        background: var(--wine-gold);
         border-radius: 50%;
         top: 0%;
     }
 
     :global(.median-line-span::after) {
-        border-top: 3px solid var(--wine-gold);
+        border-top: 3px solid var(--wine-red);
     }
 
     :global(.cream-line-span::after) {

@@ -2,7 +2,6 @@
 	import { getContext, onMount } from "svelte";
 	import * as d3 from "d3";
 	import * as d3Regression from 'd3-regression';
-	import { topgroupSelect } from "$stores/misc.js";
 	import rawData from "$data/wineData.csv"
 	import { bottleSelected, animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
 
@@ -36,54 +35,20 @@
 	const maxLength = 99;
     const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
 
-	function generateRandomComparison(data) {
-        let filteredData = data.filter(d => 
-			!d.topgroup.includes($topgroupSelect) && 
-			d.topgroup !== "none" && 
-			d.topgroup !== "human" && 
-			d.price <= 150
-		);
-		let animalData = data.filter(d => 
-			d.topgroup.includes($topgroupSelect) && d.price <= 150
-		)
-        let shuffled = [...filteredData].sort(() => 0.5 - Math.random());
-        let randomData = shuffled.slice(0,animalData.length);
+	// function generateRandomComparison(data) {
+    //     let filteredData = data.filter(d => 
+	// 		!d.topgroup.includes($topgroupSelect) && 
+	// 		d.topgroup !== "none" && 
+	// 		d.topgroup !== "human" && 
+	// 		d.price <= 150
+	// 	);
+	// 	let animalData = data.filter(d => 
+	// 		d.topgroup.includes($topgroupSelect) && d.price <= 150
+	// 	)
+    //     let shuffled = [...filteredData].sort(() => 0.5 - Math.random());
+    //     let randomData = shuffled.slice(0,animalData.length);
 
-        return randomData
-    }
-
-	// Regression Line
-    const regression = d3Regression.regressionExp()
-        .x(d => d.x)  // Accessor for x value
-        .y(d => d.y); // Accessor for y value
-
-	let steepnessValues = [];
-	let randomAvgSlope;
-	let randomCount;
-
-	// function calcSteepness(data, randomData) {
-    //     let sumSlopes = 0;
-    //     data.forEach(point => {
-    //         const [x, y] = point;
-    //         const slope = data.a * data.b * Math.exp(data.b * x);
-    //         sumSlopes += slope;
-    //     });
-    //     const averageSteepness = sumSlopes / data.length;
-	// 	steepnessValues.push(averageSteepness)
-
-	// 	if (steepnessValues.length == generations.length) {
-	// 		randomAvgSlope = d3.mean(steepnessValues, d => d);
-	// 		randomCount = randomData.length;	
-	// 	}
-
-    //     return averageSteepness;
-    // }
-
-	// $: if (mounted) {
-	// 	randomSteepnessNode = d3.selectAll("#random-steepness-text");
-	// 	if (randomSteepnessNode.node() && randomAvgSlope) {
-	// 		randomSteepnessNode.text(`${Math.round(randomAvgSlope)} avg. random steepness`);
-    //     }
+    //     return randomData
     // }
 </script>
 
@@ -156,7 +121,7 @@
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
-		stroke: var(--wine-gold);
+		stroke: var(--wine-red);
 		fill: none;
 	}
 

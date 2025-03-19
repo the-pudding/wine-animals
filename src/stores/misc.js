@@ -1,18 +1,7 @@
 import { writable } from "svelte/store";
 import allWineData from "$data/wineData.csv";
 
-export const bottleSpinState = writable({});
-
-export const chartView = writable("scatter");
-
-export const favWinesList = writable([]);
-export const wineSet = writable("animals/humans");
-export const metricSelect = writable("price");
-export const animalSelect = writable("all");
-export const topgroupSelect = writable("all");
-export const photoSelect = writable("all");
-export const hideTooltip = writable(true);
-
+// EXPLORE DATA
 const filteredData = allWineData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
 export const bigScatterData = writable(filteredData);
@@ -41,3 +30,6 @@ export const currAnimalSlide = writable(0);
 
 // UNIVERSAL TOOLTIP
 export const tooltipType = writable(null);
+
+// SECTION
+export const activeSection = writable("Finding the Deals");

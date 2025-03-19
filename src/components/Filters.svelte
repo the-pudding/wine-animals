@@ -11,7 +11,7 @@
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
         "deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
-        "rabbit", "ram"
+        "rabbit", "sheep"
     ];
     const wineType = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
     const wineCountry = ["Argentina", "Australia", "Austria", "Chile", "France", "Georgia", "Germany",

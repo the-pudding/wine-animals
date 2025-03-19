@@ -11,7 +11,6 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
     import * as d3Regression from 'd3-regression';
-    import { tweened } from 'svelte/motion';
 	import * as eases from 'svelte/easing';
 	import { searchedWineSTORE } from "../stores/misc";
 

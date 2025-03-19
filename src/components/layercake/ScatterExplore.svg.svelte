@@ -2,7 +2,6 @@
 	import { getContext, onMount } from "svelte";
 	import * as d3 from "d3";
 	import * as d3Regression from 'd3-regression';
-	import { topgroupSelect } from "$stores/misc.js";
 	import rawData from "$data/wineData.csv";
 	import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
 
@@ -154,7 +153,7 @@
 	}
 	.regression, .expRegression {
 		stroke-width: 2;
-		stroke: var(--wine-gold);
+		stroke: var(--wine-red);
 		fill: none;
 	}
 

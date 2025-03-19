@@ -10,7 +10,7 @@ const OUT_PATH = "./src/data/";
 const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
    "deer", "fish", "horse", "human",
    "marine invertebrate", "mythical creature", "none", "pachyderm",
-   "rabbit", "ram", "pig"
+   "rabbit", "sheep", "pig"
 ];
 
 const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"];

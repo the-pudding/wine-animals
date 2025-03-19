@@ -245,7 +245,7 @@
 	.body {
 		top: 0;
 		position: absolute;
-		background-color: var(--wine-red);
+		background-color: var(--wine-dark-tan);
 		bottom: 0;
 	}
 </style>

@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from "svelte";
-	import { currAnimalSlide, tooltipType } from "$stores/misc.js";
+	import { currAnimalSlide, tooltipType, activeSection } from "$stores/misc.js";
 	import inView from "$actions/inView.js";
 	import Icon from "$components/helpers/Icon.svelte";
 	import Intro from "$components/Intro4.svelte";
@@ -12,12 +12,12 @@
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
 	import Explore from "$components/Explore.svelte";
-	import WineSelection from "$components/WineSelection.svelte";
+	import SectionNav from "$components/SectionNav.svelte";
 	import * as d3 from "d3";
 
 	const copy = getContext("copy");
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
-		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig", "rabbit", "ram"
+		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig", "rabbit", "sheep"
 	];
 
 	let sliderEl;
@@ -64,6 +64,14 @@
 		}
 	}
 
+	function handleEnter(dir) {
+		tapVisible = dir == "enter" ? true : false;
+
+		if (dir == "enter") {
+			$activeSection = "About the Animals";
+		}
+	}
+
 	$: checkScroll(scrollY);
 	$: moveSlider($currAnimalSlide);
 </script>
@@ -73,12 +81,13 @@
 <div id="gradient"></div>
 <!-- <WineSelection /> -->
 <Intro />
+<!-- <SectionNav /> -->
 <ChartScroll />
 <div 
 	class="cards"
 	use:inView
-	on:enter={() => tapVisible = true}
-	on:exit={() => tapVisible = false}
+	on:enter={() => handleEnter("enter")}
+	on:exit={() => handleEnter("exit")}
 >
 	<AnimalCardNav />
 	{#if tapVisible}

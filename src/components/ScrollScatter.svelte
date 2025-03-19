@@ -13,7 +13,6 @@
     import { cubicIn } from 'svelte/easing';
     import { bigScatterData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
-    import { chartView } from "$stores/misc.js";
     import Range from "$components/helpers/Range.svelte";
 
     export let chartScrollIndex;
@@ -86,7 +85,7 @@
                     <AxisY 
                         gridlines={true} 
                         ticks={3} />
-                    <ScrollScatterSvg {r} fill={color} {chartScrollIndex} />
+                    <ScrollScatterSvg {chartScrollIndex} />
                     <Voronoi {chartScrollIndex} />
                 </Svg>
             </LayerCake>

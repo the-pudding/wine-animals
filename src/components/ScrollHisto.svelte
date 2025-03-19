@@ -6,8 +6,7 @@
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import * as d3 from "d3";
-    import { hideTooltip } from "$stores/misc.js";
-    import { animalSelect, metricSelect, tooltipType } from "$stores/misc.js";
+    import { tooltipType } from "$stores/misc.js";
     import data from "$data/wineData_summary.csv";
 
     const copy = getContext("copy");
@@ -72,7 +71,6 @@
 
 <section id="distribution">
     <h4>Wine distribution</h4>
-    <div class="tooltip" class:hidden={$hideTooltip}></div>
     <div class="quad-wrapper"
         on:mouseover|preventDefault={(e) => handleMouseover(e)}
         on:focus={(e) => handleMouseover(e)}

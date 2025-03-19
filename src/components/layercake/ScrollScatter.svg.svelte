@@ -15,14 +15,16 @@
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "human",
 		"marine invertebrate", "mythical creature", "none", "pachyderm", "pig",
-		"rabbit", "ram"
+		"rabbit", "sheep"
 	];
 
-	export let r = 30;
+	export let r = $width/20;
 	export let fill = "#ccc";
 	export let stroke = "#000";
 	export let strokeWidth = 2;
     export let chartScrollIndex;
+
+    $: r = Math.min(30, Math.max(20, $width / 2));
 
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
@@ -35,13 +37,13 @@
         .y(d => d.y); // Accessor for y value
 
     $: pointData = chartScrollIndex == 9
-        ? $data[1].filter(d => d.topgroup.includes == "amphibian/reptile")
+        ? $data[1].filter(d => d.topgroup.includes("amphibian/reptile"))
         : chartScrollIndex == 10
         ? $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"))
         : chartScrollIndex == 11
-        ? $data[1].filter(d => d.topgroup.includes  == "pig")
+        ? $data[1].filter(d => d.topgroup.includes("pig"))
         : chartScrollIndex == 12
-        ? $data[1].filter(d => d.topgroup.includes  == "bird")
+        ? $data[1].filter(d => d.topgroup.includes("bird"))
         : $data[1];
 
     $: points = pointData.map(d => ({
@@ -205,9 +207,9 @@
             class="selected-circle"
             cx={cx} 
             cy={cy} 
-            r={chartScrollIndex >= 5 && chartScrollIndex < 12 ? 10 : 4} 
-            fill={"#38425D"}  
-            stroke={chartScrollIndex >= 5 && chartScrollIndex < 12 ? "#7b0439" : "none"} 
+            r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 4} 
+            fill={chartScrollIndex < 14 ? "#F7A039" : "#38425D"}  
+            stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7A039" : "none"} 
             stroke-width={strokeWidth} 
           />
         </g>
@@ -236,16 +238,16 @@
                                 : chartScrollIndex == 3 ? 40
                                 : 4} 
                             fill={"transparent"} 
-                            stroke={"#F7A039"} 
+                            stroke={"#7b0439"} 
                             stroke-width={strokeWidth} 
                         />
                         {#if chartScrollIndex == undefined || chartScrollIndex <= 3}
                             <text 
-                                class="label-yellow"
+                                class="label-dashed"
                                 x={cx + 46} 
                                 y={cy + 2} 
                                 text-anchor="start" 
-                                fill={"#F7A039"}>
+                                fill={"#CFCABF"}>
                                 {d.topGroup}
                             </text>
                         {/if}
@@ -267,8 +269,8 @@
                     r={chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
                         chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? 40 : 
                         chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
-                    fill={fill} 
-                    stroke={$animalSelected == d.topGroup ? "#7b0439" : "none"} 
+                    fill={$animalSelected == d.topGroup ? "#F7A039" : fill} 
+                    stroke={$animalSelected == d.topGroup ? "#F7A039" : "none"} 
                     stroke-width={2} 
                 />
                 {#if chartScrollIndex == undefined || chartScrollIndex < 4}
@@ -372,12 +374,12 @@
         fill: var(--wine-dark-tan);
     }
 
-    .label-yellow {
+    .label-dashed {
         text-transform: uppercase;
         font-weight: 700;
         font-family: var(--sans);
         font-size: var(--12px);
-        fill: var(--wine-gold);
+        fill: var(--wine-tan);
     }
     .compare-wrapper.hidden {
         opacity: 0;
@@ -398,7 +400,7 @@
     }
 
     g.trendline path {
-        stroke: var(--wine-gold);
+        stroke: var(--wine-red);
         fill: none;
         stroke-width: 2;
     }
