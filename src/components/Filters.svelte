@@ -87,29 +87,32 @@
     }
 
     function updateSearchedWine($searchedWineSTORE) {
-        if ($searchedWineSTORE.length > 0) {
             d3.selectAll("#scatter-explore .selected-wine")
                 .transition()
                 .duration(300)
                 .attr("r", 4) // Reset size
                 .style("stroke", "none")
-                .style("stroke-width", "0px");
+                .style("stroke-width", "0px")
+                .style("fill", "#38425d")
+                .style("opacity", 0.8);
 
-            $searchedWineSTORE.forEach(wine => {
-                const foundWine = filteredRawData.find(d => d.id === wine.value);
-                console.log({foundWine})
-                if (foundWine) {
-                    d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
-                        .classed("selected-wine", true)
-                        .raise()
-                        .transition()
-                        .duration(500)
-                        .attr("r", 10)
-                        .style("fill", "#CFCABF");
-                }
+            if ($searchedWineSTORE.length > 0) {
+                $searchedWineSTORE.forEach(wine => {
+                    const foundWine = filteredRawData.find(d => d.id === wine.value);
+                    console.log({foundWine})
+                    if (foundWine) {
+                        d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
+                            .classed("selected-wine", true)
+                            .raise()
+                            .transition()
+                            .duration(500)
+                            .attr("r", 10)
+                            .style("fill", "#CFCABF")
+                            .style("opacity", 1);
+                    }
 
-                setTooltip(foundWine)
-            });
+                    setTooltip(foundWine)
+                });
         }
     }
 
@@ -232,17 +235,16 @@
                 </div>
             </div>
         </div>
-        <p>{belowPriceAboveRating.length}</p>
+        <p>There are <span class="bold">{belowPriceAboveRating.length} good deal wines</span> with your current selections</p>
     </div>
 </div>
 
 <style>
     p {
-        color: white;
+        color: var(--wine-tan);
         max-width: 800px;
         margin: 1rem auto;
         font-family: var(--sans);
-        font-weight: 700;
         font-size: var(--18px);
     }
     #filters {
@@ -250,9 +252,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 246px;
+        height: 300px;
         flex-direction: row;
-        gap: 4rem;
         align-items: flex-start;
         margin: 0 auto;
         position: sticky;
@@ -268,7 +269,7 @@
         max-width: 900px;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
     }
 
     .wrapper {

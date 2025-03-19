@@ -78,11 +78,17 @@
         </div>
     </div>
 </section>
+<div class="spacer"></div>
 
 <style>
+    .spacer {
+        width: 100%;
+        height: 20svh;
+    }
     #scatter-explore {
         width: 100%;
-        height: calc(100svh - 420px);
+        height: 60svh;
+        margin: 4rem auto;
     }
     .report {
         background: var(--color-gray-100);

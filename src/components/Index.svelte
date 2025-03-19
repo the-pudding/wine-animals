@@ -52,15 +52,14 @@
 	}
 
 	function checkScroll(scrollY) {
-		if (scrollY !== undefined) {
-			d3.select("#universal-tooltip").classed("visible", false)
-		}
+		// if (scrollY !== undefined) {
+		// 	d3.select("#universal-tooltip").classed("visible", false)
+		// }
 	}
 
 	function moveSlider() {
 		if (sliderEl) {
 			sliderEl.jump($currAnimalSlide);
-			console.log("Jumping to:", $currAnimalSlide);
 		}
 	}
 

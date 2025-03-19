@@ -56,26 +56,11 @@
     const xKey = 'bucket';
     const yKey = 'percent';
     const countKey = 'count';
-
-    function handleMouseover(e) {
-        tooltipType.set("histo")
-    }
-
-    function handleMouseleave(e) {
-        tooltipType.set(undefined);
-
-        let tooltip = d3.select("#universal-tooltip");
-		tooltip.classed("visible", false);
-    }
 </script>
 
 <section id="distribution">
     <h4>Wine distribution</h4>
-    <div class="quad-wrapper"
-        on:mouseover|preventDefault={(e) => handleMouseover(e)}
-        on:focus={(e) => handleMouseover(e)}
-        on:mouseleave={handleMouseleave}
-        role="presentation">
+    <div class="quad-wrapper">
         {#each currAnimalGroupedData as category, i}
             {@const matchingLineData = allWineGroupedData.find(([key]) => key === category.key)?.[1] || []}
             {@const xDomainLine = [...new Set(matchingLineData.map(d => d.bucket))]}

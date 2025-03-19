@@ -4,7 +4,8 @@
     import ScatterSvg from "$components/layercake/Scatter.svg.svelte";
     import Voronoi from "$components/layercake/Voronoi.svelte";
     import { navAnimal } from "$stores/misc.js";
-    import allWineData from "$data/wineData.csv"
+    import allWineData from "$data/wineData.csv";
+    import Icon from "$components/helpers/Icon.svelte";
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
@@ -61,13 +62,32 @@
 
     function handleSummaryClick(event) {
         let id = event.target.id.split("-")[0];
-        if (id == "gamebird") { id == "game bird"}
+        if (id == "gamebird") { id = "game bird"}
 
         subgroup = id == "human" ? "human rider" : id;
 
         clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
 
-        if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal !== "bug" && clickedAnimal !== "mythicalcreature") {
+        if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal == "marineinvertebrate") {     
+            if (id == "lobster") {
+                animalData = allWineData.filter(d => 
+                    d.topgroup.includes(animal) &&
+                    d.subgroup.includes("crustacean") &&
+                    d.price <= 150);
+            } else {
+                animalData = allWineData.filter(d => 
+                    d.topgroup.includes(animal) &&
+                    d.finalAnimal.includes(id) &&
+                    d.price <= 150);
+            }
+
+            points = animalData.map(d => ({
+                x: +d.rating,  // Convert price to a number
+                y: +d.price  // Convert rating to a number
+            }))
+
+            trendLine = regression(points);
+        } else if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal !== "bug" && clickedAnimal !== "mythicalcreature" && clickedAnimal !== "marineinvertabrate") {
             animalData = allWineData.filter(d => 
                 d.topgroup.includes(animal) &&
                 d.subgroup.includes(id) &&
@@ -172,40 +192,35 @@
     function pluralize(animal){
         if (animal == "amphibian/reptile") {
             return "amphibians/reptiles"
-        } else if (animal == "cattle" || animal == "deer" || animal == "fish" || animal == "sheep") {
+        } else if (animal == "cattle" || animal == "deer" 
+            || animal == "fish" || animal == "sheep"
+            || animal == "junglefowl" || animal == "antelope" || animal == "nautilus") {
             return animal
+        } else if (animal =="butterfly") {
+            return "butterflies"
+        } else if (animal =="wolf") {
+            return "wolves"
+        } else if (animal =="fox") {
+            return "foxes"
+        } else if (animal =="dolphin") {
+            return "dolphins, sharks, whales"
         } else {
             return `${animal}s`
         }
-    }
-
-    function handleMouseover(e) {
-        tooltipType.set("bottle")
-    }
-
-    function handleMouseleave(e) {
-        tooltipType.set(undefined);
-
-        let tooltip = d3.select("#universal-tooltip");
-		tooltip.classed("visible", false);
     }
 
     $: resetClick($navAnimal)
 </script>
 
 <section id="scatter">
-    <div class="chart-wrapper"
-        on:mouseover|preventDefault={(e) => handleMouseover(e)}
-        on:focus={(e) => handleMouseover(e)}
-        on:mouseleave={handleMouseleave}
-        role="presentation">
+    <div class="chart-wrapper">
         <h4>Individual wines</h4>
         <div class="deets">
             <p>Now showing <span class="bold">{pluralize(animal)}</span>
                 {#if subgroup !== undefined && clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "")}
                     <span class="subgroup-span">
                         <Icon name="chevron-right" size={"1rem"}/>
-                        <span class="bold">{pluralize(subgroup)}s</span>
+                        <span class="bold">{pluralize(subgroup)}</span>
                     </span>
                 {/if}
             </p>
