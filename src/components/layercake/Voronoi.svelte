@@ -62,8 +62,7 @@
 		tooltip.select(".rating").html(
 			`${data.rating}
 			<span class="stars"><img alt="stars" src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
-		);
-		
+		);	
 	}
   
 	$: points = $data[0].map(d => {

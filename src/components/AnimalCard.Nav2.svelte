@@ -161,6 +161,12 @@
         padding: 2rem 0 1rem 0;
     }
 
+    .animal-group:hover {
+        opacity: 1;
+        transform: scale(1.2);
+        transition: all 300ms;
+    }
+
     .img-wrapper {
         width: 50px;
         aspect-ratio: 1 / 1;

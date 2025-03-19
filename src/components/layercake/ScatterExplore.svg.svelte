@@ -55,37 +55,14 @@
 <g class="median-markings active">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.mean(filteredRawData, d => d.rating))}
-		y={$yScale(d3.mean(filteredRawData, d => d.price))}
-		width={$xScale(d3.mean(filteredRawData, d => d.rating))}
-		height={$height - $yScale(d3.mean(filteredRawData, d => d.price))}
+		x={$xScale(d3.median(rawData, d => d.rating))}
+		y={$yScale(d3.median(rawData, d => d.price))}
+		width={$xScale(d3.median(rawData, d => d.rating))}
+		height={$height - $yScale(d3.median(rawData, d => d.price))}
 		fill="#363B45"
 		opacity=0.5
 	/>
 </g>
-
-<g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.mean(filteredRawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.mean(filteredRawData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.mean(filteredRawData, d => d.rating))} y1={0} x2={$xScale(d3.mean(filteredRawData, d => d.rating))} y2={$height} />
-</g>
-<text 
-        class="label"
-        x={$width-4} 
-        y={$yScale(d3.median(rawData, d => d.price)) - 28}
-        text-anchor="end"
-        fill="white">
-        Med. price (${d3.median(rawData, d => d.price)})
-    </text>
-
-    <text 
-        class="label"
-        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
-        y={-20} 
-        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
-        text-anchor="start"
-        fill="white">
-        Med. rating ({d3.median(rawData, d => d.rating)} stars)
-    </text>
 <g>
     <!-- Render circles that are not in $bigScatterData first -->
     {#each $data[0] as d, i (d.id)}
@@ -146,6 +123,29 @@
 		{/if}
 	</g>
 {/if}
+
+<g class="lines">
+	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+</g>
+<text 
+        class="label"
+        x={$width-4} 
+        y={$yScale(d3.median(rawData, d => d.price)) - 10}
+        text-anchor="end"
+        fill="white">
+        Med. price (${d3.median(rawData, d => d.price)})
+    </text>
+
+    <text 
+        class="label"
+        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
+        y={-13} 
+        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
+        text-anchor="start"
+        fill="white">
+        Med. rating ({d3.median(rawData, d => d.rating)} stars)
+    </text>
 
 <style>
 	circle {

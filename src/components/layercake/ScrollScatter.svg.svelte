@@ -288,6 +288,13 @@
     </g>
 {/if}
 
+<g class="trendline" 
+    class:active={chartScrollIndex >= 6 || chartScrollIndex == "exit"}>
+    {#if path}
+        <path class="expRegression" d={path} />
+    {/if}
+</g>
+
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
     <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width} y2={$yScale(d3.median(rawData, d => d.price))} />
     <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
@@ -312,13 +319,6 @@
         fill="white">
         Med. rating ({d3.median(rawData, d => d.rating)} stars)
     </text>
-</g>
-
-<g class="trendline" 
-    class:active={chartScrollIndex >= 6 || chartScrollIndex == "exit"}>
-    {#if path}
-        <path class="expRegression" d={path} />
-    {/if}
 </g>
 
 <style>

@@ -11,7 +11,7 @@
     import * as d3 from "d3";
     import * as d3Regression from 'd3-regression';
 	import * as eases from 'svelte/easing';
-    import Icon from "$components/helpers/Icon.svelte";
+    import refresh from "$svg/refresh-ccw.svg";
 	import { tooltipType } from "../stores/misc";
 
     export let animal;
@@ -210,8 +210,10 @@
                 {/if}
             </p>
             <button id="refesh-btn" on:click={resetClick}>
-                <Icon name="refresh-ccw" size={"1rem"}/>
-                Reset to all {animal} wines
+                <span class="icon">
+                    {@html refresh}
+                </span>
+                Reset wines
             </button>
         </div>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
@@ -305,6 +307,46 @@
         height: 100%;
         overflow: hidden;
         padding-right: 3px;
+    }
+
+    #refesh-btn {
+        background: var(--wine-tan);
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+    }
+
+    #refesh-btn:hover {
+        background: var(--wine-dark-tan);
+        transform: translateY(-2px);
+        transition: transform 0.3s ease;
+    }
+
+    #refesh-btn .icon {
+        width: 1rem;
+        height: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    :global(#refesh-btn .icon svg) {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    #refesh-btn:hover .icon {
+        transform: rotate(180deg);
+        transform-origin: center;
+    }
+
+    :global(.summary-btn, .individ-wine-btn) {
+        background: var(--wine-tan);
+        padding: 0.25rem 0.3rem;
+    }
+
+    :global(.summary-btn:hover, .individ-wine-btn:hover) {
+        background: var(--wine-dark-tan);
+        transition: transform 0.3s ease;
+        transform: translateY(-2px);
     }
 
     @media (max-width: 700px) {

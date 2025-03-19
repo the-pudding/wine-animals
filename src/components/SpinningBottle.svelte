@@ -71,7 +71,7 @@
 
         console.log($animalSelected)
 
-        const products = document.querySelectorAll(".product");
+        const products = document.querySelectorAll("#intro .product");
         products.forEach((product) => {
         const prodAnimal = product.getAttribute("data-animal");
         const wineDiv = product.querySelector(".wine");

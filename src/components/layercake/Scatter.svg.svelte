@@ -97,20 +97,13 @@
 		</g>
 	{/each}
 {/if} -->
-<g class="lines">
-	<line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
-	{#if path}
-		<path class="expRegression" d={path} />
-	{/if}
-</g>
 
 <g class="median-markings">
-    <line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
-    <line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}
+    <line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
+    <line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
 </g>
 
 <style>
