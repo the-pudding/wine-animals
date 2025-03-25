@@ -19,7 +19,8 @@
     use:inView
     on:enter={enterView}
     on:exit={exitView}
- >
+ >  
+    <h3>Explore even more</h3>
     <Filters />
     <ScatterExplore />
 </section>
@@ -30,5 +31,14 @@
         height: 100svh;
         position: relative;
         z-index: 900;
+        margin: 4rem 0;
+    }
+
+    h3 {
+        font-weight: 700;
+        margin: 0 auto;
+        max-width: 720px;
+        font-size: var(--20px);
+        color: var(--wine-tan);
     }
 </style>

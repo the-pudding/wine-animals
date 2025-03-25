@@ -78,13 +78,8 @@
         </div>
     </div>
 </section>
-<div class="spacer"></div>
 
 <style>
-    .spacer {
-        width: 100%;
-        height: 20svh;
-    }
     #scatter-explore {
         width: 100%;
         height: 60svh;

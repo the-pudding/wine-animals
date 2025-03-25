@@ -1,16 +1,21 @@
 <script>
-    import { getContext, onMount } from "svelte";
+    // SVELTE
+    import { getContext } from "svelte";
+
+    // LIBARIES
     import { fit, parent_style } from "@leveluptuts/svelte-fit";
 
+    // EXPORTS
     export let scrollIndex;
 
+    //VARIABLES
     const copy = getContext("copy");
 </script>
 
 <div class="headline-wrapper">
     <div class="head-container" style={parent_style} class:hidden={scrollIndex == "exit"}>
         <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
-        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
+        <h1 aria-hidden="true" class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
     </div>
     <div class="byline" style="opacity: {scrollIndex == 8 ? 1 : 0}">
         <p class="strikethrough">By {copy.bylineFake}<span class="strike-line" class:animate={scrollIndex == 8 || scrollIndex == "exit"}></span></p>
@@ -44,31 +49,24 @@
         line-height: 0.8;
         text-align: center;
         opacity: 0.4;
-        transition: all 0.5s ease-in;
+        transition: all 1s linear;
     }
 
     h1:nth-child(2) {
         opacity: 0;
         animation: animate 8s ease-in-out infinite;
         animation-play-state: paused; 
-        transition: opacity 1s ease-in 1s, color 1s ease-in 1s; /* 1s delay */
     }
 
     h1:nth-child(1).highlight {
         opacity: 1;
         color: var(--wine-tan);
-        transition-delay: 0.5s;
     }
 
     h1:nth-child(2).highlight {
         color: var(--wine-red);
         opacity: 1;
         animation-play-state: running;
-        transition-delay: 0.5s;
-    }
-
-    h1:nth-child(2):not(.highlight) {
-        transition: opacity 0s ease-in-out, color 0s ease-in-out;
     }
 
     @keyframes animate {

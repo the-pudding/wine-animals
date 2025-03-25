@@ -12,12 +12,18 @@
     const wine = { animal: "fish", name: "Sauvignon Blanc", winery: "Mount Fishtail", country: "New Zealand", price: 15.99, bottleSlot: "center-lone", targetPos: "50%", startingPos: "-50%"};
 </script>
 
-<section id='outro'
-    use:inView
-    on:enter={() => outroVisible = true}
-    on:exit={() => outroVisible = false}>
+<section id='outro'>
     <div id="closing">
-        <div class="bottle-wrapper" bind:clientHeight={bottlesHeight} bind:clientWidth={bottlesWidth}>
+        {#each copy.outro as graf, i}
+            <p>{@html graf.value}</p>
+        {/each}
+        <div 
+            class="bottle-wrapper" 
+            bind:clientHeight={bottlesHeight} 
+            bind:clientWidth={bottlesWidth}
+            use:inView
+            on:enter={() => outroVisible = true}
+            on:exit={() => outroVisible = false}>
             <SpinningBottle 
                 wineData={wine}
                 bottleIndex={4}
@@ -27,9 +33,6 @@
                     ? wine.targetPos 
                     : wine.startingPos} />
         </div>
-        {#each copy.outro as graf, i}
-            <p>{@html graf.value}</p>
-        {/each}
     </div>
     <div id="methods">
         <h3>Methodology</h3>
@@ -70,7 +73,6 @@
             <p>{@html graf.value}</p>
         {/each}
     </div>
-
 </section>
 
 <style>

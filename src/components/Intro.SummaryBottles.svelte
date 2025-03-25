@@ -124,8 +124,8 @@
         </div>
         {#if innerWidth >= 1100}
             <div class="labels" class:hidden={scrollIndex <= 5}>
-                <p><Icon name="chevron-left"/>Lower {currMetric}</p>
-                <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
+                <p><Icon name="chevron-left"/>{currMetric == "price" ? "Less expensive" : "Worse rating"}</p>
+                <p>{currMetric == "price" ? "More expensive" : "Better rating"}<Icon name="chevron-right"/></p>  
                 {#if currMetric !== undefined}
                     <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "62%"}">
                         <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>

@@ -39,11 +39,11 @@
 		background-color: transparent;
 	}
 
-	:global(.wordmark svg) {
+	:global(header .wordmark svg) {
 		width: 100%;
 	}
 
-	:global(.wordmark svg path) {
+	:global(header .wordmark svg path) {
 		/* fill: black; */
 		fill: var(--wine-tan);
 	}

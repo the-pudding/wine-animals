@@ -1,9 +1,14 @@
 <script>
-	import { getContext } from "svelte";
+	// SVELTE
+	import { getContext, onMount, onDestroy } from "svelte";
+
+	// STORES
 	import { currAnimalSlide, tooltipType, activeSection } from "$stores/misc.js";
+	
+	// COMPONENTS
 	import inView from "$actions/inView.js";
 	import Icon from "$components/helpers/Icon.svelte";
-	import Intro from "$components/Intro4.svelte";
+	import Intro from "$components/Intro.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
 	import AnimalCardNav from "$components/AnimalCard.Nav2.svelte";
@@ -12,9 +17,12 @@
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
 	import Explore from "$components/Explore.svelte";
-	import SectionNav from "$components/SectionNav.svelte";
-	import * as d3 from "d3";
+	import Footer from "$components/Footer.svelte";
 
+	// LIBRARIES
+	import { select, selectAll } from "d3-selection";
+
+	// VARIABLES
 	const copy = getContext("copy");
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig", "rabbit", "sheep"
@@ -22,15 +30,24 @@
 
 	let sliderEl;
 	let tapVisible = false;
-	let scrollY;
+	let tooltipEl;
 
+	// INTERACTION FUNCTIONS
+	// Makes tap visible when section enters
+	function handleEnter(dir) {
+		tapVisible = dir == "enter" ? true : false;
+	}
+
+	// Handles the left/right tap for the animal card section
 	function handleTap(direction) {
-			if (direction === "left") {
-				sliderEl.prev();
-			} else {
-				sliderEl.next();
-			}
+		// Moves slider based on direction click
+		if (direction === "left") {
+			sliderEl.prev();
+		} else {
+			sliderEl.next();
+		}
 
+		// Moves the slider to the next or previous animal
 		currAnimalSlide.update(n => {
 			if (direction === "left") return Math.max(0, n - 1); // Prevent going below 0
 			if (direction === "right") return Math.min(topgroups.length - 1, n + 1); // Prevent exceeding last index
@@ -38,10 +55,18 @@
 		});
 	}
 
-	function tooltipCloseClick() {
-		d3.select("#universal-tooltip").classed("visible", false)
+	// Moves the slider to the current animal slide
+	function moveSlider() {
+		if (sliderEl) {
+			sliderEl.jump($currAnimalSlide);
+		}
+	}
 
-		d3.selectAll(".card-wine-circle circle")
+	// Closes the tooltip on click
+	function tooltipCloseClick() {
+		select("#universal-tooltip").classed("visible", false)
+
+		selectAll(".card-wine-circle circle")
             .transition()
             .duration(500)
             .style("opacity", 0.8)
@@ -51,36 +76,27 @@
 		tooltipType.set(undefined);
 	}
 
-	function checkScroll(scrollY) {
-		// if (scrollY !== undefined) {
-		// 	d3.select("#universal-tooltip").classed("visible", false)
-		// }
-	}
+	// LIFECYCLE FUNCTIONS
+	onMount(() => {
+		const handleClick = (e) => {
+			if (tooltipEl && !tooltipEl.contains(e.target)) {
+				tooltipCloseClick();
+			}
+		};
 
-	function moveSlider() {
-		if (sliderEl) {
-			sliderEl.jump($currAnimalSlide);
-		}
-	}
+		document.addEventListener("click", handleClick, true); // `true` for capture phase
 
-	function handleEnter(dir) {
-		tapVisible = dir == "enter" ? true : false;
+		onDestroy(() => {
+			document.removeEventListener("click", handleClick, true);
+		});
+	});
 
-		if (dir == "enter") {
-			$activeSection = "About the Animals";
-		}
-	}
-
-	$: checkScroll(scrollY);
+	// REATIVE FUNCTIONS
 	$: moveSlider($currAnimalSlide);
 </script>
 
-<svelte:window bind:scrollY={scrollY} />
-
 <div id="gradient"></div>
-<!-- <WineSelection /> -->
 <Intro />
-<!-- <SectionNav /> -->
 <ChartScroll />
 <div 
 	class="cards"
@@ -88,6 +104,11 @@
 	on:enter={() => handleEnter("enter")}
 	on:exit={() => handleEnter("exit")}
 >
+	<div class="prose">
+		{#each copy.postScatter as graf, i}
+			<p>{@html graf.value}</p>
+		{/each}
+	</div>
 	<AnimalCardNav />
 	{#if tapVisible}
 		<Tap showArrows={true} on:tap={e => handleTap(e.detail)}/>
@@ -101,12 +122,12 @@
 	</Slider>
 </div>
 <Outro />
-<div id="universal-tooltip">
+<div id="universal-tooltip" bind:this={tooltipEl}>
 	<button class="close" on:click={tooltipCloseClick}>
 		<Icon name="x" size={"1.5rem"}/>
 	</button>
 	{#if $tooltipType == "bottle"}
-		<img src="" />
+		<img src="" alt="wine bottle label"/>
 		<div class="deets">
 			<p class="wine-name"></p>
 			<p class="winery-name"></p>
@@ -122,9 +143,14 @@
 	{/if}
 </div>
 <Explore /> 
-<!-- <Footer /> -->
+<Footer recirc={true} />
 
 <style>
+	/* UNIVERSAL TOOLTIP */
+	:global(#universal-tooltip.visible) {
+		bottom: 0 !important;
+	}
+
 	#universal-tooltip {
         position: fixed;
         left: 0;
@@ -141,10 +167,6 @@
 		z-index: 1000;
 		transition: bottom 0.5s linear;
     }
-
-	:global(#universal-tooltip.visible) {
-		bottom: 0 !important;
-	}
 
 	#universal-tooltip button {
 		position: absolute;
@@ -193,6 +215,7 @@
 		padding: 1rem;
 		max-width: 550px;
 		font-family: var(--sans);
+		font-size: var(--18px);
 	}
 
 	#universal-tooltip .wine-name {
@@ -240,26 +263,46 @@
 		background: linear-gradient(to bottom, #181A1F, #14161a);
 		pointer-events: none;
 	}
-	.white {
-		background: var(--color-bg);
-		width: 100%;
-	}
-	.selects {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		margin: 0 0 2rem 0;
-		position: sticky;
-		top: 0;
-		width: 100%;
-		padding: 1rem;
-		background-color: white;
-		z-index: 1000;
-	}
+
 	.cards {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		gap: 6rem;
+	}
+
+	.prose {
+		max-width: 700px;
+		margin: 0 auto;
+		color: var(--wine-tan);
+		z-index: 900;
+	}
+
+	.prose p {
+		color: var(--wine-tan);
+		font-size: var(--18px);
+    	line-height: 1.65;
+	}
+
+	.prose p:last-of-type {
+		font-family: var(--sans);
+		font-weight: 700;
+	}
+
+	:global(.l-r-arrows) {
+		position: relative;
+		display: inline-block;
+		margin-left: 3rem;
+	}
+
+	:global(.l-r-arrows::before) {
+		position: absolute;
+		content: "";
+		width: 2.5rem;
+		height: 1.25rem;
+		left: -2.75rem;
+		top: 0.25rem;
+		background-image: url("/assets/images/left-right-arrows.png");
+		background-size: cover;
 	}
 </style>

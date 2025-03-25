@@ -114,8 +114,8 @@
         </div>
         {#if innerWidth >= 1100}
             <div class="labels" class:hidden={scrollIndex <= 5}>
-                <p><Icon name="chevron-left"/>Lower {currMetric}</p>
-                <p>Higher {currMetric}<Icon name="chevron-right"/></p>  
+                <p><Icon name="chevron-left"/>Less deals</p>
+                <p>More deals<Icon name="chevron-right"/></p>  
                 <div class="median-mark" style="left: 52%">
                     <p class="num">13.9%</p>
                     <div class="median-circle"></div>
@@ -178,7 +178,7 @@
     .summary-bottles {
         position: absolute;
         width: 100%;
-        height: auto;
+        height: 100%;
         max-height: 80svh;
         display: flex;
         flex-direction: column;
@@ -195,7 +195,6 @@
         flex-direction: row;
         justify-content: center;
         width: 100%;
-        height: 100%;
         max-width: 1200px;
         gap: 1rem;
     }

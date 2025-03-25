@@ -87,7 +87,8 @@
     }
 
     function updateSearchedWine($searchedWineSTORE) {
-            d3.selectAll("#scatter-explore .selected-wine")
+            if ($searchedWineSTORE.length > 0) {
+                d3.selectAll("#scatter-explore .selected-wine")
                 .transition()
                 .duration(300)
                 .attr("r", 4) // Reset size
@@ -96,7 +97,6 @@
                 .style("fill", "#38425d")
                 .style("opacity", 0.8);
 
-            if ($searchedWineSTORE.length > 0) {
                 $searchedWineSTORE.forEach(wine => {
                     const foundWine = filteredRawData.find(d => d.id === wine.value);
                     console.log({foundWine})

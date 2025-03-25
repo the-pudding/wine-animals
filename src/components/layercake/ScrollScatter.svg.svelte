@@ -128,28 +128,6 @@
     }
 </script>
 
-<!-- {#if randomDataForGenerations}
-<g class="compare-wrapper"
-    class:hidden={chartScrollIndex == 14}>
-    {#each randomDataForGenerations as randomData, i}
-		{@const points = randomData.map(d => ({
-			x: +d.rating,  // Convert rating to a number
-			y: +d.price    // Convert price to a number
-		}))}
-		{@const trendLine = regression(points)}
-		{@const pathLocal = d3.line()
-			.x(d => $xScale(d[0]))
-			.y(d => $yScale(d[1]))
-			(trendLine)}
-		<g class="compare-lines" class:active={chartScrollIndex >= 8}>
-			{#if pathLocal}
-				<path class="expRegression fade" d={pathLocal} />
-			{/if}
-		</g>
-	{/each}
-</g>
-{/if} -->
-
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
     {#if chartScrollIndex >= 8 || chartScrollIndex == "exit"}
         <rect
@@ -208,8 +186,8 @@
             cx={cx} 
             cy={cy} 
             r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 4} 
-            fill={chartScrollIndex < 14 ? "#F7A039" : "#38425D"}  
-            stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7A039" : "none"} 
+            fill={"#38425D"}  
+            stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 
           />
         </g>
@@ -223,8 +201,8 @@
         {#each $data[0] as d, i}
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
-        {@const imageSize = chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? r+40 : r+20}
+        {@const imageSize = chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+40 : r+20}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
@@ -233,9 +211,9 @@
                         <circle 
                             cx={cx} 
                             cy={cy} 
-                            r={chartScrollIndex == undefined || chartScrollIndex < 3 
+                            r={chartScrollIndex == undefined || chartScrollIndex == 0 || chartScrollIndex == 2 || chartScrollIndex == 3
                                 ? r 
-                                : chartScrollIndex == 3 ? 40
+                                : chartScrollIndex == 1 ? 40
                                 : 4} 
                             fill={"transparent"} 
                             stroke={"#7b0439"} 
@@ -259,19 +237,19 @@
                 class:active={
                     chartScrollIndex == undefined || 
                     chartScrollIndex == 0 || 
-                    chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                    chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ||
+                    chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+                    chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ||
                     chartScrollIndex >= 4 }
                 class:hidden={chartScrollIndex >= 5}>
                 <circle 
                     cx={cx} 
                     cy={cy} 
-                    r={chartScrollIndex == 1 && animal == "cattle" || chartScrollIndex == 1 && animal == "pig" ||
-                        chartScrollIndex == 2 && animal == "cat" || chartScrollIndex == 2 && animal == "bear" || chartScrollIndex == 2 && animal == "mythicalcreature" ? 40 : 
+                    r={chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? 40 : 
                         chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
-                    fill={$animalSelected == d.topGroup ? "#F7A039" : fill} 
-                    stroke={$animalSelected == d.topGroup ? "#F7A039" : "none"} 
-                    stroke-width={2} 
+                    fill={fill} 
+                    stroke={$animalSelected == d.topGroup ? "#F7B956" : "none"} 
+                    stroke-width={3} 
                 />
                 {#if chartScrollIndex == undefined || chartScrollIndex < 4}
                     <image 

@@ -53,7 +53,7 @@
 	function colorByCompare(d, i) {
 		let match = findMatch(d, allWineData[1])
 		let diff = d.percent - match.percent;
-		let color = diff < -5 ? "#7b0439" : diff > 5 ? "#4b6a1e" : "#38425D"
+		let color = diff < -5 ? "#7b0439" : diff > 5 ? "#3E5C4B" : "#38425D"
 		return color;
 	}
 

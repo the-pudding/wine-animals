@@ -49,7 +49,7 @@
     <div class="sticky">
         <p class="steals-sentence"
             class:active={chartScrollIndex == 14 || chartScrollIndex == "exit"}>
-            You can get a good deal on <span class="bold">{$stealPercent}% of animal wines</span> 
+            <span class="bold">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines</span> are good deals 
             when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
             and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span>
         </p>
@@ -122,12 +122,13 @@
         color: var(--wine-tan);
         font-family: var(--sans);
         position: absolute;
-        top: 4rem;
+        top: 3rem;
         left: 50%;
         transform: translate(-50%, 0);
         max-width: 900px;
         opacity: 0;
         transition: opacity 0.25s linear;
+        z-index: 1000;
     }
 
     .chart-wrapper {
@@ -155,7 +156,7 @@
         height: 100%;
         left: 0;
         transform: translate(0,0);
-        padding: 6rem 0 6rem 0;
+        padding: 4rem 0 6rem 0;
     }
 
     .lineup-wrapper {
@@ -168,7 +169,7 @@
     }
 
     .spacer {
-		height: 200svh;
+		height: 140svh;
 	}
 
 	.step {
@@ -192,7 +193,7 @@
 
     .step p {
         text-align: left;
-        max-width: 700px;
+        max-width: 720px;
         line-height: 1.65;
         color: var(--wine-tan);
         font-size: var(--18px);
@@ -343,7 +344,7 @@
     }
 
     :global(.selected-bottle-circle-span::after) {
-        background: var(--wine-gold);
+        border: 2px solid var(--wine-gold);
         border-radius: 50%;
         top: 0%;
     }
@@ -390,6 +391,7 @@
 
     :global(.bold) {
         font-weight: 700;
+        font-family: var(--sans);
     }
 
     .steal-bar-wrapper {

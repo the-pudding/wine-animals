@@ -1,16 +1,19 @@
 <script>
-    import { getContext, onMount } from "svelte";
+    // SVELTE
+    import { getContext } from "svelte";
+
+    // STORES
+    import { bottleSelected, animalSelected } from "$stores/misc.js";
+
+    // COMPONENTS
     import Scrolly from "$components/helpers/Scrolly.svelte";
     import Bottles from "$components/Intro.Bottles.svelte";
     import GPTExamples from "$components/GPTExamples.svelte";
     import IntroSummaryBottles from "$components/Intro.SummaryBottles.svelte";
     import IntroHeadline from "$components/Intro.Headline.svelte";
-    import { bottleSelected, animalSelected } from "$stores/misc.js";
     import Icon from "$components/helpers/Icon.svelte";
 
-    let scrollIndex;
-    let scrollyContainer; // Reference to the Scrolly container
-
+    // VARIABLES
     const copy = getContext("copy");
     const openingWines = [
         { animal: "cat", name: "Poppóne", winery: "Antonutti", country: "Italy", price: 34.99, rating: 4.3, bottleSlot: "farleft", targetPos: "20%", startingPos: "-80%", wineQuad: "good expensive"},
@@ -18,37 +21,41 @@
         { animal: "pig", name: "Sus Scrofa", winery: "Pardas", country: "Spain", price: 20.83, rating: 3.6,  bottleSlot: "centerright", targetPos: "60%", startingPos: "-40%", wineQuad: "bad cheap"},
         { animal: "amphibian/reptile", name: "Tïn Bianco", winery: "Montesecondo", country: "Italy", price: 39.99, rating: 3.8, bottleSlot: "farright", targetPos: "80%", startingPos: "-20%", wineQuad: "bad expensive"},
     ];
-    let shouldSpin = [false, false, false, false];
-
     const steps = copy.steps;
+    
+    let shouldSpin = [false, false, false, false];
+    let scrollIndex;
+    let scrollyContainer; // Reference to the Scrolly container
 
     $: selectedText = $animalSelected == "amphibian/reptile" ? copy.opening[0]["amphibian"] : copy.opening[0][$animalSelected];
     $: selectedPriceText = $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianPrice")] : copy.opening[0][($animalSelected + "Price")];
     $: selectedRatingText = $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianRating")] : copy.opening[0][($animalSelected + "Rating")];
 
+    // INTERACTION FUNCTIONS
+    // Selects random wine
     function handleRandomClick() {
         const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
         
         handleBottleClick(randomAnimal)
     }
 
+    // Handles the wine click and sets selected wine
     function handleBottleClick(data) {
-        // console.log("Bottle clicked in Intro4:", data);
-        // Perform additional actions if needed
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
         const products = document.querySelectorAll(".product");
+
         products.forEach((product) => {
-        const prodAnimal = product.getAttribute("data-animal");
-        const wineDiv = product.querySelector(".wine");
-        if (prodAnimal !== $animalSelected) {
-            product.classList.add("faded");
-            product.style.left = data.startingPos;
-        } else {
-            product.classList.remove("faded");
-            product.style.left = "50%";
-        }
+            const prodAnimal = product.getAttribute("data-animal");
+            const wineDiv = product.querySelector(".wine");
+            if (prodAnimal !== $animalSelected) {
+                product.classList.add("faded");
+                product.style.left = data.startingPos;
+            } else {
+                product.classList.remove("faded");
+                product.style.left = "50%";
+            }
         });
 
         shouldSpin = Array.from(products).map(
@@ -56,26 +63,25 @@
         );
 
         products.forEach((product) => {
-        const wineDiv = product.querySelector(".wine");
-        if (wineDiv) {
-            if (product.style.left === "50%") {
-            wineDiv.classList.remove("spin");
-            } else {
-            wineDiv.classList.add("spin");
+            const wineDiv = product.querySelector(".wine");
+            if (wineDiv) {
+                if (product.style.left === "50%") {
+                    wineDiv.classList.remove("spin");
+                } else {
+                    wineDiv.classList.add("spin");
+                }
             }
-        }
         });
 
     }
 
-    // When $bottleSelected becomes true, scroll to the second step (index 1)
+    // REATIVE FUNCTIONS
+    // Scroll to the second step once bottle is selected
     $: if ($bottleSelected) {
         setTimeout(() => {
             const stepElements = scrollyContainer.querySelectorAll('.step');
             if (stepElements[1]) {
-                // Get the element's top relative to the document
                 const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
-                // Calculate the target scroll position with a 10% viewport height offset
                 const offset = elementTop - (window.innerHeight * 0.10);
                 window.scrollTo({ top: offset, behavior: 'smooth' });
             }
@@ -120,15 +126,12 @@
             </div>
         {/each}
     </Scrolly>
-    <!-- <div class="spacer" /> -->
 </section>
+
 <section id="post-intro">
     {#each copy.postIntro as graf, i}
         <p class="prose">{@html graf.value}</p>
     {/each}
-    <!-- {#if hoverImageVisible}
-        <img transition:fade={{duration:250}} src={hoverImageSrc} class="hover-image" style={hoverImageStyle} />
-    {/if} -->
 </section>
 
 <style>
@@ -139,8 +142,9 @@
 
     #post-intro {
         width: 100%;
-        max-width: 700px;
+        max-width: 720px;
         margin: 4rem auto;
+        z-index: 900;
     }
 
     .prose {
@@ -164,9 +168,6 @@
         overflow: hidden;
 	}
 
-    .spacer {
-		height: 200vh;
-	}
 	.step {
 		height: 100vh;
         z-index: 1000;
@@ -245,7 +246,7 @@
         font-weight: 700;
         padding: 0.25rem;
         border-radius: 3px;
-        border: 3px solid var(--wine-red);
+        border: 3px solid var(--wine-gold);
         box-decoration-break: clone;
     }
 
