@@ -1,7 +1,8 @@
 <script>
     import MultiSelect from 'svelte-multiselect';
+    import Typeahead from 'svelte-typeahead';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE } from "$stores/misc.js";
+    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
     import * as d3 from 'd3';
@@ -30,6 +31,8 @@
     let selectedType = [];
     let selectedCountry = [];
     let searchedWine = [];
+    let events = [];
+    let searchTerm = '';
 
     function storeUpdates(selectedGroup, valType) {
         if (valType == "animal") {
@@ -86,34 +89,66 @@
         bigScatterData.set(filteredData);
     }
 
-    function updateSearchedWine($searchedWineSTORE) {
-            if ($searchedWineSTORE.length > 0) {
-                d3.selectAll("#scatter-explore .selected-wine")
+    function updateSearchedWine(detail) {
+        console.log(detail.original.value)
+
+        d3.selectAll("#scatter-explore .selected-wine")
+            .transition()
+            .duration(300)
+            .attr("r", 4) // Reset size
+            .style("stroke", "none")
+            .style("stroke-width", "0px")
+            .style("fill", "#38425d")
+            .style("opacity", 0.8);
+
+        const foundWine = filteredRawData.find(d => d.id === detail.original.value);
+
+
+        if (foundWine) {
+            d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
+                .classed("selected-wine", true)
+                .raise()
                 .transition()
-                .duration(300)
-                .attr("r", 4) // Reset size
-                .style("stroke", "none")
-                .style("stroke-width", "0px")
-                .style("fill", "#38425d")
-                .style("opacity", 0.8);
+                .duration(500)
+                .attr("r", 10)
+                .style("fill", "#CFCABF")
+                .style("opacity", 1);
 
-                $searchedWineSTORE.forEach(wine => {
-                    const foundWine = filteredRawData.find(d => d.id === wine.value);
-                    // console.log({foundWine})
-                    if (foundWine) {
-                        d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
-                            .classed("selected-wine", true)
-                            .raise()
-                            .transition()
-                            .duration(500)
-                            .attr("r", 10)
-                            .style("fill", "#CFCABF")
-                            .style("opacity", 1);
-                    }
-
-                    setTooltip(foundWine)
-                });
+            tooltipType.set("bottle");
+            setTimeout(() => {
+                setTooltip(foundWine);
+            }, 200);
         }
+
+        //     if ($searchedWineSTORE !== undefined && $searchedWineSTORE.length == 1) {
+        //         d3.selectAll("#scatter-explore .selected-wine")
+        //             .transition()
+        //             .duration(300)
+        //             .attr("r", 4) // Reset size
+        //             .style("stroke", "none")
+        //             .style("stroke-width", "0px")
+        //             .style("fill", "#38425d")
+        //             .style("opacity", 0.8);
+
+        //         const wine = $searchedWineSTORE;
+        //         const foundWine = filteredRawData.find(d => d.id === wine[0].value);
+
+        //         if (foundWine) {
+        //             d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
+        //                 .classed("selected-wine", true)
+        //                 .raise()
+        //                 .transition()
+        //                 .duration(500)
+        //                 .attr("r", 10)
+        //                 .style("fill", "#CFCABF")
+        //                 .style("opacity", 1);
+
+        //             tooltipType.set("bottle");
+        //             setTimeout(() => {
+        //                 setTooltip(foundWine);
+        //             }, 200);
+        //         }
+        // }
     }
 
     function formatStars(rating) {
@@ -147,7 +182,6 @@
     $: storeUpdates(selectedCountry, "country")
     $: storeUpdates(searchedWine, "wine")
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
-    $: updateSearchedWine($searchedWineSTORE);
 
     function findSteals(data) {
         let steals = data.filter(d => d.price <= totalMedianPrice && d.rating >= totalMedianRating);
@@ -155,7 +189,7 @@
     }
 
     $: belowPriceAboveRating = findSteals($bigScatterData);
-    // $: console.log({belowPriceAboveRating})
+    $: console.log({availableWines})
 </script>
 
 
@@ -202,20 +236,26 @@
                         </span>
                     </MultiSelect>
                 </div>
-                <div class="filter" id="search">
-                    <MultiSelect 
-                        bind:selected={searchedWine}
-                        options={availableWines} 
-                        valType = "wines"
-                        placeholder="Search by name or winery"
-                        removeAllTitle="Remove all wines"
-                        maxSelect={1}
-                        maxOptions={3}
-                    > 
-                        <span slot="expand-icon">
-                            <Icon name="search" size="0.75rem"/>
-                        </span>
-                    </MultiSelect>
+                <div class="search-wrapper">
+                    <Typeahead
+                        bind:value={searchTerm}
+                        hideLabel
+                        label="U.S. States"
+                        placeholder={`Search by name or winery`}
+                        data={availableWines}
+                        limit={4}
+                        extract={(item) => item.label}
+                        on:select={({ detail }) => {
+                            events = [...events, detail];
+                            updateSearchedWine(detail);
+                        }}
+                        on:clear={() => events = [...events, "clear"]}
+                    />
+                    {#if searchTerm}
+                        <button class="clear-btn" on:click={() => searchTerm = ''}>
+                            <Icon name="x" size={"0.75rem"}/>
+                        </button>
+                    {/if}
                 </div>
             </div>
             <div class="range-wrapper">
@@ -234,9 +274,9 @@
             </div>
         </div>
         {#if belowPriceAboveRating.length !== 1}
-            <p>There are <span class="bold">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
+            <p>There are <span class="bold highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
         {:else}
-        <p>There is <span class="bold">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
+        <p>There is <span class="bold highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
         {/if}
     </div>
 </div>
@@ -247,7 +287,10 @@
         max-width: 800px;
         margin: 1rem auto;
         font-family: var(--sans);
-        font-size: var(--18px);
+        font-size: var(--16px);
+    }
+    .highlight {
+        color: var(--wine-gold);
     }
     #filters {
         width: 100%;
@@ -312,9 +355,84 @@
         font-size: var(--14px);
     }
 
+    .search-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .clear-btn {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0;
+        top: 4px;
+        background: var(--wine-tan);
+    }
+
     :global(#filters .multiselect) {
         background: var(--wine-tan) !important;
         height: 2.5rem !important;
         font-family: var(--sans) !important;
+    }
+
+    :global([data-svelte-typeahead]) {
+        background: var(--wine-tan) !important;
+        position: relative;
+        border-radius: 3pt !important;
+    }
+
+    :global([data-svelte-typeahead] input) {
+        border: none !important;
+        border-radius: 3pt !important;
+        height: 2.5rem !important;
+        font-family: var(--sans) !important;
+        font-size: var(--16px) !important;
+        color: var(--wine-black) !important;
+        outline: none !important;
+
+        background-image: url('./assets/images/search.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: 0.8rem !important;
+        background-position: 0.3rem center !important;
+        padding-left: 1.5rem !important; /* Make room for the icon */
+    }
+
+    :global([data-svelte-typeahead] input::placeholder) {
+        color: var(--wine-black) !important;
+    }
+
+    :global([data-svelte-typeahead] ul) {
+        font-family: var(--sans) !important;
+        background: var(--wine-tan);
+        transform: translateY(-3px);
+    }
+
+    :global([data-svelte-typeahead] li) {
+        font-family: var(--sans) !important;
+        background: var(--wine-tan) !important;
+        border-bottom: 1px solid var(--wine-dark-tan) !important;
+    }
+
+    :global([data-svelte-typeahead] li.selected) {
+        font-family: var(--sans) !important;
+        background: var(--wine-tan) !important;
+    }
+
+    :global([data-svelte-typeahead] li.selected:hover) {
+        background: var(--wine-dark-tan) !important;
+    }
+
+    :global([data-svelte-typeahead] ul mark) {
+        padding: 0;
+        font-weight: 700;
+        background: none;
+        color: var(--wine-red);
+    }
+
+    :global([data-svelte-typeahead] input[type="search"]::-webkit-search-cancel-button) {
+        -webkit-appearance: none;
+        appearance: none;
+        display: none;
     }
 </style>

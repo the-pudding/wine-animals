@@ -164,11 +164,10 @@
 <style>
   footer {
     margin-top: 100px;
-	width: 100%;
-	z-index: 900;
-	position: relative;
-	color: var(--wine-tan);
-	background: var(--wine-dark-gray);
+    width: 100%;
+    z-index: 900;
+    position: relative;
+    color: var(--wine-tan);
   }
 
   footer .wordmark {
@@ -182,7 +181,7 @@
 
   .c {
     max-width: calc(var(--width-column-wide, 1280px) - var(--margin, 16px) * 2);
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
     margin: 32px auto 0px auto;
     font-family: var(--sans);
   }

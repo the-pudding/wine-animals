@@ -3,7 +3,7 @@
 	import { getContext, onMount, onDestroy } from "svelte";
 
 	// STORES
-	import { currAnimalSlide, tooltipType, activeSection, lockedSelection } from "$stores/misc.js";
+	import { currAnimalSlide, tooltipType, lockedSelection, searchedWineSTORE } from "$stores/misc.js";
 	
 	// COMPONENTS
 	import inView from "$actions/inView.js";
@@ -31,6 +31,7 @@
 	let sliderEl;
 	let tapVisible = false;
 	let tooltipEl;
+	let handleClick;
 
 	// INTERACTION FUNCTIONS
 	// Makes tap visible when section enters
@@ -75,21 +76,26 @@
 		
 		// tooltipType.set(undefined);
 		lockedSelection.set(false)
+		searchedWineSTORE.set(undefined)
 	}
 
 	// LIFECYCLE FUNCTIONS
 	onMount(() => {
-		const handleClick = (e) => {
+		handleClick = (e) => {
 			if (tooltipEl && !tooltipEl.contains(e.target)) {
 				tooltipCloseClick();
 			}
 		};
 
-		document.addEventListener("click", handleClick, true); // `true` for capture phase
+		if (typeof document !== 'undefined') {
+			document.addEventListener("click", handleClick, true);
+		}
+	});
 
-		onDestroy(() => {
+	onDestroy(() => {
+		if (typeof document !== 'undefined' && handleClick) {
 			document.removeEventListener("click", handleClick, true);
-		});
+		}
 	});
 
 	// REATIVE FUNCTIONS

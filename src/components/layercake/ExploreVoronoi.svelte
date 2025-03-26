@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { uniques } from 'layercake';
 	import * as d3 from "d3";
-	import { tooltipType } from "$stores/misc.js";
+	import { tooltipType, lockedSelection } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
@@ -67,8 +67,11 @@
 		})
   
 	$: uniquePoints = uniques(points, d => d.join(), false);
-  
 	$: voronoi = d3.Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
+
+	$: if (!$lockedSelection) {
+		mouseleaveCircle();
+	}
   </script>
   
   {#each uniquePoints as point, i}
@@ -77,12 +80,16 @@
 		class={"voronoi-cell active"}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
-		mouseoverCircle(point);
+		if (!$lockedSelection) mouseoverCircle(point);
 	  }}
 	  on:mouseleave={() => {
-		mouseleaveCircle(point);
+		if (!$lockedSelection) mouseleaveCircle(point);
 	  }}
 	  on:focus={() => {
+		if (!$lockedSelection) mouseoverCircle(point);
+	  }}
+	  on:click={() => {
+		lockedSelection.set(true);
 		mouseoverCircle(point);
 	  }}
 	  role="tooltip"

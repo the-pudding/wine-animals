@@ -35,13 +35,14 @@
     // INTERACTION FUNCTIONS
     // Selects random wine
     function handleRandomClick() {
+        document.body.style.overflowY = "auto";
         const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
-        
         handleBottleClick(randomAnimal)
     }
 
     // Handles the wine click and sets selected wine
     function handleBottleClick(data) {
+        document.body.style.overflowY = "auto";
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
@@ -76,17 +77,25 @@
 
     }
 
+    function scrollToStep($animalSelected) {
+        if ($bottleSelected) {
+            setTimeout(() => {
+                const stepElements = scrollyContainer.querySelectorAll('.step');
+                console.log(stepElements)
+                if (stepElements[1]) {
+                    const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
+                    const offset = elementTop - (window.innerHeight * 0.10);
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            }, 500);
+        }
+    }
+
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
-    $: if ($bottleSelected) {
-        setTimeout(() => {
-            const stepElements = scrollyContainer.querySelectorAll('.step');
-            if (stepElements[1]) {
-                const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
-                const offset = elementTop - (window.innerHeight * 0.10);
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }
-        }, 500);
+    $: scrollToStep($animalSelected);
+    $: if (scrollIndex >= 1) {
+        document.body.style.overflowY = "auto";
     }
 </script>
 

@@ -54,6 +54,7 @@
 		"openai": "^4.28.4",
 		"svelte-carousel": "^1.0.25",
 		"svelte-multiselect": "^11.0.0-rc.1",
+		"svelte-typeahead": "^5.0.0",
 		"yootils": "^0.3.1"
 	}
 }

@@ -1,27 +1,91 @@
 <script>
     // SVELTE
-    import { getContext } from "svelte";
-
-    // LIBARIES
-    import { fit, parent_style } from "@leveluptuts/svelte-fit";
+    import { getContext, tick } from "svelte";
+    import { cubicInOut } from 'svelte/easing';
+    import * as d3 from 'd3';
 
     // EXPORTS
     export let scrollIndex;
 
     //VARIABLES
     const copy = getContext("copy");
+    const startD = `M0,0.2 C0.15,0 0.35,0.42 0.6,0.2 C0.85,0 1.05,0.42 1.2,0.2 L1.2,1 L0,1 Z`;
+    const endD = `M0,0.3 C0.15,0.05 0.35,0.55 0.6,0.3 C0.85,0.05 1.05,0.55 1.2,0.3 L1.2,1 L0,1 Z`;
+
+    let animationFrame;
+    let pathEl;
+    let direction = 1;
+    let startTime;
+
+    // INTERACTIVE FUNCTIONS
+    function animateWave(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const duration = 4000; // 4s forward, 4s back
+
+        let progress = (timestamp - startTime) / duration;
+
+        if (progress >= 1) {
+        direction *= -1;
+        startTime = timestamp;
+        progress = 0;
+        }
+
+        const eased = cubicInOut(progress);
+        const interp = d3.interpolateString(direction === 1 ? startD : endD, direction === 1 ? endD : startD);
+        const newD = interp(eased);
+        pathEl.setAttribute('d', newD);
+
+        animationFrame = requestAnimationFrame(animateWave);
+    }
+
+    function startWaveAnimation() {
+        if (typeof window !== 'undefined') {
+            window.cancelAnimationFrame(animationFrame);
+            startTime = null;
+            animationFrame = window.requestAnimationFrame(animateWave);
+        }
+    }
+
+    function stopWaveAnimation() {
+        if (typeof window !== 'undefined') {
+            window.cancelAnimationFrame(animationFrame);
+        }
+    }
+
+    // REACTIVE FUNCTIONS
+    $: console.log({scrollIndex})
+
+    $: if (scrollIndex === 8) {
+            pathEl = document.querySelector("#wave-path");
+            console.log(pathEl)
+            if (pathEl) {
+                startWaveAnimation();
+            }
+    } else {
+        stopWaveAnimation();
+    }
 </script>
 
 <div class="headline-wrapper">
-    <div class="head-container" style={parent_style} class:hidden={scrollIndex == "exit"}>
-        <h1 class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
-        <h1 aria-hidden="true" class:highlight={scrollIndex == 8} use:fit={{min_size: 12, max_size:350 }}>The pour-igin<br> of species</h1>
+    <div class="head-container" class:hidden={scrollIndex == "exit"}>
+        <h1 class:highlight={scrollIndex == 8}>The pour-igin<br> of species</h1>
+        <h1 style="clip-path: url(#wave-clip)" aria-hidden="true" class:highlight={scrollIndex == 8}>The pour-igin<br> of species</h1>
     </div>
     <div class="byline" style="opacity: {scrollIndex == 8 ? 1 : 0}">
         <p class="strikethrough">By {copy.bylineFake}<span class="strike-line" class:animate={scrollIndex == 8 || scrollIndex == "exit"}></span></p>
         <p>By {@html copy.byline}</p>
     </div>
 </div>
+<svg width="0" height="0">
+    <defs>
+        <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
+        <path 
+            id="wave-path" 
+            d="M0,0.2 C0.15,0 0.35,0.42 0.6,0.2 C0.85,0 1.05,0.42 1.2,0.2 L1.2,1 L0,1 Z" 
+        />
+        </clipPath>
+    </defs>
+</svg>
 
 <style>
     .headline-wrapper {
@@ -35,10 +99,14 @@
         gap: 2rem;
         margin: 4rem auto;
     }
+    
+    .head-container {
+        height: 50svh;
+    }
 
     h1 {
         width: 100%;
-        font-size: 300px;
+        font-size: 260px;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -54,8 +122,6 @@
 
     h1:nth-child(2) {
         opacity: 0;
-        animation: animate 8s ease-in-out infinite;
-        animation-play-state: paused; 
     }
 
     h1:nth-child(1).highlight {
@@ -66,7 +132,7 @@
     h1:nth-child(2).highlight {
         color: var(--wine-red);
         opacity: 1;
-        animation-play-state: running;
+        /* animation-play-state: running; */
     }
 
     @keyframes animate {
@@ -120,5 +186,29 @@
     .hidden {
         opacity: 0;
         transition: all 0.5s ease-in;
+    }
+
+    @media(max-width: 1000px) {
+        h1 {
+            font-size: 200px;
+        }
+    }
+
+    @media(max-width: 800px) {
+        h1 {
+            font-size: 160px;
+        }
+    }
+
+    @media(max-width: 620px) {
+        h1 {
+            font-size: 120px;
+        }
+    }
+
+    @media(max-width: 460px) {
+        h1 {
+            font-size: 80px;
+        }
     }
 </style>

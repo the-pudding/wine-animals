@@ -49,7 +49,7 @@
     <div class="sticky">
         <p class="steals-sentence"
             class:active={chartScrollIndex == 14 || chartScrollIndex == "exit"}>
-            <span class="bold">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines</span> are good deals 
+            <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines are good deals</span> 
             when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
             and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span>
         </p>
@@ -420,6 +420,10 @@
     .steal-bar p.animal {
         width: 6rem;
         text-align: right;
+    }
+
+    .highlight {
+        color: var(--wine-gold);
     }
 
     .bar {

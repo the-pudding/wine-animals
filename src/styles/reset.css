@@ -8,6 +8,8 @@ body {
 	text-rendering: optimizeLegibility;
 	word-wrap: break-word;
 	-webkit-tap-highlight-color: transparent;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 h1,
