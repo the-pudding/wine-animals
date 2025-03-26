@@ -40,7 +40,7 @@
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
 
-    $: console.log(chartScrollIndex)
+    // $: console.log(chartScrollIndex)
 </script>
 
 <svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />

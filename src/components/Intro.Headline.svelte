@@ -53,11 +53,8 @@
     }
 
     // REACTIVE FUNCTIONS
-    $: console.log({scrollIndex})
-
     $: if (scrollIndex === 8) {
             pathEl = document.querySelector("#wave-path");
-            console.log(pathEl)
             if (pathEl) {
                 startWaveAnimation();
             }

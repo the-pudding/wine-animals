@@ -81,7 +81,6 @@
         if ($bottleSelected) {
             setTimeout(() => {
                 const stepElements = scrollyContainer.querySelectorAll('.step');
-                console.log(stepElements)
                 if (stepElements[1]) {
                     const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
                     const offset = elementTop - (window.innerHeight * 0.10);

@@ -90,8 +90,6 @@
     }
 
     function updateSearchedWine(detail) {
-        console.log(detail.original.value)
-
         d3.selectAll("#scatter-explore .selected-wine")
             .transition()
             .duration(300)
@@ -189,7 +187,6 @@
     }
 
     $: belowPriceAboveRating = findSteals($bigScatterData);
-    $: console.log({availableWines})
 </script>
 
 
