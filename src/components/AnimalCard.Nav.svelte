@@ -143,7 +143,6 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        opacity: 0.5;
         transform: scale(1);
 		transition: all 300ms;
         pointer-events: auto;
@@ -165,12 +164,16 @@
     .img-wrapper {
         width: 50px;
         aspect-ratio: 1 / 1;
-        background: var(--wine-tan);
+        background: var(--wine-dark-tan);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         pointer-events: none;
+    }
+
+    .isActive .img-wrapper {
+        background: var(--wine-tan);
     }
 
     .navIcon {
@@ -191,7 +194,7 @@
 		text-align: center;
 		width: 80%;
 		font-size: var(--12px);
-		color: var(--wine-tan);
+		color: var(--wine-dark-tan);
         margin: 0.5rem auto 1rem auto;
         line-height: 1.25;
         user-select: none;
@@ -205,6 +208,10 @@
         text-transform: capitalize;
         font-weight: 700;
 	}
+
+    .isActive p {
+        color: var(--wine-tan)
+    }
 
     :global(.isActive) {
         opacity: 1 !important;

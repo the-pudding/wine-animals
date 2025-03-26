@@ -269,7 +269,7 @@
                 </div>
                 <div class="filter">
                     <label for="year-range">Year</label>
-                    <DoubleRange id="rating-range" start={1850} end={2023} min={1850} max={2023} valType={"years"}/>
+                    <DoubleRange id="year-range" start={1850} end={2023} min={1850} max={2023} valType={"years"}/>
                 </div>
             </div>
         </div>
