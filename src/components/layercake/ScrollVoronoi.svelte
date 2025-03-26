@@ -101,6 +101,7 @@
 			(chartScrollIndex == "exit")
 		}
 	  d={voronoi.renderCell(i)}
+	  aria-label="scatterplot tooltip"
 	  on:mouseover={() => {
 		if (!$lockedSelection) mouseoverCircle(point);
 	  }}

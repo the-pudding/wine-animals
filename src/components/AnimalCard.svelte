@@ -41,7 +41,7 @@
                         <div class="icon">
                             <img src="./assets/images/icons/{strippedAnimal}.png" alt="{animal} icon" />
                         </div>
-                        <h3>{animal}</h3>
+                        <h4>{animal}</h4>
                     </div>
                     <div class="medians-wrapper">
                         <div class="median">
@@ -169,7 +169,7 @@
         width: 100%;
     }
 
-    h3 {
+    h4 {
         color: var(--wine-tan);
         text-transform: capitalize;
         font-size: var(--36px);
@@ -188,6 +188,7 @@
 
     .icon img {
         width: 90%;
+        aspect-ratio: 1 / 1;
     }
 
     .stars {
@@ -200,6 +201,7 @@
 
     .stars img {
         height: 16px;
+        width: 100%;
     }
 
     @media (max-width: 900px) {
@@ -243,7 +245,7 @@
             height: 4rem;
         }
 
-        h3 {
+        h4 {
            font-size: var(--28px); 
         }
 

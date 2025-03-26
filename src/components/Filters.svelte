@@ -201,6 +201,7 @@
                         valType = "animal"
                         placeholder="All animals"
                         removeAllTitle="Remove all animals"
+                        ariaLabel="select animals"
                     > 
                         <span slot="expand-icon">
                             <Icon name="chevrons-up-down" size="0.75rem"/>
@@ -214,6 +215,7 @@
                         valType = "type"
                         placeholder="All types"
                         removeAllTitle="Remove all types"
+                        ariaLabel="select wine types"
                     > 
                         <span slot="expand-icon">
                             <Icon name="chevrons-up-down" size="0.75rem"/>
@@ -227,6 +229,7 @@
                         valType = "country"
                         placeholder="All countries"
                         removeAllTitle="Remove all countries"
+                        ariaLabel="select countries"
                     > 
                         <span slot="expand-icon">
                             <Icon name="chevrons-up-down" size="0.75rem"/>

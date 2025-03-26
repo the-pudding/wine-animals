@@ -318,6 +318,7 @@
 
   .img-wrapper {
     width: 100%;
+    aspect-ratio: 1/1;
     max-width: 160px;
     height: 160px;
     display: flex;
@@ -338,6 +339,7 @@
   .donate img {
     transform: rotate(var(--right-tilt, 2deg));
     width: 100%;
+    aspect-ratio: 1/0.88;
     max-width: 180px;
     transition: transform calc(var(--1s) * 0.25);
   }
@@ -348,6 +350,7 @@
 
   .subscribe img {
     width: 100%;
+    aspect-ratio: 1 / 0.87;
     max-width: 180px;
     transition: transform calc(var(--1s) * 0.25);
   }

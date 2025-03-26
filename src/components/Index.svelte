@@ -131,7 +131,7 @@
 </div>
 <Outro />
 <div id="universal-tooltip" bind:this={tooltipEl}>
-	<button class="close" on:click={tooltipCloseClick}>
+	<button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
 		<Icon name="x" size={"1.5rem"}/>
 	</button>
 	{#if $tooltipType == "bottle"}
