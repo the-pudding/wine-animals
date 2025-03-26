@@ -293,22 +293,6 @@
         top: 2px;
     }
 
-    h3 {
-        font-family: var(--sans);
-        font-size: var(--14px);
-        font-weight: 700;
-        text-align: center;
-        margin: 0;
-    }
-
-    .tot-count {
-        font-family: var(--sans);
-        font-size: var(--14px);
-        text-align: center;
-        margin: 0 0;
-        font-size: 0.8rem;
-    }
-
     .chart-container {
         width: 100%;
         height: 100%;

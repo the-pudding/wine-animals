@@ -1,17 +1,15 @@
 <script>
-    import { onMount, getContext } from "svelte";
-    import { LayerCake, Svg, Html } from 'layercake';
+    import { getContext } from "svelte";
+    import { LayerCake, Svg } from 'layercake';
     import Column from "$components/layercake/Column.svelte";
     import Line from "$components/layercake/Line.svelte";
-    import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
-    import * as d3 from "d3";
-    import { tooltipType } from "$stores/misc.js";
+    import { groups } from 'd3-array';
+    import { scalePoint, scaleBand } from 'd3-scale';
     import data from "$data/wineData_summary.csv";
 
     const copy = getContext("copy");
 
-    export let chartScrollIndex;
     export let width;
     export let animal;
 
@@ -21,11 +19,10 @@
         d[countKey] = +d[countKey];
     });
 
-    const groupedData = d3.groups(data, d => d.animalGroup);
-    const endObj = {animalGroup: "end", category: "end", bucket: "end", percent: 0, count: 0};
+    const groupedData = groups(data, d => d.animalGroup);
 
     let currAnimalData = data.filter(d => d.animalGroup == animal);
-    let currAnimalGroupedData = d3.groups(currAnimalData, d => d.category)
+    let currAnimalGroupedData = groups(currAnimalData, d => d.category)
         .filter(d => d[0] !== "median")
         .map(([key, values]) => {
             const xDomain = [...new Set(values.map(d => d.bucket))]; 
@@ -37,7 +34,7 @@
             };
         });
     const allWineDataX = data.filter(d => d.animalGroup == "all");
-    const allWineGroupedData = d3.groups(allWineDataX, d => d.category)
+    const allWineGroupedData = groups(allWineDataX, d => d.category)
         .filter(d => d[0] !== "median")
         .map(([category, values]) => {
             // ✅ Append the "end" object for each category
@@ -64,7 +61,7 @@
         {#each currAnimalGroupedData as category, i}
             {@const matchingLineData = allWineGroupedData.find(([key]) => key === category.key)?.[1] || []}
             {@const xDomainLine = [...new Set(matchingLineData.map(d => d.bucket))]}
-            {@const xScaleLine = d3.scalePoint()
+            {@const xScaleLine = scalePoint()
                 .domain(xDomainLine)
                 .range([0, width])}
             {#if category.key !== "steals" && category.key !== "count"}
@@ -78,7 +75,7 @@
                             padding={{ top: 0, right: 0, bottom: 40, left: 0 }}
                             x={xKey}
                             y={yKey}
-                            xScale={d3.scaleBand().paddingInner(0.04)}
+                            xScale={scaleBand().paddingInner(0.04)}
                             xDomain={category.xDomain}
                             yDomain={[0, 100]}
                             data={category.values}
@@ -143,86 +140,11 @@
         gap: 4rem;
     }
 
-    .key {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        font-family: var(--sans);
-        justify-content: center;
-    }
-
-    .key div {
-        padding: 1rem;
-    }
-
-    .key p {
-        margin: 0;
-    }
-
     .comments {
         margin: 0.5rem 0 0 0;
         font-family: var(--sans);
         font-size: var(--18px);
         width: 100%;
-    }
-
-    .category-span {
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: var(--20px);
-    }
-
-    .axis-labels {
-        width:100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-family: var(--sans);
-        font-size: var(--12px);
-        color: var(--color-gray-600);
-        margin: 0;
-        padding: 0;
-    }
-
-    .axis-labels p {
-        margin: 0;
-        padding: 0.25rem 0 0 0;
-    }
-
-    .axis-labels p:last-of-type {
-        text-align: right;
-        padding-right: 1.5rem;
-    }
-
-    .tooltip.hidden {
-        opacity: 0;
-        transition: opacity 0.25s linear;
-    }
-
-    .tooltip {
-        max-width: 140px;
-        background: var(--color-white);
-        border: 1px solid var(--color-gray-300);
-        padding: 0.25rem;
-        position: absolute;
-        font-family: var(--sans);
-        font-size: 0.8rem;
-        z-index: 1000;
-        opacity: 1;
-        transition: opacity 0.25s linear;
-        pointer-events: none;
-    }
-
-    :global(.tooltip p) {
-        margin: 0;
-        color: var(--wine-black)
-    }
-
-    :global(.tooltip .animal) {
-        padding: 0 0 0.25rem 0;
-        margin: 0 0 0.25rem 0;
-        border-bottom: 1px solid var(--color-gray-300);
-        text-transform: capitalize;
     }
 
     :global(.bolded) {
@@ -231,10 +153,6 @@
 
     .topline {
         font-weight: 700;
-    }
-
-    .desc {
-        font-size: 0.75rem;
     }
 
     .chart-wrapper {
@@ -263,14 +181,6 @@
         text-transform: uppercase;
         margin: 2.5rem 0 0 0;
         color: var(--wine-dark-tan);
-    }
-
-    .tot-count {
-        font-family: var(--sans);
-        font-size: var(--14px);
-        text-align: center;
-        margin: 0 0 2rem 0;
-        font-size: 0.8rem;
     }
 
     .chart-layers {

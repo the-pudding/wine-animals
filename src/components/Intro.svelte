@@ -127,7 +127,7 @@
                                     <p class="instructions">
                                         <span class="tap-icon">{@html tapSVG}</span>
                                         Tap on a bottle or
-                                        <span class="random-click" on:click={handleRandomClick}>get a random bottle</span>
+                                        <button class="random-click" on:click={handleRandomClick}>get a random bottle</button>
                                     </p>
                                 {/if}
                         {/if}
@@ -279,6 +279,10 @@
     .random-click {
         cursor: pointer;
         text-decoration: underline;
+        background: transparent;
+        color: var(--wine-gold);
+        font-weight: 700;
+        padding: 0;
     }
 
     .random-click:hover {

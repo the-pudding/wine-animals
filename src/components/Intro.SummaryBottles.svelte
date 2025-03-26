@@ -104,8 +104,7 @@
                     class:active={animal[0] === $animalSelected}
                     class:animated={animate}>
                     <p class="num">
-                        {#if currMetric == undefined}
-                        {:else if currMetric == "price"}
+                        {#if currMetric == "price"}
                             ${animal[1].medianPrice.toFixed(2)}
                         {:else}
                             {animal[1].medianRating}
