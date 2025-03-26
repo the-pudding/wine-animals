@@ -11,7 +11,7 @@
 	import Intro from "$components/Intro.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
-	import AnimalCardNav from "$components/AnimalCard.Nav2.svelte";
+	import AnimalCardNav from "$components/AnimalCard.Nav.svelte";
 	import Slider from "$components/helpers/Slider.svelte";
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";

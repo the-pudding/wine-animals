@@ -1,12 +1,10 @@
 <script>
-	import { getContext, createEventDispatcher } from "svelte";
+	import { getContext } from "svelte";
 	import { tooltipType } from "$stores/misc.js";
 	import * as d3 from "d3";
 	import summaryData from "$data/wineData_summary.csv";
 
-	const { data, xGet, yGet, yRange, xScale, xDomain, y, x, height } = getContext("LayerCake");
-
-    const dispatch = createEventDispatcher();
+	const { data, xGet, yGet, yRange, xScale, height } = getContext("LayerCake");
 
 	const countryAbbrev = [
         {country: "France", abbrev: "FR"},
@@ -36,12 +34,9 @@
 
 	$: localHeight = $height;
 
-	export let fill = "#c6c6c6";
 	export let stroke = "#000";
 	export let strokeWidth = 0;
 	export let allWineData;
-
-	let isHovered = false;
 
 	function findMatch(object, data) {
 		let match = data.find((item) => {

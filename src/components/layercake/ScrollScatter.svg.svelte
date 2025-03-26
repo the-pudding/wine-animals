@@ -1,15 +1,14 @@
 <script>
-	import { getContext, onMount } from "svelte";
+	import { getContext } from "svelte";
     import { tick } from "svelte";
-    import { tweened } from "svelte/motion";
-    import { cubicOut } from "svelte/easing";
-	import * as d3 from "d3";
+	import { line } from 'd3-shape';
+	import { median } from 'd3-array';
     import * as d3Regression from 'd3-regression';
     import rawData from "$data/wineData.csv";
-    import { bottleSelected, animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
+    import { animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
 	import { stealTopgroupCounts } from "../../stores/misc";
 
-	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
+	const { data, xGet, yGet, xScale, yScale, width, height } = getContext("LayerCake");
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
@@ -20,7 +19,6 @@
 
 	export let r = $width/20;
 	export let fill = "#ccc";
-	export let stroke = "#000";
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
@@ -55,7 +53,7 @@
 
     $: trendLine = regression(points);
 
-    $: path = d3.line()
+    $: path = line()
 			.x(d => $xScale(d[0]))
 			.y(d => $yScale(d[1]))
 			(trendLine);
@@ -274,28 +272,28 @@
 </g>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
-    <line class="priceAVG-gray" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width} y2={$yScale(d3.median(rawData, d => d.price))} />
-    <line class="ratingAVG-gray" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+    <line class="priceAVG-gray" x1={0} y1={$yScale(median(rawData, d => d.price))} x2={$width} y2={$yScale(median(rawData, d => d.price))} />
+    <line class="ratingAVG-gray" x1={$xScale(median(rawData, d => d.rating))} y1={0} x2={$xScale(median(rawData, d => d.rating))} y2={$height} />
 
     <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width} y2={$yScale($stealPriceNum)} />
     <line class="ratingAVG" x1={$xScale($stealRatingNum)} y1={0} x2={$xScale($stealRatingNum)} y2={$height} />
     <text 
         class="label"
         x={$width-20} 
-        y={$yScale(d3.median(rawData, d => d.price)) - 10}
+        y={$yScale(median(rawData, d => d.price)) - 10}
         text-anchor="end"
         fill="white">
-        Med. price (${d3.median(rawData, d => d.price)})
+        Med. price (${median(rawData, d => d.price)})
     </text>
 
     <text 
         class="label"
-        x={$xScale(d3.median(rawData, d => d.rating)) - 160}
+        x={$xScale(median(rawData, d => d.rating)) - 160}
         y={17} 
-        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
+        transform={`rotate(-90, ${$xScale(median(rawData, d => d.rating))}, 0)`} 
         text-anchor="start"
         fill="white">
-        Med. rating ({d3.median(rawData, d => d.rating)} stars)
+        Med. rating ({median(rawData, d => d.rating)} stars)
     </text>
 </g>
 

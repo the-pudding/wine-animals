@@ -77,6 +77,7 @@
 
     }
 
+    // Scrolls to second step once wine is selected
     function scrollToStep($animalSelected) {
         if ($bottleSelected) {
             setTimeout(() => {
@@ -93,6 +94,7 @@
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
     $: scrollToStep($animalSelected);
+    // Unlock body scroll
     $: if (scrollIndex >= 1) {
         document.body.style.overflowY = "auto";
     }

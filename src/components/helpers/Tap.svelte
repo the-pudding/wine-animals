@@ -8,11 +8,8 @@
 	export let enableKeyboard = false;
 	export let full = false;
 	export let showArrows = false; // boolean or array of directions
-	export let disable = [];
 	export let directions = ["left", "right"];
 	export let size = "100px";
-	export let arrowSize = "48px";
-	export let arrowStroke = "#181A1F";
 	export let arrowStrokeWidth = "2";
 	export let arrowPosition = "center"; // start, center, end
 

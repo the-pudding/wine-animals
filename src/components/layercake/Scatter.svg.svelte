@@ -1,6 +1,7 @@
 <script>
 	import { getContext, onMount } from "svelte";
-	import * as d3 from "d3";
+	import { line } from 'd3-shape';
+	import { median } from 'd3-array';
 	import rawData from "$data/wineData.csv"
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
@@ -20,7 +21,7 @@
 		mounted = true;
 	});
 
-	$: path = d3.line()
+	$: path = line()
 		.x(d => $xScale(d[0]))
 		.y(d => $yScale(d[1]))
 		(regressionLine);
@@ -56,8 +57,8 @@
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}
-    <line class="priceAVG" x1={0} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
-    <line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+    <line class="priceAVG" x1={0} y1={$yScale(median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(median(rawData, d => d.price))} />
+    <line class="ratingAVG" x1={$xScale(median(rawData, d => d.rating))} y1={0} x2={$xScale(median(rawData, d => d.rating))} y2={$height} />
 </g>
 
 <style>

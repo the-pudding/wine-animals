@@ -388,7 +388,7 @@
         color: var(--wine-black) !important;
         outline: none !important;
 
-        background-image: url('./assets/images/search.png') !important;
+        background-image: url('/assets/images/search.png') !important;
         background-repeat: no-repeat !important;
         background-size: 0.8rem !important;
         background-position: 0.3rem center !important;

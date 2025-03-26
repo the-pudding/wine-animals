@@ -1,5 +1,5 @@
 <script>
-    import { getContext, onMount } from "svelte";
+    import { getContext } from "svelte";
     const copy = getContext("copy");
     import ChevronRight from "lucide-svelte/icons/chevron-right";
 	import SpinningBottle from "./SpinningBottle.svelte";

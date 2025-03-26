@@ -1,8 +1,8 @@
 <script>
     // SVELTE
-    import { getContext, tick } from "svelte";
+    import { getContext, onMount } from "svelte";
     import { cubicInOut } from 'svelte/easing';
-    import * as d3 from 'd3';
+    import { interpolateString } from 'd3-interpolate';
 
     // EXPORTS
     export let scrollIndex;
@@ -25,13 +25,13 @@
         let progress = (timestamp - startTime) / duration;
 
         if (progress >= 1) {
-        direction *= -1;
-        startTime = timestamp;
-        progress = 0;
+            direction *= -1;
+            startTime = timestamp;
+            progress = 0;
         }
 
         const eased = cubicInOut(progress);
-        const interp = d3.interpolateString(direction === 1 ? startD : endD, direction === 1 ? endD : startD);
+        const interp = interpolateString(direction === 1 ? startD : endD, direction === 1 ? endD : startD);
         const newD = interp(eased);
         pathEl.setAttribute('d', newD);
 
@@ -39,28 +39,18 @@
     }
 
     function startWaveAnimation() {
-        if (typeof window !== 'undefined') {
-            window.cancelAnimationFrame(animationFrame);
-            startTime = null;
-            animationFrame = window.requestAnimationFrame(animateWave);
-        }
+        window.cancelAnimationFrame(animationFrame);
+        startTime = null;
+        animationFrame = window.requestAnimationFrame(animateWave);
     }
 
-    function stopWaveAnimation() {
-        if (typeof window !== 'undefined') {
-            window.cancelAnimationFrame(animationFrame);
-        }
-    }
-
-    // REACTIVE FUNCTIONS
-    $: if (scrollIndex === 8) {
-            pathEl = document.querySelector("#wave-path");
+    // ONMOUNT FUNCTIONS
+    onMount(() => {
+        pathEl = document.querySelector("#wave-path");
             if (pathEl) {
                 startWaveAnimation();
-            }
-    } else {
-        stopWaveAnimation();
-    }
+            } 
+    })
 </script>
 
 <div class="headline-wrapper">

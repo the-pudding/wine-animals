@@ -1,10 +1,9 @@
 <script>
-    import { getContext, onMount } from "svelte";
-    import starIcon from "$svg/star.svg";
+    import { getContext } from "svelte";
     import ScrollHisto from "$components/ScrollHisto.svelte";
     import Scatter from "$components/Scatter.svelte";
     import medianData from "$data/wineData_median.csv";
-    import { bigScatterData, navAnimal } from "$stores/misc.js";
+    import { navAnimal } from "$stores/misc.js";
     import inView from "$actions/inView.js";
 
     export let animal;
@@ -14,7 +13,6 @@
     let strippedAnimal = animal.replace(/[^a-zA-Z0-9]/g, "");
 
     function handleView(viewState, animal) {
-
         if (viewState == "enter") {
             navAnimal.set(animal);
         } else {
@@ -41,7 +39,7 @@
                 <div class="topline-wrapper">
                     <div class="icon-name-wrapper">
                         <div class="icon">
-                            <img src="./assets/images/icons/{strippedAnimal}.png" />
+                            <img src="./assets/images/icons/{strippedAnimal}.png" alt="{animal} icon" />
                         </div>
                         <h3>{animal}</h3>
                     </div>

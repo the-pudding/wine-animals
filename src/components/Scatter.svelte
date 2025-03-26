@@ -9,7 +9,8 @@
 
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
-    import * as d3 from "d3";
+    import { select } from 'd3-selection';
+    import { curveLinear } from 'd3-shape';
     import * as d3Regression from 'd3-regression';
 	import * as eases from 'svelte/easing';
     import refresh from "$svg/refresh-ccw.svg";
@@ -28,11 +29,8 @@
         y: +d.price  // Convert rating to a number
     }))
 
-    const curve = d3.curveLinear;
     const yKey = 'price';
     const xKey = 'rating';
-    const xKeyReg = d => +d.rating;
-    const yKeyReg = d => +d.price;
 
     animalData.forEach(d => {
         d[xKey] = +d[xKey];
@@ -40,13 +38,7 @@
     });
 
     const r = 4;
-    const padding = 10;
     const color = '#d0c8a8';
-
-    const tweenOptions = {
-		duration: 300,
-		easing: eases.cubicInOut
-	};
 
     // Regression Line
     const regression = d3Regression.regressionExp()
@@ -116,7 +108,7 @@
 
     function handleIndividWineClick(event) {
         resetClick();
-        let closestCard = d3.select(event.target.closest(".animal-card"));
+        let closestCard = select(event.target.closest(".animal-card"));
 
         closestCard.selectAll(".card-wine-circle circle")
             .transition()
@@ -141,7 +133,7 @@
 
     function setTooltip(data) {
         tooltipType.set("bottle")
-		let tooltip = d3.select("#universal-tooltip");
+		let tooltip = select("#universal-tooltip");
 		tooltip.classed("visible", true);
 
 		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);

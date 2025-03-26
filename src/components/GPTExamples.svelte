@@ -1,5 +1,5 @@
 <script>
-   import { fly, fade } from 'svelte/transition';
+   import { fade } from 'svelte/transition';
    import Icon from "$components/helpers/Icon.svelte";
 
    export let exampleType;
@@ -42,9 +42,6 @@
            text: "This appears to be an image of a wine label that reads 'Spook Light - Skin Fermented - Pinot Gris' from 'Hawke's Bay'. The label features some illustrations that resemble <span class='wrong-prompt'>insects</span> around the edges, such as moths or butterflies. I <span class='wrong-prompt'>do not see any animals or humans</span> on this label."
        }
    ];
-   
-   $: data = exampleType == "correct" ? correctData : wrongData;
-
 </script>
 
 {#if exampleType == "correct"}

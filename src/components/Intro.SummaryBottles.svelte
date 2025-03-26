@@ -1,18 +1,18 @@
 <script>
-    import { getContext, onMount } from "svelte";
+    // IMPORTS
     import summaryData from "$data/wineData_summary.csv";
-    import * as d3 from "d3";
     import {flip} from 'svelte/animate';
-    import { fly, fade } from 'svelte/transition';
-    import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import { fade } from 'svelte/transition';
+    import { animalSelected } from "$stores/misc.js";
     import Icon from "$components/helpers/Icon.svelte";
 
+    //LIBARIES
+    import { groups } from 'd3-array';
+
+    // EXPORTS
     export let scrollIndex;
 
-    let currData;
-    let currMetric;
-    let innerWidth;
-
+    // VARIABLES
     const animalSubgroups = [
         {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
         {animal: "bird", subgroups: "songbirds, chicken, ducks, raptors, etc."},
@@ -37,7 +37,7 @@
             d.animalGroup !== "none"
     );
 
-    const medianData = d3.groups(filteredData, d => d.animalGroup);
+    const medianData = groups(filteredData, d => d.animalGroup);
 
     const restructuredData = {};
         for (const [animal, rows] of medianData) {
@@ -54,15 +54,21 @@
                 count: +count
                 };
             }
-            });
-        }
+        });
+    }
 
+    let currData;
+    let currMetric;
+    let innerWidth;
+
+    // INTERACTIVE FUNCTIONS
     function getAnimalSubgroup(animalName) {
         return animalSubgroups.find(
-        item => item.animal.toLowerCase() === animalName.toLowerCase()
+            item => item.animal.toLowerCase() === animalName.toLowerCase()
         );
     }
     
+    // REACTIVE FUNCTIONS
     $: {
         if (scrollIndex <= 5) {
             currData = Object.entries(restructuredData).sort(
@@ -169,8 +175,7 @@
                     class:active={animal[0] === $animalSelected}
                     class:animated={animate}>
                     <p class="num">
-                        {#if currMetric == undefined}
-                        {:else if currMetric == "price"}
+                        {#if currMetric == "price"}
                             ${animal[1].medianPrice.toFixed(2)}
                         {:else}
                             {animal[1].medianRating}

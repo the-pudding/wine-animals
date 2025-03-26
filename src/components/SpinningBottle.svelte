@@ -1,14 +1,11 @@
 <script>
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher } from "svelte";
     import { bottleSelected, animalSelected } from "$stores/misc.js";
-    import Range from "$components/helpers/Range.svelte";
     
     export let bottleIndex;
     export let wineData;
     export let containerDimensions;
     export let bottlePosLeft;
-    export let pricesLocked;
-    export let pricesSkipped;
     export let scrollIndex;
     export let outroVisible;
 
@@ -16,8 +13,6 @@
     let aspectRatio = 3.5;
     let shouldSpin = [true,true,true,true];
     let spin4 = true;
-    let rangeValue;
-    let actualPrice = wineData.price;
 
     const dispatch = createEventDispatcher();
 

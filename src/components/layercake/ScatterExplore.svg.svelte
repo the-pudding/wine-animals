@@ -1,37 +1,23 @@
 <script>
-	import { getContext, onMount } from "svelte";
-	import * as d3 from "d3";
-	import * as d3Regression from 'd3-regression';
+	import { getContext } from "svelte";
+	import { line } from 'd3-shape';
+	import { median } from 'd3-array';
 	import rawData from "$data/wineData.csv";
-	import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
+	import { bigScatterData, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE } from "$stores/misc.js";
 
-	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
+	const { data, xGet, yGet, xScale, yScale, width, height, padding } = getContext("LayerCake");
 
     const regressionLine = $data[1];
-	const filteredRawData = rawData.filter(d => d.price <= 150);
 
-	export let r = 10;
-	export let fill = "#4E5B7B";
-    export let addRandom = false;
     let path;
 
-    $: path = d3.line()
+    $: path = line()
 			.x(d => $xScale(d[0]))
 			.y(d => $yScale(d[1]))
 			(regressionLine);
 
     const maxLength = 99;
     const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
-
-    // Regression Line
-    const regression = d3Regression.regressionExp()
-        .x(d => d.x)  // Accessor for x value
-        .y(d => d.y); // Accessor for y value
-
-	// Generate random subsets from rawData with length matching $bigScatterData
-	$: randomDataForGenerations = filteredRawData !== 0 
-		? generateRandomDataForGenerations(filteredRawData, $bigScatterData.length, generations)
-		: undefined;
 
 	function generateRandomSubset(data, targetLength) {
 		// Shuffle rawData and select a subset with the same length as $bigScatterData
@@ -55,10 +41,10 @@
 <g class="median-markings active">
 	<rect
 		class="highlight-quadrant"
-		x={$xScale(d3.median(rawData, d => d.rating))}
-		y={$yScale(d3.median(rawData, d => d.price))}
-		width={$xScale(d3.median(rawData, d => d.rating))}
-		height={$height - $yScale(d3.median(rawData, d => d.price))}
+		x={$xScale(median(rawData, d => d.rating))}
+		y={$yScale(median(rawData, d => d.price))}
+		width={$xScale(median(rawData, d => d.rating))}
+		height={$height - $yScale(median(rawData, d => d.price))}
 		fill="#363B45"
 		opacity=0.5
 	/>
@@ -92,30 +78,13 @@
                 cx={cx} 
                 cy={cy} 
                 r={4} 
-                fill={fill} 
+                fill="#363B45" 
                 opacity={0.8}
             />
         {/if}
     {/each}
 </g>
-<!-- {#if addRandom && baseFilters && $bigScatterData.length < 1059 && $bigScatterData.length >= 10}
-	{#each randomDataForGenerations as randomData, i}
-		{@const points = randomData.map(d => ({
-			x: +d.rating,  // Convert rating to a number
-			y: +d.price    // Convert price to a number
-		}))}
-		{@const trendLine = regression(points)}
-		{@const pathLocal = d3.line()
-			.x(d => $xScale(d[0]))
-			.y(d => $yScale(d[1]))
-			(trendLine)}
-		<g class="random-lines">
-			{#if pathLocal}
-				<path class="expRegression fade" d={pathLocal} />
-			{/if}
-		</g>
-	{/each}
-{/if} -->
+
 {#if baseFilters && $bigScatterData.length >= 10}
 	<g class="lines">
 		{#if path}
@@ -125,26 +94,24 @@
 {/if}
 
 <g class="lines">
-	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(d3.median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(d3.median(rawData, d => d.price))} />
-	<line class="ratingAVG" x1={$xScale(d3.median(rawData, d => d.rating))} y1={0} x2={$xScale(d3.median(rawData, d => d.rating))} y2={$height} />
+	<line class="priceAVG" x1={0 - $padding.left} y1={$yScale(median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(median(rawData, d => d.price))} />
+	<line class="ratingAVG" x1={$xScale(median(rawData, d => d.rating))} y1={0} x2={$xScale(median(rawData, d => d.rating))} y2={$height} />
 </g>
 <text 
         class="label"
         x={$width-4} 
-        y={$yScale(d3.median(rawData, d => d.price)) - 10}
-        text-anchor="end"
-        fill="white">
-        Med. price (${d3.median(rawData, d => d.price)})
+        y={$yScale(median(rawData, d => d.price)) - 10}
+        text-anchor="end">
+        Med. price (${median(rawData, d => d.price)})
     </text>
 
     <text 
         class="label"
-        x={$xScale(d3.median(rawData, d => d.rating)) - 140}
+        x={$xScale(median(rawData, d => d.rating)) - 140}
         y={-13} 
-        transform={`rotate(-90, ${$xScale(d3.median(rawData, d => d.rating))}, 0)`} 
-        text-anchor="start"
-        fill="white">
-        Med. rating ({d3.median(rawData, d => d.rating)} stars)
+        transform={`rotate(-90, ${$xScale(median(rawData, d => d.rating))}, 0)`} 
+        text-anchor="start">
+        Med. rating ({median(rawData, d => d.rating)} stars)
     </text>
 
 <style>

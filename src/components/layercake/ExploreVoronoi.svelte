@@ -1,7 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
 	import { uniques } from 'layercake';
-	import * as d3 from "d3";
+	import { Delaunay } from 'd3-delaunay';
+	import { selectAll, select } from 'd3-selection';
 	import { tooltipType, lockedSelection } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
@@ -14,9 +15,9 @@
 
 		tooltipType.set("bottle")
 
-		d3.selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
+		selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
 
-		d3.selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
+		selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
 			.transition(500)
@@ -29,11 +30,11 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".card-wine-circle circle, .circle-explore")
-		.style("opacity", 0.8)
-		.style("fill", "#38425D")
-		.transition(500)
-		.attr("r", 4);
+		selectAll(".card-wine-circle circle, .circle-explore")
+			.style("opacity", 0.8)
+			.style("fill", "#38425D")
+			.transition(500)
+			.attr("r", 4);
 	}
 
 	function formatStars(rating) {
@@ -43,7 +44,7 @@
     }
 
 	function setTooltip(data) {
-		let tooltip = d3.select("#universal-tooltip");
+		let tooltip = select("#universal-tooltip");
 		tooltip.classed("visible", true);
 
 		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);
@@ -67,7 +68,7 @@
 		})
   
 	$: uniquePoints = uniques(points, d => d.join(), false);
-	$: voronoi = d3.Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
+	$: voronoi = Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
 
 	$: if (!$lockedSelection) {
 		mouseleaveCircle();

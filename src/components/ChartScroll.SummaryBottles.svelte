@@ -1,10 +1,9 @@
 <script>
-    import { getContext, onMount } from "svelte";
     import summaryData from "$data/wineData_summary.csv";
-    import * as d3 from "d3";
+    import { groups } from 'd3-array';
     import {flip} from 'svelte/animate';
-    import { fly, fade } from 'svelte/transition';
-    import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import { fade } from 'svelte/transition';
+    import { animalSelected } from "$stores/misc.js";
     import Icon from "$components/helpers/Icon.svelte";
 
     export let scrollIndex;
@@ -37,7 +36,7 @@
             d.animalGroup !== "none"
     );
 
-    const medianData = d3.groups(filteredData, d => d.animalGroup);
+    const medianData = groups(filteredData, d => d.animalGroup);
 
     const restructuredData = {};
         for (const [animal, rows] of medianData) {

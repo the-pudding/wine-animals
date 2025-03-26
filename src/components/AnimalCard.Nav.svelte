@@ -1,104 +1,128 @@
 <script>
-    import { onMount, tick } from "svelte";
-    import * as d3 from "d3";
-    import { navAnimal, currAnimalSlide } from "$stores/misc.js";
+	import { onMount, tick } from "svelte";
+	import { navAnimal, currAnimalSlide } from "$stores/misc.js";
 
-    const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
-		"deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
+	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
+		"deer", "fish", "horse", "marine invertebrate", "mythical", "pachyderm", "pig",
 		"rabbit", "sheep"
 	];
 
-    let Carousel; // for saving Carousel component class
-    let carousel; // for calling methods of the carousel instance
-    let w;
-    let itemW = 140;
-    let carouselLength = topgroups.length
-    let particleNum;
-    let carouselContainer;
-    let currAnimal = "amphibian/reptile";
+	let nav; // Reference to the <nav> element
+	let isDragging = false;
+	let startX = 0;
+	let scrollLeft = 0;
+	let userDragged = false; // Tracks if the user manually dragged
 
-    function updateParticles(w) {
-        particleNum = Math.ceil(w/itemW);
-        // console.log(particleNum)
+	// 🟢 Handle Mouse Dragging
+	function handleMouseDown(e) {
+		isDragging = true;
+		userDragged = true; // User manually moved nav, pause auto-centering
+		startX = e.pageX - nav.offsetLeft;
+		scrollLeft = nav.scrollLeft;
+		nav.classList.add("dragging");
+	}
+
+	function handleMouseMove(e) {
+		if (!isDragging) return;
+		e.preventDefault();
+		const x = e.pageX - nav.offsetLeft;
+		const walk = (x - startX) * 1.5; // Adjust speed factor
+		nav.scrollLeft = scrollLeft - walk;
+	}
+
+	function handleMouseUp() {
+		isDragging = false;
+		nav.classList.remove("dragging");
+	}
+
+	function handleMouseLeave() {
+		isDragging = false;
+		nav.classList.remove("dragging");
+	}
+
+	// 🟢 Mobile Swipe Support
+	let touchStartX = 0;
+	let touchScrollLeft = 0;
+
+	function handleTouchStart(e) {
+		userDragged = true; // User manually swiped
+		touchStartX = e.touches[0].pageX;
+		touchScrollLeft = nav.scrollLeft;
+	}
+
+	function handleTouchMove(e) {
+		const touchX = e.touches[0].pageX;
+		const walk = (touchX - touchStartX) * 1.5;
+		nav.scrollLeft = touchScrollLeft - walk;
+	}
+
+	// 🟢 Center the Active Item
+	async function centerActiveElement() {
+        await tick(); // Ensure DOM updates before measuring
+        if (!nav || userDragged) return; // Skip centering if user is dragging/swiping
+
+        const activeEl = nav.querySelector(".isActive");
+        if (!activeEl) return;
+
+        const navRect = nav.getBoundingClientRect();
+        const activeRect = activeEl.getBoundingClientRect();
+
+        // Calculate the current scroll position
+        const navCenter = navRect.left + navRect.width / 2;
+        const activeCenter = activeRect.left + activeRect.width / 2;
+
+        // Offset needed to move the active element to the center
+        const offset = activeCenter - navCenter;
+
+        // Smoothly scroll the navigation
+        nav.scrollTo({ left: nav.scrollLeft + offset, behavior: "smooth" });
     }
 
-    // async function updateNavPos(currAnimal, particleNum) {
-    //     await tick(); // Ensures the DOM updates before running
+	// 🟢 Initialize event listeners and center first item
+	onMount(() => {
+		// Center first item on page load
+		centerActiveElement();
 
-    //     if (particleNum) {
-    //         const index = topgroups.indexOf(currAnimal); // Find index of selected animal
-    //         if (index >= 0 && carousel) {
-    //             const page = Math.floor(index / particleNum); // Determine which page to show
-    //             carousel.goTo(page, { animated: true }); // Move to the correct page
-    //         }
-    //     }
-    // }
+		// Add drag/swipe event listeners
+		nav.addEventListener("mousedown", handleMouseDown);
+		nav.addEventListener("mouseleave", handleMouseLeave);
+		nav.addEventListener("mouseup", handleMouseUp);
+		nav.addEventListener("mousemove", handleMouseMove);
 
-    $: updateParticles(w);
-    // $: updateNavPos(currAnimal, particleNum);
+		// Mobile Touch Support
+		nav.addEventListener("touchstart", handleTouchStart);
+		nav.addEventListener("touchmove", handleTouchMove);
+	});
 
-    onMount(async () => {
-        const module = await import('svelte-carousel');
-        Carousel = module.default;
-    });
+    $: centerActiveElement($navAnimal);
 
-    function handleItemClick(e) {
-        // currAnimal = e.target.id.split("-")[0];
-        // const item = e.target.parentNode.parentNode;
-        // const itemClass = item.className;
-        // if (itemClass.includes("navBlock")) {
-        //     const itemID = e.target.parentNode.parentNode.id;
-        //     const next = itemID.split("_")[1]
-        //     const navBlocks = d3.selectAll(".navBlock").classed("isActive", false);
-        //     const dupeBlocks = d3.selectAll(`#${itemID}`).classed("isActive", true);
-        //     item.classList.add("isActive");
-        // }
-
-        // const targetElement = document.querySelector(`#animal-card-${currAnimal}`);
-        // if (targetElement) {
-        //     const offset = 140;
-        //     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
-
-        //     window.scrollTo({ top: targetPosition, behavior: "smooth" });
-        // }
+    function handleClick(animal, i) {
+        navAnimal.set(animal);
+        currAnimalSlide.set(i);
     }
-</script>
+ </script>
 
-
-<svelte:window bind:innerWidth={w}/>
-{#key particleNum}
-    <nav on:click={handleItemClick}>
-        <svelte:component 
-            this={Carousel}
-            bind:this={carousel}
-            particlesToShow={16}
-            particlesToScroll={1}
-            arrows={false}
-            swiping={true}
-            initialPageIndex={1}
-            dots={false}>
-            {#each topgroups as animal, i}
-                {#if animal !== "none" && animal !== "human"}
-                    <div class="navBlock" 
-                        class:isActive={animal == topgroups[$currAnimalSlide]} 
-                        id="nav_{animal.replace(/[^a-zA-Z0-9]/g, "")}"
-                    >
-                        <div class="img-wrapper">
-                            <img src="assets/images/icons/{animal.replace(/[^a-zA-Z0-9]/g, "")}.png"
-                            alt="{animal} icon"
-                            id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
-                            class="navIcon">
-                        </div>
-                        <p>{animal}</p>
-                    </div>
-                {/if}
-            {/each}
-        </svelte:component>
-    </nav>
-{/key}
+<nav bind:this={nav} id="animal-nav">
+    {#each topgroups as animal, i}
+        <div class="animal-group"
+            class:isActive={animal == topgroups[$currAnimalSlide]}
+            on:click={() => handleClick(animal, i)}
+            >
+            <div class="img-wrapper">
+                <img src="assets/images/icons/{animal.replace(/[^a-zA-Z0-9]/g, "")}.png"
+                alt="{animal} icon"
+                id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
+                class="navIcon">
+            </div>
+            <p>{animal}</p>
+        </div>
+    {/each}
+</nav>
 
 <style>
     nav {
+        width: 100%;
+        overflow-x: hidden;
         position: sticky;
         top: 0;
         display: flex;
@@ -112,10 +136,13 @@
         border-bottom: 1px solid var(--wine-dark-gray);
     }
 
-    .navBlock {
+    .animal-group {
+        min-width: 140px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        display: flex;
         opacity: 0.5;
         transform: scale(1);
 		transition: all 300ms;
@@ -123,6 +150,12 @@
         cursor: pointer;
         margin: 0 1rem;
         padding: 2rem 0 1rem 0;
+    }
+
+    .animal-group:hover {
+        opacity: 1;
+        transform: scale(1.2);
+        transition: all 300ms;
     }
 
     .img-wrapper {
@@ -133,6 +166,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        pointer-events: none;
     }
 
     .navIcon {
@@ -140,6 +174,7 @@
         aspect-ratio: 1 / 1;
         margin: 0 auto;
         user-select: none;
+        pointer-events: none;
         -webkit-user-drag: none;
         user-select: none;
         -moz-user-select: none;
@@ -147,7 +182,7 @@
         -ms-user-select: none;
     }
 
-    .navBlock p {
+    p {
 		font-family: var(--sans);
 		text-align: center;
 		width: 80%;
@@ -156,6 +191,7 @@
         margin: 0.5rem auto 1rem auto;
         line-height: 1.25;
         user-select: none;
+        pointer-events: none;
         -webkit-user-drag: none;
         user-select: none;
         -moz-user-select: none;
@@ -170,11 +206,5 @@
         opacity: 1 !important;
         transform: scale(1.2) !important;
         transition: all 300ms;
-    }
-
-    @media (hover: hover) {
-        .navBlock:hover {
-            transform: scale(1);
-        }
     }
 </style>

@@ -1,41 +1,28 @@
 <script>
-    import { onMount } from "svelte";
-    import { tick } from "svelte";
-    import { fly, fade } from 'svelte/transition';
-    import { LayerCake, Svg, Html } from 'layercake';
+    import { fade } from 'svelte/transition';
+    import { LayerCake, Svg } from 'layercake';
     import ScrollScatterSvg from "$components/layercake/ScrollScatter.svg.svelte";
     import medianData from "$data/wineData_median.csv"
     import AxisX from "$components/layercake/AxisX.svg.svelte";
     import AxisY from "$components/layercake/AxisY.svg.svelte";
     import Voronoi from "$components/layercake/ScrollVoronoi.svelte";
-    import * as d3 from "d3";
     import { tweened } from 'svelte/motion';
     import { cubicIn } from 'svelte/easing';
     import { bigScatterData } from "$stores/misc.js";
-    import rawData from "$data/wineData.csv";
     import Range from "$components/helpers/Range.svelte";
 
     export let chartScrollIndex;
 
     const yKey = 'price';
     const xKey = 'rating';
-    const xKeyReg = d => +d.price;
-    const yKeyReg = d => +d.rating;
-
-    let catSteals = [];
 
     medianData.forEach(d => {
         d[xKey] = +d[xKey];
         d[yKey] = +d[yKey];
     });
 
-    const r = 30;
-    const padding = 10;
-    const color = '#CFCABF';
-
     let xDomain = tweened([3.7, 4.2], { duration: 2000, easing: cubicIn });
     let yDomain = tweened([20, 35], { duration: 2000, easing: cubicIn });
-    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
     async function updateDomains(chartScrollIndex) {
         if (chartScrollIndex <= 3 || chartScrollIndex == undefined) {
@@ -49,8 +36,6 @@
 
     $: updateDomains(chartScrollIndex);
 
-    // $:console.log(chartScrollIndex);
-
     let windowW;
     let rangeW;
     let rangeH;
@@ -60,7 +45,7 @@
 
 <section id="scatter">
     <div class="chart-container" id="scatterplot">
-        {#if chartScrollIndex >= 13 || chartScrollIndex == "exit"}
+        {#if chartScrollIndex >= 14 || chartScrollIndex == "exit"}
             <div class="range-wrapper" bind:offsetWidth={rangeW} bind:offsetHeight={rangeH}>
                 {#if rangeW && rangeH}
                     <Range min={3} max={4.8} step={0.1} metric={"rating"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 90} />

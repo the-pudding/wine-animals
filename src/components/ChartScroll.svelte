@@ -9,7 +9,6 @@
     const copy = getContext("copy");
     
     let chartScrollIndex;
-    let activeSection;
     let innerHeight;
     let innerWidth;
 
@@ -17,20 +16,6 @@
         let string = rating + "";
         let ratingReplaced = string.replace(".", "_");
         return `star${ratingReplaced}_tan.svg`
-    }
-
-    $: {
-        if (chartScrollIndex === undefined || chartScrollIndex < 14) {
-            activeSection = "cat";
-        } else if (chartScrollIndex < 20) {
-            activeSection = "expensive";
-        } else if (chartScrollIndex < 22) {
-            activeSection = "bird";
-        } else if (chartScrollIndex < 23) {
-            activeSection = "top";
-        } else {
-            activeSection = "explore";
-        }
     }
 
     $: selectedWine = $animalSelected == "cat" ? "161008470"
@@ -42,8 +27,6 @@
 
     // $: console.log(chartScrollIndex)
 </script>
-
-<svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
 
 <section id="chart-scroll">
     <div class="sticky">
