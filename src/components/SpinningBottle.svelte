@@ -167,31 +167,31 @@
     }
 
     .product-farleft .wine {
-        background: url("/assets/images/spins/lionspin.png");
+        background: url("/assets/images/spins/lionspin.webp");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-centerleft .wine {
-        background: url("/assets/images/spins/birdspin.png");
+        background: url("/assets/images/spins/birdspin.webp");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-centerright .wine {
-        background: url("/assets/images/spins/pigspin.png");
+        background: url("/assets/images/spins/pigspin.webp");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-farright .wine {
-        background: url("/assets/images/spins/frogspin.png");
+        background: url("/assets/images/spins/frogspin.webp");
         background-position: 0 0;
         background-size: auto 100%;
     }
 
     .product-center-lone .wine {
-        background: url("/assets/images/spins/fishtailspin.png");
+        background: url("/assets/images/spins/fishtailspin.webp");
         background-position: 0 0;
         background-size: auto 100%;
     }

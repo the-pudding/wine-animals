@@ -56,7 +56,7 @@
                     {/each}
                     {#if i == 5}  
                         <div class="selected-bottle-display">
-                            <img src="./assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
+                            <img class="bottle-img" src="./assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
                             <div class="deets">
                                 <p class="wine-name"><span class="bold">{selectedBottleData[0].name}</span></p>
                                 <p class="winery-name">{selectedBottleData[0].winery}</p>
@@ -193,9 +193,9 @@
         flex-direction: row;
     }
 
-    .selected-bottle-display img {
+    .bottle-img {
         width: 140px;
-        aspect-ratio: auto;
+        aspect-ratio: 1 / 1.325;
     }
 
     .selected-bottle-display .deets {
@@ -230,7 +230,7 @@
         display: inline-block;
     }
 
-	.selected-bottle-display .deets .rating .stars img {
+	.stars img {
         width: auto;
 		height: 18px;
 		margin-top: -4px;
