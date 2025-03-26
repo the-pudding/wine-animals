@@ -3,7 +3,7 @@
 	import { getContext, onMount, onDestroy } from "svelte";
 
 	// STORES
-	import { currAnimalSlide, tooltipType, activeSection } from "$stores/misc.js";
+	import { currAnimalSlide, tooltipType, activeSection, lockedSelection } from "$stores/misc.js";
 	
 	// COMPONENTS
 	import inView from "$actions/inView.js";
@@ -73,7 +73,8 @@
             .style("fill", "#38425D")
             .attr("r", 4);
 		
-		tooltipType.set(undefined);
+		// tooltipType.set(undefined);
+		lockedSelection.set(false)
 	}
 
 	// LIFECYCLE FUNCTIONS
@@ -100,6 +101,7 @@
 <ChartScroll />
 <div 
 	class="cards"
+	id="animal-cards"
 	use:inView
 	on:enter={() => handleEnter("enter")}
 	on:exit={() => handleEnter("exit")}
@@ -111,7 +113,7 @@
 	</div>
 	<AnimalCardNav />
 	{#if tapVisible}
-		<Tap showArrows={true} on:tap={e => handleTap(e.detail)}/>
+		<Tap showArrows={true} enableKeyboard={true} on:tap={e => handleTap(e.detail)}/>
 	{/if}
 	<Slider bind:this={sliderEl}>
 		{#each topgroups as animal, i}
@@ -287,12 +289,14 @@
 	.prose p:last-of-type {
 		font-family: var(--sans);
 		font-weight: 700;
+		color: var(--wine-gold);
+		font-size: var(--16px);
 	}
 
 	:global(.l-r-arrows) {
 		position: relative;
 		display: inline-block;
-		margin-left: 3rem;
+		margin-left: 2.9rem;
 	}
 
 	:global(.l-r-arrows::before) {
@@ -301,8 +305,8 @@
 		width: 2.5rem;
 		height: 1.25rem;
 		left: -2.75rem;
-		top: 0.25rem;
+		top: 0.125rem;
 		background-image: url("/assets/images/left-right-arrows.png");
-		background-size: cover;
+		background-size: 98% 98%;
 	}
 </style>

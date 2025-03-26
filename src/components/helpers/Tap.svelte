@@ -77,7 +77,7 @@
 	button {
 		position: absolute;
 		cursor: pointer;
-		background: var(--wine-tan);
+		background: var(--wine-gold);
 		border-radius: 0;
 		outline: none;
 		border: none;
@@ -97,7 +97,7 @@
 		content: "";
 		width: 100%;
 		height: 100%;
-		background: var(--wine-tan);
+		background: var(--wine-gold);
 		border-radius: 50%;
 		position: absolute;
 		right: -50%;
@@ -108,7 +108,7 @@
 		content: "";
 		width: 100%;
 		height: 100%;
-		background: var(--wine-tan);
+		background: var(--wine-gold);
 		border-radius: 50%;
 		position: absolute;
 		left: -50%;
@@ -121,11 +121,11 @@
 	}
 
 	button:not([disabled]):hover { 
-		background-color: var(--wine-dark-tan);
+		background-color: var(--wine-dark-gold);
 	}
 
 	button:not([disabled]):hover::before { 
-		background-color: var(--wine-dark-tan);
+		background-color: var(--wine-dark-gold);
 	}
 
 	.left {

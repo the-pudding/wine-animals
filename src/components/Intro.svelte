@@ -12,6 +12,7 @@
     import IntroSummaryBottles from "$components/Intro.SummaryBottles.svelte";
     import IntroHeadline from "$components/Intro.Headline.svelte";
     import Icon from "$components/helpers/Icon.svelte";
+    import tapSVG from "$svg/touch.svg"
 
     // VARIABLES
     const copy = getContext("copy");
@@ -113,7 +114,11 @@
                         {:else}
                             {@html step.value}
                                 {#if i == 0}
-                                    <span on:click={handleRandomClick} class="instructions">{copy.opening[0].instructions}</span>
+                                    <p class="instructions">
+                                        <span class="tap-icon">{@html tapSVG}</span>
+                                        Tap on a bottle or
+                                        <span class="random-click" on:click={handleRandomClick}>get a random bottle</span>
+                                    </p>
                                 {/if}
                         {/if}
                     </p>
@@ -206,7 +211,7 @@
     .scroll-hint {
         width: 3rem;
         height: 3rem;
-        background: var(--wine-dark-tan);
+        background: var(--wine-gold);
         position: absolute;
         bottom: -1.5rem;
         left: 50%;
@@ -223,12 +228,51 @@
     }
 
     :global(.instructions) {
-        display: block;
         font-family: var(--sans);
-        font-size: var(--16px);
-        text-decoration: underline;
+        color: var(--wine-gold) !important;
+        font-size: var(--16px) !important;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+    }
+
+    :global(a.methods-link) {
+        color: var(--wine-gold) !important;
+    }
+
+    :global(a.methods-link:hover) {
+        color: var(--wine-dark-gold) !important;
+    }
+
+    .instructions span {
+        color: var(--wine-gold);
+    }
+
+    .tap-icon {
+        display: inline-block;
+        position: relative;
+        top: 0.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    :global(.tap-icon svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    :global(.tap-icon svg path) {
+        fill: var(--wine-gold);
+        stroke-width: 3px;
+    }
+
+    .random-click {
         cursor: pointer;
-        margin-top: 1rem;
+        text-decoration: underline;
+    }
+
+    .random-click:hover {
+        color: var(--wine-dark-gold);
     }
 
     :global(.prompt) {

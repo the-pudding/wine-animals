@@ -6,7 +6,7 @@
         activeSection.set(section);
     }
 
-    $:console.log($activeSection);
+    // $:console.log($activeSection);
  </script>
 
 <nav id="section-nav">

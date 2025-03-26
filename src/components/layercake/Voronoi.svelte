@@ -1,9 +1,8 @@
 <script>
-	import { getContext, createEventDispatcher } from 'svelte';
+	import { getContext } from 'svelte';
 	import { uniques } from 'layercake';
 	import * as d3 from "d3";
-	import { tooltipType } from "$stores/misc.js";
-	import chevronRight from "$svg/chevron-right.svg";
+	import { tooltipType, lockedSelection } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
@@ -15,9 +14,9 @@
 
 		tooltipType.set("bottle")
 
-		d3.selectAll(".card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
+		d3.selectAll("#animal-cards .card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
 
-		d3.selectAll(`#card-wine-circle-${point.data.id}, #circle-${point.data.id}`)
+		d3.selectAll(`#animal-cards #card-wine-circle-${point.data.id}, #animal-cards #circle-${point.data.id}`)
 			.transition()
             .duration(500)
 			.style("opacity", 1)
@@ -31,7 +30,7 @@
 	}
 
 	function mouseleaveCircle(point) {
-		d3.selectAll(".card-wine-circle circle, .circle-explore")
+		d3.selectAll("#animal-cards .card-wine-circle circle, #animal-cards .circle-explore")
 			.transition()
 			.duration(500)
 			.style("opacity", 0.8)
@@ -82,14 +81,18 @@
 		class={"voronoi-cell active"}
 	  d={voronoi.renderCell(i)}
 	  on:mouseover={() => {
-		mouseoverCircle(point);
+		if (!$lockedSelection) mouseoverCircle(point);
 	  }}
 	  on:mouseleave={() => {
-		mouseleaveCircle(point);
+		if (!$lockedSelection) mouseleaveCircle(point);
 	  }}
 	  on:focus={() => {
-		mouseoverCircle(point);
+		if (!$lockedSelection) mouseoverCircle(point);
 	  }}
+	  on:click={() => {
+		lockedSelection.set(true);
+		mouseoverCircle(point);
+	}}
 	  role="tooltip"
 	></path>
   {/each}

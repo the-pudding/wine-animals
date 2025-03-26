@@ -1,9 +1,7 @@
 <script>
 	import { getContext, onMount } from "svelte";
 	import * as d3 from "d3";
-	import * as d3Regression from 'd3-regression';
 	import rawData from "$data/wineData.csv"
-	import { bottleSelected, animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
@@ -15,13 +13,8 @@
 
 	$: regressionLine = $data[1];
 
-	const priceMed = d3.median(rawData, d => d.price);
-	const ratingMed = d3.median(rawData, d => d.rating);
-
 	let path;
 	let mounted = false;
-	let randomCountNode;
-	let randomSteepnessNode;
 
 	onMount(() => {
 		mounted = true;
@@ -31,25 +24,6 @@
 		.x(d => $xScale(d[0]))
 		.y(d => $yScale(d[1]))
 		(regressionLine);
-
-	const maxLength = 99;
-    const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
-
-	// function generateRandomComparison(data) {
-    //     let filteredData = data.filter(d => 
-	// 		!d.topgroup.includes($topgroupSelect) && 
-	// 		d.topgroup !== "none" && 
-	// 		d.topgroup !== "human" && 
-	// 		d.price <= 150
-	// 	);
-	// 	let animalData = data.filter(d => 
-	// 		d.topgroup.includes($topgroupSelect) && d.price <= 150
-	// 	)
-    //     let shuffled = [...filteredData].sort(() => 0.5 - Math.random());
-    //     let randomData = shuffled.slice(0,animalData.length);
-
-    //     return randomData
-    // }
 </script>
 
 <g class="median-markings">
@@ -77,26 +51,6 @@
         />
     {/each}
 </g>
-<!-- {#if addRandom == true}
-	{#each generations as generation, i}
-		{@const randomData = generateRandomComparison(rawData)}
-		{@const points = randomData.map(d => ({
-			x: +d.rating,  // Convert price to a number
-			y: +d.price  // Convert rating to a number
-		}))}
-		{@const trendLine = regression(points)}
-		{@const steepness = calcSteepness(trendLine, randomData)}
-		{@const pathLocal = d3.line()
-			.x(d => $xScale(d[0]))
-			.y(d => $yScale(d[1]))
-			(trendLine)}
-		<g class="lines">
-			{#if pathLocal}
-				<path class="expRegression fade" d={pathLocal} />
-			{/if}
-		</g>
-	{/each}
-{/if} -->
 
 <g class="median-markings">
 	{#if path}

@@ -207,7 +207,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        pointer-events: none;
         gap: 6rem;
         padding: 2rem;
         margin-top: 10svh;
@@ -354,7 +353,7 @@
     .median-circle {
         width: 1.5rem;
         height: 1.5rem;
-        background: var(--wine-tan);
+        background: var(--wine-red);
         border: 2px solid var(--wine-black);
         border-radius: 50%;
     }

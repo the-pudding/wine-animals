@@ -95,7 +95,7 @@
 		width: 60px;
 		left: 0;
         transform: translateX(-50%);
-		color: var(--wine-tan);
+		color: var(--wine-gold);
 		border-radius: 4px;
 		font-size: var(--18px);
 		font-family: var(--sans);

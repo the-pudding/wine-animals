@@ -99,7 +99,7 @@
 
                 $searchedWineSTORE.forEach(wine => {
                     const foundWine = filteredRawData.find(d => d.id === wine.value);
-                    console.log({foundWine})
+                    // console.log({foundWine})
                     if (foundWine) {
                         d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
                             .classed("selected-wine", true)
@@ -150,14 +150,12 @@
     $: updateSearchedWine($searchedWineSTORE);
 
     function findSteals(data) {
-        console.log({data})
         let steals = data.filter(d => d.price <= totalMedianPrice && d.rating >= totalMedianRating);
-        console.log({steals})
         return steals
     }
 
     $: belowPriceAboveRating = findSteals($bigScatterData);
-    $: console.log({belowPriceAboveRating})
+    // $: console.log({belowPriceAboveRating})
 </script>
 
 
@@ -235,7 +233,11 @@
                 </div>
             </div>
         </div>
-        <p>There are <span class="bold">{belowPriceAboveRating.length} good deal wines</span> with your current selections</p>
+        {#if belowPriceAboveRating.length !== 1}
+            <p>There are <span class="bold">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
+        {:else}
+        <p>There is <span class="bold">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
+        {/if}
     </div>
 </div>
 

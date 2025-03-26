@@ -69,8 +69,6 @@
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
-        console.log($animalSelected)
-
         const products = document.querySelectorAll("#intro .product");
         products.forEach((product) => {
         const prodAnimal = product.getAttribute("data-animal");

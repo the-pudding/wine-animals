@@ -49,7 +49,7 @@
 
     $: updateDomains(chartScrollIndex);
 
-    $:console.log(chartScrollIndex);
+    // $:console.log(chartScrollIndex);
 
     let windowW;
     let rangeW;

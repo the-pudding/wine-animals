@@ -30,6 +30,7 @@ export const currAnimalSlide = writable(0);
 
 // UNIVERSAL TOOLTIP
 export const tooltipType = writable(null);
+export const lockedSelection = writable(false);
 
 // SECTION
 export const activeSection = writable("Finding the Deals");

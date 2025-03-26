@@ -431,19 +431,40 @@
         font-weight: 700;
         font-family: var(--sans);
         position: relative;
-        padding-left: 2.5rem;
+        padding-left: 2rem;
+        color: var(--wine-gold);
+        font-size: var(--16px);
+        line-height: 1;
     }
 
     :global(.slider-span::before) {
         content: '';
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         position: absolute;
         left: 0;
-        top: -4px;
+        top: -2px;
         background: url("/assets/images/range-vert.png");
-        background-size: 2rem 2rem;
+        background-size: 1.5rem 1.5rem;
         background-repeat: no-repeat;
+    }
+
+    .tap-icon {
+        display: inline-block;
+        position: relative;
+        top: 0.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    :global(.tap-icon svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    :global(.tap-icon svg path) {
+        fill: var(--wine-gold);
+        stroke-width: 3px;
     }
 
     @media(max-width: 1400px) {
