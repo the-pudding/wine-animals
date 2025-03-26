@@ -230,10 +230,6 @@
             gap: 1rem;
         }
 
-        .median-wrapper {
-            flex-wrap: nowrap;
-        }
-
         .median {
             width: 25%;
         }

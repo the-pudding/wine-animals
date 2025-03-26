@@ -7,9 +7,6 @@
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
-	export let stroke = undefined;
-	export let chartScrollIndex;
-  
 	function mouseoverCircle(point) {
 		// console.log(point)
 

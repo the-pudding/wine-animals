@@ -260,16 +260,16 @@
             </div>
             <div class="range-wrapper">
                 <div class="filter">
-                    <label>Price</label>
-                    <DoubleRange start={3} end={150} min={3} max={150} valType={"price"}/>
+                    <label for="price-range">Price</label>
+                    <DoubleRange id="price-range" start={3} end={150} min={3} max={150} valType={"price"}/>
                 </div>
                 <div class="filter">
-                    <label>Rating</label>
-                    <DoubleRange start={2.5} end={5} min={2.5} max={5} valType={"rating"}/>
+                    <label for="rating-range">Rating</label>
+                    <DoubleRange id="rating-range" start={2.5} end={5} min={2.5} max={5} valType={"rating"}/>
                 </div>
                 <div class="filter">
-                    <label>Year</label>
-                    <DoubleRange start={1850} end={2023} min={1850} max={2023} valType={"years"}/>
+                    <label for="year-range">Year</label>
+                    <DoubleRange id="rating-range" start={1850} end={2023} min={1850} max={2023} valType={"years"}/>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@
 	export let min = 0;
 	export let max = 1;
     export let valType;
+	export let id;
 	let leftHandle;
 	let rightHandle;
 	let body;
@@ -168,7 +169,7 @@
 	}, 50);
 </script>
 
-<div class="double-range-container">
+<div class="double-range-container" id="{id}">
 	<div class="slider" bind:this={slider}>
 		<div
 			class="body"

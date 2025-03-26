@@ -12,34 +12,34 @@
        },
        {
            img: "151590018",
-           text: "There is an image of a <span class='correct-prompt'>bird</span> on this wine label, identified as a 'Gruccione' (<span class='correct-prompt'>European Bee-eater</span>, scientific name: Merops apiaster)."
+           text: "There is an image of a <span class='correct-prompt'>bird</span> on this wine label, identified as a 'Gruccione' (<span class='correct-prompt'>European Bee-eater</span>..."
        },
        {
            img: "155725899",
-           text: "The image on the wine label appears to depict a stylized <span class='correct-prompt'>peacock</span>, which is an animal."
+           text: "The image on the wine label appears to depict a stylized <span class='correct-prompt'>peacock</span>..."
        },
        {
            img: "168501049",
-           text: "The image shows a wine label. There is an illustration of a <span class='correct-prompt'>bird</span> in flight at the top of the label, which is an animal."
+           text: "...There is an illustration of a <span class='correct-prompt'>bird</span> in flight at the top of the label..."
        }
    ];
 
    const wrongData = [
        {
            img: "163091436",
-           text: "There are <span class='wrong-prompt'>no animals or humans</span> on this wine label. The image prominently features a <span class='wrong-prompt'>hot air balloon</span> with the text 'Balance BEST BLEND Chenin Blanc Colombard south africa.'"
+           text: "There are <span class='wrong-prompt'>no animals or humans</span> on this wine label. The image prominently features a <span class='wrong-prompt'>hot air balloon</span>...'"
        },
        {
            img: "150722226",
-           text: "The image is a wine label that reads 'Terrasse du Diable' and 'Les Pallières Gigondas.' To the left side of the label, there are illustrations that resemble <span class='wrong-prompt'>demonic or mythical creatures</span> which are <span class='wrong-prompt'>neither real animals nor humans</span>."
+           text: "...there are illustrations that resemble <span class='wrong-prompt'>demonic or mythical creatures</span> which are <span class='wrong-prompt'>neither real animals nor humans</span>."
        },
        {
            img: "176113705",
-           text: "The image depicts two animated characters on a wine label. One appears to be a stylized, humanoid version of a <span class='wrong-prompt'>mythical creature often known as a 'chupacabra,'</span> and the other is an <span class='wrong-prompt'>anthropomorphic goat</span>. Both characters are portrayed in a cartoonish style, and there are <span class='wrong-prompt'>no real animals or humans</span> present on the label."
+           text: "...appears to be a stylized, humanoid version of a <span class='wrong-prompt'>mythical creature often known as a 'chupacabra,'</span> and the other is an <span class='wrong-prompt'>anthropomorphic goat</span>... there are <span class='wrong-prompt'>no real animals or humans</span> present..."
        },
        {
            img: "167324613",
-           text: "This appears to be an image of a wine label that reads 'Spook Light - Skin Fermented - Pinot Gris' from 'Hawke's Bay'. The label features some illustrations that resemble <span class='wrong-prompt'>insects</span> around the edges, such as moths or butterflies. I <span class='wrong-prompt'>do not see any animals or humans</span> on this label."
+           text: "...The label features some illustrations that resemble <span class='wrong-prompt'>insects</span> around the edges, such as moths or butterflies. I <span class='wrong-prompt'>do not see any animals or humans</span> on this label."
        }
    ];
 </script>

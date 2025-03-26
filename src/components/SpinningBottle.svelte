@@ -107,7 +107,7 @@
 </script>
 
 
-<div class="product product-{wineData.bottleSlot}" 
+<button class="product product-{wineData.bottleSlot}" 
     data-animal={wineData.animal}
     style="--transition-delay: {transitionDelay}ms;
         width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).width}px;
@@ -123,11 +123,14 @@
         on:mousemove={mousemoveBottle}
         on:mouseleave={mouseleaveBottle}>
     </div>
-</div>
+</button>
 
 
 
 <style>
+    button {
+        background: transparent;
+    }
     .range-wrapper {
         position: absolute;
         width: 100%;

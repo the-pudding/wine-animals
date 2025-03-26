@@ -247,66 +247,6 @@
         opacity: 0.5;
     }
 
-    .section-buttons {
-        position: absolute;
-        top: 50%;
-        right: 1rem;
-        transform: translate(0, -50%);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        z-index: 1000;
-    }
-
-    .section-buttons button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: var(--wine-tan);
-        transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-        transform: scale(1);
-        opacity: 0.25;
-        position: relative;
-    }
-
-    .section-buttons button:hover {
-        transform: scale(1.125);
-        opacity: 1;
-    }
-
-    .section-buttons:has(button:hover) button:not(:hover):not(.active) {
-        opacity: 0.25;
-        transform: scale(1);
-    }
-
-    button.active {
-        opacity: 1;
-        transform: scale(1.125); 
-    }
-
-    button span {
-        position: absolute;
-        top: 50%;
-        left: -88px;
-        transform: translate(0, -50%);
-        color: var(--wine-tan);
-        font-weight: 700;
-        opacity: 0;
-        text-align: right;
-        width: 80px;
-        transition: opacity 0.25s ease-in-out;
-        text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
-    }
-
-    .section-buttons button:hover span {
-        opacity: 1;
-    }
-
-    :global(button svg) {
-        width: 100%;
-        height: 100%;
-    }
-
     :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span, .selected-bottle-circle-span) {
         position: relative;
         font-weight: 700;
@@ -377,41 +317,8 @@
         font-family: var(--sans);
     }
 
-    .steal-bar-wrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .steal-bar {
-        width: 100%;
-        height: 1rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .steal-bar p {
-        margin: 0;
-        padding: 0;
-        font-family: var(--sans);
-        font-size: var(--14px);
-        text-transform: capitalize;
-    }
-
-    .steal-bar p.animal {
-        width: 6rem;
-        text-align: right;
-    }
-
     .highlight {
         color: var(--wine-gold);
-    }
-
-    .bar {
-        height: 100%;
-        background: var(--wine-red);
     }
 
     :global(.slider-span) {
@@ -434,24 +341,6 @@
         background: url("/assets/images/range-vert.png");
         background-size: 1.5rem 1.5rem;
         background-repeat: no-repeat;
-    }
-
-    .tap-icon {
-        display: inline-block;
-        position: relative;
-        top: 0.5rem;
-        width: 1.75rem;
-        height: 1.75rem;
-    }
-
-    :global(.tap-icon svg) {
-        width: 100%;
-        height: 100%;
-    }
-
-    :global(.tap-icon svg path) {
-        fill: var(--wine-gold);
-        stroke-width: 3px;
     }
 
     @media(max-width: 1400px) {

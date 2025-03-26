@@ -1,14 +1,10 @@
 <script>
 	import { onMount, createEventDispatcher } from "svelte";
-	import { range, format } from "d3";
-	import { fade } from 'svelte/transition';
-	import Icon from "$components/helpers/Icon.svelte";
 	import { stealPriceNum, stealRatingNum } from "$stores/misc.js";
 	import { get } from "svelte/store";
 	export let min = 0;
 	export let max = 700;
 	export let step = 1;
-	export let showTicks = false;
 	export let label = "";
 	export let metric;
 	export let rangeW;
@@ -127,10 +123,6 @@
 		margin-bottom: calc(var(--thumb-width) * 2);
 	}
 
-	.range.skipped input[type="range"]::-webkit-slider-thumb, .range.skipped .thumb-label  {
-		opacity: 0;
-	}
-
 	input[type="range"] {
 		display: block;
 		width: 100%;
@@ -242,42 +234,6 @@
 	input[type="range"]:focus::-ms-fill-upper {
 		background: var(--wine-med-gray);
 	} */
-
-	.ticks {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		padding: 0 calc(var(--thumb-width) / 2);
-		margin: 0;
-		user-select: none;
-		position: absolute;
-		left: 0;
-		bottom: -0.25rem;
-		transform: translate(0, 100%);
-	}
-
-	.tick {
-		display: flex;
-		justify-content: center;
-		font-size: var(--tick-font-size);
-		line-height: 1;
-		text-align: center;
-		width: 1px;
-		background: transparent;
-		color: var(--wine-tan);
-		padding-top: calc(var(--thumb-width) / 2);
-		position: relative;
-		font-family: var(--sans);
-		font-size: var(--14px);
-	}
-
-	.tick:first-of-type {
-		transform: translate(-5px, 0);
-	}
-
-	.tick:last-of-type {
-		transform: translate(-3px, 0);
-	}
 
 	@media(max-width: 700px) {
 		#range-price {

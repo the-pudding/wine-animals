@@ -104,7 +104,7 @@
 
 <nav bind:this={nav} id="animal-nav">
     {#each topgroups as animal, i}
-        <div class="animal-group"
+        <button class="animal-group"
             class:isActive={animal == topgroups[$currAnimalSlide]}
             on:click={() => handleClick(animal, i)}
             >
@@ -115,7 +115,7 @@
                 class="navIcon">
             </div>
             <p>{animal}</p>
-        </div>
+        </button>
     {/each}
 </nav>
 
@@ -150,6 +150,10 @@
         cursor: pointer;
         margin: 0 1rem;
         padding: 2rem 0 1rem 0;
+    }
+    
+    button {
+        background: transparent;
     }
 
     .animal-group:hover {

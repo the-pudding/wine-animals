@@ -118,7 +118,7 @@
 	circle {
 		pointer-events: auto;
 	}
-	.regression, .expRegression {
+	.expRegression {
 		stroke-width: 2;
 		stroke: var(--wine-red);
 		fill: none;
@@ -127,10 +127,6 @@
 	.priceAVG, .ratingAVG {
 		stroke-width: 2;
         stroke: var(--wine-tan);
-	}
-	.fade {
-		opacity: 0.5;
-		stroke: #363B45;
 	}
 
 	.label {

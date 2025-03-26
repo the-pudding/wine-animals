@@ -7,10 +7,6 @@
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
 
 	export let r = 4;
-	export let fill = "#ccc";
-	export let stroke = "#000";
-	export let strokeWidth = 0;
-	export let addRandom = false;
 
 	$: regressionLine = $data[1];
 
@@ -67,7 +63,7 @@
 		opacity: 0.8;
 		pointer-events: auto;
 	}
-	.regression, .expRegression {
+	.expRegression {
 		stroke-width: 2;
 		stroke: var(--wine-red);
 		fill: none;

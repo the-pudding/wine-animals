@@ -381,12 +381,6 @@
         stroke-width: 2;
     }
 
-    g.compare-lines path {
-        stroke: var(--color-gray-600);
-        fill: none;
-        stroke-width: 1;
-    }
-
     .priceAVG, .ratingAVG {
         stroke-width: 2;
         stroke: var(--wine-tan);

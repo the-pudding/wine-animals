@@ -85,18 +85,7 @@
         height: 60svh;
         margin: 4rem auto;
     }
-    .report {
-        background: var(--color-gray-100);
-        width: 100%;
-        padding: 1rem;
-    }
-    .tooltip-details {
-        width: 300px;
-        height: 100%;
-        padding: 32px 0;
-        color: var(--color-white);
-        font-family: var(--sans);
-    }
+
     .chart-wrapper {
         width: 100%;
         height: 100%;
@@ -106,33 +95,10 @@
         position: relative;
         margin: 2rem auto;
     }
-    .chart-top {
-        max-width: 500px;
-    }
-    h3 {
-        font-family: var(--sans);
-        font-size: var(--14px);
-        font-weight: 700;
-        text-align: center;
-        margin: 0;
-    }
-
-    .tot-count {
-        font-family: var(--sans);
-        font-size: var(--14px);
-        text-align: center;
-        margin: 0 0;
-        font-size: 0.8rem;
-    }
 
     .chart-container {
         width: 100%;
         height: 100%;
         overflow: hidden;
-    }
-
-    .chart-top .chart-container {
-        height: 480px;
-        padding-right: 3px;
     }
 </style>
