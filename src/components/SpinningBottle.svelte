@@ -107,7 +107,7 @@
 </script>
 
 
-<button class="product product-{wineData.bottleSlot}" 
+<button aria-label="wine bottle" class="product product-{wineData.bottleSlot}" 
     data-animal={wineData.animal}
     style="--transition-delay: {transitionDelay}ms;
         width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).width}px;

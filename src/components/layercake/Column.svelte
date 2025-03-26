@@ -126,6 +126,7 @@ function handleMouseleave(e) {
 				role="tooltip"
 				class={d.bucket}
 				data-id={i}
+				aria-label="bar tooltip"
 				{x}
 				{y}
 				{width}
