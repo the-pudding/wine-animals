@@ -8,7 +8,6 @@
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
     export let animal;
-    export let animalData;
 
     const copy = getContext("copy");
 
@@ -80,7 +79,7 @@
         </div>
         <div class="rail" id="rail-right">
             <div class="scatter-wrapper">
-                <Scatter animal={animal} animalData={animalData} />
+                <Scatter animal={animal} />
             </div>
             <ScrollHisto animal={animal}/>
         </div>

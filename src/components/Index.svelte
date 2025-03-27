@@ -117,13 +117,9 @@
 	{/if}
 	<Slider bind:this={sliderEl}>
 		{#each topgroups as animal, i}
-			{@const animalDataLOCAL = allWineData.filter(d => 
-				d.topgroup.includes(animal) &&
-				d.price <= 150)
-			}
 			<Slide>
 				{#key animal}
-					<AnimalCard animal={animal} animalData={animalDataLOCAL} />
+					<AnimalCard animal={animal} />
 				{/key}
 			</Slide>
 		{/each}

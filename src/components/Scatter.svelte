@@ -4,7 +4,7 @@
 
     //LIBARIES
     import { LayerCake, Svg } from 'layercake';
-    import { select } from 'd3-selection';
+    import { select, selectAll } from 'd3-selection';
     import * as d3Regression from 'd3-regression';
     import refresh from "$svg/refresh-ccw.svg";
 
@@ -23,16 +23,23 @@
 
     // EXPORTS
     export let animal;
-    export let animalData;
 
     // VARIABLES
+    let subgroup;
+    let finalAnimal;
+
+    $: animalData = allWineData.filter(d => 
+            d.topgroup.includes(animal) &&
+            (!subgroup || d.subgroup.includes(subgroup)) &&
+            d.price <= 150);
+
     const yKey = 'price';
     const xKey = 'rating';
 
-    animalData.forEach(d => {
-        d[xKey] = +d[xKey];
-        d[yKey] = +d[yKey];
-    });
+    // animalData.forEach(d => {
+    //     d[xKey] = +d[xKey];
+    //     d[yKey] = +d[yKey];
+    // });
 
     // Regression Line
     const regression = d3Regression.regressionLog()
@@ -52,10 +59,11 @@
     let summaryBtns = [];
     let individListeners = [];
     let summaryListeners = [];
-    let subgroup;
     let clickedAnimal;
     let clickedCircle;
     let clickedData;
+    let container;
+    let parentCard;
 
     //HELPER FUNCTIONS
     function pluralize(animal){
@@ -92,75 +100,14 @@
     // INTERACTIVE FUNCTIONS
     // Summary Click
     function handleSummaryClick(event) {
+        console.log(event)
         let id = event.target.id.split("-")[0];
         if (id == "gamebird") { id = "game bird"}
 
+        // TO DO - refine supgroup / final animal
         subgroup = id == "human" ? "human rider" : id;
 
         clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
-
-        // console.log(clickedAnimal)
-
-        animalData = allWineData.filter(d => 
-                d.topgroup.includes(clickedAnimal) &&
-                d.subgroup.includes(id) &&
-                d.price <= 150);
-
-        points = animalData.map(d => ({
-            x: +d.rating,  // Convert price to a number
-            y: +d.price  // Convert rating to a number
-        }))
-
-        trendLine = regression(points);
-
-        // console.log(animalData)
-
-        // if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal == "marineinvertebrate") {     
-        //     if (id == "lobster") {
-        //         animalData = allWineData.filter(d => 
-        //             d.topgroup.includes(animal) &&
-        //             d.subgroup.includes("crustacean") &&
-        //             d.price <= 150);
-        //     } else {
-        //         animalData = allWineData.filter(d => 
-        //             d.topgroup.includes(animal) &&
-        //             d.finalAnimal.includes(id) &&
-        //             d.price <= 150);
-        //     }
-
-        //     points = animalData.map(d => ({
-        //         x: +d.rating,  // Convert price to a number
-        //         y: +d.price  // Convert rating to a number
-        //     }))
-
-        //     trendLine = regression(points);
-        // } else if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal !== "bug" && clickedAnimal !== "mythicalcreature" && clickedAnimal !== "marineinvertabrate") {
-        //     animalData = allWineData.filter(d => 
-        //         d.topgroup.includes(animal) &&
-        //         d.subgroup.includes(id) &&
-        //         d.price <= 150);
-
-        //     points = animalData.map(d => ({
-        //         x: +d.rating,  // Convert price to a number
-        //         y: +d.price  // Convert rating to a number
-        //     }))
-
-        //     trendLine = regression(points);
-        // } else {
-        //     console.log(animalData.length)
-        //     animalData = allWineData.filter(d => 
-        //         d.topgroup.includes(animal) &&
-        //         d.finalAnimal.includes(id) &&
-        //         d.price <= 150);
-        //     console.log(animalData.length)
-
-        //     points = animalData.map(d => ({
-        //         x: +d.rating,  // Convert price to a number
-        //         y: +d.price  // Convert rating to a number
-        //     }))
-
-        //     trendLine = regression(points);
-        // }
     }
 
     // Individual Click
@@ -214,39 +161,49 @@
 
     // ON MOUNT
     onMount(() => {
-        // Mess for buttons in text
-        const observer = new MutationObserver(() => {
+        parentCard = container.closest('.animal-card');
+
+        if (parentCard) {
+            const observer = new MutationObserver(() => {
+            // console.log('🐛 Observing inside parentCard');
+
             cleanupEventListeners();
 
-            individWineBtns = document.querySelectorAll(".individ-wine-btn");
-            individWineBtns.forEach(btn => {
-                const fn = event => handleIndividWineClick(event);
-                btn.addEventListener("click", fn);
-                individListeners.push({ btn, fn });
-            });
-
-            summaryBtns = document.querySelectorAll(".summary-btn");
+            summaryBtns = parentCard.querySelectorAll(".summary-btn");
             summaryBtns.forEach(btn => {
                 const fn = event => handleSummaryClick(event);
                 btn.addEventListener("click", fn);
                 summaryListeners.push({ btn, fn });
             });
-        });
 
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+            individWineBtns = parentCard.querySelectorAll(".individ-wine-btn");
+            individWineBtns.forEach(btn => {
+                const fn = event => handleIndividWineClick(event);
+                btn.addEventListener("click", fn);
+                individListeners.push({ btn, fn });
+            });
+            });
 
-        return () => {
-            observer.disconnect();
-            cleanupEventListeners();
-        };
+            observer.observe(parentCard, {
+                childList: true,
+                subtree: true
+            });
+
+            return () => {
+                observer.disconnect();
+                cleanupEventListeners();
+            };
+        }
     });
 
     // REACTIVE FUNCTIONS
     $: resetClick($navAnimal);
     $: if (!$lockedSelection && clickedCircle) {
+        selectAll(".card-wine-circle circle")
+            .transition(500)
+            .style("opacity", 0.8)
+            .attr("r", 5);
+
         clickedCircle
             .transition(500)
             .style("fill", function() {
@@ -257,7 +214,7 @@
 	}
 </script>
 
-<section id="scatter">
+<section id="scatter-{animal}" class="scatter" bind:this={container}>
     <div class="chart-wrapper">
         <h4>Individual wines</h4>
         <div class="deets">
@@ -302,7 +259,7 @@
 </section>
 
 <style>
-    #scatter {
+    .scatter {
         width: 100%;
         height: auto;
         display: flex;
