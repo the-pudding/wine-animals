@@ -11,6 +11,7 @@
     let currData;
     let currMetric;
     let innerWidth;
+    let animate;
 
     const animalSubgroups = [
         {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
@@ -76,7 +77,13 @@
         }
     }
 
-    $: animate = scrollIndex == 13 ? true : false;
+    $: if (scrollIndex === 13) {
+        setTimeout(() => {
+            animate = true;
+        }, 500);
+    } else {
+        animate = false;
+    }
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />

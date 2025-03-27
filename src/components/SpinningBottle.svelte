@@ -98,10 +98,10 @@
 
     $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
     $: transitionDelay = $bottleSelected == false 
-        ? (3 - 1 - bottleIndex) * 300 
+        ? (3 - 1 - bottleIndex) * 100 
         : bottleIndex == 4 
         ? 0  
-        : bottleIndex * 300;
+        : bottleIndex * 100;
     $: if (scrollIndex >= 2) { shouldSpin = [true,true,true,true]; } 
     $: if (outroVisible == false || outroVisible == undefined) { spin4 = true };
 </script>
@@ -152,7 +152,7 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
-        transition: left 1.5s ease-in var(--transition-delay), opacity 0.5s ease-in;
+        transition: left 2s ease-in var(--transition-delay), opacity 0.5s ease-in;
         pointer-events: auto;
         position: absolute;
         top: 0;
@@ -201,7 +201,7 @@
 
     /* Define spin class for animation */
     .spin {
-        animation: spin 0.6s steps(8) infinite;
+        animation: spin 1.125s steps(8) infinite;
         transition: background-position 0s; 
         pointer-events: none;
     }

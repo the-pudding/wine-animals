@@ -3,20 +3,39 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, lockedSelection } from "$stores/misc.js";
+	import { tooltipType, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
 
 	export let chartScrollIndex;
 
 	let pointsData;
+	let selectedPoint;
   
 	function mouseoverCircle(point) {
-		// console.log(point)
-	
 		tooltipType.set("bottle")
 
-		selectAll(".wine-circle circle").style("opacity", 0.3).style("fill", "#38425D");
+		selectAll(".wine-circle circle")
+			.style("opacity", 0.3)
+
+		selectAll(`#circle-${point.data.id}`)
+			.style("opacity", 1)
+			.style("fill", "#CFCABF")
+			.transition(500)
+			.attr("r", 10)
+			.each(function () {
+				this.parentNode.appendChild(this); // Append to the end of the parent
+			});
+
+		setTooltip(point.data)
+	}
+	
+	function mouseClickCircle(point) {
+		selectedPoint = point;
+		tooltipType.set("bottle")
+
+		selectAll(".wine-circle circle")
+			.style("opacity", 0.3)
 
 		selectAll(`#circle-${point.data.id}`)
 			.style("opacity", 1)
@@ -31,11 +50,18 @@
 	}
 
 	function mouseleaveCircle(point) {
+		console.log(point)
 		selectAll(".wine-circle circle")
 			.style("opacity", 0.8)
-			.style("fill", "#38425D")
+
+		selectAll(`#circle-${point.data.id}`)
+			.style("opacity", 0.8)
+			.style("fill", function() {
+				let fill =  (point.data.price <= $stealPriceNum && point.data.rating >= $stealRatingNum) ? "#3E5C4B" : "#475171";
+				return fill
+			})
 			.transition(500)
-			.attr("r", 4);
+			.attr("r", 5)
 	}
 
 	function formatStars(rating) {
@@ -87,8 +113,8 @@
 	$: uniquePoints = uniques(points, d => d.join(), false);
 	$: voronoi = Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
 
-	$: if (!$lockedSelection) {
-		mouseleaveCircle();
+	$: if (!$lockedSelection && selectedPoint) {
+		mouseleaveCircle(selectedPoint);
 	}
   </script>
   
@@ -113,7 +139,7 @@
 	  }}
 	  on:click={() => {
 		lockedSelection.set(true);
-		mouseoverCircle(point);
+		mouseClickCircle(point);
 	}}
 	  role="tooltip"
 	></path>

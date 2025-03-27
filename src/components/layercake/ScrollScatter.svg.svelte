@@ -18,7 +18,7 @@
 	];
 
 	export let r = $width/20;
-	export let fill = "#ccc";
+	export let fill = "#475171";
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
@@ -30,16 +30,16 @@
         : "161239002";
 
     // Trendline
-    const regression = d3Regression.regressionExp()
+    const regression = d3Regression.regressionLog()
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
 
     $: pointData = chartScrollIndex == 9
         ? $data[1].filter(d => d.topgroup.includes("amphibian/reptile"))
         : chartScrollIndex == 10
-        ? $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"))
-        : chartScrollIndex == 11
         ? $data[1].filter(d => d.topgroup.includes("pig"))
+        : chartScrollIndex == 11
+        ? $data[1].filter(d => d.topgroup.includes("cat") || !d.topgroup.includes("cattle"))
         : chartScrollIndex == 12
         ? $data[1].filter(d => d.topgroup.includes("bird"))
         : $data[1];
@@ -124,6 +124,8 @@
             randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
         });
     }
+
+    $: console.log(chartScrollIndex, $stealPriceNum, $stealRatingNum);
 </script>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
@@ -135,7 +137,7 @@
             width={$width - $xScale($stealRatingNum)}
             height={$height - $yScale($stealPriceNum)}
             fill="#363B45"
-            opacity=0.5
+            opacity=0.3
         />
     {/if}
 </g>
@@ -150,8 +152,8 @@
         <g class="wine-circle wine-circle-{animal}" 
             class:hidden={
                 (chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile")) ||
-                (chartScrollIndex == 10 && (!d.topgroup.includes("cat") || (d.topgroup.includes("cattle") && !d.topgroup.includes("cat")))) ||
-                (chartScrollIndex == 11 && !d.topgroup.includes("pig")) ||
+                (chartScrollIndex == 10 && !d.topgroup.includes("pig")) ||
+                (chartScrollIndex == 11 && (!d.topgroup.includes("cat") || (d.topgroup.includes("cattle") && !d.topgroup.includes("cat")))) ||
                 (chartScrollIndex == 12 && !d.topgroup.includes("bird"))
             }
         >
@@ -159,10 +161,14 @@
             id={`circle-${d.id}`}
             cx={cx} 
             cy={cy} 
-            r={4} 
-            fill={"#38425D"} 
+            r={5} 
+            fill={(
+                d.price <= $stealPriceNum 
+                && d.rating >= $stealRatingNum
+                && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
             stroke="none" 
             stroke-width={strokeWidth} 
+            opacity={0.8}
           />
         </g>
       {/if}
@@ -183,8 +189,9 @@
             class="selected-circle"
             cx={cx} 
             cy={cy} 
-            r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 4} 
-            fill={"#38425D"}  
+            r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 5} 
+            fill={"#475171"}  
+            opacity={0.8}
             stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 
           />
@@ -212,7 +219,7 @@
                             r={chartScrollIndex == undefined || chartScrollIndex == 0 || chartScrollIndex == 2 || chartScrollIndex == 3
                                 ? r 
                                 : chartScrollIndex == 1 ? 40
-                                : 4} 
+                                : 5} 
                             fill={"transparent"} 
                             stroke={"#7b0439"} 
                             stroke-width={strokeWidth} 
@@ -244,8 +251,8 @@
                     cy={cy} 
                     r={chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
                         chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? 40 : 
-                        chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 4} 
-                    fill={fill} 
+                        chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 5} 
+                    fill={"#CFCABF"} 
                     stroke={$animalSelected == d.topGroup ? "#F7B956" : "none"} 
                     stroke-width={3} 
                 />
@@ -382,12 +389,12 @@
     }
 
     .priceAVG, .ratingAVG {
-        stroke-width: 2;
+        stroke-width: 1;
         stroke: var(--wine-tan);
     }
 
     .priceAVG-gray, .ratingAVG-gray {
-        stroke-width: 2;
+        stroke-width: 1;
         stroke: var(--wine-dark-tan);
         stroke-dasharray: 3;
     }

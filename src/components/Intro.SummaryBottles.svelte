@@ -106,7 +106,7 @@
                     <p class="num">
                         {#if currMetric == "price"}
                             ${animal[1].medianPrice.toFixed(2)}
-                        {:else}
+                        {:else if currMetric !== undefined}
                             {animal[1].medianRating}
                         {/if}
                     </p>

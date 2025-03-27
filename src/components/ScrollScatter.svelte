@@ -77,9 +77,9 @@
         </div>
         {#if chartScrollIndex == 7 || chartScrollIndex == 8}
             <div class="quadrants" transition:fade>
-                <p style="left: 30%; top: 40%">Bad Expensive Wine</p>
-                <p style="left: 75%; top: 40%">Good Expensive Wine</p>
-                <p style="left: 30%; top: 80%">Bad Cheap Wine</p>
+                <p style="left: 30%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Expensive Wine</p>
+                <p style="left: 75%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Good Expensive Wine</p>
+                <p style="left: 30%; top: 80%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Cheap Wine</p>
                 <p style="left: 75%; top: 80%">Good Cheap Wine</p>
             </div>
         {/if}

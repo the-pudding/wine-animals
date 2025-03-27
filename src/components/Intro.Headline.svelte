@@ -103,7 +103,7 @@
         color: var(--wine-dark-gray);
         line-height: 0.8;
         text-align: center;
-        opacity: 0.4;
+        opacity: 0.2;
         transition: all 1s linear;
     }
 

@@ -56,7 +56,7 @@
 </script>
 
 <section id="distribution">
-    <h4>Wine distribution</h4>
+    <h4>Wine characteristics & distribution</h4>
     <div class="quad-wrapper">
         {#each currAnimalGroupedData as category, i}
             {@const matchingLineData = allWineGroupedData.find(([key]) => key === category.key)?.[1] || []}
@@ -137,7 +137,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        gap: 4rem;
+        gap: 3rem;
     }
 
     .comments {
@@ -179,7 +179,7 @@
         font-family: var(--sans);
         text-align: center;
         text-transform: uppercase;
-        margin: 2.5rem 0 0 0;
+        margin: 1.5rem 0 0 0;
         color: var(--wine-dark-tan);
     }
 
