@@ -82,7 +82,7 @@
         flex-direction: column;
         align-items: center;
         color: var(--wine-tan);
-        padding: 10rem 1rem 1rem 1rem;
+        padding: 4rem 1rem 1rem 1rem;
         gap: 4rem;
         position: relative;
         z-index: 1000;

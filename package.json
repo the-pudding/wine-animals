@@ -53,6 +53,7 @@
 		"image-downloader": "^4.3.0",
 		"openai": "^4.28.4",
 		"svelte-carousel": "^1.0.25",
+		"svelte-lazy-image": "^0.5.1",
 		"svelte-multiselect": "^11.0.0-rc.1",
 		"svelte-typeahead": "^5.0.0",
 		"yootils": "^0.3.1"

@@ -99,7 +99,7 @@
 
         clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
 
-        console.log(clickedAnimal)
+        // console.log(clickedAnimal)
 
         animalData = allWineData.filter(d => 
                 d.topgroup.includes(clickedAnimal) &&
@@ -113,7 +113,7 @@
 
         trendLine = regression(points);
 
-        console.log(animalData)
+        // console.log(animalData)
 
         // if (clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "") && clickedAnimal == "marineinvertebrate") {     
         //     if (id == "lobster") {

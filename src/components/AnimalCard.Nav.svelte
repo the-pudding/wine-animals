@@ -1,6 +1,7 @@
 <script>
 	import { onMount, tick } from "svelte";
 	import { navAnimal, currAnimalSlide } from "$stores/misc.js";
+    import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
 	const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "marine invertebrate", "mythical", "pachyderm", "pig",
@@ -112,7 +113,8 @@
                 <img src="assets/images/icons/{animal.replace(/[^a-zA-Z0-9]/g, "")}.png"
                 alt="{animal} icon"
                 id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
-                class="navIcon">
+                class="navIcon"
+                use:lazyImage>
             </div>
             <p>{animal}</p>
         </button>

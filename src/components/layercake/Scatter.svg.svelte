@@ -20,8 +20,6 @@
 		.x(d => $xScale(d[0]))
 		.y(d => $yScale(d[1]))
 		(regressionLine);
-	
-	$: console.log($data)
 </script>
 
 <g class="median-markings">

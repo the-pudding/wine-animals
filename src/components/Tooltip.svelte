@@ -1,6 +1,7 @@
 <script>
     import Icon from "$components/helpers/Icon.svelte";
     import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
+    import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
     function tooltipCloseClick() {
   		lockedSelection.set(false);
@@ -26,7 +27,7 @@
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
                 <Icon name="x" size={"1.5rem"}/>
             </button>
-            <img class="label-img" src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
+            <img class="label-img" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
             <div class="deets">
                 <p class="wine-name">{data.name}</p>
                 <p class="winery-name">{data.winery}, {data.country}</p>
@@ -41,7 +42,7 @@
                     <p class="rating">
                     {data.rating}
                     <span class="stars">
-                        <img src={`./assets/images/stars/${formatStars(data.rating)}`} alt="stars" />
+                        <img use:lazyImage src={`./assets/images/stars/${formatStars(data.rating)}`} alt="stars" />
                     </span>
                     </p>
                 </div>

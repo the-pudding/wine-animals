@@ -4,6 +4,7 @@
 	import wordmark from "$svg/wordmark-sticker.svg";
 	import linkOutArrow from "$svg/arrow-up-right.svg";
 	import Story from "$components/Footer.Story.svelte";
+  import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
 	// custom to starter
 	const base = "https://pudding.cool";
@@ -93,6 +94,7 @@
 							<img
 								src="{base}/assets/stickers/donate-footer-square@2x.png"
 								alt="donate sticker"
+                use:lazyImage
 							/>
 						</a>
 					</div>
@@ -115,6 +117,7 @@
 							<img
 								src="{base}/assets/stickers/subscribe-footer@2x.png"
 								alt="donate sticker"
+                use:lazyImage
 							/>
 						</a>
 					</div>

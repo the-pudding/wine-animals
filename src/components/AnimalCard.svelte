@@ -5,6 +5,7 @@
     import medianData from "$data/wineData_median.csv";
     import { navAnimal } from "$stores/misc.js";
     import inView from "$actions/inView.js";
+    import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
     export let animal;
     export let animalData;
@@ -57,7 +58,7 @@
                             <p>Median rating</p>
                             <p>{medianData.find(d => d.topGroup == animal).rating}
                                 <span class="stars">
-                                    <img alt="stars" src="./assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
+                                    <img alt="stars" use:lazyImage src="./assets/images/stars/{formatStars(medianData.find(d => d.topGroup == animal).rating)}">
                                 </span>
                             </p>
                         </div>

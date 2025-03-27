@@ -1,6 +1,7 @@
 <script>
    import { fade } from 'svelte/transition';
    import Icon from "$components/helpers/Icon.svelte";
+   import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
    export let exampleType;
    export let scrollIndex;
@@ -49,7 +50,7 @@
         {#each correctData as example, i}
             {#if scrollIndex == 3}
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
-                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
+                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="correct-icon">
                     <Icon name="check" size={"1.5rem"}/>
                 </div>
@@ -65,7 +66,7 @@
         {#each wrongData as example, i}
             {#if scrollIndex == 4}
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
-                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" />
+                <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="wrong-icon">
                     <Icon name="x" size={"1.5rem"}/>
                 </div>
