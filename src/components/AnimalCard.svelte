@@ -7,6 +7,7 @@
     import inView from "$actions/inView.js";
 
     export let animal;
+    export let animalData;
 
     const copy = getContext("copy");
 
@@ -78,7 +79,7 @@
         </div>
         <div class="rail" id="rail-right">
             <div class="scatter-wrapper">
-                <Scatter animal={animal} />
+                <Scatter animal={animal} animalData={animalData} />
             </div>
             <ScrollHisto animal={animal}/>
         </div>

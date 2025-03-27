@@ -37,7 +37,7 @@
 	};
 
     // Regression Line
-    const regression = d3Regression.regressionExp()
+    const regression = d3Regression.regressionLog()
         .x(d => d.x)  // Accessor for x value
         .y(d => d.y); // Accessor for y value
 

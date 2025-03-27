@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from "svelte";
-	import { tooltipType } from "$stores/misc.js";
+	import { tooltipType, tooltipData } from "$stores/misc.js";
 	import * as d3 from "d3";
 	import summaryData from "$data/wineData_summary.csv";
 
@@ -56,63 +56,25 @@
 		tooltipType.set("histo")
 		let categoryChart = e.target.closest(".chart-wrapper");
 
-		setTooltip(d)
+		let animalData = $data.filter(v => v.bucket == d.bucket);
+		let allData = allWinesSummaryData.filter(v => v.bucket == d.bucket);
+
+		setTooltip([animalData, allData])
 
 		// Highlight hovered bar only within this chart
 		categoryChart.querySelectorAll("rect").forEach(rect => rect.classList.add("notHover"));
 		e.target.classList.add("hover");
 	}
 
-	function setTooltip(d) {
-		let tooltip = d3.select("#universal-tooltip");
-		tooltip.classed("visible", true);
-
-		let relevantData = allWinesSummaryData.filter(v => v.bucket == d.bucket);
-
-		let text = d.category == "price" 
-			? `<p class="details">
-					<span class="bolded">${Math.round(d.percent)}%</span> 
-					of <span class="bolded">${d.animalGroup}</span> wines 
-					cost between <span class="bolded">$${d.bucket}</span>,
-					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
-					</p>`
-			: d.category == "rating" 
-			? `<p class="details">
-					<span class="bolded">${Math.round(d.percent)}%</span> 
-					of <span class="bolded">${d.animalGroup}</span> wines 
-					are rated between <span class="bolded">${d.bucket} stars</span>,
-					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
-					</p>`
-			: d.category == "type"
-			? `<p class="details">
-					<span class="bolded">${Math.round(d.percent)}%</span> 
-					of <span class="bolded">${d.animalGroup}</span> wines 
-					are <span class="bolded">${d.bucket}</span> wines,
-					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
-					</p>`
-			: `<p class="details">
-					<span class="bolded">${Math.round(d.percent)}%</span> 
-					of <span class="bolded">${d.animalGroup}</span> wines 
-					are from <span class="bolded">${d.bucket}</span>,
-					compared to <span class="bolded">${Math.round(relevantData[0].percent)}%</span> of all wines 
-					</p>` 
-		;
-
-		tooltip.select(".summary").html(text)
-		
+	function setTooltip(data) {
+		tooltipData.set([data]);
+		tooltipType.set("histo");
 	}
 
-
-
-
-function handleMouseleave(e) {
-
-    let parentChart = e.target.closest("#distribution");
-    let tooltip = parentChart?.querySelector(".tooltip");
-
-    if (tooltip) tooltip.style.opacity = 0; // Hide tooltip smoothly
-    parentChart?.querySelectorAll("rect").forEach(rect => rect.classList.remove("notHover", "hover"));
-}
+	function handleMouseleave(e) {
+		let parentChart = e.target.closest("#distribution");
+		parentChart?.querySelectorAll("rect").forEach(rect => rect.classList.remove("notHover", "hover"));
+	}
 </script>
 
 <g>

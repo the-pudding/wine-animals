@@ -3,7 +3,7 @@
 	import { getContext, onMount, onDestroy } from "svelte";
 
 	// STORES
-	import { currAnimalSlide, tooltipType, lockedSelection, searchedWineSTORE } from "$stores/misc.js";
+	import { currAnimalSlide, tooltipType, lockedSelection, searchedWineSTORE, tooltipData } from "$stores/misc.js";
 	
 	// COMPONENTS
 	import inView from "$actions/inView.js";
@@ -18,9 +18,12 @@
 	import Outro from "$components/Outro.svelte";
 	import Explore from "$components/Explore.svelte";
 	import Footer from "$components/Footer.svelte";
+	import Tooltip from "$components/Tooltip.svelte";
 
 	// LIBRARIES
 	import { select, selectAll } from "d3-selection";
+
+	import allWineData from "$data/wineData.csv";
 
 	// VARIABLES
 	const copy = getContext("copy");
@@ -65,10 +68,9 @@
 
 	// Closes the tooltip on click
 	function tooltipCloseClick() {
-		select("#universal-tooltip").classed("visible", false)
-
-		lockedSelection.set(false)
-		searchedWineSTORE.set(undefined)
+		tooltipType.set(null);
+  		lockedSelection.set(false);
+  		tooltipData.set(null);
 	}
 
 	// LIFECYCLE FUNCTIONS
@@ -115,146 +117,24 @@
 	{/if}
 	<Slider bind:this={sliderEl}>
 		{#each topgroups as animal, i}
+			{@const animalDataLOCAL = allWineData.filter(d => 
+				d.topgroup.includes(animal) &&
+				d.price <= 150)
+			}
 			<Slide>
-				<AnimalCard animal={animal}/>
+				{#key animal}
+					<AnimalCard animal={animal} animalData={animalDataLOCAL} />
+				{/key}
 			</Slide>
 		{/each}
 	</Slider>
 </div>
 <Outro />
-<div id="universal-tooltip" bind:this={tooltipEl}>
-	<button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
-		<Icon name="x" size={"1.5rem"}/>
-	</button>
-	{#if $tooltipType == "bottle"}
-		<img src="" alt="wine bottle label"/>
-		<div class="deets">
-			<p class="wine-name"></p>
-			<p class="winery-name"></p>
-			<p class="animal"></p>
-			<p class="type"></p>
-			<div class="price-rating">
-				<p class="price"></p>
-				<p class="rating"></p>
-			</div>
-		</div>
-	{:else}
-		<div class="summary"></div>
-	{/if}
-</div>
+<Tooltip />
 <Explore /> 
 <Footer recirc={true} />
 
 <style>
-	/* UNIVERSAL TOOLTIP */
-	:global(#universal-tooltip.visible) {
-		bottom: 0 !important;
-	}
-
-	#universal-tooltip {
-        position: fixed;
-        left: 0;
-        bottom: -160px;
-        width: 100%;
-        height: 160px;
-		padding: 0.5rem;
-        background: rgba(207, 202, 191, 0.98);
-		border-top: 1px solid var(--wine-dark-gray);
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		gap: 1rem;
-		z-index: 1000;
-		transition: bottom 0.5s linear;
-    }
-
-	#universal-tooltip button {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		background: none;
-		border: 2px solid var(--wine-black);
-		border-radius: 50%;
-		height: 2.5rem;
-		width: 2.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	#universal-tooltip button:hover {
-		background: var(--wine-black);
-	}
-
-	:global(#universal-tooltip button svg) {
-		margin-top: 4px;
-	}
-
-	:global(#universal-tooltip button:hover svg path) {
-		stroke: var(--wine-tan);
-	}
-
-	#universal-tooltip img {
-		height: 100%;
-	}
-
-	#universal-tooltip .deets {
-		display: flex;
-		flex-direction: column;
-	}
-
-	#universal-tooltip .deets p {
-		margin: 0;
-		padding: 0;
-		font-family: var(--sans);
-		text-transform: capitalize;
-	}
-
-	:global(#universal-tooltip .details){
-		margin: 0;
-		padding: 1rem;
-		max-width: 550px;
-		font-family: var(--sans);
-		font-size: var(--18px);
-	}
-
-	#universal-tooltip .wine-name {
-		font-weight: 700;
-	}
-
-	#universal-tooltip .winery-name {
-		font-style: italic;
-	}
-
-	#universal-tooltip .deets .price-rating {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-	}
-
-	#universal-tooltip .deets .rating {
-		display: flex;
-		flex-direction: row;
-		gap: 0.25rem;
-		align-items: center;
-	}
-
-	:global(#universal-tooltip .deets .rating .stars img) {
-		height: 18px;
-		margin-top: -4px;
-	}
-
-	:global(#universal-tooltip .chevron) {
-		display: inline-block;
-		line-height: 1;
-	}
-
-	:global(#universal-tooltip .chevron img) {
-		height: 18px;
-		position: relative;
-		top: 2px;
-	}
-
 	#gradient {
 		width: 100%;
 		height: 100svh;

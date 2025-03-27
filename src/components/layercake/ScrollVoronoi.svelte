@@ -3,7 +3,7 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
 
@@ -70,21 +70,8 @@
     }
 
 	function setTooltip(data) {
-		let tooltip = select("#universal-tooltip");
-		tooltip.classed("visible", true);
-
-		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);
-
-		tooltip.select(".wine-name").text(data.name);
-		tooltip.select(".winery-name").text(`${data.winery}, ${data.country}`);
-		tooltip.select(".animal").text(`${data.topgroup}`);
-		tooltip.select(".type").text(`${data.type}`);
-		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
-		tooltip.select(".rating").html(
-			`${data.rating}
-			<span class="stars"><img alt="stars" src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
-		);
-		
+		tooltipData.set(data);
+		tooltipType.set("bottle");
 	}
 
 	function setPointsData(chartScrollIndex) {

@@ -20,6 +20,8 @@
 		.x(d => $xScale(d[0]))
 		.y(d => $yScale(d[1]))
 		(regressionLine);
+	
+	$: console.log($data)
 </script>
 
 <g class="median-markings">
@@ -35,13 +37,11 @@
 </g>
 <g class="card-wine-circle">
 	{#each $data[0] as d, i}
-        {@const cx = $xGet(d)}
-        {@const cy = $yGet(d)}
         <circle 
 			id={`card-wine-circle-${d.id}`}
 			data-d={JSON.stringify(d)}
-            cx={cx} 
-            cy={cy} 
+            cx={$xGet(d)} 
+            cy={$yGet(d)} 
             r={5} 
             fill={(
                 d.price <= 29.99 
