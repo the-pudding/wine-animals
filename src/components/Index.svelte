@@ -67,14 +67,6 @@
 	function tooltipCloseClick() {
 		select("#universal-tooltip").classed("visible", false)
 
-		selectAll(".card-wine-circle circle")
-            .transition()
-            .duration(500)
-            .style("opacity", 0.8)
-            .style("fill", "#38425D")
-            .attr("r", 4);
-		
-		// tooltipType.set(undefined);
 		lockedSelection.set(false)
 		searchedWineSTORE.set(undefined)
 	}

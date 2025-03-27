@@ -240,7 +240,7 @@
                         <AxisY 
                             gridlines={true} 
                             ticks={3} />
-                        <ScatterSvg {r} fill={color} />
+                        <ScatterSvg />
                         <Voronoi />
                     </Svg>
                 </LayerCake>

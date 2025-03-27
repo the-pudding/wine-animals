@@ -64,7 +64,7 @@
     }
     
     $: {
-        if (scrollIndex !== 13) {
+        if (scrollIndex <= 12) {
             currData = Object.entries(restructuredData).sort(
                 ([animalA], [animalB]) => animalA.localeCompare(animalB)
             );
@@ -77,7 +77,7 @@
         }
     }
 
-    $: if (scrollIndex === 13) {
+    $: if (scrollIndex >= 13) {
         setTimeout(() => {
             animate = true;
         }, 500);

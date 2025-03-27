@@ -124,8 +124,6 @@
             randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
         });
     }
-
-    $: console.log(chartScrollIndex, $stealPriceNum, $stealRatingNum);
 </script>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
@@ -165,7 +163,7 @@
             fill={(
                 d.price <= $stealPriceNum 
                 && d.rating >= $stealRatingNum
-                && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
+                && (chartScrollIndex >= 8 || chartScrollIndex =="exit") ? "#3E5C4B" : "#475171")} 
             stroke="none" 
             stroke-width={strokeWidth} 
             opacity={0.8}
@@ -181,8 +179,8 @@
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" 
             class:hidden={chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile") ||
-               chartScrollIndex == 10 && !d.topgroup.includes("cat") ||
-               chartScrollIndex == 11 && !d.topgroup.includes("pig") 
+               chartScrollIndex == 10 && !d.topgroup.includes("pig") ||
+               chartScrollIndex == 11 && !d.topgroup.includes("cat") 
                || chartScrollIndex == 12 && !d.topgroup.includes("bird")}>
           <circle 
             id={`circle-${d.id}`}
@@ -190,7 +188,10 @@
             cx={cx} 
             cy={cy} 
             r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 5} 
-            fill={"#475171"}  
+            fill={(
+                d.price <= $stealPriceNum 
+                && d.rating >= $stealRatingNum
+                && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
             opacity={0.8}
             stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 

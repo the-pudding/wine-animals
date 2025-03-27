@@ -2,11 +2,10 @@
 	import { getContext, onMount } from "svelte";
 	import { line } from 'd3-shape';
 	import { median } from 'd3-array';
-	import rawData from "$data/wineData.csv"
+	import rawData from "$data/wineData.csv";
+	import { stealPriceNum, stealRatingNum } from "$stores/misc.js";
 
 	const { data, xGet, yGet, xScale, yScale, width, height, padding, xDomain, yDomain } = getContext("LayerCake");
-
-	export let r = 4;
 
 	$: regressionLine = $data[1];
 
@@ -31,7 +30,7 @@
 		width={$width - $xScale(4)}
 		height={$height - $yScale(29.99)}
 		fill="#363B45"
-		opacity=0.5
+		opacity=0.3
 	/>
 </g>
 <g class="card-wine-circle">
@@ -43,8 +42,11 @@
 			data-d={JSON.stringify(d)}
             cx={cx} 
             cy={cy} 
-            r={r} 
-            fill={"#38425D"} 
+            r={5} 
+            fill={(
+                d.price <= 29.99 
+                && d.rating >= 4
+                ? "#3E5C4B" : "#475171")} 
         />
     {/each}
 </g>
@@ -59,8 +61,6 @@
 
 <style>
 	circle {
-		fill: #38425D;
-		opacity: 0.8;
 		pointer-events: auto;
 	}
 	.expRegression {

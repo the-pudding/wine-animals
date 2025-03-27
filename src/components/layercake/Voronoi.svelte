@@ -7,18 +7,37 @@
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
+	let selectedPoint;
+  
 	function mouseoverCircle(point) {
-		// console.log(point)
-
 		tooltipType.set("bottle")
 
-		selectAll("#animal-cards .card-wine-circle circle, .circle-explore").style("opacity", 0.3).style("fill", "#38425D");
+		selectAll(".card-wine-circle circle")
+			.style("opacity", 0.3)
 
-		selectAll(`#animal-cards #card-wine-circle-${point.data.id}, #animal-cards #circle-${point.data.id}`)
-			.transition()
-            .duration(500)
+		selectAll(`#card-wine-circle-${point.data.id}`)
 			.style("opacity", 1)
 			.style("fill", "#CFCABF")
+			.transition(500)
+			.attr("r", 10)
+			.each(function () {
+				this.parentNode.appendChild(this); // Append to the end of the parent
+			});
+
+		setTooltip(point.data)
+	}
+	
+	function mouseClickCircle(point) {
+		selectedPoint = point;
+		tooltipType.set("bottle")
+
+		selectAll(".card-wine-circle circle")
+			.style("opacity", 0.3)
+
+		selectAll(`#card-wine-circle-${point.data.id}`)
+			.style("opacity", 1)
+			.style("fill", "#CFCABF !important")
+			.transition(500)
 			.attr("r", 10)
 			.each(function () {
 				this.parentNode.appendChild(this); // Append to the end of the parent
@@ -28,12 +47,17 @@
 	}
 
 	function mouseleaveCircle(point) {
-		selectAll("#animal-cards .card-wine-circle circle, #animal-cards .circle-explore")
-			.transition()
-			.duration(500)
+		selectAll(".card-wine-circle circle")
 			.style("opacity", 0.8)
-			.style("fill", "#38425D")
-			.attr("r", 4);
+
+		selectAll(`#card-wine-circle-${point.data.id}`)
+			.style("opacity", 0.8)
+			.style("fill", function() {
+				let fill =  (point.data.price <= 29.99 && point.data.rating >= 4) ? "#3E5C4B" : "#475171";
+				return fill
+			})
+			.transition(500)
+			.attr("r", 5)
 	}
 
 	function formatStars(rating) {
@@ -71,8 +95,8 @@
 	$: uniquePoints = uniques(points, d => d.join(), false);
 	$: voronoi = Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
 
-	$: if (!$lockedSelection) {
-		mouseleaveCircle();
+	$: if (!$lockedSelection && selectedPoint) {
+		mouseleaveCircle(selectedPoint);
 	}
   </script>
   
@@ -93,7 +117,7 @@
 	  }}
 	  on:click={() => {
 		lockedSelection.set(true);
-		mouseoverCircle(point);
+		mouseClickCircle(point);
 	}}
 	  role="tooltip"
 	></path>

@@ -50,7 +50,6 @@
 	}
 
 	function mouseleaveCircle(point) {
-		console.log(point)
 		selectAll(".wine-circle circle")
 			.style("opacity", 0.8)
 

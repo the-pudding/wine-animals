@@ -131,7 +131,6 @@
         left: 0;
         z-index: 900;
         opacity: 0;
-        transition: opacity 0.25s linear;
     }
 
     .scatter-wrapper {
@@ -140,11 +139,13 @@
         left: 0;
         transform: translate(0,0);
         padding: 4rem 0 6rem 0;
+        transition: opacity 0.75s linear;
     }
 
     .lineup-wrapper {
         width: 100%;
         z-index: 1;
+        transition: opacity 0.25s linear;
     }
 
     .scatter-wrapper.active, .lineup-wrapper.active, .steals-sentence.active {
@@ -247,47 +248,53 @@
         opacity: 0.5;
     }
 
-    :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span, .selected-bottle-circle-span) {
+    :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span, .selected-bottle-circle-span, .best-deals-span) {
         position: relative;
         font-weight: 700;
-        margin-right: 2.5rem;
+        margin-left: 2.25rem;
         white-space: nowrap;
         font-family: var(--sans);
         
     }
 
-    :global(.median-line-span::after, .compare-line-span::after, .sweet-rect-span::after, .cream-line-span::after, .selected-bottle-circle-span::after) {
+    :global(.median-line-span::before, .compare-line-span::before, .sweet-rect-span::before, .cream-line-span::before, .selected-bottle-circle-span::before, .best-deals-span::before) {
         position: absolute;
         top: 50%;
-        right: -2rem;
+        left: -2rem;
         width: 1.5rem;
         height: 1.5rem;
         content: "";
-        margin: 0 0 0 1rem;
+        margin: 0 1rem 0 0;
     }
 
-    :global(.selected-bottle-circle-span::after) {
+    :global(.selected-bottle-circle-span::before) {
         border: 2px solid var(--wine-gold);
         border-radius: 50%;
         top: 0%;
     }
 
-    :global(.median-line-span::after) {
+    :global(.best-deals-span::before) {
+        background: var(--wine-green);
+        border-radius: 50%;
+        top: 0%;
+    }
+
+    :global(.median-line-span::before) {
         border-top: 3px solid var(--wine-red);
     }
 
-    :global(.cream-line-span::after) {
+    :global(.cream-line-span::before) {
         border-top: 3px solid var(--wine-tan);
     }
 
-    :global(.compare-line-span::after) {
+    :global(.compare-line-span::before) {
         top: 40%;
         height: 0.5rem;
         border-top: 2px solid var(--color-gray-600);
         border-bottom: 2px solid var(--color-gray-600);
     }
 
-    :global(.sweet-rect-span::after) {
+    :global(.sweet-rect-span::before) {
         background: rgb(54, 59, 69, 0.75);
         top: 0;
         border-top: 2px solid var(--wine-tan);
@@ -318,7 +325,11 @@
     }
 
     .highlight {
-        color: var(--wine-gold);
+        color: var(--wine-tan);
+        background-color: var(--wine-green);
+        padding: 0.25rem;
+        border-radius: 3px;
+        font-weight: 700;
     }
 
     :global(.slider-span) {

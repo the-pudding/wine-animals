@@ -274,9 +274,9 @@
             </div>
         </div>
         {#if belowPriceAboveRating.length !== 1}
-            <p>There are <span class="bold highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
+            <p>There are <span class="highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
         {:else}
-        <p>There is <span class="bold highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
+        <p>There is <span class="highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
         {/if}
     </div>
 </div>
@@ -290,7 +290,11 @@
         font-size: var(--16px);
     }
     .highlight {
-        color: var(--wine-gold);
+        color: var(--wine-tan);
+        background-color: var(--wine-green);
+        padding: 0.25rem;
+        border-radius: 3px;
+        font-weight: 700;
     }
     #filters {
         width: 100%;

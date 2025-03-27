@@ -77,8 +77,11 @@
 				class="circle-explore active"
                 cx={cx} 
                 cy={cy} 
-                r={4} 
-                fill="#363B45" 
+                r={5} 
+                fill={(
+					d.price <= 29.99 
+					&& d.rating >= 4
+					? "#3E5C4B" : "#475171")}  
                 opacity={0.8}
             />
         {/if}

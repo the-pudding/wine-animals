@@ -99,6 +99,7 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 5rem;
+        overflow: hidden;
     }
 
     .chart-container {

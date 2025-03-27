@@ -90,6 +90,11 @@
 		height: 36px;
 	}
 
+	:global(.arrow-span svg) {
+		width: 36px;
+		height: 36px;
+	}
+
 	button.left::before {
 		content: "";
 		width: 100%;
