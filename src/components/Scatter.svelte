@@ -31,6 +31,7 @@
     $: animalData = allWineData.filter(d => 
             d.topgroup.includes(animal) &&
             (!subgroup || d.subgroup.includes(subgroup)) &&
+            (!finalAnimal || d.finalAnimal.includes(d.finalAnimal)) &&
             d.price <= 150);
 
     const yKey = 'price';
@@ -100,12 +101,37 @@
     // INTERACTIVE FUNCTIONS
     // Summary Click
     function handleSummaryClick(event) {
-        console.log(event)
         let id = event.target.id.split("-")[0];
         if (id == "gamebird") { id = "game bird"}
 
-        // TO DO - refine supgroup / final animal
-        subgroup = id == "human" ? "human rider" : id;
+        if (id == "human") {
+            subgroup = "human";
+            finalAnimal = undefined;
+        } else if (id== "lobster") {
+            subgroup = "crustacean";
+            finalAnimal = undefined;
+        } else if (id == "nautilus") {
+            subgroup = "shell";
+            finalAnimal = id;
+        } else if (id == "bee" || id == "butterfly") {
+            subgroup = "flying bug";
+            finalAnimal = id;
+        } else if (id == "ladybug" || id == "ant") {
+            subgroup = "walking bug";
+            finalAnimal = id;
+        } else if (id == "unicorn") {
+            subgroup = "mythical horse";
+            finalAnimal = id;
+        } else if (id == "griffin") {
+            subgroup = "mythical cat";
+            finalAnimal = id;
+        } else if (id == "dragon") {
+            subgroup = "mythical dragon";
+            finalAnimal = id;
+        } else {
+            subgroup = id;
+            finalAnimal = undefined;
+        }
 
         clickedAnimal = event.target.closest(".animal-card").id.split("-")[2];
     }
@@ -124,18 +150,20 @@
         let id = event.target.id;
         let data = allWineData.filter(d => d.id == id);
         clickedData = data[0];
-
-        clickedCircle = closestCard.select(`#card-wine-circle-${id}`)
-
-        clickedCircle
-            .transition()
-            .duration(500)
-            .style("opacity", 1)
-            .style("fill", "#CFCABF")
-			.attr("r", 10)
             
-        setTooltip(data[0])
-        lockedSelection.set(true)
+        setTooltip(data[0]);
+        lockedSelection.set(true);
+
+        setTimeout(() => {
+            clickedCircle = closestCard.select(`#card-wine-circle-${id}`)
+
+            clickedCircle
+                .transition()
+                .duration(500)
+                .style("opacity", 1)
+                .style("fill", "#CFCABF")
+                .attr("r", 10);
+        }, 250)
     }
 
     // Reset Click
@@ -222,7 +250,11 @@
                 {#if subgroup !== undefined && clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "")}
                     <span class="subgroup-span">
                         <Icon name="chevron-right" size={"1rem"}/>
-                        <span class="bold">{pluralize(subgroup)}</span>
+                        {#if finalAnimal == undefined}
+                            <span class="bold">{pluralize(subgroup)}</span>
+                        {:else}
+                            <span class="bold">{pluralize(finalAnimal)}</span>
+                        {/if}
                     </span>
                 {/if}
             </p>

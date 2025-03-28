@@ -1,6 +1,6 @@
 <script>
 	// SVELTE
-	import { getContext, onMount, onDestroy } from "svelte";
+	import { getContext } from "svelte";
 
 	// STORES
 	import { currAnimalSlide, tooltipType, lockedSelection, searchedWineSTORE, tooltipData } from "$stores/misc.js";
@@ -72,25 +72,6 @@
   		lockedSelection.set(false);
   		tooltipData.set(null);
 	}
-
-	// LIFECYCLE FUNCTIONS
-	onMount(() => {
-		handleClick = (e) => {
-			if (tooltipEl && !tooltipEl.contains(e.target)) {
-				tooltipCloseClick();
-			}
-		};
-
-		if (typeof document !== 'undefined') {
-			document.addEventListener("click", handleClick, true);
-		}
-	});
-
-	onDestroy(() => {
-		if (typeof document !== 'undefined' && handleClick) {
-			document.removeEventListener("click", handleClick, true);
-		}
-	});
 
 	// REATIVE FUNCTIONS
 	$: moveSlider($currAnimalSlide);

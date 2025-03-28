@@ -1,4 +1,5 @@
 <script>
+    import { onMount, onDestroy } from "svelte";
     import Icon from "$components/helpers/Icon.svelte";
     import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
@@ -16,12 +17,31 @@
     }
 
     $: data = $tooltipData;
+    let handleClick;
+    let tooltipEl;
 
-    // $: console.log(data);
-    // $: console.log($tooltipType);
+    // LIFECYCLE FUNCTIONS
+	onMount(() => {
+		handleClick = (e) => {
+			console.log("click!")
+			if (tooltipEl && !tooltipEl.contains(e.target)) {
+				tooltipCloseClick();
+			}
+		};
+
+		if (typeof document !== 'undefined') {
+			document.addEventListener("click", handleClick, true);
+		}
+	});
+
+	onDestroy(() => {
+		if (typeof document !== 'undefined' && handleClick) {
+			document.removeEventListener("click", handleClick, true);
+		}
+	});
   </script>
   
-<div id="universal-tooltip" class:visible={$tooltipData}>
+<div id="universal-tooltip" class:visible={$tooltipData} bind:this={tooltipEl}>
     {#if data}
         {#if $tooltipType == "bottle"}
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>

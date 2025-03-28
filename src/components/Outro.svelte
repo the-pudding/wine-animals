@@ -83,7 +83,6 @@
         align-items: center;
         color: var(--wine-tan);
         padding: 4rem 1rem 1rem 1rem;
-        gap: 4rem;
         position: relative;
         z-index: 1000;
     }
@@ -134,11 +133,11 @@
         top: 7px;
     }
 
-    :global(#methods a) {
+    :global(#outro a, #methods a) {
         color: var(--wine-tan);
     }
 
-    :global(#methods a:hover) {
+    :global(#outro a:hover, #methods a:hover) {
         color: var(--wine-red);
     }
 

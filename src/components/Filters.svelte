@@ -2,14 +2,15 @@
     import MultiSelect from 'svelte-multiselect';
     import Typeahead from 'svelte-typeahead';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType } from "$stores/misc.js";
+    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
-    import * as d3 from 'd3';
+    import { selectAll, select } from 'd3-selection';
+    import { median } from 'd3-array';
 
-    const totalMedianPrice = d3.median(rawData, d => d.price);
-    const totalMedianRating = d3.median(rawData, d => d.rating);
-    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human" && d.topgroup !== "bat" && d.topgroup !== "marsupial" && d.topgroup !== "monkey" && d.topgroup !== "mustelid-like/rodent-like");
+    const totalMedianPrice = median(rawData, d => d.price);
+    const totalMedianRating = median(rawData, d => d.rating);
+    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human");
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
         "deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
@@ -33,6 +34,7 @@
     let searchedWine = [];
     let events = [];
     let searchTerm = '';
+    let foundWine;
 
     function storeUpdates(selectedGroup, valType) {
         if (valType == "animal") {
@@ -90,7 +92,7 @@
     }
 
     function updateSearchedWine(detail) {
-        d3.selectAll("#scatter-explore .selected-wine")
+        selectAll("#scatter-explore .selected-wine")
             .transition()
             .duration(300)
             .attr("r", 4) // Reset size
@@ -99,11 +101,11 @@
             .style("fill", "#38425d")
             .style("opacity", 0.8);
 
-        const foundWine = filteredRawData.find(d => d.id === detail.original.value);
-
+        foundWine = filteredRawData.find(d => d.id === detail.original.value);
 
         if (foundWine) {
-            d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
+            lockedSelection.set(true);
+            selectAll(`#scatter-explore #circle-${foundWine.id}`)
                 .classed("selected-wine", true)
                 .raise()
                 .transition()
@@ -112,67 +114,34 @@
                 .style("fill", "#CFCABF")
                 .style("opacity", 1);
 
-            tooltipType.set("bottle");
-            setTimeout(() => {
-                setTooltip(foundWine);
-            }, 200);
+                console.log(foundWine)
+
+            setTooltip(foundWine)
         }
-
-        //     if ($searchedWineSTORE !== undefined && $searchedWineSTORE.length == 1) {
-        //         d3.selectAll("#scatter-explore .selected-wine")
-        //             .transition()
-        //             .duration(300)
-        //             .attr("r", 4) // Reset size
-        //             .style("stroke", "none")
-        //             .style("stroke-width", "0px")
-        //             .style("fill", "#38425d")
-        //             .style("opacity", 0.8);
-
-        //         const wine = $searchedWineSTORE;
-        //         const foundWine = filteredRawData.find(d => d.id === wine[0].value);
-
-        //         if (foundWine) {
-        //             d3.selectAll(`#scatter-explore #circle-${foundWine.id}`)
-        //                 .classed("selected-wine", true)
-        //                 .raise()
-        //                 .transition()
-        //                 .duration(500)
-        //                 .attr("r", 10)
-        //                 .style("fill", "#CFCABF")
-        //                 .style("opacity", 1);
-
-        //             tooltipType.set("bottle");
-        //             setTimeout(() => {
-        //                 setTooltip(foundWine);
-        //             }, 200);
-        //         }
-        // }
-    }
-
-    function formatStars(rating) {
-        let string = rating + "";
-        let ratingReplaced = string.replace(".", "_");
-        return `star${ratingReplaced}.svg`
     }
 
     function setTooltip(data) {
-		let tooltip = d3.select("#universal-tooltip");
-		tooltip.classed("visible", true);
+		tooltipData.set(data);
+		tooltipType.set("bottle");
+	}
 
-		tooltip.select("img").attr("src", `./assets/images/vivinoLabels/img_${data.id}.png`);
+    function mouseleaveCircle(point) {
+        searchTerm = undefined;
+		selectAll("#scatter-explore .selected-wine")
+			.style("opacity", 0.8)
 
-		tooltip.select(".wine-name").text(data.name);
-		tooltip.select(".winery-name").text(`${data.winery}, ${data.country}`);
-		tooltip.select(".animal").html(
-			`${data.topgroup}
-		 	<span class="chevron"><img alt="stars" src="./assets/images/chevron-right.png" /></span>
-			${data.finalAnimal}`);
-		tooltip.select(".type").text(`${data.type}`);
-		tooltip.select(".price").text(`$${data.price.toFixed(2)}`); // Add `$` for price formatting
-		tooltip.select(".rating").html(
-			`${data.rating}
-			<span class="stars"><img alt="stars" src="./assets/images/stars/${formatStars(data.rating)}" /></span>`
-		);	
+		selectAll(`#scatter-explore #circle-${point.id}`)
+			.style("opacity", 0.8)
+			.style("fill", function() {
+				let fill =  (point.price <= 29.99 && point.rating >= 4) ? "#3E5C4B" : "#475171";
+				return fill
+			})
+			.transition(500)
+			.attr("r", 5)
+	}
+
+    $: if (!$lockedSelection && foundWine) {
+		mouseleaveCircle(foundWine);
 	}
 
     $: storeUpdates(selectedAnimal, "animal")
@@ -274,9 +243,9 @@
             </div>
         </div>
         {#if belowPriceAboveRating.length !== 1}
-            <p>There are <span class="highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections.</p>
+            <p>There are <span class="highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections. That's {(belowPriceAboveRating.length/filteredRawData.length*100).toFixed(1)}% of all animal wines in our dataset.</p>
         {:else}
-        <p>There is <span class="highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections.</p>
+        <p>There is <span class="highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections. That's {(belowPriceAboveRating.length/filteredRawData.length*100).toFixed(1)}% of all animal wines in our dataset.</p>
         {/if}
     </div>
 </div>

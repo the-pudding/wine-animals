@@ -227,6 +227,7 @@
 		border: 2px solid var(--wine-black);
         border-radius: 50%;
 		transition: left 0.1s linear;
+		cursor: pointer;
 	}
     .handle[data-which="start"] {
         left: -16px;

@@ -85,7 +85,6 @@
 			{@const width = $xScale.bandwidth ? $xScale.bandwidth() : columnWidth(d)}
 			{@const height = columnHeight(d)}
 			<rect
-				role="tooltip"
 				class={d.bucket}
 				data-id={i}
 				aria-label="bar tooltip"
@@ -127,6 +126,10 @@
 
 	rect.hover {
 		opacity: 1;
+	}
+
+	rect:focus {
+		outline: none
 	}
 
 	.bucket-text {

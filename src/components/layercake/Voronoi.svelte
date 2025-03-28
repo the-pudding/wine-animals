@@ -29,6 +29,7 @@
 	
 	function mouseClickCircle(point) {
 		selectedPoint = point;
+		console.log(point.data.id)
 		tooltipType.set("bottle")
 
 		selectAll(".card-wine-circle circle")
@@ -36,7 +37,7 @@
 
 		selectAll(`#card-wine-circle-${point.data.id}`)
 			.style("opacity", 1)
-			.style("fill", "#CFCABF !important")
+			.style("fill", "#CFCABF")
 			.transition(500)
 			.attr("r", 10)
 			.each(function () {
@@ -59,12 +60,6 @@
 			.transition(500)
 			.attr("r", 5)
 	}
-
-	function formatStars(rating) {
-        let string = rating + "";
-        let ratingReplaced = string.replace(".", "_");
-        return `star${ratingReplaced}.svg`
-    }
 
 	function setTooltip(data) {
 		tooltipData.set(data);
