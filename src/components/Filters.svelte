@@ -114,8 +114,6 @@
                 .style("fill", "#CFCABF")
                 .style("opacity", 1);
 
-                console.log(foundWine)
-
             setTooltip(foundWine)
         }
     }

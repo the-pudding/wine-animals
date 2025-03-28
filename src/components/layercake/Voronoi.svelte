@@ -29,7 +29,6 @@
 	
 	function mouseClickCircle(point) {
 		selectedPoint = point;
-		console.log(point.data.id)
 		tooltipType.set("bottle")
 
 		selectAll(".card-wine-circle circle")

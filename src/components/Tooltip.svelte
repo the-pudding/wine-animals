@@ -23,7 +23,6 @@
     // LIFECYCLE FUNCTIONS
 	onMount(() => {
 		handleClick = (e) => {
-			console.log("click!")
 			if (tooltipEl && !tooltipEl.contains(e.target)) {
 				tooltipCloseClick();
 			}
