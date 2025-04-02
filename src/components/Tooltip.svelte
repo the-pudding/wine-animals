@@ -16,14 +16,58 @@
       return `star${ratingReplaced}.svg`;
     }
 
-    $: data = $tooltipData;
     let handleClick;
     let tooltipEl;
+	let wrapper; 
+	let lens;
+	let zoomFactor = 4;
+	let imgSrc;
 
-    // LIFECYCLE FUNCTIONS
+	$: data = $tooltipData;
+	$: if (data) {
+		imgSrc = `./assets/images/vivinoLabels/img_${data.id}.png`;
+	}
+
+	// INTERACTIVE FUNCTIONS
+	function handleMouseEnter() {
+		lens.style.display = 'block';
+		lens.style.backgroundImage = `url('${imgSrc}')`;
+	}
+
+	function handleMouseLeave() {
+		lens.style.display = 'none';
+	}
+
+	function handleMouseMove(e) {
+		const rect = wrapper.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+
+		const lensSize = lens.offsetWidth / 2;
+		let lensX = x - lensSize;
+		let lensY = y - lensSize;
+
+		// Constrain lens inside wrapper
+		lensX = Math.max(0, Math.min(lensX, wrapper.offsetWidth - lens.offsetWidth));
+		lensY = Math.max(0, Math.min(lensY, wrapper.offsetHeight - lens.offsetHeight));
+
+		lens.style.left = `${lensX}px`;
+		lens.style.top = `${lensY}px`;
+
+		// Set background position relative to mouse
+		const bgX = (x / wrapper.offsetWidth) * 100;
+		const bgY = (y / wrapper.offsetHeight) * 100;
+		lens.style.backgroundPosition = `${bgX}% ${bgY}%`;
+	}
+
+	// LIFECYCLE FUNCTIONS
 	onMount(() => {
 		handleClick = (e) => {
-			if (tooltipEl && !tooltipEl.contains(e.target)) {
+			const clickedEl = e.target;
+			const isInsideTooltip = tooltipEl && tooltipEl.contains(clickedEl);
+			const isScatterplot = clickedEl.closest('#scatterplot');
+
+			if (!isInsideTooltip && !isScatterplot) {
 				tooltipCloseClick();
 			}
 		};
@@ -46,7 +90,17 @@
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
                 <Icon name="x" size={"1.5rem"}/>
             </button>
-            <img class="label-img" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
+            <div class="zoom-container"
+					bind:this={wrapper}
+					on:mouseenter={handleMouseEnter}
+					on:mouseleave={handleMouseLeave}
+					on:mousemove={handleMouseMove}>
+					<img class="label-img zoom-target" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
+					<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
+					<span class="mag">
+						<Icon name="zoom-in" size={"1.5rem"}/>
+					</span>
+				</div>
             <div class="deets">
                 <p class="wine-name">{data.name}</p>
                 <p class="winery-name">{data.winery}, {data.country}</p>
@@ -126,6 +180,62 @@
     #universal-tooltip.visible {
 		bottom: 0 !important;
         transition: bottom 0.5s linear;
+	}
+
+	.zoom-container {
+		position: relative;
+		height: 100%;
+		width: auto;
+	}
+
+	.zoom-target {
+		height: 100%;
+		object-fit: contain;
+		min-width: 130px;
+		display: block;
+	}
+
+	.zoom-lens {
+		position: absolute;
+		pointer-events: none;
+		border: 2px solid var(--wine-black);
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-size: 200%; /* adjust zoom level */
+		display: none; /* hidden until hover */
+	}
+
+	.mag {
+		position: absolute;
+		bottom: -0.5rem;
+		right: -0.5rem;
+		background: var(--wine-black);
+		/* border: 2px solid var(--wine-tan); */
+		border-radius: 50%;
+		height: 2rem;
+		width: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(.mag .icon) {
+		width: 80%;
+		height: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(.mag .icon svg) {
+		width: 80%;
+	}
+
+	:global(.mag .icon svg circle, .mag .icon svg line) {
+		stroke: var(--wine-tan);
+		stroke-width: 2px;
 	}
 
 	button {
