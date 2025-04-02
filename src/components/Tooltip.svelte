@@ -1,10 +1,11 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import Icon from "$components/helpers/Icon.svelte";
-    import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
+    import { tooltipVisible, tooltipType, lockedSelection, tooltipData, stealPercent, stealPriceNum, stealRatingNum } from "$stores/misc.js";
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
     function tooltipCloseClick() {
+		tooltipVisible.set(false)
   		lockedSelection.set(false);
         tooltipType.set(null);
         tooltipData.set(null);
@@ -16,14 +17,27 @@
       return `star${ratingReplaced}.svg`;
     }
 
-    $: data = $tooltipData;
     let handleClick;
     let tooltipEl;
+	let wrapper; 
+	let lens;
+	let zoomFactor = 4;
+	let imgSrc;
+
+	$: data = $tooltipData;
+	$: if (data) {
+		console.log(data)
+		imgSrc = `./assets/images/vivinoLabels/img_${data.id}.png`;
+	}
 
     // LIFECYCLE FUNCTIONS
 	onMount(() => {
 		handleClick = (e) => {
-			if (tooltipEl && !tooltipEl.contains(e.target)) {
+			const clickedEl = e.target;
+			const isInsideTooltip = tooltipEl && tooltipEl.contains(clickedEl);
+			const isScatterplot = clickedEl.closest('#scatterplot');
+
+			if (!isInsideTooltip && !isScatterplot) {
 				tooltipCloseClick();
 			}
 		};
@@ -38,34 +52,82 @@
 			document.removeEventListener("click", handleClick, true);
 		}
 	});
+
+	function handleMouseEnter() {
+		lens.style.display = 'block';
+		lens.style.backgroundImage = `url('${imgSrc}')`;
+	}
+
+	function handleMouseLeave() {
+		lens.style.display = 'none';
+	}
+
+	function handleMouseMove(e) {
+		const rect = wrapper.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+
+		const lensSize = lens.offsetWidth / 2;
+		let lensX = x - lensSize;
+		let lensY = y - lensSize;
+
+		// Constrain lens inside wrapper
+		lensX = Math.max(0, Math.min(lensX, wrapper.offsetWidth - lens.offsetWidth));
+		lensY = Math.max(0, Math.min(lensY, wrapper.offsetHeight - lens.offsetHeight));
+
+		lens.style.left = `${lensX}px`;
+		lens.style.top = `${lensY}px`;
+
+		// Set background position relative to mouse
+		const bgX = (x / wrapper.offsetWidth) * 100;
+		const bgY = (y / wrapper.offsetHeight) * 100;
+		lens.style.backgroundPosition = `${bgX}% ${bgY}%`;
+	}
   </script>
   
-<div id="universal-tooltip" class:visible={$tooltipData} bind:this={tooltipEl}>
+<div id="universal-tooltip" class:visible={$tooltipVisible} bind:this={tooltipEl}>
     {#if data}
         {#if $tooltipType == "bottle"}
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
                 <Icon name="x" size={"1.5rem"}/>
             </button>
-            <img class="label-img" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
-            <div class="deets">
-                <p class="wine-name">{data.name}</p>
-                <p class="winery-name">{data.winery}, {data.country}</p>
-                <p class="animal">
-                    {data.topgroup}
-                    <span class="chevron"><img src="./assets/images/chevron-right.png" alt=">" /></span>
-                    {data.finalAnimal}
-                </p>
-                <p class="type">{data.type}</p>
-                <div class="price-rating">
-                    <p class="price">${data.price.toFixed(2)}</p>
-                    <p class="rating">
-                    {data.rating}
-                    <span class="stars">
-                        <img use:lazyImage src={`./assets/images/stars/${formatStars(data.rating)}`} alt="stars" />
-                    </span>
-                    </p>
-                </div>
-            </div>
+			<div class="sentence">
+				<p><span class="steal-span">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines are good deals</span> 
+            	when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
+            	and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span></p>
+			</div>
+			<div class="bottle-details">
+				<div class="zoom-container"
+					bind:this={wrapper}
+					on:mouseenter={handleMouseEnter}
+					on:mouseleave={handleMouseLeave}
+					on:mousemove={handleMouseMove}>
+					<img class="label-img zoom-target" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
+					<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
+					<span class="mag">
+						<Icon name="zoom-in" size={"1.5rem"}/>
+					</span>
+				</div>
+				<div class="deets">
+					<p class="wine-name">{data.name}</p>
+					<p class="winery-name">{data.winery}, {data.country}</p>
+					<p class="animal">
+						{data.topgroup}
+						<span class="chevron"><img src="./assets/images/chevron-right.png" alt=">" /></span>
+						{data.finalAnimal}
+					</p>
+					<p class="type">{data.type}</p>
+					<div class="price-rating">
+						<p class="price">${data.price.toFixed(2)}</p>
+						<p class="rating">
+						{data.rating}
+						<span class="stars">
+							<img use:lazyImage src={`./assets/images/stars/${formatStars(data.rating)}`} alt="stars" />
+						</span>
+						</p>
+					</div>
+				</div>
+			</div>
             {:else if $tooltipType == "histo"}
                 <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
                     <Icon name="x" size={"1.5rem"}/>
@@ -109,16 +171,16 @@
 	#universal-tooltip {
         position: fixed;
         left: 0;
-        bottom: -160px;
+        bottom: -200px;
         width: 100%;
-        height: 160px;
-		padding: 0.5rem;
+        height: 200px;
+		padding: 1rem;
         background: rgba(207, 202, 191, 0.98);
 		border-top: 1px solid var(--wine-dark-gray);
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		gap: 1rem;
+		gap: 4rem;
 		z-index: 1000;
 		transition: bottom 0.5s linear;
     }
@@ -126,6 +188,84 @@
     #universal-tooltip.visible {
 		bottom: 0 !important;
         transition: bottom 0.5s linear;
+	}
+
+	.sentence {
+		width: 40%;
+		font-family: var(--serif);
+		font-size: var(--18px);
+	}
+
+	.steal-span {
+		background: var(--wine-green);
+		color: var(--wine-tan);
+		padding: 0.2rem 0.5rem;
+		border-radius: 3px;
+		font-family: var(--sans);
+		font-weight: 700;
+	}
+
+	.bottle-details {
+		width: 30%;
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+	.zoom-container {
+		position: relative;
+		height: 100%;
+		width: auto;
+	}
+
+	.zoom-target {
+		height: 100%;
+		object-fit: contain;
+		min-width: 130px;
+		display: block;
+	}
+
+	.zoom-lens {
+		position: absolute;
+		pointer-events: none;
+		border: 2px solid var(--wine-black);
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-size: 200%; /* adjust zoom level */
+		display: none; /* hidden until hover */
+	}
+
+	.mag {
+		position: absolute;
+		bottom: -0.5rem;
+		right: -0.5rem;
+		background: var(--wine-black);
+		/* border: 2px solid var(--wine-tan); */
+		border-radius: 50%;
+		height: 2rem;
+		width: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(.mag .icon) {
+		width: 80%;
+		height: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(.mag .icon svg) {
+		width: 80%;
+	}
+
+	:global(.mag .icon svg circle, .mag .icon svg line) {
+		stroke: var(--wine-tan);
+		stroke-width: 2px;
 	}
 
 	button {
@@ -152,10 +292,6 @@
 
 	:global(#universal-tooltip button:hover svg path) {
 		stroke: var(--wine-tan);
-	}
-
-	.label-img {
-		height: 100%;
 	}
 
 	.deets {

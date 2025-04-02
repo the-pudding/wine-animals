@@ -3,7 +3,7 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import { tooltipVisible, tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
 
@@ -13,6 +13,7 @@
 	let selectedPoint;
   
 	function mouseoverCircle(point) {
+		tooltipVisible.set(true)
 		tooltipType.set("bottle")
 
 		selectAll(".wine-circle circle")
@@ -32,6 +33,7 @@
 	
 	function mouseClickCircle(point) {
 		selectedPoint = point;
+		tooltipVisible.set(true)
 		tooltipType.set("bottle")
 
 		selectAll(".wine-circle circle")
@@ -70,6 +72,7 @@
     }
 
 	function setTooltip(data) {
+		tooltipVisible.set(true)
 		tooltipData.set(data);
 		tooltipType.set("bottle");
 	}

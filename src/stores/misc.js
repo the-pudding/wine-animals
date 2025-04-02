@@ -29,6 +29,7 @@ export const navAnimal = writable("amphibian/reptile");
 export const currAnimalSlide = writable(0);
 
 // UNIVERSAL TOOLTIP
+export const tooltipVisible = writable(false);
 export const tooltipType = writable(null);
 export const lockedSelection = writable(false);
 export const tooltipData = writable(null);

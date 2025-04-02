@@ -1,10 +1,11 @@
 <script>
     import { getContext } from "svelte";
-    import { stealPriceNum, stealRatingNum, stealPercent, animalSelected} from "$stores/misc.js";
+    import { stealPriceNum, stealRatingNum, stealPercent, animalSelected, tooltipType} from "$stores/misc.js";
     import Scrolly from "$components/helpers/ChartScrolly.svelte";
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import rawData from "$data/wineData.csv";
     import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
+    import Filters from "$components/FiltersScroll.svelte";
 
     const copy = getContext("copy");
     
@@ -25,21 +26,28 @@
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
 
-    // $: console.log(chartScrollIndex)
+    $: if (chartScrollIndex == 14 || chartScrollIndex == 14) {
+        tooltipType.set("bottle")
+    }
+
+    $: console.log(chartScrollIndex)
 </script>
 
 <section id="chart-scroll">
     <div class="sticky">
-        <p class="steals-sentence"
+        <!-- <p class="steals-sentence"
             class:active={chartScrollIndex == 14 || chartScrollIndex == "exit"}>
             <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines are good deals</span> 
             when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
             and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span>
-        </p>
+        </p> -->
         <div class="chart-wrapper">
             <div class="scatter-wrapper" 
                 class:active={chartScrollIndex !== 13}
             >
+                {#if chartScrollIndex >= 14 || chartScrollIndex == "exit"}
+                    <Filters />
+                {/if}
                 <ScrollScatter chartScrollIndex={chartScrollIndex}/>
             </div>
             <div class="lineup-wrapper" class:active={chartScrollIndex == 13}>
@@ -138,7 +146,7 @@
         height: 100%;
         left: 0;
         transform: translate(0,0);
-        padding: 4rem 0 6rem 0;
+        padding: 0 0 6rem 0;
         transition: opacity 0.75s linear;
     }
 

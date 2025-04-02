@@ -73,7 +73,7 @@
 		position: absolute;
 		transform: rotate(-90deg) translate(-100%, 0);
 		transform-origin: left top;
-		top: 4.25rem;
+		top: 0rem;
 		left: calc(100% - 6rem);
 		pointer-events: auto;
 		overflow: visible;
@@ -82,6 +82,7 @@
 	#range-rating {
 		position: absolute;
 		pointer-events: auto;
+		top: 0.5rem;
 		left: 78px;
 	}
 

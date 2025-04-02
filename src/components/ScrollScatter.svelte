@@ -100,13 +100,14 @@
         align-items: center;
         margin-bottom: 5rem;
         overflow: hidden;
+        padding-top: 5rem;
     }
 
     .chart-container {
         width: 100%;
         height: 100%;
         /* overflow: hidden; */
-        padding: 6rem;
+        padding: 1rem 6rem 10rem 6rem;
         position: relative;
     }
 
@@ -145,14 +146,14 @@
     }
 
     .label-price {
-        top: 8.25rem;
+        top: 3.25rem;
         left: 1rem;
         transform: rotate(-90deg);
     }
 
     .label-rating {
         right: 2.5rem;
-        bottom: 2rem;
+        bottom: 6rem;
         transform: translate(-50%, 0);
     }
 
