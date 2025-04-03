@@ -259,7 +259,7 @@
                 />
                 {#if chartScrollIndex == undefined || chartScrollIndex < 4}
                     <image 
-                        href={d.topGroup == "cat" || d.topGroup == "mythical creature" ? "assets/images/icons/catmyth.png" : `assets/images/icons/${animal.replace(/[^a-zA-Z0-9]/g, "")}.png`} 
+                        href={`assets/images/icons/${animal.replace(/[^a-zA-Z0-9]/g, "")}.png`} 
                         x={cx - imageSize / 2} 
                         y={cy - imageSize / 2} 
                         width={imageSize} 

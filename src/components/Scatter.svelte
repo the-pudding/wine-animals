@@ -128,6 +128,9 @@
         } else if (id == "dragon") {
             subgroup = "mythical dragon";
             finalAnimal = id;
+        } else if (id = "lioncrest") {
+            subgroup = "big cat";
+            finalAnimal = "lion crest";
         } else {
             subgroup = id;
             finalAnimal = undefined;

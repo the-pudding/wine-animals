@@ -27,7 +27,7 @@
     async function updateDomains(chartScrollIndex) {
         if (chartScrollIndex <= 3 || chartScrollIndex == undefined) {
             xDomain.set([3.7, 4.2]);
-            yDomain.set([20, 35]);
+            yDomain.set([20, 40]);
         } else {
             xDomain.set([3, 4.8]);
             yDomain.set([0, 150]);

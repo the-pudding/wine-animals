@@ -40,11 +40,22 @@ function summarizeWines(animalGroup, dataset, metric) {
     } else if (metric === "animal wines") {
         filteredWines = dataset.filter(d => d.topgroup !== "none" && d.topgroup !== "human"); // Exclude "none" and "human"
     } else if (metric === "cat") {
-        filteredWines = catData.filter(d => d.finalAnimal.includes(animalGroup));
+        if (animalGroup == "lion crest" || "lion") {
+            filteredWines = catData.filter(d => {
+                const animals = d.finalAnimal.split(",").map(a => a.trim());
+                return animals.includes(animalGroup);
+              });
+        } else {
+            filteredWines = catData.filter(d => d.finalAnimal.includes(animalGroup));
+        }
     } else if (metric === "bird") {
         filteredWines = birdData.filter(d => d.subgroup.includes(animalGroup));
     } else {
-        filteredWines = dataset.filter(d => d.topgroup.includes(animalGroup));
+        if (animalGroup == "cat") {
+            filteredWines = dataset.filter(d => d.topgroup.includes(animalGroup) && !d.topgroup.includes("cattle"))
+        } else {
+            filteredWines = dataset.filter(d => d.topgroup.includes(animalGroup));
+        }
     }
 
     const getCountsAndPercents = (buckets, key) => {
