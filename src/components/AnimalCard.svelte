@@ -62,7 +62,7 @@
                             </p>
                         </div>
                         <div class="median">
-                            <p>Steals</p>
+                            <p>Good deals</p>
                             <p>{Math.round(medianData.find(d => d.topGroup == animal).stealPercent * 10) / 10}%</p>
                         </div>
                     </div>

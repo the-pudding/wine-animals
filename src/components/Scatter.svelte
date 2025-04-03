@@ -28,11 +28,31 @@
     let subgroup;
     let finalAnimal;
 
-    $: animalData = allWineData.filter(d => 
+    $: animalData = allWineData.filter(d => {
+        const animals = d.finalAnimal
+            .split(",")
+            .map(a => a.trim().toLowerCase());
+        const fa = finalAnimal?.toLowerCase();
+
+        const otherBigCats = ["cheetah", "cougar", "jaguar/leopard/panther", "lynx", "tiger"];
+
+        const matchesFinalAnimal = !finalAnimal || (
+            fa === "lion crest"
+                ? animals.includes("lion crest")
+                : fa === "lion"
+                    ? animals.includes("lion") && !animals.includes("lion crest")
+                    : fa === "cheetah"
+                        ? otherBigCats.some(cat => animals.includes(cat))
+                        : d.finalAnimal.toLowerCase().includes(fa)
+        );
+
+        return (
             d.topgroup.includes(animal) &&
             (!subgroup || d.subgroup.includes(subgroup)) &&
-            (!finalAnimal || d.finalAnimal.includes(d.finalAnimal)) &&
-            d.price <= 150);
+            matchesFinalAnimal &&
+            d.price <= 150
+        );
+    });
 
     const yKey = 'price';
     const xKey = 'rating';
@@ -82,6 +102,10 @@
             return "foxes"
         } else if (animal =="dolphin") {
             return "dolphins, sharks, whales"
+        } else if (animal == "lion crest") {
+            return "heradlic lions"
+        } else if (animal == "cheetah") {
+            return "other big cats"
         } else {
             return `${animal}s`
         }
@@ -104,33 +128,44 @@
         let id = event.target.id.split("-")[0];
         if (id == "gamebird") { id = "game bird"}
 
-        if (id == "human") {
+        console.log({id})
+
+        if (id === "human") {
             subgroup = "human";
             finalAnimal = undefined;
-        } else if (id== "lobster") {
+        } else if (id === "lobster") {
             subgroup = "crustacean";
             finalAnimal = undefined;
-        } else if (id == "nautilus") {
+        } else if (id === "nautilus") {
             subgroup = "shell";
             finalAnimal = id;
-        } else if (id == "bee" || id == "butterfly") {
+        } else if (id === "bee" || id === "butterfly") {
             subgroup = "flying bug";
             finalAnimal = id;
-        } else if (id == "ladybug" || id == "ant") {
+        } else if (id === "ladybug" || id === "ant") {
             subgroup = "walking bug";
             finalAnimal = id;
-        } else if (id == "unicorn") {
+        } else if (id === "unicorn") {
             subgroup = "mythical horse";
             finalAnimal = id;
-        } else if (id == "griffin") {
+        } else if (id === "griffin") {
             subgroup = "mythical cat";
             finalAnimal = id;
-        } else if (id == "dragon") {
+        } else if (id === "dragon") {
             subgroup = "mythical dragon";
             finalAnimal = id;
-        } else if (id = "lioncrest") {
+        } else if (id === "lioncrest") {
             subgroup = "big cat";
             finalAnimal = "lion crest";
+        } else if (id === "lion") {
+            subgroup = "big cat";
+            finalAnimal = id;
+        } else if (id === "cat") {
+            subgroup = "domestic cat";
+            finalAnimal = undefined;
+        } else if (id === "othercat") {
+            subgroup = "big cat";
+            finalAnimal = "cheetah";
         } else {
             subgroup = id;
             finalAnimal = undefined;
