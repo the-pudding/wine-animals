@@ -127,7 +127,7 @@
                                     <p class="instructions">
                                         <span class="tap-icon">{@html tapSVG}</span>
                                         Tap on a bottle or
-                                        <button class="random-click" on:click={handleRandomClick}>get a random bottle</button>
+                                        <button class="random-click" on:click={handleRandomClick}>get a random one</button>
                                     </p>
                                 {/if}
                         {/if}
