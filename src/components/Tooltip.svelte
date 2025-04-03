@@ -3,6 +3,12 @@
     import Icon from "$components/helpers/Icon.svelte";
     import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
+	import viewport from "$stores/viewport.js";
+
+	// SCREENSIZE
+	$: w = $viewport.width;
+	$: h = $viewport.height;
+	$: isMobile = w <= 720;
 
     function tooltipCloseClick() {
   		lockedSelection.set(false);
@@ -92,14 +98,22 @@
             </button>
             <div class="zoom-container"
 					bind:this={wrapper}
-					on:mouseenter={handleMouseEnter}
-					on:mouseleave={handleMouseLeave}
-					on:mousemove={handleMouseMove}>
+					on:mouseenter={(e) => {
+						if (!isMobile) handleMouseEnter(e)
+					}}
+					on:mouseleave={(e) => {
+						if (!isMobile) handleMouseLeave(e)
+					}}
+					on:mousemove={(e) => {
+						if (!isMobile) handleMouseMove(e)
+					}}>
 					<img class="label-img zoom-target" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
-					<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
-					<span class="mag">
-						<Icon name="zoom-in" size={"1.5rem"}/>
-					</span>
+					{#if !isMobile}
+						<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
+						<span class="mag">
+							<Icon name="zoom-in" size={"1.5rem"}/>
+						</span>
+					{/if}
 				</div>
             <div class="deets">
                 <p class="wine-name">{data.name}</p>

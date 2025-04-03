@@ -4,10 +4,16 @@
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
 	import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
+	import viewport from "$stores/viewport.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
   
 	let selectedPoint;
+
+	// SCREENSIZE
+	$: w = $viewport.width;
+	$: h = $viewport.height;
+	$: isMobile = w <= 720;
   
 	function mouseoverCircle(point) {
 		tooltipType.set("bottle")
@@ -88,21 +94,24 @@
   {#each uniquePoints as point, i}
 	<path
 		id={`voronoi-${point.data.id}`}
-		class={"voronoi-cell active"}
+		class={"voronoi-cell"}
+		class:active={!isMobile}
 	  d={voronoi.renderCell(i)}
 	  aria-label="scatterplot tooltip"
 	  on:mouseover={() => {
-		if (!$lockedSelection) mouseoverCircle(point);
+		if (!$lockedSelection && !isMobile) mouseoverCircle(point);
 	  }}
 	  on:mouseleave={() => {
-		if (!$lockedSelection) mouseleaveCircle(point);
+		if (!$lockedSelection && !isMobile) mouseleaveCircle(point);
 	  }}
 	  on:focus={() => {
-		if (!$lockedSelection) mouseoverCircle(point);
+		if (!$lockedSelection && !isMobile) mouseoverCircle(point);
 	  }}
 	  on:click={() => {
-		lockedSelection.set(true);
-		mouseClickCircle(point);
+		if (!isMobile) {
+			lockedSelection.set(true);
+			mouseClickCircle(point);
+		}
 	  }}
 	  role="tooltip"
 	></path>

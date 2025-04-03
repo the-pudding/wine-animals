@@ -1,8 +1,13 @@
 <script>
 	import { getContext } from "svelte";
 	import { tooltipType, tooltipData } from "$stores/misc.js";
-	import * as d3 from "d3";
 	import summaryData from "$data/wineData_summary.csv";
+	import viewport from "$stores/viewport.js";
+
+	// SCREENSIZE
+	$: w = $viewport.width;
+	$: h = $viewport.height;
+	$: isMobile = w <= 720;
 
 	const { data, xGet, yGet, yRange, xScale, height } = getContext("LayerCake");
 
@@ -86,6 +91,7 @@
 			{@const height = columnHeight(d)}
 			<rect
 				class={d.bucket}
+				class:active={!isMobile}
 				data-id={i}
 				aria-label="bar tooltip"
 				{x}
@@ -95,9 +101,15 @@
 				fill={colorByCompare(d, i)}
 				{stroke}
 				stroke-width={strokeWidth}
-				on:mouseover|preventDefault={(e) => handleMouseover(e,d)}
-				on:focus={(e) => handleMouseover(e,d)}
-				on:mouseleave={handleMouseleave}
+				on:mouseover|preventDefault={(e) => {
+					if(!isMobile) handleMouseover(e,d)
+				}}
+				on:focus={(e) => {
+					if(!isMobile) handleMouseover(e,d)
+				}}
+				on:mouseleave={() => {
+					if(!isMobile) handleMouseleave
+				}}
 			/>
 			<text class="bucket-text {d.category}-text" x={x + width / 2} y={localHeight + 24} text-anchor="middle">
 				{#if d.category == "country"}
@@ -117,7 +129,7 @@
 </g>
 
 <style>
-	rect {
+	rect.active {
 		cursor: pointer;
 	}
 	rect.notHover {

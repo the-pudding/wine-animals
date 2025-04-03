@@ -4,10 +4,16 @@
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
 	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import viewport from "$stores/viewport.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
 
 	export let chartScrollIndex;
+
+	// SCREENSIZE
+	$: w = $viewport.width;
+	$: h = $viewport.height;
+	$: isMobile = w <= 720;
 
 	let pointsData;
 	let selectedPoint;
@@ -109,23 +115,25 @@
 		id={`voronoi-${point.data.id}`}
 		class={"voronoi-cell"}
         class:active={
-			(chartScrollIndex == 14) ||
-			(chartScrollIndex == "exit")
+			((chartScrollIndex == 14) || (chartScrollIndex == "exit"))
+			&& !isMobile
 		}
 	  d={voronoi.renderCell(i)}
 	  aria-label="scatterplot tooltip"
 	  on:mouseover={() => {
-		if (!$lockedSelection) mouseoverCircle(point);
+		if (!$lockedSelection && !isMobile) mouseoverCircle(point);
 	  }}
 	  on:mouseleave={() => {
-		if (!$lockedSelection) mouseleaveCircle(point);
+		if (!$lockedSelection  && !isMobile) mouseleaveCircle(point);
 	  }}
 	  on:focus={() => {
-		if (!$lockedSelection) mouseoverCircle(point);
+		if (!$lockedSelection  && !isMobile) mouseoverCircle(point);
 	  }}
 	  on:click={() => {
-		lockedSelection.set(true);
-		mouseClickCircle(point);
+		if(!isMobile) {
+			lockedSelection.set(true);
+			mouseClickCircle(point);
+		}
 	}}
 	  role="tooltip"
 	></path>

@@ -122,12 +122,12 @@
             <div class="labels" class:hidden={scrollIndex <= 5}>
                 <p><Icon name="chevron-left"/>Less deals</p>
                 <p>More deals<Icon name="chevron-right"/></p>  
-                <div class="median-mark" style="left: 52%">
+                <div class="median-mark" style="left: 56%">
                     <p class="num">13.9%</p>
                     <div class="median-circle"></div>
                     <p>Animal wines</p>
                 </div>
-                <div class="median-mark" style="left: 58%">
+                <div class="median-mark" style="left: 62%">
                     <p class="num">14.5%</p>
                     <div class="median-circle"></div>
                     <p>All wines</p>
