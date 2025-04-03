@@ -69,12 +69,6 @@
 			.attr("r", 5)
 	}
 
-	function formatStars(rating) {
-        let string = rating + "";
-        let ratingReplaced = string.replace(".", "_");
-        return `star${ratingReplaced}.svg`
-    }
-
 	function setTooltip(data) {
 		tooltipData.set(data);
 		tooltipType.set("bottle");
@@ -105,8 +99,24 @@
 	$: uniquePoints = uniques(points, d => d.join(), false);
 	$: voronoi = Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
 
-	$: if (!$lockedSelection && selectedPoint) {
-		mouseleaveCircle(selectedPoint);
+	$: {
+		if (!$lockedSelection) {
+			$stealPriceNum;
+			$stealRatingNum;
+
+			// reset all circle fills based on current store values
+			selectAll(".wine-circle circle")
+				.style("fill", function () {
+					const id = this.getAttribute("id")?.replace("circle-", "");
+					const wine = $data[1].find(w => w.id == id);
+
+					if (!wine) return "#475171";
+
+					return (wine.price <= $stealPriceNum && wine.rating >= $stealRatingNum)
+						? "#3E5C4B"
+						: "#475171";
+				})
+		}
 	}
   </script>
   
