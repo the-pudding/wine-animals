@@ -1,10 +1,10 @@
 <script>
     import MultiSelect from 'svelte-multiselect';
-    import Typeahead from 'svelte-typeahead';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum } from "$stores/misc.js";
+    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum, withFiltersData } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
+    import Typeahead from "$components/TypeaheadLocal.svelte";
     import { selectAll, select } from 'd3-selection';
     import { median } from 'd3-array';
 
@@ -54,11 +54,9 @@
         selectedCountrySTORE,
         selectedYearRangeSTORE
     ) {
-        console.log({$stealPriceNum, $stealRatingNum})
         const hasAnimalFilter = selectedAnimalSTORE.length > 0;
         const hasTypeFilter = selectedTypeSTORE.length > 0;
         const hasCountryFilter = selectedCountrySTORE.length > 0;
-        const hasYearRangeFilter = selectedYearRangeSTORE.length === 2;
 
         const filteredData = filteredRawData.filter(d => {
             if (hasAnimalFilter) {
@@ -79,11 +77,15 @@
             return true;
         });
 
-        bigScatterData.set(filteredData);
+        withFiltersData.set(filteredData);
+
+        let stealsPercentLOCAL = $withFiltersData.length/$bigScatterData.length *100;
+
+        stealPercent.set(stealsPercentLOCAL);
     }
 
     function updateSearchedWine(detail) {
-        selectAll("#scatter-explore .selected-wine")
+        selectAll("#scatterplot .selected-wine")
             .transition()
             .duration(300)
             .attr("r", 4) // Reset size
@@ -96,7 +98,9 @@
 
         if (foundWine) {
             lockedSelection.set(true);
-            selectAll(`#scatter-explore #circle-${foundWine.id}`)
+            let wine = selectAll(`#scatterplot #circle-${foundWine.id}`)
+            console.log(wine)
+            wine
                 .classed("selected-wine", true)
                 .raise()
                 .transition()
@@ -137,20 +141,7 @@
     $: storeUpdates(selectedType, "type")
     $: storeUpdates(selectedCountry, "country")
     $: storeUpdates(searchedWine, "wine")
-    $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
-
-    function findSteals(data) {
-        
-        let steals = data.filter(d => d.price <= totalMedianPrice && d.rating >= totalMedianRating);
-        let stealCount = steals.length;
-        let totalCount = filteredRawData.length;
-        let stealPercent = (stealCount / totalCount) * 100;
-        return stealPercent
-    }
-
-    $: belowPriceAboveRating = findSteals($bigScatterData);
-
-    $: console.log({belowPriceAboveRating})
+    $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $stealPriceNum, $stealRatingNum);
 </script>
 
 
@@ -210,10 +201,9 @@
                         limit={4}
                         extract={(item) => item.label}
                         on:select={({ detail }) => {
-                            events = [...events, detail];
-                            updateSearchedWine(detail);
+                            events = [...events, { event: "select", detail }]
                         }}
-                        on:clear={() => events = [...events, "clear"]}
+                        on:clear={() => (events = [...events, { event: "clear" }])}
                     />
                     {#if searchTerm}
                         <button class="clear-btn" on:click={() => searchTerm = ''}>

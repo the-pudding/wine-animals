@@ -5,7 +5,7 @@
 	import { median } from 'd3-array';
     import * as d3Regression from 'd3-regression';
     import rawData from "$data/wineData.csv";
-    import { animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent } from "$stores/misc.js";
+    import { animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent, withFiltersData } from "$stores/misc.js";
 	import { stealTopgroupCounts } from "../../stores/misc";
 
 	const { data, xGet, yGet, xScale, yScale, width, height } = getContext("LayerCake");
@@ -88,12 +88,6 @@
         )
     }
 
-    $: steals = setStealData($stealPriceNum, $stealRatingNum);
-    $: stealsPercent = steals.length/filteredRawData.length*100;
-
-    $: stealData.set(steals);
-    $: stealPercent.set(stealsPercent);
-
     $: topgroupCounts = [];
 
 	$: {
@@ -154,6 +148,9 @@
                 (chartScrollIndex == 11 && (!d.topgroup.includes("cat") || (d.topgroup.includes("cattle") && !d.topgroup.includes("cat")))) ||
                 (chartScrollIndex == 12 && !d.topgroup.includes("bird"))
             }
+            class:filteredOut={
+                !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
+            }
         >
           <circle 
             id={`circle-${d.id}`}
@@ -181,7 +178,10 @@
             class:hidden={chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile") ||
                chartScrollIndex == 10 && !d.topgroup.includes("pig") ||
                chartScrollIndex == 11 && !d.topgroup.includes("cat") 
-               || chartScrollIndex == 12 && !d.topgroup.includes("bird")}>
+               || chartScrollIndex == 12 && !d.topgroup.includes("bird")}
+            class:filteredOut={
+                !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
+            }>
           <circle 
             id={`circle-${d.id}`}
             class="selected-circle"
@@ -192,7 +192,7 @@
                 d.price <= $stealPriceNum 
                 && d.rating >= $stealRatingNum
                 && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
-            opacity={0.8}
+            opacity={$withFiltersData.some(f => f.id === d.id) ? 0.8 : 0.025}
             stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 
           />
@@ -312,6 +312,11 @@
 
     .wines-wrapper g.hidden, .medians-wrapper g.hidden {
         opacity: 0;
+        pointer-events: none;
+    }
+
+    .wines-wrapper g.filteredOut {
+        opacity: 0.025;
         pointer-events: none;
     }
 

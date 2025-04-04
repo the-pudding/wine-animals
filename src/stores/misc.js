@@ -5,6 +5,7 @@ import allWineData from "$data/wineData.csv";
 const filteredData = allWineData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
 export const bigScatterData = writable(filteredData);
+export const withFiltersData = writable(filteredData);
 export const selectedAnimalSTORE = writable([]);
 export const selectedTypeSTORE = writable([]);
 export const selectedCountrySTORE = writable([]);

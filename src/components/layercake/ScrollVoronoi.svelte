@@ -3,7 +3,7 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum, tooltipVisible } from "$stores/misc.js";
+	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum, tooltipVisible, withFiltersData } from "$stores/misc.js";
 	import viewport from "$stores/viewport.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
@@ -117,6 +117,8 @@
 						? "#3E5C4B"
 						: "#475171";
 				})
+				.transition(500)
+				.attr("r", 5)
 		}
 	}
   </script>
@@ -128,6 +130,7 @@
         class:active={
 			((chartScrollIndex == 14) || (chartScrollIndex == "exit"))
 			&& !isMobile
+			&& $withFiltersData.some(f => f.id === point.data.id)
 		}
 	  d={voronoi.renderCell(i)}
 	  aria-label="scatterplot tooltip"
