@@ -1,173 +1,201 @@
 <script>
-  /**
-   * @template TItem = string | number | Record<string, any>
-   */
+    import fuzzy from "fuzzy";
+    import Search from "svelte-search";
+    import { tick, createEventDispatcher, afterUpdate } from "svelte";
+    import { lockedSelection, tooltipData, tooltipType, tooltipVisible } from "$stores/misc.js";
+    import rawData from "$data/wineData.csv";
+    import { selectAll } from 'd3-selection'; 
 
-  export let id = "typeahead-" + Math.random().toString(36);
-  export let value = "";
+    export let id = "typeahead-" + Math.random().toString(36);
+    export let value = ""; // Ensure this is always a string
+    export let selectHandler = null;
+  
+    /** @type {TItem[]} */
+    export let data = [];
+  
+    /** @type {(item: TItem) => any} */
+    export let extract = (item) => item;
+    export let disable = (item) => false;
+    export let filter = (item) => false;
+    export let autoselect = true;
+  
+    /** @type {"update" | "clear" | "keep"} */
+    export let inputAfterSelect = "update";
+    export let focusAfterSelect = false;
+    export let showDropdownOnFocus = false;
+    export let showAllResultsOnFocus = false;
+    export let limit = Infinity;
+  
+    const dispatch = createEventDispatcher();
+    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human");
+  
+    let comboboxRef = null;
+    let searchRef = null;
+    let hideDropdown = false;
+    let selectedIndex = -1;
+    let prevResults = "";
+    let isFocused = false;
+    let foundWine;
+  
+    let localResults = [];
 
-  /** @type {TItem[]} */
-  export let data = [];
-
-  /** @type {(item: TItem) => any} */
-  export let extract = (item) => item;
-
-  /** @type {(item: TItem) => boolean} */
-  export let disable = (item) => false;
-
-  /** @type {(item: TItem) => boolean} */
-  export let filter = (item) => false;
-
-  /** Set to `false` to prevent the first result from being selected */
-  export let autoselect = true;
-
-  /**
-   * Set to `keep` to keep the search field unchanged after select, set to `clear` to auto-clear search field
-   * @type {"update" | "clear" | "keep"}
-   */
-  export let inputAfterSelect = "update";
-
-  /** @type {{ original: TItem; index: number; score: number; string: string; disabled?: boolean; }[]} */
-  export let results = [];
-
-  $: console.log("results", results);
-
-  /** Set to `true` to re-focus the input after selecting a result */
-  export let focusAfterSelect = false;
-
-  /** Set to `true` to only show results when the input is focused */
-  export let showDropdownOnFocus = false;
-
-  /** Set to `true` for all results to be shown when an empty input is focused */
-  export let showAllResultsOnFocus = false;
-
-  /**
-   * Specify the maximum number of results to return
-   * @type {number}
-   */
-  export let limit = Infinity;
-
-  import fuzzy from "fuzzy";
-  import Search from "svelte-search";
-  import { tick, createEventDispatcher, afterUpdate } from "svelte";
-
-  const dispatch = createEventDispatcher();
-
-  let comboboxRef = null;
-  let searchRef = null;
-  let hideDropdown = false;
-  let selectedIndex = -1;
-  let prevResults = "";
-  let isFocused = false;
-
-  afterUpdate(() => {
-    if (prevResults !== resultsId && autoselect) {
-      selectedIndex = getNextNonDisabledIndex();
-    }
-
-    if (prevResults !== resultsId && !$$slots["no-results"]) {
-      hideDropdown = false;
-    }
-
-    prevResults = resultsId;
-  });
-
-  async function select() {
-    const result = results[selectedIndex];
-
-    if (result.disabled) return;
-
-    const selectedValue = extract(result.original);
-    const searchedValue = value;
-
-    if (inputAfterSelect == "clear") value = "";
-    if (inputAfterSelect == "update") value = selectedValue;
-
-    dispatch("select", {
-      selectedIndex,
-      searched: searchedValue,
-      selected: selectedValue,
-      original: result.original,
-      originalIndex: result.index,
+    $: safeValue = value ?? "";
+  
+    afterUpdate(() => {
+      if (prevResults !== resultsId && autoselect) {
+        selectedIndex = getNextNonDisabledIndex();
+      }
+  
+      if (prevResults !== resultsId && !$$slots["no-results"]) {
+        hideDropdown = localResults.length === 0;
+      }
+  
+      prevResults = resultsId;
     });
 
-    await tick();
+    function setTooltip(data) {
+        tooltipVisible.set(true);
+		tooltipData.set(data);
+		tooltipType.set("bottle");
+	}
 
-    if (focusAfterSelect) searchRef.focus();
-    close();
-  }
+    function updateSearchedWine(detail) {
+        if (!detail || !detail.original || !detail.original.value) {
+            return;
+        }
 
-  /** @type {() => number} */
-  function getNextNonDisabledIndex() {
-    let index = 0;
-    let disabled = results[index]?.disabled ?? false;
+        selectAll(".selected-circle")
+            .style("opacity", 0.5)
 
-    while (disabled) {
-      if (index === results.length) {
-        index = 0;
-      } else {
-        index += 1;
-      }
+        foundWine = filteredRawData.find(d => d.id === detail.original.value);
 
-      disabled = results[index]?.disabled ?? false;
+        if (foundWine) {
+            lockedSelection.set(true);
+            const wine = selectAll(`#scatterplot #circle-${foundWine.id}`);
+            const parent = selectAll(wine.parentNode);
+            console.log(wine, parent)
+            wine
+                .classed("selected-wine", true)
+                .classed("filteredOut", false)
+                .raise()
+                .transition()
+                .duration(500)
+                .attr("r", 10)
+                .style("fill", "#CFCABF")
+                .style("opacity", 1);
+                
+            parent
+              .style("opacity", 1);
+
+            setTooltip(foundWine);
+        }
     }
+  
+    async function select() {
+        const result = localResults[selectedIndex];
+        if (!result || result.disabled) return;
 
-    return index;
-  }
+        const selectedValue = extract(result.original);
+        const searchedValue = value;
 
-  /** @type {(direction: -1 | 1) => void} */
-  function change(direction) {
-    let index =
-      direction === 1 && selectedIndex === results.length - 1
-        ? 0
-        : selectedIndex + direction;
-    if (index < 0) index = results.length - 1;
+        if (inputAfterSelect === "clear") value = "";
+        if (inputAfterSelect === "update") value = selectedValue;
 
-    let disabled = results[index].disabled;
+        const payload = {
+            selectedIndex,
+            searched: searchedValue,
+            selected: selectedValue,
+            original: result.original,
+            originalIndex: result.index,
+        };
 
-    while (disabled) {
-      if (index === results.length) {
-        index = 0;
-      } else {
-        index += direction;
+        dispatch("select", payload);
+
+        await tick();
+        updateSearchedWine(payload)
+        if (focusAfterSelect) searchRef?.focus();
+        close();
+        }
+  
+    function getNextNonDisabledIndex() {
+      if (!Array.isArray(localResults) || localResults.length === 0) return -1;
+  
+      let index = 0;
+      let disabled = localResults[index]?.disabled ?? false;
+  
+      while (disabled && index < localResults.length) {
+        index = (index + 1) % localResults.length;
+        disabled = localResults[index]?.disabled ?? false;
       }
-
-      disabled = results[index].disabled;
+  
+      return index;
     }
-
-    selectedIndex = index;
-  }
-
-  const open = () => (hideDropdown = false);
-  const close = () => {
-    hideDropdown = true;
-    isFocused = false;
-  };
-
-  $: options = { pre: "<mark>", post: "</mark>", extract };
-  $: results = fuzzy
-    .filter(value, data, options)
-    .filter(({ score }) => score > 0)
-    .slice(0, limit)
-    .filter((result) => !filter(result.original))
-    .map((result) => ({ ...result, disabled: disable(result.original) }));
-  $: resultsId = results.map((result) => extract(result.original)).join("");
-  $: showResults = !hideDropdown && results.length > 0;
-  $: if (showDropdownOnFocus) {
-    showResults = showResults && isFocused;
-  }
-  $: if (isFocused && showAllResultsOnFocus && value.length === 0) {
-    results = data
-      .filter((datum) => !filter(datum))
-      .map((original, index) => ({
-        disabled: disable(original),
-        index,
-        original,
-        score: 0,
-        string: extract(original),
-      }));
-  }
-</script>
+  
+    function change(direction) {
+      if (!Array.isArray(localResults) || localResults.length === 0) return;
+  
+      let index =
+        direction === 1 && selectedIndex === localResults.length - 1
+          ? 0
+          : selectedIndex + direction;
+  
+      if (index < 0) index = localResults.length - 1;
+  
+      let disabled = localResults[index]?.disabled ?? false;
+  
+      while (disabled) {
+        index = (index + direction + localResults.length) % localResults.length;
+        disabled = localResults[index]?.disabled ?? false;
+      }
+  
+      selectedIndex = index;
+    }
+  
+    const open = () => (hideDropdown = false);
+    const close = () => {
+      hideDropdown = true;
+      isFocused = false;
+    };
+  
+    $: options = { pre: "<mark>", post: "</mark>", extract };
+  
+    $: {
+        const search = safeValue; // Always fallback to empty string
+  
+      if (isFocused && showAllResultsOnFocus && search.length === 0) {
+        localResults = Array.isArray(data)
+          ? data
+              .filter((datum) => !filter(datum))
+              .map((original, index) => ({
+                disabled: disable(original),
+                index,
+                original,
+                score: 0,
+                string: extract(original),
+              }))
+          : [];
+      } else {
+        localResults = Array.isArray(data)
+          ? fuzzy
+              .filter(search, data, options)
+              .filter(({ score }) => score > 0)
+              .slice(0, limit)
+              .filter((result) => !filter(result.original))
+              .map((result) => ({
+                ...result,
+                disabled: disable(result.original),
+              }))
+          : [];
+      }
+    }
+  
+    $: resultsId = localResults.map((r) => extract(r.original)).join("");
+    $: showResults = !hideDropdown && localResults.length > 0;
+    $: if (showDropdownOnFocus) {
+      showResults = showResults && isFocused;
+    }
+  </script>
+  
 
 <svelte:window
   on:click={({ target }) => {
@@ -183,7 +211,7 @@
   role="combobox"
   aria-haspopup="listbox"
   aria-controls="{id}-listbox"
-  class:dropdown={results.length > 0}
+  class:dropdown={localResults.length > 0}
   aria-expanded={showResults}
   id="{id}-typeahead"
 >
@@ -197,7 +225,7 @@
     aria-labelledby="{id}-label"
     aria-activedescendant={selectedIndex >= 0 &&
     !hideDropdown &&
-    results.length > 0
+    localResults.length > 0
       ? `${id}-result-${selectedIndex}`
       : null}
     bind:value
@@ -217,7 +245,7 @@
     on:blur
     on:keydown
     on:keydown={(e) => {
-      if (results.length === 0) return;
+      if (localResults.length === 0) return;
 
       switch (e.key) {
         case "Enter":
@@ -247,7 +275,7 @@
     id="{id}-listbox"
   >
     {#if showResults}
-      {#each results as result, index}
+      {#each localResults as result, index}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <li
           role="option"
@@ -265,16 +293,16 @@
             selectedIndex = index;
           }}
         >
-          <slot {result} {index} {value}>
+          <slot {result} {index} value={safeValue}>
             {@html result.string}
           </slot>
         </li>
       {/each}
     {/if}
-    {#if $$slots["no-results"] && !hideDropdown && value.length > 0 && results.length === 0}
-      <div class:no-results={true}>
-        <slot name="no-results" {value} />
-      </div>
+    {#if $$slots["no-results"] && !hideDropdown && safeValue.length > 0 && localResults.length === 0}
+    <div class:no-results={true}>
+        <slot name="no-results" value={safeValue} />
+    </div>
     {/if}
   </ul>
 </div>

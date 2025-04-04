@@ -1,7 +1,8 @@
 <script>
 	import { onMount, createEventDispatcher } from "svelte";
-	import { stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import { stealPriceNum, stealRatingNum, lockedSelection } from "$stores/misc.js";
 	import { get } from "svelte/store";
+	import { tooltipVisible } from "../../stores/misc";
 	export let min = 0;
 	export let max = 700;
 	export let step = 1;

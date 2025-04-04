@@ -101,12 +101,42 @@
 	$: voronoi = Delaunay.from(uniquePoints).voronoi([0, 0, $width, $height]);
 
 	$: {
-		if (!$lockedSelection) {
-			$stealPriceNum;
-			$stealRatingNum;
+		$stealPriceNum;
+		$stealRatingNum;
 
-			// reset all circle fills based on current store values
-			selectAll(".wine-circle circle")
+		selectAll(".wine-circle circle")
+			.filter(function () {
+				// this = DOM element
+				const id = this.getAttribute("id")?.replace("circle-", "");
+				// only include circles NOT selected
+				return !selectedPoint || id !== selectedPoint.data.id;
+			})
+			.style("fill", function () {
+				const id = this.getAttribute("id")?.replace("circle-", "");
+				const wine = $data[1].find(w => w.id == id);
+
+				if (!wine) return "#475171";
+
+				return (wine.price <= $stealPriceNum && wine.rating >= $stealRatingNum)
+					? "#3E5C4B"
+					: "#475171";
+			})
+			.transition(500)
+			.attr("r", 5);
+
+		if (selectedPoint) {
+			let selectedCircle = select(`#circle-${selectedPoint.data.id}`)
+				.style("opacity", 1)
+				.raise(); // Optional: bring to front
+			select(selectedCircle.node().parentNode)
+				.style("opacity", 1)
+		}
+	}
+
+	$: if (!$tooltipVisible) {
+		if (selectedPoint) {
+			let selectedCircle = select(`#circle-${selectedPoint.data.id}`)
+				.style("opacity", 0.8)
 				.style("fill", function () {
 					const id = this.getAttribute("id")?.replace("circle-", "");
 					const wine = $data[1].find(w => w.id == id);
@@ -118,7 +148,9 @@
 						: "#475171";
 				})
 				.transition(500)
-				.attr("r", 5)
+				.attr("r", 5);
+			select(selectedCircle.node().parentNode)
+				.style("opacity", 0.5)
 		}
 	}
   </script>

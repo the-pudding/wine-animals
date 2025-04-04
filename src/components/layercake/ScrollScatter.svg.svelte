@@ -174,27 +174,31 @@
         {@const cx = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $xGet(d) : $xGet($data[0][4])}
         {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
-        <g class="wine-circle wine-circle-{animal}" 
+        <g class="wine-circle wine-circle-{animal} selected-circle" 
             class:hidden={chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile") ||
                chartScrollIndex == 10 && !d.topgroup.includes("pig") ||
                chartScrollIndex == 11 && !d.topgroup.includes("cat") 
-               || chartScrollIndex == 12 && !d.topgroup.includes("bird")}
+               || chartScrollIndex == 12 && !d.topgroup.includes("bird")
+               || chartScrollIndex == 13 && !d.topgroup.includes("bird")} 
             class:filteredOut={
                 !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
-            }>
+            }
+               >
           <circle 
             id={`circle-${d.id}`}
-            class="selected-circle"
             cx={cx} 
             cy={cy} 
             r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 5} 
+            class:filteredOut={
+                !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
+            }
             fill={(
                 d.price <= $stealPriceNum 
                 && d.rating >= $stealRatingNum
                 && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
-            opacity={$withFiltersData.some(f => f.id === d.id) ? 0.8 : 0.025}
             stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 
+            opacity={chartScrollIndex == 14 || chartScrollIndex == "exit" ? 1 : 0.5}
           />
         </g>
       {/if}
@@ -316,7 +320,7 @@
     }
 
     .wines-wrapper g.filteredOut {
-        opacity: 0.025;
+        opacity: 0.1;
         pointer-events: none;
     }
 
@@ -341,10 +345,6 @@
 
     .medians-wrapper .active circle {
         opacity: 0.95; 
-    }
-
-    .selected-circle {
-        opacity: 1;
     }
 
     image {

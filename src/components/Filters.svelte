@@ -1,4 +1,5 @@
 <script>
+    import { tick } from "svelte";
     import MultiSelect from 'svelte-multiselect';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
     import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum, withFiltersData } from "$stores/misc.js";
@@ -52,7 +53,8 @@
         selectedAnimalSTORE,
         selectedTypeSTORE,
         selectedCountrySTORE,
-        selectedYearRangeSTORE
+        stealPriceNum,
+        stealRatingNum
     ) {
         const hasAnimalFilter = selectedAnimalSTORE.length > 0;
         const hasTypeFilter = selectedTypeSTORE.length > 0;
@@ -71,7 +73,7 @@
             if (hasCountryFilter && !selectedCountrySTORE.includes(d.country)) {
                 return false;
             }
-            if (d.price > $stealPriceNum || d.rating < $stealRatingNum) {
+            if (d.price > stealPriceNum || d.rating < stealRatingNum) {
                 return false;
             }
             return true;
@@ -83,40 +85,6 @@
 
         stealPercent.set(stealsPercentLOCAL);
     }
-
-    function updateSearchedWine(detail) {
-        selectAll("#scatterplot .selected-wine")
-            .transition()
-            .duration(300)
-            .attr("r", 4) // Reset size
-            .style("stroke", "none")
-            .style("stroke-width", "0px")
-            .style("fill", "#38425d")
-            .style("opacity", 0.8);
-
-        foundWine = filteredRawData.find(d => d.id === detail.original.value);
-
-        if (foundWine) {
-            lockedSelection.set(true);
-            let wine = selectAll(`#scatterplot #circle-${foundWine.id}`)
-            console.log(wine)
-            wine
-                .classed("selected-wine", true)
-                .raise()
-                .transition()
-                .duration(500)
-                .attr("r", 10)
-                .style("fill", "#CFCABF")
-                .style("opacity", 1);
-
-            setTooltip(foundWine)
-        }
-    }
-
-    function setTooltip(data) {
-		tooltipData.set(data);
-		tooltipType.set("bottle");
-	}
 
     function mouseleaveCircle(point) {
         searchTerm = undefined;
@@ -201,8 +169,8 @@
                         limit={4}
                         extract={(item) => item.label}
                         on:select={({ detail }) => {
-                            events = [...events, { event: "select", detail }]
-                        }}
+                            events = [...events, { event: "select", detail }];
+                          }}
                         on:clear={() => (events = [...events, { event: "clear" }])}
                     />
                     {#if searchTerm}
