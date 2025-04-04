@@ -1,7 +1,7 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import Icon from "$components/helpers/Icon.svelte";
-    import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
+    import { tooltipType, lockedSelection, tooltipData, tooltipVisible } from "$stores/misc.js";
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 	import viewport from "$stores/viewport.js";
 
@@ -12,6 +12,7 @@
 
     function tooltipCloseClick() {
   		lockedSelection.set(false);
+		tooltipVisible.set(false);
         tooltipType.set(null);
         tooltipData.set(null);
 	}
@@ -90,7 +91,7 @@
 	});
   </script>
   
-<div id="universal-tooltip" class:visible={$tooltipData} bind:this={tooltipEl}>
+<div id="universal-tooltip" class:visible={$tooltipData && $tooltipVisible} bind:this={tooltipEl}>
     {#if data}
         {#if $tooltipType == "bottle"}
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
@@ -125,7 +126,7 @@
                 </p>
                 <p class="type">{data.type}</p>
                 <div class="price-rating">
-                    <p class="price">${data.price.toFixed(2)}</p>
+                    <p class="price">${data.price}</p>
                     <p class="rating">
                     {data.rating}
                     <span class="stars">
@@ -177,9 +178,9 @@
 	#universal-tooltip {
         position: fixed;
         left: 0;
-        bottom: -160px;
+        bottom: -200px;
         width: 100%;
-        height: 160px;
+        height: 200px;
 		padding: 0.5rem;
         background: rgba(207, 202, 191, 0.98);
 		border-top: 1px solid var(--wine-dark-gray);
@@ -213,8 +214,8 @@
 		position: absolute;
 		pointer-events: none;
 		border: 2px solid var(--wine-black);
-		width: 100px;
-		height: 100px;
+		width: 140px;
+		height: 140px;
 		border-radius: 50%;
 		background-repeat: no-repeat;
 		background-size: 200%; /* adjust zoom level */

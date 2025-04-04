@@ -57,6 +57,12 @@
 
 <section id="distribution">
     <h4>Wine characteristics & distribution</h4>
+    <div class="key">
+        <p class="animal-wines">{animal} wines</p>
+        <p class="all-wines">All wines</p>
+        <p class="stat-more">More than all wines</p>
+        <p class="stat-less">Less than all wines</p>
+    </div>
     <div class="quad-wrapper">
         {#each currAnimalGroupedData as category, i}
             {@const matchingLineData = allWineGroupedData.find(([key]) => key === category.key)?.[1] || []}
@@ -103,14 +109,16 @@
                             </LayerCake>
                         </div>
                     </div>
-                    {#if category.key == "price"}
-                        <p class="comments">{@html matchedCopy.priceComments}</p>
-                    {:else if category.key == "rating"}
-                        <p class="comments">{@html matchedCopy.ratingComments}</p>
-                    {:else if category.key == "type"}
-                        <p class="comments">{@html matchedCopy.typeComments}</p>
-                    {:else if category.key == "country"}
-                        <p class="comments">{@html matchedCopy.countryComments}</p>
+                    {#if matchedCopy}
+                        {#if category.key == "price"}
+                            <p class="comments">{@html matchedCopy.priceComments}</p>
+                        {:else if category.key == "rating"}
+                            <p class="comments">{@html matchedCopy.ratingComments}</p>
+                        {:else if category.key == "type"}
+                            <p class="comments">{@html matchedCopy.typeComments}</p>
+                        {:else if category.key == "country"}
+                            <p class="comments">{@html matchedCopy.countryComments}</p>
+                        {/if}
                     {/if}
                 </div>
             {/if}
@@ -130,6 +138,52 @@
         position: relative;
         pointer-events: auto;
         margin-bottom: 2rem;
+    }
+
+    .key {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        font-family: var(--sans);
+        text-transform: capitalize;
+        align-items: center;
+    }
+
+    .key p {
+        padding: 0.125rem 0.25rem;
+    }
+
+    .key .animal-wines::before, .key .all-wines::before {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 15px;
+        margin-right: 0.5rem;
+    }
+
+    .key .animal-wines::before {
+        background-image: url('assets/images/bar-chart.png');
+        background-size: 30px 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .key .all-wines::before {
+        background-image: url('assets/images/step-chart.png');
+        background-size: 30px 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .key .stat-more {
+        background: var(--wine-green);
+        border-radius: 3px;
+    }
+
+    .key .stat-less {
+        background: var(--wine-red);
+        border-radius: 3px;
     }
 
     .quad-wrapper {

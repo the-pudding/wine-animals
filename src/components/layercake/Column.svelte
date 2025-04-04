@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from "svelte";
-	import { tooltipType, tooltipData } from "$stores/misc.js";
+	import { tooltipType, tooltipData, tooltipVisible } from "$stores/misc.js";
 	import summaryData from "$data/wineData_summary.csv";
 	import viewport from "$stores/viewport.js";
 
@@ -86,6 +86,7 @@
 	}
 
 	function setTooltip(data) {
+		tooltipVisible.set(true);
 		tooltipData.set([data]);
 		tooltipType.set("histo");
 	}
@@ -121,8 +122,8 @@
 				on:focus={(e) => {
 					if(!isMobile) handleMouseover(e,d)
 				}}
-				on:mouseleave={() => {
-					if(!isMobile) handleMouseleave
+				on:mouseleave={(e) => {
+					if(!isMobile) handleMouseleave(e)
 				}}
 			/>
 			<text class="bucket-text {d.category}-text" x={x + width / 2} y={localHeight + 24} text-anchor="middle">

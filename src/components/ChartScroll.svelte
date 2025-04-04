@@ -5,6 +5,7 @@
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import rawData from "$data/wineData.csv";
     import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
+    import Filters from "$components/Filters.svelte";
 
     const copy = getContext("copy");
     
@@ -30,12 +31,9 @@
 
 <section id="chart-scroll">
     <div class="sticky">
-        <p class="steals-sentence"
-            class:active={chartScrollIndex == 14 || chartScrollIndex == "exit"}>
-            <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of animal wines are good deals</span> 
-            when the price is <span class="bold">equal to or under ${$stealPriceNum}</span> 
-            and the rating is <span class="bold">equal to or above {$stealRatingNum} stars.</span>
-        </p>
+        {#if chartScrollIndex == 14 || chartScrollIndex == "exit"}
+            <Filters />
+        {/if}
         <div class="chart-wrapper">
             <div class="scatter-wrapper" 
                 class:active={chartScrollIndex !== 13}
@@ -138,7 +136,7 @@
         height: 100%;
         left: 0;
         transform: translate(0,0);
-        padding: 4rem 0 6rem 0;
+        padding: 4rem 0 10rem 0;
         transition: opacity 0.75s linear;
     }
 

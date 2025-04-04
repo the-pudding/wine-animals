@@ -2,7 +2,7 @@
     import MultiSelect from 'svelte-multiselect';
     import Typeahead from 'svelte-typeahead';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection } from "$stores/misc.js";
+    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, selectedPriceRangeSTORE, selectedRatingRangeSTORE, selectedYearRangeSTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
     import { selectAll, select } from 'd3-selection';
@@ -52,15 +52,12 @@
         selectedAnimalSTORE,
         selectedTypeSTORE,
         selectedCountrySTORE,
-        selectedPriceRangeSTORE,
-        selectedRatingRangeSTORE,
         selectedYearRangeSTORE
     ) {
+        console.log({$stealPriceNum, $stealRatingNum})
         const hasAnimalFilter = selectedAnimalSTORE.length > 0;
         const hasTypeFilter = selectedTypeSTORE.length > 0;
         const hasCountryFilter = selectedCountrySTORE.length > 0;
-        const hasPriceRangeFilter = selectedPriceRangeSTORE.length === 2;
-        const hasRatingRangeFilter = selectedRatingRangeSTORE.length === 2;
         const hasYearRangeFilter = selectedYearRangeSTORE.length === 2;
 
         const filteredData = filteredRawData.filter(d => {
@@ -76,13 +73,7 @@
             if (hasCountryFilter && !selectedCountrySTORE.includes(d.country)) {
                 return false;
             }
-            if (hasPriceRangeFilter && (d.price < selectedPriceRangeSTORE[0] || d.price > selectedPriceRangeSTORE[1])) {
-                return false;
-            }
-            if (hasRatingRangeFilter && (d.rating < selectedRatingRangeSTORE[0] || d.rating > selectedRatingRangeSTORE[1])) {
-                return false;
-            }
-            if (hasYearRangeFilter && d.year !== "" && (d.year < selectedYearRangeSTORE[0] || d.year > selectedYearRangeSTORE[1])) {
+            if (d.price > $stealPriceNum || d.rating < $stealRatingNum) {
                 return false;
             }
             return true;
@@ -149,11 +140,17 @@
     $: updateScatterData($selectedAnimalSTORE, $selectedTypeSTORE, $selectedCountrySTORE, $selectedPriceRangeSTORE, $selectedRatingRangeSTORE, $selectedYearRangeSTORE);
 
     function findSteals(data) {
+        
         let steals = data.filter(d => d.price <= totalMedianPrice && d.rating >= totalMedianRating);
-        return steals
+        let stealCount = steals.length;
+        let totalCount = filteredRawData.length;
+        let stealPercent = (stealCount / totalCount) * 100;
+        return stealPercent
     }
 
     $: belowPriceAboveRating = findSteals($bigScatterData);
+
+    $: console.log({belowPriceAboveRating})
 </script>
 
 
@@ -225,26 +222,11 @@
                     {/if}
                 </div>
             </div>
-            <div class="range-wrapper">
-                <div class="filter">
-                    <label for="price-range">Price</label>
-                    <DoubleRange id="price-range" start={3} end={150} min={3} max={150} valType={"price"}/>
-                </div>
-                <div class="filter">
-                    <label for="rating-range">Rating</label>
-                    <DoubleRange id="rating-range" start={2.5} end={5} min={2.5} max={5} valType={"rating"}/>
-                </div>
-                <div class="filter">
-                    <label for="year-range">Year</label>
-                    <DoubleRange id="year-range" start={1850} end={2023} min={1850} max={2023} valType={"years"}/>
-                </div>
-            </div>
+            <p class="steals-sentence">
+            <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of wines are good deals</span> 
+            with your current selections.
+        </p>
         </div>
-        {#if belowPriceAboveRating.length !== 1}
-            <p>There are <span class="highlight">{belowPriceAboveRating.length} good deal wines</span> with your current selections. That's {(belowPriceAboveRating.length/filteredRawData.length*100).toFixed(1)}% of all animal wines in our dataset.</p>
-        {:else}
-        <p>There is <span class="highlight">{belowPriceAboveRating.length} good deal wine</span> with your current selections. That's {(belowPriceAboveRating.length/filteredRawData.length*100).toFixed(1)}% of all animal wines in our dataset.</p>
-        {/if}
     </div>
 </div>
 
@@ -268,21 +250,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 300px;
         flex-direction: row;
         align-items: flex-start;
         margin: 0 auto;
-        position: sticky;
+        position: absolute;
         top: 0;
         z-index: 1000;
-        padding: 2rem;
-        background: rgba(24,26,31,0.98);
-        border-bottom: 1px solid var(--wine-dark-gray);
+        padding: 1rem;
     }
 
     .filters-inner {
         width: 100%;
-        max-width: 900px;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -291,20 +269,22 @@
     .wrapper {
         width: 100%;
         display: flex;
-        flex-direction: row;
-        gap: 2rem;
-    }
-
-    .select-wrapper, .range-wrapper {
-        width: 50%;
-        display: flex;
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    .range-wrapper {
-        gap: 2.5rem;
-        margin-right: 2rem;
+    .steals-sentence {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        font-size: var(--18px);
+    }
+
+    .select-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
     }
 
     .filter {

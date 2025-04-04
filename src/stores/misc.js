@@ -32,6 +32,7 @@ export const currAnimalSlide = writable(0);
 export const tooltipType = writable(null);
 export const lockedSelection = writable(false);
 export const tooltipData = writable(null);
+export const tooltipVisible = writable(false);
 
 // SECTION
 export const activeSection = writable("Finding the Deals");

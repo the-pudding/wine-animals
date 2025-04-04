@@ -3,7 +3,7 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum } from "$stores/misc.js";
+	import { tooltipType, tooltipData, lockedSelection, stealPriceNum, stealRatingNum, tooltipVisible } from "$stores/misc.js";
 	import viewport from "$stores/viewport.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
@@ -70,6 +70,7 @@
 	}
 
 	function setTooltip(data) {
+		tooltipVisible.set(true);
 		tooltipData.set(data);
 		tooltipType.set("bottle");
 	}

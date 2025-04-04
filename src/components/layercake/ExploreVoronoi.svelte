@@ -3,7 +3,7 @@
 	import { uniques } from 'layercake';
 	import { Delaunay } from 'd3-delaunay';
 	import { selectAll, select } from 'd3-selection';
-	import { tooltipType, lockedSelection, tooltipData } from "$stores/misc.js";
+	import { tooltipType, lockedSelection, tooltipData, tooltipVisible } from "$stores/misc.js";
 	import viewport from "$stores/viewport.js";
   
 	const { data, xGet, yGet, width, height } = getContext('LayerCake');
@@ -66,13 +66,8 @@
 			.attr("r", 5)
 	}
 
-	function formatStars(rating) {
-        let string = rating + "";
-        let ratingReplaced = string.replace(".", "_");
-        return `star${ratingReplaced}.svg`
-    }
-
 	function setTooltip(data) {
+		tooltipVisible.set(true);
 		tooltipData.set(data);
 		tooltipType.set("bottle");
 	}

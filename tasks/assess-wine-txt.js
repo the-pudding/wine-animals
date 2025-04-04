@@ -1,7 +1,7 @@
 import fs from "fs";
 import OpenAI from "openai";
 const apiKey = "";
-const INPATH = "./tasks/output/guesses/";
+const INPATH = "./tasks/output/";
 const files = fs.readdirSync(INPATH);
 const filteredFiles = files.filter(file => { 
    return file.includes(".txt");
