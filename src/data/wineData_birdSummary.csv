@@ -20,12 +20,12 @@ duck,rating,3.1–3.5,4.545454545454546,2
 duck,rating,3.6–4,52.27272727272727,23
 duck,rating,4.1–4.5,40.909090909090914,18
 duck,rating,4.6 & above,2.272727272727273,1
-duck,type,Dessert,2.272727272727273,1
-duck,type,Fortified,2.272727272727273,1
 duck,type,Red,29.545454545454547,13
+duck,type,White,47.72727272727273,21
 duck,type,Rose,6.8181818181818175,3
 duck,type,Sparkling,11.363636363636363,5
-duck,type,White,47.72727272727273,21
+duck,type,Dessert,2.272727272727273,1
+duck,type,Fortified,2.272727272727273,1
 duck,country,France,4.545454545454546,2
 duck,country,United States,43.18181818181818,19
 duck,country,Italy,15.909090909090908,7
@@ -63,12 +63,12 @@ flightless bird,rating,3.1–3.5,28.57142857142857,2
 flightless bird,rating,3.6–4,71.42857142857143,5
 flightless bird,rating,4.1–4.5,0,0
 flightless bird,rating,4.6 & above,0,0
-flightless bird,type,Dessert,0,0
-flightless bird,type,Fortified,0,0
 flightless bird,type,Red,28.57142857142857,2
+flightless bird,type,White,57.14285714285714,4
 flightless bird,type,Rose,14.285714285714285,1
 flightless bird,type,Sparkling,0,0
-flightless bird,type,White,57.14285714285714,4
+flightless bird,type,Dessert,0,0
+flightless bird,type,Fortified,0,0
 flightless bird,country,France,0,0
 flightless bird,country,United States,14.285714285714285,1
 flightless bird,country,Italy,14.285714285714285,1
@@ -106,12 +106,12 @@ game bird,rating,3.1–3.5,8.695652173913043,2
 game bird,rating,3.6–4,56.52173913043478,13
 game bird,rating,4.1–4.5,34.78260869565217,8
 game bird,rating,4.6 & above,0,0
-game bird,type,Dessert,0,0
-game bird,type,Fortified,4.3478260869565215,1
 game bird,type,Red,47.82608695652174,11
+game bird,type,White,26.08695652173913,6
 game bird,type,Rose,13.043478260869565,3
 game bird,type,Sparkling,8.695652173913043,2
-game bird,type,White,26.08695652173913,6
+game bird,type,Dessert,0,0
+game bird,type,Fortified,4.3478260869565215,1
 game bird,country,France,13.043478260869565,3
 game bird,country,United States,26.08695652173913,6
 game bird,country,Italy,21.73913043478261,5
@@ -149,12 +149,12 @@ junglefowl,rating,3.1–3.5,4.3478260869565215,2
 junglefowl,rating,3.6–4,47.82608695652174,22
 junglefowl,rating,4.1–4.5,43.47826086956522,20
 junglefowl,rating,4.6 & above,4.3478260869565215,2
-junglefowl,type,Dessert,0,0
-junglefowl,type,Fortified,0,0
 junglefowl,type,Red,39.130434782608695,18
+junglefowl,type,White,45.65217391304348,21
 junglefowl,type,Rose,6.521739130434782,3
 junglefowl,type,Sparkling,8.695652173913043,4
-junglefowl,type,White,45.65217391304348,21
+junglefowl,type,Dessert,0,0
+junglefowl,type,Fortified,0,0
 junglefowl,country,France,36.95652173913043,17
 junglefowl,country,United States,8.695652173913043,4
 junglefowl,country,Italy,21.73913043478261,10
@@ -192,12 +192,12 @@ owl,rating,3.1–3.5,2.898550724637681,2
 owl,rating,3.6–4,57.971014492753625,40
 owl,rating,4.1–4.5,36.231884057971016,25
 owl,rating,4.6 & above,2.898550724637681,2
-owl,type,Dessert,0,0
-owl,type,Fortified,0,0
 owl,type,Red,37.68115942028986,26
+owl,type,White,46.3768115942029,32
 owl,type,Rose,10.144927536231885,7
 owl,type,Sparkling,5.797101449275362,4
-owl,type,White,46.3768115942029,32
+owl,type,Dessert,0,0
+owl,type,Fortified,0,0
 owl,country,France,28.985507246376812,20
 owl,country,United States,14.492753623188406,10
 owl,country,Italy,18.84057971014493,13
@@ -235,12 +235,12 @@ peacock,rating,3.1–3.5,7.6923076923076925,1
 peacock,rating,3.6–4,30.76923076923077,4
 peacock,rating,4.1–4.5,61.53846153846154,8
 peacock,rating,4.6 & above,0,0
-peacock,type,Dessert,0,0
-peacock,type,Fortified,0,0
 peacock,type,Red,38.46153846153847,5
+peacock,type,White,38.46153846153847,5
 peacock,type,Rose,7.6923076923076925,1
 peacock,type,Sparkling,15.384615384615385,2
-peacock,type,White,38.46153846153847,5
+peacock,type,Dessert,0,0
+peacock,type,Fortified,0,0
 peacock,country,France,30.76923076923077,4
 peacock,country,United States,15.384615384615385,2
 peacock,country,Italy,15.384615384615385,2
@@ -278,12 +278,12 @@ penguin,rating,3.1–3.5,50,1
 penguin,rating,3.6–4,50,1
 penguin,rating,4.1–4.5,0,0
 penguin,rating,4.6 & above,0,0
-penguin,type,Dessert,0,0
-penguin,type,Fortified,0,0
 penguin,type,Red,0,0
+penguin,type,White,100,2
 penguin,type,Rose,0,0
 penguin,type,Sparkling,0,0
-penguin,type,White,100,2
+penguin,type,Dessert,0,0
+penguin,type,Fortified,0,0
 penguin,country,France,0,0
 penguin,country,United States,0,0
 penguin,country,Italy,50,1
@@ -321,12 +321,12 @@ raptor,rating,3.1–3.5,6.9306930693069315,7
 raptor,rating,3.6–4,50.495049504950494,51
 raptor,rating,4.1–4.5,42.57425742574257,43
 raptor,rating,4.6 & above,0,0
-raptor,type,Dessert,0,0
-raptor,type,Fortified,2.9702970297029703,3
 raptor,type,Red,42.57425742574257,43
+raptor,type,White,43.56435643564357,44
 raptor,type,Rose,2.9702970297029703,3
 raptor,type,Sparkling,7.920792079207921,8
-raptor,type,White,43.56435643564357,44
+raptor,type,Dessert,0,0
+raptor,type,Fortified,2.9702970297029703,3
 raptor,country,France,12.871287128712872,13
 raptor,country,United States,24.752475247524753,25
 raptor,country,Italy,32.67326732673268,33
@@ -364,12 +364,12 @@ shorebird,rating,3.1–3.5,9.090909090909092,1
 shorebird,rating,3.6–4,36.36363636363637,4
 shorebird,rating,4.1–4.5,54.54545454545454,6
 shorebird,rating,4.6 & above,0,0
-shorebird,type,Dessert,9.090909090909092,1
-shorebird,type,Fortified,0,0
 shorebird,type,Red,9.090909090909092,1
+shorebird,type,White,63.63636363636363,7
 shorebird,type,Rose,9.090909090909092,1
 shorebird,type,Sparkling,9.090909090909092,1
-shorebird,type,White,63.63636363636363,7
+shorebird,type,Dessert,9.090909090909092,1
+shorebird,type,Fortified,0,0
 shorebird,country,France,9.090909090909092,1
 shorebird,country,United States,36.36363636363637,4
 shorebird,country,Italy,0,0
@@ -407,12 +407,12 @@ songbird,rating,3.1–3.5,3.825136612021858,7
 songbird,rating,3.6–4,59.56284153005464,109
 songbird,rating,4.1–4.5,35.51912568306011,65
 songbird,rating,4.6 & above,1.092896174863388,2
-songbird,type,Dessert,1.092896174863388,2
-songbird,type,Fortified,0.546448087431694,1
 songbird,type,Red,46.994535519125684,86
+songbird,type,White,38.25136612021858,70
 songbird,type,Rose,8.743169398907105,16
 songbird,type,Sparkling,4.371584699453552,8
-songbird,type,White,38.25136612021858,70
+songbird,type,Dessert,1.092896174863388,2
+songbird,type,Fortified,0.546448087431694,1
 songbird,country,France,19.12568306010929,35
 songbird,country,United States,18.579234972677597,34
 songbird,country,Italy,20.21857923497268,37
@@ -450,12 +450,12 @@ wading bird,rating,3.1–3.5,7.6923076923076925,2
 wading bird,rating,3.6–4,53.84615384615385,14
 wading bird,rating,4.1–4.5,38.46153846153847,10
 wading bird,rating,4.6 & above,0,0
-wading bird,type,Dessert,3.8461538461538463,1
-wading bird,type,Fortified,3.8461538461538463,1
 wading bird,type,Red,50,13
+wading bird,type,White,30.76923076923077,8
 wading bird,type,Rose,7.6923076923076925,2
 wading bird,type,Sparkling,3.8461538461538463,1
-wading bird,type,White,30.76923076923077,8
+wading bird,type,Dessert,3.8461538461538463,1
+wading bird,type,Fortified,3.8461538461538463,1
 wading bird,country,France,19.230769230769234,5
 wading bird,country,United States,26.923076923076923,7
 wading bird,country,Italy,11.538461538461538,3

@@ -50,10 +50,24 @@
 		return match
 	}
 
+	// function colorByCompare(d, i) {
+	// 	let match = findMatch(d, allWineData[1])
+	// 	let diff = d.percent - match.percent;
+	// 	console.log(d.significant == true)
+	// 	let color = diff < -5 ? "#7b0439" : diff > 5 ? "#3E5C4B" : "#38425D"
+	// 	return color;
+	// }
+
 	function colorByCompare(d, i) {
-		let match = findMatch(d, allWineData[1])
+		let match = findMatch(d, allWineData[1]);
 		let diff = d.percent - match.percent;
-		let color = diff < -5 ? "#7b0439" : diff > 5 ? "#3E5C4B" : "#38425D"
+
+		const isSignificant = d.significant == "true";
+
+		let color = isSignificant && diff > 0 ? "#3E5C4B" 
+			: isSignificant && diff < 0 ? "#7b0439"
+			: "#38425D";
+
 		return color;
 	}
 

@@ -1,861 +1,861 @@
-animalGroup,category,bucket,percent,count
-amphibian/reptile,price,<10,0,0
-amphibian/reptile,price,10–19.99,36.84210526315789,14
-amphibian/reptile,price,20–29.99,13.157894736842104,5
-amphibian/reptile,price,30–39.99,13.157894736842104,5
-amphibian/reptile,price,40–49.99,7.894736842105263,3
-amphibian/reptile,price,50–59.99,2.631578947368421,1
-amphibian/reptile,price,60–69.99,13.157894736842104,5
-amphibian/reptile,price,70–79.99,2.631578947368421,1
-amphibian/reptile,price,80–89.99,2.631578947368421,1
-amphibian/reptile,price,90–99.99,0,0
-amphibian/reptile,price,100–109.99,2.631578947368421,1
-amphibian/reptile,price,110–119.99,0,0
-amphibian/reptile,price,120–129.99,0,0
-amphibian/reptile,price,130–139.99,0,0
-amphibian/reptile,price,140–149.99,0,0
-amphibian/reptile,price,150+,5.263157894736842,2
-amphibian/reptile,rating,3 & less,0,0
-amphibian/reptile,rating,3.1–3.5,2.631578947368421,1
-amphibian/reptile,rating,3.6–4,60.526315789473685,23
-amphibian/reptile,rating,4.1–4.5,34.21052631578947,13
-amphibian/reptile,rating,4.6 & above,2.631578947368421,1
-amphibian/reptile,type,Dessert,2.631578947368421,1
-amphibian/reptile,type,Fortified,0,0
-amphibian/reptile,type,Red,44.73684210526316,17
-amphibian/reptile,type,Rose,2.631578947368421,1
-amphibian/reptile,type,Sparkling,2.631578947368421,1
-amphibian/reptile,type,White,47.368421052631575,18
-amphibian/reptile,country,France,10.526315789473683,4
-amphibian/reptile,country,United States,39.473684210526315,15
-amphibian/reptile,country,Italy,13.157894736842104,5
-amphibian/reptile,country,Spain,13.157894736842104,5
-amphibian/reptile,country,Argentina,0,0
-amphibian/reptile,country,Portugal,0,0
-amphibian/reptile,country,South Africa,5.263157894736842,2
-amphibian/reptile,country,Australia,10.526315789473683,4
-amphibian/reptile,country,Germany,0,0
-amphibian/reptile,country,Chile,5.263157894736842,2
-amphibian/reptile,country,New Zealand,2.631578947368421,1
-amphibian/reptile,country,Austria,0,0
-amphibian/reptile,median,medianPrice,,30.965000000000003
-amphibian/reptile,median,medianRating,,3.95
-amphibian/reptile,count,count,,38
-amphibian/reptile,steals,steals,5.263157894736842,2
-bear,price,<10,0,0
-bear,price,10–19.99,30.434782608695656,7
-bear,price,20–29.99,17.391304347826086,4
-bear,price,30–39.99,21.73913043478261,5
-bear,price,40–49.99,13.043478260869565,3
-bear,price,50–59.99,4.3478260869565215,1
-bear,price,60–69.99,4.3478260869565215,1
-bear,price,70–79.99,0,0
-bear,price,80–89.99,0,0
-bear,price,90–99.99,0,0
-bear,price,100–109.99,0,0
-bear,price,110–119.99,4.3478260869565215,1
-bear,price,120–129.99,4.3478260869565215,1
-bear,price,130–139.99,0,0
-bear,price,140–149.99,0,0
-bear,price,150+,0,0
-bear,rating,3 & less,0,0
-bear,rating,3.1–3.5,4.3478260869565215,1
-bear,rating,3.6–4,43.47826086956522,10
-bear,rating,4.1–4.5,47.82608695652174,11
-bear,rating,4.6 & above,4.3478260869565215,1
-bear,type,Dessert,0,0
-bear,type,Fortified,0,0
-bear,type,Red,43.47826086956522,10
-bear,type,Rose,13.043478260869565,3
-bear,type,Sparkling,0,0
-bear,type,White,43.47826086956522,10
-bear,country,France,13.043478260869565,3
-bear,country,United States,60.86956521739131,14
-bear,country,Italy,13.043478260869565,3
-bear,country,Spain,13.043478260869565,3
-bear,country,Argentina,0,0
-bear,country,Portugal,0,0
-bear,country,South Africa,0,0
-bear,country,Australia,0,0
-bear,country,Germany,0,0
-bear,country,Chile,0,0
-bear,country,New Zealand,0,0
-bear,country,Austria,0,0
-bear,median,medianPrice,,31.55
-bear,median,medianRating,,4.1
-bear,count,count,,23
-bear,steals,steals,13.043478260869565,3
-bird,price,<10,0.8658008658008658,4
-bird,price,10–19.99,31.818181818181817,147
-bird,price,20–29.99,28.78787878787879,133
-bird,price,30–39.99,11.255411255411255,52
-bird,price,40–49.99,6.70995670995671,31
-bird,price,50–59.99,3.896103896103896,18
-bird,price,60–69.99,4.545454545454546,21
-bird,price,70–79.99,2.5974025974025974,12
-bird,price,80–89.99,1.0822510822510822,5
-bird,price,90–99.99,1.948051948051948,9
-bird,price,100–109.99,1.2987012987012987,6
-bird,price,110–119.99,0.8658008658008658,4
-bird,price,120–129.99,0,0
-bird,price,130–139.99,0.4329004329004329,2
-bird,price,140–149.99,0.4329004329004329,2
-bird,price,150+,3.463203463203463,16
-bird,rating,3 & less,0,0
-bird,rating,3.1–3.5,5.627705627705628,26
-bird,rating,3.6–4,54.97835497835498,254
-bird,rating,4.1–4.5,38.311688311688314,177
-bird,rating,4.6 & above,1.0822510822510822,5
-bird,type,Dessert,1.0822510822510822,5
-bird,type,Fortified,1.5151515151515151,7
-bird,type,Red,41.125541125541126,190
-bird,type,Rose,8.008658008658008,37
-bird,type,Sparkling,6.277056277056277,29
-bird,type,White,41.99134199134199,194
-bird,country,France,17.316017316017316,80
-bird,country,United States,23.376623376623375,108
-bird,country,Italy,21.645021645021643,100
-bird,country,Spain,7.792207792207792,36
-bird,country,Argentina,3.0303030303030303,14
-bird,country,Portugal,4.112554112554113,19
-bird,country,South Africa,6.0606060606060606,28
-bird,country,Australia,3.67965367965368,17
-bird,country,Germany,2.813852813852814,13
-bird,country,Chile,1.5151515151515151,7
-bird,country,New Zealand,5.411255411255411,25
-bird,country,Austria,1.2987012987012987,6
-bird,median,medianPrice,,25.99
-bird,median,medianRating,,4
-bird,count,count,,462
-bird,steals,steals,16.450216450216452,76
-bug,price,<10,1.0204081632653061,1
-bug,price,10–19.99,33.6734693877551,33
-bug,price,20–29.99,33.6734693877551,33
-bug,price,30–39.99,10.204081632653061,10
-bug,price,40–49.99,6.122448979591836,6
-bug,price,50–59.99,5.1020408163265305,5
-bug,price,60–69.99,2.0408163265306123,2
-bug,price,70–79.99,2.0408163265306123,2
-bug,price,80–89.99,1.0204081632653061,1
-bug,price,90–99.99,2.0408163265306123,2
-bug,price,100–109.99,0,0
-bug,price,110–119.99,2.0408163265306123,2
-bug,price,120–129.99,0,0
-bug,price,130–139.99,0,0
-bug,price,140–149.99,0,0
-bug,price,150+,1.0204081632653061,1
-bug,rating,3 & less,0,0
-bug,rating,3.1–3.5,11.224489795918368,11
-bug,rating,3.6–4,57.14285714285714,56
-bug,rating,4.1–4.5,30.612244897959183,30
-bug,rating,4.6 & above,1.0204081632653061,1
-bug,type,Dessert,2.0408163265306123,2
-bug,type,Fortified,0,0
-bug,type,Red,30.612244897959183,30
-bug,type,Rose,14.285714285714285,14
-bug,type,Sparkling,3.061224489795918,3
-bug,type,White,50,49
-bug,country,France,14.285714285714285,14
-bug,country,United States,22.448979591836736,22
-bug,country,Italy,20.408163265306122,20
-bug,country,Spain,8.16326530612245,8
-bug,country,Argentina,5.1020408163265305,5
-bug,country,Portugal,2.0408163265306123,2
-bug,country,South Africa,3.061224489795918,3
-bug,country,Australia,7.142857142857142,7
-bug,country,Germany,3.061224489795918,3
-bug,country,Chile,1.0204081632653061,1
-bug,country,New Zealand,6.122448979591836,6
-bug,country,Austria,5.1020408163265305,5
-bug,median,medianPrice,,22.655
-bug,median,medianRating,,3.9
-bug,count,count,,98
-bug,steals,steals,21.428571428571427,21
-canine,price,<10,0.8695652173913043,1
-canine,price,10–19.99,29.565217391304348,34
-canine,price,20–29.99,25.217391304347824,29
-canine,price,30–39.99,13.043478260869565,15
-canine,price,40–49.99,4.3478260869565215,5
-canine,price,50–59.99,3.4782608695652173,4
-canine,price,60–69.99,7.82608695652174,9
-canine,price,70–79.99,1.7391304347826086,2
-canine,price,80–89.99,0.8695652173913043,1
-canine,price,90–99.99,4.3478260869565215,5
-canine,price,100–109.99,0,0
-canine,price,110–119.99,0.8695652173913043,1
-canine,price,120–129.99,0,0
-canine,price,130–139.99,0,0
-canine,price,140–149.99,0,0
-canine,price,150+,7.82608695652174,9
-canine,rating,3 & less,0,0
-canine,rating,3.1–3.5,4.3478260869565215,5
-canine,rating,3.6–4,56.52173913043478,65
-canine,rating,4.1–4.5,37.391304347826086,43
-canine,rating,4.6 & above,1.7391304347826086,2
-canine,type,Dessert,2.608695652173913,3
-canine,type,Fortified,0,0
-canine,type,Red,43.47826086956522,50
-canine,type,Rose,12.173913043478262,14
-canine,type,Sparkling,5.217391304347826,6
-canine,type,White,36.52173913043478,42
-canine,country,France,20.869565217391305,24
-canine,country,United States,18.26086956521739,21
-canine,country,Italy,24.347826086956523,28
-canine,country,Spain,6.086956521739131,7
-canine,country,Argentina,0,0
-canine,country,Portugal,5.217391304347826,6
-canine,country,South Africa,9.565217391304348,11
-canine,country,Australia,2.608695652173913,3
-canine,country,Germany,4.3478260869565215,5
-canine,country,Chile,0,0
-canine,country,New Zealand,3.4782608695652173,4
-canine,country,Austria,2.608695652173913,3
-canine,median,medianPrice,,28.99
-canine,median,medianRating,,4
-canine,count,count,,115
-canine,steals,steals,10.434782608695652,12
-cat,price,<10,3.076923076923077,8
-cat,price,10–19.99,15.384615384615385,40
-cat,price,20–29.99,21.923076923076923,57
-cat,price,30–39.99,11.923076923076923,31
-cat,price,40–49.99,7.307692307692308,19
-cat,price,50–59.99,6.923076923076923,18
-cat,price,60–69.99,5.384615384615385,14
-cat,price,70–79.99,3.8461538461538463,10
-cat,price,80–89.99,4.230769230769231,11
-cat,price,90–99.99,3.076923076923077,8
-cat,price,100–109.99,0.38461538461538464,1
-cat,price,110–119.99,0.38461538461538464,1
-cat,price,120–129.99,0.38461538461538464,1
-cat,price,130–139.99,1.9230769230769231,5
-cat,price,140–149.99,1.153846153846154,3
-cat,price,150+,12.692307692307692,33
-cat,rating,3 & less,0,0
-cat,rating,3.1–3.5,5.769230769230769,15
-cat,rating,3.6–4,38.07692307692307,99
-cat,rating,4.1–4.5,54.61538461538461,142
-cat,rating,4.6 & above,1.5384615384615385,4
-cat,type,Dessert,3.4615384615384617,9
-cat,type,Fortified,3.4615384615384617,9
-cat,type,Red,48.07692307692308,125
-cat,type,Rose,3.076923076923077,8
-cat,type,Sparkling,11.538461538461538,30
-cat,type,White,30.384615384615383,79
-cat,country,France,45,117
-cat,country,United States,11.538461538461538,30
-cat,country,Italy,21.153846153846153,55
-cat,country,Spain,6.153846153846154,16
-cat,country,Argentina,1.9230769230769231,5
-cat,country,Portugal,2.307692307692308,6
-cat,country,South Africa,3.8461538461538463,10
-cat,country,Australia,1.9230769230769231,5
-cat,country,Germany,2.307692307692308,6
-cat,country,Chile,1.9230769230769231,5
-cat,country,New Zealand,0.38461538461538464,1
-cat,country,Austria,0.7692307692307693,2
-cat,median,medianPrice,,38.43
-cat,median,medianRating,,4.1
-cat,count,count,,260
-cat,steals,steals,9.615384615384617,25
-cattle,price,<10,2.1739130434782608,1
-cattle,price,10–19.99,34.78260869565217,16
-cattle,price,20–29.99,28.26086956521739,13
-cattle,price,30–39.99,8.695652173913043,4
-cattle,price,40–49.99,10.869565217391305,5
-cattle,price,50–59.99,2.1739130434782608,1
-cattle,price,60–69.99,2.1739130434782608,1
-cattle,price,70–79.99,2.1739130434782608,1
-cattle,price,80–89.99,0,0
-cattle,price,90–99.99,4.3478260869565215,2
-cattle,price,100–109.99,0,0
-cattle,price,110–119.99,0,0
-cattle,price,120–129.99,0,0
-cattle,price,130–139.99,0,0
-cattle,price,140–149.99,0,0
-cattle,price,150+,4.3478260869565215,2
-cattle,rating,3 & less,0,0
-cattle,rating,3.1–3.5,4.3478260869565215,2
-cattle,rating,3.6–4,65.21739130434783,30
-cattle,rating,4.1–4.5,26.08695652173913,12
-cattle,rating,4.6 & above,4.3478260869565215,2
-cattle,type,Dessert,0,0
-cattle,type,Fortified,2.1739130434782608,1
-cattle,type,Red,56.52173913043478,26
-cattle,type,Rose,2.1739130434782608,1
-cattle,type,Sparkling,6.521739130434782,3
-cattle,type,White,32.608695652173914,15
-cattle,country,France,6.521739130434782,3
-cattle,country,United States,17.391304347826086,8
-cattle,country,Italy,21.73913043478261,10
-cattle,country,Spain,17.391304347826086,8
-cattle,country,Argentina,13.043478260869565,6
-cattle,country,Portugal,2.1739130434782608,1
-cattle,country,South Africa,4.3478260869565215,2
-cattle,country,Australia,0,0
-cattle,country,Germany,0,0
-cattle,country,Chile,8.695652173913043,4
-cattle,country,New Zealand,0,0
-cattle,country,Austria,4.3478260869565215,2
-cattle,median,medianPrice,,22.494999999999997
-cattle,median,medianRating,,3.9
-cattle,count,count,,46
-cattle,steals,steals,13.043478260869565,6
-deer,price,<10,0,0
-deer,price,10–19.99,30,15
-deer,price,20–29.99,20,10
-deer,price,30–39.99,20,10
-deer,price,40–49.99,6,3
-deer,price,50–59.99,0,0
-deer,price,60–69.99,6,3
-deer,price,70–79.99,6,3
-deer,price,80–89.99,2,1
-deer,price,90–99.99,0,0
-deer,price,100–109.99,4,2
-deer,price,110–119.99,0,0
-deer,price,120–129.99,0,0
-deer,price,130–139.99,0,0
-deer,price,140–149.99,0,0
-deer,price,150+,6,3
-deer,rating,3 & less,0,0
-deer,rating,3.1–3.5,4,2
-deer,rating,3.6–4,57.99999999999999,29
-deer,rating,4.1–4.5,38,19
-deer,rating,4.6 & above,0,0
-deer,type,Dessert,0,0
-deer,type,Fortified,2,1
-deer,type,Red,50,25
-deer,type,Rose,8,4
-deer,type,Sparkling,2,1
-deer,type,White,38,19
-deer,country,France,16,8
-deer,country,United States,28.000000000000004,14
-deer,country,Italy,6,3
-deer,country,Spain,12,6
-deer,country,Argentina,2,1
-deer,country,Portugal,0,0
-deer,country,South Africa,18,9
-deer,country,Australia,6,3
-deer,country,Germany,6,3
-deer,country,Chile,2,1
-deer,country,New Zealand,0,0
-deer,country,Austria,2,1
-deer,median,medianPrice,,30.49
-deer,median,medianRating,,4
-deer,count,count,,50
-deer,steals,steals,6,3
-fish,price,<10,0,0
-fish,price,10–19.99,38.70967741935484,24
-fish,price,20–29.99,40.32258064516129,25
-fish,price,30–39.99,11.29032258064516,7
-fish,price,40–49.99,3.225806451612903,2
-fish,price,50–59.99,3.225806451612903,2
-fish,price,60–69.99,0,0
-fish,price,70–79.99,0,0
-fish,price,80–89.99,1.6129032258064515,1
-fish,price,90–99.99,0,0
-fish,price,100–109.99,0,0
-fish,price,110–119.99,0,0
-fish,price,120–129.99,0,0
-fish,price,130–139.99,0,0
-fish,price,140–149.99,0,0
-fish,price,150+,1.6129032258064515,1
-fish,rating,3 & less,0,0
-fish,rating,3.1–3.5,1.6129032258064515,1
-fish,rating,3.6–4,74.19354838709677,46
-fish,rating,4.1–4.5,24.193548387096776,15
-fish,rating,4.6 & above,0,0
-fish,type,Dessert,1.6129032258064515,1
-fish,type,Fortified,0,0
-fish,type,Red,24.193548387096776,15
-fish,type,Rose,9.67741935483871,6
-fish,type,Sparkling,3.225806451612903,2
-fish,type,White,61.29032258064516,38
-fish,country,France,12.903225806451612,8
-fish,country,United States,22.58064516129032,14
-fish,country,Italy,11.29032258064516,7
-fish,country,Spain,11.29032258064516,7
-fish,country,Argentina,3.225806451612903,2
-fish,country,Portugal,3.225806451612903,2
-fish,country,South Africa,6.451612903225806,4
-fish,country,Australia,14.516129032258066,9
-fish,country,Germany,4.838709677419355,3
-fish,country,Chile,0,0
-fish,country,New Zealand,4.838709677419355,3
-fish,country,Austria,3.225806451612903,2
-fish,median,medianPrice,,24.99
-fish,median,medianRating,,3.9
-fish,count,count,,62
-fish,steals,steals,24.193548387096776,15
-horse,price,<10,2.7777777777777777,4
-horse,price,10–19.99,36.11111111111111,52
-horse,price,20–29.99,16.666666666666664,24
-horse,price,30–39.99,11.11111111111111,16
-horse,price,40–49.99,11.805555555555555,17
-horse,price,50–59.99,5.555555555555555,8
-horse,price,60–69.99,4.861111111111112,7
-horse,price,70–79.99,2.083333333333333,3
-horse,price,80–89.99,2.083333333333333,3
-horse,price,90–99.99,2.083333333333333,3
-horse,price,100–109.99,0,0
-horse,price,110–119.99,2.083333333333333,3
-horse,price,120–129.99,0.6944444444444444,1
-horse,price,130–139.99,0,0
-horse,price,140–149.99,0,0
-horse,price,150+,2.083333333333333,3
-horse,rating,3 & less,0.6944444444444444,1
-horse,rating,3.1–3.5,9.722222222222223,14
-horse,rating,3.6–4,49.30555555555556,71
-horse,rating,4.1–4.5,38.88888888888889,56
-horse,rating,4.6 & above,1.3888888888888888,2
-horse,type,Dessert,3.4722222222222223,5
-horse,type,Fortified,0.6944444444444444,1
-horse,type,Red,43.05555555555556,62
-horse,type,Rose,6.944444444444445,10
-horse,type,Sparkling,7.638888888888889,11
-horse,type,White,38.19444444444444,55
-horse,country,France,20.13888888888889,29
-horse,country,United States,21.52777777777778,31
-horse,country,Italy,29.166666666666668,42
-horse,country,Spain,4.166666666666666,6
-horse,country,Argentina,6.25,9
-horse,country,Portugal,2.083333333333333,3
-horse,country,South Africa,4.166666666666666,6
-horse,country,Australia,0.6944444444444444,1
-horse,country,Germany,2.7777777777777777,4
-horse,country,Chile,4.166666666666666,6
-horse,country,New Zealand,1.3888888888888888,2
-horse,country,Austria,0.6944444444444444,1
-horse,median,medianPrice,,25.244999999999997
-horse,median,medianRating,,4
-horse,count,count,,144
-horse,steals,steals,13.88888888888889,20
-human,price,<10,2.1148036253776437,21
-human,price,10–19.99,27.59315206445116,274
-human,price,20–29.99,26.586102719033235,264
-human,price,30–39.99,13.39375629405841,133
-human,price,40–49.99,8.358509566968781,83
-human,price,50–59.99,5.53877139979859,55
-human,price,60–69.99,3.726082578046324,37
-human,price,70–79.99,1.812688821752266,18
-human,price,80–89.99,2.3162134944612287,23
-human,price,90–99.99,1.6112789526686808,16
-human,price,100–109.99,1.0070493454179255,10
-human,price,110–119.99,0.4028197381671702,4
-human,price,120–129.99,1.0070493454179255,10
-human,price,130–139.99,0,0
-human,price,140–149.99,0.7049345417925479,7
-human,price,150+,3.826787512588117,38
-human,rating,3 & less,0.2014098690835851,2
-human,rating,3.1–3.5,5.740181268882175,57
-human,rating,3.6–4,55.99194360523666,556
-human,rating,4.1–4.5,37.05941591137966,368
-human,rating,4.6 & above,1.0070493454179255,10
-human,type,Dessert,1.812688821752266,18
-human,type,Fortified,1.6112789526686808,16
-human,type,Red,43.605236656596176,433
-human,type,Rose,8.66062437059416,86
-human,type,Sparkling,8.761329305135952,87
-human,type,White,35.54884189325277,353
-human,country,France,20.84592145015106,207
-human,country,United States,18.22759315206445,181
-human,country,Italy,24.169184290030213,240
-human,country,Spain,12.386706948640484,123
-human,country,Argentina,4.632426988922457,46
-human,country,Portugal,2.6183282980866065,26
-human,country,South Africa,3.0211480362537766,30
-human,country,Australia,3.5246727089627394,35
-human,country,Germany,2.920443101711984,29
-human,country,Chile,3.5246727089627394,35
-human,country,New Zealand,1.3091641490433032,13
-human,country,Austria,1.9133937562940584,19
-human,median,medianPrice,,27.335
-human,median,medianRating,,4
-human,count,count,,993
-human,steals,steals,13.595166163141995,135
-marine invertebrate,price,<10,3.0303030303030303,1
-marine invertebrate,price,10–19.99,39.39393939393939,13
-marine invertebrate,price,20–29.99,21.21212121212121,7
-marine invertebrate,price,30–39.99,21.21212121212121,7
-marine invertebrate,price,40–49.99,12.121212121212121,4
-marine invertebrate,price,50–59.99,0,0
-marine invertebrate,price,60–69.99,0,0
-marine invertebrate,price,70–79.99,0,0
-marine invertebrate,price,80–89.99,0,0
-marine invertebrate,price,90–99.99,3.0303030303030303,1
-marine invertebrate,price,100–109.99,0,0
-marine invertebrate,price,110–119.99,0,0
-marine invertebrate,price,120–129.99,0,0
-marine invertebrate,price,130–139.99,0,0
-marine invertebrate,price,140–149.99,0,0
-marine invertebrate,price,150+,0,0
-marine invertebrate,rating,3 & less,0,0
-marine invertebrate,rating,3.1–3.5,3.0303030303030303,1
-marine invertebrate,rating,3.6–4,78.78787878787878,26
-marine invertebrate,rating,4.1–4.5,18.181818181818183,6
-marine invertebrate,rating,4.6 & above,0,0
-marine invertebrate,type,Dessert,3.0303030303030303,1
-marine invertebrate,type,Fortified,0,0
-marine invertebrate,type,Red,15.151515151515152,5
-marine invertebrate,type,Rose,9.090909090909092,3
-marine invertebrate,type,Sparkling,3.0303030303030303,1
-marine invertebrate,type,White,69.6969696969697,23
-marine invertebrate,country,France,30.303030303030305,10
-marine invertebrate,country,United States,12.121212121212121,4
-marine invertebrate,country,Italy,21.21212121212121,7
-marine invertebrate,country,Spain,15.151515151515152,5
-marine invertebrate,country,Argentina,3.0303030303030303,1
-marine invertebrate,country,Portugal,0,0
-marine invertebrate,country,South Africa,3.0303030303030303,1
-marine invertebrate,country,Australia,0,0
-marine invertebrate,country,Germany,0,0
-marine invertebrate,country,Chile,0,0
-marine invertebrate,country,New Zealand,15.151515151515152,5
-marine invertebrate,country,Austria,0,0
-marine invertebrate,median,medianPrice,,22.67
-marine invertebrate,median,medianRating,,3.9
-marine invertebrate,count,count,,33
-marine invertebrate,steals,steals,18.181818181818183,6
-mythical creature,price,<10,0,0
-mythical creature,price,10–19.99,21.138211382113823,26
-mythical creature,price,20–29.99,23.577235772357724,29
-mythical creature,price,30–39.99,12.195121951219512,15
-mythical creature,price,40–49.99,8.94308943089431,11
-mythical creature,price,50–59.99,6.504065040650407,8
-mythical creature,price,60–69.99,3.2520325203252036,4
-mythical creature,price,70–79.99,4.878048780487805,6
-mythical creature,price,80–89.99,4.0650406504065035,5
-mythical creature,price,90–99.99,0.8130081300813009,1
-mythical creature,price,100–109.99,2.4390243902439024,3
-mythical creature,price,110–119.99,0.8130081300813009,1
-mythical creature,price,120–129.99,2.4390243902439024,3
-mythical creature,price,130–139.99,1.6260162601626018,2
-mythical creature,price,140–149.99,1.6260162601626018,2
-mythical creature,price,150+,5.691056910569105,7
-mythical creature,rating,3 & less,0,0
-mythical creature,rating,3.1–3.5,5.691056910569105,7
-mythical creature,rating,3.6–4,42.27642276422765,52
-mythical creature,rating,4.1–4.5,49.59349593495935,61
-mythical creature,rating,4.6 & above,2.4390243902439024,3
-mythical creature,type,Dessert,1.6260162601626018,2
-mythical creature,type,Fortified,2.4390243902439024,3
-mythical creature,type,Red,47.15447154471545,58
-mythical creature,type,Rose,4.878048780487805,6
-mythical creature,type,Sparkling,6.504065040650407,8
-mythical creature,type,White,37.39837398373984,46
-mythical creature,country,France,21.951219512195124,27
-mythical creature,country,United States,21.951219512195124,27
-mythical creature,country,Italy,30.081300813008134,37
-mythical creature,country,Spain,8.94308943089431,11
-mythical creature,country,Argentina,2.4390243902439024,3
-mythical creature,country,Portugal,0.8130081300813009,1
-mythical creature,country,South Africa,2.4390243902439024,3
-mythical creature,country,Australia,3.2520325203252036,4
-mythical creature,country,Germany,2.4390243902439024,3
-mythical creature,country,Chile,2.4390243902439024,3
-mythical creature,country,New Zealand,0,0
-mythical creature,country,Austria,1.6260162601626018,2
-mythical creature,median,medianPrice,,34.99
-mythical creature,median,medianRating,,4.1
-mythical creature,count,count,,123
-mythical creature,steals,steals,15.447154471544716,19
-none,price,<10,1.4414157271300128,101
-none,price,10–19.99,23.462252033680606,1644
-none,price,20–29.99,24.975024975024976,1750
-none,price,30–39.99,14.043099757385471,984
-none,price,40–49.99,8.334522620236907,584
-none,price,50–59.99,6.507777936349365,456
-none,price,60–69.99,4.424147281290138,310
-none,price,70–79.99,3.1825317539603257,223
-none,price,80–89.99,2.240616526330812,157
-none,price,90–99.99,1.8838304552590266,132
-none,price,100–109.99,1.2701584130155559,89
-none,price,110–119.99,0.856286570572285,60
-none,price,120–129.99,1.0560867703724848,74
-none,price,130–139.99,0.6707578136149565,47
-none,price,140–149.99,0.6279434850863422,44
-none,price,150+,5.023547880690738,352
-none,rating,3 & less,0.0999000999000999,7
-none,rating,3.1–3.5,4.681033252461824,328
-none,rating,3.6–4,49.89296417867846,3496
-none,rating,4.1–4.5,43.741972313400886,3065
-none,rating,4.6 & above,1.5841301555587268,111
-none,type,Dessert,2.2548879691736836,158
-none,type,Fortified,1.4556871699728844,102
-none,type,Red,43.29955758527187,3034
-none,type,Rose,8.091908091908092,567
-none,type,Sparkling,7.892107892107893,553
-none,type,White,37.00585129156558,2593
-none,country,France,27.32981304409876,1915
-none,country,United States,22.49179392036535,1576
-none,country,Italy,20.322534608248894,1424
-none,country,Spain,9.875838447267018,692
-none,country,Argentina,3.0112744398458684,211
-none,country,Portugal,2.7258455829884403,191
-none,country,South Africa,2.2263450834879404,156
-none,country,Australia,2.4261452832881405,170
-none,country,Germany,2.169259312116455,152
-none,country,Chile,2.2263450834879404,156
-none,country,New Zealand,2.097902097902098,147
-none,country,Austria,1.8124732410446696,127
-none,median,medianPrice,,29.99
-none,median,medianRating,,4
-none,count,count,,7007
-none,steals,steals,13.871842443271015,972
-pachyderm,price,<10,0,0
-pachyderm,price,10–19.99,33.33333333333333,8
-pachyderm,price,20–29.99,33.33333333333333,8
-pachyderm,price,30–39.99,4.166666666666666,1
-pachyderm,price,40–49.99,8.333333333333332,2
-pachyderm,price,50–59.99,4.166666666666666,1
-pachyderm,price,60–69.99,4.166666666666666,1
-pachyderm,price,70–79.99,0,0
-pachyderm,price,80–89.99,0,0
-pachyderm,price,90–99.99,0,0
-pachyderm,price,100–109.99,0,0
-pachyderm,price,110–119.99,0,0
-pachyderm,price,120–129.99,0,0
-pachyderm,price,130–139.99,0,0
-pachyderm,price,140–149.99,0,0
-pachyderm,price,150+,12.5,3
-pachyderm,rating,3 & less,0,0
-pachyderm,rating,3.1–3.5,12.5,3
-pachyderm,rating,3.6–4,58.333333333333336,14
-pachyderm,rating,4.1–4.5,25,6
-pachyderm,rating,4.6 & above,4.166666666666666,1
-pachyderm,type,Dessert,0,0
-pachyderm,type,Fortified,0,0
-pachyderm,type,Red,37.5,9
-pachyderm,type,Rose,12.5,3
-pachyderm,type,Sparkling,0,0
-pachyderm,type,White,50,12
-pachyderm,country,France,16.666666666666664,4
-pachyderm,country,United States,25,6
-pachyderm,country,Italy,16.666666666666664,4
-pachyderm,country,Spain,4.166666666666666,1
-pachyderm,country,Argentina,0,0
-pachyderm,country,Portugal,4.166666666666666,1
-pachyderm,country,South Africa,25,6
-pachyderm,country,Australia,0,0
-pachyderm,country,Germany,0,0
-pachyderm,country,Chile,0,0
-pachyderm,country,New Zealand,0,0
-pachyderm,country,Austria,4.166666666666666,1
-pachyderm,median,medianPrice,,24.22
-pachyderm,median,medianRating,,3.9
-pachyderm,count,count,,24
-pachyderm,steals,steals,8.333333333333332,2
-rabbit,price,<10,0,0
-rabbit,price,10–19.99,24,6
-rabbit,price,20–29.99,32,8
-rabbit,price,30–39.99,24,6
-rabbit,price,40–49.99,4,1
-rabbit,price,50–59.99,0,0
-rabbit,price,60–69.99,4,1
-rabbit,price,70–79.99,0,0
-rabbit,price,80–89.99,0,0
-rabbit,price,90–99.99,4,1
-rabbit,price,100–109.99,0,0
-rabbit,price,110–119.99,4,1
-rabbit,price,120–129.99,0,0
-rabbit,price,130–139.99,0,0
-rabbit,price,140–149.99,0,0
-rabbit,price,150+,4,1
-rabbit,rating,3 & less,0,0
-rabbit,rating,3.1–3.5,4,1
-rabbit,rating,3.6–4,56.00000000000001,14
-rabbit,rating,4.1–4.5,40,10
-rabbit,rating,4.6 & above,0,0
-rabbit,type,Dessert,4,1
-rabbit,type,Fortified,0,0
-rabbit,type,Red,44,11
-rabbit,type,Rose,8,2
-rabbit,type,Sparkling,4,1
-rabbit,type,White,40,10
-rabbit,country,France,12,3
-rabbit,country,United States,16,4
-rabbit,country,Italy,20,5
-rabbit,country,Spain,16,4
-rabbit,country,Argentina,8,2
-rabbit,country,Portugal,0,0
-rabbit,country,South Africa,0,0
-rabbit,country,Australia,4,1
-rabbit,country,Germany,12,3
-rabbit,country,Chile,0,0
-rabbit,country,New Zealand,0,0
-rabbit,country,Austria,12,3
-rabbit,median,medianPrice,,29.99
-rabbit,median,medianRating,,4
-rabbit,count,count,,25
-rabbit,steals,steals,12,3
-sheep,price,<10,1.7543859649122806,1
-sheep,price,10–19.99,42.10526315789473,24
-sheep,price,20–29.99,29.82456140350877,17
-sheep,price,30–39.99,14.035087719298245,8
-sheep,price,40–49.99,0,0
-sheep,price,50–59.99,3.508771929824561,2
-sheep,price,60–69.99,1.7543859649122806,1
-sheep,price,70–79.99,0,0
-sheep,price,80–89.99,1.7543859649122806,1
-sheep,price,90–99.99,0,0
-sheep,price,100–109.99,0,0
-sheep,price,110–119.99,0,0
-sheep,price,120–129.99,1.7543859649122806,1
-sheep,price,130–139.99,1.7543859649122806,1
-sheep,price,140–149.99,0,0
-sheep,price,150+,1.7543859649122806,1
-sheep,rating,3 & less,0,0
-sheep,rating,3.1–3.5,5.263157894736842,3
-sheep,rating,3.6–4,68.42105263157895,39
-sheep,rating,4.1–4.5,24.561403508771928,14
-sheep,rating,4.6 & above,1.7543859649122806,1
-sheep,type,Dessert,0,0
-sheep,type,Fortified,1.7543859649122806,1
-sheep,type,Red,33.33333333333333,19
-sheep,type,Rose,12.280701754385964,7
-sheep,type,Sparkling,0,0
-sheep,type,White,52.63157894736842,30
-sheep,country,France,21.052631578947366,12
-sheep,country,United States,14.035087719298245,8
-sheep,country,Italy,21.052631578947366,12
-sheep,country,Spain,7.017543859649122,4
-sheep,country,Argentina,1.7543859649122806,1
-sheep,country,Portugal,5.263157894736842,3
-sheep,country,South Africa,14.035087719298245,8
-sheep,country,Australia,5.263157894736842,3
-sheep,country,Germany,1.7543859649122806,1
-sheep,country,Chile,0,0
-sheep,country,New Zealand,5.263157894736842,3
-sheep,country,Austria,1.7543859649122806,1
-sheep,median,medianPrice,,21.74
-sheep,median,medianRating,,3.9
-sheep,count,count,,57
-sheep,steals,steals,19.298245614035086,11
-pig,price,<10,0,0
-pig,price,10–19.99,35.714285714285715,10
-pig,price,20–29.99,28.57142857142857,8
-pig,price,30–39.99,21.428571428571427,6
-pig,price,40–49.99,3.571428571428571,1
-pig,price,50–59.99,0,0
-pig,price,60–69.99,0,0
-pig,price,70–79.99,3.571428571428571,1
-pig,price,80–89.99,0,0
-pig,price,90–99.99,0,0
-pig,price,100–109.99,0,0
-pig,price,110–119.99,0,0
-pig,price,120–129.99,3.571428571428571,1
-pig,price,130–139.99,0,0
-pig,price,140–149.99,0,0
-pig,price,150+,3.571428571428571,1
-pig,rating,3 & less,3.571428571428571,1
-pig,rating,3.1–3.5,3.571428571428571,1
-pig,rating,3.6–4,60.71428571428571,17
-pig,rating,4.1–4.5,32.142857142857146,9
-pig,rating,4.6 & above,0,0
-pig,type,Dessert,0,0
-pig,type,Fortified,3.571428571428571,1
-pig,type,Red,46.42857142857143,13
-pig,type,Rose,25,7
-pig,type,Sparkling,7.142857142857142,2
-pig,type,White,17.857142857142858,5
-pig,country,France,21.428571428571427,6
-pig,country,United States,14.285714285714285,4
-pig,country,Italy,21.428571428571427,6
-pig,country,Spain,14.285714285714285,4
-pig,country,Argentina,0,0
-pig,country,Portugal,10.714285714285714,3
-pig,country,South Africa,3.571428571428571,1
-pig,country,Australia,7.142857142857142,2
-pig,country,Germany,0,0
-pig,country,Chile,0,0
-pig,country,New Zealand,7.142857142857142,2
-pig,country,Austria,0,0
-pig,median,medianPrice,,23.22
-pig,median,medianRating,,3.8
-pig,count,count,,28
-pig,steals,steals,10.714285714285714,3
-all,price,<10,1.535323169422375,143
-all,price,10–19.99,24.629589864719776,2294
-all,price,20–29.99,25.26304487867726,2353
-all,price,30–39.99,13.77496242216019,1283
-all,price,40–49.99,8.138286450504618,758
-all,price,50–59.99,6.10908310070861,569
-all,price,60–69.99,4.273137212797939,398
-all,price,70–79.99,2.9525445565814903,275
-all,price,80–89.99,2.2117242860210435,206
-all,price,90–99.99,1.8788919905518575,175
-all,price,100–109.99,1.1917543482928923,111
-all,price,110–119.99,0.8374490015031136,78
-all,price,120–129.99,0.9662873094266696,90
-all,price,130–139.99,0.6119819626368906,57
-all,price,140–149.99,0.6334550139574834,59
-all,price,150+,4.992484432037793,465
-all,rating,3 & less,0.11810178226325961,11
-all,rating,3.1–3.5,4.9710113807172,463
-all,rating,3.6–4,50.91260468112518,4742
-all,rating,4.1–4.5,42.51664161477346,3960
-all,rating,4.6 & above,1.4816405411208933,138
-all,type,Dessert,2.168778183379858,202
-all,type,Fortified,1.470904015460597,137
-all,type,Red,42.9783122181662,4003
-all,type,Rose,8.12754992484432,757
-all,type,Sparkling,7.794717629375134,726
-all,type,White,37.459738028773884,3489
-all,country,France,25.971655572256818,2419
-all,country,United States,21.999141077947176,2049
-all,country,Italy,20.828859780974877,1940
-all,country,Spain,9.877603607472622,920
-all,country,Argentina,3.15653854412712,294
-all,country,Portugal,2.7592870946961563,257
-all,country,South Africa,2.7270775177152675,254
-all,country,Australia,2.716340992054971,253
-all,country,Germany,2.3405625939445995,218
-all,country,Chile,2.2761434399828215,212
-all,country,New Zealand,2.233197337341636,208
-all,country,Austria,1.8037363109297833,168
-all,median,medianPrice,,29.99
-all,median,medianRating,,4
-all,count,count,,9314
-all,steals,steals,13.94674683272493,1299
-animal wines,price,<10,1.5456989247311828,23
-animal wines,price,10–19.99,29.0994623655914,433
-animal wines,price,20–29.99,25.940860215053764,386
-animal wines,price,30–39.99,12.5,186
-animal wines,price,40–49.99,7.123655913978495,106
-animal wines,price,50–59.99,4.502688172043011,67
-animal wines,price,60–69.99,4.032258064516129,60
-animal wines,price,70–79.99,2.553763440860215,38
-animal wines,price,80–89.99,1.9489247311827957,29
-animal wines,price,90–99.99,1.9489247311827957,29
-animal wines,price,100–109.99,0.8736559139784945,13
-animal wines,price,110–119.99,0.9408602150537635,14
-animal wines,price,120–129.99,0.47043010752688175,7
-animal wines,price,130–139.99,0.6720430107526881,10
-animal wines,price,140–149.99,0.5376344086021506,8
-animal wines,price,150+,5.309139784946237,79
-animal wines,rating,3 & less,0.13440860215053765,2
-animal wines,rating,3.1–3.5,6.115591397849462,91
-animal wines,rating,3.6–4,52.755376344086024,785
-animal wines,rating,4.1–4.5,39.6505376344086,590
-animal wines,rating,4.6 & above,1.3440860215053763,20
-animal wines,type,Dessert,1.9489247311827957,29
-animal wines,type,Fortified,1.478494623655914,22
-animal wines,type,Red,41.263440860215056,614
-animal wines,type,Rose,7.997311827956989,119
-animal wines,type,Sparkling,6.451612903225806,96
-animal wines,type,White,40.86021505376344,608
-animal wines,country,France,22.177419354838708,330
-animal wines,country,United States,21.370967741935484,318
-animal wines,country,Italy,21.841397849462364,325
-animal wines,country,Spain,8.131720430107526,121
-animal wines,country,Argentina,3.1586021505376345,47
-animal wines,country,Portugal,3.0913978494623655,46
-animal wines,country,South Africa,5.376344086021505,80
-animal wines,country,Australia,3.494623655913978,52
-animal wines,country,Germany,2.956989247311828,44
-animal wines,country,Chile,1.747311827956989,26
-animal wines,country,New Zealand,3.293010752688172,49
-animal wines,country,Austria,1.747311827956989,26
-animal wines,median,medianPrice,,26.99
-animal wines,median,medianRating,,4
-animal wines,count,count,,1488
-animal wines,steals,steals,14.516129032258066,216
+animalGroup,category,bucket,percent,count,stdMean,stdDev,zScore,significant
+amphibian/reptile,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+bear,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+bird,price,<10,0.8658008658008658,4,1.0879471272153025,1.1344921986334582,-0.1958111846710104,false
+bug,price,<10,1.0204081632653061,1,1.0879471272153025,1.1344921986334582,-0.059532329998698785,false
+canine,price,<10,0.8695652173913043,1,1.0879471272153025,1.1344921986334582,-0.19249309081811938,false
+cat,price,<10,3.076923076923077,8,1.0879471272153025,1.1344921986334582,1.7531860969194646,true
+cattle,price,<10,2.1739130434782608,1,1.0879471272153025,1.1344921986334582,0.9572264292086347,false
+deer,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+fish,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+horse,price,<10,2.7777777777777777,4,1.0879471272153025,1.1344921986334582,1.4895039847765763,true
+human,price,<10,2.1148036253776437,21,1.0879471272153025,1.1344921986334582,0.9051243361560629,false
+marine invertebrate,price,<10,3.0303030303030303,1,1.0879471272153025,1.1344921986334582,1.7120927807413522,true
+mythical creature,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+none,price,<10,1.4414157271300128,101,1.0879471272153025,1.1344921986334582,0.31156547426282655,false
+pachyderm,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+rabbit,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+sheep,price,<10,1.7543859649122806,1,1.0879471272153025,1.1344921986334582,0.5874336011298541,false
+pig,price,<10,0,0,1.0879471272153025,1.1344921986334582,-0.9589727708359554,false
+all,price,<10,1.535323169422375,143,,,,
+animal wines,price,<10,1.5456989247311828,23,1.0879471272153025,1.1344921986334582,0.40348606898069533,false
+amphibian/reptile,price,10–19.99,36.84210526315789,14,31.219035185532544,6.781796385206579,0.829141684331778,false
+bear,price,10–19.99,30.434782608695656,7,31.219035185532544,6.781796385206579,-0.11564083205854006,false
+bird,price,10–19.99,31.818181818181817,147,31.219035185532544,6.781796385206579,0.08834630216209628,false
+bug,price,10–19.99,33.6734693877551,33,31.219035185532544,6.781796385206579,0.36191505359502035,false
+canine,price,10–19.99,29.565217391304348,34,31.219035185532544,6.781796385206579,-0.24386131642579825,false
+cat,price,10–19.99,15.384615384615385,40,31.219035185532544,6.781796385206579,-2.334841523030307,true
+cattle,price,10–19.99,34.78260869565217,16,31.219035185532544,6.781796385206579,0.5254615897777473,false
+deer,price,10–19.99,30,15,31.219035185532544,6.781796385206579,-0.1797510742421694,false
+fish,price,10–19.99,38.70967741935484,24,31.219035185532544,6.781796385206579,1.104521841758911,true
+horse,price,10–19.99,36.11111111111111,52,31.219035185532544,6.781796385206579,0.721353996449946,false
+human,price,10–19.99,27.59315206445116,274,31.219035185532544,6.781796385206579,-0.5346493635507366,false
+marine invertebrate,price,10–19.99,39.39393939393939,13,31.219035185532544,6.781796385206579,1.2054187038465374,true
+mythical creature,price,10–19.99,21.138211382113823,26,31.219035185532544,6.781796385206579,-1.4864533275296279,true
+none,price,10–19.99,23.462252033680606,1644,31.219035185532544,6.781796385206579,-1.1437652667915745,true
+pachyderm,price,10–19.99,33.33333333333333,8,31.219035185532544,6.781796385206579,0.3117607824989841,false
+rabbit,price,10–19.99,24,6,31.219035185532544,6.781796385206579,-1.064472416376247,true
+sheep,price,10–19.99,42.10526315789473,24,31.219035185532544,6.781796385206579,1.605213037080969,true
+pig,price,10–19.99,35.714285714285715,10,31.219035185532544,6.781796385206579,0.662840680171238,false
+all,price,10–19.99,24.629589864719776,2294,,,,
+animal wines,price,10–19.99,29.0994623655914,433,31.219035185532544,6.781796385206579,-0.31253855166820677,false
+amphibian/reptile,price,20–29.99,13.157894736842104,5,25.864305292980717,6.65471865954675,-1.909383582716935,true
+bear,price,20–29.99,17.391304347826086,4,25.864305292980717,6.65471865954675,-1.2732320295763975,true
+bird,price,20–29.99,28.78787878787879,133,25.864305292980717,6.65471865954675,0.4393233800656564,false
+bug,price,20–29.99,33.6734693877551,33,25.864305292980717,6.65471865954675,1.173477722243221,true
+canine,price,20–29.99,25.217391304347824,29,25.864305292980717,6.65471865954675,-0.09721132052740357,false
+cat,price,20–29.99,21.923076923076923,57,25.864305292980717,6.65471865954675,-0.5922456788236679,false
+cattle,price,20–29.99,28.26086956521739,13,25.864305292980717,6.65471865954675,0.3601300663249831,false
+deer,price,20–29.99,20,10,25.864305292980717,6.65471865954675,-0.8812251265600659,false
+fish,price,20–29.99,40.32258064516129,25,25.864305292980717,6.65471865954675,2.1726351017768373,true
+horse,price,20–29.99,16.666666666666664,24,25.864305292980717,6.65471865954675,-1.382122835969823,true
+human,price,20–29.99,26.586102719033235,264,25.864305292980717,6.65471865954675,0.10846400321026937,false
+marine invertebrate,price,20–29.99,21.21212121212121,7,25.864305292980717,6.65471865954675,-0.6990805049565182,false
+mythical creature,price,20–29.99,23.577235772357724,29,25.864305292980717,6.65471865954675,-0.3436763652422782,false
+none,price,20–29.99,24.975024975024976,1750,25.864305292980717,6.65471865954675,-0.13363154228616325,false
+pachyderm,price,20–29.99,33.33333333333333,8,25.864305292980717,6.65471865954675,1.12236571107896,true
+rabbit,price,20–29.99,32,8,25.864305292980717,6.65471865954675,0.9220066273150581,false
+sheep,price,20–29.99,29.82456140350877,17,25.864305292980717,6.65471865954675,0.5951049643318482,false
+pig,price,20–29.99,28.57142857142857,8,25.864305292980717,6.65471865954675,0.40679755477930807,false
+all,price,20–29.99,25.26304487867726,2353,,,,
+animal wines,price,20–29.99,25.940860215053764,386,25.864305292980717,6.65471865954675,0.011503855533129504,false
+amphibian/reptile,price,30–39.99,13.157894736842104,5,14.178662323085566,5.146532034221077,-0.19834085933129808,false
+bear,price,30–39.99,21.73913043478261,5,14.178662323085566,5.146532034221077,1.469041300321239,true
+bird,price,30–39.99,11.255411255411255,52,14.178662323085566,5.146532034221077,-0.5680040555925039,false
+bug,price,30–39.99,10.204081632653061,10,14.178662323085566,5.146532034221077,-0.772283289796729,false
+canine,price,30–39.99,13.043478260869565,15,14.178662323085566,5.146532034221077,-0.22057262145999854,false
+cat,price,30–39.99,11.923076923076923,31,14.178662323085566,5.146532034221077,-0.438272876766427,false
+cattle,price,30–39.99,8.695652173913043,4,14.178662323085566,5.146532034221077,-1.0653795823506171,true
+deer,price,30–39.99,20,10,14.178662323085566,5.146532034221077,1.1311185159649915,true
+fish,price,30–39.99,11.29032258064516,7,14.178662323085566,5.146532034221077,-0.5612205895610546,false
+horse,price,30–39.99,11.11111111111111,16,14.178662323085566,5.146532034221077,-0.596042381855829,false
+human,price,30–39.99,13.39375629405841,133,14.178662323085566,5.146532034221077,-0.15251163770244594,false
+marine invertebrate,price,30–39.99,21.21212121212121,7,14.178662323085566,5.146532034221077,1.3666404565769212,true
+mythical creature,price,30–39.99,12.195121951219512,15,14.178662323085566,5.146532034221077,-0.385413004072802,false
+none,price,30–39.99,14.043099757385471,984,14.178662323085566,5.146532034221077,-0.02634056580211537,false
+pachyderm,price,30–39.99,4.166666666666666,1,14.178662323085566,5.146532034221077,-1.945386833278345,true
+rabbit,price,30–39.99,24,6,14.178662323085566,5.146532034221077,1.9083409199843606,true
+sheep,price,30–39.99,14.035087719298245,8,14.178662323085566,5.146532034221077,-0.027897349677927622,false
+pig,price,30–39.99,21.428571428571427,6,14.178662323085566,5.146532034221077,1.4086979459719087,true
+all,price,30–39.99,13.77496242216019,1283,,,,
+animal wines,price,30–39.99,12.5,186,14.178662323085566,5.146532034221077,-0.32617349157132575,false
+amphibian/reptile,price,40–49.99,7.894736842105263,3,7.269095682620236,3.353437572080843,0.18656711092337705,false
+bear,price,40–49.99,13.043478260869565,3,7.269095682620236,3.353437572080843,1.7219293498480914,true
+bird,price,40–49.99,6.70995670995671,31,7.269095682620236,3.353437572080843,-0.16673606132365662,false
+bug,price,40–49.99,6.122448979591836,6,7.269095682620236,3.353437572080843,-0.3419317277813206,false
+canine,price,40–49.99,4.3478260869565215,5,7.269095682620236,3.353437572080843,-0.8711268758914262,false
+cat,price,40–49.99,7.307692307692308,19,7.269095682620236,3.353437572080843,0.0115095701776022,false
+cattle,price,40–49.99,10.869565217391305,5,7.269095682620236,3.353437572080843,1.0736652934132123,true
+deer,price,40–49.99,6,3,7.269095682620236,3.353437572080843,-0.3784461930009178,false
+fish,price,40–49.99,3.225806451612903,2,7.269095682620236,3.353437572080843,-1.2057147759868478,true
+horse,price,40–49.99,11.805555555555555,17,7.269095682620236,3.353437572080843,1.3527789843782296,true
+human,price,40–49.99,8.358509566968781,83,7.269095682620236,3.353437572080843,0.3248648173499626,false
+marine invertebrate,price,40–49.99,12.121212121212121,4,7.269095682620236,3.353437572080843,1.4469082349969307,true
+mythical creature,price,40–49.99,8.94308943089431,11,7.269095682620236,3.353437572080843,0.4991873897432784,false
+none,price,40–49.99,8.334522620236907,584,7.269095682620236,3.353437572080843,0.31771187467061224,false
+pachyderm,price,40–49.99,8.333333333333332,2,7.269095682620236,3.353437572080843,0.3173572275725191,false
+rabbit,price,40–49.99,4,1,7.269095682620236,3.353437572080843,-0.974849124921007,false
+sheep,price,40–49.99,0,0,7.269095682620236,3.353437572080843,-2.167654988761185,true
+pig,price,40–49.99,3.571428571428571,1,7.269095682620236,3.353437572080843,-1.1026497531895976,true
+all,price,40–49.99,8.138286450504618,758,,,,
+animal wines,price,40–49.99,7.123655913978495,106,7.269095682620236,3.353437572080843,-0.043370352217856886,false
+amphibian/reptile,price,50–59.99,2.631578947368421,1,3.582258091335623,2.291559270576714,-0.4148612502298254,false
+bear,price,50–59.99,4.3478260869565215,1,3.582258091335623,2.291559270576714,0.3340816907730381,false
+bird,price,50–59.99,3.896103896103896,18,3.582258091335623,2.291559270576714,0.1369573149592975,false
+bug,price,50–59.99,5.1020408163265305,5,3.582258091335623,2.291559270576714,0.6632089968191945,false
+canine,price,50–59.99,3.4782608695652173,4,3.582258091335623,2.291559270576714,-0.04538273266841266,false
+cat,price,50–59.99,6.923076923076923,18,3.582258091335623,2.291559270576714,1.457880175580412,true
+cattle,price,50–59.99,2.1739130434782608,1,3.582258091335623,2.291559270576714,-0.614579367830589,false
+deer,price,50–59.99,0,0,3.582258091335623,2.291559270576714,-1.563240426434216,true
+fish,price,50–59.99,3.225806451612903,2,3.582258091335623,2.291559270576714,-0.15554982334496295,false
+horse,price,50–59.99,5.555555555555555,8,3.582258091335623,2.291559270576714,0.8611156122194976,false
+human,price,50–59.99,5.53877139979859,55,3.582258091335623,2.291559270576714,0.8537912737341392,false
+marine invertebrate,price,50–59.99,0,0,3.582258091335623,2.291559270576714,-1.563240426434216,true
+mythical creature,price,50–59.99,6.504065040650407,8,3.582258091335623,2.291559270576714,1.275030057843303,true
+none,price,50–59.99,6.507777936349365,456,3.582258091335623,2.291559270576714,1.2766503064428616,true
+pachyderm,price,50–59.99,4.166666666666666,1,3.582258091335623,2.291559270576714,0.255026602556069,false
+rabbit,price,50–59.99,0,0,3.582258091335623,2.291559270576714,-1.563240426434216,true
+sheep,price,50–59.99,3.508771929824561,2,3.582258091335623,2.291559270576714,-0.03206819149502846,false
+pig,price,50–59.99,0,0,3.582258091335623,2.291559270576714,-1.563240426434216,true
+all,price,50–59.99,6.10908310070861,569,,,,
+animal wines,price,50–59.99,4.502688172043011,67,3.582258091335623,2.291559270576714,0.4016610403778666,false
+amphibian/reptile,price,60–69.99,13.157894736842104,5,3.9838574351193166,3.0426339477172584,3.0151630000071568,true
+bear,price,60–69.99,4.3478260869565215,1,3.9838574351193166,3.0426339477172584,0.11962288533271415,false
+bird,price,60–69.99,4.545454545454546,21,3.9838574351193166,3.0426339477172584,0.184575969369095,false
+bug,price,60–69.99,2.0408163265306123,2,3.9838574351193166,3.0426339477172584,-0.63860495280626,false
+canine,price,60–69.99,7.82608695652174,9,3.9838574351193166,3.0426339477172584,1.262797164373014,true
+cat,price,60–69.99,5.384615384615385,14,3.9838574351193166,3.0426339477172584,0.46037675696972674,false
+cattle,price,60–69.99,2.1739130434782608,1,3.9838574351193166,3.0426339477172584,-0.594861039067473,false
+deer,price,60–69.99,6,3,3.9838574351193166,3.0426339477172584,0.6626306678768565,false
+fish,price,60–69.99,0,0,3.9838574351193166,3.0426339477172584,-1.3093449634676602,true
+horse,price,60–69.99,4.861111111111112,7,3.9838574351193166,3.0426339477172584,0.2883204785938697,false
+human,price,60–69.99,3.726082578046324,37,3.9838574351193166,3.0426339477172584,-0.08472095608687617,false
+marine invertebrate,price,60–69.99,0,0,3.9838574351193166,3.0426339477172584,-1.3093449634676602,true
+mythical creature,price,60–69.99,3.2520325203252036,4,3.9838574351193166,3.0426339477172584,-0.24052348306412802,false
+none,price,60–69.99,4.424147281290138,310,3.9838574351193166,3.0426339477172584,0.1447068078962144,false
+pachyderm,price,60–69.99,4.166666666666666,1,3.9838574351193166,3.0426339477172584,0.06008255829936508,false
+rabbit,price,60–69.99,4,1,3.9838574351193166,3.0426339477172584,0.005305457428684259,false
+sheep,price,60–69.99,1.7543859649122806,1,3.9838574351193166,3.0426339477172584,-0.732743901671018,false
+pig,price,60–69.99,0,0,3.9838574351193166,3.0426339477172584,-1.3093449634676602,true
+all,price,60–69.99,4.273137212797939,398,,,,
+animal wines,price,60–69.99,4.032258064516129,60,3.9838574351193166,3.0426339477172584,0.015907476952041866,false
+amphibian/reptile,price,70–79.99,2.631578947368421,1,2.058462626186256,1.7748037225749778,0.32291814237951766,false
+bear,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+bird,price,70–79.99,2.5974025974025974,12,2.058462626186256,1.7748037225749778,0.30366173135721114,false
+bug,price,70–79.99,2.0408163265306123,2,2.058462626186256,1.7748037225749778,-0.009942676720354031,false
+canine,price,70–79.99,1.7391304347826086,2,2.058462626186256,1.7748037225749778,-0.17992535588123726,false
+cat,price,70–79.99,3.8461538461538463,10,2.058462626186256,1.7748037225749778,1.007261364864569,true
+cattle,price,70–79.99,2.1739130434782608,1,2.058462626186256,1.7748037225749778,0.06504968173297669,false
+deer,price,70–79.99,6,3,2.058462626186256,1.7748037225749778,2.22083001273806,true
+fish,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+horse,price,70–79.99,2.083333333333333,3,2.058462626186256,1.7748037225749778,0.014013215563348676,false
+human,price,70–79.99,1.812688821752266,18,2.058462626186256,1.7748037225749778,-0.13847942806735195,false
+marine invertebrate,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+mythical creature,price,70–79.99,4.878048780487805,6,2.058462626186256,1.7748037225749778,1.5886749156750393,true
+none,price,70–79.99,3.1825317539603257,223,2.058462626186256,1.7748037225749778,0.6333484167720876,false
+pachyderm,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+rabbit,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+sheep,price,70–79.99,0,0,2.058462626186256,1.7748037225749778,-1.1598255063380931,true
+pig,price,70–79.99,3.571428571428571,1,2.058462626186256,1.7748037225749778,0.8524694454929501,false
+all,price,70–79.99,2.9525445565814903,275,,,,
+animal wines,price,70–79.99,2.553763440860215,38,2.058462626186256,1.7748037225749778,0.27907357212173894,false
+amphibian/reptile,price,80–89.99,2.631578947368421,1,1.4661047667094076,1.3266736715600767,0.8784934876174154,false
+bear,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+bird,price,80–89.99,1.0822510822510822,5,1.4661047667094076,1.3266736715600767,-0.2893354203727733,false
+bug,price,80–89.99,1.0204081632653061,1,1.4661047667094076,1.3266736715600767,-0.33595043980935646,false
+canine,price,80–89.99,0.8695652173913043,1,1.4661047667094076,1.3266736715600767,-0.4496505524351093,false
+cat,price,80–89.99,4.230769230769231,11,1.4661047667094076,1.3266736715600767,2.0839069345581938,true
+cattle,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+deer,price,80–89.99,2,1,1.4661047667094076,1.3266736715600767,0.40243146806612096,false
+fish,price,80–89.99,1.6129032258064515,1,1.4661047667094076,1.3266736715600767,0.11065152059919835,false
+horse,price,80–89.99,2.083333333333333,3,1.4661047667094076,1.3266736715600767,0.46524520675691655,false
+human,price,80–89.99,2.3162134944612287,23,1.4661047667094076,1.3266736715600767,0.6407820898052133,false
+marine invertebrate,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+mythical creature,price,80–89.99,4.0650406504065035,5,1.4661047667094076,1.3266736715600767,1.9589865536721829,true
+none,price,80–89.99,2.240616526330812,157,1.4661047667094076,1.3266736715600767,0.5837997513816884,false
+pachyderm,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+rabbit,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+sheep,price,80–89.99,1.7543859649122806,1,1.4661047667094076,1.3266736715600767,0.2172962382406174,false
+pig,price,80–89.99,0,0,1.4661047667094076,1.3266736715600767,-1.1050982605129787,true
+all,price,80–89.99,2.2117242860210435,206,,,,
+animal wines,price,80–89.99,1.9489247311827957,29,1.4661047667094076,1.3266736715600767,0.3639327249975687,false
+amphibian/reptile,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+bear,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+bird,price,90–99.99,1.948051948051948,9,1.6385327451708867,1.5696924005508324,0.19718462214153915,false
+bug,price,90–99.99,2.0408163265306123,2,1.6385327451708867,1.5696924005508324,0.25628179203680757,false
+canine,price,90–99.99,4.3478260869565215,5,1.6385327451708867,1.5696924005508324,1.7260027129104383,true
+cat,price,90–99.99,3.076923076923077,8,1.6385327451708867,1.5696924005508324,0.9163517204054974,false
+cattle,price,90–99.99,4.3478260869565215,2,1.6385327451708867,1.5696924005508324,1.7260027129104383,true
+deer,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+fish,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+horse,price,90–99.99,2.083333333333333,3,1.6385327451708867,1.5696924005508324,0.283367994905472,false
+human,price,90–99.99,1.6112789526686808,16,1.6385327451708867,1.5696924005508324,-0.017362505222451228,false
+marine invertebrate,price,90–99.99,3.0303030303030303,1,1.6385327451708867,1.5696924005508324,0.8866516042530035,false
+mythical creature,price,90–99.99,0.8130081300813009,1,1.6385327451708867,1.5696924005508324,-0.5259148956826795,false
+none,price,90–99.99,1.8838304552590266,132,1.6385327451708867,1.5696924005508324,0.15627119682943022,false
+pachyderm,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+rabbit,price,90–99.99,4,1,1.6385327451708867,1.5696924005508324,1.5044140202248757,true
+sheep,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+pig,price,90–99.99,0,0,1.6385327451708867,1.5696924005508324,-1.0438559456590966,true
+all,price,90–99.99,1.8788919905518575,175,,,,
+animal wines,price,90–99.99,1.9489247311827957,29,1.6385327451708867,1.5696924005508324,0.1977406439013065,false
+amphibian/reptile,price,100–109.99,2.631578947368421,1,0.731830720702157,1.1528558585952668,1.6478627510130115,true
+bear,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+bird,price,100–109.99,1.2987012987012987,6,0.731830720702157,1.1528558585952668,0.4917098471354977,false
+bug,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+canine,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+cat,price,100–109.99,0.38461538461538464,1,0.731830720702157,1.1528558585952668,-0.30117844611541267,false
+cattle,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+deer,price,100–109.99,4,2,0.731830720702157,1.1528558585952668,2.834846398993926,true
+fish,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+horse,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+human,price,100–109.99,1.0070493454179255,10,0.731830720702157,1.1528558585952668,0.23872769753810952,false
+marine invertebrate,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+mythical creature,price,100–109.99,2.4390243902439024,3,0.731830720702157,1.1528558585952668,1.4808387855372733,true
+none,price,100–109.99,1.2701584130155559,89,0.731830720702157,1.1528558585952668,0.46695143048441545,false
+pachyderm,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+rabbit,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+sheep,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+pig,price,100–109.99,0,0,0.731830720702157,1.1528558585952668,-0.6347981104887466,false
+all,price,100–109.99,1.1917543482928923,111,,,,
+animal wines,price,100–109.99,0.8736559139784945,13,0.731830720702157,1.1528558585952668,0.12302075078939079,false
+amphibian/reptile,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+bear,price,110–119.99,4.3478260869565215,1,0.9265753615001339,1.3163898237527925,2.598964731968994,true
+bird,price,110–119.99,0.8658008658008658,4,0.9265753615001339,1.3163898237527925,-0.04616755204473613,false
+bug,price,110–119.99,2.0408163265306123,2,0.9265753615001339,1.3163898237527925,0.8464369329853798,false
+canine,price,110–119.99,0.8695652173913043,1,0.9265753615001339,1.3163898237527925,-0.04330794957553211,false
+cat,price,110–119.99,0.38461538461538464,1,0.9265753615001339,1.3163898237527925,-0.4117017369062593,false
+cattle,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+deer,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+fish,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+horse,price,110–119.99,2.083333333333333,3,0.9265753615001339,1.3163898237527925,0.8787351215884429,false
+human,price,110–119.99,0.4028197381671702,4,0.9265753615001339,1.3163898237527925,-0.39787273790967925,false
+marine invertebrate,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+mythical creature,price,110–119.99,0.8130081300813009,1,0.9265753615001339,1.3163898237527925,-0.08627173301528042,false
+none,price,110–119.99,0.856286570572285,60,0.9265753615001339,1.3163898237527925,-0.05339511872514184,false
+pachyderm,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+rabbit,price,110–119.99,4,1,0.9265753615001339,1.3163898237527925,2.3347374638145415,true
+sheep,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+pig,price,110–119.99,0,0,0.9265753615001339,1.3163898237527925,-0.7038761199616637,false
+all,price,110–119.99,0.8374490015031136,78,,,,
+animal wines,price,110–119.99,0.9408602150537635,14,0.9265753615001339,1.3163898237527925,0.010851537512578197,false
+amphibian/reptile,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+bear,price,120–129.99,4.3478260869565215,1,0.8276468982062315,1.304934431227551,2.69759085553353,true
+bird,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+bug,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+canine,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+cat,price,120–129.99,0.38461538461538464,1,0.8276468982062315,1.304934431227551,-0.33950480804931127,false
+cattle,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+deer,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+fish,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+horse,price,120–129.99,0.6944444444444444,1,0.8276468982062315,1.304934431227551,-0.10207597452730525,false
+human,price,120–129.99,1.0070493454179255,10,0.8276468982062315,1.304934431227551,0.13748004721044121,false
+marine invertebrate,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+mythical creature,price,120–129.99,2.4390243902439024,3,0.8276468982062315,1.304934431227551,1.2348340678863452,true
+none,price,120–129.99,1.0560867703724848,74,0.8276468982062315,1.304934431227551,0.17505850615908727,false
+pachyderm,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+rabbit,price,120–129.99,0,0,0.8276468982062315,1.304934431227551,-0.634244049662836,false
+sheep,price,120–129.99,1.7543859649122806,1,0.8276468982062315,1.304934431227551,0.7101805612058731,false
+pig,price,120–129.99,3.571428571428571,1,0.8276468982062315,1.304934431227551,2.1026203367484646,true
+all,price,120–129.99,0.9662873094266696,90,,,,
+animal wines,price,120–129.99,0.47043010752688175,7,0.8276468982062315,1.304934431227551,-0.27374309553876675,false
+amphibian/reptile,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+bear,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+bird,price,130–139.99,0.4329004329004329,2,0.3725884423905202,0.6612850990995961,0.0912042182593156,false
+bug,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+canine,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+cat,price,130–139.99,1.9230769230769231,5,0.3725884423905202,0.6612850990995961,2.3446596374204463,true
+cattle,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+deer,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+fish,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+horse,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+human,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+marine invertebrate,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+mythical creature,price,130–139.99,1.6260162601626018,2,0.3725884423905202,0.6612850990995961,1.8954424037056716,true
+none,price,130–139.99,0.6707578136149565,47,0.3725884423905202,0.6612850990995961,0.4508938302563037,false
+pachyderm,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+rabbit,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+sheep,price,130–139.99,1.7543859649122806,1,0.3725884423905202,0.6612850990995961,2.08956397838574,true
+pig,price,130–139.99,0,0,0.3725884423905202,0.6612850990995961,-0.5634308755752028,false
+all,price,130–139.99,0.6119819626368906,57,,,,
+animal wines,price,130–139.99,0.6720430107526881,10,0.3725884423905202,0.6612850990995961,0.45283731445015835,false
+amphibian/reptile,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+bear,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+bird,price,140–149.99,0.4329004329004329,2,0.2675408043363278,0.4704020466070662,0.35152829320539164,false
+bug,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+canine,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+cat,price,140–149.99,1.153846153846154,3,0.2675408043363278,0.4704020466070662,1.8841443312217774,true
+cattle,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+deer,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+fish,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+horse,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+human,price,140–149.99,0.7049345417925479,7,0.2675408043363278,0.4704020466070662,0.9298295800604404,false
+marine invertebrate,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+mythical creature,price,140–149.99,1.6260162601626018,2,0.2675408043363278,0.4704020466070662,2.8879029452034435,true
+none,price,140–149.99,0.6279434850863422,44,0.2675408043363278,0.4704020466070662,0.7661588280696069,false
+pachyderm,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+rabbit,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+sheep,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+pig,price,140–149.99,0,0,0.2675408043363278,0.4704020466070662,-0.5687492353956712,false
+all,price,140–149.99,0.6334550139574834,59,,,,
+animal wines,price,140–149.99,0.5376344086021506,8,0.2675408043363278,0.4704020466070662,0.5741760823830684,false
+amphibian/reptile,price,150+,5.263157894736842,2,4.525556496908758,3.5302605473099606,0.20893681583647764,false
+bear,price,150+,0,0,4.525556496908758,3.5302605473099606,-1.2819327175035868,true
+bird,price,150+,3.463203463203463,16,4.525556496908758,3.5302605473099606,-0.3009276566044967,false
+bug,price,150+,1.0204081632653061,1,4.525556496908758,3.5302605473099606,-0.9928865834886764,false
+canine,price,150+,7.82608695652174,9,4.525556496908758,3.5302605473099606,0.9349254581585965,false
+cat,price,150+,12.692307692307692,33,4.525556496908758,3.5302605473099606,2.3133565032818764,true
+cattle,price,150+,4.3478260869565215,2,4.525556496908758,3.5302605473099606,-0.05034484213570744,false
+deer,price,150+,6,3,4.525556496908758,3.5302605473099606,0.41765855050408685,false
+fish,price,150+,1.6129032258064515,1,4.525556496908758,3.5302605473099606,-0.8250533443832445,false
+horse,price,150+,2.083333333333333,3,4.525556496908758,3.5302605473099606,-0.691796860556478,false
+human,price,150+,3.826787512588117,38,4.525556496908758,3.5302605473099606,-0.19793694401765868,false
+marine invertebrate,price,150+,0,0,4.525556496908758,3.5302605473099606,-1.2819327175035868,true
+mythical creature,price,150+,5.691056910569105,7,4.525556496908758,3.5302605473099606,0.33014572098607636,false
+none,price,150+,5.023547880690738,352,4.525556496908758,3.5302605473099606,0.14106363456981866,false
+pachyderm,price,150+,12.5,3,4.525556496908758,3.5302605473099606,2.258882424179067,true
+rabbit,price,150+,4,1,4.525556496908758,3.5302605473099606,-0.14887187216513773,false
+sheep,price,150+,1.7543859649122806,1,4.525556496908758,3.5302605473099606,-0.7849762063902319,false
+pig,price,150+,3.571428571428571,1,4.525556496908758,3.5302605473099606,-0.2702712484514002,false
+all,price,150+,4.992484432037793,465,,,,
+animal wines,price,150+,5.309139784946237,79,4.525556496908758,3.5302605473099606,0.22196188568420694,false
+amphibian/reptile,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+bear,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+bird,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+bug,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+canine,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+cat,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+cattle,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+deer,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+fish,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+horse,rating,3 & less,0.6944444444444444,1,0.24745218878985464,0.8213318329224508,0.5442285781912392,false
+human,rating,3 & less,0.2014098690835851,2,0.24745218878985464,0.8213318329224508,-0.05605812152981145,false
+marine invertebrate,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+mythical creature,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+none,rating,3 & less,0.0999000999000999,7,0.24745218878985464,0.8213318329224508,-0.17964978705955797,false
+pachyderm,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+rabbit,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+sheep,rating,3 & less,0,0,0.24745218878985464,0.8213318329224508,-0.30128162439458106,false
+pig,rating,3 & less,3.571428571428571,1,0.24745218878985464,0.8213318329224508,4.047056560332494,true
+all,rating,3 & less,0.11810178226325961,11,,,,
+animal wines,rating,3 & less,0.13440860215053765,2,0.24745218878985464,0.8213318329224508,-0.13763448841022874,false
+amphibian/reptile,rating,3.1–3.5,2.631578947368421,1,5.4854926934396016,2.8138580481004594,-1.0142351523374684,true
+bear,rating,3.1–3.5,4.3478260869565215,1,5.4854926934396016,2.8138580481004594,-0.40430845729800774,false
+bird,rating,3.1–3.5,5.627705627705628,26,5.4854926934396016,2.8138580481004594,0.05054019493343996,false
+bug,rating,3.1–3.5,11.224489795918368,11,5.4854926934396016,2.8138580481004594,2.0395474840505794,true
+canine,rating,3.1–3.5,4.3478260869565215,5,5.4854926934396016,2.8138580481004594,-0.40430845729800774,false
+cat,rating,3.1–3.5,5.769230769230769,15,5.4854926934396016,2.8138580481004594,0.10083595936287888,false
+cattle,rating,3.1–3.5,4.3478260869565215,2,5.4854926934396016,2.8138580481004594,-0.40430845729800774,false
+deer,rating,3.1–3.5,4,2,5.4854926934396016,2.8138580481004594,-0.5279202674926717,false
+fish,rating,3.1–3.5,1.6129032258064515,1,5.4854926934396016,2.8138580481004594,-1.3762561584254063,true
+horse,rating,3.1–3.5,9.722222222222223,14,5.4854926934396016,2.8138580481004594,1.5056656932792665,true
+human,rating,3.1–3.5,5.740181268882175,57,5.4854926934396016,2.8138580481004594,0.09051223305827565,false
+marine invertebrate,rating,3.1–3.5,3.0303030303030303,1,5.4854926934396016,2.8138580481004594,-0.8725350110656744,false
+mythical creature,rating,3.1–3.5,5.691056910569105,7,5.4854926934396016,2.8138580481004594,0.07305422434805232,false
+none,rating,3.1–3.5,4.681033252461824,328,5.4854926934396016,2.8138580481004594,-0.2858919772164203,false
+pachyderm,rating,3.1–3.5,12.5,3,5.4854926934396016,2.8138580481004594,2.49284334413943,true
+rabbit,rating,3.1–3.5,4,1,5.4854926934396016,2.8138580481004594,-0.5279202674926717,false
+sheep,rating,3.1–3.5,5.263157894736842,3,5.4854926934396016,2.8138580481004594,-0.07901421994362888,false
+pig,rating,3.1–3.5,3.571428571428571,1,5.4854926934396016,2.8138580481004594,-0.6802276764825257,false
+all,rating,3.1–3.5,4.9710113807172,463,,,,
+animal wines,rating,3.1–3.5,6.115591397849462,91,5.4854926934396016,2.8138580481004594,0.22392696917856922,false
+amphibian/reptile,rating,3.6–4,60.526315789473685,23,56.87443176810076,10.243676579465255,0.356501300391852,false
+bear,rating,3.6–4,43.47826086956522,10,56.87443176810076,10.243676579465255,-1.3077502783902668,true
+bird,rating,3.6–4,54.97835497835498,254,56.87443176810076,10.243676579465255,-0.18509729148875217,false
+bug,rating,3.6–4,57.14285714285714,56,56.87443176810076,10.243676579465255,0.026204007191565227,false
+canine,rating,3.6–4,56.52173913043478,65,56.87443176810076,10.243676579465255,-0.034430278516699615,false
+cat,rating,3.6–4,38.07692307692307,99,56.87443176810076,10.243676579465255,-1.8350353552609884,true
+cattle,rating,3.6–4,65.21739130434783,30,56.87443176810076,10.243676579465255,0.8144497213990124,false
+deer,rating,3.6–4,57.99999999999999,29,56.87443176810076,10.243676579465255,0.1098793214689708,false
+fish,rating,3.6–4,74.19354838709677,46,56.87443176810076,10.243676579465255,1.6907129471184559,true
+horse,rating,3.6–4,49.30555555555556,71,56.87443176810076,10.243676579465255,-0.7388827784467518,false
+human,rating,3.6–4,55.99194360523666,556,56.87443176810076,10.243676579465255,-0.08614955343603473,false
+marine invertebrate,rating,3.6–4,78.78787878787878,26,56.87443176810076,10.243676579465255,2.1392169939947436,true
+mythical creature,rating,3.6–4,42.27642276422765,52,56.87443176810076,10.243676579465255,-1.4250751564273976,true
+none,rating,3.6–4,49.89296417867846,3496,56.87443176810076,10.243676579465255,-0.6815392437728399,false
+pachyderm,rating,3.6–4,58.333333333333336,14,56.87443176810076,10.243676579465255,0.14241972146574067,false
+rabbit,rating,3.6–4,56.00000000000001,14,56.87443176810076,10.243676579465255,-0.0853630785116415,false
+sheep,rating,3.6–4,68.42105263157895,39,56.87443176810076,10.243676579465255,1.127194984525853,true
+pig,rating,3.6–4,60.71428571428571,17,56.87443176810076,10.243676579465255,0.3748511500140895,false
+all,rating,3.6–4,50.91260468112518,4742,,,,
+animal wines,rating,3.6–4,52.755376344086024,785,56.87443176810076,10.243676579465255,-0.402107133318901,false
+amphibian/reptile,rating,4.1–4.5,34.21052631578947,13,35.79305946686789,9.529101838788257,-0.16607369486143028,false
+bear,rating,4.1–4.5,47.82608695652174,11,35.79305946686789,9.529101838788257,1.2627661759971285,true
+bird,rating,4.1–4.5,38.311688311688314,177,35.79305946686789,9.529101838788257,0.2643091539402313,false
+bug,rating,4.1–4.5,30.612244897959183,30,35.79305946686789,9.529101838788257,-0.5436834086314591,false
+canine,rating,4.1–4.5,37.391304347826086,43,35.79305946686789,9.529101838788257,0.1677225102635103,false
+cat,rating,4.1–4.5,54.61538461538461,142,35.79305946686789,9.529101838788257,1.9752465097917578,true
+cattle,rating,4.1–4.5,26.08695652173913,12,35.79305946686789,9.529101838788257,-1.0185747942812424,true
+deer,rating,4.1–4.5,38,19,35.79305946686789,9.529101838788257,0.23160005743130477,false
+fish,rating,4.1–4.5,24.193548387096776,15,35.79305946686789,9.529101838788257,-1.217272233628068,true
+horse,rating,4.1–4.5,38.88888888888889,56,35.79305946686789,9.529101838788257,0.32488155488268744,false
+human,rating,4.1–4.5,37.05941591137966,368,35.79305946686789,9.529101838788257,0.1328935786326746,false
+marine invertebrate,rating,4.1–4.5,18.181818181818183,6,35.79305946686789,9.529101838788257,-1.8481533289279224,true
+mythical creature,rating,4.1–4.5,49.59349593495935,61,35.79305946686789,9.529101838788257,1.448241051629516,true
+none,rating,4.1–4.5,43.741972313400886,3065,35.79305946686789,9.529101838788257,0.8341723051145186,false
+pachyderm,rating,4.1–4.5,25,6,35.79305946686789,9.529101838788257,-1.1326418427951608,true
+rabbit,rating,4.1–4.5,40,10,35.79305946686789,9.529101838788257,0.44148342669691487,false
+sheep,rating,4.1–4.5,24.561403508771928,14,35.79305946686789,9.529101838788257,-1.178668897458672,true
+pig,rating,4.1–4.5,32.142857142857146,9,35.79305946686789,9.529101838788257,-0.38305838113226737,false
+all,rating,4.1–4.5,42.51664161477346,3960,,,,
+animal wines,rating,4.1–4.5,39.6505376344086,590,35.79305946686789,9.529101838788257,0.40481025733598813,false
+amphibian/reptile,rating,4.6 & above,2.631578947368421,1,1.5995638828018823,1.4408689458890875,0.7162449211713242,false
+bear,rating,4.6 & above,4.3478260869565215,1,1.5995638828018823,1.4408689458890875,1.9073644497618245,true
+bird,rating,4.6 & above,1.0822510822510822,5,1.5995638828018823,1.4408689458890875,-0.35902835023735796,false
+bug,rating,4.6 & above,1.0204081632653061,1,1.5995638828018823,1.4408689458890875,-0.4019489219952675,false
+canine,rating,4.6 & above,1.7391304347826086,2,1.5995638828018823,1.4408689458890875,0.0968627663042643,false
+cat,rating,4.6 & above,1.5384615384615385,4,1.5995638828018823,1.4408689458890875,-0.04240659396170178,false
+cattle,rating,4.6 & above,4.3478260869565215,2,1.5995638828018823,1.4408689458890875,1.9073644497618245,true
+deer,rating,4.6 & above,0,0,1.5995638828018823,1.4408689458890875,-1.1101383560007758,true
+fish,rating,4.6 & above,0,0,1.5995638828018823,1.4408689458890875,-1.1101383560007758,true
+horse,rating,4.6 & above,1.3888888888888888,2,1.5995638828018823,1.4408689458890875,-0.1462138486043896,false
+human,rating,4.6 & above,1.0070493454179255,10,1.5995638828018823,1.4408689458890875,-0.41122028417258033,false
+marine invertebrate,rating,4.6 & above,0,0,1.5995638828018823,1.4408689458890875,-1.1101383560007758,true
+mythical creature,rating,4.6 & above,2.4390243902439024,3,1.5995638828018823,1.4408689458890875,0.5826071204026341,false
+none,rating,4.6 & above,1.5841301555587268,111,1.5995638828018823,1.4408689458890875,-0.010711402509707174,false
+pachyderm,rating,4.6 & above,4.166666666666666,1,1.5995638828018823,1.4408689458890875,1.7816351661883825,true
+rabbit,rating,4.6 & above,0,0,1.5995638828018823,1.4408689458890875,-1.1101383560007758,true
+sheep,rating,4.6 & above,1.7543859649122806,1,1.5995638828018823,1.4408689458890875,0.10745049544729092,false
+pig,rating,4.6 & above,0,0,1.5995638828018823,1.4408689458890875,-1.1101383560007758,true
+all,rating,4.6 & above,1.4816405411208933,138,,,,
+animal wines,rating,4.6 & above,1.3440860215053763,20,1.5995638828018823,1.4408689458890875,-0.17730818755266015,false
+amphibian/reptile,type,Red,44.73684210526316,17,40.895528556743294,9.48775297450125,0.40487073797595297,false
+bear,type,Red,43.47826086956522,10,40.895528556743294,9.48775297450125,0.27221749130306516,false
+bird,type,Red,41.125541125541126,190,40.895528556743294,9.48775297450125,0.024243102599319468,false
+bug,type,Red,30.612244897959183,30,40.895528556743294,9.48775297450125,-1.083848165779704,true
+canine,type,Red,43.47826086956522,50,40.895528556743294,9.48775297450125,0.27221749130306516,false
+cat,type,Red,48.07692307692308,125,40.895528556743294,9.48775297450125,0.7569120464540021,false
+cattle,type,Red,56.52173913043478,26,40.895528556743294,9.48775297450125,1.6469875022766307,true
+deer,type,Red,50,25,40.895528556743294,9.48775297450125,0.959602496789848,false
+fish,type,Red,24.193548387096776,15,40.895528556743294,9.48775297450125,-1.7603725786847337,true
+horse,type,Red,43.05555555555556,62,40.895528556743294,9.48775297450125,0.22766475946595893,false
+human,type,Red,43.605236656596176,433,40.895528556743294,9.48775297450125,0.2856006166196929,false
+marine invertebrate,type,Red,15.151515151515152,5,40.895528556743294,9.48775297450125,-2.7133941486900324,true
+mythical creature,type,Red,47.15447154471545,58,40.895528556743294,9.48775297450125,0.6596865458864009,false
+none,type,Red,43.29955758527187,3034,40.895528556743294,9.48775297450125,0.25338233773471014,false
+pachyderm,type,Red,37.5,9,40.895528556743294,9.48775297450125,-0.3578854303931526,false
+rabbit,type,Red,44,11,40.895528556743294,9.48775297450125,0.32720829174200766,false
+sheep,type,Red,33.33333333333333,19,40.895528556743294,9.48775297450125,-0.7970480727874867,false
+pig,type,Red,46.42857142857143,13,40.895528556743294,9.48775297450125,0.5831773747375623,false
+all,type,Red,42.9783122181662,4003,,,,
+animal wines,type,Red,41.263440860215056,614,40.895528556743294,9.48775297450125,0.038777601446890776,false
+amphibian/reptile,type,White,47.368421052631575,18,42.14930604366606,11.475502421994163,0.45480492418026625,false
+bear,type,White,43.47826086956522,10,42.14930604366606,11.475502421994163,0.11580798618037502,false
+bird,type,White,41.99134199134199,194,42.14930604366606,11.475502421994163,-0.01376532778393315,false
+bug,type,White,50,49,42.14930604366606,11.475502421994163,0.6841263822390168,false
+canine,type,White,36.52173913043478,42,42.14930604366606,11.475502421994163,-0.4903983029488432,false
+cat,type,White,30.384615384615383,79,42.14930604366606,11.475502421994163,-1.0252004859065909,true
+cattle,type,White,32.608695652173914,15,42.14930604366606,11.475502421994163,-0.8313893405840281,false
+deer,type,White,38,19,42.14930604366606,11.475502421994163,-0.36157946650888423,false
+fish,type,White,61.29032258064516,38,42.14930604366606,11.475502421994163,1.667989411974945,true
+horse,type,White,38.19444444444444,55,42.14930604366606,11.475502421994163,-0.34463515877454337,false
+human,type,White,35.54884189325277,353,42.14930604366606,11.475502421994163,-0.5751786638781684,false
+marine invertebrate,type,White,69.6969696969697,23,42.14930604366606,11.475502421994163,2.4005627501332993,true
+mythical creature,type,White,37.39837398373984,46,42.14930604366606,11.475502421994163,-0.41400645350573023,false
+none,type,White,37.00585129156558,2593,42.14930604366606,11.475502421994163,-0.44821172642013823,false
+pachyderm,type,White,50,12,42.14930604366606,11.475502421994163,0.6841263822390168,false
+rabbit,type,White,40,10,42.14930604366606,11.475502421994163,-0.18729515838423408,false
+sheep,type,White,52.63157894736842,30,42.14930604366606,11.475502421994163,0.9134478402977667,false
+pig,type,White,17.857142857142858,5,42.14930604366606,11.475502421994163,-2.1168714269071467,true
+all,type,White,37.459738028773884,3489,,,,
+animal wines,type,White,40.86021505376344,608,42.14930604366606,11.475502421994163,-0.11233416564244912,false
+amphibian/reptile,type,Rose,2.631578947368421,1,9.290291914842902,5.167312286067681,-1.2886221305857546,true
+bear,type,Rose,13.043478260869565,3,9.290291914842902,5.167312286067681,0.7263324022715171,false
+bird,type,Rose,8.008658008658008,37,9.290291914842902,5.167312286067681,-0.24802718226271858,false
+bug,type,Rose,14.285714285714285,14,9.290291914842902,5.167312286067681,0.9667351408855713,false
+canine,type,Rose,12.173913043478262,14,9.290291914842902,5.167312286067681,0.5580504852416792,false
+cat,type,Rose,3.076923076923077,8,9.290291914842902,5.167312286067681,-1.2024372621473962,true
+cattle,type,Rose,2.1739130434782608,1,9.290291914842902,5.167312286067681,-1.3771915606014589,true
+deer,type,Rose,8,4,9.290291914842902,5.167312286067681,-0.24970271650154371,false
+fish,type,Rose,9.67741935483871,6,9.290291914842902,5.167312286067681,0.07491852989795045,false
+horse,type,Rose,6.944444444444445,10,9.290291914842902,5.167312286067681,-0.453978265784986,false
+human,type,Rose,8.66062437059416,86,9.290291914842902,5.167312286067681,-0.12185591065329593,false
+marine invertebrate,type,Rose,9.090909090909092,3,9.290291914842902,5.167312286067681,-0.038585402409564866,false
+mythical creature,type,Rose,4.878048780487805,6,9.290291914842902,5.167312286067681,-0.8538758430086697,false
+none,type,Rose,8.091908091908092,567,9.290291914842902,5.167312286067681,-0.2319162761201682,false
+pachyderm,type,Rose,12.5,3,9.290291914842902,5.167312286067681,0.6211562041278683,false
+rabbit,type,Rose,8,2,9.290291914842902,5.167312286067681,-0.24970271650154371,false
+sheep,type,Rose,12.280701754385964,7,9.290291914842902,5.167312286067681,0.5787166855786766,false
+pig,type,Rose,25,7,9.290291914842902,5.167312286067681,3.0402087614317908,true
+all,type,Rose,8.12754992484432,757,,,,
+animal wines,type,Rose,7.997311827956989,119,9.290291914842902,5.167312286067681,-0.2502229428579532,false
+amphibian/reptile,type,Sparkling,2.631578947368421,1,4.836548544328778,3.2151574752207397,-0.6858045411318378,false
+bear,type,Sparkling,0,0,4.836548544328778,3.2151574752207397,-1.5042960046604623,true
+bird,type,Sparkling,6.277056277056277,29,4.836548544328778,3.2151574752207397,0.44803644730608383,false
+bug,type,Sparkling,3.061224489795918,3,4.836548544328778,3.2151574752207397,-0.5521732817802255,false
+canine,type,Sparkling,5.217391304347826,6,4.836548544328778,3.2151574752207397,0.11845228824846314,false
+cat,type,Sparkling,11.538461538461538,30,4.836548544328778,3.2151574752207397,2.084474258503507,true
+cattle,type,Sparkling,6.521739130434782,3,4.836548544328778,3.2151574752207397,0.5241393614756944,false
+deer,type,Sparkling,2,1,4.836548544328778,3.2151574752207397,-0.8822424923787076,false
+fish,type,Sparkling,3.225806451612903,2,4.836548544328778,3.2151574752207397,-0.500983888076987,false
+horse,type,Sparkling,7.638888888888889,11,4.836548544328778,3.2151574752207397,0.87160282697124,false
+human,type,Sparkling,8.761329305135952,87,4.836548544328778,3.2151574752207397,1.22071182859798,true
+marine invertebrate,type,Sparkling,3.0303030303030303,1,4.836548544328778,3.2151574752207397,-0.56179068302144,false
+mythical creature,type,Sparkling,6.504065040650407,8,4.836548544328778,3.2151574752207397,0.5186422466623176,false
+none,type,Sparkling,7.892107892107893,553,4.836548544328778,3.2151574752207397,0.950360712135673,false
+pachyderm,type,Sparkling,0,0,4.836548544328778,3.2151574752207397,-1.5042960046604623,true
+rabbit,type,Sparkling,4,1,4.836548544328778,3.2151574752207397,-0.2601889800969528,false
+sheep,type,Sparkling,0,0,4.836548544328778,3.2151574752207397,-1.5042960046604623,true
+pig,type,Sparkling,7.142857142857142,2,4.836548544328778,3.2151574752207397,0.7173236820600902,false
+all,type,Sparkling,7.794717629375134,726,,,,
+animal wines,type,Sparkling,6.451612903225806,96,4.836548544328778,3.2151574752207397,0.5023282285064884,false
+amphibian/reptile,type,Dessert,2.631578947368421,1,1.662254038445555,1.3581724674472628,0.7136979523261497,false
+bear,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+bird,type,Dessert,1.0822510822510822,5,1.662254038445555,1.3581724674472628,-0.4270466160196949,false
+bug,type,Dessert,2.0408163265306123,2,1.662254038445555,1.3581724674472628,0.2787291725892364,false
+canine,type,Dessert,2.608695652173913,3,1.662254038445555,1.3581724674472628,0.696849359277052,false
+cat,type,Dessert,3.4615384615384617,9,1.662254038445555,1.3581724674472628,1.3247834617607368,true
+cattle,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+deer,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+fish,type,Dessert,1.6129032258064515,1,1.662254038445555,1.3581724674472628,-0.036336189859495764,false
+horse,type,Dessert,3.4722222222222223,5,1.662254038445555,1.3581724674472628,1.3326497386437024,true
+human,type,Dessert,1.812688821752266,18,1.662254038445555,1.3581724674472628,0.11076265121870638,false
+marine invertebrate,type,Dessert,3.0303030303030303,1,1.662254038445555,1.3581724674472628,1.0072719221210364,true
+mythical creature,type,Dessert,1.6260162601626018,2,1.662254038445555,1.3581724674472628,-0.026681278815100386,false
+none,type,Dessert,2.2548879691736836,158,1.662254038445555,1.3581724674472628,0.43634659436294326,false
+pachyderm,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+rabbit,type,Dessert,4,1,1.662254038445555,1.3581724674472628,1.7212438166622004,true
+sheep,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+pig,type,Dessert,0,0,1.662254038445555,1.3581724674472628,-1.2238902483201013,true
+all,type,Dessert,2.168778183379858,202,,,,
+animal wines,type,Dessert,1.9489247311827957,29,1.662254038445555,1.3581724674472628,0.2110709056531305,false
+amphibian/reptile,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+bear,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+bird,type,Fortified,1.5151515151515151,7,1.1660709019734166,1.209554130538884,0.2886027209237632,false
+bug,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+canine,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+cat,type,Fortified,3.4615384615384617,9,1.1660709019734166,1.209554130538884,1.8977799352744653,true
+cattle,type,Fortified,2.1739130434782608,1,1.1660709019734166,1.209554130538884,0.8332344258589134,false
+deer,type,Fortified,2,1,1.1660709019734166,1.209554130538884,0.6894516557560338,false
+fish,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+horse,type,Fortified,0.6944444444444444,1,1.1660709019734166,1.209554130538884,-0.38991761147461157,false
+human,type,Fortified,1.6112789526686808,16,1.1660709019734166,1.209554130538884,0.3680761691061432,false
+marine invertebrate,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+mythical creature,type,Fortified,2.4390243902439024,3,1.1660709019734166,1.209554130538884,1.0524154778450105,true
+none,type,Fortified,1.4556871699728844,102,1.1660709019734166,1.209554130538884,0.23944051835897345,false
+pachyderm,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+rabbit,type,Fortified,0,0,1.1660709019734166,1.209554130538884,-0.9640502004270824,false
+sheep,type,Fortified,1.7543859649122806,1,1.1660709019734166,1.209554130538884,0.4863900242949493,false
+pig,type,Fortified,3.571428571428571,1,1.1660709019734166,1.209554130538884,1.9886316856141966,true
+all,type,Fortified,1.470904015460597,137,,,,
+animal wines,type,Fortified,1.478494623655914,22,1.1660709019734166,1.209554130538884,0.2582966018588234,false
+amphibian/reptile,country,France,10.526315789473683,4,19.492643054407417,8.479765471322118,-1.0573791569185644,true
+bear,country,France,13.043478260869565,3,19.492643054407417,8.479765471322118,-0.7605357501157793,false
+bird,country,France,17.316017316017316,80,19.492643054407417,8.479765471322118,-0.25668466253592426,false
+bug,country,France,14.285714285714285,14,19.492643054407417,8.479765471322118,-0.6140416013040154,false
+canine,country,France,20.869565217391305,24,19.492643054407417,8.479765471322118,0.16237738739833404,false
+cat,country,France,45,117,19.492643054407417,8.479765471322118,3.00802622806685,true
+cattle,country,France,6.521739130434782,3,19.492643054407417,8.479765471322118,-1.5296300313775404,true
+deer,country,France,16,8,19.492643054407417,8.479765471322118,-0.41187967594378094,false
+fish,country,France,12.903225806451612,8,19.492643054407417,8.479765471322118,-0.7770754120783979,false
+horse,country,France,20.13888888888889,29,19.492643054407417,8.479765471322118,0.07621034292363675,false
+human,country,France,20.84592145015106,207,19.492643054407417,8.479765471322118,0.15958913018530074,false
+marine invertebrate,country,France,30.303030303030305,10,19.492643054407417,8.479765471322118,1.2748450750416087,true
+mythical creature,country,France,21.951219512195124,27,19.492643054407417,8.479765471322118,0.2899344877051629,false
+none,country,France,27.32981304409876,1915,19.492643054407417,8.479765471322118,0.9242201351200124,false
+pachyderm,country,France,16.666666666666664,4,19.492643054407417,8.479765471322118,-0.33326114941480117,false
+rabbit,country,France,12,3,19.492643054407417,8.479765471322118,-0.883590835117661,false
+sheep,country,France,21.052631578947366,12,19.492643054407417,8.479765471322118,0.18396599880217265,false
+pig,country,France,21.428571428571427,6,19.492643054407417,8.479765471322118,0.22829975436362762,false
+all,country,France,25.971655572256818,2419,,,,
+animal wines,country,France,22.177419354838708,330,19.492643054407417,8.479765471322118,0.3166097351997515,false
+amphibian/reptile,country,United States,39.473684210526315,15,22.681657854722943,11.232585243637597,1.4949386976889203,true
+bear,country,United States,60.86956521739131,14,22.681657854722943,11.232585243637597,3.3997433835900694,true
+bird,country,United States,23.376623376623375,108,22.681657854722943,11.232585243637597,0.06187048723214248,false
+bug,country,United States,22.448979591836736,22,22.681657854722943,11.232585243637597,-0.020714577974647597,false
+canine,country,United States,18.26086956521739,21,22.681657854722943,11.232585243637597,-0.39356819410826116,false
+cat,country,United States,11.538461538461538,30,22.681657854722943,11.232585243637597,-0.992041998752974,false
+cattle,country,United States,17.391304347826086,8,22.681657854722943,11.232585243637597,-0.4709827161021046,false
+deer,country,United States,28.000000000000004,14,22.681657854722943,11.232585243637597,0.473474452222786,false
+fish,country,United States,22.58064516129032,14,22.681657854722943,11.232585243637597,-0.008992826784006673,false
+horse,country,United States,21.52777777777778,31,22.681657854722943,11.232585243637597,-0.10272613578416857,false
+human,country,United States,18.22759315206445,181,22.681657854722943,11.232585243637597,-0.39653068336885133,false
+marine invertebrate,country,United States,12.121212121212121,4,22.681657854722943,11.232585243637597,-0.9401616372769135,false
+mythical creature,country,United States,21.951219512195124,27,22.681657854722943,11.232585243637597,-0.06502851540268137,false
+none,country,United States,22.49179392036535,1576,22.681657854722943,11.232585243637597,-0.016902959580488063,false
+pachyderm,country,United States,25,6,22.681657854722943,11.232585243637597,0.20639435134402576,false
+rabbit,country,United States,16,4,22.681657854722943,11.232585243637597,-0.5948459512922541,false
+sheep,country,United States,14.035087719298245,8,22.681657854722943,11.232585243637597,-0.7697756080081671,false
+pig,country,United States,14.285714285714285,4,22.681657854722943,11.232585243637597,-0.7474631517944027,false
+all,country,United States,21.999141077947176,2049,,,,
+animal wines,country,United States,21.370967741935484,318,22.681657854722943,11.232585243637597,-0.11668641584802257,false
+amphibian/reptile,country,Italy,13.157894736842104,5,19.932987277789096,5.847028931602866,-1.158723963948253,true
+bear,country,Italy,13.043478260869565,3,19.932987277789096,5.847028931602866,-1.1782922741637412,true
+bird,country,Italy,21.645021645021643,100,19.932987277789096,5.847028931602866,0.29280415528288173,false
+bug,country,Italy,20.408163265306122,20,19.932987277789096,5.847028931602866,0.08126793848217968,false
+canine,country,Italy,24.347826086956523,28,19.932987277789096,5.847028931602866,0.7550567751265039,false
+cat,country,Italy,21.153846153846153,55,19.932987277789096,5.847028931602866,0.20879986918798768,false
+cattle,country,Italy,21.73913043478261,10,19.932987277789096,5.847028931602866,0.30889930221337036,false
+deer,country,Italy,6,3,19.932987277789096,5.847028931602866,-2.3829174510292015,true
+fish,country,Italy,11.29032258064516,7,19.932987277789096,5.847028931602866,-1.4781292855300945,true
+horse,country,Italy,29.166666666666668,42,19.932987277789096,5.847028931602866,1.5792087737021532,true
+human,country,Italy,24.169184290030213,240,19.932987277789096,5.847028931602866,0.7245041989350708,false
+marine invertebrate,country,Italy,21.21212121212121,7,19.932987277789096,5.847028931602866,0.21876647940263608,false
+mythical creature,country,Italy,30.081300813008134,37,19.932987277789096,5.847028931602866,1.7356359364613314,true
+none,country,Italy,20.322534608248894,1424,19.932987277789096,5.847028931602866,0.06662312347290038,false
+pachyderm,country,Italy,16.666666666666664,4,19.932987277789096,5.847028931602866,-0.5586291173399451,false
+rabbit,country,Italy,20,5,19.932987277789096,5.847028931602866,0.011460986937947998,false
+sheep,country,Italy,21.052631578947366,12,19.932987277789096,5.847028931602866,0.19148944092044007,false
+pig,country,Italy,21.428571428571427,6,19.932987277789096,5.847028931602866,0.2557853173427589,false
+all,country,Italy,20.828859780974877,1940,,,,
+animal wines,country,Italy,21.841397849462364,325,19.932987277789096,5.847028931602866,0.326389794543074,false
+amphibian/reptile,country,Spain,13.157894736842104,5,10.273933557222087,3.976554473881851,0.7252412103397491,false
+bear,country,Spain,13.043478260869565,3,10.273933557222087,3.976554473881851,0.6964684431806341,false
+bird,country,Spain,7.792207792207792,36,10.273933557222087,3.976554473881851,-0.6240894677325198,false
+bug,country,Spain,8.16326530612245,8,10.273933557222087,3.976554473881851,-0.5307781560550926,false
+canine,country,Spain,6.086956521739131,7,10.273933557222087,3.976554473881851,-1.0529158000935654,true
+cat,country,Spain,6.153846153846154,16,10.273933557222087,3.976554473881851,-1.0360947977543904,true
+cattle,country,Spain,17.391304347826086,8,10.273933557222087,3.976554473881851,1.7898335952270088,true
+deer,country,Spain,12,6,10.273933557222087,3.976554473881851,0.43406080668950425,false
+fish,country,Spain,11.29032258064516,7,10.273933557222087,3.976554473881851,0.25559539800064407,false
+horse,country,Spain,4.166666666666666,6,10.273933557222087,3.976554473881851,-1.5358187422473812,true
+human,country,Spain,12.386706948640484,123,10.273933557222087,3.976554473881851,0.5313075440799735,false
+marine invertebrate,country,Spain,15.151515151515152,5,10.273933557222087,3.976554473881851,1.2265848805364525,true
+mythical creature,country,Spain,8.94308943089431,11,10.273933557222087,3.976554473881851,-0.3346726758224509,false
+none,country,Spain,9.875838447267018,692,10.273933557222087,3.976554473881851,-0.10011056369773666,false
+pachyderm,country,Spain,4.166666666666666,1,10.273933557222087,3.976554473881851,-1.5358187422473812,true
+rabbit,country,Spain,16,4,10.273933557222087,3.976554473881851,1.439956746572169,true
+sheep,country,Spain,7.017543859649122,4,10.273933557222087,3.976554473881851,-0.8188972938660959,false
+pig,country,Spain,14.285714285714285,4,10.273933557222087,3.976554473881851,1.0088584866224553,true
+all,country,Spain,9.877603607472622,920,,,,
+animal wines,country,Spain,8.131720430107526,121,10.273933557222087,3.976554473881851,-0.5387108717319709,false
+amphibian/reptile,country,Argentina,0,0,3.1895117077344275,3.2654682164959388,-0.9767394738745865,false
+bear,country,Argentina,0,0,3.1895117077344275,3.2654682164959388,-0.9767394738745865,false
+bird,country,Argentina,3.0303030303030303,14,3.1895117077344275,3.2654682164959388,-0.04875523718991776,false
+bug,country,Argentina,5.1020408163265305,5,3.1895117077344275,3.2654682164959388,0.5856829654414374,false
+canine,country,Argentina,0,0,3.1895117077344275,3.2654682164959388,-0.9767394738745865,false
+cat,country,Argentina,1.9230769230769231,5,3.1895117077344275,3.2654682164959388,-0.3878264005939313,false
+cattle,country,Argentina,13.043478260869565,6,3.1895117077344275,3.2654682164959388,3.017627457942031,true
+deer,country,Argentina,2,1,3.1895117077344275,3.2654682164959388,-0.36426987766270513,false
+fish,country,Argentina,3.225806451612903,2,3.1895117077344275,3.2654682164959388,0.011114713563931782,false
+horse,country,Argentina,6.25,9,3.1895117077344275,3.2654682164959388,0.9372280142875428,false
+human,country,Argentina,4.632426988922457,46,3.1895117077344275,3.2654682164959388,0.44187086981859297,false
+marine invertebrate,country,Argentina,3.0303030303030303,1,3.1895117077344275,3.2654682164959388,-0.04875523718991776,false
+mythical creature,country,Argentina,2.4390243902439024,3,3.1895117077344275,3.2654682164959388,-0.22982533215277995,false
+none,country,Argentina,3.0112744398458684,211,3.1895117077344275,3.2654682164959388,-0.054582453746807355,false
+pachyderm,country,Argentina,0,0,3.1895117077344275,3.2654682164959388,-0.9767394738745865,false
+rabbit,country,Argentina,8,2,3.1895117077344275,3.2654682164959388,1.4731389109729391,true
+sheep,country,Argentina,1.7543859649122806,1,3.1895117077344275,3.2654682164959388,-0.4394854421097783,false
+pig,country,Argentina,0,0,3.1895117077344275,3.2654682164959388,-0.9767394738745865,false
+all,country,Argentina,3.15653854412712,294,,,,
+animal wines,country,Argentina,3.1586021505376345,47,3.1895117077344275,3.2654682164959388,-0.009465582007703931,false
+amphibian/reptile,country,Portugal,0,0,2.6607472113609103,2.6134924829472315,-1.0180810653644543,true
+bear,country,Portugal,0,0,2.6607472113609103,2.6134924829472315,-1.0180810653644543,true
+bird,country,Portugal,4.112554112554113,19,2.6607472113609103,2.6134924829472315,0.5555045253300297,false
+bug,country,Portugal,2.0408163265306123,2,2.6607472113609103,2.6134924829472315,-0.23720400532057506,false
+canine,country,Portugal,5.217391304347826,6,2.6607472113609103,2.6134924829472315,0.9782481142259848,false
+cat,country,Portugal,2.307692307692308,6,2.6607472113609103,2.6134924829472315,-0.13508931285329848,false
+cattle,country,Portugal,2.1739130434782608,1,2.6607472113609103,2.6134924829472315,-0.18627724053510475,false
+deer,country,Portugal,0,0,2.6607472113609103,2.6134924829472315,-1.0180810653644543,true
+fish,country,Portugal,3.225806451612903,2,2.6607472113609103,2.6134924829472315,0.216208481156516,false
+horse,country,Portugal,2.083333333333333,3,2.6607472113609103,2.6134924829472315,-0.2209357332363277,false
+human,country,Portugal,2.6183282980866065,26,2.6607472113609103,2.6134924829472315,-0.016230738581068372,false
+marine invertebrate,country,Portugal,0,0,2.6607472113609103,2.6134924829472315,-1.0180810653644543,true
+mythical creature,country,Portugal,0.8130081300813009,1,2.6607472113609103,2.6134924829472315,-0.7069999601437219,false
+none,country,Portugal,2.7258455829884403,191,2.6607472113609103,2.6134924829472315,0.024908574274573242,false
+pachyderm,country,Portugal,4.166666666666666,1,2.6607472113609103,2.6134924829472315,0.5762095988917989,false
+rabbit,country,Portugal,0,0,2.6607472113609103,2.6134924829472315,-1.0180810653644543,true
+sheep,country,Portugal,5.263157894736842,3,2.6607472113609103,2.6134924829472315,0.9957597736960762,false
+pig,country,Portugal,10.714285714285714,3,2.6607472113609103,2.6134924829472315,3.0815234998659116,true
+all,country,Portugal,2.7592870946961563,257,,,,
+animal wines,country,Portugal,3.0913978494623655,46,2.6607472113609103,2.6134924829472315,0.16477975005147563,false
+amphibian/reptile,country,South Africa,5.263157894736842,2,6.2874813819201565,6.340875054270063,-0.16154292245413612,false
+bear,country,South Africa,0,0,6.2874813819201565,6.340875054270063,-0.9915794473329119,false
+bird,country,South Africa,6.0606060606060606,28,6.2874813819201565,6.340875054270063,-0.03577981262401849,false
+bug,country,South Africa,3.061224489795918,3,6.2874813819201565,6.340875054270063,-0.5088031012299504,false
+canine,country,South Africa,9.565217391304348,11,6.2874813819201565,6.340875054270063,0.5169217152728633,false
+cat,country,South Africa,3.8461538461538463,10,6.2874813819201565,6.340875054270063,-0.38501429453688335,false
+cattle,country,South Africa,4.3478260869565215,2,6.2874813819201565,6.340875054270063,-0.3058971006939232,false
+deer,country,South Africa,18,9,6.2874813819201565,6.340875054270063,1.8471454677525017,true
+fish,country,South Africa,6.451612903225806,4,6.2874813819201565,6.340875054270063,0.025884679937845545,false
+horse,country,South Africa,4.166666666666666,6,6.2874813819201565,6.340875054270063,-0.3344671984705478,false
+human,country,South Africa,3.0211480362537766,30,6.2874813819201565,6.340875054270063,-0.5151234360731916,false
+marine invertebrate,country,South Africa,3.0303030303030303,1,6.2874813819201565,6.340875054270063,-0.5136796299784652,false
+mythical creature,country,South Africa,2.4390243902439024,3,6.2874813819201565,6.340875054270063,-0.6069283748281133,false
+none,country,South Africa,2.2263450834879404,156,6.2874813819201565,6.340875054270063,-0.640469377439849,false
+pachyderm,country,South Africa,25,6,6.2874813819201565,6.340875054270063,2.9510940458412738,true
+rabbit,country,South Africa,0,0,6.2874813819201565,6.340875054270063,-0.9915794473329119,false
+sheep,country,South Africa,14.035087719298245,8,6.2874813819201565,6.340875054270063,1.2218512856771568,true
+pig,country,South Africa,3.571428571428571,1,6.2874813819201565,6.340875054270063,-0.42834037687945686,false
+all,country,South Africa,2.7270775177152675,254,,,,
+animal wines,country,South Africa,5.376344086021505,80,6.2874813819201565,6.340875054270063,-0.1436926746072807,false
+amphibian/reptile,country,Australia,10.526315789473683,4,4.0102453615801,3.8248232710656445,1.7036265380382196,true
+bear,country,Australia,0,0,4.0102453615801,3.8248232710656445,-1.0484786034212752,true
+bird,country,Australia,3.67965367965368,17,4.0102453615801,3.8248232710656445,-0.08643319141757712,false
+bug,country,Australia,7.142857142857142,7,4.0102453615801,3.8248232710656445,0.8190213139976678,false
+canine,country,Australia,2.608695652173913,3,4.0102453615801,3.8248232710656445,-0.3664351553204438,false
+cat,country,Australia,1.9230769230769231,5,4.0102453615801,3.8248232710656445,-0.5456901641161751,false
+cattle,country,Australia,0,0,4.0102453615801,3.8248232710656445,-1.0484786034212752,true
+deer,country,Australia,6,3,4.0102453615801,3.8248232710656445,0.520221327210637,false
+fish,country,Australia,14.516129032258066,9,4.0102453615801,3.8248232710656445,2.7467631642365773,true
+horse,country,Australia,0.6944444444444444,1,4.0102453615801,3.8248232710656445,-0.866916111449989,false
+human,country,Australia,3.5246727089627394,35,4.0102453615801,3.8248232710656445,-0.1269529644129346,false
+marine invertebrate,country,Australia,0,0,4.0102453615801,3.8248232710656445,-1.0484786034212752,true
+mythical creature,country,Australia,3.2520325203252036,4,4.0102453615801,3.8248232710656445,-0.19823473858013027,false
+none,country,Australia,2.4261452832881405,170,4.0102453615801,3.8248232710656445,-0.4141629471551007,false
+pachyderm,country,Australia,0,0,4.0102453615801,3.8248232710656445,-1.0484786034212752,true
+rabbit,country,Australia,4,1,4.0102453615801,3.8248232710656445,-0.00267864966666705,false
+sheep,country,Australia,5.263157894736842,3,4.0102453615801,3.8248232710656445,0.3275739673084722,false
+pig,country,Australia,7.142857142857142,2,4.0102453615801,3.8248232710656445,0.8190213139976678,false
+all,country,Australia,2.716340992054971,253,,,,
+animal wines,country,Australia,3.494623655913978,52,4.0102453615801,3.8248232710656445,-0.13480928898512573,false
+amphibian/reptile,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+bear,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+bird,country,Germany,2.813852813852814,13,2.6519571141995337,2.887016668795461,0.05607716138363248,false
+bug,country,Germany,3.061224489795918,3,2.6519571141995337,2.887016668795461,0.14176134832194842,false
+canine,country,Germany,4.3478260869565215,5,2.6519571141995337,2.887016668795461,0.5874122553869939,false
+cat,country,Germany,2.307692307692308,6,2.6519571141995337,2.887016668795461,-0.1192458672747678,false
+cattle,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+deer,country,Germany,6,3,2.6519571141995337,2.887016668795461,1.1596894891491423,true
+fish,country,Germany,4.838709677419355,3,2.6519571141995337,2.887016668795461,0.7574436915642028,false
+horse,country,Germany,2.7777777777777777,4,2.6519571141995337,2.887016668795461,0.043581550788461376,false
+human,country,Germany,2.920443101711984,29,2.6519571141995337,2.887016668795461,0.09299772682797482,false
+marine invertebrate,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+mythical creature,country,Germany,2.4390243902439024,3,2.6519571141995337,2.887016668795461,-0.07375528041009631,false
+none,country,Germany,2.169259312116455,152,2.6519571141995337,2.887016668795461,-0.16719605650371003,false
+pachyderm,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+rabbit,country,Germany,12,3,2.6519571141995337,2.887016668795461,3.2379594433379966,true
+sheep,country,Germany,1.7543859649122806,1,2.6519571141995337,2.887016668795461,-0.3108991918850761,false
+pig,country,Germany,0,0,2.6519571141995337,2.887016668795461,-0.9185804650397117,false
+all,country,Germany,2.3405625939445995,218,,,,
+animal wines,country,Germany,2.956989247311828,44,2.6519571141995337,2.887016668795461,0.10565651955156936,false
+amphibian/reptile,country,Chile,5.263157894736842,2,1.8169193340769403,2.301818096918262,1.4971811044816363,true
+bear,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+bird,country,Chile,1.5151515151515151,7,1.8169193340769403,2.301818096918262,-0.13109976819169175,false
+bug,country,Chile,1.0204081632653061,1,1.8169193340769403,2.301818096918262,-0.3460356714885618,false
+canine,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+cat,country,Chile,1.9230769230769231,5,1.8169193340769403,2.301818096918262,0.046119017459333375,false
+cattle,country,Chile,8.695652173913043,4,1.8169193340769403,2.301818096918262,2.988391154385979,true
+deer,country,Chile,2,1,1.8169193340769403,2.301818096918262,0.07953741703924094,false
+fish,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+horse,country,Chile,4.166666666666666,6,1.8169193340769403,2.301818096918262,1.020822338539971,true
+human,country,Chile,3.5246727089627394,35,1.8169193340769403,2.301818096918262,0.7419150006563017,false
+marine invertebrate,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+mythical creature,country,Chile,2.4390243902439024,3,1.8169193340769403,2.301818096918262,0.2702668195196891,false
+none,country,Chile,2.2263450834879404,156,1.8169193340769403,2.301818096918262,0.17787059279755887,false
+pachyderm,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+rabbit,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+sheep,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+pig,country,Chile,0,0,1.8169193340769403,2.301818096918262,-0.7893409720383563,false
+all,country,Chile,2.2761434399828215,212,,,,
+animal wines,country,Chile,1.747311827956989,26,1.8169193340769403,2.301818096918262,-0.030240228892606122,false
+amphibian/reptile,country,New Zealand,2.631578947368421,1,3.079650807760381,3.773648155780265,-0.11873705281867054,false
+bear,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+bird,country,New Zealand,5.411255411255411,25,3.079650807760381,3.773648155780265,0.6178648637191062,false
+bug,country,New Zealand,6.122448979591836,6,3.079650807760381,3.773648155780265,0.8063280004445211,false
+canine,country,New Zealand,3.4782608695652173,4,3.079650807760381,3.773648155780265,0.10562989588583338,false
+cat,country,New Zealand,0.38461538461538464,1,3.079650807760381,3.773648155780265,-0.7141724166883154,false
+cattle,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+deer,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+fish,country,New Zealand,4.838709677419355,3,3.079650807760381,3.773648155780265,0.4661427873090249,false
+horse,country,New Zealand,1.3888888888888888,2,3.079650807760381,3.773648155780265,-0.44804439870253315,false
+human,country,New Zealand,1.3091641490433032,13,3.079650807760381,3.773648155780265,-0.46917110065100914,false
+marine invertebrate,country,New Zealand,15.151515151515152,5,3.079650807760381,3.773648155780265,3.1989904319150053,true
+mythical creature,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+none,country,New Zealand,2.097902097902098,147,3.079650807760381,3.773648155780265,-0.2601590475133445,false
+pachyderm,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+rabbit,country,New Zealand,0,0,3.079650807760381,3.773648155780265,-0.816093785278615,false
+sheep,country,New Zealand,5.263157894736842,3,3.079650807760381,3.773648155780265,0.5786196796412739,false
+pig,country,New Zealand,7.142857142857142,2,3.079650807760381,3.773648155780265,1.0767316313983772,true
+all,country,New Zealand,2.233197337341636,208,,,,
+animal wines,country,New Zealand,3.293010752688172,49,3.079650807760381,3.773648155780265,0.05653943773241771,false
+amphibian/reptile,country,Austria,0,0,2.3719470124465083,2.7798056511316998,-0.8532780021800639,false
+bear,country,Austria,0,0,2.3719470124465083,2.7798056511316998,-0.8532780021800639,false
+bird,country,Austria,1.2987012987012987,6,2.3719470124465083,2.7798056511316998,-0.3860866004457094,false
+bug,country,Austria,5.1020408163265305,5,2.3719470124465083,2.7798056511316998,0.9821167903477572,false
+canine,country,Austria,2.608695652173913,3,2.3719470124465083,2.7798056511316998,0.08516733521676989,false
+cat,country,Austria,0.7692307692307693,2,2.3719470124465083,2.7798056511316998,-0.5765569411527924,false
+cattle,country,Austria,4.3478260869565215,2,2.3719470124465083,2.7798056511316998,0.7107975601479923,false
+deer,country,Austria,2,1,2.3719470124465083,2.7798056511316998,-0.13380324350915798,false
+fish,country,Austria,3.225806451612903,2,2.3719470124465083,2.7798056511316998,0.30716515696655844,false
+horse,country,Austria,0.6944444444444444,1,2.3719470124465083,2.7798056511316998,-0.6034603776415549,false
+human,country,Austria,1.9133937562940584,19,2.3719470124465083,2.7798056511316998,-0.164958746654021,false
+marine invertebrate,country,Austria,0,0,2.3719470124465083,2.7798056511316998,-0.8532780021800639,false
+mythical creature,country,Austria,1.6260162601626018,2,2.3719470124465083,2.7798056511316998,-0.2683391739923354,false
+none,country,Austria,1.8124732410446696,127,2.3719470124465083,2.7798056511316998,-0.20126362833101974,false
+pachyderm,country,Austria,4.166666666666666,1,2.3719470124465083,2.7798056511316998,0.6456277450509899,false
+rabbit,country,Austria,12,3,2.3719470124465083,2.7798056511316998,3.4635705498453713,true
+sheep,country,Austria,1.7543859649122806,1,2.3719470124465083,2.7798056511316998,-0.22215979281962014,false
+pig,country,Austria,0,0,2.3719470124465083,2.7798056511316998,-0.8532780021800639,false
+all,country,Austria,1.8037363109297833,168,,,,
+animal wines,country,Austria,1.747311827956989,26,2.3719470124465083,2.7798056511316998,-0.2247046243089768,false
+amphibian/reptile,median,medianPrice,,30.965000000000003,,,,false
+bear,median,medianPrice,,31.55,,,,false
+bird,median,medianPrice,,25.99,,,,false
+bug,median,medianPrice,,22.655,,,,false
+canine,median,medianPrice,,28.99,,,,false
+cat,median,medianPrice,,38.43,,,,false
+cattle,median,medianPrice,,22.494999999999997,,,,false
+deer,median,medianPrice,,30.49,,,,false
+fish,median,medianPrice,,24.99,,,,false
+horse,median,medianPrice,,25.244999999999997,,,,false
+human,median,medianPrice,,27.335,,,,false
+marine invertebrate,median,medianPrice,,22.67,,,,false
+mythical creature,median,medianPrice,,34.99,,,,false
+none,median,medianPrice,,29.99,,,,false
+pachyderm,median,medianPrice,,24.22,,,,false
+rabbit,median,medianPrice,,29.99,,,,false
+sheep,median,medianPrice,,21.74,,,,false
+pig,median,medianPrice,,23.22,,,,false
+all,median,medianPrice,,29.99,,,,
+animal wines,median,medianPrice,,26.99,,,,false
+amphibian/reptile,median,medianRating,,3.95,,,,false
+bear,median,medianRating,,4.1,,,,false
+bird,median,medianRating,,4,,,,false
+bug,median,medianRating,,3.9,,,,false
+canine,median,medianRating,,4,,,,false
+cat,median,medianRating,,4.1,,,,false
+cattle,median,medianRating,,3.9,,,,false
+deer,median,medianRating,,4,,,,false
+fish,median,medianRating,,3.9,,,,false
+horse,median,medianRating,,4,,,,false
+human,median,medianRating,,4,,,,false
+marine invertebrate,median,medianRating,,3.9,,,,false
+mythical creature,median,medianRating,,4.1,,,,false
+none,median,medianRating,,4,,,,false
+pachyderm,median,medianRating,,3.9,,,,false
+rabbit,median,medianRating,,4,,,,false
+sheep,median,medianRating,,3.9,,,,false
+pig,median,medianRating,,3.8,,,,false
+all,median,medianRating,,4,,,,
+animal wines,median,medianRating,,4,,,,false
+amphibian/reptile,count,count,,38,,,,false
+bear,count,count,,23,,,,false
+bird,count,count,,462,,,,false
+bug,count,count,,98,,,,false
+canine,count,count,,115,,,,false
+cat,count,count,,260,,,,false
+cattle,count,count,,46,,,,false
+deer,count,count,,50,,,,false
+fish,count,count,,62,,,,false
+horse,count,count,,144,,,,false
+human,count,count,,993,,,,false
+marine invertebrate,count,count,,33,,,,false
+mythical creature,count,count,,123,,,,false
+none,count,count,,7007,,,,false
+pachyderm,count,count,,24,,,,false
+rabbit,count,count,,25,,,,false
+sheep,count,count,,57,,,,false
+pig,count,count,,28,,,,false
+all,count,count,,9314,,,,
+animal wines,count,count,,1488,,,,false
+amphibian/reptile,steals,steals,5.263157894736842,2,13.648393776264099,4.898208294310499,-1.711898591831447,true
+bear,steals,steals,13.043478260869565,3,13.648393776264099,4.898208294310499,-0.12349730330928807,false
+bird,steals,steals,16.450216450216452,76,13.648393776264099,4.898208294310499,0.5720097034678584,false
+bug,steals,steals,21.428571428571427,21,13.648393776264099,4.898208294310499,1.5883721525979966,true
+canine,steals,steals,10.434782608695652,12,13.648393776264099,4.898208294310499,-0.6560789118137765,false
+cat,steals,steals,9.615384615384617,25,13.648393776264099,4.898208294310499,-0.823364160638904,false
+cattle,steals,steals,13.043478260869565,6,13.648393776264099,4.898208294310499,-0.12349730330928807,false
+deer,steals,steals,6,3,13.648393776264099,4.898208294310499,-1.5614676462714072,true
+fish,steals,steals,24.193548387096776,15,13.648393776264099,4.898208294310499,2.15285957175022,true
+horse,steals,steals,13.88888888888889,20,13.648393776264099,4.898208294310499,0.04909858833568531,false
+human,steals,steals,13.595166163141995,135,13.648393776264099,4.898208294310499,-0.010866751661812807,false
+marine invertebrate,steals,steals,18.181818181818183,6,13.648393776264099,4.898208294310499,0.9255270770783415,false
+mythical creature,steals,steals,15.447154471544716,19,13.648393776264099,4.898208294310499,0.3672282980227612,false
+none,steals,steals,13.871842443271015,972,13.648393776264099,4.898208294310499,0.04561844935554556,false
+pachyderm,steals,steals,8.333333333333332,2,13.648393776264099,4.898208294310499,-1.0851029853312815,true
+rabbit,steals,steals,12,3,13.648393776264099,4.898208294310499,-0.3365299467110834,false
+sheep,steals,steals,19.298245614035086,11,13.648393776264099,4.898208294310499,1.15345275216931,true
+pig,steals,steals,10.714285714285714,3,13.648393776264099,4.898208294310499,-0.5990165966168672,false
+all,steals,steals,13.94674683272493,1299,,,,
+animal wines,steals,steals,14.516129032258066,216,13.648393776264099,4.898208294310499,0.17715360471743977,false

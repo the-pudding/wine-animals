@@ -108,7 +108,7 @@
 </div>
 <Outro />
 <Tooltip />
-<Explore /> 
+<!-- <Explore />  -->
 <Footer recirc={true} />
 
 <style>

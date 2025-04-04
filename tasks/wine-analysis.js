@@ -19,7 +19,7 @@ const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "pea
 // BUCKETS
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100–109.99", "110–119.99", "120–129.99", "130–139.99", "140–149.99", "150+"];
 const ratingBuckets = ["3 & less", "3.1–3.5", "3.6–4", "4.1–4.5", "4.6 & above"];
-const wineTypeBuckets = ["Dessert", "Fortified", "Red", "Rose", "Sparkling", "White"];
+const wineTypeBuckets = ["Red", "White", "Rose", "Sparkling", "Dessert", "Fortified"];
 const countryBuckets = ["France", "United States", "Italy", "Spain", "Argentina",
                         "Portugal", "South Africa", "Australia", "Germany", "Chile", "New Zealand", "Austria"]
 
@@ -142,6 +142,45 @@ function generateSummary(dataset, metric, groups) {
     }
 }
 
+function addStdDevsForAllCategories(summaryData) {
+    const result = [];
+
+    // Group by category and bucket
+    const groupedByCategory = d3.group(summaryData, d => d.category);
+
+    for (const [category, rows] of groupedByCategory.entries()) {
+        const groupedByBucket = d3.group(rows, d => d.bucket);
+
+        for (const [bucket, values] of groupedByBucket.entries()) {
+            const percents = values
+                .filter(d => d.animalGroup !== "all")
+                .map(d => d.percent)
+                .filter(p => p != null && !isNaN(p));
+
+            const mean = d3.mean(percents);
+            const std = d3.deviation(percents);
+
+            for (const row of values) {
+                if (row.animalGroup !== "all") {
+                    const zScore = std ? (row.percent - mean) / std : null;
+                    const significant = zScore != null && Math.abs(zScore) > 1;
+                    result.push({
+                        ...row,
+                        stdMean: mean,
+                        stdDev: std,
+                        zScore,
+                        significant
+                    });
+                } else {
+                    result.push(row); // keep "all" rows untouched
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
 // WRITE CSVS
 function writeCSV(filename, summaryData) {
     fs.writeFileSync(`${OUT_PATH}/${filename}.csv`, d3.csvFormat(summaryData));
@@ -151,7 +190,7 @@ function writeCSV(filename, summaryData) {
 function init() {
     console.log("Starting wine analysis...");
 
-    writeCSV("wineData_summary", generateSummary(data, "all", topgroups));
+    writeCSV("wineData_summary", addStdDevsForAllCategories(generateSummary(data, "all", topgroups)));
     writeCSV("wineData_catSummary", generateSummary(catData, "cat", cats));
     writeCSV("wineData_birdSummary", generateSummary(birdData, "bird", birds));
 
