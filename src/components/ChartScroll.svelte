@@ -6,6 +6,7 @@
     import rawData from "$data/wineData.csv";
     import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
     import Filters from "$components/Filters.svelte";
+    import Icon from "$components/helpers/Icon.svelte";
 
     const copy = getContext("copy");
     
@@ -72,7 +73,12 @@
                     {/if}  
                     {#if i == 8}
                         <p>{@html $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianQuad")] : copy.opening[0][($animalSelected + "Quad")]}</p>
-                    {/if}        
+                    {/if} 
+                    {#if i == 14}
+                        <div class="scroll-hint">
+                            <Icon name="chevron-down" size={"1.5rem"}/>
+                        </div>
+                    {/if}       
                 </div>
             </div>
         {/each}
@@ -171,6 +177,7 @@
         border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
         box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
+        position: relative;
     }
 
     .step p {
@@ -184,6 +191,21 @@
         z-index: 900;
         margin: 2rem 0;
         pointer-events: auto;
+    }
+
+    .scroll-hint {
+        width: 3rem;
+        height: 3rem;
+        background: var(--wine-gold);
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: bounceUp 1s infinite;
     }
 
     .selected-bottle-display {
@@ -350,6 +372,12 @@
         background: url("/assets/images/range-vert.png");
         background-size: 1.5rem 1.5rem;
         background-repeat: no-repeat;
+    }
+
+    @keyframes bounceUp {
+        0%       { bottom:-24px; }
+        50%      { bottom:-28px; }
+        100%     { bottom:-24px; }
     }
 
     @media(max-width: 1400px) {

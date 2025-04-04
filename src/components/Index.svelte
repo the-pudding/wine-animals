@@ -66,13 +66,6 @@
 		}
 	}
 
-	// Closes the tooltip on click
-	function tooltipCloseClick() {
-		tooltipType.set(null);
-  		lockedSelection.set(false);
-  		tooltipData.set(null);
-	}
-
 	// REATIVE FUNCTIONS
 	$: moveSlider($currAnimalSlide);
 </script>

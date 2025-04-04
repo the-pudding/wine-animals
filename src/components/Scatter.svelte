@@ -16,7 +16,7 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
 
     // STORES
-    import { navAnimal, tooltipType, tooltipData, lockedSelection } from "$stores/misc.js";
+    import { navAnimal, tooltipType, tooltipData, lockedSelection, tooltipVisible } from "$stores/misc.js";
     
     // DATA
     import allWineData from "$data/wineData.csv";
@@ -188,7 +188,8 @@
         let id = event.target.id;
         let data = allWineData.filter(d => d.id == id);
         clickedData = data[0];
-            
+        
+        tooltipVisible.set(true);
         setTooltip(data[0]);
         lockedSelection.set(true);
 

@@ -56,7 +56,7 @@
 </script>
 
 <section id="distribution">
-    <h4>Wine characteristics & distribution</h4>
+    <h4>{animal} Wine characteristics & distribution</h4>
     <div class="key">
         <p class="animal-wines">{animal} wines</p>
         <p class="all-wines">All wines</p>
@@ -226,6 +226,7 @@
         text-align: center;
         margin: 2.5rem 0 0 0;
         color: var(--wine-tan); 
+        text-transform: capitalize;
     }
 
     h5 {
