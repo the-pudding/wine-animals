@@ -73,7 +73,6 @@
             lockedSelection.set(true);
             const wine = selectAll(`#scatterplot #circle-${foundWine.id}`);
             const parent = selectAll(wine.parentNode);
-            console.log(wine, parent)
             wine
                 .classed("selected-wine", true)
                 .classed("filteredOut", false)

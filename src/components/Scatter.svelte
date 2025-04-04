@@ -128,8 +128,6 @@
         let id = event.target.id.split("-")[0];
         if (id == "gamebird") { id = "game bird"}
 
-        console.log({id})
-
         if (id === "human") {
             subgroup = "human";
             finalAnimal = undefined;
