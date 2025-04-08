@@ -104,7 +104,7 @@
         line-height: 0.8;
         text-align: center;
         opacity: 0.2;
-        transition: all 1s linear;
+        transition: all var(--1000ms) linear;
     }
 
     h1:nth-child(2) {
@@ -138,7 +138,7 @@
         color: var(--wine-tan);
         font-family: var(--sans);
         padding-top: 4rem;
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--500ms) ease-in;
     }
 
     .byline p {
@@ -163,7 +163,7 @@
         border-top: 3px solid var(--wine-red);
         width: 0;
         transform: rotate(-1deg);
-        transition: width 0.5s ease-out 1s;
+        transition: width var(--500ms) ease-out var(--1000ms);
     }
 
     .strike-line.animate {
@@ -172,7 +172,7 @@
 
     .hidden {
         opacity: 0;
-        transition: all 0.5s ease-in;
+        transition: all var(--500ms) ease-in;
     }
 
     @media(max-width: 1000px) {

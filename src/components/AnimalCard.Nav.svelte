@@ -129,7 +129,7 @@
         top: 0;
         display: flex;
         flex-direction: row;
-        overflow-x: hidden;
+        overflow: hidden;
         min-height: 8rem;
         pointer-events: auto;
         cursor: pointer;
@@ -145,7 +145,7 @@
         align-items: center;
         display: flex;
         transform: scale(1);
-		transition: all 300ms;
+		transition: all var(--250ms);
         pointer-events: auto;
         cursor: pointer;
         margin: 0 1rem;
@@ -159,7 +159,7 @@
     .animal-group:hover {
         opacity: 1;
         transform: scale(1.2);
-        transition: all 300ms;
+        transition: all var(--250ms);
     }
 
     .img-wrapper {
@@ -217,7 +217,7 @@
     :global(.isActive) {
         opacity: 1 !important;
         transform: scale(1.2) !important;
-        transition: all 300ms;
+        transition: all var(--250ms);
     }
 
     @media (max-width: 700px) {
@@ -236,7 +236,7 @@
         :global(.isActive) {
             opacity: 1 !important;
             transform: scale(1.1) !important;
-            transition: all 300ms;
+            transition: all var(--250ms);
         }
 	}
 </style>

@@ -6,6 +6,8 @@ const raw = fs.readFileSync("./src/data/wineData.csv", "utf8");
 const data = d3.csvParse(raw);
 const OUT_PATH = "./src/data/";
 
+console.log(data.length)
+
 // ANIMAL GROUPINGS
 const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
    "deer", "fish", "horse", "human",
@@ -58,6 +60,8 @@ function summarizeWines(animalGroup, dataset, metric) {
         }
     }
 
+    console.log(animalGroup, filteredWines.length, d3.median(filteredWines, d => d.price))
+
     const getCountsAndPercents = (buckets, key) => {
         const counts = d3.rollup(filteredWines, v => v.length, d => d[key]);
         return Object.fromEntries(buckets.map(bucket => [
@@ -72,8 +76,8 @@ function summarizeWines(animalGroup, dataset, metric) {
         ratingData: getCountsAndPercents(ratingBuckets, "ratingBucket"),
         typeData: getCountsAndPercents(wineTypeBuckets, "type"),
         countryData: getCountsAndPercents(countryBuckets, "country"),
-        medianPrice: d3.median(filteredWines, d => d.price),
-        medianRating: d3.median(filteredWines, d => d.rating),
+        medianPrice: d3.median(filteredWines, d => +d.price),
+        medianRating: d3.median(filteredWines, d => +d.rating),
         steals: {
             count: filteredWines.filter(d => d.price <= totalAvgPrice && d.rating >= totalAvgRating).length,
             percent: (filteredWines.filter(d => d.price <= totalAvgPrice && d.rating >= totalAvgRating).length / filteredWines.length) * 100

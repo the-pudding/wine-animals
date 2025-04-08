@@ -7,7 +7,7 @@
 	// SCREENSIZE
 	$: w = $viewport.width;
 	$: h = $viewport.height;
-	$: isMobile = w <= 720;
+	$: isMobile = w <= 500;
 
 	const { data, xGet, yGet, yRange, xScale, height } = getContext("LayerCake");
 
@@ -49,14 +49,6 @@
 		})
 		return match
 	}
-
-	// function colorByCompare(d, i) {
-	// 	let match = findMatch(d, allWineData[1])
-	// 	let diff = d.percent - match.percent;
-	// 	console.log(d.significant == true)
-	// 	let color = diff < -5 ? "#7b0439" : diff > 5 ? "#3E5C4B" : "#38425D"
-	// 	return color;
-	// }
 
 	function colorByCompare(d, i) {
 		let match = findMatch(d, allWineData[1]);

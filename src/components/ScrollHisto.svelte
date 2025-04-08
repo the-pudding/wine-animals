@@ -60,8 +60,8 @@
     <div class="key">
         <p class="animal-wines">{animal} wines</p>
         <p class="all-wines">All wines</p>
-        <p class="stat-more">More than all wines</p>
-        <p class="stat-less">Less than all wines</p>
+        <p class="stat-more">More likely than all wines</p>
+        <p class="stat-less">Less likely than all wines</p>
     </div>
     <div class="quad-wrapper">
         {#each currAnimalGroupedData as category, i}
@@ -145,16 +145,19 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        gap: 1rem;
+        gap: 0.5rem 1rem;
         font-family: var(--sans);
         text-transform: capitalize;
         align-items: center;
+        justify-content: flex-start;
     }
 
     .key p {
-        width: calc(50% - 1rem);
         padding: 0.125rem 0.25rem;
         margin: 0;
+        font-size: var(--14px);
+        text-align: center;
+        max-width: 240px;
     }
 
     .key .animal-wines::before, .key .all-wines::before {
@@ -219,14 +222,13 @@
         align-items: center;
         justify-content: flex-start;
         position: relative;
-        transition: opacity 0.4s linear;
+        transition: opacity var(--500ms) linear;
     }
 
     h4 {
         font-family: var(--serif);
         font-size: var(--20px);
         font-weight: 700;
-        text-align: center;
         margin: 2.5rem 0 1rem 0;
         color: var(--wine-tan); 
         text-transform: capitalize;
@@ -283,13 +285,9 @@
         }
 
         .key p {
-            width: calc(50% - 1rem);
             font-size: var(--14px);
             margin: 0;
-        }
-
-        .key p:first-of-type, .key p:nth-of-type(2) {
-            width: 100%;
+            max-width: 220px;
         }
     }
 </style>

@@ -31,12 +31,13 @@
 
     function updateThumbOffset(value) {
 		if (rangeInput) {
-			const rangeWidth = rangeInput.offsetWidth;
-			const thumbWidth = parseInt(getComputedStyle(rangeInput).getPropertyValue('--thumb-width'), 10) || 24;
+			const rangeLength =
+				metric === "price"
+					? rangeInput.clientWidth // vertical range
+					: rangeInput.clientWidth; // horizontal range
+
 			const percent = (value - min) / (max - min);
-			
-			// Correct calculation to center the label on the thumb
-			thumbOffset = percent * rangeWidth;
+			thumbOffset = percent * rangeLength;
 		}
 	}
 
@@ -46,6 +47,8 @@
 
 	$: updateThumbOffset(value);
 </script>
+
+<svelte:window on:resize={() => updateThumbOffset(value)} />
 
 <div class="range" id="range-{metric}" 
 	style="width: calc({metric == "price" ? rangeH : rangeW }px - {padding}px">
@@ -106,7 +109,7 @@
 	}
 
 	#range-price .thumb-label {
-		transform: rotate(90deg) translate(0, -6px);
+		transform: rotate(90deg) translate(0, 0);
 		transform-origin: left top;
 		top: 24px;
 		justify-content: flex-start;
@@ -239,11 +242,11 @@
 	@media(max-width: 700px) {
 		#range-price {
 			left: calc(100% - 2rem);
-			top: 2.6em;
+			top: 1rem;
 		}
 
 		#range-rating {
-			left: 3rem;
+			left: 1rem;
 			top: 2.5rem;
 		}
 

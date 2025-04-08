@@ -83,9 +83,7 @@
     .example-wrapper {
         position: absolute;
         width: 100%;
-        height: 100%;
         max-width: 1200px;
-        max-height: 60svh;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -114,6 +112,7 @@
         font-family: var(--mono);
         font-size: var(--12px);
         color: var(--wine-tan);
+        height: 300px;
     }
 
     .correct-icon, .wrong-icon {
@@ -155,6 +154,8 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             max-height: none;
+            align-items: center;
+            justify-content: center;
         }
 
         .example img {
@@ -173,6 +174,8 @@
         .example p {
             font-size: 10px;
             margin: 0.25rem 0 0 0;
+            max-width: 200px;
+            height: 160px;
         }
 
         .correct-icon, .wrong-icon {

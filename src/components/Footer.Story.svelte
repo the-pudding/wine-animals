@@ -57,7 +57,7 @@
     margin-bottom: 8px;
     align-items: center;
     user-select: none;
-    transition: transform calc(var(--1s) * 0.25);
+    transition: transform var(--250ms);
   }
 
   .id {
@@ -125,7 +125,7 @@
     transform: translate(-50%, 0) scale(1);
     width: calc(100% - (var(--padding, 16px) * 2));
     transform-origin: center center;
-    transition: transform calc(var(--1s) * 0.25);
+    transition: transform var(--250ms);
   }
 
   .youtube img,

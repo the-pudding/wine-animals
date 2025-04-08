@@ -137,7 +137,7 @@
     .icon-name-wrapper {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .medians-wrapper {
@@ -237,6 +237,7 @@
             flex-direction: row;
             width: 100%;
             gap: 1rem;
+            align-items: center;
         }
 
         .median {

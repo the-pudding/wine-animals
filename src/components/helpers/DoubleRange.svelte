@@ -226,7 +226,7 @@
 		background-color: var(--wine-tan);
 		border: 2px solid var(--wine-black);
         border-radius: 50%;
-		transition: left 0.1s linear;
+		transition: left var(--250ms) linear;
 		cursor: pointer;
 	}
     .handle[data-which="start"] {

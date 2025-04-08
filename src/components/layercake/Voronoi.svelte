@@ -13,7 +13,7 @@
 	// SCREENSIZE
 	$: w = $viewport.width;
 	$: h = $viewport.height;
-	$: isMobile = w <= 720;
+	$: isMobile = w <= 500;
   
 	function mouseoverCircle(point) {
 		tooltipType.set("bottle")

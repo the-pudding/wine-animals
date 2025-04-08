@@ -16,6 +16,18 @@
 	const dispatch = createEventDispatcher();
 	let innerHeight;
 
+	function temporarilyDisableVoronoiPointerEvents() {
+		const cells = document.querySelectorAll(".voronoi-cell.active");
+		cells.forEach((el) => {
+			el.style.pointerEvents = "none";
+		});
+		setTimeout(() => {
+			cells.forEach((el) => {
+				el.style.pointerEvents = "";
+			});
+		}, 500);
+	}
+
 	$: getW = (dir) =>
 		Array.isArray(size) ? size[directions.indexOf(dir)] : full ? "100%" : size;
 	$: getH = (dir) =>
@@ -27,6 +39,7 @@
 		if (enableKeyboard && hasDir) {
 			e.preventDefault();
 			dispatch("tap", dir);
+			temporarilyDisableVoronoiPointerEvents();
 		}
 	};
 

@@ -179,7 +179,7 @@
 
     .tooltip.hidden {
         opacity: 0;
-        transition: opacity 0.25s linear;
+        transition: opacity var(--250ms) linear;
     }
 
     .tooltip {
@@ -192,7 +192,7 @@
         font-size: 0.8rem;
         z-index: 1000;
         opacity: 1;
-        transition: opacity 0.25s linear;
+        transition: opacity var(--250ms) linear;
         pointer-events: none;
     }
 

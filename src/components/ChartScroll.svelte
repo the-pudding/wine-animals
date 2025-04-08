@@ -26,8 +26,6 @@
         : "161239002";
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
-
-    // $: console.log(chartScrollIndex)
 </script>
 
 <section id="chart-scroll">
@@ -100,7 +98,7 @@
         align-items: flex-start;
 		top: 0;
         left: 0;
-		transition: all 1s;
+		transition: all var(--1000ms);
         z-index: 1;
         overflow: hidden;
 	}
@@ -114,7 +112,7 @@
         transform: translate(-50%, 0);
         max-width: 900px;
         opacity: 0;
-        transition: opacity 0.25s linear;
+        transition: opacity var(--250ms) linear;
         z-index: 1000;
     }
 
@@ -143,7 +141,7 @@
         left: 0;
         transform: translate(0,0);
         padding: 4rem 0 10rem 0;
-        transition: opacity 0.75s linear;
+        transition: opacity var(--750ms) linear;
     }
 
     .lineup-wrapper {
@@ -153,7 +151,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: opacity 0.25s linear;
+        transition: opacity var(--250ms) linear;
     }
 
     .scatter-wrapper.active, .lineup-wrapper.active, .steals-sentence.active {
@@ -216,6 +214,7 @@
         width: 100%;
         display: flex;
         flex-direction: row;
+        margin-top: 1rem;
     }
 
     .bottle-img {
@@ -305,6 +304,7 @@
 
     :global(.median-line-span::before) {
         border-top: 3px solid var(--wine-red);
+        top: 8px;
     }
 
     :global(.cream-line-span::before) {

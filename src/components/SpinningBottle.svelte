@@ -138,12 +138,12 @@
         bottom: 0rem;
         padding: 0 1rem;
         opacity: 0;
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--500ms) ease-in;
     }
 
     .range-wrapper.visible {
         opacity: 1;
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--500ms) ease-in;
     }
     .product {
         height: 100%;
@@ -152,7 +152,7 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
-        transition: left 2s ease-in var(--transition-delay), opacity 0.5s ease-in;
+        transition: left calc(var(--1000ms) * 2) ease-in var(--transition-delay), opacity var(--500ms) ease-in;
         pointer-events: auto;
         position: absolute;
         top: 0;

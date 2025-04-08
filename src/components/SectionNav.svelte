@@ -5,8 +5,6 @@
     function handleSectionClick(section) {
         activeSection.set(section);
     }
-
-    // $:console.log($activeSection);
  </script>
 
 <nav id="section-nav">

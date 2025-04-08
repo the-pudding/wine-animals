@@ -95,7 +95,7 @@
 		position: relative;
 		margin-left: 0.5em;
 		background: var(--wine-tan);
-		transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+		transition: background-color var(--500ms) ease-in-out, transform var(--500ms) ease-in-out;
 	}
 
 	.toggle--slider button:focus {

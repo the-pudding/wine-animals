@@ -230,7 +230,6 @@
 
         if (parentCard) {
             const observer = new MutationObserver(() => {
-            // console.log('🐛 Observing inside parentCard');
 
             cleanupEventListeners();
 
@@ -389,13 +388,13 @@
     #refesh-btn:hover {
         background: var(--wine-dark-tan);
         transform: translateY(-2px);
-        transition: transform 0.3s ease;
+        transition: transform var(--250ms) ease;
     }
 
     #refesh-btn .icon {
         width: 1rem;
         height: 1rem;
-        transition: transform 0.3s ease;
+        transition: transform var(--250ms) ease;
     }
 
     :global(#refesh-btn .icon svg) {
@@ -415,7 +414,7 @@
 
     :global(.summary-btn:hover, .individ-wine-btn:hover) {
         background: var(--wine-dark-tan);
-        transition: transform 0.3s ease;
+        transition: transform var(--250ms) ease;
         transform: translateY(-2px);
     }
 

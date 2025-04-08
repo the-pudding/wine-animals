@@ -178,7 +178,7 @@
         align-items: center;
 		top: 0;
         left: 0;
-		transition: all 1s;
+		transition: all var(--1000ms);
         z-index: 1;
         overflow: hidden;
 	}

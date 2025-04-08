@@ -10,6 +10,7 @@
     import { cubicIn } from 'svelte/easing';
     import { bigScatterData } from "$stores/misc.js";
     import Range from "$components/helpers/Range.svelte";
+    import { onMount } from 'svelte';
 
     export let chartScrollIndex;
 
@@ -39,6 +40,13 @@
     let windowW;
     let rangeW;
     let rangeH;
+
+    let reduceMotion = false;
+
+	onMount(() => {
+		const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+		reduceMotion = media.matches;
+	});
 </script>
 
 <svelte:window bind:innerWidth={windowW} />
@@ -48,8 +56,8 @@
         {#if chartScrollIndex >= 14 || chartScrollIndex == "exit"}
             <div class="range-wrapper" bind:offsetWidth={rangeW} bind:offsetHeight={rangeH}>
                 {#if rangeW && rangeH}
-                    <Range min={3} max={4.8} step={0.1} metric={"rating"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 90} />
-                    <Range min={0} max={150} step={1} metric={"price"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 90} />
+                    <Range min={3} max={4.8} step={0.1} metric={"rating"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 32} />
+                    <Range min={0} max={150} step={1} metric={"price"} {rangeW} {rangeH} padding={windowW >= 700 ? 156 : 54} />
                 {/if}
             </div>
         {/if}
@@ -76,7 +84,7 @@
             </LayerCake>
         </div>
         {#if chartScrollIndex == 7 || chartScrollIndex == 8}
-            <div class="quadrants" transition:fade>
+            <div class="quadrants"  transition:fade={{ duration: reduceMotion ? 0 : 250 }}>
                 <p style="left: 30%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Expensive Wine</p>
                 <p style="left: 75%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Good Expensive Wine</p>
                 <p style="left: 30%; top: 80%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Cheap Wine</p>
@@ -173,7 +181,7 @@
         }
 
         .range-wrapper {
-            padding: 4rem;
+            padding: 3rem 2rem;
         }
 
         .label-price {

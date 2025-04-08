@@ -8,7 +8,7 @@
 	// SCREENSIZE
 	$: w = $viewport.width;
 	$: h = $viewport.height;
-	$: isMobile = w <= 720;
+	$: isMobile = w <= 500;
 
     function tooltipCloseClick() {
   		lockedSelection.set(false);
@@ -189,12 +189,12 @@
 		justify-content: center;
 		gap: 1rem;
 		z-index: 1000;
-		transition: bottom 0.5s linear;
+		transition: bottom var(--500ms) linear;
     }
 
     #universal-tooltip.visible {
 		bottom: 0 !important;
-        transition: bottom 0.5s linear;
+        transition: bottom var(--500ms) linear;
 	}
 
 	.zoom-container {

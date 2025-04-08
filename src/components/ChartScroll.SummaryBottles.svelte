@@ -3,6 +3,7 @@
     import { groups } from 'd3-array';
     import {flip} from 'svelte/animate';
     import { fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
     import { animalSelected } from "$stores/misc.js";
     import Icon from "$components/helpers/Icon.svelte";
 
@@ -15,20 +16,21 @@
 
     const animalSubgroups = [
         {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
-        {animal: "bird", subgroups: "singbirds, chicken, ducks, raptors, etc."},
-        {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
+        {animal: "bear", subgroups: "pandas, polar bears, etc."},
+        {animal: "bird", subgroups: "songbirds, chicken, ducks, raptors, etc."},
+        {animal: "bug", subgroups: "ants, bees, dragonflies, ladybugs, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
         {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
-        {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
-        {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
-        {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
+        {animal: "horse", subgroups: "donkeys, zebras"},
+        {animal: "marine invertebrate", subgroups: "lobsters, crabs, shrimp, octopi, etc."},
+        {animal: "mythical creature", subgroups: "griffins, unicorns, monsters, etc."},
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
-        {animal: "pig", subgroups: "boars, hogs"},
+        {animal: "pig", subgroups: "boars"},
         {animal: "rabbit", subgroups: "hares"},
-        {animal: "sheep", subgroups: "goats, rams"},
+        {animal: "sheep", subgroups: "rams, goats"},
     ];
 
     const filteredData = summaryData.filter(d => d.animalGroup !== "animal wines" && 
@@ -84,12 +86,19 @@
     } else {
         animate = false;
     }
+
+    let reduceMotion = false;
+
+	onMount(() => {
+		const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+		reduceMotion = media.matches;
+	});
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
 
 {#if scrollIndex >= 13 && currData !== undefined}
-<div class="summary-bottles" transition:fade>
+<div class="summary-bottles" transition:fade={{ duration: reduceMotion ? 0 : 250 }}>
     {#if innerWidth > 700}
         <div class="animal-wrapper">
             {#each currData as animal, i (animal[0])}
@@ -184,7 +193,7 @@
     .summary-bottles {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: auto;
         max-height: 85svh;
         display: flex;
         flex-direction: column;
@@ -211,7 +220,7 @@
         flex-direction: column;
         align-items: center;
         transform: translate(-100%, 0);
-        transition: transform 500ms ease, opacity 500ms ease;
+        transition: transform var(--500ms) ease, opacity var(--500ms) ease;
         opacity: 0;
         gap: 0.5rem;
     }
@@ -277,7 +286,7 @@
         justify-content: space-between;
         width: 100%;
         max-width: 1200px;
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--500ms) ease-in;
         opacity: 1;
         padding-top: 0.25rem;
         border-top: 1px solid var(--wine-blue);
@@ -330,7 +339,7 @@
         align-items: center;
         gap: 0.25rem;
         max-width: 60px;
-        transition: left 0.5s linear;
+        transition: left var(--500ms) linear;
     }
 
     .median-circle {

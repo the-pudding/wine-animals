@@ -24,14 +24,11 @@
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
-    $: r = Math.min(36, Math.max(20, $width / 30));
+    $: r = Math.min(30, Math.max(20, $width / 30));
     $: expandedR = r + 20;
 
     $: smallestR = 5;
     $: expandedSmallestR = 10;
-
-    $: console.log({$viewport, r})
-    $: console.log(Math.max(20, $width / 40))
 
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
@@ -256,7 +253,7 @@
                 class:active={
                     chartScrollIndex == undefined || 
                     chartScrollIndex == 0 || 
-                    chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+                    chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" || chartScrollIndex == 2 && animal == "sheep" ||
                     chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ||
                     chartScrollIndex >= 4 }
                 class:hidden={chartScrollIndex >= 5}>
@@ -335,13 +332,13 @@
 
     .wines-wrapper g, .medians-wrapper g {
         opacity: 1;
-        transition: opacity 0.4s linear;
+        transition: opacity var(--500ms) linear;
     }
 
 	circle {
         opacity: 0.5;
 		pointer-events: auto;
-        transition: all 0.4s ease-out;
+        transition: all var(--500ms) ease-out;
 	}
 
     .selected-circle circle {
@@ -362,10 +359,10 @@
 
     image {
         transition: 
-            width 0.4s ease-out, 
-            height 0.4s ease-out, 
-            x 0.4s ease-out, 
-            y 0.4s ease-out;
+            width var(--500ms) ease-out, 
+            height var(--500ms) ease-out, 
+            x var(--500ms) ease-out, 
+            y var(--500ms) ease-out;
     }
 
     .label {
@@ -385,12 +382,12 @@
     }
     .compare-wrapper.hidden {
         opacity: 0;
-        transition: opacity 0.4s linear;
+        transition: opacity var(--500ms) linear;
     }
 
     g.trendline, g.compare-lines {
         opacity: 0;
-        transition: opacity 0.4s linear;
+        transition: opacity var(--500ms) linear;
     }
 
     g.trendline.active {
@@ -420,7 +417,7 @@
 
     .median-markings {
         opacity: 0;
-        transition: opacity 0.4s linear;
+        transition: opacity var(--500ms) linear;
     }
 
     .median-markings.active {

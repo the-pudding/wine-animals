@@ -5,6 +5,7 @@
     import { fade } from 'svelte/transition';
     import { animalSelected } from "$stores/misc.js";
     import Icon from "$components/helpers/Icon.svelte";
+    import { onMount } from 'svelte';
 
     //LIBARIES
     import { groups } from 'd3-array';
@@ -15,19 +16,20 @@
     // VARIABLES
     const animalSubgroups = [
         {animal: "amphibian/reptile", subgroups: "lizards, snakes, frogs, etc."},
+        {animal: "bear", subgroups: "pandas, polar bears, etc."},
         {animal: "bird", subgroups: "songbirds, chicken, ducks, raptors, etc."},
-        {animal: "bug", subgroups: "ant, bee, dragonfly, ladybug, etc."},
+        {animal: "bug", subgroups: "ants, bees, dragonflies, ladybugs, etc."},
         {animal: "canine", subgroups: "domestic dogs, wolves, foxes"},
         {animal: "cat", subgroups: "domestic cats, lions, tigers, etc."},
         {animal: "cattle", subgroups: "cows, oxen, bulls, camels, etc."},
         {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
         {animal: "fish", subgroups: "sharks, whales, dolphins, other fins, etc."},
-        {animal: "deer", subgroups: "antelope, caribou, gazelles, etc."},
-        {animal: "marine", subgroups: "lobster, crab, shrimp, octopi, etc."},
-        {animal: "mythical", subgroups: "griffins, unicorns, monsters, etc."},
+        {animal: "horse", subgroups: "donkeys, zebras"},
+        {animal: "marine invertebrate", subgroups: "lobsters, crabs, shrimp, octopi, etc."},
+        {animal: "mythical creature", subgroups: "griffins, unicorns, monsters, etc."},
         {animal: "pachyderm", subgroups: "elephants, rhinos, hippos"},
-        {animal: "pig", subgroups: "boar"},
-        {animal: "rabbit", subgroups: "hare"},
+        {animal: "pig", subgroups: "boars"},
+        {animal: "rabbit", subgroups: "hares"},
         {animal: "sheep", subgroups: "rams, goats"},
     ];
 
@@ -89,12 +91,19 @@
     }
 
     $: animate = scrollIndex >= 5 ? true : false;
+
+    let reduceMotion = false;
+
+	onMount(() => {
+		const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+		reduceMotion = media.matches;
+	});
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
 
 {#if scrollIndex >= 4 && scrollIndex <= 7}
-<div class="summary-bottles" transition:fade>
+<div class="summary-bottles" transition:fade={{ duration: reduceMotion ? 0 : 250 }}>
     {#if innerWidth > 700}
         <div class="animal-wrapper">
             {#each currData as animal, i (animal[0])}
@@ -189,7 +198,7 @@
                         <img class="img-icon" src="./assets/images/icons/{animal[0].replace(/[^a-zA-Z0-9]/g, "")}.png" alt="{animal[0]} icon" />
                     </div>
                     <div class="animal-deets">
-                        <p>{animal[0]}</p>
+                        <p>{animal[0] == "amphibian/reptile" ? "amphibian / reptile" : animal[0]}</p>
                         {#if getAnimalSubgroup(animal[0])}
                             <p class="subgroup">{getAnimalSubgroup(animal[0]).subgroups}</p>
                         {/if}
@@ -232,7 +241,7 @@
         flex-direction: column;
         align-items: center;
         transform: translate(-100%, 0);
-        transition: transform 500ms ease, opacity 500ms ease;
+        transition: transform var(--500ms) ease, opacity var(--500ms) ease;
         opacity: 0;
         gap: 0.5rem;
     }
@@ -298,7 +307,7 @@
         justify-content: space-between;
         width: 100%;
         max-width: 1200px;
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--500ms) ease-in;
         opacity: 1;
         padding-top: 0.25rem;
         border-top: 1px solid var(--wine-blue);
@@ -351,7 +360,7 @@
         align-items: center;
         gap: 0.25rem;
         max-width: 60px;
-        transition: left 0.5s linear;
+        transition: left var(--500ms) linear;
     }
 
     .median-circle {
@@ -415,8 +424,10 @@
             aspect-ratio: 4 / 1;
             height: 100%;
             width: auto;
-            max-width: none;
+            max-width: 140px;
             margin: 0;
+            display: flex;
+            align-items: center;
         }
 
         img {
@@ -429,7 +440,7 @@
         }
 
         .img-icon {
-            top: 0;
+            top: 8%;
             height: 80%;
             width: auto;
             left: 31%;
