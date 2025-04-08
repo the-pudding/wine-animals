@@ -339,4 +339,26 @@
 		position: relative;
 		top: 2px;
 	}
+
+	@media(max-width: 700px) {
+		#universal-tooltip {
+			bottom: -140px;
+			height: 140px;
+		}
+		.deets {
+			font-size: var(--14px);
+			padding-right: 3rem;
+		}
+
+		.zoom-target {
+			min-width: 100px;
+		}
+
+		.close {
+			width: 2rem;
+			height: 2rem;
+			top: 0.5rem;
+			right: 0.5rem;
+		}
+	}
   </style>

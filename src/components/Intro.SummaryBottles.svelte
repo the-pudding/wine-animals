@@ -206,7 +206,7 @@
         position: absolute;
         width: 100%;
         height: auto;
-        max-height: 80svh;
+        max-height: 85svh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -388,6 +388,8 @@
         .summary-bottles {
             flex-direction: row;
             height: 100%;
+            margin-top: 0;
+            padding: 0.5rem 2rem;
         }
         .animal-wrapper {
             flex-direction: column;
@@ -403,6 +405,10 @@
             height: 4.5%;
             align-items: center;
             margin-bottom: 0;
+        }
+
+        .subgroup {
+            display: none;
         }
 
         .img-wrapper {
@@ -434,7 +440,11 @@
             width: 70px;
             text-align: right;
             margin: 0;
-            font-size: var(--16px);
+            font-size: var(--14px);
+        }
+
+        .median-mark .num {
+            font-size: var(--12px) !important;
         }
 
         .subgroup {

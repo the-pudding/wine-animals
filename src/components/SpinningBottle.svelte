@@ -39,8 +39,8 @@
         container.style.backgroundPosition = "0 0"; 
     }
 
-    function getMaxElementSize(screenWidth, screenHeight) {
-        let maxWidthBasedOnScreen = screenWidth / 3;
+    function getMaxElementSize(screenWidth, screenHeight, bottleSlot) {
+        let maxWidthBasedOnScreen = bottleSlot == "center-lone" ? screenWidth/2 : screenWidth / 4;
         let maxWidthBasedOnHeight = screenHeight / aspectRatio;
 
         let w = Math.min(maxWidthBasedOnScreen, maxWidthBasedOnHeight);
@@ -110,8 +110,8 @@
 <button aria-label="wine bottle" class="product product-{wineData.bottleSlot}" 
     data-animal={wineData.animal}
     style="--transition-delay: {transitionDelay}ms;
-        width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).width}px;
-        height:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight).height}px;
+        width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight, wineData.bottleSlot).width}px;
+        height:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight, wineData.bottleSlot).height}px;
         left: {bottlePosLeft};"
         on:transitionend={handleTransitionEnd}
         on:click={() => handleClick(wineData)}>
@@ -220,5 +220,14 @@
 
     @keyframes spin {
         100% { background-position: -800% 0; }
+    }
+
+    @media(max-width: 700px) {
+        .shadows {
+            bottom: 45px;
+            height: 25px;
+            filter: blur(15px);
+            border-radius: 200px / 50px;
+        }
     }
 </style>

@@ -327,6 +327,9 @@
     }
 
     @media(max-width: 700px) {
+        .step-inner {
+            padding: 1rem 1rem 2rem 1rem;
+        }
         .step p {
             font-size: var(--16px);
         }

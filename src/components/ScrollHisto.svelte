@@ -143,6 +143,7 @@
     .key {
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         gap: 1rem;
         font-family: var(--sans);
@@ -151,7 +152,9 @@
     }
 
     .key p {
+        width: calc(50% - 1rem);
         padding: 0.125rem 0.25rem;
+        margin: 0;
     }
 
     .key .animal-wines::before, .key .all-wines::before {
@@ -224,7 +227,7 @@
         font-size: var(--20px);
         font-weight: 700;
         text-align: center;
-        margin: 2.5rem 0 0 0;
+        margin: 2.5rem 0 1rem 0;
         color: var(--wine-tan); 
         text-transform: capitalize;
     }
@@ -260,12 +263,33 @@
             width: 100%;
         }
 
+        h4 {
+            font-size: var(--18px);
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
         h5 {
             margin: 1rem 0 0 0;
         }
 
         .comments {
             font-size: var(--16px);
+        }
+
+        .key {
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .key p {
+            width: calc(50% - 1rem);
+            font-size: var(--14px);
+            margin: 0;
+        }
+
+        .key p:first-of-type, .key p:nth-of-type(2) {
+            width: 100%;
         }
     }
 </style>

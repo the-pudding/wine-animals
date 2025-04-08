@@ -6,6 +6,7 @@
     import * as d3Regression from 'd3-regression';
     import rawData from "$data/wineData.csv";
     import { animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent, withFiltersData } from "$stores/misc.js";
+    import viewport from "$stores/viewport.js";
 	import { stealTopgroupCounts } from "../../stores/misc";
 
 	const { data, xGet, yGet, xScale, yScale, width, height } = getContext("LayerCake");
@@ -17,12 +18,20 @@
 		"rabbit", "sheep"
 	];
 
-	export let r = $width/20;
+
+	export let r = Math.min(36, Math.max(20, $width / 20));
 	export let fill = "#475171";
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
-    $: r = Math.min(30, Math.max(20, $width / 2));
+    $: r = Math.min(36, Math.max(20, $width / 30));
+    $: expandedR = r + 20;
+
+    $: smallestR = 5;
+    $: expandedSmallestR = 10;
+
+    $: console.log({$viewport, r})
+    $: console.log(Math.max(20, $width / 40))
 
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
@@ -156,7 +165,7 @@
             id={`circle-${d.id}`}
             cx={cx} 
             cy={cy} 
-            r={5} 
+            r={smallestR} 
             fill={(
                 d.price <= $stealPriceNum 
                 && d.rating >= $stealRatingNum
@@ -188,7 +197,7 @@
             id={`circle-${d.id}`}
             cx={cx} 
             cy={cy} 
-            r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? 10 : 5} 
+            r={chartScrollIndex >= 5 && chartScrollIndex < 14 ? expandedSmallestR : smallestR} 
             class:filteredOut={
                 !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
             }
@@ -198,7 +207,7 @@
                 && chartScrollIndex >= 8) ? "#3E5C4B" : "#475171"} 
             stroke={chartScrollIndex >= 5 && chartScrollIndex < 14 ? "#F7B956" : "none"} 
             stroke-width={strokeWidth} 
-            opacity={chartScrollIndex == 14 || chartScrollIndex == "exit" ? 1 : 0.5}
+            opacity={chartScrollIndex == 14 || chartScrollIndex == "exit" ? 1 : 1}
           />
         </g>
       {/if}
@@ -212,7 +221,7 @@
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
         {@const imageSize = chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
-                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+40 : r+20}
+                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+20 : r+10}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
                 {#if chartScrollIndex == undefined || chartScrollIndex < 5}
@@ -223,8 +232,8 @@
                             cy={cy} 
                             r={chartScrollIndex == undefined || chartScrollIndex == 0 || chartScrollIndex == 2 || chartScrollIndex == 3
                                 ? r 
-                                : chartScrollIndex == 1 ? 40
-                                : 5} 
+                                : chartScrollIndex == 1 ? r+5
+                                : smallestR} 
                             fill={"transparent"} 
                             stroke={"#7b0439"} 
                             stroke-width={strokeWidth} 
@@ -232,8 +241,8 @@
                         {#if chartScrollIndex == undefined || chartScrollIndex <= 3}
                             <text 
                                 class="label-dashed"
-                                x={cx + 46} 
-                                y={cy + 2} 
+                                x={cx + r+10} 
+                                y={cy + 4} 
                                 text-anchor="start" 
                                 fill={"#CFCABF"}>
                                 {d.topGroup}
@@ -255,8 +264,8 @@
                     cx={cx} 
                     cy={cy} 
                     r={chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
-                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? 40 : 
-                        chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : 5} 
+                        chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+5 : 
+                        chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : smallestR} 
                     fill={"#CFCABF"} 
                     stroke={$animalSelected == d.topGroup ? "#F7B956" : "none"} 
                     stroke-width={3} 
@@ -334,6 +343,10 @@
 		pointer-events: auto;
         transition: all 0.4s ease-out;
 	}
+
+    .selected-circle circle {
+        opacity: 1;
+    }
 
     .medians-wrapper circle {
         opacity: 0.3; 

@@ -427,8 +427,21 @@
             font-size: var(--18px);
         }
 
+        .deets {
+            position: relative;
+        }
+
         .deets p {
             font-size: var(--16px);
+            width: 100%;
+            padding-top: 1rem;
+        }
+
+        #refesh-btn {
+            position: absolute;
+            right: 0;
+            top: -1.8rem;
+            font-size: var(--14px);
         }
     }
 </style>

@@ -143,7 +143,7 @@
             <div class="median-circle"></div>
             <p>Animal</p>
         </div>
-        <div class="median-mark" style="top: 57.5%">
+        <div class="median-mark" style="top: 59.5%">
             <p class="num">14.5%</p>
             <div class="median-circle"></div>
             <p>All wines</p>
@@ -185,12 +185,11 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        max-height: 80svh;
+        max-height: 85svh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        pointer-events: none;
         gap: 6rem;
         padding: 2rem;
         margin-top: 10svh;
@@ -201,6 +200,7 @@
         flex-direction: row;
         justify-content: center;
         width: 100%;
+        height: 100%;
         max-width: 1200px;
         gap: 1rem;
     }
@@ -336,7 +336,7 @@
     .median-circle {
         width: 1.5rem;
         height: 1.5rem;
-        background: var(--wine-tan);
+        background: var(--wine-red);
         border: 2px solid var(--wine-black);
         border-radius: 50%;
     }
@@ -367,6 +367,7 @@
         .summary-bottles {
             flex-direction: row;
             height: 100%;
+            padding: 0 2rem 2rem 2rem;
         }
         .animal-wrapper {
             flex-direction: column;
@@ -382,6 +383,10 @@
             height: 4.5%;
             align-items: center;
             margin-bottom: 0;
+        }
+
+        .subgroup {
+            display: none;
         }
 
         .img-wrapper {
@@ -410,10 +415,14 @@
         }
 
         .num {
-            width: 100px;
+            width: 70px;
             text-align: right;
             margin: 0;
-            font-size: var(--16px);
+            font-size: var(--14px);
+        }
+
+        .median-mark .num {
+            font-size: var(--12px) !important;
         }
 
         .subgroup {
@@ -443,7 +452,7 @@
             top: 0;
             border-top: none;
             border-left: 1px solid var(--wine-blue);
-            height: 100%;
+            height: calc(100% - 1rem);
             pointer-events: none;
             font-size: var(--16px);
         }

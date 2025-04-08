@@ -169,7 +169,7 @@
 
     @media(max-width: 700px) {
         .chart-container {
-            padding: 4rem;
+            padding: 3rem 2rem;
         }
 
         .range-wrapper {
@@ -177,17 +177,18 @@
         }
 
         .label-price {
-            top: 6.25rem;
-            left: -1rem;
+            top: 5rem;
+            left: -2.5rem;
         }
 
         .label-rating {
-            right: 0.75rem;
-            bottom: 0;
+            right: -1.5rem;
+            bottom: -0.5rem;
         }
 
         .quadrants p {
-            font-size: var(--16px); 
+            font-size: var(--12px); 
+            text-align: center;
         }
     }
 </style>

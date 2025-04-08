@@ -52,7 +52,7 @@
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="correct-icon">
-                    <Icon name="check" size={"1.5rem"}/>
+                    <Icon name="check" size={"1.25rem"}/>
                 </div>
                 <p>
                     {@html example.text}
@@ -68,7 +68,7 @@
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="wrong-icon">
-                    <Icon name="x" size={"1.5rem"}/>
+                    <Icon name="x" size={"1.25rem"}/>
                 </div>
                 <p>
                     {@html example.text}
@@ -83,14 +83,14 @@
     .example-wrapper {
         position: absolute;
         width: 100%;
-        height: auto;
-        max-height: 80svh;
+        height: 100%;
         max-width: 1200px;
+        max-height: 60svh;
         display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 2rem;
-        margin: 4rem auto auto auto;
+        margin: 0 auto;
         padding: 2rem;
         flex-wrap: nowrap;
     }
@@ -153,11 +153,17 @@
     @media(max-width:700px) {
         .example-wrapper {
             flex-wrap: wrap;
+            gap: 1.5rem;
+            max-height: none;
+        }
+
+        .example img {
+            max-width: 110px;
         }
 
         .example {
-            width: calc(50% - 2rem);
-            max-width: 160px;
+            width: calc(50% - 1rem);
+            max-width: none;
         }
 
         .example:nth-child(2) {
@@ -166,6 +172,12 @@
 
         .example p {
             font-size: 10px;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .correct-icon, .wrong-icon {
+            width: 2rem;
+            height: 2rem;
         }
     }
 </style>

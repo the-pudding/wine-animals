@@ -171,6 +171,7 @@
     z-index: 900;
     position: relative;
     color: var(--wine-tan);
+    overflow-x: hidden;
   }
 
   footer .wordmark {
@@ -184,7 +185,7 @@
 
   .c {
     max-width: calc(var(--width-column-wide, 1280px) - var(--margin, 16px) * 2);
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
     margin: 32px auto 0px auto;
     font-family: var(--sans);
   }
@@ -240,16 +241,16 @@
   .cta-wrapper {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    gap: 48px;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .cta-wrapper section {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0px;
+    gap: 16px;
   }
 
   .links {
@@ -321,9 +322,8 @@
 
   .img-wrapper {
     width: 100%;
-    aspect-ratio: 1/1;
-    max-width: 160px;
-    height: 160px;
+    max-width: 140px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;

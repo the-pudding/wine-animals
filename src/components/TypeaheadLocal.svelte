@@ -379,4 +379,10 @@
     outline-offset: 2px;
     outline-width: 1px;
   }
+
+  @media(max-width: 700px) {
+      :global([data-svelte-search] input) {
+        font-size: var(--14px) !important;
+      }
+  }
 </style>

@@ -112,6 +112,7 @@
 		z-index: 1;
 		background: linear-gradient(to bottom, #181A1F, #14161a);
 		pointer-events: none;
+		overflow: hidden;
 	}
 
 	.cards {
@@ -126,6 +127,7 @@
 		margin: 0 auto;
 		color: var(--wine-tan);
 		z-index: 900;
+		padding: 0rem 1rem;
 	}
 
 	.prose p {
@@ -156,5 +158,11 @@
 		top: 0.125rem;
 		background-image: url("/assets/images/left-right-arrows.png");
 		background-size: 98% 98%;
+	}
+
+	@media (max-width: 700px) {
+		.prose p {
+			font-size: var(--16px);
+		}
 	}
 </style>

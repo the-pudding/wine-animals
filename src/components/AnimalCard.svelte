@@ -121,6 +121,14 @@
         line-height: 1.65;
     }
 
+    :global(.animal-card .deets a) {
+        color: var(--wine-tan);
+    }
+
+    :global(.animal-card .deets a:hover) {
+        color: var(--wine-red);
+    }
+
     .topline-wrapper {
         display: flex;
         flex-direction: column;
@@ -129,7 +137,7 @@
     .icon-name-wrapper {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .medians-wrapper {
@@ -237,13 +245,21 @@
     }
 
     @media (max-width: 700px) {
+        .animal-card {
+            padding: 1rem;
+        }
         .icon {
-            width: 4rem;
-            height: 4rem;
+            width: 3rem;
+            height: 3rem;
         }
 
         h4 {
-           font-size: var(--28px); 
+           font-size: var(--20px); 
+           margin: 0;
+        }
+
+        .median {
+            width:50%;
         }
 
         .median p:first-of-type {

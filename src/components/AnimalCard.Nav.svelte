@@ -142,7 +142,6 @@
         min-width: 140px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         display: flex;
         transform: scale(1);
@@ -220,4 +219,24 @@
         transform: scale(1.2) !important;
         transition: all 300ms;
     }
+
+    @media (max-width: 700px) {
+		.animal-group {
+            min-width: 80px;
+        }
+
+        .img-wrapper {
+            width: 40px;
+        }
+
+        p {
+            font-size: var(--12px);
+        }
+
+        :global(.isActive) {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+            transition: all 300ms;
+        }
+	}
 </style>

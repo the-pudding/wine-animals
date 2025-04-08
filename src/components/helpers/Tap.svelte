@@ -252,24 +252,4 @@
 		background: orange;
 		opacity: 0.5;
 	}
-
-	@media(max-width: 700px) {
-		button {
-			width: 60px;
-			height: 60px;
-		}
-
-		.left {
-			left: -50px;
-		}
-
-		.right {
-			right: -50px;
-		}
-
-		.arrow-span {
-			width: 30px;
-			height: 30px;
-		}
-	}
 </style>

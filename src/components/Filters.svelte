@@ -344,4 +344,27 @@
         appearance: none;
         display: none;
     }
+
+    @media(max-width: 700px) {
+        .select-wrapper {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter, .search-wrapper {
+            width: calc(50% - 0.25rem);
+        }
+
+        :global(#filters .multiselect) {
+            font-size: var(--14px) !important;
+        }
+
+        :global([data-svelte-typeahead] input) {
+            font-size: var(--14px) !important;
+        }
+
+        .steals-sentence {
+            font-size: var(--14px);
+        }
+    }
 </style>

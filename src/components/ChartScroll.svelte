@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <Scrolly bind:value={chartScrollIndex}>
+    <Scrolly bind:value={chartScrollIndex} bottom={0}>
         {#each copy.chartScroll as step, i}
             <div id="step-{i}" class="step">
                 <div class="step-inner">
@@ -148,7 +148,11 @@
 
     .lineup-wrapper {
         width: 100%;
+        height: 100%;
         z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: opacity 0.25s linear;
     }
 
@@ -189,7 +193,7 @@
         line-height: 1.65;
         background: none;
         z-index: 900;
-        margin: 2rem 0;
+        margin: 1rem 0;
         pointer-events: auto;
     }
 
@@ -272,7 +276,7 @@
         position: relative;
         font-weight: 700;
         margin-left: 2.25rem;
-        white-space: nowrap;
+
         font-family: var(--sans);
         
     }
@@ -404,6 +408,7 @@
     @media(max-width: 700px) {
         .scatter-wrapper {
             width: 100%;
+            padding: 10rem 0 4rem 0;
         }
 
         .step {
@@ -412,9 +417,33 @@
             max-width: 90%;
             opacity: 1;
         }
+        .step-inner {
+            padding: 1rem 1rem 2rem 1rem;
+        }
 
         .step p {
             font-size: var(--16px);
+            margin: 0;
+        }
+
+        .bottle-img {
+            width: 100px;
+        }
+
+        :global(.median-line-span, .compare-line-span, .sweet-rect-span, .cream-line-span, .selected-bottle-circle-span, .best-deals-span) {
+            margin-left: 1.75rem;     
+        }
+
+        :global(.median-line-span::before, .compare-line-span::before, .sweet-rect-span::before, .cream-line-span::before, .selected-bottle-circle-span::before, .best-deals-span::before) {
+            left: -1.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            content: "";
+            margin: 0;
+        }
+
+        :global(.median-line-span::before) {
+            top: 8px;
         }
     }
 </style>

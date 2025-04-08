@@ -238,12 +238,17 @@
 
 	@media(max-width: 700px) {
 		#range-price {
-			left: calc(100% - 4rem);
-			top: 2.25rem;
+			left: calc(100% - 2rem);
+			top: 2.6em;
 		}
 
 		#range-rating {
 			left: 3rem;
+			top: 2.5rem;
+		}
+
+		.thumb-label p {
+			display: none;
 		}
 	}
 </style>

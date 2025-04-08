@@ -52,4 +52,10 @@
         gap: 4rem;
         margin-top: 20svh;
     }
+
+    @media(max-width: 700px) {
+        .bottles {
+            margin-top: 40svh;
+        }
+    }
 </style>
