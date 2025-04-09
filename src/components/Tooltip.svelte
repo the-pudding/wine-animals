@@ -164,8 +164,9 @@
                     {:else if data[0][0][0].category == "country"}
                         <p class="details">
                             <span class="bolded">{Math.round(data[0][0][0].percent)}%</span> 
-                            of <span class="bolded">{data[0][0][0].animalGroup}</span> wines 
-                            are from <span class="bolded">{data[0][0][0].bucket}</span>,
+                            of wines from
+                            <span class="bolded">{data[0][0][0].bucket}</span>
+							are <span class="bolded">{data[0][0][0].animalGroup}</span> wines,
                             compared to <span class="bolded">{Math.round(data[0][1][0].percent)}%</span> of all wines 
                         </p> 
                     {/if}

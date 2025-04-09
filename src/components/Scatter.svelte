@@ -34,6 +34,10 @@
             .map(a => a.trim().toLowerCase());
         const fa = finalAnimal?.toLowerCase();
 
+        const topgroupList = d.topgroup
+            .split(",")
+            .map(a => a.trim().toLowerCase());
+
         const otherBigCats = ["cheetah", "cougar", "jaguar/leopard/panther", "lynx", "tiger"];
 
         const matchesFinalAnimal = !finalAnimal || (
@@ -46,11 +50,18 @@
                         : d.finalAnimal.toLowerCase().includes(fa)
         );
 
+        const matchesTopgroup = topgroupList.includes(animal.toLowerCase());
+
+        const subgroupMatch = !subgroup || d.subgroup.toLowerCase().includes(subgroup.toLowerCase());
+
+        const passesCattleCheck = !(animal === "cat" && topgroupList.includes("cattle") && !topgroupList.includes("cat"));
+
         return (
-            d.topgroup.includes(animal) &&
-            (!subgroup || d.subgroup.includes(subgroup)) &&
+            matchesTopgroup &&
+            subgroupMatch &&
             matchesFinalAnimal &&
-            d.price <= 150
+            d.price <= 150 &&
+            passesCattleCheck
         );
     });
 

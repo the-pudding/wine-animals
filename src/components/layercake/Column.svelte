@@ -100,7 +100,6 @@
 				class={d.bucket}
 				class:active={!isMobile}
 				data-id={i}
-				aria-label="bar tooltip"
 				{x}
 				{y}
 				{width}
