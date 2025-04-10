@@ -129,8 +129,8 @@
         </div>
         {#if innerWidth >= 1100}
             <div class="labels" class:hidden={scrollIndex <= 5}>
-                <p><Icon name="chevron-left" rotation={0}/>Less deals</p>
-                <p>More deals<Icon name="chevron-right" rotation={0}/></p>  
+                <p><Icon name="chevron-left" rotation={0}/>Fewer good deals</p>
+                <p>More good deals<Icon name="chevron-right" rotation={0}/></p>  
                 <div class="median-mark" style="left: 56%">
                     <p class="num">13.9%</p>
                     <div class="median-circle"></div>

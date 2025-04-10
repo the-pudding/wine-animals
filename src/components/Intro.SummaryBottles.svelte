@@ -90,14 +90,20 @@
         }
     }
 
+    $: console.log({scrollIndex, currMetric})
+
     $: animate = scrollIndex >= 5 ? true : false;
 
     let reduceMotion = false;
+    let bottleW;
+    let bottleH;
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-reduced-motion: reduce)');
 		reduceMotion = media.matches;
 	});
+
+    $: console.log({bottleW})
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -108,6 +114,7 @@
         <div class="animal-wrapper">
             {#each currData as animal, i (animal[0])}
                 <div class="animal-group active" 
+                bind:clientWidth={bottleW}
                     style="transition-delay: {(currData.length - i - 1) * 100}ms;"
                     animate:flip={{duration: 1000}}
                     class:active={animal[0] === $animalSelected}
@@ -115,8 +122,10 @@
                     <p class="num">
                         {#if currMetric == "price"}
                             ${animal[1].medianPrice.toFixed(2)}
-                        {:else if currMetric !== undefined}
+                        {:else if currMetric == "rating"}
                             {animal[1].medianRating}
+                        {:else if currMetric == undefined}
+                            {''}
                         {/if}
                     </p>
                     <div class="img-wrapper">
@@ -141,9 +150,13 @@
                 <p><Icon name="chevron-left" rotation={0}/>{currMetric == "price" ? "Less expensive" : "Worse rating"}</p>
                 <p>{currMetric == "price" ? "More expensive" : "Better rating"}<Icon name="chevron-right" rotation={0}/></p>  
                 {#if currMetric !== undefined}
-                    <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "62%"}">
+                    <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "64%"}">
                         <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
-                        <div class="median-circle"></div>
+                        <div 
+                            class="median-circle"
+                            style="width: {currMetric == 'rating' ? (bottleW * 5) + 64 : 24}px"
+                        >
+                        </div>
                         <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
                     </div>
                     {#if currMetric !== "rating"}
@@ -161,13 +174,16 @@
             <p class="low"><Icon name="chevron-up" rotation={0}/>Lower {currMetric}</p>
             <p class="high"><Icon name="chevron-down" rotation={0}/>Higher {currMetric}</p>  
             {#if currMetric !== undefined}
-                <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "61%"}">
+                <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "51%"}">
                     <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
-                    <div class="median-circle"></div>
+                    <div 
+                            class="median-circle"
+                            style="height: {currMetric == "rating" ? (bottleH * 5) + 16 : 16}px"
+                        ></div>
                     <p>{currMetric == "price" ? "Animal wines" : "All wines & animal wines"}</p>
                 </div>
                 {#if currMetric !== "rating"}
-                    <div class="median-mark" style="top: 61%">
+                    <div class="median-mark" style="top: 62%">
                         <p class="num">{currMetric == "price" ? "$29.99" : "4"}</p>
                         <div class="median-circle"></div>
                         <p>All wines</p>
@@ -177,7 +193,8 @@
         </div>
         <div class="animal-wrapper">
             {#each currData as animal, i (animal[0])}
-                <div class="animal-group active" 
+                <div class="animal-group active"
+                    bind:clientHeight={bottleH} 
                     style="transition-delay: {(currData.length - i - 1) * 100}ms;"
                     animate:flip={{duration: 1000}}
                     class:active={animal[0] === $animalSelected}
@@ -185,8 +202,10 @@
                     <p class="num">
                         {#if currMetric == "price"}
                             ${animal[1].medianPrice.toFixed(2)}
-                        {:else}
+                        {:else if currMetric == "rating"}
                             {animal[1].medianRating}
+                        {:else if currMetric == undefined}
+                            {''}
                         {/if}
                     </p>
                     <div class="img-wrapper">
@@ -368,7 +387,7 @@
         height: 1.5rem;
         background: var(--wine-red);
         border: 2px solid var(--wine-black);
-        border-radius: 50%;
+        border-radius: 1.5rem;
     }
 
     @media(max-width: 1100px) {
