@@ -90,8 +90,6 @@
         }
     }
 
-    $: console.log({scrollIndex, currMetric})
-
     $: animate = scrollIndex >= 5 ? true : false;
 
     let reduceMotion = false;
@@ -102,8 +100,6 @@
 		const media = window.matchMedia('(prefers-reduced-motion: reduce)');
 		reduceMotion = media.matches;
 	});
-
-    $: console.log({bottleW})
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
