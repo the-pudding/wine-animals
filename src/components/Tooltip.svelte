@@ -73,8 +73,9 @@
 			const clickedEl = e.target;
 			const isInsideTooltip = tooltipEl && tooltipEl.contains(clickedEl);
 			const isScatterplot = clickedEl.closest('#scatterplot');
+			const isFilters = clickedEl.closest('#filters');
 
-			if (!isInsideTooltip && !isScatterplot) {
+			if (!isInsideTooltip && !isScatterplot && !isFilters) {
 				tooltipCloseClick();
 			}
 		};

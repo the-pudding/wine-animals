@@ -41,55 +41,6 @@
 
     $: safeValue = value ?? "";
   
-    afterUpdate(() => {
-      if (prevResults !== resultsId && autoselect) {
-        selectedIndex = getNextNonDisabledIndex();
-      }
-  
-      if (prevResults !== resultsId && !$$slots["no-results"]) {
-        hideDropdown = localResults.length === 0;
-      }
-  
-      prevResults = resultsId;
-    });
-
-    function setTooltip(data) {
-        tooltipVisible.set(true);
-		tooltipData.set(data);
-		tooltipType.set("bottle");
-	}
-
-    function updateSearchedWine(detail) {
-        if (!detail || !detail.original || !detail.original.value) {
-            return;
-        }
-
-        selectAll(".selected-circle")
-            .style("opacity", 0.5)
-
-        foundWine = filteredRawData.find(d => d.id === detail.original.value);
-
-        if (foundWine) {
-            lockedSelection.set(true);
-            const wine = selectAll(`#scatterplot #circle-${foundWine.id}`);
-            const parent = selectAll(wine.parentNode);
-            wine
-                .classed("selected-wine", true)
-                .classed("filteredOut", false)
-                .raise()
-                .transition()
-                .duration(500)
-                .attr("r", 10)
-                .style("fill", "#CFCABF")
-                .style("opacity", 1);
-                
-            parent
-              .style("opacity", 1);
-
-            setTooltip(foundWine);
-        }
-    }
-  
     async function select() {
         const result = localResults[selectedIndex];
         if (!result || result.disabled) return;
@@ -110,8 +61,6 @@
 
         dispatch("select", payload);
 
-        await tick();
-        updateSearchedWine(payload)
         if (focusAfterSelect) searchRef?.focus();
         close();
         }

@@ -217,7 +217,7 @@
         {#each $data[0] as d, i}
         {@const cx = $xGet(d)}
         {@const cy = $yGet(d)}
-        {@const imageSize = chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+        {@const imageSize = chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" || chartScrollIndex == 2 && animal == "sheep" ||
                         chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+20 : r+10}
         {@const animal = d.topGroup.replace(/[^a-zA-Z0-9]/g, "")}
             {#if d.topGroup == "animal wines" || d.topGroup == "all wines" }
@@ -260,7 +260,7 @@
                 <circle 
                     cx={cx} 
                     cy={cy} 
-                    r={chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" ||
+                    r={chartScrollIndex == 2 && animal == "cattle" || chartScrollIndex == 2 && animal == "pig" || chartScrollIndex == 2 && animal == "sheep" ||
                         chartScrollIndex == 3 && animal == "cat" || chartScrollIndex == 3 && animal == "bear" || chartScrollIndex == 3 && animal == "mythicalcreature" ? r+5 : 
                         chartScrollIndex == undefined || chartScrollIndex <= 3 ? r : smallestR} 
                     fill={"#CFCABF"} 

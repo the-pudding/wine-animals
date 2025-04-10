@@ -1,17 +1,20 @@
 <script>
     import { tick } from "svelte";
+    import { get } from 'svelte/store';
     import MultiSelect from 'svelte-multiselect';
     import DoubleRange from "$components/helpers/DoubleRange.svelte";
-    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum, withFiltersData } from "$stores/misc.js";
+    import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum, withFiltersData, tooltipVisible } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
     import Typeahead from "$components/TypeaheadLocal.svelte";
     import { selectAll, select } from 'd3-selection';
+    import { format } from 'd3-format';
     import { median } from 'd3-array';
 
     const totalMedianPrice = median(rawData, d => d.price);
     const totalMedianRating = median(rawData, d => d.rating);
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human");
+    const formatter = format(",");
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
         "deer", "fish", "horse", "marine invertebrate", "mythical creature", "pachyderm", "pig",
@@ -102,8 +105,61 @@
 	}
 
     $: if (!$lockedSelection && foundWine) {
-		mouseleaveCircle(foundWine);
+		resetCircle(foundWine)
 	}
+
+    function updateSearchedWine(detail) {
+        if (!detail || !detail.original || !detail.original.value) return;
+
+        const wineId = detail.original.value;
+        foundWine = rawData.find(d => d.id === wineId);
+        if (!foundWine) return;
+
+        lockedSelection.set(true);
+
+        // Wait until the element is in the DOM
+        const wine = select(`#scatterplot #circle-${wineId}`);
+        if (wine.empty()) { return; }
+
+        const parent = select(wine.node().parentNode);
+
+        selectAll(".selected-circle").style("opacity", 0.5);
+
+        wine
+            .classed("selected-wine", true)
+            .classed("filteredOut", false)
+            .transition()
+            .duration(500)
+            .attr("r", 10)
+            .style("fill", "#CFCABF")
+            .style("opacity", 1);
+
+        parent
+            .raise()
+            .classed("filteredOut", false)
+            .style("opacity", 1);
+
+        if (get(tooltipData)?.id !== foundWine.id) {
+            tooltipVisible.set(true);
+            tooltipData.set(foundWine);
+            tooltipType.set("bottle");
+        }
+    }
+
+    function resetCircle(wine) {
+        const circle = select(`#scatterplot #circle-${wine.id}`);
+        if (!circle.empty()) {
+            circle
+                .classed("selected-wine", false)
+                .transition()
+                .duration(500)
+                .attr("r", 5)
+                .style("fill", () =>
+                    wine.price <= 29.99 && wine.rating >= 4 ? "#3E5C4B" : "#475171"
+                )
+                .style("opacity", 0.8);
+        }
+    }
 
     $: storeUpdates(selectedAnimal, "animal")
     $: storeUpdates(selectedType, "type")
@@ -169,9 +225,17 @@
                         limit={4}
                         extract={(item) => item.label}
                         on:select={({ detail }) => {
-                            events = [...events, { event: "select", detail }];
+                            updateSearchedWine(detail); // ✅ It lives in this scope now
                           }}
-                        on:clear={() => (events = [...events, { event: "clear" }])}
+                          on:clear={() => {
+                            if (foundWine) {
+                              resetCircle(foundWine);
+                            }
+                        
+                            tooltipVisible.set(false);
+                            tooltipData.set(null);
+                            lockedSelection.set(false);
+                          }}
                     />
                     {#if searchTerm}
                         <button class="clear-btn" on:click={() => searchTerm = ''}>
@@ -181,7 +245,14 @@
                 </div>
             </div>
             <p class="steals-sentence">
-            <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% of wines are good deals</span> 
+                <span class="bold">
+                {#if $withFiltersData.length !== 1}
+                    {formatter($withFiltersData.length)} wines
+                {:else}
+                    {formatter($withFiltersData.length)} wine
+                {/if}
+                </span>
+            or <span class="bold highlight">{$stealPercent !== undefined ? $stealPercent.toFixed(2) : $stealPercent}% are good deals</span> 
             with your current selections.
         </p>
         </div>
