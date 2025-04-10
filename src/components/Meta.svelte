@@ -1,6 +1,6 @@
 <script>
 	export let title = "The Pour-igin of Species";
-	export let description = "We used ChatGPT Vision to identify animals on over 9,000 wine labels to see if we could predict the price and quality of a bottle based on the animal on the label.";
+	export let description = "We used ChatGPT Vision to identify animals on over 9,300 wine labels to see if we could predict the price and quality of a bottle based on the animal on the label.";
 	export let url = "https://pudding.cool/2025/04/wine-animals";
 	export let keywords = "wine, animal, label, vivino, bottle, price, quality, design, data, analysis, predict, drink, packaging, alcohol";
 	export let preloadFont = [];

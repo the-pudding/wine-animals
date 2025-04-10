@@ -9,7 +9,7 @@ body {
 	word-wrap: break-word;
 	-webkit-tap-highlight-color: transparent;
 	overflow-x: hidden;
-	overflow-y: hidden;
+	/* overflow-y: hidden; */
 }
 
 h1,

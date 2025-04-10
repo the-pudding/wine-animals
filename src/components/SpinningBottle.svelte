@@ -61,15 +61,15 @@
 
         const products = document.querySelectorAll("#intro .product");
         products.forEach((product) => {
-        const prodAnimal = product.getAttribute("data-animal");
-        const wineDiv = product.querySelector(".wine");
-        if (prodAnimal !== $animalSelected && bottleIndex !== 4) {
-            product.classList.add("faded");
-            product.style.left = data.startingPos;
-        } else {
-            product.classList.remove("faded");
-            product.style.left = "50%";
-        }
+            const prodAnimal = product.getAttribute("data-animal");
+            const wineDiv = product.querySelector(".wine");
+            if (prodAnimal !== $animalSelected && bottleIndex !== 4) {
+                product.classList.add("faded");
+                product.style.left = data.startingPos;
+            } else {
+                product.classList.remove("faded");
+                product.style.left = "50%";
+            }
         });
 
         shouldSpin = Array.from(products).map(
@@ -77,14 +77,14 @@
         );
 
         products.forEach((product) => {
-        const wineDiv = product.querySelector(".wine");
-        if (wineDiv) {
-            if (product.style.left === "50%") {
-            wineDiv.classList.remove("spin");
-            } else {
-            wineDiv.classList.add("spin");
+            const wineDiv = product.querySelector(".wine");
+            if (wineDiv) {
+                if (product.style.left === "50%") {
+                wineDiv.classList.remove("spin");
+                } else {
+                wineDiv.classList.add("spin");
+                }
             }
-        }
         });
 
         // Emit event to parent component

@@ -3,6 +3,8 @@ import allWineData from "$data/wineData.csv";
 
 // EXPLORE DATA
 const filteredData = allWineData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
+const openingWines = ["cat", "bird", "pig", "amphibian/reptile"];
+const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
 
 export const bigScatterData = writable(filteredData);
 export const withFiltersData = writable(filteredData);
@@ -16,7 +18,7 @@ export const selectedYearRangeSTORE = writable([1850, 2023]);
 
 // INTRO SELECTION
 export const bottleSelected = writable(false);
-export const animalSelected = writable(undefined);
+export const animalSelected = writable(randomAnimal);
 
 // STEAL RANGES
 export const stealPriceNum = writable(29.99);

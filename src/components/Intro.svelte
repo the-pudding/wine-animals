@@ -28,24 +28,23 @@
     let scrollIndex;
     let scrollyContainer; // Reference to the Scrolly container
     let scrollY;
-
-    $: selectedText = $animalSelected == "amphibian/reptile" ? copy.opening[0]["amphibian"] : copy.opening[0][$animalSelected];
-    $: selectedPriceText = $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianPrice")] : copy.opening[0][($animalSelected + "Price")];
-    $: selectedRatingText = $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianRating")] : copy.opening[0][($animalSelected + "Rating")];
+    let autoSelected = false;
+    let selectedText;
+    let selectedPriceText;
+    let selectedRatingText;
+    console.log("Top-level:", $animalSelected);
 
     // INTERACTION FUNCTIONS
-    // Selects random wine
-    function handleRandomClick() {
-        document.body.style.overflowY = "auto";
-        const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
-        handleBottleClick(randomAnimal)
-    }
-
     // Handles the wine click and sets selected wine
     function handleBottleClick(data) {
-        document.body.style.overflowY = "auto";
+        console.log("running", data);
         animalSelected.set(data.animal);
         bottleSelected.set(true);
+
+        const key = data.animal !== "amphibian/reptile" ? data.animal : "amphibian";
+        selectedText = copy.opening[0][key];
+        selectedPriceText = copy.opening[0][key + "Price"];
+        selectedRatingText = copy.opening[0][key + "Rating"];
 
         const products = document.querySelectorAll(".product");
 
@@ -95,12 +94,15 @@
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
     $: scrollToStep($animalSelected);
-    // Unlock body scroll
-    $: if (scrollY >= 100 || scrollIndex >= 1 || bottleSelected == true) {
-        document.body.style.overflowY = "auto";
+    $: if (scrollY >= 50 && !autoSelected && !$bottleSelected) {
+        const randomWine = openingWines[Math.floor(Math.random() * openingWines.length)];
+        handleBottleClick(randomWine);
+        autoSelected = true;
     }
 
-    // $: console.log(scrollIndex)
+    $: console.log("Reactive:", $animalSelected);
+
+    $: console.log(scrollIndex, scrollY)
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
@@ -118,12 +120,12 @@
             <div class="step">
                 <div class="step-inner">
                     <p> 
-                        {#if i == 1}
+                        {#if i == 1 && selectedText}
                             {@html selectedText}
-                        {:else if i == 6}
+                        {:else if i == 6 && selectedPriceText}
                             {@html step.value}
                             {@html selectedPriceText}
-                        {:else if i == 7}
+                        {:else if i == 7 && selectedRatingText}
                             {@html step.value}
                             {@html selectedRatingText}
                         {:else}
@@ -131,8 +133,7 @@
                                 {#if i == 0}
                                     <p class="instructions">
                                         <span class="tap-icon">{@html tapSVG}</span>
-                                        Tap on a bottle or
-                                        <button class="random-click" on:click={handleRandomClick}>get a random one</button>
+                                        Tap on a bottle or start scrolling to get a random wine
                                     </p>
                                 {/if}
                         {/if}
@@ -288,10 +289,6 @@
         color: var(--wine-gold);
         font-weight: 700;
         padding: 0;
-    }
-
-    .random-click:hover {
-        color: var(--wine-dark-gold);
     }
 
     :global(.prompt) {
