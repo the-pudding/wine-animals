@@ -199,7 +199,7 @@
 	}
 
     .step:first-of-type {
-        margin-top: calc(-100vh + 6rem);
+        margin-top: calc(-100svh + 6rem);
     }
 
     .step-inner {
