@@ -1,6 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import viewport from "$stores/viewport.js";
     
     export let bottleIndex;
     export let wineData;
@@ -12,6 +13,11 @@
     let wineWidth;
     let shouldSpin = [true,true,true,true];
     let spin4 = true;
+
+    // SCREENSIZE
+	$: w = $viewport.width;
+	$: h = $viewport.height;
+	$: isMobile = w <= 500;
 
     const dispatch = createEventDispatcher();
 
@@ -109,8 +115,16 @@
     <div class="wine"
         aria-hidden="true"
         class:spin={bottleIndex == 4 ? spin4 : shouldSpin[bottleIndex]}
-        on:mousemove={mousemoveBottle}
-        on:mouseleave={mouseleaveBottle}>
+        on:mousemove={() => {
+            if(!isMobile) {
+                mousemoveBottle
+            }
+        }}
+        on:mouseleave={() => {
+            if(!isMobile) {
+                mouseleaveBottle
+            }
+        }}>
     </div>
 </button>
 
