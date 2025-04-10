@@ -74,7 +74,7 @@
                     {/if} 
                     {#if i == 14}
                         <div class="scroll-hint">
-                            <Icon name="chevron-down" size={"1.5rem"}/>
+                            <Icon name="chevron-down" size={"24px"} rotation={0}/>
                         </div>
                     {/if}       
                 </div>

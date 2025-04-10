@@ -138,8 +138,8 @@
         </div>
         {#if innerWidth >= 1100}
             <div class="labels" class:hidden={scrollIndex <= 5}>
-                <p><Icon name="chevron-left"/>{currMetric == "price" ? "Less expensive" : "Worse rating"}</p>
-                <p>{currMetric == "price" ? "More expensive" : "Better rating"}<Icon name="chevron-right"/></p>  
+                <p><Icon name="chevron-left" rotation={0}/>{currMetric == "price" ? "Less expensive" : "Worse rating"}</p>
+                <p>{currMetric == "price" ? "More expensive" : "Better rating"}<Icon name="chevron-right" rotation={0}/></p>  
                 {#if currMetric !== undefined}
                     <div class="median-mark" style="left: {currMetric == "price" ? "53%" : "62%"}">
                         <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>
@@ -158,8 +158,8 @@
         {/if}
     {:else}
         <div class="labels" class:hidden={scrollIndex <= 5}>
-            <p class="low"><Icon name="chevron-up"/>Lower {currMetric}</p>
-            <p class="high"><Icon name="chevron-down"/>Higher {currMetric}</p>  
+            <p class="low"><Icon name="chevron-up" rotation={0}/>Lower {currMetric}</p>
+            <p class="high"><Icon name="chevron-down" rotation={0}/>Higher {currMetric}</p>  
             {#if currMetric !== undefined}
                 <div class="median-mark" style="top: {currMetric == "price" ? "51%" : "61%"}">
                     <p class="num">{currMetric == "price" ? "$26.99" : "4"}</p>

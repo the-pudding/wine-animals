@@ -183,7 +183,7 @@
                         ariaLabel="select animals"
                     > 
                         <span slot="expand-icon">
-                            <Icon name="chevrons-up-down" size="0.75rem"/>
+                            <Icon name="chevrons-up-down" size={"12px"} rotation={0}/>
                         </span>
                     </MultiSelect>
                 </div>
@@ -197,7 +197,7 @@
                         ariaLabel="select wine types"
                     > 
                         <span slot="expand-icon">
-                            <Icon name="chevrons-up-down" size="0.75rem"/>
+                            <Icon name="chevrons-up-down" size={"12px"} rotation={0}/>
                         </span>
                     </MultiSelect>
                 </div>
@@ -211,7 +211,7 @@
                         ariaLabel="select countries"
                     > 
                         <span slot="expand-icon">
-                            <Icon name="chevrons-up-down" size="0.75rem"/>
+                            <Icon name="chevrons-up-down" size={"12px"} rotation={0}/>
                         </span>
                     </MultiSelect>
                 </div>
@@ -220,7 +220,7 @@
                         bind:value={searchTerm}
                         hideLabel
                         label="U.S. States"
-                        placeholder={`Search by name or winery`}
+                        placeholder={`Find a wine`}
                         data={availableWines}
                         limit={4}
                         extract={(item) => item.label}
@@ -239,7 +239,7 @@
                     />
                     {#if searchTerm}
                         <button class="clear-btn" on:click={() => searchTerm = ''}>
-                            <Icon name="x" size={"0.75rem"}/>
+                            <Icon name="x" size={"12px"} rotation={0}/>
                         </button>
                     {/if}
                 </div>
@@ -317,7 +317,7 @@
     }
 
     .filter {
-        width: 100%;
+        width: calc(25% - 0.5rem);
     }
 
     .range-wrapper .filter {
@@ -336,7 +336,7 @@
     }
 
     .search-wrapper {
-        width: 100%;
+        width: calc(25% - 0.5rem);
         position: relative;
     }
 

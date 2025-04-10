@@ -52,7 +52,7 @@
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="correct-icon">
-                    <Icon name="check" size={"1.25rem"}/>
+                    <Icon name="check" size={"20px"} rotation={0}/>
                 </div>
                 <p>
                     {@html example.text}
@@ -68,7 +68,7 @@
             <div class="example" in:fade={{ duration: 250, delay: i * 250 }} out:fade={{duration: 250}}>
                 <img src={`./assets/images/vivinoLabels/img_${example.img}.png`} alt="Wine label" use:lazyImage />
                 <div class="wrong-icon">
-                    <Icon name="x" size={"1.25rem"}/>
+                    <Icon name="x" size={"20px"} rotation={0}/>
                 </div>
                 <p>
                     {@html example.text}

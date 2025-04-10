@@ -239,9 +239,7 @@
     onMount(() => {
         parentCard = container.closest('.animal-card');
 
-        if (parentCard) {
-            const observer = new MutationObserver(() => {
-
+        function bindEventListeners() {
             cleanupEventListeners();
 
             summaryBtns = parentCard.querySelectorAll(".summary-btn");
@@ -257,8 +255,13 @@
                 btn.addEventListener("click", fn);
                 individListeners.push({ btn, fn });
             });
-            });
+        }
 
+        if (parentCard) {
+            // Run once right away to catch already-rendered elements
+            bindEventListeners();
+
+            const observer = new MutationObserver(bindEventListeners);
             observer.observe(parentCard, {
                 childList: true,
                 subtree: true
@@ -296,7 +299,7 @@
             <p>Now showing <span class="bold">{pluralize(animal)}</span>
                 {#if subgroup !== undefined && clickedAnimal == animal.replace(/[^a-zA-Z0-9]/g, "")}
                     <span class="subgroup-span">
-                        <Icon name="chevron-right" size={"1rem"}/>
+                        <Icon name="chevron-right" size={"16px"} rotation={0}/>
                         {#if finalAnimal == undefined}
                             <span class="bold">{pluralize(subgroup)}</span>
                         {:else}

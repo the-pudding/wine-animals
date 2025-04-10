@@ -8,6 +8,7 @@
     export let bottlePosLeft;
     export let scrollIndex;
     export let outroVisible;
+    export let bottleSize;
 
     let wineWidth;
     let aspectRatio = 3.5;
@@ -37,16 +38,6 @@
     function mouseleaveBottle(e) {
         let container = e.currentTarget;
         container.style.backgroundPosition = "0 0"; 
-    }
-
-    function getMaxElementSize(screenWidth, screenHeight, bottleSlot) {
-        let maxWidthBasedOnScreen = bottleSlot == "center-lone" ? screenWidth/2 : screenWidth / 4;
-        let maxWidthBasedOnHeight = screenHeight / aspectRatio;
-
-        let w = Math.min(maxWidthBasedOnScreen, maxWidthBasedOnHeight);
-        let h = w * aspectRatio;
-
-        return { width: w, height: h };
     }
 
     function handleTransitionEnd(event) {
@@ -96,7 +87,6 @@
         dispatch("bottleClicked", data);
     }
 
-    $: getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.height);
     $: transitionDelay = $bottleSelected == false 
         ? (3 - 1 - bottleIndex) * 100 
         : bottleIndex == 4 
@@ -110,8 +100,8 @@
 <button aria-label="wine bottle" class="product product-{wineData.bottleSlot}" 
     data-animal={wineData.animal}
     style="--transition-delay: {transitionDelay}ms;
-        width:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight, wineData.bottleSlot).width}px;
-        height:{getMaxElementSize(containerDimensions.bottlesWidth, containerDimensions.bottlesHeight, wineData.bottleSlot).height}px;
+        width: {bottleSize?.width}px;
+        height: {bottleSize?.height}px;
         left: {bottlePosLeft};"
         on:transitionend={handleTransitionEnd}
         on:click={() => handleClick(wineData)}>
@@ -155,7 +145,7 @@
         transition: left calc(var(--1000ms) * 2) ease-in var(--transition-delay), opacity var(--500ms) ease-in;
         pointer-events: auto;
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: -50%;
         transform: translate(-50%, 0);
     }

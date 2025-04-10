@@ -105,7 +105,7 @@
 <section id="intro">
     <div class="sticky">
         <IntroHeadline scrollIndex={scrollIndex}/>
-        <Bottles scrollIndex={scrollIndex}/>
+        <Bottles scrollIndex={scrollIndex} visible={true}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"correct"}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"wrong"}/>
         <IntroSummaryBottles scrollIndex={scrollIndex}/>
@@ -136,7 +136,7 @@
                     </p>
                     {#if i == 1}
                         <div class="scroll-hint">
-                            <Icon name="chevron-down" size={"1.5rem"}/>
+                            <Icon name="chevron-down" size={"24px"} rotation={0}/>
                         </div>
                     {/if}
                 </div>
@@ -196,7 +196,7 @@
 	}
 
     .step:first-of-type {
-        margin-top: -75vh;
+        margin-top: calc(-100vh + 6rem);
     }
 
     .step-inner {

@@ -91,7 +91,7 @@
 	{/if}
 	<Slider bind:this={sliderEl}>
 		{#each topgroups as animal, i}
-			<Slide>
+			<Slide index={i}>
 				{#key animal}
 					<AnimalCard animal={animal} />
 				{/key}

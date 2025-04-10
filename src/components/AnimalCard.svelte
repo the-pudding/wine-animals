@@ -12,6 +12,7 @@
     const copy = getContext("copy");
 
     let strippedAnimal = animal.replace(/[^a-zA-Z0-9]/g, "");
+    let railW;
 
     function handleView(viewState, animal) {
         if (viewState == "enter") {
@@ -77,11 +78,11 @@
                 {/if}
             </div>
         </div>
-        <div class="rail" id="rail-right">
+        <div class="rail" id="rail-right" bind:clientWidth={railW}>
             <div class="scatter-wrapper">
                 <Scatter animal={animal} />
             </div>
-            <ScrollHisto animal={animal}/>
+            <ScrollHisto animal={animal} width={railW}/>
         </div>
     </div>
 {/if}

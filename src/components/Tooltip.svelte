@@ -96,7 +96,7 @@
     {#if data}
         {#if $tooltipType == "bottle"}
             <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
-                <Icon name="x" size={"1.5rem"}/>
+                <Icon name="x" size={"24px"} rotation={0}/>
             </button>
             <div class="zoom-container"
 					bind:this={wrapper}
@@ -113,7 +113,7 @@
 					{#if !isMobile}
 						<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
 						<span class="mag">
-							<Icon name="zoom-in" size={"1.5rem"}/>
+							<Icon name="zoom-in" size={"24px"} rotation={0}/>
 						</span>
 					{/if}
 				</div>
@@ -138,7 +138,7 @@
             </div>
             {:else if $tooltipType == "histo"}
                 <button class="close" aria-label="close tooltip" on:click={tooltipCloseClick}>
-                    <Icon name="x" size={"1.5rem"}/>
+                    <Icon name="x" size={"24px"} rotation={0}/>
                 </button>
                 <div class="summary">
                     {#if data[0][0][0].category == "price"}

@@ -1,8 +1,12 @@
 <script>
     import SpinningBottle from "$components/SpinningBottle.svelte";
-    import { createEventDispatcher } from "svelte";
+    import { createEventDispatcher, onMount } from "svelte";
+    import { tick } from 'svelte';
 
     export let scrollIndex;
+    export let visible;
+
+    console.log("Bottles component script running", { scrollIndex });
 
     const openingWines = [
         { animal: "cat", name: "Poppóne", winery: "Antonutti", country: "Italy", price: 34.99, rating: 4.3, bottleSlot: "farleft", targetPos: "20%", startingPos: "-80%", wineQuad: "good expensive"},
@@ -11,51 +15,86 @@
         { animal: "amphibian/reptile", name: "Tïn Bianco", winery: "Montesecondo", country: "Italy", price: 39.99, rating: 3.8, bottleSlot: "farright", targetPos: "80%", startingPos: "-20%", wineQuad: "bad expensive"},
     ];
     const dispatch = createEventDispatcher();
+    
+    let bottlesWidth;
+    let bottlesHeight;
+    let bottleRefs = [];
+    let readyToAnimate = false;
 
     function handleBottleClick(event) {
         dispatch("bottleClicked", event.detail);
     }
 
-    let bottlesWidth = 0;
-    let bottlesHeight = 0;
-    let bottleRefs = [];
+    const getMaxElementSize = (screenWidth, screenHeight, bottleSlot) => {
+        const aspectRatio = 3.5;
+        const maxWidth = bottleSlot === 'center-lone'
+        ? screenWidth / 2
+        : screenWidth / 4;
+
+        const maxHeight = screenHeight / aspectRatio;
+        const width = Math.min(maxWidth, maxHeight);
+        const height = width * aspectRatio;
+
+        return { width, height };
+    };
+
+    onMount(async () => {
+        await tick(); // let Svelte mount the DOM
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                readyToAnimate = true;
+                console.log(readyToAnimate)
+            }, 50); // short delay for smoother paint
+        });
+
+        console.log("Bottles onMount fired");
+    });
+
+    $: bottleSizes = bottlesWidth && bottlesHeight
+        ? openingWines.map(wine =>
+            getMaxElementSize(bottlesWidth, bottlesHeight, wine.bottleSlot))
+        : [];
 </script>
 
-<div class="bottles" bind:clientHeight={bottlesHeight} bind:clientWidth={bottlesWidth}>
-    {#if bottlesWidth && bottlesHeight}
-        {#each openingWines as wine, i}
-            <SpinningBottle 
-                on:bottleClicked={handleBottleClick}
-                bind:this={bottleRefs[i]}
-                scrollIndex={scrollIndex}
-                bottleIndex={i}
-                wineData={wine}
-                containerDimensions={{bottlesWidth, bottlesHeight}}
-                bottlePosLeft={scrollIndex >= 0 && scrollIndex < 2
-                    ? wine.targetPos 
-                    : wine.startingPos}
-                />
-        {/each}
-    {/if}
-</div>
+{#if visible}
+    <div class="bottles" bind:clientWidth={bottlesWidth} bind:clientHeight={bottlesHeight}>
+        {#if bottlesWidth && bottlesHeight}
+            {#each openingWines as wine, i}
+                <SpinningBottle 
+                    on:bottleClicked={handleBottleClick}
+                    bind:this={bottleRefs[i]}
+                    scrollIndex={scrollIndex}
+                    bottleSize={bottleSizes[i]}
+                    bottleIndex={i}
+                    wineData={wine}
+                    outroVisible={false}
+                    containerDimensions={{bottlesWidth, bottlesHeight}}
+                    bottlePosLeft={
+                        readyToAnimate
+                        ? (scrollIndex === undefined || scrollIndex < 2 ? wine.targetPos : wine.startingPos)
+                        : wine.startingPos
+                    }
+                    />
+            {/each}
+        {/if}
+    </div>
+{/if}
 
 <style>
     .bottles {
         position: absolute;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        height: 100%;
-        max-height: 80svh;
+        height: 80svh;
         display: flex;
         justify-content: center;
         align-items: center;
         pointer-events: none;
         gap: 4rem;
-        margin-top: 20svh;
+        /* margin-top: 20svh; */
     }
 
     @media(max-width: 700px) {
-        .bottles {
-            margin-top: 80svh;
-        }
     }
 </style>

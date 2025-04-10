@@ -130,6 +130,7 @@
 				.raise(); // Optional: bring to front
 			select(selectedCircle.node().parentNode)
 				.style("opacity", 1)
+				.raise();
 		}
 	}
 

@@ -26,6 +26,7 @@
             on:exit={() => outroVisible = false}>
             <SpinningBottle 
                 wineData={wine}
+                scrollIndex={null}
                 bottleIndex={4}
                 containerDimensions={{bottlesWidth, bottlesHeight}}
                 {outroVisible}

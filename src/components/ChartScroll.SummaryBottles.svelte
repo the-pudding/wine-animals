@@ -129,8 +129,8 @@
         </div>
         {#if innerWidth >= 1100}
             <div class="labels" class:hidden={scrollIndex <= 5}>
-                <p><Icon name="chevron-left"/>Less deals</p>
-                <p>More deals<Icon name="chevron-right"/></p>  
+                <p><Icon name="chevron-left" rotation={0}/>Less deals</p>
+                <p>More deals<Icon name="chevron-right" rotation={0}/></p>  
                 <div class="median-mark" style="left: 56%">
                     <p class="num">13.9%</p>
                     <div class="median-circle"></div>
@@ -145,8 +145,8 @@
         {/if}
     {:else}
     <div class="labels" class:hidden={scrollIndex <= 5}>
-        <p class="low"><Icon name="chevron-up"/>Lower {currMetric}</p>
-        <p class="high"><Icon name="chevron-down"/>Higher {currMetric}</p>  
+        <p class="low"><Icon name="chevron-up" rotation={0}/>Lower {currMetric}</p>
+        <p class="high"><Icon name="chevron-down" rotation={0}/>Higher {currMetric}</p>  
         <div class="median-mark" style="top: 50.5%">
             <p class="num">13.9%</p>
             <div class="median-circle"></div>

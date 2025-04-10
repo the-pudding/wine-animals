@@ -87,7 +87,7 @@
                             data={category.values}
                             >
                                 <Svg>
-                                    <AxisY snapBaselineLabel gridlines={false}/>
+                                    <AxisY gridlines={false}/>
                                     <Column {allWineData} />
                                 </Svg>
                             </LayerCake>
