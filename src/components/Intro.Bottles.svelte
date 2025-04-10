@@ -55,7 +55,7 @@
 
     @media(max-width: 700px) {
         .bottles {
-            margin-top: 40svh;
+            margin-top: 80svh;
         }
     }
 </style>

@@ -84,6 +84,7 @@
         position: absolute;
         width: 100%;
         max-width: 1200px;
+        max-height: 60svh;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -112,14 +113,13 @@
         font-family: var(--mono);
         font-size: var(--12px);
         color: var(--wine-tan);
-        height: 300px;
+        height: auto;
     }
 
     .correct-icon, .wrong-icon {
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 50%;
-        display: inline-block;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -152,30 +152,32 @@
     @media(max-width:700px) {
         .example-wrapper {
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
+            max-width: 500px;
             max-height: none;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            padding: 1rem;
         }
-
-        .example img {
-            max-width: 110px;
-        }
-
+        
         .example {
-            width: calc(50% - 1rem);
+            width: calc(50% - 2rem);
             max-width: none;
+            height: auto;
         }
 
         .example:nth-child(2) {
             clear: left; /* Forces a new row every 3 items */
         }
 
+        .example img {
+            aspect-ratio: 1 / 1.125;
+        }
+
         .example p {
             font-size: 10px;
             margin: 0.25rem 0 0 0;
-            max-width: 200px;
-            height: 160px;
+            height: auto;
         }
 
         .correct-icon, .wrong-icon {

@@ -95,9 +95,11 @@
     // Scroll to the second step once bottle is selected
     $: scrollToStep($animalSelected);
     // Unlock body scroll
-    $: if (scrollIndex >= 1) {
+    $: if (scrollIndex >= 1 || bottleSelected == true) {
         document.body.style.overflowY = "auto";
     }
+
+    $: console.log(scrollIndex)
 </script>
 
 <section id="intro">
@@ -194,7 +196,7 @@
 	}
 
     .step:first-of-type {
-        margin-top: -90vh;
+        margin-top: -75vh;
     }
 
     .step-inner {
