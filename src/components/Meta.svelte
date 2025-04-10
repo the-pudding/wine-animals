@@ -1,7 +1,7 @@
 <script>
 	export let title = "The Pour-igin of Species";
-	export let description = "We scraped the labels of to 10,000 wines to see if we could predict the price and quality of a bottle based on the animal on the label.";
-	export let url = "https://pudding.cool/2025/03/wine-animals";
+	export let description = "We scraped the labels of over 9,000 wines to see if we could predict the price and quality of a bottle based on the animal on the label.";
+	export let url = "https://pudding.cool/2025/04/wine-animals";
 	export let keywords = "wine, animal, label, vivino, bottle, price, quality, design, data, analysis, predict, drink, packaging, alcohol";
 	export let preloadFont = [];
 </script>

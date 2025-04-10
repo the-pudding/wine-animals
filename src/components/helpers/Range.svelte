@@ -231,7 +231,6 @@
 		height: var(--thumb-width);
 		width: var(--thumb-width);
 		border-radius: 50%;
-		background: url("./assets/images/icons/cat.png");
 	}
 
 	/* input[type="range"]:focus::-ms-fill-lower,

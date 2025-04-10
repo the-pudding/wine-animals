@@ -160,29 +160,38 @@
 	<path
 		id={`voronoi-${point.data.id}`}
 		class={"voronoi-cell"}
-        class:active={
+		class:active={
 			((chartScrollIndex == 14) || (chartScrollIndex == "exit"))
 			&& !isMobile
 			&& $withFiltersData.some(f => f.id === point.data.id)
 		}
-	  d={voronoi.renderCell(i)}
-	  aria-label="scatterplot tooltip"
-	  on:mouseover={() => {
-		if (!$lockedSelection && !isMobile) mouseoverCircle(point);
-	  }}
-	  on:mouseleave={() => {
-		if (!$lockedSelection  && !isMobile) mouseleaveCircle(point);
-	  }}
-	  on:focus={() => {
-		if (!$lockedSelection  && !isMobile) mouseoverCircle(point);
-	  }}
-	  on:click={() => {
-		if(!isMobile) {
+		d={voronoi.renderCell(i)}
+		aria-label={`Wine ${point.data.name}, rating ${point.data.rating}, price $${point.data.price}`}
+		tabindex="0"
+		role="button"
+
+		on:mouseover={() => {
+			if (!$lockedSelection && !isMobile) mouseoverCircle(point);
+		}}
+		on:mouseleave={() => {
+			if (!$lockedSelection  && !isMobile) mouseleaveCircle(point);
+		}}
+		on:focus={() => {
+			if (!$lockedSelection  && !isMobile) mouseoverCircle(point);
+		}}
+		on:click={() => {
+			if(!isMobile) {
+				lockedSelection.set(true);
+				mouseClickCircle(point);
+			}
+		}}
+		on:keydown={(e) => {
+			if (!$lockedSelection && !isMobile && (e.key === 'Enter' || e.key === ' ')) {
 			lockedSelection.set(true);
 			mouseClickCircle(point);
-		}
-	}}
-	  role="tooltip"
+			e.preventDefault();
+			}
+		}}
 	></path>
   {/each}
   

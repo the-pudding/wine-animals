@@ -1,6 +1,6 @@
 <script>
     import { getContext } from "svelte";
-    import { stealPriceNum, stealRatingNum, stealPercent, animalSelected} from "$stores/misc.js";
+    import { animalSelected} from "$stores/misc.js";
     import Scrolly from "$components/helpers/ChartScrolly.svelte";
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import rawData from "$data/wineData.csv";
@@ -11,8 +11,6 @@
     const copy = getContext("copy");
     
     let chartScrollIndex;
-    let innerHeight;
-    let innerWidth;
 
     function formatStars(rating) {
         let string = rating + "";
@@ -103,19 +101,6 @@
         overflow: hidden;
 	}
 
-    .steals-sentence {
-        color: var(--wine-tan);
-        font-family: var(--sans);
-        position: absolute;
-        top: 3rem;
-        left: 50%;
-        transform: translate(-50%, 0);
-        max-width: 900px;
-        opacity: 0;
-        transition: opacity var(--250ms) linear;
-        z-index: 1000;
-    }
-
     .chart-wrapper {
         width: 100%;
         height: 100%;
@@ -154,7 +139,7 @@
         transition: opacity var(--250ms) linear;
     }
 
-    .scatter-wrapper.active, .lineup-wrapper.active, .steals-sentence.active {
+    .scatter-wrapper.active, .lineup-wrapper.active {
         opacity: 1;
     }
 
@@ -346,14 +331,6 @@
     :global(.bold) {
         font-weight: 700;
         font-family: var(--sans);
-    }
-
-    .highlight {
-        color: var(--wine-tan);
-        background-color: var(--wine-green);
-        padding: 0.25rem;
-        border-radius: 3px;
-        font-weight: 700;
     }
 
     :global(.slider-span) {

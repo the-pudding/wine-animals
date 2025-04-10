@@ -1,14 +1,11 @@
 <script>
     import fuzzy from "fuzzy";
     import Search from "svelte-search";
-    import { tick, createEventDispatcher, afterUpdate } from "svelte";
-    import { lockedSelection, tooltipData, tooltipType, tooltipVisible } from "$stores/misc.js";
+    import { tick, createEventDispatcher } from "svelte";
     import rawData from "$data/wineData.csv";
-    import { selectAll } from 'd3-selection'; 
 
     export let id = "typeahead-" + Math.random().toString(36);
     export let value = ""; // Ensure this is always a string
-    export let selectHandler = null;
   
     /** @type {TItem[]} */
     export let data = [];
@@ -17,7 +14,6 @@
     export let extract = (item) => item;
     export let disable = (item) => false;
     export let filter = (item) => false;
-    export let autoselect = true;
   
     /** @type {"update" | "clear" | "keep"} */
     export let inputAfterSelect = "update";
@@ -27,15 +23,12 @@
     export let limit = Infinity;
   
     const dispatch = createEventDispatcher();
-    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human");
   
     let comboboxRef = null;
     let searchRef = null;
     let hideDropdown = false;
     let selectedIndex = -1;
-    let prevResults = "";
     let isFocused = false;
-    let foundWine;
   
     let localResults = [];
 

@@ -169,14 +169,14 @@
     }
 
     .key .animal-wines::before {
-        background-image: url('assets/images/bar-chart.png');
+        background-image: url('/assets/images/bar-chart.png');
         background-size: 30px 15px;
         background-repeat: no-repeat;
         background-position: center;
     }
 
     .key .all-wines::before {
-        background-image: url('assets/images/step-chart.png');
+        background-image: url('/assets/images/step-chart.png');
         background-size: 30px 15px;
         background-repeat: no-repeat;
         background-position: center;
@@ -208,10 +208,6 @@
     }
 
     :global(.bolded) {
-        font-weight: 700;
-    }
-
-    .topline {
         font-weight: 700;
     }
 

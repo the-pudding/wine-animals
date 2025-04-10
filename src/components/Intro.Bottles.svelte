@@ -6,8 +6,6 @@
     export let scrollIndex;
     export let visible;
 
-    console.log("Bottles component script running", { scrollIndex });
-
     const openingWines = [
         { animal: "cat", name: "Poppóne", winery: "Antonutti", country: "Italy", price: 34.99, rating: 4.3, bottleSlot: "farleft", targetPos: "20%", startingPos: "-80%", wineQuad: "good expensive"},
         { animal: "bird", name: "Sauvignon Blanc", winery: "Tomtit", country: "New Zealand", price: 22.67, rating: 4.1, bottleSlot: "centerleft", targetPos: "40%", startingPos: "-60%", wineQuad: "good cheap"},
@@ -43,11 +41,8 @@
         requestAnimationFrame(() => {
             setTimeout(() => {
                 readyToAnimate = true;
-                console.log(readyToAnimate)
             }, 50); // short delay for smoother paint
         });
-
-        console.log("Bottles onMount fired");
     });
 
     $: bottleSizes = bottlesWidth && bottlesHeight

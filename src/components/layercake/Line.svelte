@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from "svelte";
-	import { line, curveLinear, curveStepAfter } from "d3";
+	import { line, curveStepAfter } from "d3";
 
 	const { data, xGet, yGet, xScale, } = getContext("LayerCake");
 

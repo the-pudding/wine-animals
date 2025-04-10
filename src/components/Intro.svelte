@@ -27,6 +27,7 @@
     let shouldSpin = [false, false, false, false];
     let scrollIndex;
     let scrollyContainer; // Reference to the Scrolly container
+    let scrollY;
 
     $: selectedText = $animalSelected == "amphibian/reptile" ? copy.opening[0]["amphibian"] : copy.opening[0][$animalSelected];
     $: selectedPriceText = $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianPrice")] : copy.opening[0][($animalSelected + "Price")];
@@ -95,12 +96,14 @@
     // Scroll to the second step once bottle is selected
     $: scrollToStep($animalSelected);
     // Unlock body scroll
-    $: if (scrollIndex >= 1 || bottleSelected == true) {
+    $: if (scrollY >= 100 || scrollIndex >= 1 || bottleSelected == true) {
         document.body.style.overflowY = "auto";
     }
 
-    $: console.log(scrollIndex)
+    // $: console.log(scrollIndex)
 </script>
+
+<svelte:window bind:scrollY={scrollY}/>
 
 <section id="intro">
     <div class="sticky">

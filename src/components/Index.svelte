@@ -3,11 +3,10 @@
 	import { getContext } from "svelte";
 
 	// STORES
-	import { currAnimalSlide, tooltipType, lockedSelection, searchedWineSTORE, tooltipData } from "$stores/misc.js";
+	import { currAnimalSlide } from "$stores/misc.js";
 	
 	// COMPONENTS
 	import inView from "$actions/inView.js";
-	import Icon from "$components/helpers/Icon.svelte";
 	import Intro from "$components/Intro.svelte";
 	import ChartScroll from "$components/ChartScroll.svelte";
 	import AnimalCard from "$components/AnimalCard.svelte";
@@ -16,14 +15,8 @@
 	import Slide from "$components/helpers/Slider.Slide.svelte";
 	import Tap from "$components/helpers/Tap.svelte";
 	import Outro from "$components/Outro.svelte";
-	import Explore from "$components/Explore.svelte";
 	import Footer from "$components/Footer.svelte";
 	import Tooltip from "$components/Tooltip.svelte";
-
-	// LIBRARIES
-	import { select, selectAll } from "d3-selection";
-
-	import allWineData from "$data/wineData.csv";
 
 	// VARIABLES
 	const copy = getContext("copy");
@@ -33,8 +26,6 @@
 
 	let sliderEl;
 	let tapVisible = false;
-	let tooltipEl;
-	let handleClick;
 
 	// INTERACTION FUNCTIONS
 	// Makes tap visible when section enters

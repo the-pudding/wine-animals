@@ -87,8 +87,8 @@
             <div class="quadrants"  transition:fade={{ duration: reduceMotion ? 0 : 250 }}>
                 <p style="left: 30%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Expensive Wine</p>
                 <p style="left: 75%; top: 40%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Good Expensive Wine</p>
-                <p style="left: 30%; top: 80%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Cheap Wine</p>
-                <p style="left: 75%; top: 80%">Good Cheap Wine</p>
+                <p style="left: 30%; bottom: 15%" style:opacity={chartScrollIndex == 8 ? 0.4 : 1}>Bad Cheap Wine</p>
+                <p style="left: 75%; bottom: 15%">Good Cheap Wine</p>
             </div>
         {/if}
         <p class="label label-price">More expensive →</p>

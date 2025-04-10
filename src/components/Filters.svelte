@@ -1,8 +1,6 @@
 <script>
-    import { tick } from "svelte";
     import { get } from 'svelte/store';
     import MultiSelect from 'svelte-multiselect';
-    import DoubleRange from "$components/helpers/DoubleRange.svelte";
     import { bigScatterData, selectedAnimalSTORE, selectedTypeSTORE, selectedCountrySTORE, searchedWineSTORE, tooltipType, tooltipData, lockedSelection, stealPercent, stealPriceNum, stealRatingNum, withFiltersData, tooltipVisible } from "$stores/misc.js";
     import rawData from "$data/wineData.csv";
     import Icon from "$components/helpers/Icon.svelte";
@@ -11,8 +9,6 @@
     import { format } from 'd3-format';
     import { median } from 'd3-array';
 
-    const totalMedianPrice = median(rawData, d => d.price);
-    const totalMedianRating = median(rawData, d => d.rating);
     const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "none" && d.topgroup !== "human");
     const formatter = format(",");
 
@@ -88,21 +84,6 @@
 
         stealPercent.set(stealsPercentLOCAL);
     }
-
-    function mouseleaveCircle(point) {
-        searchTerm = undefined;
-		selectAll("#scatter-explore .selected-wine")
-			.style("opacity", 0.8)
-
-		selectAll(`#scatter-explore #circle-${point.id}`)
-			.style("opacity", 0.8)
-			.style("fill", function() {
-				let fill =  (point.price <= 29.99 && point.rating >= 4) ? "#3E5C4B" : "#475171";
-				return fill
-			})
-			.transition(500)
-			.attr("r", 5)
-	}
 
     $: if (!$lockedSelection && foundWine) {
 		resetCircle(foundWine)
@@ -318,21 +299,6 @@
 
     .filter {
         width: calc(25% - 0.5rem);
-    }
-
-    .range-wrapper .filter {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-    }
-
-    label {
-        width: 80px;
-        text-align: right;
-        color: var(--wine-dark-tan);
-        font-family: var(--sans);
-        text-transform: uppercase;
-        font-size: var(--14px);
     }
 
     .search-wrapper {

@@ -20,12 +20,10 @@
 
 
 	export let r = Math.min(36, Math.max(20, $width / 20));
-	export let fill = "#475171";
 	export let strokeWidth = 2;
     export let chartScrollIndex;
 
     $: r = Math.min(30, Math.max(20, $width / 30));
-    $: expandedR = r + 20;
 
     $: smallestR = 5;
     $: expandedSmallestR = 10;

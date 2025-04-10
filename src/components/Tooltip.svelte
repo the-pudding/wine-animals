@@ -99,24 +99,26 @@
                 <Icon name="x" size={"24px"} rotation={0}/>
             </button>
             <div class="zoom-container"
-					bind:this={wrapper}
-					on:mouseenter={(e) => {
-						if (!isMobile) handleMouseEnter(e)
-					}}
-					on:mouseleave={(e) => {
-						if (!isMobile) handleMouseLeave(e)
-					}}
-					on:mousemove={(e) => {
-						if (!isMobile) handleMouseMove(e)
-					}}>
-					<img class="label-img zoom-target" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
-					{#if !isMobile}
-						<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
-						<span class="mag">
-							<Icon name="zoom-in" size={"24px"} rotation={0}/>
-						</span>
-					{/if}
-				</div>
+				role="img"
+				aria-label="Zoomed-in wine label image"
+				bind:this={wrapper}
+				on:mouseenter={(e) => {
+					if (!isMobile) handleMouseEnter(e)
+				}}
+				on:mouseleave={(e) => {
+					if (!isMobile) handleMouseLeave(e)
+				}}
+				on:mousemove={(e) => {
+					if (!isMobile) handleMouseMove(e)
+				}}>
+				<img class="label-img zoom-target" use:lazyImage src={`./assets/images/vivinoLabels/img_${data.id}.png`} alt="wine label" />
+				{#if !isMobile}
+					<div class="zoom-lens" bind:this={lens} style="background-size: {zoomFactor * 100}%"></div>
+					<span class="mag">
+						<Icon name="zoom-in" size={"24px"} rotation={0}/>
+					</span>
+				{/if}
+			</div>
             <div class="deets">
                 <p class="wine-name">{data.name}</p>
                 <p class="winery-name">{data.winery}, {data.country}</p>

@@ -97,6 +97,9 @@
 			{@const width = $xScale.bandwidth ? $xScale.bandwidth() : columnWidth(d)}
 			{@const height = columnHeight(d)}
 			<rect
+				role="button"
+				tabindex="0"
+				aria-label={`Data for ${d.bucket}, ${d.percent}%`}
 				class={d.bucket}
 				class:active={!isMobile}
 				data-id={i}

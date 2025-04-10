@@ -4,14 +4,12 @@
     
     export let bottleIndex;
     export let wineData;
-    export let containerDimensions;
     export let bottlePosLeft;
     export let scrollIndex;
     export let outroVisible;
     export let bottleSize;
 
     let wineWidth;
-    let aspectRatio = 3.5;
     let shouldSpin = [true,true,true,true];
     let spin4 = true;
 
@@ -109,6 +107,7 @@
 
     </div>
     <div class="wine"
+        aria-hidden="true"
         class:spin={bottleIndex == 4 ? spin4 : shouldSpin[bottleIndex]}
         on:mousemove={mousemoveBottle}
         on:mouseleave={mouseleaveBottle}>
