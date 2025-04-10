@@ -1,6 +1,6 @@
 <script>
     // SVELTE
-    import { getContext } from "svelte";
+    import { getContext, onMount } from "svelte";
 
     // STORES
     import { bottleSelected, animalSelected } from "$stores/misc.js";
@@ -28,23 +28,27 @@
     let scrollIndex;
     let scrollyContainer; // Reference to the Scrolly container
     let scrollY;
-    let autoSelected = false;
     let selectedText;
     let selectedPriceText;
     let selectedRatingText;
-    console.log("Top-level:", $animalSelected);
+    let hasUserInteracted = false;
 
     // INTERACTION FUNCTIONS
-    // Handles the wine click and sets selected wine
-    function handleBottleClick(data) {
-        console.log("running", data);
-        animalSelected.set(data.animal);
-        bottleSelected.set(true);
 
+    function updateSelectedCopy(data) {
         const key = data.animal !== "amphibian/reptile" ? data.animal : "amphibian";
         selectedText = copy.opening[0][key];
         selectedPriceText = copy.opening[0][key + "Price"];
         selectedRatingText = copy.opening[0][key + "Rating"];
+    }
+
+    // Handles the wine click and sets selected wine
+    function handleBottleClick(data) {
+        hasUserInteracted = true;
+        animalSelected.set(data.animal);
+        bottleSelected.set(true);
+
+        updateSelectedCopy(data)
 
         const products = document.querySelectorAll(".product");
 
@@ -79,6 +83,8 @@
 
     // Scrolls to second step once wine is selected
     function scrollToStep($animalSelected) {
+        const selectedWine = openingWines.find(d => d.animal == $animalSelected);
+        if (selectedWine) updateSelectedCopy(selectedWine);
         if ($bottleSelected) {
             setTimeout(() => {
                 const stepElements = scrollyContainer.querySelectorAll('.step');
@@ -93,16 +99,20 @@
 
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
-    $: scrollToStep($animalSelected);
-    $: if (scrollY >= 50 && !autoSelected && !$bottleSelected) {
+    $: if ($bottleSelected) {
+        scrollToStep($animalSelected); 
+    }
+    $: if (scrollY >= 50 && !$bottleSelected) {
         const randomWine = openingWines[Math.floor(Math.random() * openingWines.length)];
         handleBottleClick(randomWine);
-        autoSelected = true;
     }
 
-    $: console.log("Reactive:", $animalSelected);
-
-    $: console.log(scrollIndex, scrollY)
+    $: if ($animalSelected && $bottleSelected) {
+        const selectedWine = openingWines.find(d => d.animal === $animalSelected);
+        if (selectedWine) {
+            updateSelectedCopy(selectedWine);
+        }
+    }
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
