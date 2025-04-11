@@ -4,6 +4,7 @@
     import { tick } from 'svelte';
 
     export let scrollIndex;
+    export let scrollyContainer;
 
     const storedAnimal = typeof localStorage !== "undefined" ? localStorage.getItem("animalSelected") : null;
 
@@ -69,6 +70,7 @@
                     wineData={wine}
                     outroVisible={false}
                     containerDimensions={{bottlesWidth, bottlesHeight}}
+                    {scrollyContainer}
                     bottlePosLeft={
                         readyToAnimate
                         ? (scrollIndex === undefined || scrollIndex < 2 ? wine.targetPos : wine.startingPos)

@@ -44,9 +44,7 @@
         selectedRatingText = copy.opening[0][key + "Rating"];
     }
 
-    // Handles the wine click and sets selected wine
-    function handleBottleClick(data) {
-        scrollingUp = false;
+    function handleBottleScroll(data) {
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
@@ -80,37 +78,15 @@
                 }
             }
         });
-
-    }
-
-    // Scrolls to second step once wine is selected
-    function scrollToStep($animalSelected) {
-        const selectedWine = openingWines.find(d => d.animal == $animalSelected);
-        if (selectedWine) updateSelectedCopy(selectedWine);
-        if ($bottleSelected) {
-            setTimeout(() => {
-                const stepElements = scrollyContainer.querySelectorAll('.step');
-                if (stepElements[1]) {
-                    const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
-                    const offset = elementTop - (window.innerHeight * 0.10);
-                    window.scrollTo({ top: offset, behavior: 'smooth' });
-                }
-            }, 500);
-        }
     }
 
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
-    $: if ($bottleSelected && scrollIndex < 1) {
-        // if (!scrollingUp) {
-            scrollToStep($animalSelected); 
-        // }
-    }
     $: if (scrollY >= 50 && !$bottleSelected) {
         const randomWine = storedAnimal ?
             openingWines.find(d => d.animal === $animalSelected)
             : openingWines[Math.floor(Math.random() * openingWines.length)];
-        handleBottleClick(randomWine);
+        handleBottleScroll(randomWine);
     }
 
     $: if ($animalSelected && $bottleSelected) {
@@ -119,18 +95,6 @@
             updateSelectedCopy(selectedWine);
         }
     }
-
-    // $: {
-    //     if (scrollY < 50) {
-    //         scrollingUp = true;
-    //     } else {
-    //         scrollingUp = scrollY < lastScrollY;
-    //     }
-
-    //     lastScrollY = scrollY;
-    // }
-
-    // $: console.log(scrollIndex, scrollingUp)
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
@@ -138,7 +102,7 @@
 <section id="intro">
     <div class="sticky">
         <IntroHeadline scrollIndex={scrollIndex}/>
-        <Bottles scrollIndex={scrollIndex}/>
+        <Bottles scrollIndex={scrollIndex} {scrollyContainer}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"correct"}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"wrong"}/>
         <IntroSummaryBottles scrollIndex={scrollIndex}/>

@@ -9,6 +9,7 @@
     export let scrollIndex;
     export let outroVisible;
     export let bottleSize;
+    export let scrollyContainer;
 
     let wineWidth;
     let shouldSpin = [true,true,true,true];
@@ -88,8 +89,24 @@
             }
         });
 
+        scrollToStep($animalSelected); 
+
         // Emit event to parent component
         dispatch("bottleClicked", data);
+    }
+
+    // Scrolls to second step once wine is selected
+    function scrollToStep($animalSelected) {
+        if ($bottleSelected) {
+            setTimeout(() => {
+                const stepElements = scrollyContainer.querySelectorAll('.step');
+                if (stepElements[1]) {
+                    const elementTop = stepElements[1].getBoundingClientRect().top + window.pageYOffset;
+                    const offset = elementTop - (window.innerHeight * 0.10);
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            }, 500);
+        }
     }
 
     $: transitionDelay = $bottleSelected == false 
