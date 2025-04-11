@@ -2,7 +2,7 @@ import download from "image-downloader";
 import fs from "fs";
 import * as d3 from "d3";
 
-const raw = fs.readFileSync("./src/data/wine-animals_LIMITED.csv", "utf8");
+const raw = fs.readFileSync("./src/data/wineData.csv", "utf8");
 const csvData = d3.csvParse(raw);
 
 let options = {
