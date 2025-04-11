@@ -1,16 +1,19 @@
 <script>
-	import { getContext } from "svelte";
+	import { getContext, onMount } from "svelte";
     import { tick } from "svelte";
+    import { writable } from 'svelte/store';
 	import { line } from 'd3-shape';
 	import { median } from 'd3-array';
     import * as d3Regression from 'd3-regression';
     import rawData from "$data/wineData.csv";
-    import { animalSelected, stealPriceNum, stealRatingNum, stealData, stealPercent, withFiltersData } from "$stores/misc.js";
-    import viewport from "$stores/viewport.js";
+    import { animalSelected, stealPriceNum, stealRatingNum, stealData, withFiltersData } from "$stores/misc.js";
 	import { stealTopgroupCounts } from "../../stores/misc";
 
+    export let r = Math.min(36, Math.max(20, $width / 20));
+	export let strokeWidth = 2;
+    export let chartScrollIndex;
+
 	const { data, xGet, yGet, xScale, yScale, width, height } = getContext("LayerCake");
-    const filteredRawData = rawData.filter(d => d.price <= 150 && d.topgroup !== "human" && d.topgroup !== "none");
 
     const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", "cattle",
 		"deer", "fish", "horse", "human",
@@ -18,16 +21,9 @@
 		"rabbit", "sheep"
 	];
 
-
-	export let r = Math.min(36, Math.max(20, $width / 20));
-	export let strokeWidth = 2;
-    export let chartScrollIndex;
-
     $: r = Math.min(30, Math.max(20, $width / 30));
-
     $: smallestR = 5;
     $: expandedSmallestR = 10;
-
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
         : $animalSelected == "pig" ?"171574314"
@@ -53,44 +49,12 @@
         y: +d.price  // Convert rating to a number
     }))
 
-
-
     $: trendLine = regression(points);
 
     $: path = line()
 			.x(d => $xScale(d[0]))
 			.y(d => $yScale(d[1]))
 			(trendLine);
-
-    // Compare lines
-    const maxLength = 99;
-    const generations = Array.from({ length: maxLength + 1 }, (_, i) => i);
-
-    // Generate random subsets from rawData with length matching $bigScatterData
-	let randomDataForGenerations = filteredRawData !== 0 
-        ? generateRandomDataForGenerations(filteredRawData, $data[1]?.length || 0, generations)
-        : undefined;
-
-	function generateRandomSubset(data, targetLength) {
-		// Shuffle rawData and select a subset with the same length as $bigScatterData
-		return [...data]
-			.sort(() => Math.random() - 0.5)
-			.slice(0, targetLength);
-	}
-
-	function generateRandomDataForGenerations(data, targetLength, generations) {
-		return generations.map(() => generateRandomSubset(data, targetLength));
-	}
-
-    function setStealData($stealPriceNum, $stealRatingNum) {
-        return rawData.filter(d => 
-            d.price <= $stealPriceNum &&
-            d.rating >= $stealRatingNum &&
-            d.topgroup !== "none" &&
-            d.topgroup !== "human" &&
-            d.price <= 150
-        )
-    }
 
     $: topgroupCounts = [];
 
@@ -115,27 +79,19 @@
 			.sort((a, b) => b.count - a.count);
 	}
 
-    $: stealTopgroupCounts.set(topgroupCounts)
-
-    $: if ($data[1]?.length) {
-        tick().then(() => {
-            randomDataForGenerations = generateRandomDataForGenerations(filteredRawData, $data[1].length, generations);
-        });
-    }
+    $: stealTopgroupCounts.set(topgroupCounts);
 </script>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
-    {#if chartScrollIndex >= 8 || chartScrollIndex == "exit"}
-        <rect
-            class="highlight-quadrant"
-            x={$xScale($stealRatingNum)}
-            y={$yScale($stealPriceNum)}
-            width={$width - $xScale($stealRatingNum)}
-            height={$height - $yScale($stealPriceNum)}
-            fill="#363B45"
-            opacity=0.3
-        />
-    {/if}
+    <rect
+        class="highlight-quadrant"
+        x={$xScale($stealRatingNum)}
+        y={$yScale($stealPriceNum)}
+        width={$width - $xScale($stealRatingNum)}
+        height={$height - $yScale($stealPriceNum)}
+        fill="#363B45"
+        opacity={chartScrollIndex >= 8 ? 0.3 : 0}
+    />
 </g>
 
 {#if chartScrollIndex >= 4 || chartScrollIndex == "exit"}
@@ -146,12 +102,11 @@
         {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}
         <g class="wine-circle wine-circle-{animal}" 
-            class:hidden={
-                (chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile")) ||
-                (chartScrollIndex == 10 && !d.topgroup.includes("pig")) ||
-                (chartScrollIndex == 11 && (!d.topgroup.includes("cat") || (d.topgroup.includes("cattle") && !d.topgroup.includes("cat")))) ||
-                (chartScrollIndex == 12 && !d.topgroup.includes("bird"))
-            }
+            class:hidden={chartScrollIndex == 9 && !d.topgroup.includes("amphibian/reptile") ||
+                chartScrollIndex == 10 && !d.topgroup.includes("pig") ||
+                chartScrollIndex == 11 && !d.topgroup.includes("cat") 
+                || chartScrollIndex == 12 && !d.topgroup.includes("bird")
+                || chartScrollIndex == 13 && !d.topgroup.includes("bird")} 
             class:filteredOut={
                 !$withFiltersData.some(f => f.id === d.id) && (chartScrollIndex == 14 || chartScrollIndex == "exit")
             }
@@ -236,8 +191,8 @@
                         {#if chartScrollIndex == undefined || chartScrollIndex <= 3}
                             <text 
                                 class="label-dashed"
-                                x={cx + r+10} 
-                                y={cy + 4} 
+                                x={cx + r+4} 
+                                y={cy + 22} 
                                 text-anchor="start" 
                                 fill={"#CFCABF"}>
                                 {d.topGroup}
@@ -314,6 +269,9 @@
 </g>
 
 <style>
+    .highlight-quadrant {
+        transition: opacity var(--500ms);
+    }
     .wines-wrapper g.active, .medians-wrapper g.active {
         opacity: 1;
     }
@@ -330,7 +288,7 @@
 
     .wines-wrapper g, .medians-wrapper g {
         opacity: 1;
-        transition: opacity var(--500ms) linear;
+        transition: opacity var(--750ms) linear;
     }
 
 	circle {
@@ -376,7 +334,7 @@
         font-weight: 700;
         font-family: var(--sans);
         font-size: var(--12px);
-        fill: var(--wine-tan);
+        fill: #a10f50;
     }
     .compare-wrapper.hidden {
         opacity: 0;

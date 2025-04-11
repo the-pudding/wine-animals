@@ -161,6 +161,7 @@
         bottom: 0;
         left: -50%;
         transform: translate(-50%, 0);
+        padding: 0;
     }
 
     .product.faded {

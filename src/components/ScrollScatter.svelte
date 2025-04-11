@@ -22,8 +22,8 @@
         d[yKey] = +d[yKey];
     });
 
-    let xDomain = tweened([3.7, 4.2], { duration: 2000, easing: cubicIn });
-    let yDomain = tweened([20, 35], { duration: 2000, easing: cubicIn });
+    let xDomain = tweened([3.7, 4.2], { duration: 500, easing: cubicIn });
+    let yDomain = tweened([20, 35], { duration: 500, easing: cubicIn });
 
     async function updateDomains(chartScrollIndex) {
         if (chartScrollIndex <= 3 || chartScrollIndex == undefined) {
@@ -141,6 +141,7 @@
         transform: translate(-50%, -50%);
         color: var(--wine-tan);
         text-shadow: -2px -2px 0 var(--wine-black), 2px -2px 0 var(--wine-black), -2px 2px 0 var(--wine-black), 2px 2px 0 var(--wine-black);
+        transition: opacity var(--250ms);
     }
 
     .label {
