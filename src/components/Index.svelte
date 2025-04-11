@@ -61,7 +61,6 @@
 	$: moveSlider($currAnimalSlide);
 </script>
 
-<div id="gradient"></div>
 <Intro />
 <ChartScroll />
 <div 
@@ -96,16 +95,6 @@
 <Footer recirc={true} />
 
 <style>
-	#gradient {
-		width: 100%;
-		height: 100svh;
-		position: fixed;
-		z-index: 1;
-		background: linear-gradient(to bottom, #181A1F, #14161a);
-		pointer-events: none;
-		overflow: hidden;
-	}
-
 	.cards {
 		width: 100%;
 		display: flex;

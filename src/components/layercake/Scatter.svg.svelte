@@ -53,7 +53,7 @@
 	{#if path}
 		<path class="expRegression" d={path} />
 	{/if}
-    <line class="priceAVG" x1={0} y1={$yScale(median(rawData, d => d.price))} x2={$width + $padding.right} y2={$yScale(median(rawData, d => d.price))} />
+    <line class="priceAVG" x1={0} y1={$yScale(29.99)} x2={$width + $padding.right} y2={$yScale(29.99)} />
     <line class="ratingAVG" x1={$xScale(median(rawData, d => d.rating))} y1={0} x2={$xScale(median(rawData, d => d.rating))} y2={$height} />
 </g>
 

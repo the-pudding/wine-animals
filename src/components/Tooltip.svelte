@@ -127,7 +127,7 @@
                     <span class="chevron"><img src="./assets/images/chevron-right.png" alt=">" /></span>
                     {data.finalAnimal}
                 </p>
-                <p class="type">{data.type}</p>
+                <p class="type">{data.type == "Rose" ? "Rosé" : data.type}</p>
                 <div class="price-rating">
                     <p class="price">${data.price}</p>
                     <p class="rating">
@@ -161,7 +161,7 @@
                         <p class="details">
                             <span class="bolded">{Math.round(data[0][0][0].percent)}%</span> 
                             of <span class="bolded">{data[0][0][0].animalGroup}</span> wines 
-                            are <span class="bolded">{data[0][0][0].bucket}</span> wines,
+                            are <span class="bolded">{data[0][0][0].bucket == "Rose" ? "Rosé" : data[0][0][0].bucket}</span> wines,
                             compared to <span class="bolded">{Math.round(data[0][1][0].percent)}%</span> of all wines 
                         </p>
                     {:else if data[0][0][0].category == "country"}

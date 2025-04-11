@@ -130,7 +130,7 @@
 						{"<$10"}
 					{/if}
 				{:else}
-					{d.bucket}
+					{d.bucket == "Rose" ? "Rosé" : d.bucket}
 				{/if}
 			</text>
 		{/if}

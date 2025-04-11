@@ -60,6 +60,7 @@
         bottleSelected.set(true);
 
         const products = document.querySelectorAll("#intro .product");
+
         products.forEach((product) => {
             const prodAnimal = product.getAttribute("data-animal");
             const wineDiv = product.querySelector(".wine");
@@ -108,7 +109,11 @@
         height: {bottleSize?.height}px;
         left: {bottlePosLeft};"
         on:transitionend={handleTransitionEnd}
-        on:click={() => handleClick(wineData)}>
+        on:click={() => {
+            if (wineData.bottleSlot !== "center-lone") {
+                handleClick(wineData)
+            }
+        }}>
     <div class="shadows">
 
     </div>
@@ -164,8 +169,12 @@
         padding: 0;
     }
 
-    .product.faded {
+    .product-farleft.faded, .product-farright.faded, .product-centerleft.faded, .product-centerright.faded {
         opacity: 0.25;
+    }
+
+    #outro .product.faded {
+        opacity: 1 !important;
     }
     .product .wine {
         height: calc(100% - 150px);

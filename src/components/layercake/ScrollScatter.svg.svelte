@@ -243,7 +243,7 @@
 </g>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
-    <line class="priceAVG-gray" x1={0} y1={$yScale(median(rawData, d => d.price))} x2={$width} y2={$yScale(median(rawData, d => d.price))} />
+    <line class="priceAVG-gray" x1={0} y1={$yScale(29.99)} x2={$width} y2={$yScale(29.99)} />
     <line class="ratingAVG-gray" x1={$xScale(median(rawData, d => d.rating))} y1={0} x2={$xScale(median(rawData, d => d.rating))} y2={$height} />
 
     <line class="priceAVG" x1={0} y1={$yScale($stealPriceNum)} x2={$width} y2={$yScale($stealPriceNum)} />
@@ -251,10 +251,10 @@
     <text 
         class="label"
         x={$width-20} 
-        y={$yScale(median(rawData, d => d.price)) - 10}
+        y={$yScale(29.99) - 10}
         text-anchor="end"
         fill="white">
-        Med. price (${median(rawData, d => d.price)})
+        Med. price ($29.99)
     </text>
 
     <text 
