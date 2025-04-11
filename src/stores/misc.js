@@ -20,23 +20,15 @@ const openingWines = ["cat", "bird", "pig", "amphibian/reptile"];
 const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
 
 const storedAnimal = isBrowser ? localStorage.getItem("animalSelected") : null;
-console.log("[store] loaded animal from localStorage:", storedAnimal);
-const hasStoredAnimal = !!storedAnimal;
+const fallbackAnimal = storedAnimal || (openingWines[Math.floor(Math.random() * openingWines.length)]);
+export const animalSelected = writable(fallbackAnimal);
 
 export const bottleSelected = writable(false);
-export const animalSelected = writable(storedAnimal || randomAnimal);
-
-console.log("[store] initialized animalSelected to:", storedAnimal || randomAnimal);
 
 if (isBrowser) {
-	bottleSelected.subscribe((isSelected) => {
-		console.log("[store] bottleSelected changed:", isSelected);
-		if (isSelected) {
-			const unsubscribe = animalSelected.subscribe((animal) => {
-				console.log("[store] setting localStorage to:", animal);
-				localStorage.setItem("animalSelected", animal);
-			});
-			unsubscribe();
+	animalSelected.subscribe((animal) => {
+		if (animal) {
+			localStorage.setItem("animalSelected", animal);
 		}
 	});
 }

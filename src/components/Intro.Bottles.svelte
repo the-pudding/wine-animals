@@ -4,7 +4,9 @@
     import { tick } from 'svelte';
 
     export let scrollIndex;
-    export let visible;
+
+    const storedAnimal = typeof localStorage !== "undefined" ? localStorage.getItem("animalSelected") : null;
+
 
     const openingWines = [
         { animal: "cat", name: "Poppóne", winery: "Antonutti", country: "Italy", price: 34.99, rating: 4.3, bottleSlot: "farleft", targetPos: "20%", startingPos: "-80%", wineQuad: "good expensive"},
@@ -49,10 +51,13 @@
         ? openingWines.map(wine =>
             getMaxElementSize(bottlesWidth, bottlesHeight, wine.bottleSlot))
         : [];
+    $: visible = scrollIndex == undefined || scrollIndex <=2 ? true : false;
 </script>
 
 {#if visible}
-    <div class="bottles" bind:clientWidth={bottlesWidth} bind:clientHeight={bottlesHeight}>
+    <div class="bottles" 
+        bind:clientWidth={bottlesWidth} 
+        bind:clientHeight={bottlesHeight}>
         {#if bottlesWidth && bottlesHeight}
             {#each openingWines as wine, i}
                 <SpinningBottle 

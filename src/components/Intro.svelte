@@ -23,6 +23,7 @@
         { animal: "amphibian/reptile", name: "Tïn Bianco", winery: "Montesecondo", country: "Italy", price: 39.99, rating: 3.8, bottleSlot: "farright", targetPos: "80%", startingPos: "-20%", wineQuad: "bad expensive"},
     ];
     const steps = copy.steps;
+    const storedAnimal = typeof localStorage !== "undefined" ? localStorage.getItem("animalSelected") : null;
     
     let shouldSpin = [false, false, false, false];
     let scrollIndex;
@@ -31,7 +32,8 @@
     let selectedText;
     let selectedPriceText;
     let selectedRatingText;
-    let hasUserInteracted = false;
+    let lastScrollY = 0;
+    let scrollingUp = false;
 
     // INTERACTION FUNCTIONS
 
@@ -44,7 +46,7 @@
 
     // Handles the wine click and sets selected wine
     function handleBottleClick(data) {
-        hasUserInteracted = true;
+        scrollingUp = false;
         animalSelected.set(data.animal);
         bottleSelected.set(true);
 
@@ -99,11 +101,15 @@
 
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
-    $: if ($bottleSelected) {
-        scrollToStep($animalSelected); 
+    $: if ($bottleSelected && scrollIndex < 1) {
+        // if (!scrollingUp) {
+            scrollToStep($animalSelected); 
+        // }
     }
     $: if (scrollY >= 50 && !$bottleSelected) {
-        const randomWine = openingWines[Math.floor(Math.random() * openingWines.length)];
+        const randomWine = storedAnimal ?
+            openingWines.find(d => d.animal === $animalSelected)
+            : openingWines[Math.floor(Math.random() * openingWines.length)];
         handleBottleClick(randomWine);
     }
 
@@ -113,6 +119,18 @@
             updateSelectedCopy(selectedWine);
         }
     }
+
+    // $: {
+    //     if (scrollY < 50) {
+    //         scrollingUp = true;
+    //     } else {
+    //         scrollingUp = scrollY < lastScrollY;
+    //     }
+
+    //     lastScrollY = scrollY;
+    // }
+
+    // $: console.log(scrollIndex, scrollingUp)
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
@@ -120,7 +138,7 @@
 <section id="intro">
     <div class="sticky">
         <IntroHeadline scrollIndex={scrollIndex}/>
-        <Bottles scrollIndex={scrollIndex} visible={true}/>
+        <Bottles scrollIndex={scrollIndex}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"correct"}/>
         <GPTExamples scrollIndex={scrollIndex} exampleType={"wrong"}/>
         <IntroSummaryBottles scrollIndex={scrollIndex}/>
