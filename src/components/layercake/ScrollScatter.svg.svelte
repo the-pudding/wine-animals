@@ -80,6 +80,8 @@
 	}
 
     $: stealTopgroupCounts.set(topgroupCounts);
+
+    $: console.log(chartScrollIndex)
 </script>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
@@ -90,7 +92,7 @@
         width={$width - $xScale($stealRatingNum)}
         height={$height - $yScale($stealPriceNum)}
         fill="#363B45"
-        opacity={chartScrollIndex >= 8 ? 0.3 : 0}
+        opacity={chartScrollIndex >= 8 || chartScrollIndex == "exit" ? 0.3 : 0}
     />
 </g>
 
