@@ -12,7 +12,8 @@
     import IntroSummaryBottles from "$components/Intro.SummaryBottles.svelte";
     import IntroHeadline from "$components/Intro.Headline.svelte";
     import Icon from "$components/helpers/Icon.svelte";
-    import tapSVG from "$svg/touch.svg"
+    import tapSVG from "$svg/touch.svg";
+    import loadSVG from "$svg/loader-circle.svg";
 
     // VARIABLES
     const copy = getContext("copy");
@@ -32,8 +33,7 @@
     let selectedText;
     let selectedPriceText;
     let selectedRatingText;
-    let lastScrollY = 0;
-    let scrollingUp = false;
+    let isMounted;
 
     // INTERACTION FUNCTIONS
 
@@ -95,6 +95,18 @@
             updateSelectedCopy(selectedWine);
         }
     }
+
+    onMount(() => {
+        setTimeout(() => {
+            isMounted = true;
+        }, 500)
+    })
+
+    $: {
+        if (isMounted && typeof document !== "undefined") {
+            document.body.style.overflowY = "scroll";
+        }
+    }
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
@@ -123,10 +135,17 @@
                         {:else}
                             {@html step.value}
                                 {#if i == 0}
-                                    <p class="instructions">
-                                        <span class="tap-icon">{@html tapSVG}</span>
-                                        Tap on a bottle or start scrolling to get a random wine
-                                    </p>
+                                    {#if isMounted}
+                                        <p class="instructions">
+                                            <span class="tap-icon">{@html tapSVG}</span>
+                                            Tap on a bottle or start scrolling to get a random wine
+                                        </p>
+                                    {:else}
+                                        <p class="instructions">
+                                            <span class="load-icon">{@html loadSVG}</span>
+                                            Loading...
+                                        </p>
+                                    {/if}
                                 {/if}
                         {/if}
                     </p>
@@ -241,7 +260,7 @@
         font-size: var(--16px) !important;
         font-weight: 700;
         position: relative;
-        display: inline-block;
+        display: block;
     }
 
     :global(a.methods-link) {
@@ -256,7 +275,7 @@
         color: var(--wine-gold);
     }
 
-    .tap-icon {
+    .tap-icon{
         display: inline-block;
         position: relative;
         top: 0.5rem;
@@ -264,7 +283,25 @@
         height: 1.75rem;
     }
 
-    :global(.tap-icon svg) {
+    .load-icon {
+        display: inline-block;
+        position: relative;
+        top: 0.5rem;
+        width: 1.5rem;
+        height: 1.75rem;
+        animation: spin360 1s linear infinite;
+    }
+
+    @keyframes spin360 {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    :global(.tap-icon svg, .load-icon svg) {
         width: 100%;
         height: 100%;
     }
@@ -274,13 +311,9 @@
         stroke-width: 3px;
     }
 
-    .random-click {
-        cursor: pointer;
-        text-decoration: underline;
-        background: transparent;
-        color: var(--wine-gold);
-        font-weight: 700;
-        padding: 0;
+    :global(.load-icon svg path) {
+        stroke: var(--wine-gold);
+        stroke-width: 1px;
     }
 
     :global(.prompt) {
