@@ -1,4 +1,4 @@
-import fs from "fs/promises"; // use the promises API
+import fs from "fs/promises";
 import path from "path";
 import * as d3 from "d3";
 
@@ -41,9 +41,21 @@ try {
 		const remainingFiles = await fs.readdir(imageDir);
 		const remainingImages = remainingFiles.filter(f => /^img_\d+\.png$/.test(f));
 
-		console.log(`✅ Done. ${remainingImages.length} image(s) remaining.`);
-		console.log(`🧹 Deleted ${deletedCount} image(s).`);
+		// IDENTIFY ANY MISSING IMAGES
+		const imageIds = new Set(
+			remainingImages.map(f => f.match(/^img_(\d+)\.png$/)?.[1])
+		);
+
+		const missingImageData = filteredData.filter(d => !imageIds.has(d.id));
+
+		// EXPORT MISSING IDS TO CSV
+		const csvString = d3.csvFormat(missingImageData.map(d => ({ id: d.id })));
+		await fs.writeFile("./src/data/missingImageIds.csv", csvString, "utf8");
+		console.log(`Saved ${missingImageData.length} missing image ID(s) to missingImageIds.csv`);
+
+		console.log(`Done. ${remainingImages.length} image(s) remaining.`);
+		console.log(`Deleted ${deletedCount} image(s).`);
 	}
 } catch (err) {
-	console.error("❌ Error processing images:", err);
+	console.error("Error processing images:", err);
 }
