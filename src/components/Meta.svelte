@@ -1,6 +1,6 @@
 <script>
 	export let title = "The Pour-igin of Species";
-	export let description = "We used ChatGPT Vision to identify animals on over 9,300 wine labels to see if we could predict the price and quality of a bottle based on the animal on the label.";
+	export let description = "We used ChatGPT Vision to identify animals on close to 1,500 wine labels to see if we could predict the price and quality of a bottle based on the animal on the label.";
 	export let url = "https://pudding.cool/2025/04/wine-animals";
 	export let keywords = "wine, animal, label, vivino, bottle, price, quality, design, data, analysis, predict, drink, packaging, alcohol";
 	export let preloadFont = [];
@@ -19,7 +19,7 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:locale" content="en_US" />
 
-	<meta property="og:image" content="{url}/assets/images/social.jpg" />
+	<meta property="og:image" content="{url}/assets/images/social2.jpg" />
 	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="600" />
@@ -29,7 +29,7 @@
 	<meta name="twitter:creator" content="@puddingviz" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image:src" content="{url}/assets/images/social.jpg" />
+	<meta name="twitter:image:src" content="{url}/assets/images/social2.jpg" />
 
 	<meta name="robots" content="max-image-preview:large" />
 
