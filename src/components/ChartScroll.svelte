@@ -1,6 +1,6 @@
 <script>
     import { getContext } from "svelte";
-    import { animalSelected} from "$stores/misc.js";
+    import { animalSelected, chartScrollTrigger } from "$stores/misc.js";
     import Scrolly from "$components/helpers/ChartScrolly.svelte";
     import ScrollScatter from "$components/ScrollScatter.svelte";
     import rawData from "$data/wineData.csv";
@@ -8,6 +8,7 @@
     import Filters from "$components/Filters.svelte";
     import Icon from "$components/helpers/Icon.svelte";
     import { useLazyImage as lazyImage } from 'svelte-lazy-image';
+    import inView from "$actions/inView.js";
 
     const copy = getContext("copy");
     
@@ -27,7 +28,9 @@
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
 </script>
 
-<section id="chart-scroll">
+<section id="chart-scroll"
+    use:inView={{ bottom: 0 }}
+    on:enter={() => chartScrollTrigger.set(true)}>
     <div class="sticky">
         {#if chartScrollIndex == 14 || chartScrollIndex == "exit"}
             <Filters />

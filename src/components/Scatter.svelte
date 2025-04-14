@@ -16,7 +16,7 @@
     import AxisY from "$components/layercake/AxisY.svg.svelte";
 
     // STORES
-    import { navAnimal, tooltipType, tooltipData, lockedSelection, tooltipVisible } from "$stores/misc.js";
+    import { navAnimal, tooltipType, tooltipData, lockedSelection, tooltipVisible, cardsScrollTrigger } from "$stores/misc.js";
     
     // DATA
     import allWineData from "$data/wineData.csv";
@@ -316,26 +316,28 @@
             </button>
         </div>
         <div class="chart-container" id="scatterplot" style="pointer-events:none">
-            <LayerCake
-                padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
-                x={xKey}
-                y={yKey}
-                data={chartData}
-                xDomain={[2, 5]}
-                yDomain={[0, 150]}
-            >
-                <Svg>
-                    <AxisX 
-                        gridlines={true} 
-                        ticks={7}
-                    />
-                    <AxisY 
-                        gridlines={true} 
-                        ticks={3} />
-                    <ScatterSvg />
-                    <Voronoi />
-                </Svg>
-            </LayerCake>
+            {#if $cardsScrollTrigger}
+                <LayerCake
+                    padding={{ top: 20, right: 0, bottom: 20, left: 0 }}
+                    x={xKey}
+                    y={yKey}
+                    data={chartData}
+                    xDomain={[2, 5]}
+                    yDomain={[0, 150]}
+                >
+                    <Svg>
+                        <AxisX 
+                            gridlines={true} 
+                            ticks={7}
+                        />
+                        <AxisY 
+                            gridlines={true} 
+                            ticks={3} />
+                        <ScatterSvg />
+                        <Voronoi />
+                    </Svg>
+                </LayerCake>
+        {/if}
         </div>
     </div>
 </section>

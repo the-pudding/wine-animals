@@ -8,7 +8,7 @@
     import Voronoi from "$components/layercake/ScrollVoronoi.svelte";
     import { tweened } from 'svelte/motion';
     import { cubicIn } from 'svelte/easing';
-    import { bigScatterData } from "$stores/misc.js";
+    import { bigScatterData, chartScrollTrigger } from "$stores/misc.js";
     import Range from "$components/helpers/Range.svelte";
     import { onMount } from 'svelte';
 
@@ -62,26 +62,28 @@
             </div>
         {/if}
         <div class="chart-inner">
-            <LayerCake
-                padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
-                x={xKey}
-                y={yKey}
-                data={[medianData, $bigScatterData]}
-                xDomain={$xDomain}
-                yDomain={$yDomain}
-            >
-                <Svg>
-                    <AxisX 
-                        gridlines={true} 
-                        ticks={7}
-                    />
-                    <AxisY 
-                        gridlines={true} 
-                        ticks={3} />
-                    <ScrollScatterSvg {chartScrollIndex} />
-                    <Voronoi {chartScrollIndex} />
-                </Svg>
-            </LayerCake>
+            {#if $chartScrollTrigger}
+                <LayerCake
+                    padding={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                    x={xKey}
+                    y={yKey}
+                    data={[medianData, $bigScatterData]}
+                    xDomain={$xDomain}
+                    yDomain={$yDomain}
+                >
+                    <Svg>
+                        <AxisX 
+                            gridlines={true} 
+                            ticks={7}
+                        />
+                        <AxisY 
+                            gridlines={true} 
+                            ticks={3} />
+                        <ScrollScatterSvg {chartScrollIndex} />
+                        <Voronoi {chartScrollIndex} />
+                    </Svg>
+                </LayerCake>
+            {/if}
         </div>
         {#if chartScrollIndex == 7 || chartScrollIndex == 8}
             <div class="quadrants"  transition:fade={{ duration: reduceMotion ? 0 : 250 }}>

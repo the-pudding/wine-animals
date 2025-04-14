@@ -37,3 +37,7 @@ export const tooltipVisible = writable(false);
 
 // SECTION
 export const activeSection = writable("Finding the Deals");
+
+// LOAD TRIGGERS
+export const chartScrollTrigger = writable(false);
+export const cardsScrollTrigger = writable(false);

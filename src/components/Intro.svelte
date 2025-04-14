@@ -3,7 +3,7 @@
     import { getContext, onMount } from "svelte";
 
     // STORES
-    import { bottleSelected, animalSelected } from "$stores/misc.js";
+    import { bottleSelected, animalSelected, chartScrollTrigger } from "$stores/misc.js";
 
     // COMPONENTS
     import Scrolly from "$components/helpers/Scrolly.svelte";
@@ -14,6 +14,7 @@
     import Icon from "$components/helpers/Icon.svelte";
     import tapSVG from "$svg/touch.svg";
     import loadSVG from "$svg/loader-circle.svg";
+    import inView from "$actions/inView.js";
 
     // VARIABLES
     const copy = getContext("copy");
@@ -36,7 +37,6 @@
     let isMounted;
 
     // INTERACTION FUNCTIONS
-
     function updateSelectedCopy(data) {
         const key = data.animal !== "amphibian/reptile" ? data.animal : "amphibian";
         selectedText = copy.opening[0][key];
@@ -156,7 +156,9 @@
     </Scrolly>
 </section>
 
-<section id="post-intro">
+<section id="post-intro" 
+    use:inView={{ bottom: 0 }}
+    on:enter={() => chartScrollTrigger.set(true)}>
     {#each copy.postIntro as graf, i}
         <p class="prose">{@html graf.value}</p>
     {/each}

@@ -3,7 +3,7 @@
 	import { getContext } from "svelte";
 
 	// STORES
-	import { currAnimalSlide } from "$stores/misc.js";
+	import { currAnimalSlide, cardsScrollTrigger } from "$stores/misc.js";
 	
 	// COMPONENTS
 	import inView from "$actions/inView.js";
@@ -31,6 +31,9 @@
 	// Makes tap visible when section enters
 	function handleEnter(dir) {
 		tapVisible = dir == "enter" ? true : false;
+		if (dir == "enter") {
+			cardsScrollTrigger.set(true)
+		}
 	}
 
 	// Handles the left/right tap for the animal card section
