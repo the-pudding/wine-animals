@@ -16,12 +16,9 @@ export const selectedYearRangeSTORE = writable([1850, 2023]);
 
 // INTRO SELECTION
 const isBrowser = typeof window !== 'undefined';
-const openingWines = ["cat", "bird", "pig", "amphibian/reptile"];
-const randomAnimal = openingWines[Math.floor(Math.random() * openingWines.length)];
 
 const storedAnimal = isBrowser ? localStorage.getItem("animalSelected") : null;
-const fallbackAnimal = storedAnimal || (openingWines[Math.floor(Math.random() * openingWines.length)]);
-export const animalSelected = writable(fallbackAnimal);
+export const animalSelected = writable(storedAnimal ?? null);
 
 export const bottleSelected = writable(false);
 

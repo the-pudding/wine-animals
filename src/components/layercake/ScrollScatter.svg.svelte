@@ -27,7 +27,8 @@
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
         : $animalSelected == "pig" ?"171574314"
-        : "161239002";
+        : $animalSelected == "amphbian/reptile" ? "161239002"
+        : null;
 
     // Trendline
     const regression = d3Regression.regressionLog()
@@ -80,8 +81,6 @@
 	}
 
     $: stealTopgroupCounts.set(topgroupCounts);
-
-    $: console.log(chartScrollIndex)
 </script>
 
 <g class="median-markings" class:active={chartScrollIndex >= 7 || chartScrollIndex == "exit"}>
@@ -129,9 +128,9 @@
         </g>
       {/if}
     {/each}
-
+    
     {#each $data[1] as d, i}
-      {#if selectedWine === d.id}
+      {#if selectedWine && selectedWine === d.id}
         {@const cx = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $xGet(d) : $xGet($data[0][4])}
         {@const cy = chartScrollIndex >= 5 || chartScrollIndex == "exit" ? $yGet(d) : $yGet($data[0][4])}
         {@const animal = d.topgroup}

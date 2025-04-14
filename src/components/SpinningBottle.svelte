@@ -116,8 +116,6 @@
         : bottleIndex * 50;
     $: if (scrollIndex >= 2) { shouldSpin = [true,true,true,true]; } 
     $: if (outroVisible == false || outroVisible == undefined) { spin4 = true };
-
-    $: console.log({transitionDelay})
 </script>
 
 

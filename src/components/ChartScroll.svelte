@@ -49,7 +49,10 @@
                     {#each step.block as graf, i}
                         <p>{@html graf.value}</p>
                     {/each}
-                    {#if i == 5}  
+                    {#if i == 0 && $animalSelected} 
+                        <p>The <span class=selected-bottle-circle-span>animal group on the wine you selected</span> is highlighted in yellow.</p>
+                    {:else if i == 5 && $animalSelected}  
+                        <p>Here’s the <span class=selected-bottle-circle-span>bottle you selected.</span></p>
                         <div class="selected-bottle-display">
                             <img class="bottle-img" src="./assets/images/vivinoLabels/img_{selectedWine}.png" alt="wine label with {$animalSelected} on it"/>
                             <div class="deets">
@@ -67,7 +70,7 @@
                             </div>
                         </div> 
                     {/if}  
-                    {#if i == 8}
+                    {#if i == 8 && $animalSelected}
                         <p>{@html $animalSelected == "amphibian/reptile" ? copy.opening[0][("amphibianQuad")] : copy.opening[0][($animalSelected + "Quad")]}</p>
                     {/if} 
                     {#if i == 14}

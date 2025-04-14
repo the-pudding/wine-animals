@@ -82,13 +82,6 @@
 
     // REATIVE FUNCTIONS
     // Scroll to the second step once bottle is selected
-    $: if (scrollY >= 50 && !$bottleSelected) {
-        const randomWine = storedAnimal ?
-            openingWines.find(d => d.animal === $animalSelected)
-            : openingWines[Math.floor(Math.random() * openingWines.length)];
-        handleBottleScroll(randomWine);
-    }
-
     $: if ($animalSelected && $bottleSelected) {
         const selectedWine = openingWines.find(d => d.animal === $animalSelected);
         if (selectedWine) {
@@ -124,8 +117,11 @@
             <div class="step">
                 <div class="step-inner">
                     <p> 
-                        {#if i == 1 && selectedText}
+                        {#if i == 1 && $animalSelected && selectedText}
                             {@html selectedText}
+                        {:else if i == 5 && $animalSelected}
+                            {@html step.value}
+                            Here’s the <span class=selected-animal-span>animal on the wine you picked</span>.
                         {:else if i == 6 && selectedPriceText}
                             {@html step.value}
                             {@html selectedPriceText}
@@ -138,7 +134,7 @@
                                     {#if isMounted}
                                         <p class="instructions">
                                             <span class="tap-icon">{@html tapSVG}</span>
-                                            Tap on a bottle or start scrolling to get a random wine
+                                            Tap on a bottle or start scrolling to skip
                                         </p>
                                     {:else}
                                         <p class="instructions">
@@ -261,6 +257,7 @@
         font-weight: 700;
         position: relative;
         display: block;
+        padding: 1rem 0;
     }
 
     :global(a.methods-link) {
