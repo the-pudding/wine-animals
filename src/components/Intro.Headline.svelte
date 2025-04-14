@@ -106,7 +106,7 @@
         color: var(--wine-dark-gray);
         line-height: 0.8;
         text-align: center;
-        opacity: 0.2;
+        opacity: 0;
         transition: all var(--1000ms) linear;
         pointer-events: none;
     }
@@ -118,11 +118,13 @@
     h1:nth-child(1).highlight {
         opacity: 1;
         color: var(--wine-tan);
+        transition: all var(--1000ms) linear;
     }
 
     h1:nth-child(2).highlight {
         color: var(--wine-red);
         opacity: 1;
+        transition: all var(--1000ms) linear;
         /* animation-play-state: running; */
     }
 

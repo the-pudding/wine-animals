@@ -111,10 +111,10 @@
             >
             <div class="img-wrapper">
                 <img src="assets/images/icons/{animal.replace(/[^a-zA-Z0-9]/g, "")}.png"
-                alt="{animal} icon"
-                id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
-                class="navIcon"
-                use:lazyImage>
+                    use:lazyImage
+                    alt="{animal} icon"
+                    id="{animal.replace(/[^a-zA-Z0-9]/g, "")}-nav"
+                    class="navIcon" />
             </div>
             <p>{animal}</p>
         </button>

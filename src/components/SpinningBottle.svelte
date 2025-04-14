@@ -155,6 +155,7 @@
 <style>
     button {
         background: transparent;
+        z-index: 999;
     }
     .range-wrapper {
         position: absolute;

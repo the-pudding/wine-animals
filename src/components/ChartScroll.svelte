@@ -7,6 +7,7 @@
     import SummaryBottles from "$components/ChartScroll.SummaryBottles.svelte";
     import Filters from "$components/Filters.svelte";
     import Icon from "$components/helpers/Icon.svelte";
+    import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
     const copy = getContext("copy");
     
@@ -64,7 +65,7 @@
                                     <p class="price">${selectedBottleData[0].price}</p>
                                     <p class="rating">
                                         {selectedBottleData[0].rating}
-                                        <span class="stars"><img alt="stars" src="./assets/images/stars/{formatStars(selectedBottleData[0].rating)}" /></span>
+                                        <span class="stars"><img alt="stars" use:lazyImage src="./assets/images/stars/{formatStars(selectedBottleData[0].rating)}" /></span>
                                     </p>
                                 </div>
                             </div>
