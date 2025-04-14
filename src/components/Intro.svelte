@@ -260,11 +260,16 @@
         padding: 1rem 0;
     }
 
-    :global(a.methods-link) {
+    :global(a.methods-link span) {
+        color: var(--wine-gold) !important;
+        text-decoration: underline;
+    }
+
+    :global(a.methods-link span) {
         color: var(--wine-gold) !important;
     }
 
-    :global(a.methods-link:hover) {
+    :global(a.methods-link span:hover) {
         color: var(--wine-dark-gold) !important;
     }
 
