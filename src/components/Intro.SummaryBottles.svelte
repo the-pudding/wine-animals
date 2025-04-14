@@ -238,6 +238,7 @@
         gap: 6rem;
         padding: 2rem;
         margin-top: 10svh;
+        z-index: 800;
     }
 
     .animal-wrapper {

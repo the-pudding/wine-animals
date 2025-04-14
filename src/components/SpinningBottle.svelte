@@ -137,14 +137,14 @@
     <div class="wine"
         aria-hidden="true"
         class:spin={bottleIndex == 4 ? spin4 : shouldSpin[bottleIndex]}
-        on:mousemove={() => {
+        on:mousemove={(e) => {
             if(!isMobile) {
-                mousemoveBottle
+                mousemoveBottle(e)
             }
         }}
-        on:mouseleave={() => {
+        on:mouseleave={(e) => {
             if(!isMobile) {
-                mouseleaveBottle
+                mouseleaveBottle(e)
             }
         }}>
     </div>

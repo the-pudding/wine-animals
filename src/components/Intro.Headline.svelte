@@ -85,10 +85,13 @@
         justify-content: center;
         gap: 2rem;
         margin: 4rem auto;
+        pointer-events: none;
+        z-index: 1;
     }
     
     .head-container {
         height: 50svh;
+        pointer-events: none;
     }
 
     h1 {
@@ -105,6 +108,7 @@
         text-align: center;
         opacity: 0.2;
         transition: all var(--1000ms) linear;
+        pointer-events: none;
     }
 
     h1:nth-child(2) {

@@ -15,20 +15,8 @@ export const selectedRatingRangeSTORE = writable([2.5, 5]);
 export const selectedYearRangeSTORE = writable([1850, 2023]);
 
 // INTRO SELECTION
-const isBrowser = typeof window !== 'undefined';
-
-const storedAnimal = isBrowser ? localStorage.getItem("animalSelected") : null;
-export const animalSelected = writable(storedAnimal ?? null);
-
+export const animalSelected = writable(null);
 export const bottleSelected = writable(false);
-
-if (isBrowser) {
-	animalSelected.subscribe((animal) => {
-		if (animal) {
-			localStorage.setItem("animalSelected", animal);
-		}
-	});
-}
 
 // STEAL RANGES
 export const stealPriceNum = writable(29.99);

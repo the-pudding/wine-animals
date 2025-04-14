@@ -92,6 +92,7 @@
         margin: 0 auto;
         padding: 2rem;
         flex-wrap: nowrap;
+        z-index: 800;
     }
 
     .example {
