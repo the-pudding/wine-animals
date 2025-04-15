@@ -36,7 +36,7 @@
         ? screenWidth / 2
         : screenWidth / 4;
 
-        const maxHeight = screenHeight / aspectRatio;
+        const maxHeight = (screenHeight / aspectRatio) - 80;
         const width = Math.min(maxWidth, maxHeight);
         const height = width * aspectRatio;
 

@@ -26,6 +26,8 @@
         : "161239002";
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
+
+    $: console.log(chartScrollIndex)
 </script>
 
 <section id="chart-scroll"
@@ -167,7 +169,7 @@
 
     .step-inner { 
         background: rgba(24, 26, 31, 0.98);
-        padding: 1rem 2rem;
+        padding: 2rem 2rem 1rem 2rem;
         border: 1px solid var(--wine-dark-gray);
         border-radius: 3px;
         box-shadow: -4px 4px 10px rgb(17, 17, 17, 0.5);
@@ -183,7 +185,7 @@
         line-height: 1.65;
         background: none;
         z-index: 900;
-        margin: 1rem 0;
+        margin: 0 0 1rem 0;
         pointer-events: auto;
     }
 
@@ -402,12 +404,12 @@
             opacity: 1;
         }
         .step-inner {
-            padding: 1rem 1rem 2rem 1rem;
+            padding: 1rem 1rem 0 1rem;
         }
 
         .step p {
             font-size: var(--16px);
-            margin: 0;
+            margin: 0 0 1rem 0;
         }
 
         .bottle-img {
