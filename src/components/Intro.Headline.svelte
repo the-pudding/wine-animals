@@ -85,7 +85,6 @@
         justify-content: center;
         gap: 2rem;
         margin: 4rem auto;
-        pointer-events: none;
         z-index: 1;
     }
     
