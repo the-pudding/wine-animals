@@ -26,8 +26,6 @@
         : "161239002";
 
     $: selectedBottleData = rawData.filter(d => d.id == selectedWine);
-
-    $: console.log(chartScrollIndex)
 </script>
 
 <section id="chart-scroll"
