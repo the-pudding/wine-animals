@@ -793,7 +793,7 @@ human,median,medianPrice,,27.335,,,,false
 marine invertebrate,median,medianPrice,,22.67,,,,false
 mythical creature,median,medianPrice,,34.99,,,,false
 none,median,medianPrice,,29.99,,,,false
-pachyderm,median,medianPrice,,24.22,,,,false
+pachyderm,median,medianPrice,,23.44,,,,false
 rabbit,median,medianPrice,,29.99,,,,false
 sheep,median,medianPrice,,21.74,,,,false
 pig,median,medianPrice,,23.22,,,,false
@@ -833,7 +833,7 @@ human,count,count,,993,,,,false
 marine invertebrate,count,count,,33,,,,false
 mythical creature,count,count,,123,,,,false
 none,count,count,,7007,,,,false
-pachyderm,count,count,,24,,,,false
+pachyderm,count,count,,23,,,,false
 rabbit,count,count,,25,,,,false
 sheep,count,count,,57,,,,false
 pig,count,count,,28,,,,false
