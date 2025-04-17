@@ -41,7 +41,7 @@ duck,country,Austria,0,0
 duck,median,medianPrice,,30.49
 duck,median,medianRating,,4
 duck,count,count,,44
-duck,steals,steals,13.636363636363635,6
+duck,steals,steals,11.363636363636363,5
 flightless bird,price,<10,28.57142857142857,2
 flightless bird,price,10–19.99,42.857142857142854,3
 flightless bird,price,20–29.99,28.57142857142857,2
@@ -127,7 +127,7 @@ game bird,country,Austria,4.3478260869565215,1
 game bird,median,medianPrice,,24.99
 game bird,median,medianRating,,4
 game bird,count,count,,23
-game bird,steals,steals,21.73913043478261,5
+game bird,steals,steals,17.391304347826086,4
 junglefowl,price,<10,0,0
 junglefowl,price,10–19.99,28.26086956521739,13
 junglefowl,price,20–29.99,23.91304347826087,11
@@ -213,7 +213,7 @@ owl,country,Austria,1.4492753623188406,1
 owl,median,medianPrice,,24.99
 owl,median,medianRating,,3.9
 owl,count,count,,69
-owl,steals,steals,8.695652173913043,6
+owl,steals,steals,7.246376811594203,5
 peacock,price,<10,0,0
 peacock,price,10–19.99,23.076923076923077,3
 peacock,price,20–29.99,30.76923076923077,4
@@ -342,7 +342,7 @@ raptor,country,Austria,0,0
 raptor,median,medianPrice,,30.99
 raptor,median,medianRating,,4
 raptor,count,count,,101
-raptor,steals,steals,7.920792079207921,8
+raptor,steals,steals,5.9405940594059405,6
 shorebird,price,<10,0,0
 shorebird,price,10–19.99,36.36363636363637,4
 shorebird,price,20–29.99,45.45454545454545,5
@@ -428,7 +428,7 @@ songbird,country,Austria,1.639344262295082,3
 songbird,median,medianPrice,,24.99
 songbird,median,medianRating,,4
 songbird,count,count,,183
-songbird,steals,steals,22.404371584699454,41
+songbird,steals,steals,15.846994535519126,29
 wading bird,price,<10,0,0
 wading bird,price,10–19.99,46.15384615384615,12
 wading bird,price,20–29.99,23.076923076923077,6
