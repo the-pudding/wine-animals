@@ -31,8 +31,8 @@
            text: "There are <span class='wrong-prompt'>no animals or humans</span> on this wine label. The image prominently features a <span class='wrong-prompt'>hot air balloon</span>...'"
        },
        {
-           img: "150722226",
-           text: "...there are illustrations that resemble <span class='wrong-prompt'>demonic or mythical creatures</span> which are <span class='wrong-prompt'>neither real animals nor humans</span>."
+           img: "165679460",
+           text: "...the label clearly displays only branding and product information with <span class='wrong-prompt'>no representations of humans or animals</span>."
        },
        {
            img: "176113705",
