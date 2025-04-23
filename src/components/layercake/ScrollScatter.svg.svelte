@@ -27,8 +27,10 @@
     $: selectedWine = $animalSelected == "cat" ? "161008470"
         : $animalSelected == "bird" ? "173188559"
         : $animalSelected == "pig" ?"171574314"
-        : $animalSelected == "amphbian/reptile" ? "161239002"
+        : $animalSelected == "amphibian/reptile" ? "161239002"
         : null;
+    
+        $: console.log({$animalSelected, selectedWine})
 
     // Trendline
     const regression = d3Regression.regressionLog()

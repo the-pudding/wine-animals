@@ -17,6 +17,13 @@ const topgroups = ["amphibian/reptile", "bear", "bird", "bug", "canine", "cat", 
 
 const cats = ["cat", "cheetah", "cougar", "jaguar/leopard/panther", "lion", "lion crest", "lynx", "tiger"];
 const birds = ["duck", "flightless bird", "game bird", "junglefowl", "owl", "peacock", "penguin", "raptor", "shorebird", "songbird", "wading bird"]; 
+const wsd = ["whale", "dolphin", "shark", "whale/shark/doplhin"]; 
+
+const wsdData = data.filter(d => d.subgroup.includes("whale") || d.subgroup.includes("shark") || d.subgroup.includes("dolphin"));
+const wsdMedianPrice = d3.median(wsdData, d => +d.price);   
+const wsdMedianRating = d3.median(wsdData, d => +d.rating);
+
+console.log("wds data", wsdData.length, wsdMedianPrice, wsdMedianRating)
 
 // BUCKETS
 const priceBuckets = ["<10", "10–19.99", "20–29.99", "30–39.99", "40–49.99", "50–59.99", "60–69.99", "70–79.99", "80–89.99", "90–99.99", "100–109.99", "110–119.99", "120–129.99", "130–139.99", "140–149.99", "150+"];
