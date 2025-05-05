@@ -11,6 +11,8 @@
     export let resource;
     export let footer;
 
+    $: console.log(href)
+
 	// custom to starter
 	const base = "https://pudding.cool";
 
